@@ -2,9 +2,10 @@
 $contador = 1;
 include '../conexao.php';
  try{
-       $stmt = $pdo->prepare("SELECT id_motorista, nome, habilitacao.categoria "
-               . "            FROM motoristas, habilitacao"
-               . "            WHERE motoristas.categoria = id_habilitacao");
+       $stmt = $pdo->prepare("SELECT id_motorista, nome, habilitacao.categoria,sigla "
+               . "            FROM motoristas, habilitacao, posto_grad"
+               . "            WHERE motoristas.categoria = id_habilitacao"
+               . "             AND posto_grad = id_posto_grad");
        $executa = $stmt->execute();
  
        if($executa){
@@ -12,7 +13,8 @@ include '../conexao.php';
                  <caption>Motoristas Cadastrados</caption>
                     <tr>
                         <td>Ordem</td>
-                        <td>Nome</td>
+                        <td>Posto/Grad</td>
+                        <td>Nome de Guerra</td>
                         <td>Categoria</td>
                         <td></td>
                         <td></td>
@@ -20,6 +22,7 @@ include '../conexao.php';
            
             while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
                 echo "<td>$contador</td>";
+                echo "<td>".$reg->sigla."</td>";
                 echo "<td>".$reg->nome."</td>";
                 echo "<td>".$reg->categoria."</td>";
                 echo "<form action='../executar.php' method='post'>

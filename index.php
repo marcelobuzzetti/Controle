@@ -1,4 +1,4 @@
-    <html>
+<html>
     <head>
         <meta charset="UTF-8">
         <script src="js/jquery.js"></script>
@@ -8,6 +8,22 @@
         <title>Sistema</title>
     </head>
     <body>        
+        <?php
+            session_start();
+            if(isset($_SESSION['erro'])){
+               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Usuário e/ou Senha não cadastrados</strong>
+                         </div>";
+            }
+             if(isset($_SESSION['timeout'])){
+               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Sessão Expirada</strong>
+                         </div>";
+            }
+            session_destroy();
+            ?>
         <form class="form-inline" action="usuario/fazerLogin.php" method="post">
             <div class="form-group">
                 <label for="login">Login</label>

@@ -16,19 +16,24 @@ try{
 		$stmt->bindParam(1, $login , PDO::PARAM_STR);
 		$stmt->execute();
                 
-                $resultado1 = $stmt->fetch();
+                                       $resultado1 = $stmt->fetch();
                 
     if($resultado['total'] > 0){
-    session_start();
-    $_SESSION['login'] = $login;
-    $_SESSION['perfil'] = $resultado1[0];
-    header ('Location: '.$endereco.'/percurso/index.php');
+        
+        session_start();
+
+       $_SESSION['login'] = $login;
+       $_SESSION['perfil'] = $resultado1[0];
+       $_SESSION['temposessao'] = time() + 120;
+
+       header ('Location: '.$endereco.'/percurso/index.php');
     
-}else{
-    echo 'Erro no Login!';
-    header ('Location: '.$endereco.'/percurso');
-}
-}catch(PDOException $e){
+    }else{
+        session_start();
+        $_SESSION['erro'] = 1;
+        header ('Location: '.$endereco.'');
+    }
+    }catch(PDOException $e){
 		echo $e->getMessage();
    }
 ?>

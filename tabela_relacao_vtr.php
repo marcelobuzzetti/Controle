@@ -2,7 +2,7 @@
 $contador1 = 1;
 include 'conexao.php';
  try{
-     $stmt = $pdo->prepare("SELECT viaturas.viatura, motoristas.nome, destino, odo_saida, ch_vtr, data_saida, hora_saida
+     $stmt = $pdo->prepare("SELECT viaturas.viatura, motoristas.apelido, destino, odo_saida, ch_vtr, data_saida, hora_saida
                             FROM percursos, viaturas, motoristas
                             WHERE data_retorno IS NULL 
                             AND percursos.motorista = id_motorista
@@ -27,7 +27,7 @@ include 'conexao.php';
              echo "<tr>";
              echo "<td>$contador1</td>";
              echo "<td>".$reg->viatura."</td>";
-             echo "<td>".$reg->nome."</td>";
+             echo "<td>".$reg->apelido."</td>";
              echo "<td>".$reg->destino."</td>";
              echo "<td>".$reg->odo_saida."</td>";
              echo "<td>".$reg->ch_vtr."</td>";

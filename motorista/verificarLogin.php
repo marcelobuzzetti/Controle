@@ -1,8 +1,17 @@
 <?php
+    $endereco = $_SERVER['SERVERNAME'].'/controle';   
+    
     session_start();
-    $endereco = $_SERVER['SERVERNAME'].'/controle';
-    if(!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)){
-        header('Location: '.$endereco.'/percurso');
-        die();
+    
+     if(!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)){
+       header ('Location: '.$endereco.'/percurso');
+    }
+    
+    if($_SESSION['temposessao'] < time()){
+    session_start();
+        $_SESSION['timeout'] = 1;
+       header ('Location: '.$endereco.'');
+    } else {
+        $_SESSION["temposessao"] = time() + 120;
     }
 ?>

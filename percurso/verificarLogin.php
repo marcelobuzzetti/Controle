@@ -1,8 +1,18 @@
 <?php
+
+ $endereco = $_SERVER['SERVERNAME'].'/controle';   
+ 
     session_start();
-    $endereco = $_SERVER['SERVERNAME'].'/controle';
     if(!isset($_SESSION['login'])){
-       header('Location: '.$endereco.'');
-        die();
+        session_unset();
+        header ('Location: '.$endereco.'');
+    }
+    
+ if($_SESSION['temposessao'] < time()){
+       session_start();
+        $_SESSION['timeout'] = 1;
+       header ('Location: '.$endereco.'');
+    } else {
+        $_SESSION["temposessao"] = time() + 120;
     }
 ?>

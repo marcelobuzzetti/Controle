@@ -3,7 +3,7 @@
     include '../conexao.php';
     
     try{
-        $stmt = $pdo->prepare("SELECT id_percurso, viaturas.viatura, motoristas.nome, destino, odo_saida, ch_vtr, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+        $stmt = $pdo->prepare("SELECT id_percurso, viaturas.viatura, motoristas.apelido, destino, odo_saida, ch_vtr, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
                                 FROM percursos, viaturas, motoristas
                                 WHERE data_retorno IS NOT NULL 
                                 AND percursos.motorista = id_motorista
@@ -29,7 +29,7 @@
             
             while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
                 echo "<tr><td>".$reg->viatura."</td>";
-                echo "<td>".$reg->nome."</td>";
+                echo "<td>".$reg->apelido."</td>";
                 echo "<td>".$reg->destino."</td>";
                 echo "<td>".$reg->odo_saida."</td>";
                 echo "<td>".$reg->ch_vtr."</td>";

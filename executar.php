@@ -9,7 +9,9 @@ include 'conexao.php';
         $odo_retorno = $_POST['odo_retorno'];
         
             try{
-                $stmt = $pdo->prepare("UPDATE percursos SET odo_retorno=$odo_retorno, data_retorno=NOW(), hora_retorno=NOW() WHERE id_percurso=".$id); 
+                $stmt = $pdo->prepare("UPDATE percursos "
+                        . "                        SET odo_retorno=$odo_retorno, data_retorno=NOW(), hora_retorno=NOW() "
+                        . "                        WHERE id_percurso=".$id); 
                 $executa = $stmt->execute();
             }catch(PDOException $e){
                 echo $e->getMessage();
@@ -24,7 +26,8 @@ include 'conexao.php';
         $id = $_POST['id'];
             
             try{
-                    $stmt = $pdo->prepare("DELETE FROM percursos WHERE id_percurso=".$id); 
+                    $stmt = $pdo->prepare("DELETE FROM percursos "
+                            . "                        WHERE id_percurso=".$id); 
                     $executa = $stmt->execute();
             }catch(PDOException $e){
                     echo $e->getMessage();
@@ -36,17 +39,17 @@ include 'conexao.php';
 
     case 'Cadastrar':
             $viatura = $_POST["viatura"];
-            $motorista = $_POST["motorista"];
+            $nome = $_POST["motorista"];
             $destino = $_POST["destino"];
             $odometro = $_POST["odo_saida"];
             $ch_vtr = $_POST["ch_vtr"];
 
             
             try{
-                    $stmt = $pdo->prepare("INSERT INTO percursos VALUES(NULL,"
-                            . "            ?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL)"); 
+                    $stmt = $pdo->prepare("INSERT INTO percursos "
+                            . "                        VALUES(NULL,?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL)"); 
                     $stmt->bindParam(1, $viatura , PDO::PARAM_INT);
-                    $stmt->bindParam(2, $motorista, PDO::PARAM_INT);
+                    $stmt->bindParam(2, $nome, PDO::PARAM_INT);
                     $stmt->bindParam(3, $destino , PDO::PARAM_INT);
                     $stmt->bindParam(4, $odometro, PDO::PARAM_INT);
                     $stmt->bindParam(5, $ch_vtr, PDO::PARAM_INT);
@@ -77,7 +80,8 @@ include 'conexao.php';
 
             
             try{
-                    $stmt = $pdo->prepare("INSERT INTO viaturas VALUES(NULL,?,?,?,?,?,?,?,?,?)"); 
+                    $stmt = $pdo->prepare("INSERT INTO viaturas "
+                            . "                        VALUES(NULL,?,?,?,?,?,?,?,?,?)"); 
                     $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
                     $stmt->bindParam(2, $modelo , PDO::PARAM_STR);
                     $stmt->bindParam(3, $placa , PDO::PARAM_STR);
@@ -101,14 +105,26 @@ include 'conexao.php';
     break;
 
     case 'motorista':
-        $motorista = $_POST['nome'];
+        $nome = $_POST['nome'];
         $categoria = $_POST['categoria'];
+        $pg = $_POST['pg'];
+        
 
         
             try{
-                    $stmt = $pdo->prepare("INSERT INTO motoristas VALUES(NULL,?,?)"); 
-                    $stmt->bindParam(1, $motorista , PDO::PARAM_STR);
+                
+                $stmt = $pdo->prepare("SELECT sigla FROM posto_grad WHERE id_posto_grad = ?"); 
+                $stmt->bindParam(1, $pg , PDO::PARAM_INT);
+                $executa = $stmt->execute();
+                $sigla = $stmt->fetch();
+                $apelido = $sigla[0]." ".$nome;
+                
+                $stmt = $pdo->prepare("INSERT INTO motoristas "
+                            . "                        VALUES(NULL,?,?,?,?)"); 
+                    $stmt->bindParam(1, $nome , PDO::PARAM_STR);
                     $stmt->bindParam(2, $categoria , PDO::PARAM_INT);
+                    $stmt->bindParam(3, $pg , PDO::PARAM_INT);
+                    $stmt->bindParam(4, $apelido , PDO::PARAM_STR);
                     $executa = $stmt->execute();
 
         if(!$executa){
@@ -127,7 +143,8 @@ case 'Apagar Motorista':
     $id = $_POST['id'];
 	
 	try{
-		$stmt = $pdo->prepare("DELETE FROM motoristas WHERE id_motorista=".$id); 
+		$stmt = $pdo->prepare("DELETE FROM motoristas "
+                        . "                                               WHERE id_motorista=".$id); 
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
@@ -141,7 +158,8 @@ case 'apagar_viatura':
     $id = $_POST['id'];
 	
 	try{
-		$stmt = $pdo->prepare("DELETE FROM viaturas WHERE id_viatura=".$id); 
+		$stmt = $pdo->prepare("DELETE FROM viaturas "
+                        . "                                               WHERE id_viatura=".$id); 
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
@@ -155,13 +173,25 @@ case 'atualizar_motorista':
     $id = $_POST['id'];
     $nome = $_POST['nome'];
     $categoria = $_POST['categoria'];
+    $pg = $_POST['pg'];
    
 	
 	try{
-		$stmt = $pdo->prepare("UPDATE motoristas SET nome = ?, categoria = ? WHERE id_motorista = ?"); 
+            
+                $stmt = $pdo->prepare("SELECT sigla FROM posto_grad WHERE id_posto_grad = ?"); 
+                $stmt->bindParam(1, $pg , PDO::PARAM_INT);
+                $executa = $stmt->execute();
+                $sigla = $stmt->fetch();
+                $apelido = $sigla[0]." ".$nome;
+                
+                $stmt = $pdo->prepare("UPDATE motoristas "
+                        . "                                               SET nome = ?, categoria = ?, posto_grad = ?, apelido = ? "
+                        . "                                               WHERE id_motorista = ?"); 
                 $stmt->bindParam(1, $nome , PDO::PARAM_STR);
                 $stmt->bindParam(2, $categoria , PDO::PARAM_INT);
-                $stmt->bindParam(3, $id , PDO::PARAM_INT);
+                $stmt->bindParam(3, $pg , PDO::PARAM_INT);
+                $stmt->bindParam(4, $apelido , PDO::PARAM_STR);
+                $stmt->bindParam(5, $id , PDO::PARAM_INT);
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
@@ -186,7 +216,9 @@ case 'atualizar_viatura':
    
 	
 	try{
-		$stmt = $pdo->prepare("UPDATE viaturas SET viatura = ?, modelo = ?, placa = ?, odometro = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, habilitacao = ?, situacao = ? WHERE id_viatura = ?"); 
+		$stmt = $pdo->prepare("UPDATE viaturas "
+                        . "                                               SET viatura = ?, modelo = ?, placa = ?, odometro = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, habilitacao = ?, situacao = ? "
+                        . "                                               WHERE id_viatura = ?"); 
                 $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
                 $stmt->bindParam(2, $modelo , PDO::PARAM_STR);
                 $stmt->bindParam(3, $placa , PDO::PARAM_STR);
@@ -210,7 +242,8 @@ case 'apagar_usuario':
     $id = $_POST['id'];
 	
 	try{
-		$stmt = $pdo->prepare("DELETE FROM usuarios WHERE id_usuario=".$id); 
+		$stmt = $pdo->prepare("DELETE FROM usuarios "
+                        . "                                               WHERE id_usuario=".$id); 
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
@@ -228,7 +261,9 @@ case 'atualizar_usuario':
      
 	
 	try{
-                $stmt = $pdo->prepare("UPDATE usuarios SET login = ?, senha = ?, perfil = ? WHERE id_usuario = ?"); 
+                $stmt = $pdo->prepare("UPDATE usuarios "
+                        . "                        SET login = ?, senha = ?, perfil = ? "
+                        . "                        WHERE id_usuario = ?"); 
                 $stmt->bindParam(1, $login , PDO::PARAM_STR);
                 $stmt->bindParam(2, $senha , PDO::PARAM_STR);
                 $stmt->bindParam(3, $perfil , PDO::PARAM_INT);

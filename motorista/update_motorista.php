@@ -31,8 +31,16 @@
                 <table border=2px text-align='center'style='width: 20%'>
                     <form action="../executar.php" method="post">
                         <tr>
-                            <td>Nome</td>
+                            <td>Nome de Guerra</td>
                             <td><label for="nome"><input class="form-control" type="text" style='width: 150px' id="nome" name="nome" placeholder="Nome" required="required" value="<?php echo $nome ?>"/></label></td>
+                        </tr>
+                        <tr>
+                        <td>Posto/Grad</td>
+                            <td><label for="pg"><select class="form-control" name="pg">
+                                        <?php
+                                            include 'relacao_postograd.php';
+                                        ?>
+                                    </select></label></td>
                         </tr>
                         <tr>
                             <td>Categoria</td>

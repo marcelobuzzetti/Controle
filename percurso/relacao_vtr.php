@@ -12,6 +12,7 @@
            $executa = $stmt->execute();
 
            if($executa){
+               echo "<option value=''>Selecione a Viatura</option>";
               while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
                      echo "<option value='".$reg->id_viatura."'>".$reg->viatura."</option>";
                 }

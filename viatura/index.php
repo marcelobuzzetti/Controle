@@ -5,12 +5,12 @@
       <script src="../js/jquery.js"></script>
       <link   href="../css/bootstrap.css" rel="stylesheet">
       <script src="../js/bootstrap.js"></script>
-	  <script src="../js/script.js"></script>
+      <script src="../js/script.js"></script>
 	  
    </HEAD>
    <BODY>
 <?php
-    include("verificarLogin.php");
+    include "verificarLogin.php";
     include"../menu.php";
 ?>
 
