@@ -23,7 +23,7 @@ if (isset($_SESSION['login']) == FALSE) {
     $relacao_militares = $militar->listarMilitar();
     $usuario = $usuarios->listarUsuarioAtualizar($login);
     
-    $smarty->assign('titulo', 'Atualizar de Usuários');
+    $smarty->assign('titulo', 'Atualizar Usuário');
     $smarty->assign('botao', 'Atualizar');
     $smarty->assign('update', $update);
     $smarty->assign('id_usuario', $usuario[0]['id_usuario']);
