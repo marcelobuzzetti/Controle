@@ -1,3 +1,5 @@
+<!--Alterar o CRUD-->
+
 <!--Modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
@@ -49,10 +51,10 @@
                         {/foreach}
                     </select>
                 </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="odometro">Odômetro</label>
-                <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1" min="0" max="999999" tabindex="4"/>
-            </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="odometro">Odômetro</label>
+                    <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1" min="0" max="999999" value="{$dados_abastecimentos.odometro}" tabindex="4"/>
+                </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="combustivel">Combustível</label>
                     <select class="form-control" name="combustivel" tabindex="5">
@@ -109,6 +111,7 @@
                                 <td>{$tbl.nrvale}</td>
                                 <td>{$tbl.apelido}</td>
                                 <td>{$tbl.marca} - {$tbl.placa} - {$tbl.modelos}</td>
+                                <td>{$tbl.odometro}</td>
                                 <td>{$tbl.combustivel}</td>
                                 <td>{$tbl.tipo}</td>
                                 <td>{$tbl.qnt}</td>
