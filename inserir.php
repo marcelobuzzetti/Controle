@@ -5,10 +5,7 @@ $destino = $_POST["destino"];
 $odometro = $_POST["odo_saida"];
 $acompanhantes = $_POST["acompanhantes"];
 
-$pdo = new PDO("mysql:host=localhost;dbname=controle", "root", "apollo87"); 
- if(!$pdo){
-       die("Erro ao criar a conexão");
-   }
+include 'conexao.php';
 try{
 $stmt = $pdo->prepare("INSERT INTO percursos VALUES(NULL,?,?,?,?,?,NOW(),NOW(),NULL,NULL)"); 
 $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
@@ -34,6 +31,4 @@ $executa = $stmt->execute();
    }
  
 include 'index.php';
-
-include 'relacao_vtr.php';
 ?>
