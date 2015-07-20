@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Formulário - Cadastro Usuário</title>
+        <script src="../js/jquery.js"></script>
+        <link   href="../css/bootstrap.css" rel="stylesheet">
+        <script src="../js/bootstrap.js"></script>
+	<script src="../js/script.js"></script>
+        <meta charset="UTF-8">
+    </head>
+    <body>        
+<?php
+    include("../usuario/verificarLogin.php");
+    include"../menu.php";
+?>
+        <form action="salvarUsuario.php" method="post">
+            <fieldset>
+                <legend>Cadastro de Usuário</legend>
+                <table><div class="campo">
+                        <tr>
+                            <td><label for="login">Login:</label></td>
+                            <td><input class="form-control" type="text" name="login" id="login" /></td>
+                        </tr>
+                </div>
+                <div class="campo">
+                    <tr>
+                        <td><label for="senha">Senha:</label></td>
+                        <td><input class="form-control" type="password" name="senha" id="senha" /></td>
+                    </tr>
+                </div>
+                <div class="campo">
+                    <tr>
+                        <td><input type="submit" value="Cadastrar" /></td>
+                    </tr>
+                </div>
+            </fieldset>
+            </form></table>
+    </body>
+</html>
+
+<?php
+    include "tabela_relacao_usuario.php";
+?>

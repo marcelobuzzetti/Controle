@@ -1,37 +1,26 @@
-<HTML>
-   <HEAD>
-      <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-      <meta charset="UTF-8"/>
-      <link   href="css/bootstrap.css" rel="stylesheet">
-      <script src="js/bootstrap.min.js"></script>
-   </HEAD>
-   <BODY>
-       <fieldset>
-           <legend>Controle de Saída</legend>
-            <form action="inserir.php" method="post">
-                <table border=2px text-align='center'>
-                    <tr>
-                        <td>Viatura</td>
-                        <td>Motorista</td>
-                        <td>Destino</td>
-                        <td>Odomêntro Saída</td>
-                        <td>Acompanhantes</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><label for="viatura"><input type="text" id="viatura" name="viatura" placeholder="Viatura" required="required"/></label></td>
-                        <td><label for="motorista"><input type="text" id="motorista" name="motorista" placeholder="Motorista" required="required"/></label></td>
-                        <td><label for="destino"><input type="text" id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
-                        <td><label for="odo_saida"><input type="text" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required"/></label></td>
-                        <td><label for="acompanhantes"><input type="text" id="acompanhantes" name="acompanhantes" placeholder="Acompanhantes" required="required"/></label></td>
-                        <td><label><input type="submit" id="enviar" name="Enviar"/></label></td>
-                    </tr>
-                </table>
-            </form>
-       </fieldset>
-   </BODY>
-</HTML>
-
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="js/jquery.js"></script>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="js/bootstrap.js"></script>
+	<script src="js/script.js"></script>
+        <title>Sistema</title>
+    </head>
+    <body>
+        <form class="form-inline" action="usuario/fazerLogin.php" method="post">
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a sua senha">
+            </div>
+            <button type="submit" value="Enviar"class="btn btn-default">Login</button>
+        </form>        
+    </body>
+</html>
 <?php
-include 'tabela_relacao_vtr.php';
+    include 'tabela_relacao_vtr.php';
 ?>

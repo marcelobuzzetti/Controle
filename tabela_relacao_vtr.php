@@ -1,49 +1,42 @@
 <?php
+$contador1 = 1;
 include 'conexao.php';
  try{
-       $stmt = $pdo->prepare("SELECT * FROM percursos");
-       $executa = $stmt->execute();
- 
-       if($executa){
-           echo "<table border=2px text-align='center'>
+     $stmt = $pdo->prepare("SELECT * FROM percursos WHERE data_retorno IS NULL");
+     $executa = $stmt->execute();
+     
+     if($executa){
+         echo "<table class='table'>
+                 <caption>Viaturas Rodando</caption>
                     <tr>
-                        <td>Id</td>
+                        <td>Ordem</td>
                         <td>Viatura</td>
                         <td>Motorista</td>
                         <td>Destino</td>
-                        <td>Odomêntro Saída</td>
-                        <td>Acompanhantes</td>
+                        <td>Odômetro Saída</td>
+                        <td>Ch Vtr</td>
                         <td>Data Saída</td>
                         <td>Hora Saída</td>
-                        <td>Data Chegada</td>
-                        <td>Hora Chegada</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>";
-           
-            while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
-                echo "<td align='center' >".$reg->id_percurso."</td>";
-                echo "<td align='center' >".$reg->viatura."</td>";
-                echo "<td align='center' >".$reg->motorista."</td>";
-                echo "<td align='center' >".$reg->destino."</td>";
-                echo "<td align='center' >".$reg->odo_saida."</td>";
-                echo "<td align='center' >".$reg->acompanhantes."</td>";
-                echo "<td align='center' >".$reg->data_saida."</td>";
-                echo "<td align='center' >".$reg->hora_saida."</td>";
-                echo "<td align='center' >".$reg->data_retorno."</td>";
-                echo "<td align='center' >".$reg->hora_retorno."</td>";
-                echo "<td><a class='btn btn-success' href='retorno.php?id=".$reg->id_percurso."'>Retornou</a></td>";
-                echo "<td><a class='btn btn-danger' href='apagar.php?id=".$reg->id_percurso."'>Apagar</a></td>";
-                echo "</tr>"."<tr>";
-            }
-            echo "</tr>
-            </table>";
-        }else{
-           echo 'Erro ao inserir os dados';
-       }
-   }
-   catch(PDOException $e){
+                    </tr>";
+         
+         while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
+             echo "<tr>";
+             echo "<td>$contador1</td>";
+             echo "<td>".$reg->viatura."</td>";
+             echo "<td>".$reg->motorista."</td>";
+             echo "<td>".$reg->destino."</td>";
+             echo "<td>".$reg->odo_saida."</td>";
+             echo "<td>".$reg->acompanhantes."</td>";
+             echo "<td>".$reg->data_saida."</td>";
+             echo "<td>".$reg->hora_saida."</td>";
+             echo "</tr>";
+             $contador1++;
+         }
+         echo "</table>";
+         }else{
+             echo 'Erro ao inserir os dados';
+         }
+   }catch(PDOException $e){
       echo $e->getMessage();
    }
 ?>

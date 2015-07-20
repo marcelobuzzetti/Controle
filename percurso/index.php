@@ -1,0 +1,54 @@
+<HTML>
+   <HEAD>
+      <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
+      <meta charset="UTF-8"/>
+      <script src="../js/jquery.js"></script>
+      <link   href="../css/bootstrap.css" rel="stylesheet">
+      <script src="../js/bootstrap.js"></script>
+      <script src="../js/script.js"></script>
+    </HEAD>
+   <BODY>
+<?php
+    include("../usuario/verificarLogin.php");
+    include"../menu.php";
+?>
+       <fieldset>
+           <legend>Controle de Saída</legend>
+                <table class="table" text-align='center' style='width: 100%'>
+                    <tr>
+                        <td>Viatura - Placa</td>
+                        <td>Motorista</td>
+                        <td>Destino</td>
+                        <td>Odômetro Saída</td>
+                        <td>Ch Vtr</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+	            	<form action="executar.php" method="post">
+                        <td><label for="situacao" ><select class="form-control" name="viatura">
+                                                            <?php
+                                                            include 'relacao_vtr.php';
+                                                            ?>
+                                </select></label></td>
+                        <td><label for="situacao"><select class="form-control" name="motorista">
+                                                            <?php
+                                                            include 'relacao_motorista.php';
+                                                            ?>
+                                </select></label></td>
+                        <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
+                        <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required"/></label></td>
+                        <td><label for="ch_vtr"><input class="form-control" type="text" style='width: 150px' id="acompanhantes" name="acompanhantes" placeholder="Ch Vtr" required="required"/></label></td>
+                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
+                    </tr>
+                </table>
+            </form>
+       </fieldset>
+   </BODY>
+</HTML>
+
+
+
+<?php
+include 'tabela_relacao_vtr.php';
+include 'tabela_relacao_vtr_fechadas.php';
+?>
