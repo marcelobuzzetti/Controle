@@ -9,7 +9,7 @@
     </HEAD>
    <BODY>
 <?php
-    include("../usuario/verificarLogin.php");
+    include("verificarLogin.php");
     include"../menu.php";
 ?>
        <fieldset>
@@ -24,7 +24,7 @@
                         <td></td>
                     </tr>
                     <tr>
-	            	<form action="executar.php" method="post">
+	            	<form action="../executar.php" method="post">
                         <td><label for="situacao" ><select class="form-control" name="viatura">
                                                             <?php
                                                             include 'relacao_vtr.php';

@@ -11,10 +11,17 @@ try{
                 $stmt->execute();
                 
                 $resultado = $stmt->fetch();
- 
-   if($resultado['total'] > 0){
+                
+                $stmt = $pdo->prepare('SELECT perfil FROM usuario WHERE login = ?'); 
+		$stmt->bindParam(1, $login , PDO::PARAM_STR);
+		$stmt->execute();
+                
+                $resultado1 = $stmt->fetch();
+                
+    if($resultado['total'] > 0){
     session_start();
     $_SESSION['login'] = $login;
+    $_SESSION['perfil'] = $resultado1[0];
     header ('Location: ../percurso/index.php');
     
 }else{

@@ -14,7 +14,7 @@
 
             }
 
-    header('Location: index.php') ;
+    header('Location: percurso') ;
     
     break;
 
@@ -28,7 +28,7 @@
                     echo $e->getMessage();
             }
 
-    header('Location: index.php') ;
+    header('Location: percurso') ;
     
     break;
 
@@ -56,7 +56,9 @@
                     echo $e->getMessage();
        }
 
-    header('Location: index.php') ; 
+    header('Location: percurso') ; 
+    
+    break;
 
     case 'viatura':
             $viatura = $_POST["viatura"];

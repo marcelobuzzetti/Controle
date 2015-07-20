@@ -9,7 +9,7 @@
     </head>
     <body>        
 <?php
-    include("../usuario/verificarLogin.php");
+    include("verificarLogin.php");
     include"../menu.php";
 ?>
         <form action="salvarUsuario.php" method="post">
@@ -25,6 +25,16 @@
                     <tr>
                         <td><label for="senha">Senha:</label></td>
                         <td><input class="form-control" type="password" name="senha" id="senha" /></td>
+                    </tr>
+                </div>
+                <div class="campo">
+                    <tr>
+                        <td><label for="perfil">Perfil:</label></td>
+                        <td><select class="form-control" name="perfil">
+                                                            <?php
+                                                            include 'relacao_perfil.php';
+                                                            ?>
+                            </select></td>
                     </tr>
                 </div>
                 <div class="campo">

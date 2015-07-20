@@ -1,6 +1,6 @@
 <?php
     $contador = 1;
-    include 'conexao.php';
+    include '../conexao.php';
     
     try{
         $stmt = $pdo->prepare("SELECT * FROM percursos WHERE data_retorno IS NOT NULL ORDER BY id_percurso DESC");

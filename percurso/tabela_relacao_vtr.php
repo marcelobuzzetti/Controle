@@ -1,7 +1,7 @@
 <?php
     $contador = 0;
     $contador1 = 1;
-    include 'conexao.php';
+    include '../conexao.php';
      try{
          $stmt = $pdo->prepare("SELECT * FROM percursos WHERE data_retorno IS NULL");
          $executa = $stmt->execute();
@@ -23,7 +23,7 @@
                         </tr>";
              
              while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
-                 echo "<form action='executar.php' method='post' id='$contador'>
+                 echo "<form action='../executar.php' method='post' id='$contador'>
                  <tr><input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id=$contador1 value='".$reg->id_percurso."'/>";
                  echo "<td>".$reg->viatura."</td>";
                  echo "<td>".$reg->motorista."</td>";
@@ -34,7 +34,7 @@
                  echo "<td>".$reg->hora_saida."</td>";
                  echo "<td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' style='width: 120px;'/></td>";
                  echo "<td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>";
-                 echo "<form action='executar.php' method='post'>
+                 echo "<form action='../executar.php' method='post'>
                                     <input type='hidden' id='".$reg->id_percurso."' value='".$reg->id_percurso."' name='id'/>
                                     <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar' onclick='preenche($contador,".$reg->id_percurso.")'/></form></td>";
                  echo "</tr></form>";

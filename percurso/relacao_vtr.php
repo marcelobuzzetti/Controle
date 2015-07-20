@@ -1,5 +1,5 @@
 <?php 
-    include 'conexao.php';
+    include '../conexao.php';
     try{
            $stmt = $pdo->prepare("SELECT viatura "
                    . "            FROM viaturas "

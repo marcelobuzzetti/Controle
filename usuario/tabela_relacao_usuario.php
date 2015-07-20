@@ -1,5 +1,5 @@
 <?php
-$contador = 0;
+$contador = 1;
 include '../conexao.php';
  try{
      $stmt = $pdo->prepare("SELECT * FROM usuario");
