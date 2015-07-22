@@ -2,7 +2,10 @@
 $contador = 1;
 include '../conexao.php';
  try{
-       $stmt = $pdo->prepare("SELECT * FROM viaturas");
+       $stmt = $pdo->prepare("SELECT id_viatura, viatura, modelo, placa, odometro, cap_tanque, consumo_padrao, cap_transp, habilitacao.categoria, situacao.disponibilidade
+                                FROM viaturas, habilitacao, situacao
+                                WHERE habilitacao = id_habilitacao
+                                AND situacao = id_situacao ");
        $executa = $stmt->execute();
  
        if($executa){
@@ -17,6 +20,7 @@ include '../conexao.php';
                         <td>Capacidade do Tanque</td>
                         <td>Consumo Km/L</td>
                         <td>Capacidade(Pessoas)</td>
+                        <td>Habilitação Necessária</td>
                         <td>Situação</td>
                         <td></td>
                         <td></td>
@@ -32,7 +36,8 @@ include '../conexao.php';
                 echo "<td>".$reg->cap_tanque."</td>";
                 echo "<td>".$reg->consumo_padrao."</td>";
                 echo "<td>".$reg->cap_transp."</td>";
-                echo "<td>".$reg->situacao."</td>";
+                echo "<td>".$reg->categoria."</td>";
+                echo "<td>".$reg->disponibilidade."</td>";
                 echo "<form action='../executar.php' method='post'>
                                     <input type='hidden' id='".$reg->id_viatura."' value='".$reg->id_viatura."' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_viatura'/>Apagar Viatura</form></td>";

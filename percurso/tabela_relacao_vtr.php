@@ -3,7 +3,11 @@
     $contador1 = 1;
     include '../conexao.php';
      try{
-         $stmt = $pdo->prepare("SELECT * FROM percursos WHERE data_retorno IS NULL");
+         $stmt = $pdo->prepare("SELECT id_percurso, viaturas.viatura, motoristas.nome, destino, odo_saida, ch_vtr, data_saida, hora_saida
+                                FROM percursos, viaturas, motoristas
+                                WHERE data_retorno IS NULL 
+                                AND percursos.motorista = id_motorista
+                                AND percursos.viatura = id_viatura");
          $executa = $stmt->execute();
 
          if($executa){
@@ -26,10 +30,10 @@
                  echo "<form action='../executar.php' method='post' id='$contador'>
                  <tr><input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id=$contador1 value='".$reg->id_percurso."'/>";
                  echo "<td>".$reg->viatura."</td>";
-                 echo "<td>".$reg->motorista."</td>";
+                 echo "<td>".$reg->nome."</td>";
                  echo "<td>".$reg->destino."</td>";
                  echo "<td>".$reg->odo_saida."</td>";
-                 echo "<td>".$reg->acompanhantes."</td>";
+                 echo "<td>".$reg->ch_vtr."</td>";
                  echo "<td>".$reg->data_saida."</td>";
                  echo "<td>".$reg->hora_saida."</td>";
                  echo "<td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' style='width: 120px;'/></td>";

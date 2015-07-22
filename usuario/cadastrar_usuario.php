@@ -18,13 +18,13 @@
                 <table><div class="campo">
                         <tr>
                             <td><label for="login">Login:</label></td>
-                            <td><input class="form-control" type="text" name="login" id="login" /></td>
+                            <td><input autofocus class="form-control" type="text" name="login" id="login" required="required"/></td>
                         </tr>
                 </div>
                 <div class="campo">
                     <tr>
                         <td><label for="senha">Senha:</label></td>
-                        <td><input class="form-control" type="password" name="senha" id="senha" /></td>
+                        <td><input class="form-control" type="password" name="senha" id="senha" required="required"/></td>
                     </tr>
                 </div>
                 <div class="campo">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="campo">
                     <tr>
-                        <td><input type="submit" value="Cadastrar" /></td>
+                        <td><input type="submit" class="btn btn-primary" value="Cadastrar" /></td>
                     </tr>
                 </div>
             </fieldset>

@@ -25,19 +25,19 @@
                     </tr>
                     <tr>
 	            	<form action="../executar.php" method="post">
-                        <td><label for="situacao" ><select class="form-control" name="viatura">
+                            <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
                                                             <?php
                                                             include 'relacao_vtr.php';
                                                             ?>
                                 </select></label></td>
-                        <td><label for="situacao"><select class="form-control" name="motorista">
+                        <td><label for="motorista"><select class="form-control" name="motorista" required="required">
                                                             <?php
                                                             include 'relacao_motorista.php';
                                                             ?>
                                 </select></label></td>
                         <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
                         <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required"/></label></td>
-                        <td><label for="ch_vtr"><input class="form-control" type="text" style='width: 150px' id="acompanhantes" name="acompanhantes" placeholder="Ch Vtr" required="required"/></label></td>
+                        <td><label for="ch_vtr"><input class="form-control" type="text" style='width: 150px' id="ch_vtr" name="ch_vtr" placeholder="Ch Vtr" required="required"/></label></td>
                         <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
                     </tr>
                 </table>

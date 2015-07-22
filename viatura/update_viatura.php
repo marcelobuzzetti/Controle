@@ -67,10 +67,19 @@
                             <td><label for="cap_transp"><input class="form-control" type="number" style='width: 150px' id="cap_transp" name="cap_transp" placeholder="Cap Transp Pessoas" required="required" value='<?php echo $cap_transp ?>'/></label></td>
                         </tr>
                         <tr>
+                            <td>Habilitação Necessária</td>
+                            <td><label for="habilitacao"><select class="form-control" name="habilitacao">
+                                        <?php
+                                            include 'relacao_habilitacao.php';
+                                        ?>
+                                    </select></label></td>
+                        </tr>
+                        <tr>
                             <td>Situação</td>
                             <td><label for="situacao"><select class="form-control" name="situacao">
-                                        <option value="Disponível">Disponível</option>
-                                        <option value="Indisponível">Indisponível</option>
+                                         <?php
+                                            include 'relacao_disponibilidade.php';
+                                         ?>
                                     </select></label></td>
                         </tr>
                         <tr>

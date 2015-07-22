@@ -15,7 +15,7 @@
     include '../conexao.php';
     $id = $_POST['id'];
     try{
-       $stmt = $pdo->prepare("SELECT * FROM motorista WHERE id_motorista = $id");
+       $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_motorista = $id");
        $executa = $stmt->execute();
     }catch(PDOException $e){
 		echo $e->getMessage();
@@ -37,15 +37,9 @@
                         <tr>
                             <td>Categoria</td>
                               <td><label for="categoria"><select class="form-control" name="categoria">
-                                        <option value="A">A</option>
-                                        <option value="AB">AB</option>
-                                        <option value="AC">AC</option>
-                                        <option value="AD">AD</option>
-                                        <option value="AE">AE</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
+                                       <?php
+                                            include 'relacao_habilitacao.php';
+                                       ?>
                                     </select></label></td>
                         </tr>
                         <tr>

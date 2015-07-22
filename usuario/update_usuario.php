@@ -14,7 +14,7 @@
     include "../conexao.php";
      $id = $_POST['id'];
     try{
-       $stmt = $pdo->prepare("SELECT * FROM usuario WHERE id_usuario = $id");
+       $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id_usuario = $id");
        $executa = $stmt->execute();
     }catch(PDOException $e){
 		echo $e->getMessage();
@@ -24,26 +24,35 @@
     $login = $reg->login;
     }
 ?>
-?>
         <form action="../executar.php" method="post">
             <fieldset>
                 <legend>Cadastro de Usuário</legend>
                 <table><div class="campo">
                         <tr>
                             <td><label for="login">Login:</label></td>
-                            <td><input class="form-control" type="text" name="login" id="login" value='<?php echo $login ?>'/></td>
+                            <td><input autofocus class="form-control" type="text" name="login" id="login" value='<?php echo $login ?>' required="required"/></td>
                         </tr>
                 </div>
                 <div class="campo">
                     <tr>
                         <td><label for="senha">Senha:</label></td>
-                        <td><input class="form-control" type="password" name="senha" id="senha" /></td>
+                        <td><input class="form-control" type="password" name="senha" id="senha" required="required"/></td>
+                    </tr>
+                </div>
+                <div class="campo">
+                    <tr>
+                        <td><label for="perfil">Perfil:</label></td>
+                        <td><select class="form-control" name="perfil">
+                                                            <?php
+                                                            include 'relacao_perfil.php';
+                                                            ?>
+                            </select></td>
                     </tr>
                 </div>
                 <div class="campo">
                     <tr>
                         <input type='hidden' id='<?php echo $id ?>' value='<?php echo $id ?>' name='id'/>
-                        <td><button type="submit" value="atualizar_usuario" name='enviar'/>Atualizar</td>
+                        <td><button type="submit" class="btn btn-primary" value="atualizar_usuario" name='enviar'/>Atualizar</td>
                     </tr>
                 </div>
             </fieldset>

@@ -1,19 +1,19 @@
 <?php 
     include '../conexao.php';
     try{
-           $stmt = $pdo->prepare("SELECT viatura "
+           $stmt = $pdo->prepare("SELECT id_viatura,viatura "
                    . "            FROM viaturas "
-                   . "            WHERE viatura "
+                   . "            WHERE id_viatura "
                    . "            NOT IN (SELECT viatura "
                    . "            FROM percursos "
                    . "            WHERE data_retorno IS NULL)"
-                   . "            AND situacao != 'Indisponível'"
+                   . "            AND situacao != 2"
                    . "            ORDER BY viatura");
            $executa = $stmt->execute();
 
            if($executa){
               while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
-                     echo "<option value='".$reg->viatura."'>".$reg->viatura."</option>";
+                     echo "<option value='".$reg->id_viatura."'>".$reg->viatura."</option>";
                 }
 
               }else{

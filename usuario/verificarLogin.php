@@ -1,8 +1,8 @@
 <?php
     session_start();
-    
-    if(!isset($_SESSION['login']) || ($_SESSION['perfil'] < 1)){
-        header("Location: ../percurso/index.php");
+    $endereco = $_SERVER['SERVERNAME'].'/controle';
+    if(!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)){
+       header('Location: '.$endereco.'/percurso');
         die();
     }
 ?>

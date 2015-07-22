@@ -2,7 +2,9 @@
 $contador = 1;
 include '../conexao.php';
  try{
-       $stmt = $pdo->prepare("SELECT * FROM motorista");
+       $stmt = $pdo->prepare("SELECT id_motorista, nome, habilitacao.categoria "
+               . "            FROM motoristas, habilitacao"
+               . "            WHERE motoristas.categoria = id_habilitacao");
        $executa = $stmt->execute();
  
        if($executa){

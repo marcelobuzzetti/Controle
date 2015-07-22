@@ -1,5 +1,5 @@
 <?php
-
+$endereco = $_SERVER['SERVERNAME'].'/controle';
 include 'conexao.php';
 
     switch ($_POST['enviar']) {
@@ -16,7 +16,7 @@ include 'conexao.php';
 
             }
 
-    header('Location: percurso') ;
+    header('Location: '.$endereco.'/percurso') ;
     
     break;
 
@@ -30,7 +30,7 @@ include 'conexao.php';
                     echo $e->getMessage();
             }
 
-    header('Location: percurso') ;
+    header('Location: '.$endereco.'/percurso') ;
     
     break;
 
@@ -39,16 +39,17 @@ include 'conexao.php';
             $motorista = $_POST["motorista"];
             $destino = $_POST["destino"];
             $odometro = $_POST["odo_saida"];
-            $acompanhantes = $_POST["acompanhantes"];
+            $ch_vtr = $_POST["ch_vtr"];
 
             
             try{
-                    $stmt = $pdo->prepare("INSERT INTO percursos VALUES(NULL,?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL)"); 
-                    $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
-                    $stmt->bindParam(2, $motorista , PDO::PARAM_STR);
-                    $stmt->bindParam(3, $destino , PDO::PARAM_STR);
+                    $stmt = $pdo->prepare("INSERT INTO percursos VALUES(NULL,"
+                            . "            ?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL)"); 
+                    $stmt->bindParam(1, $viatura , PDO::PARAM_INT);
+                    $stmt->bindParam(2, $motorista, PDO::PARAM_INT);
+                    $stmt->bindParam(3, $destino , PDO::PARAM_INT);
                     $stmt->bindParam(4, $odometro, PDO::PARAM_INT);
-                    $stmt->bindParam(5, $acompanhantes, PDO::PARAM_STR);
+                    $stmt->bindParam(5, $ch_vtr, PDO::PARAM_INT);
                     $executa = $stmt->execute();
 
         if(!$executa){
@@ -58,7 +59,7 @@ include 'conexao.php';
                     echo $e->getMessage();
        }
 
-    header('Location: percurso') ; 
+    header('Location: '.$endereco.'/percurso') ;
     
     break;
 
@@ -70,12 +71,13 @@ include 'conexao.php';
             $cap_tanque = $_POST["cap_tanque"];
             $cons_padrao = $_POST["cons_padrao"];
             $cap_transp = $_POST["cap_transp"];
+            $habilitacao = $_POST["habilitacao"];
             $situacao = $_POST["situacao"];
            
 
             
             try{
-                    $stmt = $pdo->prepare("INSERT INTO viaturas VALUES(NULL,?,?,?,?,?,?,?,?)"); 
+                    $stmt = $pdo->prepare("INSERT INTO viaturas VALUES(NULL,?,?,?,?,?,?,?,?,?)"); 
                     $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
                     $stmt->bindParam(2, $modelo , PDO::PARAM_STR);
                     $stmt->bindParam(3, $placa , PDO::PARAM_STR);
@@ -83,7 +85,8 @@ include 'conexao.php';
                     $stmt->bindParam(5, $cap_tanque, PDO::PARAM_INT);
                     $stmt->bindParam(6, $cons_padrao, PDO::PARAM_INT);
                     $stmt->bindParam(7, $cap_transp, PDO::PARAM_INT);
-                    $stmt->bindParam(8, $situacao, PDO::PARAM_STR);
+                    $stmt->bindParam(8, $situacao, PDO::PARAM_INT);
+                    $stmt->bindParam(9, $habilitacao, PDO::PARAM_INT);
                     $executa = $stmt->execute();
 
         if(!$executa){
@@ -93,7 +96,7 @@ include 'conexao.php';
                     echo $e->getMessage();
        }
 
-    header('Location: /controle/viatura') ;
+    header('Location: '.$endereco.'/viatura') ;
     
     break;
 
@@ -103,9 +106,9 @@ include 'conexao.php';
 
         
             try{
-                    $stmt = $pdo->prepare("INSERT INTO motorista VALUES(NULL,?,?)"); 
+                    $stmt = $pdo->prepare("INSERT INTO motoristas VALUES(NULL,?,?)"); 
                     $stmt->bindParam(1, $motorista , PDO::PARAM_STR);
-                    $stmt->bindParam(2, $categoria , PDO::PARAM_STR);
+                    $stmt->bindParam(2, $categoria , PDO::PARAM_INT);
                     $executa = $stmt->execute();
 
         if(!$executa){
@@ -115,7 +118,7 @@ include 'conexao.php';
                     echo $e->getMessage();
        }
 
-    header('Location: /controle/motorista') ;
+   header('Location: '.$endereco.'/motorista') ;
     
     break;
     
@@ -124,13 +127,13 @@ case 'Apagar Motorista':
     $id = $_POST['id'];
 	
 	try{
-		$stmt = $pdo->prepare("DELETE FROM motorista WHERE id_motorista=".$id); 
+		$stmt = $pdo->prepare("DELETE FROM motoristas WHERE id_motorista=".$id); 
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
    
-    header('Location: motorista/index.php') ; 
+   header('Location: '.$endereco.'/motorista') ; 
    
    break;
 
@@ -144,7 +147,7 @@ case 'apagar_viatura':
 		echo $e->getMessage();
 	}
    
-    header('Location: viatura/index.php') ; 
+   header('Location: '.$endereco.'/viatura') ; 
    
    break;
 
@@ -155,16 +158,16 @@ case 'atualizar_motorista':
    
 	
 	try{
-		$stmt = $pdo->prepare("UPDATE motorista SET nome = ?, categoria = ? WHERE id_motorista = ?"); 
+		$stmt = $pdo->prepare("UPDATE motoristas SET nome = ?, categoria = ? WHERE id_motorista = ?"); 
                 $stmt->bindParam(1, $nome , PDO::PARAM_STR);
-                $stmt->bindParam(2, $categoria , PDO::PARAM_STR);
+                $stmt->bindParam(2, $categoria , PDO::PARAM_INT);
                 $stmt->bindParam(3, $id , PDO::PARAM_INT);
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
    
-    header('Location: motorista/index.php') ; 
+    header('Location: '.$endereco.'/motorista') ; 
    
    break;
 
@@ -177,12 +180,13 @@ case 'atualizar_viatura':
     $cap_tanque = $_POST["cap_tanque"];
     $cons_padrao = $_POST["cons_padrao"];
     $cap_transp = $_POST["cap_transp"];
+    $habilitacao = $_POST['habilitacao'];
     $situacao = $_POST["situacao"];
            
    
 	
 	try{
-		$stmt = $pdo->prepare("UPDATE viaturas SET viatura = ?, modelo = ?, placa = ?, odometro = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, situacao = ? WHERE id_viatura = ?"); 
+		$stmt = $pdo->prepare("UPDATE viaturas SET viatura = ?, modelo = ?, placa = ?, odometro = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, habilitacao = ?, situacao = ? WHERE id_viatura = ?"); 
                 $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
                 $stmt->bindParam(2, $modelo , PDO::PARAM_STR);
                 $stmt->bindParam(3, $placa , PDO::PARAM_STR);
@@ -190,14 +194,15 @@ case 'atualizar_viatura':
                 $stmt->bindParam(5, $cap_tanque, PDO::PARAM_INT);
                 $stmt->bindParam(6, $cons_padrao, PDO::PARAM_INT);
                 $stmt->bindParam(7, $cap_transp, PDO::PARAM_INT);
-                $stmt->bindParam(8, $situacao, PDO::PARAM_STR);
-                $stmt->bindParam(9, $id, PDO::PARAM_INT);
+                $stmt->bindParam(8, $habilitacao, PDO::PARAM_INT);
+                $stmt->bindParam(9, $situacao, PDO::PARAM_INT);
+                $stmt->bindParam(10, $id, PDO::PARAM_INT);
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
    
-    header('Location: viatura/index.php') ; 
+    header('Location: '.$endereco.'/viatura') ; 
    
    break;
 
@@ -205,13 +210,13 @@ case 'apagar_usuario':
     $id = $_POST['id'];
 	
 	try{
-		$stmt = $pdo->prepare("DELETE FROM usuario WHERE id_usuario=".$id); 
+		$stmt = $pdo->prepare("DELETE FROM usuarios WHERE id_usuario=".$id); 
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
    
-    header('Location: usuario/cadastrar_usuario.php') ; 
+    header('Location: '.$endereco.'/usuario/cadastrar_usuario.php') ; 
    
    break;
 
@@ -219,19 +224,21 @@ case 'atualizar_usuario':
     $id = $_POST['id'];
     $login = $_POST['login'];
     $senha = md5($_POST['senha']);
-   
+    $perfil = $_POST['perfil'];
+     
 	
 	try{
-		$stmt = $pdo->prepare("UPDATE usuario SET login = ?, senha = ? WHERE id_usuario = ?"); 
+                $stmt = $pdo->prepare("UPDATE usuarios SET login = ?, senha = ?, perfil = ? WHERE id_usuario = ?"); 
                 $stmt->bindParam(1, $login , PDO::PARAM_STR);
                 $stmt->bindParam(2, $senha , PDO::PARAM_STR);
-                $stmt->bindParam(3, $id , PDO::PARAM_INT);
+                $stmt->bindParam(3, $perfil , PDO::PARAM_INT);
+                $stmt->bindParam(4, $id , PDO::PARAM_INT);
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
 	}
    
-    header('Location: usuario/cadastrar_usuario.php') ; 
+   header('Location: '.$endereco.'/usuario/cadastrar_usuario.php') ; 
    
    break;
 

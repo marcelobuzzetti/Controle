@@ -1,3 +1,4 @@
 <?php
-    header ('Location: ../index.php');
+    $endereco = $_SERVER['SERVERNAME'].'/controle';
+    header ('Location: '.$endereco.'');
 ?>
