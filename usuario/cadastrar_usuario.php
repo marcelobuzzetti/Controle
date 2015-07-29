@@ -38,6 +38,12 @@
                     </tr>
                 </div>
                 <div class="campo">
+                        <tr>
+                            <td><label for="login">Apelido:</label></td>
+                            <td><input autofocus class="form-control" type="text" name="apelido" id="apelido" required="required" placeholder="Como quer ser chamado"/></td>
+                        </tr>
+                </div>
+                <div class="campo">
                     <tr>
                         <td><input type="submit" class="btn btn-primary" value="Cadastrar" /></td>
                     </tr>
