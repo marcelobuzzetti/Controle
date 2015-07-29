@@ -262,16 +262,18 @@ case 'atualizar_usuario':
     $login = $_POST['login'];
     $senha = md5($_POST['senha']);
     $perfil = $_POST['perfil'];
+    $apelido = $_POST['apelido'];
      
 	
 	try{
                 $stmt = $pdo->prepare("UPDATE usuarios "
-                        . "                        SET login = ?, senha = ?, perfil = ? "
+                        . "                        SET login = ?, senha = ?, perfil = ?, nome = ? "
                         . "                        WHERE id_usuario = ?"); 
                 $stmt->bindParam(1, $login , PDO::PARAM_STR);
                 $stmt->bindParam(2, $senha , PDO::PARAM_STR);
                 $stmt->bindParam(3, $perfil , PDO::PARAM_INT);
-                $stmt->bindParam(4, $id , PDO::PARAM_INT);
+                $stmt->bindParam(4, $apelido , PDO::PARAM_STR);
+                $stmt->bindParam(5, $id , PDO::PARAM_INT);
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
