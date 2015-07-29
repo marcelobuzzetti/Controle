@@ -8,6 +8,7 @@
                                 WHERE data_retorno IS NOT NULL 
                                 AND percursos.motorista = id_motorista
                                 AND percursos.viatura = id_viatura
+                                AND data_retorno BETWEEN (SELECT DATE_SUB(date(now()), INTERVAL 7 DAY)) AND  (SELECT DATE(NOW()))
                                 ORDER BY id_percurso DESC");
         $executa = $stmt->execute();
 
@@ -33,10 +34,10 @@
                 echo "<td>".$reg->destino."</td>";
                 echo "<td>".$reg->odo_saida."</td>";
                 echo "<td>".$reg->ch_vtr."</td>";
-                echo "<td>".$reg->data_saida."</td>";
+                echo "<td>".date('d M Y', strtotime($reg->data_saida))."</td>";
                 echo "<td>".$reg->hora_saida."</td>";
                 echo "<td>".$reg->odo_retorno."</td>";
-                echo "<td>".$reg->data_retorno."</td>";
+                echo "<td>".date('d M Y', strtotime($reg->data_retorno))."</td>";
                 echo "<td>".$reg->hora_retorno."</td>";
                 echo "</tr>";
                 $contador++;

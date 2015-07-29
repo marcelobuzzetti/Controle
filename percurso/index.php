@@ -11,7 +11,17 @@
 <?php
     include "verificarLogin.php";
     include"../menu.php";
+    //Inserido para criar o erro de inserção
+    session_start();
+            if($_SESSION['mysql'] == 1){
+               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Erro ao inserir dados</strong>
+                         </div>";
+            }
+            //Inserido para criar o erro de inserção
 ?>
+       
        <fieldset>
            <legend>Controle de Saída de Viatura</legend>
                 <table class="table" text-align='center' style='width: 100%'>

@@ -10,16 +10,16 @@
     <body>        
         <?php
             session_start();
-            if(isset($_SESSION['erro'])){
+            if($_SESSION['erro'] == 1){
                echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Usuário e/ou Senha não cadastrados</strong>
                          </div>";
             }
-             if(isset($_SESSION['timeout'])){
+            if($_SESSION['timeout'] == 1){
                echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Sessão Expirada</strong>
+                            <strong>Realizar o Login</strong>
                          </div>";
             }
             session_destroy();

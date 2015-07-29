@@ -57,6 +57,10 @@ include 'conexao.php';
 
         if(!$executa){
                echo "Erro ao inserir os dados";
+               //Inserido para criar o erro de inserção
+               session_start();
+               $_SESSION['mysql'] = 1;
+               //Inserido para criar o erro de inserção
            }
        }catch(PDOException $e){
                     echo $e->getMessage();

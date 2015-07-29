@@ -34,7 +34,7 @@
                  echo "<td>".$reg->destino."</td>";
                  echo "<td>".$reg->odo_saida."</td>";
                  echo "<td>".$reg->ch_vtr."</td>";
-                 echo "<td>".$reg->data_saida."</td>";
+                 echo "<td>".date('d M Y', strtotime($reg->data_saida))."</td>";
                  echo "<td>".$reg->hora_saida."</td>";
                  echo "<td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' min='".$reg->odo_saida."' style='width: 120px;'/></td>";
                  echo "<td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>";
