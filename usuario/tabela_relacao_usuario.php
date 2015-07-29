@@ -2,7 +2,7 @@
 $contador = 1;
 include '../conexao.php';
  try{
-     $stmt = $pdo->prepare("SELECT id_usuario,login,descricao "
+     $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome "
              . "            FROM usuarios, perfil"
              . "            WHERE cod_perfil = perfil ");
      $executa = $stmt->execute();
@@ -12,8 +12,9 @@ include '../conexao.php';
                  <caption>Usuários Cadastrados</caption>
                     <tr>
                         <td>Ordem</td>
-                        <td>Nome</td>
+                        <td>Login</td>
                         <td>Perfil</td>
+                        <td>Apelido</td>
                         <td></td>
                         <td></td>
                     </tr>";
@@ -23,6 +24,7 @@ include '../conexao.php';
              echo "<td>$contador</td>";
              echo "<td>".$reg->login."</td>";
              echo "<td>".$reg->descricao."</td>";
+              echo "<td>".$reg->nome."</td>";
              echo "<form action='../executar.php' method='post'>
                                     <input type='hidden' id='".$reg->id_usuario."' value='".$reg->id_usuario."' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_usuario'/>Apagar Usuário</form></td>";
