@@ -12,7 +12,7 @@ try{
                 
                 $resultado = $stmt->fetch();
                 
-                $stmt = $pdo->prepare('SELECT perfil FROM usuarios WHERE login = ?'); 
+                $stmt = $pdo->prepare('SELECT perfil, nome FROM usuarios WHERE login = ?'); 
 		$stmt->bindParam(1, $login , PDO::PARAM_STR);
 		$stmt->execute();
                 
@@ -22,7 +22,7 @@ try{
         
         session_start();
 
-       $_SESSION['login'] = $login;
+       $_SESSION['login'] = $resultado1[1];
        $_SESSION['perfil'] = $resultado1[0];
        $_SESSION['temposessao'] = time() + 120;
 
