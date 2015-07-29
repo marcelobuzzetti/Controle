@@ -50,6 +50,12 @@
                     </tr>
                 </div>
                 <div class="campo">
+                        <tr>
+                            <td><label for="login">Apelido:</label></td>
+                            <td><input autofocus class="form-control" type="text" name="apelido" id="apelido" required="required" placeholder="Como quer ser chamado"/></td>
+                        </tr>
+                </div>
+                <div class="campo">
                     <tr>
                         <input type='hidden' id='<?php echo $id ?>' value='<?php echo $id ?>' name='id'/>
                         <td><button type="submit" class="btn btn-primary" value="atualizar_usuario" name='enviar'/>Atualizar</td>
