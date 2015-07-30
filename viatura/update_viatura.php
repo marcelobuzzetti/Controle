@@ -10,7 +10,7 @@
    </HEAD>
    <BODY>
 <?php
-    include("../usuario/verificarLogin.php");
+    include("../verificarLogin.php");
     include"../menu.php";
     include '../conexao.php';
     $id = $_POST['id'];

@@ -4,7 +4,7 @@
     $login = $_POST['login'];
     $senha = md5($_POST['senha']);
     $perfil = $_POST['perfil'];
-    $apelido = $_POST['apelido'];
+    $apelido = strtoupper($_POST['apelido']);
 
     try{
         $stmt = $pdo->prepare("INSERT INTO usuarios VALUES(NULL,?,?,?,?)"); 

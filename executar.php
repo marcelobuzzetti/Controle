@@ -40,9 +40,9 @@ include 'conexao.php';
     case 'Cadastrar':
             $viatura = $_POST["viatura"];
             $nome = $_POST["motorista"];
-            $destino = $_POST["destino"];
+            $destino = strtoupper($_POST["destino"]);
             $odometro = $_POST["odo_saida"];
-            $ch_vtr = $_POST["ch_vtr"];
+            $ch_vtr = strtoupper($_POST["ch_vtr"]);
 
             
             try{
@@ -71,9 +71,9 @@ include 'conexao.php';
     break;
 
     case 'viatura':
-            $viatura = $_POST["viatura"];
-            $modelo = $_POST["modelo"];
-            $placa = $_POST["placa"];
+            $viatura = strtoupper($_POST["viatura"]);
+            $modelo = strtoupper($_POST["modelo"]);
+            $placa = strtoupper($_POST["placa"]);
             $odometro = $_POST["odometro"];
             $cap_tanque = $_POST["cap_tanque"];
             $cons_padrao = $_POST["cons_padrao"];
@@ -109,7 +109,7 @@ include 'conexao.php';
     break;
 
     case 'motorista':
-        $nome = $_POST['nome'];
+        $nome = strtoupper($_POST['nome']);
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
         
@@ -175,7 +175,7 @@ case 'apagar_viatura':
 
 case 'atualizar_motorista':
     $id = $_POST['id'];
-    $nome = $_POST['nome'];
+    $nome = strtoupper($_POST['nome']);
     $categoria = $_POST['categoria'];
     $pg = $_POST['pg'];
    
@@ -207,9 +207,9 @@ case 'atualizar_motorista':
 
 case 'atualizar_viatura':
     $id = $_POST['id'];
-    $viatura = $_POST["viatura"];
-    $modelo = $_POST["modelo"];
-    $placa = $_POST["placa"];
+    $viatura = strtoupper($_POST["viatura"]);
+    $modelo = strtoupper($_POST["modelo"]);
+    $placa = strtoupper($_POST["placa"]);
     $odometro = $_POST["odometro"];
     $cap_tanque = $_POST["cap_tanque"];
     $cons_padrao = $_POST["cons_padrao"];
@@ -262,7 +262,7 @@ case 'atualizar_usuario':
     $login = $_POST['login'];
     $senha = md5($_POST['senha']);
     $perfil = $_POST['perfil'];
-    $apelido = $_POST['apelido'];
+    $apelido = strtoupper($_POST['apelido']);
      
 	
 	try{

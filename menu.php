@@ -17,6 +17,7 @@
         <li><a href="<?php echo $endereco ?>/viatura/index.php">Cadastrar Viatura</a></li>
         <li><a href="<?php echo $endereco ?>/usuario/cadastrar_usuario.php">Cadastrar Usuário</a></li>
         <li><a href="<?php echo $endereco ?>/tabela/tabela_relacao_vtr.php" target="_blank">Relatório do Sv</a></li>
+         <li><a href="<?php echo $endereco ?>/tabela/index.php" >Relatório por Data</a></li>
     </ul>
     </li>
     <li><a>Olá <?php echo $_SESSION['login'];?></a></li>
@@ -45,6 +46,7 @@
     <ul class="dropdown-menu">
         <li><a href="<?php echo $endereco ?>/motorista/index.php">Cadastrar Motorista</a></li>
         <li><a href="<?php echo $endereco ?>/viatura/index.php">Cadastrar Viatura</a></li>
+        <li><a href="<?php echo $endereco ?>/tabela/index.php" >Relatório por Data</a></li>
     </ul>
     </li>
     <li><a>Olá <?php echo $_SESSION['login'];?></a></li>

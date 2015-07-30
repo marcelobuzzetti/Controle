@@ -1,44 +1,21 @@
-﻿<html>
-   <head>
-      <title>Relatórios</title>
-      <meta charset="UTF-8"/>
-      <script src="../js/jquery.js"></script>
-      <link   href="../css/bootstrap.css" rel="stylesheet">
-      <script src="../js/bootstrap.js"></script>
-      <script src="../js/script.js"></script>
-	  
-   </head>
-   <body>
-<?php
-    include "verificarLogin.php";
-    include"../menu.php";
-?>
-
-
-       <fieldset>
-           <legend>Relatórios</legend>
-                <table border=2px text-align='center' style='width: 40%'>
-                    <form action="index.php" method="post">
-                        <tr>
-                            <td>Data Início</td>
-                            <td><label for="data_inicio"><input autofocus class="form-control" type="date" style='width: 150px' id="data_inicio" name="data_inicio"  required="required"/></label></td>
-                        </tr>
-                        <tr>
-                            <td>Data Fim</td>
-                            <td><label for="data_fim"><input autofocus class="form-control" type="date" style='width: 150px' id="data_fim" name="data_fim"  required="required"/></label></td>
-                        </tr>
-                        <tr>
-                            <td><label><button type="submit" class="btn btn-primary" id="enviar" value="relatorio" name="enviar">Gerar Relatório</button></label></td>
-                        </tr>
-                    </form>
-                </table>
-       </fieldset>
-       <?php
-             include '../conexao.php';
-            $data_inicio = $_POST['data_inicio'];
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="../js/jquery.js"></script>
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/script.js"></script>
+        <script>self.print()</script>
+        <title>Relatório do Sv</title>
+    </head>
+    <body>        
+          <?php
+            include '../conexao.php';
+            include "verificarLogin.php";
+             $data_inicio = $_POST['data_inicio'];
             $data_fim = $_POST['data_fim'];
-
-                try{
+            
+            try{
                     $stmt = $pdo->prepare("SELECT id_percurso, viaturas.viatura, motoristas.apelido, destino, odo_saida, ch_vtr, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
                                 FROM percursos, viaturas, motoristas
                                 WHERE data_saida BETWEEN ? AND ?
@@ -88,7 +65,6 @@
                    }
                    unset($_POST['data_inicio']);
                    unset($_POST['data_fim']);
-                   
           ?>
-   </body>
+    </body>
 </html>
