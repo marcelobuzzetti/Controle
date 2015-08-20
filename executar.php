@@ -284,7 +284,7 @@ case 'atualizar_usuario':
    break;
 
     case 'tipocomb':
-    $descricao= $_POST['descricao'];
+    $descricao= strtoupper($_POST['descricao']);
        
 	
 	try{
@@ -317,7 +317,7 @@ case 'atualizar_usuario':
 
     case 'atualizar_tipocomb':
         $id = $_POST['id'];
-        $descricao = $_POST['descricao'];
+        $descricao = strtoupper($_POST['descricao']);
 
             try{
                     $stmt = $pdo->prepare("UPDATE tipo_comb"
@@ -334,7 +334,7 @@ case 'atualizar_usuario':
        break;
    
 case 'tipo':
-    $descricao= $_POST['descricao'];
+    $descricao= strtoupper($_POST['descricao']);
        
 	
 	try{
@@ -367,7 +367,7 @@ case 'tipo':
 
     case 'atualizar_tipo':
         $id = $_POST['id'];
-        $descricao = $_POST['descricao'];
+        $descricao = strtoupper($_POST['descricao']);
 
             try{
                     $stmt = $pdo->prepare("UPDATE tipo"
@@ -380,9 +380,139 @@ case 'tipo':
             }
 
        header('Location: '.$endereco.'/tipo') ; 
+       
+       break;
+       
+       case 'rcb_comb':
+           $tp_comb = $_POST['tp_comb'];
+           $tp = $_POST['tp'];
+           $qnt = $_POST['qnt'];
+           $motivo = strtoupper($_POST['motivo']);
+              
+	
+	try{
+                $stmt = $pdo->prepare("INSERT INTO rcb_comb     "
+                            . "                        VALUES(NULL,?,?,?,?,NOW(),NOW())"); 
+                $stmt->bindParam(1, $tp_comb , PDO::PARAM_INT);
+                $stmt->bindParam(2, $tp , PDO::PARAM_INT);
+                $stmt->bindParam(3, $qnt , PDO::PARAM_INT);
+                $stmt->bindParam(4, $motivo , PDO::PARAM_STR);
+                $executa = $stmt->execute();
+	}catch(PDOException $e){
+		echo $e->getMessage();
+	}
+   
+   header('Location: '.$endereco.'/rcb_comb/') ; 
+   
+   break;
+
+    case 'apagar_rcb_comb':
+        $id = $_POST['id'];
+       
+            try{
+                    $stmt = $pdo->prepare("DELETE FROM rcb_comb "
+                            . "                                               WHERE rcb_id =".$id); 
+                    $executa = $stmt->execute();
+            }catch(PDOException $e){
+                    echo $e->getMessage();
+            }
+
+        header('Location: '.$endereco.'/rcb_comb') ; 
 
        break;
 
+        case 'atualizar_rcb_comb':
+            $id = $_POST['id'];
+            $tp_comb = $_POST['tp_comb'];
+            $tp = $_POST['tp'];
+            $qnt = $_POST['qnt'];
+            $motivo = strtoupper($_POST['motivo']);
+
+                try{
+                        $stmt = $pdo->prepare("UPDATE rcb_comb"
+                            . "                        SET rcb_tp_comb = ?, rcb_tp =?, rcb_qnt = ?, rcb_motivo = ?, rcb_data = NOW(), rcb_hora = NOW() WHERE rcb_id =".$id); 
+                        $stmt->bindParam(1, $tp_comb, PDO::PARAM_INT);
+                        $stmt->bindParam(2, $tp , PDO::PARAM_INT);
+                        $stmt->bindParam(3, $qnt , PDO::PARAM_INT);
+                        $stmt->bindParam(4, $motivo , PDO::PARAM_STR);
+                        $executa = $stmt->execute();
+                }catch(PDOException $e){
+                        echo $e->getMessage();
+                }
+
+           header('Location: '.$endereco.'/rcb_comb') ; 
+
+           break;
+
+       case 'abst':
+           $nrvale = $_POST['nrvale'];
+           $motorista = $_POST['motorista'];
+           $viatura = $_POST['viatura'];
+           $tp_comb = $_POST['tp_comb'];
+           $tp = $_POST['tp'];
+           $qnt = $_POST['qnt'];
+              
+	
+	try{
+                $stmt = $pdo->prepare("INSERT INTO abastecimentos     "
+                            . "                    VALUES(NULL,?,?,?,?,?,?,NOW(),NOW())"); 
+                $stmt->bindParam(1, $nrvale , PDO::PARAM_STR);
+                $stmt->bindParam(2, $motorista , PDO::PARAM_INT);
+                $stmt->bindParam(3, $viatura , PDO::PARAM_INT);
+                $stmt->bindParam(4, $tp_comb , PDO::PARAM_INT);
+                $stmt->bindParam(5, $tp , PDO::PARAM_INT);
+                $stmt->bindParam(6, $qnt , PDO::PARAM_INT);
+                $executa = $stmt->execute();
+	}catch(PDOException $e){
+		echo $e->getMessage();
+	}
+   
+   header('Location: '.$endereco.'/abastecimento/') ; 
+   
+   break;
+
+    case 'apagar_abst':
+        $id = $_POST['id'];
+       
+            try{
+                    $stmt = $pdo->prepare("DELETE FROM abastecimentos "
+                            . "                                               WHERE abast_id =".$id); 
+                    $executa = $stmt->execute();
+            }catch(PDOException $e){
+                    echo $e->getMessage();
+            }
+
+        header('Location: '.$endereco.'/abastecimento') ; 
+
+       break;
+
+        case 'atualizar_abst':
+            $id = $_POST['id'];
+            $nrvale = $_POST['nrvale'];
+            $motorista = $_POST['motorista'];
+            $viatura = $_POST['viatura'];
+            $tp_comb = $_POST['tp_comb'];
+            $tp = $_POST['tp'];
+            $qnt = $_POST['qnt'];
+
+                try{
+                        $stmt = $pdo->prepare("UPDATE abastecimentos"
+                            . "                        SET abast_nrvale = ?, abast_motorista =?, abast_vtr = ?, abast_tipo_comb = ?, abast_tipo = ?, abast_qnt = ?, abast_hora = NOW(), abast_data = NOW() WHERE abast_id =".$id); 
+                        $stmt->bindParam(1, $nrvale, PDO::PARAM_STR);
+                        $stmt->bindParam(2, $motorista , PDO::PARAM_INT);
+                        $stmt->bindParam(3, $viatura , PDO::PARAM_INT);
+                        $stmt->bindParam(4, $tp_comb , PDO::PARAM_INT);
+                        $stmt->bindParam(5, $tp , PDO::PARAM_INT);
+                        $stmt->bindParam(6, $qnt , PDO::PARAM_INT);
+                        $executa = $stmt->execute();
+                }catch(PDOException $e){
+                        echo $e->getMessage();
+                }
+
+           header('Location: '.$endereco.'/abastecimento') ; 
+
+           break;
+       
     default:
        //no action sent
     }

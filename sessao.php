@@ -5,6 +5,6 @@
         $_SESSION['timeout'] = 1;
        header ('Location: '.$endereco.'');
     } else {
-        $_SESSION["temposessao"] = time() + 120;
+        $_SESSION["temposessao"] = time() + 1200;
     }
 ?>
