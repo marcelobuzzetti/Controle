@@ -283,6 +283,106 @@ case 'atualizar_usuario':
    
    break;
 
+    case 'tipocomb':
+    $descricao= $_POST['descricao'];
+       
+	
+	try{
+                $stmt = $pdo->prepare("INSERT INTO tipo_comb     "
+                            . "                        VALUES(NULL,?)"); 
+                $stmt->bindParam(1, $descricao , PDO::PARAM_STR);
+		$executa = $stmt->execute();
+	}catch(PDOException $e){
+		echo $e->getMessage();
+	}
+   
+   header('Location: '.$endereco.'/tipo_comb/') ; 
+   
+   break;
+
+    case 'apagar_tipocomb':
+        $id = $_POST['id'];
+
+            try{
+                    $stmt = $pdo->prepare("DELETE FROM tipo_comb "
+                            . "                                               WHERE tp_comb_id=".$id); 
+                    $executa = $stmt->execute();
+            }catch(PDOException $e){
+                    echo $e->getMessage();
+            }
+
+        header('Location: '.$endereco.'/tipo_comb') ; 
+
+       break;
+
+    case 'atualizar_tipocomb':
+        $id = $_POST['id'];
+        $descricao = $_POST['descricao'];
+
+            try{
+                    $stmt = $pdo->prepare("UPDATE tipo_comb"
+                            . "                        SET tp_comb_desc = ? WHERE tp_comb_id = ?"); 
+                    $stmt->bindParam(1, $descricao , PDO::PARAM_STR);
+                    $stmt->bindParam(2, $id , PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+            }catch(PDOException $e){
+                    echo $e->getMessage();
+            }
+
+       header('Location: '.$endereco.'/tipo_comb') ; 
+
+       break;
+   
+case 'tipo':
+    $descricao= $_POST['descricao'];
+       
+	
+	try{
+                $stmt = $pdo->prepare("INSERT INTO tipo     "
+                            . "                        VALUES(NULL,?)"); 
+                $stmt->bindParam(1, $descricao , PDO::PARAM_STR);
+                $executa = $stmt->execute();
+	}catch(PDOException $e){
+		echo $e->getMessage();
+	}
+   
+   header('Location: '.$endereco.'/tipo/') ; 
+   
+   break;
+
+    case 'apagar_tipo':
+        $id = $_POST['id'];
+
+            try{
+                    $stmt = $pdo->prepare("DELETE FROM tipo "
+                            . "                                               WHERE tp_id=".$id); 
+                    $executa = $stmt->execute();
+            }catch(PDOException $e){
+                    echo $e->getMessage();
+            }
+
+        header('Location: '.$endereco.'/tipo') ; 
+
+       break;
+
+    case 'atualizar_tipo':
+        $id = $_POST['id'];
+        $descricao = $_POST['descricao'];
+
+            try{
+                    $stmt = $pdo->prepare("UPDATE tipo"
+                            . "                        SET tp_desc = ? WHERE tp_id = ?"); 
+                    $stmt->bindParam(1, $descricao , PDO::PARAM_STR);
+                    $stmt->bindParam(2, $id , PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+            }catch(PDOException $e){
+                    echo $e->getMessage();
+            }
+
+       header('Location: '.$endereco.'/tipo') ; 
+
+       break;
+
     default:
        //no action sent
     }

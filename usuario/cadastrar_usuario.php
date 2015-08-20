@@ -11,6 +11,7 @@
 <?php
     include("verificarLogin.php");
     include"../menu.php";
+    include '../sessao.php';
 ?>
         <form action="salvarUsuario.php" method="post">
             <fieldset>

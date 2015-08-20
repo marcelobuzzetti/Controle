@@ -1,7 +1,7 @@
 <?php 
     include '../conexao.php';
     try{
-           $stmt = $pdo->prepare("SELECT id_viatura,viatura "
+           $stmt = $pdo->prepare("SELECT id_viatura,viatura,modelo,placa "
                    . "            FROM viaturas "
                    . "            WHERE id_viatura "
                    . "            NOT IN (SELECT viatura "
@@ -14,7 +14,7 @@
            if($executa){
                echo "<option value=''>Selecione a Viatura</option>";
               while($reg = $stmt->fetch(PDO::FETCH_OBJ)){ /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
-                     echo "<option value='".$reg->id_viatura."'>".$reg->viatura."</option>";
+                     echo "<option value='".$reg->id_viatura."'>".$reg->viatura." - ".$reg->modelo." - ".$reg->placa."</option>";
                 }
 
               }else{

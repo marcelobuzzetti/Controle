@@ -12,6 +12,7 @@
     include("../usuario/verificarLogin.php");
     include "../menu.php";
     include "../conexao.php";
+    include '../sessao.php';
      $id = $_POST['id'];
     try{
        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id_usuario = $id");

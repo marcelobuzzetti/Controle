@@ -12,6 +12,7 @@
           <?php
             include '../conexao.php';
             include "verificarLogin.php";
+            include '../sessao.php';
              $data_inicio = $_POST['data_inicio'];
             $data_fim = $_POST['data_fim'];
             

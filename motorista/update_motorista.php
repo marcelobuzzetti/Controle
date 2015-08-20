@@ -13,6 +13,7 @@
     include("../verificarLogin.php");
     include"../menu.php";
     include '../conexao.php';
+    include '../sessao.php';
     $id = $_POST['id'];
     try{
        $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_motorista = $id");

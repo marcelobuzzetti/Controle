@@ -12,6 +12,7 @@
           <?php
             include '../conexao.php';
             include "verificarLogin.php";
+            include '../sessao.php';
              try{
                  $stmt = $pdo->prepare("SELECT viaturas.viatura, motoristas.apelido, destino, odo_saida, ch_vtr, data_saida, hora_saida
                                         FROM percursos, viaturas, motoristas
@@ -43,7 +44,6 @@
                          echo "<td>".date('d M Y', strtotime($reg->data_saida))."</td>";
                          echo "<td>".$reg->hora_saida."</td>";
                          echo "</tr>";
-                         $contador1++;
                      }
                      echo "</table>";
                      }else{

@@ -11,6 +11,7 @@
 <?php
     include "verificarLogin.php";
     include"../menu.php";
+    include '../sessao.php';
     //Inserido para criar o erro de inserção
     session_start();
             if($_SESSION['mysql'] == 1){
@@ -48,7 +49,7 @@
                         <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
                         <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required"/></label></td>
                         <td><label for="ch_vtr"><input class="form-control" type="text" style='width: 150px' id="ch_vtr" name="ch_vtr" placeholder="Ch Vtr" required="required"/></label></td>
-                        <td><label><button type="submit" onclick="verificar()" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
+                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
                     </tr>
                 </table>
             </form>

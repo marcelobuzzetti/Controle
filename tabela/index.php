@@ -12,6 +12,7 @@
 <?php
     include "verificarLogin.php";
     include"../menu.php";
+    include '../sessao.php';
 ?>
 
 
@@ -51,7 +52,7 @@
        
                     if($executa){
                         echo "<table class='table table-bordered' text-align='center'>
-                                 <caption>Viaturas Fechadas</caption>
+                                 <caption>Viaturas</caption>
                                     <tr>
                                         <td>Viatura</td>
                                         <td>Motorista</td>
