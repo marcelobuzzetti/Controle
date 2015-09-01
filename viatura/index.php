@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                             <td>Odômetro</td>
-                            <td><label for="odometro"><input class="form-control" type="number" style='width: 150px' id="odometro" name="odometro" placeholder="Odometro" required="required"/></label></td>
+                            <td><label for="odometro"><input class="form-control" type="number" style='width: 150px' id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1"/></label></td>
                         </tr>
                         <tr>
                             <td>Capacidade do Tanque</td>

@@ -55,5 +55,5 @@
 </HTML>
 
 <?php
-include 'tabela_relacao_abastecimentos.php';
+include 'tabela_relacao_rcb_comb.php';
 ?>

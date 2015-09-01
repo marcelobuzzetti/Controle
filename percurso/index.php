@@ -47,7 +47,7 @@
                                                             ?>
                                 </select></label></td>
                         <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
-                        <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required"/></label></td>
+                        <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></label></td>
                         <td><label for="ch_vtr"><input class="form-control" type="text" style='width: 150px' id="ch_vtr" name="ch_vtr" placeholder="Ch Vtr" required="required"/></label></td>
                         <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
                     </tr>

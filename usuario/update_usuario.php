@@ -23,6 +23,7 @@
     }
     while($reg = $stmt->fetch(PDO::FETCH_OBJ)){
     $login = $reg->login;
+    $nome = $reg->nome;
     }
 ?>
         <form action="../executar.php" method="post">
@@ -53,7 +54,7 @@
                 <div class="campo">
                         <tr>
                             <td><label for="login">Apelido:</label></td>
-                            <td><input autofocus class="form-control" type="text" name="apelido" id="apelido" required="required" placeholder="Como quer ser chamado"/></td>
+                            <td><input autofocus class="form-control" type="text" name="apelido" id="apelido" required="required" placeholder="Como quer ser chamado" value="<?php echo $nome ?>"/></td>
                         </tr>
                 </div>
                 <div class="campo">

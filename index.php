@@ -7,7 +7,7 @@
 	<script src="js/script.js"></script>
         <title>Sistema</title>
     </head>
-    <body>        
+    <body> 
         <?php
             session_start();
             if($_SESSION['erro'] == 1){

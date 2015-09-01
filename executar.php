@@ -51,7 +51,7 @@ include 'conexao.php';
                     $stmt->bindParam(1, $viatura , PDO::PARAM_INT);
                     $stmt->bindParam(2, $nome, PDO::PARAM_INT);
                     $stmt->bindParam(3, $destino , PDO::PARAM_INT);
-                    $stmt->bindParam(4, $odometro, PDO::PARAM_INT);
+                    $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
                     $stmt->bindParam(5, $ch_vtr, PDO::PARAM_INT);
                     $executa = $stmt->execute();
 
@@ -89,7 +89,7 @@ include 'conexao.php';
                     $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
                     $stmt->bindParam(2, $modelo , PDO::PARAM_STR);
                     $stmt->bindParam(3, $placa , PDO::PARAM_STR);
-                    $stmt->bindParam(4, $odometro, PDO::PARAM_INT);
+                    $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
                     $stmt->bindParam(5, $cap_tanque, PDO::PARAM_INT);
                     $stmt->bindParam(6, $cons_padrao, PDO::PARAM_INT);
                     $stmt->bindParam(7, $cap_transp, PDO::PARAM_INT);
@@ -148,7 +148,8 @@ case 'Apagar Motorista':
 	
 	try{
 		$stmt = $pdo->prepare("DELETE FROM motoristas "
-                        . "                                               WHERE id_motorista=".$id); 
+                        . "                                               WHERE id_motorista= ?"); 
+                 $stmt->bindParam(1, $id , PDO::PARAM_INT);
 		$executa = $stmt->execute();
 	}catch(PDOException $e){
 		echo $e->getMessage();
@@ -226,7 +227,7 @@ case 'atualizar_viatura':
                 $stmt->bindParam(1, $viatura , PDO::PARAM_STR);
                 $stmt->bindParam(2, $modelo , PDO::PARAM_STR);
                 $stmt->bindParam(3, $placa , PDO::PARAM_STR);
-                $stmt->bindParam(4, $odometro, PDO::PARAM_INT);
+                $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
                 $stmt->bindParam(5, $cap_tanque, PDO::PARAM_INT);
                 $stmt->bindParam(6, $cons_padrao, PDO::PARAM_INT);
                 $stmt->bindParam(7, $cap_transp, PDO::PARAM_INT);
