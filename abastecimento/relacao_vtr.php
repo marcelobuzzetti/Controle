@@ -3,11 +3,6 @@
     try{
            $stmt = $pdo->prepare("SELECT id_viatura,viatura,modelo,placa "
                    . "            FROM viaturas "
-                   . "            WHERE id_viatura "
-                   . "            NOT IN (SELECT viatura "
-                   . "            FROM percursos "
-                   . "            WHERE data_retorno IS NULL)"
-                   . "            AND situacao != 2"
                    . "            ORDER BY viatura");
            $executa = $stmt->execute();
 

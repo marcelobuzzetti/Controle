@@ -49,7 +49,7 @@
                                             include 'relacao_tipo.php';
                                        ?>
                                     </select></label></td>
-                        <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1"/></label></td>
+                        <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" /></label></td>
                         <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar">Cadastrar</button></label></td>
                     </tr>
                 </table>

@@ -34,11 +34,11 @@ include '../conexao.php';
                 echo "<td>".$reg->rcb_hora."</td>";
                 echo "<form action='../executar.php' method='post'>
                                     <input type='hidden' id='".$reg->rcb_id."' value='".$reg->rcb_id."' name='id'/>
-                                    <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/>Apagar Combustível</form></td>";
+                                    <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/>Apagar Recebimento de Combustível</form></td>";
                 echo "</form>";
                  echo "<form action='update_rcb_comb.php' method='post'>
                                     <input type='hidden' id='".$reg->rcb_id."' value='".$reg->rcb_id."' name='id'/>
-                                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/>Atualizar Viatura</form></td>";
+                                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/>Atualizar Recebimento de Combustível</form></td>";
                 echo "</form></tr>";
                 
                 $contador++;

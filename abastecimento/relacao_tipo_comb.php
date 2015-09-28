@@ -1,7 +1,10 @@
 <?php 
     include '../conexao.php';
     try{
-           $stmt = $pdo->prepare("SELECT * FROM tipo_comb");
+           $stmt = $pdo->prepare("SELECT tp_comb_id,tp_comb_desc
+                                               FROM tipo_comb,rcb_comb
+                                               WHERE tp_comb_id IN (SELECT rcb_tp_comb FROM rcb_comb) 
+                                               AND tp_comb_id = rcb_tp_comb");
            $executa = $stmt->execute();
 
            if($executa){

@@ -12,7 +12,7 @@ include '../conexao.php';
  
        if($executa){
            echo "<table border=2px style='width:100%'>
-                 <caption>Combustível Recebido</caption>
+                 <caption>Abastecimentos</caption>
                     <tr>
                         <td>Ordem</td>
                         <td>Nº Vale</td>
