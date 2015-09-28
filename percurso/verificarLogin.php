@@ -1,6 +1,6 @@
 <?php
 
- $endereco = $_SERVER['SERVERNAME'].'/controle';   
+ $endereco = '/controle';   
  
     session_start();
     if(!isset($_SESSION['login'])){

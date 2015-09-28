@@ -1,5 +1,5 @@
 <?php
-    $endereco = $_SERVER['SERVERNAME'].'/controle';
+    $endereco = '/controle';
     
     include 'verificarLogin.php';
     switch ($_SESSION['perfil']) {
