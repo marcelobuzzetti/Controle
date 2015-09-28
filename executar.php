@@ -1,5 +1,5 @@
 <?php
-$endereco = $_SERVER['SERVERNAME'].'/controle';
+$endereco = $_SERVER['SERVER_NAME'].'/controle';
 include 'conexao.php';
 
     switch ($_POST['enviar']) {

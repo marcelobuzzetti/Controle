@@ -22,7 +22,7 @@
             }
             //Inserido para criar o erro de inserção
 ?>
-       
+
        <fieldset>
            <legend>Controle de Saída de Viatura</legend>
                 <table class="table" text-align='center' style='width: 100%'>
