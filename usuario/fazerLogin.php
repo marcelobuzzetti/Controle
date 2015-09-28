@@ -1,6 +1,6 @@
 <?php
 include '../conexao.php';
-$endereco = $_SERVER['SERVER_NAME'].'/controle';
+$endereco = $_SERVER['SERVERNAME'].'/controle';
 $login = $_POST['login'];
 $senha = md5($_POST['senha']);
 
