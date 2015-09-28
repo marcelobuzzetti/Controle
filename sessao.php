@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if($_SESSION['temposessao'] < time()){
       session_start();
         $_SESSION['timeout'] = 1;
