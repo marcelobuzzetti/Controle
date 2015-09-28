@@ -6,3 +6,4 @@ function preenche(a,b){
 function imprimir(){
     self.print();
 }
+

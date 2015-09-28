@@ -65,6 +65,44 @@ include 'conexao.php';
        }catch(PDOException $e){
                     echo $e->getMessage();
        }
+       
+         try{
+                    $stmt = $pdo->prepare("SELECT COUNT(nome_destino) AS existente"
+                            . "                         FROM destinos"
+                            . "                         WHERE ? = nome_destino"); 
+                    $stmt->bindParam(1, $destino , PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+
+        if(!$executa){
+               echo "Erro ao inserir os dados";
+               //Inserido para criar o erro de inserção
+               session_start();
+               $_SESSION['mysql'] = 1;
+               //Inserido para criar o erro de inserção
+           } else {
+               $reg = $stmt->fetch(PDO::FETCH_OBJ);
+                    if($reg->existente <1){
+                         try{   
+                         $stmt = $pdo->prepare("INSERT INTO destinos "
+                                 . "                        VALUES(NULL,?)"); 
+                         $stmt->bindParam(1, $destino , PDO::PARAM_INT);
+                         $executa = $stmt->execute();
+
+                     if(!$executa){
+                            echo "Erro ao inserir os dados";
+                            //Inserido para criar o erro de inserção
+                            session_start();
+                            $_SESSION['mysql'] = 1;
+                            //Inserido para criar o erro de inserção
+                        }
+                    }catch(PDOException $e){
+                                 echo $e->getMessage();
+                    }
+               }
+           }
+       }catch(PDOException $e){
+                    echo $e->getMessage();
+       }
 
     header('Location: '.$endereco.'/percurso') ;
     

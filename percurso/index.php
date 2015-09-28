@@ -5,7 +5,19 @@
       <script src="../js/jquery.js"></script>
       <link   href="../css/bootstrap.css" rel="stylesheet">
       <script src="../js/bootstrap.js"></script>
+      <script src="../js/jquery.js"></script>
+      <script src="../js/jquery-ui.js"></script>
       <script src="../js/script.js"></script>
+      
+      <script>
+          $(function() {
+              $( "#destino" ).autocomplete({
+                  source: "buscador.php",
+                  minLength: 1
+              });
+          });
+      </script>
+      
     </HEAD>
    <BODY>
 <?php
@@ -34,7 +46,7 @@
                         <td></td>
                     </tr>
                     <tr>
-	            	<form action="../executar.php" method="post">
+	            	<form autocomplete="off" action="../executar.php" method="post">
                             <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
                                                             <?php
                                                             include 'relacao_vtr.php';
@@ -45,7 +57,7 @@
                                                             include 'relacao_motorista.php';
                                                             ?>
                                 </select></label></td>
-                        <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
+                                <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
                         <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></label></td>
                         <td><label for="ch_vtr"><input class="form-control" type="text" style='width: 150px' id="ch_vtr" name="ch_vtr" placeholder="Ch Vtr" required="required"/></label></td>
                         <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
