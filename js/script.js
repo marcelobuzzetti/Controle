@@ -1,9 +1,9 @@
-function preenche(a,b){
-	$("#"+b).removeAttr("required");
-	$("#"+a).submit();
+function preenche(a, b) {
+    $("#" + b).removeAttr("required");
+    $("#" + a).submit();
 }
 
-function imprimir(){
+function imprimir() {
     self.print();
 }
 

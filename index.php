@@ -4,27 +4,27 @@
         <script src="js/jquery.js"></script>
         <link href="css/bootstrap.css" rel="stylesheet">
         <script src="js/bootstrap.js"></script>
-	<script src="js/script.js"></script>
+        <script src="js/script.js"></script>
         <title>Sistema</title>
     </head>
     <body> 
         <?php
-            session_start();
-            if($_SESSION['erro'] == 1){
-               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+        session_start();
+        if ($_SESSION['erro'] == 1) {
+            echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Usuário e/ou Senha não cadastrados</strong>
                          </div>";
-            }
-            if($_SESSION['timeout'] == 1){
-               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+        }
+        if ($_SESSION['timeout'] == 1) {
+            echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Realizar o Login</strong>
                          </div>";
-            }
-            session_destroy();
-            ?>
-        <form class="form-inline" action="usuario/fazerLogin.php" method="post">
+        }
+        session_destroy();
+        ?>
+        <form class="form-inline" action="usuarios/fazerLogin.php" method="post">
             <div class="form-group">
                 <label for="login">Login</label>
                 <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">
@@ -38,5 +38,5 @@
     </body>
 </html>
 <?php
-    include 'tabela_relacao_vtr.php';
+include 'tabela_relacao_vtr.php';
 ?>
