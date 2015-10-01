@@ -649,6 +649,73 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'login':
+        
+        $login = $_POST['login'];
+        $senha = md5($_POST['senha']);
+
+        try {
+            $stmt = $pdo->prepare('SELECT COUNT(*) AS total FROM usuarios WHERE login = ? AND senha = ?');
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch();
+
+            $stmt = $pdo->prepare('SELECT id_perfil, nome FROM usuarios WHERE login = ?');
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $resultado1 = $stmt->fetch();
+
+            if ($resultado['total'] > 0) {
+
+                session_start();
+
+                $_SESSION['login'] = $resultado1[1];
+                $_SESSION['perfil'] = $resultado1[0];
+                $_SESSION['temposessao'] = time() + 120;
+
+                header('Location: ./percursos/index.php');
+            } else {
+                session_start();
+                $_SESSION['erro'] = 1;
+                header('Location: .');
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        
+        break;
+        
+    case 'cadastrar_usuario':
+        
+        $login = $_POST['login'];
+        $senha = md5($_POST['senha']);
+        $perfil = $_POST['perfil'];
+        $apelido = strtoupper($_POST['apelido']);
+
+try {
+    $stmt = $pdo->prepare("INSERT INTO usuarios VALUES(NULL,?,?,?,?)");
+    $stmt->bindParam(1, $login, PDO::PARAM_STR);
+    $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+    $stmt->bindParam(3, $perfil, PDO::PARAM_INT);
+    $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
+    $executa = $stmt->execute();
+
+    if ($executa) {
+        //Colocar Script
+    } else {
+        echo "Erro ao inserir os dados";
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+header('Location: ./usuarios/cadastrar_usuario.php');
+
+break;
+
     default:
     //no action sent
 }

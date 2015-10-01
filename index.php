@@ -24,7 +24,7 @@
         }
         session_destroy();
         ?>
-        <form class="form-inline" action="usuarios/fazerLogin.php" method="post">
+        <form class="form-inline" action="executar.php" method="post">
             <div class="form-group">
                 <label for="login">Login</label>
                 <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">
@@ -33,7 +33,7 @@
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a sua senha">
             </div>
-            <button type="submit" value="Enviar"class="btn btn-default">Login</button>
+            <button type="submit" value="login" name="enviar" class="btn btn-default">Login</button>
         </form>        
     </body>
 </html>
