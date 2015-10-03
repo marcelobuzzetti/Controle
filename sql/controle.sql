@@ -112,54 +112,6 @@ CREATE TABLE modelos (
   id_habilitacao int(11) NOT NULL
 );
 
-INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
-(1, 'Administrador', 1),
-(2, 'Operador', 2),
-(3, 'Mantenedor - Garagem', 3),
-(4, 'Mantenedor - S4', 4);
-
-INSERT INTO posto_grad (id_posto_grad, descricao, sigla) VALUES
-(1, 'Soldado', 'Sd'),
-(2, 'Cabo', 'Cb'),
-(3, 'Terceiro Sargento', '3º Sgt'),
-(4, 'Segundo Sargento','2º Sgt'),
-(5, 'Primeiro Sargento', '1º Sgt'),
-(6, 'Subtenete', 'S Ten'),
-(7, 'Aspirante', 'Asp'),
-(8, 'Segundo Tenente', '2º Ten'),
-(9, 'Primeiro Tenente', '1º Ten'),
-(10, 'Capitão', 'Cap'),
-(11, 'Major', 'Maj');
-
-INSERT INTO situacao (id_situacao, disponibilidade) VALUES
-(1, 'Disponivel'),
-(2, 'Indisponivel');
-
-INSERT INTO tipos_combustiveis (id_tipo_combustivel, descricao) VALUES
-(1, 'Operacional'),
-(2, 'Administrativo');
-
-INSERT INTO combustiveis (id_combustivel, descricao) VALUES
-(2, 'Gasolina'),
-(3, 'Álcool'),
-(4, 'Óleo Diesel');
-
-INSERT INTO usuarios (id_usuario, login, senha, id_perfil, nome) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR');
-
-
-INSERT INTO habilitacoes (id_habilitacao, categoria) VALUES
-(1, 'A'),
-(2, 'B'),
-(3, 'C'),
-(4, 'D'),
-(5, 'E'),
-(6, 'AB'),
-(7, 'AC'),
-(8, 'AD'),
-(9, 'AE');
-
-
 ALTER TABLE abastecimentos
   ADD CONSTRAINT FK_motorista FOREIGN KEY (id_motorista) REFERENCES motoristas (id_motorista),
   ADD CONSTRAINT FK_viatura FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
@@ -190,3 +142,50 @@ ALTER TABLE viaturas
 ALTER TABLE modelos
   ADD CONSTRAINT FK_habilitacao1 FOREIGN KEY (id_habilitacao) REFERENCES habilitacoes (id_habilitacao),
   ADD CONSTRAINT FK_marca1 FOREIGN KEY (id_marca) REFERENCES marcas (id_marca);
+
+INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
+(1, 'Administrador', 1),
+(2, 'Operador', 2),
+(3, 'Mantenedor - Garagem', 3),
+(4, 'Mantenedor - S4', 4);
+
+INSERT INTO posto_grad (id_posto_grad, descricao, sigla) VALUES
+(1, 'Soldado', 'Sd'),
+(2, 'Cabo', 'Cb'),
+(3, 'Terceiro Sargento', '3º Sgt'),
+(4, 'Segundo Sargento','2º Sgt'),
+(5, 'Primeiro Sargento', '1º Sgt'),
+(6, 'Subtenete', 'S Ten'),
+(7, 'Aspirante', 'Asp'),
+(8, 'Segundo Tenente', '2º Ten'),
+(9, 'Primeiro Tenente', '1º Ten'),
+(10, 'Capitão', 'Cap'),
+(11, 'Major', 'Maj');
+
+INSERT INTO situacao (id_situacao, disponibilidade) VALUES
+(1, 'Disponivel'),
+(2, 'Indisponivel');
+
+INSERT INTO tipos_combustiveis (id_tipo_combustivel, descricao) VALUES
+(1, 'Operacional'),
+(2, 'Administrativo');
+
+INSERT INTO combustiveis (id_combustivel, descricao) VALUES
+(1, 'Gasolina'),
+(2, 'Álcool'),
+(3, 'Óleo Diesel');
+
+INSERT INTO usuarios (id_usuario, login, senha, id_perfil, nome) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR');
+
+
+INSERT INTO habilitacoes (id_habilitacao, categoria) VALUES
+(1, 'A'),
+(2, 'B'),
+(3, 'C'),
+(4, 'D'),
+(5, 'E'),
+(6, 'AB'),
+(7, 'AC'),
+(8, 'AD'),
+(9, 'AE');
