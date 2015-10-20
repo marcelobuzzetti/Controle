@@ -1,10 +1,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <script src="js/jquery.js"></script>
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <script src="js/bootstrap.js"></script>
-        <script src="js/script.js"></script>
+        <script src="../../lib/js/jquery.js"></script>
+        <link href="../../lib/css/bootstrap.css" rel="stylesheet">
+        <script src="../../lib/js/bootstrap.js"></script>
+        <script src="../../lib/js/script.js"></script>
         <title>Sistema</title>
     </head>
     <body> 
@@ -32,11 +32,11 @@
                     </tr>
                {foreach $tabela_relacao_vtr as $vtr}
                     <tr>
-                        <td>{$vtr.viatura}</td>
+                        <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
                         <td>{$vtr.apelido}</td>
-                        <td>{$vtr.destino}</td>
+                        <td>{$vtr.nome_destino}</td>
                         <td>{$vtr.odo_saida}</td>
-                        <td>{$vtr.ch_vtr}</td>
+                        <td>{$vtr.acompanhante}</td>
                         <td>{$vtr.data_saida}</td>
                         <td>{$vtr.hora_saida}</td>
                     </tr>

@@ -10,9 +10,10 @@
     </HEAD>
     <BODY>
         <?php
-        include "verificarLogin.php";
+         include "verificarLogin.php";
         include"../menu.php";
-        include '../sessao.php';
+        include"../sessao.php";
+        
         ?>
 
 
@@ -54,7 +55,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="modelo" name="enviar">Cadastrar</button></label></td>
+                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="cadastrar_modelo" name="enviar">Cadastrar</button></label></td>
                     </tr>
                 </form>
             </table>

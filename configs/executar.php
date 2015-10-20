@@ -1,6 +1,6 @@
 <?php
 
-include 'conexao.php';
+include '../conexao.php';
 
 switch ($_POST['enviar']) {
 
@@ -23,7 +23,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./percursos');
+        header('Location: ../templates/percursos/');
 
         break;
 
@@ -44,7 +44,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./percursos');
+        header('Location: ../templates/percursos/');
 
         break;
 
@@ -106,7 +106,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./percursos');
+        header('Location: ../templates/percursos/');
 
         break;
 
@@ -841,7 +841,7 @@ switch ($_POST['enviar']) {
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['temposessao'] = time() + 120;
 
-                header('Location: ./percursos/index.php');
+                header('Location: ../templates/percursos//index.php');
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;

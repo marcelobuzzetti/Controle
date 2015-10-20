@@ -3,7 +3,7 @@
 $contador = 1;
 include '../conexao.php';
 try {
-    $stmt = $pdo->prepare("SELECT id_modelo, marcas.id_marca AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp, habilitacoes.categoria AS habilitacao
+    $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp, habilitacoes.categoria AS habilitacao
                                      FROM modelos, habilitacoes, marcas
                                      WHERE modelos.id_habilitacao = habilitacoes.id_habilitacao
                                      AND modelos.id_marca = marcas.id_marca;");

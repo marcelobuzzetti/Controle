@@ -24,16 +24,6 @@
         include "verificarLogin.php";
         include"../menu.php";
         include '../sessao.php';
-        //Inserido para criar o erro de inserção
-        if ($_SESSION['mysql'] == 1) {
-            echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Erro ao inserir dados</strong>
-                         </div>";
-        }
-        //Inserido para criar o erro de inserção
-        session_start();
-        $_SESSION['mysql'] = 0;
         ?>
 
         <fieldset>

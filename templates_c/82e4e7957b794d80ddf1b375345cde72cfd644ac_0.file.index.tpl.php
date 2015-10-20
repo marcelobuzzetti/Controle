@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-19 21:49:05
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-20 15:38:21
          compiled from "/var/www/html/controle/templates/home/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562581716425e7_78210391',
+  'unifunc' => 'content_56267c0de193e0_15273774',
   'file_dependency' => 
   array (
     '82e4e7957b794d80ddf1b375345cde72cfd644ac' => 
     array (
       0 => '/var/www/html/controle/templates/home/index.tpl',
-      1 => 1445297721,
+      1 => 1445362700,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562581716425e7_78210391')) {
-function content_562581716425e7_78210391 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_56267c0de193e0_15273774')) {
+function content_56267c0de193e0_15273774 ($_smarty_tpl) {
 ?>
 <html>
     <head>
@@ -72,15 +72,17 @@ foreach ($_from as $_smarty_tpl->tpl_vars['vtr']->value) {
 $__foreach_vtr_0_saved_local_item = $_smarty_tpl->tpl_vars['vtr'];
 ?>
                     <tr>
-                        <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['viatura'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['marca'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['vtr']->value['modelo'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['vtr']->value['placa'];?>
 </td>
                         <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['apelido'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['destino'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['nome_destino'];?>
 </td>
                         <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['odo_saida'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['ch_vtr'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['acompanhante'];?>
 </td>
                         <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['data_saida'];?>
 </td>
