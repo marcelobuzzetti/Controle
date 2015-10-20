@@ -1,42 +1,44 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <script src="js/jquery.js"></script>
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <script src="js/bootstrap.js"></script>
-        <script src="js/script.js"></script>
-        <title>Sistema</title>
-    </head>
-    <body> 
-        <?php
-        session_start();
-        if ($_SESSION['erro'] == 1) {
-            echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+<?php
+require_once('./lib/smarty/Smarty.class.php');
+include'conexao.php';
+ try{
+     $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+                                            FROM percursos, viaturas, motoristas, marcas, modelos, destinos
+                                            WHERE data_retorno IS NULL 
+                                            AND percursos.id_motorista = motoristas.id_motorista
+                                            AND percursos.id_viatura = viaturas.id_viatura
+                                            AND viaturas.id_marca = marcas.id_marca
+                                            AND viaturas.id_modelo = modelos.id_modelo
+                                            AND percursos.id_destino = destinos.id_destino
+                                            ORDER BY id_percurso DESC");
+     $executa = $stmt->execute();
+     
+     if($executa){
+         $tabela_relacao_vtr = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+         
+         }else{
+             echo 'Erro ao inserir os dados';
+         }
+   }catch(PDOException $e){
+      echo $e->getMessage();
+   }
+   session_start();
+            if($_SESSION['erro'] == 1){
+               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Usuário e/ou Senha não cadastrados</strong>
                          </div>";
-        }
-        if ($_SESSION['timeout'] == 1) {
-            echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
+            }
+            if($_SESSION['timeout'] == 1){
+               echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Realizar o Login</strong>
                          </div>";
-        }
-        session_destroy();
-        ?>
-        <form class="form-inline" action="executar.php" method="post">
-            <div class="form-group">
-                <label for="login">Login</label>
-                <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">
-            </div>
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a sua senha">
-            </div>
-            <button type="submit" value="login" name="enviar" class="btn btn-default">Login</button>
-        </form>        
-    </body>
-</html>
-<?php
-include 'tabela_relacao_vtr.php';
+            }
+            session_destroy();
+
+$smarty = new Smarty();
+$smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
+$smarty->display('templates/home/index.tpl');
+            
 ?>
