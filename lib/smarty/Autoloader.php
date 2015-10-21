@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Smarty Autoloader
  *
@@ -17,8 +18,8 @@
  *             Note:       This autoloader is not needed if you use Composer.
  *             Composer will automatically add the classes of the Smarty package to it common autoloader.
  */
-class Smarty_Autoloader
-{
+class Smarty_Autoloader {
+
     /**
      * Filepath to Smarty root
      *
@@ -45,8 +46,7 @@ class Smarty_Autoloader
      *
      * @param bool $prepend Whether to prepend the autoloader or not.
      */
-    public static function registerBC($prepend = false)
-    {
+    public static function registerBC($prepend = false) {
         /**
          * register the class autoloader
          */
@@ -54,7 +54,7 @@ class Smarty_Autoloader
             define('SMARTY_SPL_AUTOLOAD', 0);
         }
         if (SMARTY_SPL_AUTOLOAD &&
-            set_include_path(get_include_path() . PATH_SEPARATOR . SMARTY_SYSPLUGINS_DIR) !== false
+                set_include_path(get_include_path() . PATH_SEPARATOR . SMARTY_SYSPLUGINS_DIR) !== false
         ) {
             $registeredAutoLoadFunctions = spl_autoload_functions();
             if (!isset($registeredAutoLoadFunctions['spl_autoload'])) {
@@ -70,11 +70,10 @@ class Smarty_Autoloader
      *
      * @param bool $prepend Whether to prepend the autoloader or not.
      */
-    public static function register($prepend = false)
-    {
+    public static function register($prepend = false) {
         self::$SMARTY_DIR = defined('SMARTY_DIR') ? SMARTY_DIR : dirname(__FILE__) . DIRECTORY_SEPARATOR;
         self::$SMARTY_SYSPLUGINS_DIR = defined('SMARTY_SYSPLUGINS_DIR') ? SMARTY_SYSPLUGINS_DIR : self::$SMARTY_DIR .
-            'sysplugins' . DIRECTORY_SEPARATOR;
+                'sysplugins' . DIRECTORY_SEPARATOR;
         if (version_compare(phpversion(), '5.3.0', '>=')) {
             spl_autoload_register(array(__CLASS__, 'autoload'), true, $prepend);
         } else {
@@ -87,8 +86,7 @@ class Smarty_Autoloader
      *
      * @param string $class A class name.
      */
-    public static function autoload($class)
-    {
+    public static function autoload($class) {
         $_class = strtolower($class);
         if (preg_match('/^(smarty_((internal_(compile_)?)|((template_(source|config|cache|compiled|resource_base))|((cached|compiled)?resource)|(variable|security)))|(smarty(bc)?)$)/', $_class, $match)) {
             $file = self::$SMARTY_SYSPLUGINS_DIR . $_class . '.php';
@@ -121,4 +119,5 @@ class Smarty_Autoloader
         }
         return;
     }
+
 }

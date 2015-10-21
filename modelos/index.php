@@ -10,10 +10,9 @@
     </HEAD>
     <BODY>
         <?php
-         include "verificarLogin.php";
+        include "verificarLogin.php";
         include"../menu.php";
         include"../sessao.php";
-        
         ?>
 
 

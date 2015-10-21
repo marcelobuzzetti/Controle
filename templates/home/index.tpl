@@ -1,13 +1,5 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <script src="../../lib/js/jquery.js"></script>
-        <link href="../../lib/css/bootstrap.css" rel="stylesheet">
-        <script src="../../lib/js/bootstrap.js"></script>
-        <script src="../../lib/js/script.js"></script>
-        <title>Sistema</title>
-    </head>
-    <body> 
+{include file="../headers/header.tpl"}
+
         <form class="form-inline" action="executar.php" method="post">
             <div class="form-group">
                 <label for="login">Login</label>
@@ -19,28 +11,28 @@
             </div>
             <button type="submit" value="login" name="enviar" class="btn btn-default">Login</button>
         </form>  
-          <table class='table'>
-                 <caption>Viaturas Rodando</caption>
-                    <tr>
-                        <td>Viatura</td>
-                        <td>Motorista</td>
-                        <td>Destino</td>
-                        <td>Odômetro Saída</td>
-                        <td>Ch Vtr</td>
-                        <td>Data Saída</td>
-                        <td>Hora Saída</td>
-                    </tr>
-               {foreach $tabela_relacao_vtr as $vtr}
-                    <tr>
-                        <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
-                        <td>{$vtr.apelido}</td>
-                        <td>{$vtr.nome_destino}</td>
-                        <td>{$vtr.odo_saida}</td>
-                        <td>{$vtr.acompanhante}</td>
-                        <td>{$vtr.data_saida}</td>
-                        <td>{$vtr.hora_saida}</td>
-                    </tr>
-                {/foreach}    
-         </table>  
+        <table class='table'>
+            <caption>Viaturas Rodando</caption>
+            <tr>
+                <td>Viatura</td>
+                <td>Motorista</td>
+                <td>Destino</td>
+                <td>Odômetro Saída</td>
+                <td>Ch Vtr</td>
+                <td>Data Saída</td>
+                <td>Hora Saída</td>
+            </tr>
+            {foreach $tabela_relacao_vtr as $vtr}
+                <tr>
+                    <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
+                    <td>{$vtr.apelido}</td>
+                    <td>{$vtr.nome_destino}</td>
+                    <td>{$vtr.odo_saida}</td>
+                    <td>{$vtr.acompanhante}</td>
+                    <td>{$vtr.data_saida}</td>
+                    <td>{$vtr.hora_saida}</td>
+                </tr>
+            {/foreach}    
+        </table>  
     </body>
 </html>

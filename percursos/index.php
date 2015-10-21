@@ -1,68 +1,127 @@
-<HTML>
-    <HEAD>
-        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-        <meta charset="UTF-8"/>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/jquery.js"></script>
-        <script src="../js/jquery-ui.js"></script>
-        <script src="../js/script.js"></script>
-
-        <script>
-            $(function () {
-                $("#destino").autocomplete({
-                    source: "buscador.php",
-                    minLength: 3
-                });
-            });
-        </script>
-
-    </HEAD>
-    <BODY>
-        <?php
-        include "verificarLogin.php";
-        include"../menu.php";
-        include '../sessao.php';
-        ?>
-
-        <fieldset>
-            <legend>Controle de Saída de Viatura</legend>
-            <table class="table" text-align='center' style='width: 100%'>
-                <tr>
-                    <td>Viatura - Placa</td>
-                    <td>Motorista</td>
-                    <td>Destino</td>
-                    <td>Odômetro Saída</td>
-                    <td>Acompanhante</td>
-                    <td></td>
-                </tr>
-                <tr>
-                <form autocomplete="off" action="../executar.php" method="post">
-                    <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
-                                <?php
-                                include 'relacao_vtr.php';
-                                ?>
-                            </select></label></td>
-                    <td><label for="motorista"><select class="form-control" name="motorista" required="required">
-                                <?php
-                                include 'relacao_motorista.php';
-                                ?>
-                            </select></label></td>
-                    <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
-                    <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></label></td>
-                    <td><label for="acompanhante"><input class="form-control" type="text" style='width: 150px' id="acompanhante" name="acompanhante" placeholder="Acompanhante" required="required"/></label></td>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
-                    </tr>
-            </table>
-        </form>
-    </fieldset>
-</BODY>
-</HTML>
-
-
-
 <?php
-include 'tabela_relacao_vtr.php';
-include 'tabela_relacao_vtr_fechadas.php';
+
+require_once('../lib/smarty/Smarty.class.php');
+include "verificarLogin.php";
+include '../sessao.php';
+
+$contador = 0;
+
+include '../configs/conexao.php';
+try {
+    $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+                                            FROM percursos, viaturas, motoristas, marcas, modelos, destinos
+                                            WHERE data_retorno IS NULL 
+                                            AND percursos.id_motorista = motoristas.id_motorista
+                                            AND percursos.id_viatura = viaturas.id_viatura
+                                            AND viaturas.id_marca = marcas.id_marca
+                                            AND viaturas.id_modelo = modelos.id_modelo
+                                            AND percursos.id_destino = destinos.id_destino
+                                            ORDER BY id_percurso DESC");
+    $executa = $stmt->execute();
+
+    if ($executa) {
+        $tabela_relacao_vtr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+               alert('Não foi possível criar tabela.');
+               </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+try {
+    $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+                                            FROM percursos, viaturas, motoristas, marcas, modelos, destinos
+                                            WHERE data_retorno IS NOT NULL 
+                                            AND percursos.id_motorista = motoristas.id_motorista
+                                            AND percursos.id_viatura = viaturas.id_viatura
+                                            AND viaturas.id_marca = marcas.id_marca
+                                            AND viaturas.id_modelo = modelos.id_modelo
+                                            AND percursos.id_destino = destinos.id_destino
+                                            AND data_retorno BETWEEN (SELECT DATE_SUB(date(now()), INTERVAL 7 DAY)) AND  (SELECT DATE(NOW()))
+                                            ORDER BY id_percurso DESC");
+    $executa = $stmt->execute();
+
+    if ($executa) {
+        $tabela_relacao_vtr_fechadas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+             alert('Não foi possível criar tabela.');
+             </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+try {
+    $stmt = $pdo->prepare("SELECT id_motorista, apelido 
+                                               FROM motoristas
+                                               WHERE id_motorista
+                                               NOT IN (SELECT id_motorista
+                                                             FROM percursos
+                                                             WHERE data_retorno IS NULL)
+                                               ORDER BY nome;");
+    $executa = $stmt->execute();
+
+    if ($executa) {
+        $relacao_motoristas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+             alert('Não foi possível criar tabela.');
+             </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+try {
+    $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
+                                               FROM viaturas, marcas, modelos
+                                               WHERE viaturas.id_marca = marcas.id_marca 
+                                               AND viaturas.id_modelo = modelos.id_modelo 
+                                               AND id_viatura NOT IN (SELECT id_viatura 
+                                                                                     FROM percursos 
+                                                                                     WHERE data_retorno IS NULL)
+                                               AND id_situacao != 2
+                                               ORDER BY marcas.descricao AND modelos.descricao;");
+    $executa = $stmt->execute();
+
+    if ($executa) {
+        $relacao_viaturas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+             alert('Não foi possível criar tabela.');
+             </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+$smarty = new Smarty();
+$smarty->assign('contador', $contador);
+$smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
+$smarty->assign('tabela_relacao_vtr_fechadas', $tabela_relacao_vtr_fechadas);
+$smarty->assign('relacao_motoristas', $relacao_motoristas);
+$smarty->assign('relacao_viaturas', $relacao_viaturas);
+$smarty->assign('login', $_SESSION['login']);
+$smarty->display('../templates/headers/headerPercursos.tpl');
+
+switch ($_SESSION['perfil']) {
+    case 1:
+        $smarty->display('../templates/menus/menuAdmin.tpl');
+        break;
+    case 2:
+        $smarty->display('../templates/menus/menuOperador.tpl');
+        break;
+    case 3:
+        $smarty->display('../templates/menus/menuMntGaragem.tpl');
+        break;
+    case 4:
+        $smarty->display('../templates/menus/menuMntS4.tpl');
+        break;
+    default:
+}
+
+$smarty->display('../templates/percursos/index.tpl');
 ?>

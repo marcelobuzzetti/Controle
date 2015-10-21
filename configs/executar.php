@@ -13,7 +13,7 @@ switch ($_POST['enviar']) {
                                                 SET odo_retorno=$odo_retorno, data_retorno=NOW(), hora_retorno=NOW() 
                                                 WHERE id_percurso=" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar o percurso.');
@@ -34,7 +34,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM percursos
                                                 WHERE id_percurso=" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível Apagar o percurso.');
@@ -184,7 +184,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(5, $situacao, PDO::PARAM_INT);
             $stmt->bindParam(6, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar a viatura.');
@@ -262,7 +262,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
             $stmt->bindParam(5, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar o motorista.');
@@ -285,7 +285,7 @@ switch ($_POST['enviar']) {
                                                 WHERE id_motorista= ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível Apagar o motorista.');
@@ -340,7 +340,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
             $stmt->bindParam(5, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar o usuário.');
@@ -384,7 +384,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM combustiveis
                                                 WHERE id_combustivel =" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível Apagar o Combustível.');
@@ -452,7 +452,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM tipos_combustiveis
                                                 WHERE id_tipo_combustivel=" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível Apagar o Tipo de Combustível.');
@@ -476,7 +476,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(1, $descricao, PDO::PARAM_STR);
             $stmt->bindParam(2, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar o Tipo de Combustível.');
@@ -526,7 +526,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM recibos_combustiveis
                                                 WHERE id_recibo_combustivel =" . $id);
             $executa = $stmt->execute();
-               
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível Apagar o Recibo de Combustível.');
@@ -609,7 +609,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM abastecimentos
                                                 WHERE id_abastecimento =" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível Apagar o abastecimento.');
@@ -643,7 +643,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(5, $tp, PDO::PARAM_INT);
             $stmt->bindParam(6, $qnt, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar o abastecimento.');
@@ -676,7 +676,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(5, $cap_transp, PDO::PARAM_INT);
             $stmt->bindParam(6, $id_habilitacao, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível inserir o modelo.');
@@ -697,7 +697,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM modelos
                                                 WHERE id_modelo =" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível apagar o modelo.');
@@ -752,7 +752,7 @@ switch ($_POST['enviar']) {
                                                 VALUES(NULL,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_STR);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível inserir a marca.');
@@ -773,7 +773,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("DELETE FROM marcas 
                                                 WHERE id_marca =" . $id);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível apagar a marca.');
@@ -796,7 +796,7 @@ switch ($_POST['enviar']) {
                                                 SET descricao = ? WHERE id_marca =" . $id);
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
                 print("<script>
                 alert('Não foi possível atualizar a marca.');
@@ -874,7 +874,6 @@ switch ($_POST['enviar']) {
                 alert('Não foi possível cadastrar o usuário.');
                 </script>");
             }
-            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

@@ -31,7 +31,7 @@ try {
         while ($reg = $stmt->fetch(PDO::FETCH_OBJ)) { /* Para recuperar um ARRAY utilize PDO::FETCH_ASSOC */
             echo "<tr>";
             echo "<td>$contador1</td>";
-            echo "<td>" .$reg->marca . " - " . $reg->modelo . " - " . $reg->placa."</td>";
+            echo "<td>" . $reg->marca . " - " . $reg->modelo . " - " . $reg->placa . "</td>";
             echo "<td>" . $reg->apelido . "</td>";
             echo "<td>" . $reg->nome_destino . "</td>";
             echo "<td>" . $reg->odo_saida . "</td>";
