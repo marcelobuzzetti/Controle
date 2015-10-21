@@ -1,6 +1,6 @@
 <?php
 
-include '../conexao.php';
+include '../configs/conexao.php';
 
 switch ($_POST['enviar']) {
 
@@ -841,7 +841,7 @@ switch ($_POST['enviar']) {
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['temposessao'] = time() + 120;
 
-                header('Location: ../templates/percursos//index.php');
+                header('Location: ../percursos');
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;

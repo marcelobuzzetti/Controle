@@ -1,31 +1,52 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-21 13:48:38
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-21 15:49:11
          compiled from "/var/www/html/controle/templates/home/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_5627b3d7063c51_38352071',
+  'unifunc' => 'content_5627d017d026a9_56456101',
   'file_dependency' => 
   array (
     '82e4e7957b794d80ddf1b375345cde72cfd644ac' => 
     array (
       0 => '/var/www/html/controle/templates/home/index.tpl',
-      1 => 1445442515,
+      1 => 1445449749,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:../headers/header.tpl' => 1,
   ),
 ),false);
-if ($_valid && !is_callable('content_5627b3d7063c51_38352071')) {
-function content_5627b3d7063c51_38352071 ($_smarty_tpl) {
-$_smarty_tpl->setupSubTemplate('file:../headers/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false)->render();
+if ($_valid && !is_callable('content_5627d017d026a9_56456101')) {
+function content_5627d017d026a9_56456101 ($_smarty_tpl) {
 ?>
-
-
-        <form class="form-inline" action="executar.php" method="post">
+<HTML>
+    <HEAD>
+        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
+        <meta charset="UTF-8"/>
+        <?php echo '<script'; ?>
+ src="./lib/js/jquery.js"><?php echo '</script'; ?>
+>
+        <link href="./lib/css/bootstrap.css" rel="stylesheet">
+        <?php echo '<script'; ?>
+ src="./lib/js/bootstrap.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="./lib/js/script.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="./lib/js/jquery.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="./lib/js/jquery-ui.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="./lib/js/script.js"><?php echo '</script'; ?>
+>
+    </HEAD>
+    <body>
+        <form class="form-inline" action="./configs/executar.php" method="post">
             <div class="form-group">
                 <label for="login">Login</label>
                 <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">

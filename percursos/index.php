@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    session_unset();
+    header('Location: ..');
+} else {
 require_once('../lib/smarty/Smarty.class.php');
 include "verificarLogin.php";
 include '../sessao.php';
@@ -124,4 +130,5 @@ switch ($_SESSION['perfil']) {
 }
 
 $smarty->display('../templates/percursos/index.tpl');
+}
 ?>

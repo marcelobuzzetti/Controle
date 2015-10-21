@@ -1,7 +1,7 @@
 <?php
 
-require_once('./lib/smarty/Smarty.class.php');
-include'conexao.php';
+require_once('lib/smarty/Smarty.class.php');
+include 'configs/conexao.php';
 try {
     $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
                                             FROM percursos, viaturas, motoristas, marcas, modelos, destinos
