@@ -1,7 +1,7 @@
 
 Desenvolvimento de Sistema para controle dos meios de transporte
 
-Marcelo Aparecido Ferreira Silva
+Marcelo Aparecido Ferreira
 
 Curso Superior em Tecnologia em Análise e Desenvolvimento de
 Sistemas
