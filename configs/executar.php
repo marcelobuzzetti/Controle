@@ -23,7 +23,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../templates/percursos/');
+        header('Location: ../percursos/');
 
         break;
 
@@ -44,7 +44,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../templates/percursos/');
+        header('Location: ../percursos/');
 
         break;
 
@@ -106,7 +106,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../templates/percursos/');
+        header('Location: ../percursos/');
 
         break;
 
@@ -373,7 +373,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./combustiveis/');
+        header('Location: ../combustiveis/');
 
         break;
 
@@ -394,7 +394,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./combustiveis');
+        header('Location: ../combustiveis');
 
         break;
 
@@ -418,7 +418,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./combustiveis');
+        header('Location: ../combustiveis');
 
         break;
 

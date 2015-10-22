@@ -5,10 +5,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     header('Location: ../percursos');
 } else {
 require_once('../lib/smarty/Smarty.class.php');
-include "verificarLogin.php";
-include '../sessao.php';
+include '../configs/sessao.php';
 include '../configs/conexao.php';
-$contador = 1;
+
 try {
     $stmt = $pdo->prepare("SELECT id_motorista, apelido
                                         FROM motoristas");
@@ -102,7 +101,6 @@ try {
 }
 
 $smarty = new Smarty();
-$smarty->assign('contador', $contador);
 $smarty->assign('relacao_motoristas', $relacao_motoristas );
 $smarty->assign('relacao_viaturas', $relacao_viaturas );
 $smarty->assign('relacao_combustiveis', $relacao_combustiveis);

@@ -1,38 +1,49 @@
-﻿<HTML>
-    <HEAD>
-        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-        <meta charset="UTF-8"/>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
+<?php 
 
-    </HEAD>
-    <BODY>
-        <?php
-        include "verificarLogin.php";
-        include"../menu.php";
-        include '../sessao.php';
-        ?>
+session_start();
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
+    header('Location: ../percursos');
+} else {
+require_once('../lib/smarty/Smarty.class.php');
+include '../configs/sessao.php';
+include '../configs/conexao.php';
 
+try {
+    $stmt = $pdo->prepare("SELECT * FROM combustiveis;");
+    $executa = $stmt->execute();
 
-        <fieldset>
-            <legend>Cadastro de Combustivel</legend>
-            <table border=2px text-align='center' style='width: 40%'>
-                <form action="../executar.php" method="post">
-                    <tr>
-                        <td>Descrição</td>
-                        <td><label for="descricao"><input autofocus class="form-control" type="text" style='width: 150px' id="descricao" name="descricao" placeholder="Descrição" required="required"/></label></td>
-                    </tr>
-                    <td></td>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="combustivel" name="enviar">Cadastrar</button></label></td>
-                    </tr>
-                </form>
-            </table>
-        </fieldset>
-    </BODY>
-</HTML>
+    if ($executa) {
+        $relacao_combustiveis= $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+               alert('Não foi possível criar tabela.');
+               </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
 
-<?php
-include 'tabela_combustiveis_cadastrados.php';
+$smarty = new Smarty();
+$smarty->assign('relacao_combustiveis', $relacao_combustiveis);
+$smarty->assign('login', $_SESSION['login']);
+$smarty->display('../templates/headers/header.tpl');
+
+switch ($_SESSION['perfil']) {
+    case 1:
+        $smarty->display('../templates/menus/menuAdmin.tpl');
+        break;
+    case 2:
+        $smarty->display('../templates/menus/menuOperador.tpl');
+        break;
+    case 3:
+        $smarty->display('../templates/menus/menuMntGaragem.tpl');
+        break;
+    case 4:
+        $smarty->display('../templates/menus/menuMntS4.tpl');
+        break;
+    default:
+}
+
+$smarty->display('../templates/combustiveis/index.tpl');
+}
 ?>

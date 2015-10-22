@@ -57,9 +57,9 @@
                    <td></td>
                    <td></td>
                </tr>
-            {foreach $tabela_relacao_abastecimentos as $tbl}
+            {foreach $tabela_relacao_abastecimentos as $tbl name=tabela_relacao_abastecimentos}
                 <tr>
-                    <td>{$contador}</td>
+                    <td>{$smarty.foreach.tabela_relacao_abastecimentos.iteration}</td>
                     <td>{$tbl.nrvale}</td>
                     <td>{$tbl.apelido}</td>
                     <td>{$tbl.marca} - {$tbl.placa} - {$tbl.modelos}</td>
@@ -76,7 +76,6 @@
                                     <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/>
                                     <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/>Atualizar Abastecimento</form></td>
             </form></tr>
-            {$contador++}
             {/foreach}    
         </table>  
     </fieldset>
