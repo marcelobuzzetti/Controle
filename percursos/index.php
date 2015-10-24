@@ -6,7 +6,7 @@ if (!isset($_SESSION['login'])) {
     session_unset();
     header('Location: ..');
 } else {
-require_once('../lib/smarty/Smarty.class.php');
+require_once('../libs/smarty/Smarty.class.php');
 include "verificarLogin.php";
 include '../sessao.php';
 

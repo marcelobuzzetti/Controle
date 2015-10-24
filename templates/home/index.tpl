@@ -2,13 +2,13 @@
     <HEAD>
         <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
         <meta charset="UTF-8"/>
-        <script src="./libss/js/jquery.js"></script>
-        <link href="./libss/css/bootstrap.css" rel="stylesheet">
-        <script src="./libss/js/bootstrap.js"></script>
-        <script src="./libss/js/script.js"></script>
-        <script src="./libss/js/jquery.js"></script>
-        <script src="./libss/js/jquery-ui.js"></script>
-        <script src="./libss/js/script.js"></script>
+        <script src="./libs/js/jquery.js"></script>
+        <link href="./libs/css/bootstrap.css" rel="stylesheet">
+        <script src="./libs/js/bootstrap.js"></script>
+        <script src="./libs/js/script.js"></script>
+        <script src="./libs/js/jquery.js"></script>
+        <script src="./libs/js/jquery-ui.js"></script>
+        <script src="./libs/js/script.js"></script>
     </HEAD>
     <body>
         <form class="form-inline" action="./configs/executar.php" method="post">

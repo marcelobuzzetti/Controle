@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
     header('Location: ../percursos');
 } else {
-require_once('../lib/smarty/Smarty.class.php');
+require_once('../libs/smarty/Smarty.class.php');
 include "verificarLogin.php";
 include '../sessao.php';
 include '../configs/conexao.php';

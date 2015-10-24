@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-21 15:49:11
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-24 16:11:30
          compiled from "/var/www/html/controle/templates/home/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_5627d017d026a9_56456101',
+  'unifunc' => 'content_562bc9d2620f45_19738278',
   'file_dependency' => 
   array (
     '82e4e7957b794d80ddf1b375345cde72cfd644ac' => 
     array (
       0 => '/var/www/html/controle/templates/home/index.tpl',
-      1 => 1445449749,
+      1 => 1445710278,
       2 => 'file',
     ),
   ),
@@ -18,31 +18,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_5627d017d026a9_56456101')) {
-function content_5627d017d026a9_56456101 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562bc9d2620f45_19738278')) {
+function content_562bc9d2620f45_19738278 ($_smarty_tpl) {
 ?>
 <HTML>
     <HEAD>
         <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
         <meta charset="UTF-8"/>
         <?php echo '<script'; ?>
- src="./lib/js/jquery.js"><?php echo '</script'; ?>
+ src="./libs/js/jquery.js"><?php echo '</script'; ?>
 >
-        <link href="./lib/css/bootstrap.css" rel="stylesheet">
+        <link href="./libs/css/bootstrap.css" rel="stylesheet">
         <?php echo '<script'; ?>
- src="./lib/js/bootstrap.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
- src="./lib/js/script.js"><?php echo '</script'; ?>
+ src="./libs/js/bootstrap.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="./lib/js/jquery.js"><?php echo '</script'; ?>
+ src="./libs/js/script.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="./lib/js/jquery-ui.js"><?php echo '</script'; ?>
+ src="./libs/js/jquery.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
- src="./lib/js/script.js"><?php echo '</script'; ?>
+ src="./libs/js/jquery-ui.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="./libs/js/script.js"><?php echo '</script'; ?>
 >
     </HEAD>
     <body>

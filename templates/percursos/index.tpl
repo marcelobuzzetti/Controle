@@ -34,6 +34,7 @@
     <table class='table'>
         <caption>Viaturas Rodando</caption>
         <tr>
+            <td>Ordem</td>
             <td>Viatura</td>
             <td>Motorista</td>
             <td>Destino</td>
@@ -45,9 +46,10 @@
             <td></td>
             <td></td> 
         </tr>
-        {foreach $tabela_relacao_vtr as $vtr}
+        {foreach $tabela_relacao_vtr as $vtr name=relacao_vtr}
             <tr><form action='../../configs/executar.php' method='post' id="{$contador}">
                 <input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id="{$contador}" value="{$vtr.id_percurso}"/>
+                <td>{$smarty.foreach.relacao_vtr.iteration}</td>
                 <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
                 <td>{$vtr.apelido}</td>
                 <td>{$vtr.nome_destino}</td>

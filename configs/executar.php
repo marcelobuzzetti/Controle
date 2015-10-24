@@ -686,7 +686,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./modelos/');
+        header('Location: ../modelos/');
 
         break;
 
@@ -695,7 +695,8 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("DELETE FROM modelos
-                                                WHERE id_modelo =" . $id);
+                                                WHERE id_modelo = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -707,7 +708,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./modelos');
+        header('Location: ../modelos');
 
         break;
 
@@ -722,13 +723,15 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("UPDATE modelos
-                                                SET id_marca = ?, descricao = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, id_habilitacao = ? WHERE id_modelo =" . $id);
+                                                SET id_marca = ?, descricao = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, id_habilitacao = ? 
+                                                WHERE id_modelo = ?");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_STR);
             $stmt->bindParam(3, $cap_tanque, PDO::PARAM_INT);
             $stmt->bindParam(4, $consumo_padrao, PDO::PARAM_INT);
             $stmt->bindParam(5, $cap_transp, PDO::PARAM_INT);
             $stmt->bindParam(6, $id_habilitacao, PDO::PARAM_INT);
+            $stmt->bindParam(7, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -740,7 +743,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./modelos');
+        header('Location: ../modelos');
 
         break;
 
