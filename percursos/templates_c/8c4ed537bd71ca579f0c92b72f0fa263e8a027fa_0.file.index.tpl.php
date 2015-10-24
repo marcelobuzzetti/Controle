@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-21 14:02:39
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-21 14:19:05
          compiled from "/var/www/html/controle/templates/percursos/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_5627b71f5323c8_99419335',
+  'unifunc' => 'content_5627baf9c5ff34_97179031',
   'file_dependency' => 
   array (
     '8c4ed537bd71ca579f0c92b72f0fa263e8a027fa' => 
     array (
       0 => '/var/www/html/controle/templates/percursos/index.tpl',
-      1 => 1445443197,
+      1 => 1445444337,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_5627b71f5323c8_99419335')) {
-function content_5627b71f5323c8_99419335 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5627baf9c5ff34_97179031')) {
+function content_5627baf9c5ff34_97179031 ($_smarty_tpl) {
 ?>
   <fieldset>
             <legend>Controle de Saída de Viatura</legend>
@@ -35,7 +35,7 @@ function content_5627b71f5323c8_99419335 ($_smarty_tpl) {
                 <tr>
                 <form autocomplete="off" action="../../configs/executar.php" method="post">
                     <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
-                                <option value=''>Selecione a Viatura</option>
+                                <option value='' disabled selected>Selecione a Viatura</option>
                                 <?php
 $_from = $_smarty_tpl->tpl_vars['relacao_viaturas']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -63,7 +63,7 @@ $_smarty_tpl->tpl_vars['viatura'] = $__foreach_viatura_0_saved_item;
 ?>
                             </select></label></td>
                     <td><label for="motorista"><select class="form-control" name="motorista" required="required">
-                                <option value=''>Selecione o Motorista</option>
+                                <option value='' disabled selected>Selecione o Motorista</option>
                                 <?php
 $_from = $_smarty_tpl->tpl_vars['relacao_motoristas']->value;
 if (!is_array($_from) && !is_object($_from)) {
