@@ -8,7 +8,6 @@ require_once('../lib/smarty/Smarty.class.php');
 include "verificarLogin.php";
 include '../sessao.php';
 include '../configs/conexao.php';
-$contador = 1;
 
 if(!isset($_POST['id'])){
      header('Location: index.php');
@@ -17,11 +16,15 @@ if(!isset($_POST['id'])){
 $id = $_POST['id'];
 
 try {
-    $stmt = $pdo->prepare("SELECT * FROM abastecimentos WHERE id_abastecimento = $id");
+    $stmt = $pdo->prepare("SELECT * FROM abastecimentos WHERE id_abastecimento = ?");
+    $stmt->bindParam(1, $id, PDO::PARAM_INT);
     $executa = $stmt->execute();
     
     if ($executa) {
-        $dados_abastecimentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $dados_abastecimentos = $stmt->fetch(PDO::FETCH_OBJ);
+        $id_abastecimento = $dados_abastecimentos->id_abastecimento;
+        $qnt = $dados_abastecimentos->qnt;
+        
     } else {
     print("<script language=JavaScript>
            alert('Não foi possível criar tabela.');
@@ -124,8 +127,8 @@ try {
 }
 
 $smarty = new Smarty();
-$smarty->assign('contador', $contador);
-$smarty->assign('dados_abastecimentos', $dados_abastecimentos);
+$smarty->assign('id_abastecimento', $id_abastecimento);
+$smarty->assign('qnt', $qnt);
 $smarty->assign('relacao_motoristas', $relacao_motoristas );
 $smarty->assign('relacao_viaturas', $relacao_viaturas );
 $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
@@ -150,7 +153,7 @@ switch ($_SESSION['perfil']) {
     default:
 }
 
-$smarty->display('../templates/abastecimentos/updateAbastecimentos.tpl');
+$smarty->display('../templates/abastecimentos/update_abastecimentos.tpl');
 }
 }
 ?>

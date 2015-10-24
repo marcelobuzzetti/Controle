@@ -1,51 +1,77 @@
-﻿<HTML>
-    <HEAD>
-        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-        <meta charset="UTF-8"/>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
-
-    </HEAD>
-    <BODY>
-        <?php
-        include "../verificarLogin.php";
-        include"../menu.php";
-        include"../sessao.php";
-        include '../conexao.php';
-        $id = $_POST['id'];
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM marcas WHERE id_marca = $id");
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-        while ($reg = $stmt->fetch(PDO::FETCH_OBJ)) {
-            $id = $reg->id_marca;
-            $descricao = $reg->descricao;
-        }
-        ?>
-
-
-        <fieldset>
-            <legend>Atualizar Marcas</legend>
-            <table border=2px text-align='center' style='width: 40%'>
-                <form action="../executar.php" method="post">
-                    <tr>
-                        <td>Marcas</td>
-                        <td><label for="marca"><input autofocus class="form-control" type="text" style='width: 150px' id="marca" name="marca" placeholder="Marca" required="required" value="<?php echo $descricao ?>"/></label></td>
-                    </tr>
-                    <td></td>
-                    <input type='hidden' id='<?php echo $id ?>' value='<?php echo $id ?>' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_marca" name="enviar">Atualizar Marca</button></label></td>
-                    </tr>
-                </form>
-            </table>
-        </fieldset>
-    </BODY>
-</HTML>
-
 <?php
-include 'tabela_marcas_cadastradas.php';
+session_start();
+
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
+    header('Location: ../percursos');
+} else {
+require_once('../lib/smarty/Smarty.class.php');
+include '../configs/sessao.php';
+include '../configs/conexao.php';
+
+if(!isset($_POST['id'])){
+     header('Location: index.php');
+} else {
+
+$id = $_POST['id'];
+
+try {
+    $stmt = $pdo->prepare("SELECT * FROM marcas WHERE id_marca = ?");
+    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+    $executa = $stmt->execute();
+    
+    if ($executa) {
+        $dados_marcas = $stmt->fetch(PDO::FETCH_OBJ);
+        $id_marca = $dados_marcas->id_marca;
+        $descricao = $dados_marcas->descricao;
+        
+    } else {
+    print("<script language=JavaScript>
+           alert('Não foi possível criar tabela.');
+           </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+try{
+    $stmt = $pdo->prepare("SELECT * FROM marcas;");
+    $executa = $stmt->execute();
+
+    if ($executa) {
+    $relacao_marcas= $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+               alert('Não foi possível criar tabela.');
+               </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+$smarty = new Smarty();
+$smarty->assign('id_marca', $id_marca);
+$smarty->assign('descricao', $descricao);
+$smarty->assign('relacao_marcas', $relacao_marcas);
+$smarty->assign('login', $_SESSION['login']);
+$smarty->display('../templates/headers/header.tpl');
+
+switch ($_SESSION['perfil']) {
+    case 1:
+        $smarty->display('../templates/menus/menuAdmin.tpl');
+        break;
+    case 2:
+        $smarty->display('../templates/menus/menuOperador.tpl');
+        break;
+    case 3:
+        $smarty->display('../templates/menus/menuMntGaragem.tpl');
+        break;
+    case 4:
+        $smarty->display('../templates/menus/menuMntS4.tpl');
+        break;
+    default:
+}
+
+$smarty->display('../templates/marcas/update_marca.tpl');
+}
+}
 ?>

@@ -37,8 +37,8 @@
                                     <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
                                 {/foreach}
                             </select></label></td>
-                    <input type='hidden' id='{$dados_abastecimentos.id_abastecimento}' value='{$dados_abastecimentos.id_abastecimento}' name='id'/>
-                    <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$dados_abastecimentos.qnt}"/></label></td>
+                    <input type='hidden' id='{$id_abastecimento}' value='{$id_abastecimento}' name='id'/>
+                    <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></label></td>
                     <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar">Cadastrar</button></label></td>
                     </tr>
             </table>

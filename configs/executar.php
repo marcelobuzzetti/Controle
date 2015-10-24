@@ -51,9 +51,9 @@ switch ($_POST['enviar']) {
     case 'Cadastrar':
         $viatura = $_POST["viatura"];
         $nome = $_POST["motorista"];
-        $destino = strtoupper($_POST["destino"]);
+        $destino = mb_strtoupper($_POST["destino"]);
         $odometro = $_POST["odo_saida"];
-        $acompanhante = strtoupper($_POST["acompanhante"]);
+        $acompanhante = mb_strtoupper($_POST["acompanhante"]);
 
         try {
             $stmt = $pdo->prepare("SELECT COUNT(nome_destino) AS existente
@@ -113,7 +113,7 @@ switch ($_POST['enviar']) {
     case 'viatura':
         $marca = $_POST["marca"];
         $modelo = $_POST["modelo"];
-        $placa = strtoupper($_POST["placa"]);
+        $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
         $situacao = $_POST["situacao"];
 
@@ -167,7 +167,7 @@ switch ($_POST['enviar']) {
         $id = $_POST['id'];
         $marca = $_POST["marca"];
         $modelo = $_POST["modelo"];
-        $placa = strtoupper($_POST["placa"]);
+        $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
         $situacao = $_POST["situacao"];
 
@@ -199,7 +199,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'motorista':
-        $nome = strtoupper($_POST['nome']);
+        $nome = mb_strtoupper($_POST['nome']);
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
 
@@ -238,7 +238,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_motorista':
         $id = $_POST['id'];
-        $nome = strtoupper($_POST['nome']);
+        $nome = mb_strtoupper($_POST['nome']);
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
 
@@ -327,7 +327,7 @@ switch ($_POST['enviar']) {
         $login = $_POST['login'];
         $senha = md5($_POST['senha']);
         $perfil = $_POST['perfil'];
-        $apelido = strtoupper($_POST['apelido']);
+        $apelido = mb_strtoupper($_POST['apelido']);
 
 
         try {
@@ -355,7 +355,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'combustivel':
-        $descricao = strtoupper($_POST['descricao']);
+        $descricao = mb_strtoupper($_POST['descricao']);
 
 
         try {
@@ -400,7 +400,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_combustivel':
         $id = $_POST['id'];
-        $descricao = strtoupper($_POST['descricao']);
+        $descricao = mb_strtoupper($_POST['descricao']);
 
         try {
             $stmt = $pdo->prepare("UPDATE combustiveis
@@ -423,7 +423,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'tipo':
-        $descricao = strtoupper($_POST['descricao']);
+        $descricao = mb_strtoupper($_POST['descricao']);
 
 
         try {
@@ -468,7 +468,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_tipo':
         $id = $_POST['id'];
-        $descricao = strtoupper($_POST['descricao']);
+        $descricao = mb_strtoupper($_POST['descricao']);
 
         try {
             $stmt = $pdo->prepare("UPDATE tipos_combustiveis
@@ -494,7 +494,7 @@ switch ($_POST['enviar']) {
         $combustivel = $_POST['combustivel'];
         $tp = $_POST['tp'];
         $qnt = $_POST['qnt'];
-        $motivo = strtoupper($_POST['motivo']);
+        $motivo = mb_strtoupper($_POST['motivo']);
 
 
         try {
@@ -545,7 +545,7 @@ switch ($_POST['enviar']) {
         $combustivel = $_POST['combustivel'];
         $tp = $_POST['tp'];
         $qnt = $_POST['qnt'];
-        $motivo = strtoupper($_POST['motivo']);
+        $motivo = mb_strtoupper($_POST['motivo']);
 
         try {
             $stmt = $pdo->prepare("UPDATE recibos_combustiveis
@@ -659,7 +659,7 @@ switch ($_POST['enviar']) {
 
     case 'cadastrar_modelo':
         $marca = $_POST['marca'];
-        $modelo = strtoupper($_POST['modelo']);
+        $modelo = mb_strtoupper($_POST['modelo']);
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
         $cap_transp = $_POST['cap_transp'];
@@ -714,7 +714,7 @@ switch ($_POST['enviar']) {
     case 'atualizar_modelo':
         $id = $_POST['id'];
         $marca = $_POST['marca'];
-        $modelo = strtoupper($_POST['modelo']);
+        $modelo = mb_strtoupper($_POST['modelo']);
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
         $cap_transp = $_POST['cap_transp'];
@@ -745,7 +745,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'marca':
-        $marca = strtoupper($_POST['marca']);
+        $marca = mb_strtoupper($_POST['marca']);
 
         try {
             $stmt = $pdo->prepare("INSERT INTO marcas
@@ -762,7 +762,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./marcas/');
+        header('Location: ../marcas/');
 
         break;
 
@@ -783,18 +783,20 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./marcas');
+        header('Location: ../marcas');
 
         break;
 
     case 'atualizar_marca':
         $id = $_POST['id'];
-        $marca = strtoupper($_POST['marca']);
+        $marca = mb_strtoupper($_POST['marca']);
 
         try {
             $stmt = $pdo->prepare("UPDATE marcas
-                                                SET descricao = ? WHERE id_marca =" . $id);
-            $stmt->bindParam(1, $marca, PDO::PARAM_INT);
+                                                SET descricao = ? 
+                                                WHERE id_marca = ?");
+            $stmt->bindParam(1, $marca, PDO::PARAM_STR);
+            $stmt->bindParam(2, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -806,7 +808,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./marcas');
+        header('Location: ../marcas');
 
         break;
 
@@ -845,7 +847,7 @@ switch ($_POST['enviar']) {
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;
-                header('Location: .');
+                header('Location: ../');
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -858,7 +860,7 @@ switch ($_POST['enviar']) {
         $login = $_POST['login'];
         $senha = md5($_POST['senha']);
         $perfil = $_POST['perfil'];
-        $apelido = strtoupper($_POST['apelido']);
+        $apelido = mb_strtoupper($_POST['apelido']);
 
         try {
             $stmt = $pdo->prepare("INSERT INTO usuarios 

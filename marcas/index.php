@@ -1,39 +1,49 @@
-﻿<HTML>
-    <HEAD>
-        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-        <meta charset="UTF-8"/>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
-
-    </HEAD>
-    <BODY>
-        <?php
-        include "verificarLogin.php";
-        include"../menu.php";
-        include '../sessao.php';
-        ?>
-
-
-        <fieldset>
-            <legend>Cadastro de Marcas</legend>
-            <table border=2px text-align='center' style='width: 40%'>
-                <form action="../executar.php" method="post">
-                    <tr>
-                        <td>Marca</td>
-                        <td><label for="marca"><input autofocus class="form-control" type="text" style='width: 150px' id="marca" name="marca" placeholder="Marca" required="required"/></label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="marca" name="enviar">Cadastrar</button></label></td>
-                    </tr>
-                </form>
-            </table>
-        </fieldset>
-    </BODY>
-</HTML>
-
 <?php
-include 'tabela_marcas_cadastradas.php';
+session_start();
+
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
+    header('Location: ../percursos');
+} else {
+require_once('../lib/smarty/Smarty.class.php');
+include '../configs/sessao.php';
+include '../configs/conexao.php';
+
+try{
+    $stmt = $pdo->prepare("SELECT * FROM marcas;");
+    $executa = $stmt->execute();
+
+    if ($executa) {
+    $relacao_marcas= $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        print("<script language=JavaScript>
+               alert('Não foi possível criar tabela.');
+               </script>");
+    }
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+$smarty = new Smarty();
+$smarty->assign('relacao_marcas', $relacao_marcas);
+$smarty->assign('login', $_SESSION['login']);
+$smarty->display('../templates/headers/header.tpl');
+
+switch ($_SESSION['perfil']) {
+    case 1:
+        $smarty->display('../templates/menus/menuAdmin.tpl');
+        break;
+    case 2:
+        $smarty->display('../templates/menus/menuOperador.tpl');
+        break;
+    case 3:
+        $smarty->display('../templates/menus/menuMntGaragem.tpl');
+        break;
+    case 4:
+        $smarty->display('../templates/menus/menuMntS4.tpl');
+        break;
+    default:
+}
+
+$smarty->display('../templates/marcas/index.tpl');
+}
 ?>
