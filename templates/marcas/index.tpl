@@ -1,14 +1,14 @@
-﻿<fieldset>
-            <legend>Cadastro de Marcas</legend>
+ <fieldset>
+            <legend>{$titulo}</legend>
             <table border=2px text-align='center' style='width: 40%'>
                 <form action="../configs/executar.php" method="post">
                     <tr>
-                        <td>Marca</td>
-                        <td><label for="marca"><input autofocus class="form-control" type="text" style='width: 150px' id="marca" name="marca" placeholder="Marca" required="required"/></label></td>
+                        <td>Marcas</td>
+                        <td><label for="marca"><input autofocus class="form-control" type="text" style='width: 150px' id="marca" name="marca" placeholder="Marca" required="required" value="{$descricao}"/></label></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="marca" name="enviar">Cadastrar</button></label></td>
+                    <td></td>
+                    <input type='hidden' id='{$id_marca}' value='{$id_marca}' name='id'/>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_marca" name="enviar">{$botao}</button></label></td>
                     </tr>
                 </form>
             </table>
@@ -28,7 +28,7 @@
                                     <input type='hidden' id='{$marca.id_marca}' value='{$marca.id_marca}' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_marca'/>Apagar Marca</form></td>
                         </form>
-                        <form action='update_marca.php' method='post'>
+                        <form action='index.php' method='post'>
                                     <input type='hidden' id='{$marca.id_marca}' value='{$marca.id_marca}' name='id'/>
                                     <td><button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_marca'/>Atualizar Marca</form></td>
                         </form>

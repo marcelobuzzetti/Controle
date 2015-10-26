@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-24 11:57:10
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:23:39
          compiled from "/var/www/html/controle/templates/marcas/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562b8e361f18d6_69285871',
+  'unifunc' => 'content_562e6fabe3b6a3_70856365',
   'file_dependency' => 
   array (
     'e8d4d9052698f8a9b678bb7102fe9f4d4de17580' => 
     array (
       0 => '/var/www/html/controle/templates/marcas/index.tpl',
-      1 => 1445694751,
+      1 => 1445883815,
       2 => 'file',
     ),
   ),
@@ -18,20 +18,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562b8e361f18d6_69285871')) {
-function content_562b8e361f18d6_69285871 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562e6fabe3b6a3_70856365')) {
+function content_562e6fabe3b6a3_70856365 ($_smarty_tpl) {
 ?>
-<fieldset>
-            <legend>Cadastro de Marcas</legend>
+ <fieldset>
+            <legend><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</legend>
             <table border=2px text-align='center' style='width: 40%'>
                 <form action="../configs/executar.php" method="post">
                     <tr>
-                        <td>Marca</td>
-                        <td><label for="marca"><input autofocus class="form-control" type="text" style='width: 150px' id="marca" name="marca" placeholder="Marca" required="required"/></label></td>
+                        <td>Marcas</td>
+                        <td><label for="marca"><input autofocus class="form-control" type="text" style='width: 150px' id="marca" name="marca" placeholder="Marca" required="required" value="<?php echo $_smarty_tpl->tpl_vars['descricao']->value;?>
+"/></label></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="marca" name="enviar">Cadastrar</button></label></td>
+                    <td></td>
+                    <input type='hidden' id='<?php echo $_smarty_tpl->tpl_vars['id_marca']->value;?>
+' value='<?php echo $_smarty_tpl->tpl_vars['id_marca']->value;?>
+' name='id'/>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_marca" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
+</button></label></td>
                     </tr>
                 </form>
             </table>
@@ -69,7 +74,7 @@ $__foreach_relacao_marcas_0_saved_local_item = $_smarty_tpl->tpl_vars['marca'];
 ' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_marca'/>Apagar Marca</form></td>
                         </form>
-                        <form action='update_marca.php' method='post'>
+                        <form action='index.php' method='post'>
                                     <input type='hidden' id='<?php echo $_smarty_tpl->tpl_vars['marca']->value['id_marca'];?>
 ' value='<?php echo $_smarty_tpl->tpl_vars['marca']->value['id_marca'];?>
 ' name='id'/>

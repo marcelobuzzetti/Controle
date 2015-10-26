@@ -1,5 +1,5 @@
         <fieldset>
-            <legend>Abastecimentos</legend>
+            <legend>{$titulo}</legend>
             <table class="table" text-align='center' style='width: 100%'>
                 <tr>
                     <td>Número Vale</td>
@@ -11,8 +11,8 @@
                     <td></td>
                 </tr>
                 <tr>
-                <form action="../executar.php" method="post">
-                    <td><label for="nrvale"><input class="form-control" type="text" style='width: 150px' id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required"/></label></td>
+               <form action="../executar.php" method="post">
+                    <td><label for="nrvale"><input class="form-control" type="text" style='width: 150px' id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" value="{$dados_abastecimentos.nrvale}"/></label></td>
                     <td><label for="motorista"><select class="form-control" name="motorista" required="required">
                             <option value='' disabled selected>Selecione o Motorista</option>
                                 {foreach $relacao_motoristas as $motorista}
@@ -37,8 +37,9 @@
                                     <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
                                 {/foreach}
                             </select></label></td>
-                    <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" /></label></td>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar">Cadastrar</button></label></td>
+                    <input type='hidden' id='{$id_abastecimento}' value='{$id_abastecimento}' name='id'/>
+                    <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></label></td>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar">{$botao}</button></label></td>
                     </tr>
             </table>
         </form>
@@ -72,7 +73,7 @@
                                     <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_abst'/>Apagar Abastecimento</form></td>
                 </form>
-            <form action='update_abastecimento.php' method='post'>
+            <form action='index.php' method='post'>
                                     <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/>
                                     <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/>Atualizar Abastecimento</form></td>
             </form></tr>

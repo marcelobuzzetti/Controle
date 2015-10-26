@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-22 18:44:38
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:14:49
          compiled from "/var/www/html/controle/templates/abastecimentos/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_56294ab67a3db5_25195686',
+  'unifunc' => 'content_562e6d999bb799_43535895',
   'file_dependency' => 
   array (
     '8b7a3c16f7019830c89de03371ec8e007900bd1c' => 
     array (
       0 => '/var/www/html/controle/templates/abastecimentos/index.tpl',
-      1 => 1445536237,
+      1 => 1445883249,
       2 => 'file',
     ),
   ),
@@ -18,11 +18,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_56294ab67a3db5_25195686')) {
-function content_56294ab67a3db5_25195686 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562e6d999bb799_43535895')) {
+function content_562e6d999bb799_43535895 ($_smarty_tpl) {
 ?>
         <fieldset>
-            <legend>Abastecimentos</legend>
+            <legend><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</legend>
             <table class="table" text-align='center' style='width: 100%'>
                 <tr>
                     <td>Número Vale</td>
@@ -34,8 +35,9 @@ function content_56294ab67a3db5_25195686 ($_smarty_tpl) {
                     <td></td>
                 </tr>
                 <tr>
-                <form action="../executar.php" method="post">
-                    <td><label for="nrvale"><input class="form-control" type="text" style='width: 150px' id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required"/></label></td>
+               <form action="../executar.php" method="post">
+                    <td><label for="nrvale"><input class="form-control" type="text" style='width: 150px' id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" value="<?php echo $_smarty_tpl->tpl_vars['dados_abastecimentos']->value['nrvale'];?>
+"/></label></td>
                     <td><label for="motorista"><select class="form-control" name="motorista" required="required">
                             <option value='' disabled selected>Selecione o Motorista</option>
                                 <?php
@@ -142,8 +144,13 @@ $_smarty_tpl->tpl_vars['tipos_combustiveis'] = $__foreach_tipos_combustiveis_3_s
 }
 ?>
                             </select></label></td>
-                    <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" /></label></td>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar">Cadastrar</button></label></td>
+                    <input type='hidden' id='<?php echo $_smarty_tpl->tpl_vars['id_abastecimento']->value;?>
+' value='<?php echo $_smarty_tpl->tpl_vars['id_abastecimento']->value;?>
+' name='id'/>
+                    <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="<?php echo $_smarty_tpl->tpl_vars['qnt']->value;?>
+"/></label></td>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
+</button></label></td>
                     </tr>
             </table>
         </form>
