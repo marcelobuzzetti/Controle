@@ -7,47 +7,37 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     require_once('../libs/smarty/Smarty.class.php');
     include '../configs/sessao.php';
     include '../configs/conexao.php';
+    include '../class/relacao.php';
+    
         if(!isset($_POST['id'])){
 
-                try {
-                    $stmt = $pdo->prepare("SELECT * FROM combustiveis;");
-                    $executa = $stmt->execute();
+            $combustiveis = new Combustiveis();
+            $relacao_combustiveis = $combustiveis->listarCombustiveis();
+            
+            $smarty = new Smarty();
+            $smarty->assign('titulo', 'Cadastro de Combustível');
+            $smarty->assign('botao', 'Cadastrar');
+            $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
+            $smarty->assign('login', $_SESSION['login']);
+            $smarty->display('../templates/headers/header.tpl');
 
-                    if ($executa) {
-                        $relacao_combustiveis= $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    } else {
-                        print("<script language=JavaScript>
-                               alert('Não foi possível criar tabela.');
-                               </script>");
-                    }
-                } catch (PDOException $e) {
-                    echo $e->getMessage();
-                }
+            switch ($_SESSION['perfil']) {
+                case 1:
+                    $smarty->display('../templates/menus/menuAdmin.tpl');
+                    break;
+                case 2:
+                    $smarty->display('../templates/menus/menuOperador.tpl');
+                    break;
+                case 3:
+                    $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                    break;
+                case 4:
+                    $smarty->display('../templates/menus/menuMntS4.tpl');
+                    break;
+                default:
+            }
 
-                $smarty = new Smarty();
-                $smarty->assign('titulo', 'Cadastro de Combustível');
-                $smarty->assign('botao', 'Cadastrar');
-                $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
-                $smarty->assign('login', $_SESSION['login']);
-                $smarty->display('../templates/headers/header.tpl');
-
-                switch ($_SESSION['perfil']) {
-                    case 1:
-                        $smarty->display('../templates/menus/menuAdmin.tpl');
-                        break;
-                    case 2:
-                        $smarty->display('../templates/menus/menuOperador.tpl');
-                        break;
-                    case 3:
-                        $smarty->display('../templates/menus/menuMntGaragem.tpl');
-                        break;
-                    case 4:
-                        $smarty->display('../templates/menus/menuMntS4.tpl');
-                        break;
-                    default:
-                }
-
-                $smarty->display('../templates/combustiveis/index.tpl');
+            $smarty->display('../templates/combustiveis/index.tpl');
 
     } else {
                 $id = $_POST['id'];
@@ -72,21 +62,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
 
                   }
 
-            try {
-                $stmt = $pdo->prepare("SELECT * FROM combustiveis;");
-                $executa = $stmt->execute();
-
-                if ($executa) {
-                    $relacao_combustiveis= $stmt->fetchAll(PDO::FETCH_ASSOC);
-                } else {
-                    print("<script language=JavaScript>
-                           alert('Não foi possível criar tabela.');
-                           </script>");
-                }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-
+            $combustiveis = new Combustiveis();
+            $relacao_combustiveis = $combustiveis->listarCombustiveis();
             
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Atualização de Combustível');

@@ -8,55 +8,18 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     require_once('../libs/smarty/Smarty.class.php');
     include '../configs/sessao.php';
     include '../configs/conexao.php';
+    include '../class/relacao.php';
+    
     if(!isset($_POST['id'])){
         
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM marcas");
-            $executa = $stmt->execute();
+        $marcas = new Marcas();
+        $relacao_marcas = $marcas->listarMarcas();
 
-            if ($executa) {
-                $relacao_marcas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                       alert('Não foi possível criar tabela.');
-                       </script>");
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        $habiltacoes = new Habilitacoes();
+        $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
 
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM habilitacoes");
-            $executa = $stmt->execute();
-
-            if ($executa) {
-                $relacao_habilitacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                       alert('Não foi possível criar tabela.');
-                       </script>");
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        try {
-            $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp, habilitacoes.categoria AS habilitacao
-                                               FROM modelos, habilitacoes, marcas
-                                               WHERE modelos.id_habilitacao = habilitacoes.id_habilitacao
-                                               AND modelos.id_marca = marcas.id_marca;");
-            $executa = $stmt->execute();
-
-            if ($executa) {
-                $tabela_modelos_cadastrados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                       alert('Não foi possível criar tabela.');
-                       </script>");
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        $modelos = new Modelos();
+        $tabela_modelos_cadastrados = $modelos->listarModelos();
 
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Modelos');
@@ -115,53 +78,14 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                 echo $e->getMessage();
             }        
 
-            try {
-                $stmt = $pdo->prepare("SELECT * FROM marcas");
-                $executa = $stmt->execute();
+            $marcas = new Marcas();
+            $relacao_marcas = $marcas->listarMarcas();
 
-                if ($executa) {
-                    $relacao_marcas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                } else {
-                    print("<script language=JavaScript>
-                           alert('Não foi possível criar tabela.');
-                           </script>");
-                }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
+            $habiltacoes = new Habilitacoes();
+            $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
 
-            try {
-                $stmt = $pdo->prepare("SELECT * FROM habilitacoes");
-                $executa = $stmt->execute();
-
-                if ($executa) {
-                    $relacao_habilitacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                } else {
-                    print("<script language=JavaScript>
-                           alert('Não foi possível criar tabela.');
-                           </script>");
-                }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-
-            try {
-                $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp, habilitacoes.categoria AS habilitacao
-                                                   FROM modelos, habilitacoes, marcas
-                                                   WHERE modelos.id_habilitacao = habilitacoes.id_habilitacao
-                                                   AND modelos.id_marca = marcas.id_marca;");
-                $executa = $stmt->execute();
-
-                if ($executa) {
-                    $tabela_modelos_cadastrados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                } else {
-                    print("<script language=JavaScript>
-                           alert('Não foi possível criar tabela.');
-                           </script>");
-                }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
+            $modelos = new Modelos();
+            $tabela_modelos_cadastrados = $modelos->listarModelos();
 
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Atualização de Modelos');

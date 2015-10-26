@@ -7,21 +7,12 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     require_once('../libs/smarty/Smarty.class.php');
     include '../configs/sessao.php';
     include '../configs/conexao.php';
+    include '../class/relacao.php'; 
+    
     if(!isset($_POST['id'])){
-        try{
-        $stmt = $pdo->prepare("SELECT * FROM marcas;");
-        $executa = $stmt->execute();
-
-        if ($executa) {
-        $relacao_marcas= $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            print("<script language=JavaScript>
-                   alert('Não foi possível criar tabela.');
-                   </script>");
-        }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+       
+        $marcas = new Marcas();
+        $relacao_marcas = $marcas->listarMarcas();
 
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Marcas');
@@ -71,20 +62,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             echo $e->getMessage();
         }
 
-        try{
-            $stmt = $pdo->prepare("SELECT * FROM marcas;");
-            $executa = $stmt->execute();
-
-            if ($executa) {
-            $relacao_marcas= $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                       alert('Não foi possível criar tabela.');
-                       </script>");
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        $marcas = new Marcas();
+        $relacao_marcas = $marcas->listarMarcas();
 
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Atualização de Marcas');

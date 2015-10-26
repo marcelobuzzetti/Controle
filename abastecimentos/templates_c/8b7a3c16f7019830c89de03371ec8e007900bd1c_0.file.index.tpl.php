@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:14:49
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:45:11
          compiled from "/var/www/html/controle/templates/abastecimentos/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562e6d999bb799_43535895',
+  'unifunc' => 'content_562e74b8040638_69002109',
   'file_dependency' => 
   array (
     '8b7a3c16f7019830c89de03371ec8e007900bd1c' => 
     array (
       0 => '/var/www/html/controle/templates/abastecimentos/index.tpl',
-      1 => 1445883249,
+      1 => 1445883389,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562e6d999bb799_43535895')) {
-function content_562e6d999bb799_43535895 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562e74b8040638_69002109')) {
+function content_562e74b8040638_69002109 ($_smarty_tpl) {
 ?>
         <fieldset>
             <legend><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -211,7 +211,7 @@ $__foreach_tabela_relacao_abastecimentos_4_saved_local_item = $_smarty_tpl->tpl_
 ' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_abst'/>Apagar Abastecimento</form></td>
                 </form>
-            <form action='update_abastecimento.php' method='post'>
+            <form action='index.php' method='post'>
                                     <input type='hidden' id='<?php echo $_smarty_tpl->tpl_vars['tbl']->value['id_abastecimento'];?>
 ' value='<?php echo $_smarty_tpl->tpl_vars['tbl']->value['id_abastecimento'];?>
 ' name='id'/>
