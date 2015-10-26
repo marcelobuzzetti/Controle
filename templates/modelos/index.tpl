@@ -39,7 +39,7 @@
                     <tr>
                         <td></td>
                     <input type='hidden' id='{$id_modelo}' value='{$id_modelo}' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_modelo" name="enviar">{$botao}</button></label></td>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
                     </tr>
                 </form>
             </table>

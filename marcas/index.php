@@ -17,6 +17,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Marcas');
         $smarty->assign('botao', 'Cadastrar');
+        $smarty->assign('evento', 'marca');
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('../templates/headers/header.tpl');
@@ -68,6 +69,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Atualização de Marcas');
         $smarty->assign('botao', 'Atualizar');
+        $smarty->assign('evento', 'atualizar_marca');
         $smarty->assign('id_marca', $id_marca);
         $smarty->assign('descricao', $descricao);
         $smarty->assign('relacao_marcas', $relacao_marcas);

@@ -17,6 +17,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Cadastro de Combustível');
             $smarty->assign('botao', 'Cadastrar');
+            $smarty->assign('evento', 'combustivel');
             $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
             $smarty->assign('login', $_SESSION['login']);
             $smarty->display('../templates/headers/header.tpl');
@@ -68,6 +69,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Atualização de Combustível');
             $smarty->assign('botao', 'Atualizar');
+            $smarty->assign('evento', 'atualizar_combustivel');
             $smarty->assign('id_combustivel', $id_combustivel);
             $smarty->assign('descricao', $descricao);
             $smarty->assign('relacao_combustiveis', $relacao_combustiveis);

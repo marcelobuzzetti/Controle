@@ -1,53 +1,116 @@
-﻿<HTML>
-    <HEAD>
-        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-        <meta charset="UTF-8"/>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
-    </HEAD>
-    <BODY>
-        <?php
-        include "verificarLogin.php";
-        include "../menu.php";
-        include '../sessao.php';
-        ?>
+<?php 
 
-        <fieldset>
-            <legend>Cadastro de Motorista</legend>
-            <table border=2px text-align='center'style='width: 20%'>
-                <form autocomplete="off" action="../executar.php" method="post">
-                    <tr>
-                        <td>Nome de Guerra</td>
-                        <td><label for="nome"><input autofocus class="form-control" type="text" style='width: 150px' id="nome" name="nome" placeholder="Nome" required="required"/></label></td>
-                    </tr>
-                    <tr>
-                        <td>Posto/Grad</td>
-                        <td><label for="pg"><select class="form-control" name="pg">
-                                    <?php
-                                    include 'relacao_postograd.php';
-                                    ?>
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td>Categoria</td>
-                        <td><label for="categoria"><select class="form-control" name="categoria">
-                                    <?php
-                                    include 'relacao_habilitacao.php';
-                                    ?>
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="motorista" name="enviar">Cadastrar</button></label></td>
-                    </tr>
-                </form>
-            </table>
-        </fieldset>
-    </BODY>
-</HTML>
+session_start();
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
+    header('Location: ../percursos');
+} else {
 
-<?php
-include 'tabela_motorista_cadastrados.php';
-?>
+    require_once('../libs/smarty/Smarty.class.php');
+    include '../configs/sessao.php';
+    include '../configs/conexao.php';
+    include '../class/relacao.php';
+    
+    if(!isset($_POST['id'])){
+        
+        $postograd = new PostoGrad();
+        $relacao_posto_grad = $postograd->listarPostoGrad();
+        
+        $habiltacoes = new Habilitacoes();
+        $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
+        
+        $motoristas = new Motorista();
+        $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
+        
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Cadastro de Motoristas');
+        $smarty->assign('botao', 'Cadastrar');
+        $smarty->assign('evento', 'motorista');
+        $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
+        $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+        $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
+        $smarty->assign('login', $_SESSION['login']);
+        $smarty->display('../templates/headers/header.tpl');
+
+        switch ($_SESSION['perfil']) {
+            case 1:
+                $smarty->display('../templates/menus/menuAdmin.tpl');
+                break;
+            case 2:
+                $smarty->display('../templates/menus/menuOperador.tpl');
+                break;
+            case 3:
+                $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                break;
+            case 4:
+                $smarty->display('../templates/menus/menuMntS4.tpl');
+                break;
+            default:
+        }
+
+        $smarty->display('../templates/motoristas/index.tpl');
+
+    } else {
+        
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_motorista = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                $dados_motoristas = $stmt->fetch(PDO::FETCH_OBJ);
+                $id_motorista = $dados_motoristas->id_motorista;
+                $nome = $dados_motoristas->nome;
+
+            } else {
+            print("<script language=JavaScript>
+                   alert('Não foi possível criar tabela.');
+                   </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        
+        $postograd = new PostoGrad();
+        $relacao_posto_grad = $postograd->listarPostoGrad();
+        
+        $habiltacoes = new Habilitacoes();
+        $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
+        
+        $motoristas = new Motorista();
+        $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
+        
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Cadastro de Motoristas');
+        $smarty->assign('botao', 'Atualizar');
+        $smarty->assign('evento', 'atualizar_motorista');
+        $smarty->assign('id_motorista', $id_motorista);
+        $smarty->assign('nome', $nome);
+        $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
+        $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+        $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
+        $smarty->assign('login', $_SESSION['login']);
+        $smarty->display('../templates/headers/header.tpl');
+
+        switch ($_SESSION['perfil']) {
+            case 1:
+                $smarty->display('../templates/menus/menuAdmin.tpl');
+                break;
+            case 2:
+                $smarty->display('../templates/menus/menuOperador.tpl');
+                break;
+            case 3:
+                $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                break;
+            case 4:
+                $smarty->display('../templates/menus/menuMntS4.tpl');
+                break;
+            default:
+        }
+
+        $smarty->display('../templates/motoristas/index.tpl');
+        
+    }
+       
+}

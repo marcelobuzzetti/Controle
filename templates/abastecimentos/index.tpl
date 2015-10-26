@@ -39,7 +39,7 @@
                             </select></label></td>
                     <input type='hidden' id='{$id_abastecimento}' value='{$id_abastecimento}' name='id'/>
                     <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></label></td>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar">{$botao}</button></label></td>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
                     </tr>
             </table>
         </form>

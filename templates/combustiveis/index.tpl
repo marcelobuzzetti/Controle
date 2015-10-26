@@ -8,7 +8,7 @@
                     </tr>
                     <td></td>
                     <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_combustivel" name="enviar">{$botao}</button></label></td>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
                     </tr>
                 </form>
             </table>

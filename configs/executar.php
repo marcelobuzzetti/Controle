@@ -232,7 +232,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./motoristas');
+        header('Location: ../motoristas');
 
         break;
 
@@ -254,7 +254,7 @@ switch ($_POST['enviar']) {
             $apelido = $sigla[0] . " " . $nome;
 
             $stmt = $pdo->prepare("UPDATE motoristas
-                                                SET nome = ?, id_habilitacao = ?, posto_grad = ?, apelido = ?
+                                                SET nome = ?, id_habilitacao = ?, id_posto_grad = ?, apelido = ?
                                                 WHERE id_motorista = ?");
             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
             $stmt->bindParam(2, $categoria, PDO::PARAM_INT);
@@ -272,7 +272,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./motoristas');
+        header('Location: ../motoristas');
 
         break;
 
@@ -295,7 +295,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./motoristas');
+        header('Location: ../motoristas');
 
         break;
 

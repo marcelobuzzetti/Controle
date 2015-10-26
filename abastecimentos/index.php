@@ -29,6 +29,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Cadastro de Abastecimentos');
             $smarty->assign('botao', 'Cadastrar');
+            $smarty->assign('evento', 'abst');
             $smarty->assign('relacao_motoristas', $relacao_motoristas);
             $smarty->assign('relacao_viaturas', $relacao_viaturas );
             $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
@@ -96,6 +97,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Atualização de Abastecimentos');
         $smarty->assign('botao', 'Atualizar');
+        $smarty->assign('evento', 'atualizar_abst');
         $smarty->assign('id_abastecimento', $id_abastecimento);
         $smarty->assign('qnt', $qnt);
         $smarty->assign('relacao_motoristas', $relacao_motoristas );

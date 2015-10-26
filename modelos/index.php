@@ -24,6 +24,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Modelos');
         $smarty->assign('botao', 'Cadastrar');
+        $smarty->assign('evento', 'cadastrar_modelo');
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_modelos_cadastrados', $tabela_modelos_cadastrados);
@@ -90,6 +91,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Atualização de Modelos');
             $smarty->assign('botao', 'Atualizar');
+            $smarty->assign('evento', 'atualizar_modelo');
             $smarty->assign('id_modelo', $id_modelo);
             $smarty->assign('descricao', $descricao);
             $smarty->assign('cap_tanque', $cap_tanque);

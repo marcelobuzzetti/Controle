@@ -3,8 +3,7 @@ class Motorista{
     public function listarMotoristas(){
         include '../configs/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_motorista, apelido
-                                                FROM motoristas");
+            $stmt = $pdo->prepare("SELECT * FROM motoristas");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -19,6 +18,28 @@ class Motorista{
                 echo $e->getMessage();
             }   
     }   
+    
+    public function listarMotoristasCadastrados(){
+        include '../configs/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT id_motorista, nome, habilitacoes.categoria AS categoria, sigla
+                                                FROM motoristas, habilitacoes, posto_grad
+                                                WHERE motoristas.id_habilitacao = habilitacoes.id_habilitacao
+                                                AND motoristas.id_posto_grad = posto_grad.id_posto_grad");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }   
+    }
 }
 
 class Viatura{ 
@@ -197,5 +218,23 @@ class Modelos{
             echo $e->getMessage();
         }
     }   
+}
+
+class PostoGrad{ 
+    public function listarPostoGrad(){
+        include '../configs/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM posto_grad");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                echo 'Erro ao inserir os dados';
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        }
 }
 ?>

@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:07:28
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 19:43:26
          compiled from "/var/www/html/controle/templates/combustiveis/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562e6be08888e3_98144829',
+  'unifunc' => 'content_562e9e7e9536b7_54385986',
   'file_dependency' => 
   array (
     '730a70ae466b87612f54142c695c660d912700eb' => 
     array (
       0 => '/var/www/html/controle/templates/combustiveis/index.tpl',
-      1 => 1445882820,
+      1 => 1445895762,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562e6be08888e3_98144829')) {
-function content_562e6be08888e3_98144829 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562e9e7e9536b7_54385986')) {
+function content_562e9e7e9536b7_54385986 ($_smarty_tpl) {
 ?>
       <fieldset>
             <legend><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -35,7 +35,8 @@ function content_562e6be08888e3_98144829 ($_smarty_tpl) {
                     <input type='hidden' id='<?php echo $_smarty_tpl->tpl_vars['id_combustivel']->value;?>
 ' value='<?php echo $_smarty_tpl->tpl_vars['id_combustivel']->value;?>
 ' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_combustivel" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="<?php echo $_smarty_tpl->tpl_vars['evento']->value;?>
+" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
 </button></label></td>
                     </tr>
                 </form>
