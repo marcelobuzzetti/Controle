@@ -12,13 +12,13 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     
     if(!isset($_POST['id'])){
         
-        $marcas = new Marcas();
+        $marcas = new Marca();
         $relacao_marcas = $marcas->listarMarcas();
 
-        $habiltacoes = new Habilitacoes();
+        $habiltacoes = new Habilitacao();
         $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
 
-        $modelos = new Modelos();
+        $modelos = new Modelo();
         $tabela_modelos_cadastrados = $modelos->listarModelos();
 
         $smarty = new Smarty();
@@ -79,13 +79,13 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                 echo $e->getMessage();
             }        
 
-            $marcas = new Marcas();
+            $marcas = new Marca();
             $relacao_marcas = $marcas->listarMarcas();
 
-            $habiltacoes = new Habilitacoes();
+            $habiltacoes = new Habilitacao();
             $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
 
-            $modelos = new Modelos();
+            $modelos = new Modelo();
             $tabela_modelos_cadastrados = $modelos->listarModelos();
 
             $smarty = new Smarty();

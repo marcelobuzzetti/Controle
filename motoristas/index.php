@@ -15,7 +15,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $postograd = new PostoGrad();
         $relacao_posto_grad = $postograd->listarPostoGrad();
         
-        $habiltacoes = new Habilitacoes();
+        $habiltacoes = new Habilitacao();
         $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
         
         $motoristas = new Motorista();
@@ -75,7 +75,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $postograd = new PostoGrad();
         $relacao_posto_grad = $postograd->listarPostoGrad();
         
-        $habiltacoes = new Habilitacoes();
+        $habiltacoes = new Habilitacao();
         $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
         
         $motoristas = new Motorista();

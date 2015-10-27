@@ -17,13 +17,13 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $viaturas = new Viatura();
             $relacao_viaturas = $viaturas->listarViaturas();
             
-            $combustiveis = new Combustiveis();
+            $combustiveis = new Combustivel();
             $relacao_combustiveis = $combustiveis->listarCombustiveisAbastecimento();
             
-            $tipos_combustiveis = new TiposCombustiveis();
+            $tipos_combustiveis = new TipoCombustivel();
             $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveisAbastecimento();
 
-           $abastecimentos = new Abastecimentos();
+           $abastecimentos = new Abastecimento();
            $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();            
 
             $smarty = new Smarty();
@@ -85,13 +85,13 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $viaturas = new Viatura();
         $relacao_viaturas = $viaturas->listarViaturas();
         
-        $combustiveis = new Combustiveis();
+        $combustiveis = new Combustivel();
         $relacao_combustiveis = $combustiveis->listarCombustiveisAbastecimento();
             
         $tipos_combustiveis = new TiposCombustiveis();
         $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveisAbastecimento();
 
-        $abastecimentos = new Abastecimentos();
+        $abastecimentos = new Abastecimento();
         $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();            
 
         $smarty = new Smarty();

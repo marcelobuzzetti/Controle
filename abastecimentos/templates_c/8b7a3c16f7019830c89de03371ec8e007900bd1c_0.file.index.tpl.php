@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:45:11
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 20:07:23
          compiled from "/var/www/html/controle/templates/abastecimentos/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562e74b8040638_69002109',
+  'unifunc' => 'content_562ea41b1e2d82_64719070',
   'file_dependency' => 
   array (
     '8b7a3c16f7019830c89de03371ec8e007900bd1c' => 
     array (
       0 => '/var/www/html/controle/templates/abastecimentos/index.tpl',
-      1 => 1445883389,
+      1 => 1445895673,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562e74b8040638_69002109')) {
-function content_562e74b8040638_69002109 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562ea41b1e2d82_64719070')) {
+function content_562ea41b1e2d82_64719070 ($_smarty_tpl) {
 ?>
         <fieldset>
             <legend><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -149,7 +149,8 @@ $_smarty_tpl->tpl_vars['tipos_combustiveis'] = $__foreach_tipos_combustiveis_3_s
 ' name='id'/>
                     <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="<?php echo $_smarty_tpl->tpl_vars['qnt']->value;?>
 "/></label></td>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="abst" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="<?php echo $_smarty_tpl->tpl_vars['evento']->value;?>
+" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
 </button></label></td>
                     </tr>
             </table>

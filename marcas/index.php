@@ -11,7 +11,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     
     if(!isset($_POST['id'])){
        
-        $marcas = new Marcas();
+        $marcas = new Marca();
         $relacao_marcas = $marcas->listarMarcas();
 
         $smarty = new Smarty();
@@ -63,7 +63,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             echo $e->getMessage();
         }
 
-        $marcas = new Marcas();
+        $marcas = new Marca();
         $relacao_marcas = $marcas->listarMarcas();
 
         $smarty = new Smarty();

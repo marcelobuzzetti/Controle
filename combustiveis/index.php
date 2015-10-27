@@ -11,7 +11,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     
         if(!isset($_POST['id'])){
 
-            $combustiveis = new Combustiveis();
+            $combustiveis = new Combustivel();
             $relacao_combustiveis = $combustiveis->listarCombustiveis();
             
             $smarty = new Smarty();
@@ -63,7 +63,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
 
                   }
 
-            $combustiveis = new Combustiveis();
+            $combustiveis = new Combustivel();
             $relacao_combustiveis = $combustiveis->listarCombustiveis();
             
             $smarty = new Smarty();

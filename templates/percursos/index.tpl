@@ -10,7 +10,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                <form autocomplete="off" action="../../configs/executar.php" method="post">
+                <form autocomplete="off" action="../configs/executar.php" method="post">
                     <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
                                 <option value='' disabled selected>Selecione a Viatura</option>
                                 {foreach $relacao_viaturas as $viatura}
@@ -46,29 +46,31 @@
             <td></td>
             <td></td> 
         </tr>
-        {foreach $tabela_relacao_vtr as $vtr name=relacao_vtr}
-            <tr><form action='../../configs/executar.php' method='post' id="{$contador}">
-                <input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id="{$contador}" value="{$vtr.id_percurso}"/>
+        {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
+            <tr><form action='../configs/executar.php' method='post' id="{$contador}">
+                <input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
                 <td>{$smarty.foreach.relacao_vtr.iteration}</td>
-                <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
-                <td>{$vtr.apelido}</td>
-                <td>{$vtr.nome_destino}</td>
-                <td>{$vtr.odo_saida}</td>
-                <td>{$vtr.acompanhante}</td>
-                <td>{$vtr.data_saida}</td>
-                <td>{$vtr.hora_saida}</td>
+                <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
+                <td>{$tbl.apelido}</td>
+                <td>{$tbl.nome_destino}</td>
+                <td>{$tbl.odo_saida}</td>
+                <td>{$tbl.acompanhante}</td>
+                <td>{$tbl.data_saida}</td>
+                <td>{$tbl.hora_saida}</td>
                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' min="{$vtr.odo_saida}" style='width: 120px;'/></td>
                 <td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>
-        <form action='../../configs/executar.php' method='post'>
-            <input type='hidden' id="{$vtr.id_percurso}"value="{$vtr.id_percurso}" name='id'/>
-            <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar' onclick='preenche({$contador},{$vtr.id_percurso})'/></form></td>";
-</tr></form>
+                <form action='../configs/executar.php' method='post'>
+                    <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
+                    <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar' onclick='preenche({$contador},{$vtr.id_percurso})'/></form></td>";
+                </tr>
+                </form>
 </tr>
 {/foreach}    
 </table>  
 <table class='table'>
     <caption>Viaturas Fechadas</caption>
     <tr>
+        <td>Ordem</td>
         <td>Viatura</td>
         <td>Motorista</td>
         <td>Destino</td>
@@ -80,18 +82,19 @@
         <td>Data Chegada</td>
         <td>Hora Chegada</td>
     </tr>
-    {foreach $tabela_relacao_vtr_fechadas as $vtr}
+    {foreach $tabela_relacao_vtr_fechadas as $tbl1 name=relacao_vtr_fechadas}
         <tr>
-            <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
-            <td>{$vtr.apelido}</td>
-            <td>{$vtr.nome_destino}</td>
-            <td>{$vtr.odo_saida}</td>
-            <td>{$vtr.acompanhante}</td>
-            <td>{$vtr.data_saida}</td>
-            <td>{$vtr.hora_saida}</td>
-            <td>{$vtr.odo_retorno}</td>
-            <td>{$vtr.data_retorno}</td>
-            <td>{$vtr.hora_retorno}</td>
+            <td>{$smarty.foreach.relacao_vtr_fechadas.iteration}</td>
+            <td>{$tbl1.marca} - {$tbl1.modelo} - {$tbl1.placa}</td>
+            <td>{$tbl1.apelido}</td>
+            <td>{$tbl1.nome_destino}</td>
+            <td>{$tbl1.odo_saida}</td>
+            <td>{$tbl1.acompanhante}</td>
+            <td>{$tbl1.data_saida}</td>
+            <td>{$tbl1.hora_saida}</td>
+            <td>{$tbl1.odo_retorno}</td>
+            <td>{$tbl1.data_retorno}</td>
+            <td>{$tbl1.hora_retorno}</td>
         </tr>
     {/foreach}    
 </table>  

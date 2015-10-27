@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 16:23:39
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-26 20:07:02
          compiled from "/var/www/html/controle/templates/marcas/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562e6fabe3b6a3_70856365',
+  'unifunc' => 'content_562ea406353307_93246939',
   'file_dependency' => 
   array (
     'e8d4d9052698f8a9b678bb7102fe9f4d4de17580' => 
     array (
       0 => '/var/www/html/controle/templates/marcas/index.tpl',
-      1 => 1445883815,
+      1 => 1445896103,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562e6fabe3b6a3_70856365')) {
-function content_562e6fabe3b6a3_70856365 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562ea406353307_93246939')) {
+function content_562ea406353307_93246939 ($_smarty_tpl) {
 ?>
  <fieldset>
             <legend><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
@@ -35,7 +35,8 @@ function content_562e6fabe3b6a3_70856365 ($_smarty_tpl) {
                     <input type='hidden' id='<?php echo $_smarty_tpl->tpl_vars['id_marca']->value;?>
 ' value='<?php echo $_smarty_tpl->tpl_vars['id_marca']->value;?>
 ' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="atualizar_marca" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
+                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="<?php echo $_smarty_tpl->tpl_vars['evento']->value;?>
+" name="enviar"><?php echo $_smarty_tpl->tpl_vars['botao']->value;?>
 </button></label></td>
                     </tr>
                 </form>

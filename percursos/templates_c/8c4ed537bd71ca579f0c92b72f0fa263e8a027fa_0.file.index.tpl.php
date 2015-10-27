@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-24 16:12:10
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-27 12:55:53
          compiled from "/var/www/html/controle/templates/percursos/index.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_562bc9fa2d3493_36521681',
+  'unifunc' => 'content_562f9079750a37_84615121',
   'file_dependency' => 
   array (
     '8c4ed537bd71ca579f0c92b72f0fa263e8a027fa' => 
     array (
       0 => '/var/www/html/controle/templates/percursos/index.tpl',
-      1 => 1445710155,
+      1 => 1445957751,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_562bc9fa2d3493_36521681')) {
-function content_562bc9fa2d3493_36521681 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562f9079750a37_84615121')) {
+function content_562f9079750a37_84615121 ($_smarty_tpl) {
 ?>
   <fieldset>
             <legend>Controle de Saída de Viatura</legend>
@@ -33,7 +33,7 @@ function content_562bc9fa2d3493_36521681 ($_smarty_tpl) {
                     <td></td>
                 </tr>
                 <tr>
-                <form autocomplete="off" action="../../configs/executar.php" method="post">
+                <form autocomplete="off" action="../configs/executar.php" method="post">
                     <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
                                 <option value='' disabled selected>Selecione a Viatura</option>
                                 <?php
@@ -117,65 +117,67 @@ if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
 $__foreach_relacao_vtr_2_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr'] : false;
-$__foreach_relacao_vtr_2_saved_item = isset($_smarty_tpl->tpl_vars['vtr']) ? $_smarty_tpl->tpl_vars['vtr'] : false;
-$_smarty_tpl->tpl_vars['vtr'] = new Smarty_Variable();
+$__foreach_relacao_vtr_2_saved_item = isset($_smarty_tpl->tpl_vars['tbl']) ? $_smarty_tpl->tpl_vars['tbl'] : false;
+$_smarty_tpl->tpl_vars['tbl'] = new Smarty_Variable();
 $__foreach_relacao_vtr_2_total = $_smarty_tpl->_count($_from);
 $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr'] = new Smarty_Variable(array('iteration' => 0));
 if ($__foreach_relacao_vtr_2_total) {
-foreach ($_from as $_smarty_tpl->tpl_vars['vtr']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['tbl']->value) {
 $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr']->value['iteration']++;
-$__foreach_relacao_vtr_2_saved_local_item = $_smarty_tpl->tpl_vars['vtr'];
+$__foreach_relacao_vtr_2_saved_local_item = $_smarty_tpl->tpl_vars['tbl'];
 ?>
-            <tr><form action='../../configs/executar.php' method='post' id="<?php echo $_smarty_tpl->tpl_vars['contador']->value;?>
+            <tr><form action='../configs/executar.php' method='post' id="<?php echo $_smarty_tpl->tpl_vars['contador']->value;?>
 ">
                 <input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id="<?php echo $_smarty_tpl->tpl_vars['contador']->value;?>
-" value="<?php echo $_smarty_tpl->tpl_vars['vtr']->value['id_percurso'];?>
+" value="<?php echo $_smarty_tpl->tpl_vars['tbl']->value['id_percurso'];?>
 "/>
                 <td><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr']->value['iteration'] : null);?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['marca'];?>
- - <?php echo $_smarty_tpl->tpl_vars['vtr']->value['modelo'];?>
- - <?php echo $_smarty_tpl->tpl_vars['vtr']->value['placa'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['marca'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['tbl']->value['modelo'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['tbl']->value['placa'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['apelido'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['apelido'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['nome_destino'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['nome_destino'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['odo_saida'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['odo_saida'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['acompanhante'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['acompanhante'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['data_saida'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['data_saida'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['hora_saida'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['tbl']->value['hora_saida'];?>
 </td>
                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' min="<?php echo $_smarty_tpl->tpl_vars['vtr']->value['odo_saida'];?>
 " style='width: 120px;'/></td>
                 <td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>
-        <form action='../../configs/executar.php' method='post'>
-            <input type='hidden' id="<?php echo $_smarty_tpl->tpl_vars['vtr']->value['id_percurso'];?>
-"value="<?php echo $_smarty_tpl->tpl_vars['vtr']->value['id_percurso'];?>
+                <form action='../configs/executar.php' method='post'>
+                    <input type='hidden' id="<?php echo $_smarty_tpl->tpl_vars['tbl']->value['id_percurso'];?>
+"value="<?php echo $_smarty_tpl->tpl_vars['tbl']->value['id_percurso'];?>
 " name='id'/>
-            <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar' onclick='preenche(<?php echo $_smarty_tpl->tpl_vars['contador']->value;?>
+                    <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar' onclick='preenche(<?php echo $_smarty_tpl->tpl_vars['contador']->value;?>
 ,<?php echo $_smarty_tpl->tpl_vars['vtr']->value['id_percurso'];?>
 )'/></form></td>";
-</tr></form>
+                </tr>
+                </form>
 </tr>
 <?php
-$_smarty_tpl->tpl_vars['vtr'] = $__foreach_relacao_vtr_2_saved_local_item;
+$_smarty_tpl->tpl_vars['tbl'] = $__foreach_relacao_vtr_2_saved_local_item;
 }
 }
 if ($__foreach_relacao_vtr_2_saved) {
 $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr'] = $__foreach_relacao_vtr_2_saved;
 }
 if ($__foreach_relacao_vtr_2_saved_item) {
-$_smarty_tpl->tpl_vars['vtr'] = $__foreach_relacao_vtr_2_saved_item;
+$_smarty_tpl->tpl_vars['tbl'] = $__foreach_relacao_vtr_2_saved_item;
 }
 ?>    
 </table>  
 <table class='table'>
     <caption>Viaturas Fechadas</caption>
     <tr>
+        <td>Ordem</td>
         <td>Viatura</td>
         <td>Motorista</td>
         <td>Destino</td>
@@ -192,43 +194,51 @@ $_from = $_smarty_tpl->tpl_vars['tabela_relacao_vtr_fechadas']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_vtr_3_saved_item = isset($_smarty_tpl->tpl_vars['vtr']) ? $_smarty_tpl->tpl_vars['vtr'] : false;
-$_smarty_tpl->tpl_vars['vtr'] = new Smarty_Variable();
-$__foreach_vtr_3_total = $_smarty_tpl->_count($_from);
-if ($__foreach_vtr_3_total) {
-foreach ($_from as $_smarty_tpl->tpl_vars['vtr']->value) {
-$__foreach_vtr_3_saved_local_item = $_smarty_tpl->tpl_vars['vtr'];
+$__foreach_relacao_vtr_fechadas_3_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas'] : false;
+$__foreach_relacao_vtr_fechadas_3_saved_item = isset($_smarty_tpl->tpl_vars['tbl1']) ? $_smarty_tpl->tpl_vars['tbl1'] : false;
+$_smarty_tpl->tpl_vars['tbl1'] = new Smarty_Variable();
+$__foreach_relacao_vtr_fechadas_3_total = $_smarty_tpl->_count($_from);
+$_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas'] = new Smarty_Variable(array('iteration' => 0));
+if ($__foreach_relacao_vtr_fechadas_3_total) {
+foreach ($_from as $_smarty_tpl->tpl_vars['tbl1']->value) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas']->value['iteration']++;
+$__foreach_relacao_vtr_fechadas_3_saved_local_item = $_smarty_tpl->tpl_vars['tbl1'];
 ?>
         <tr>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['marca'];?>
- - <?php echo $_smarty_tpl->tpl_vars['vtr']->value['modelo'];?>
- - <?php echo $_smarty_tpl->tpl_vars['vtr']->value['placa'];?>
+            <td><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas']->value['iteration'] : null);?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['apelido'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['marca'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['tbl1']->value['modelo'];?>
+ - <?php echo $_smarty_tpl->tpl_vars['tbl1']->value['placa'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['nome_destino'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['apelido'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['odo_saida'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['nome_destino'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['acompanhante'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['odo_saida'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['data_saida'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['acompanhante'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['hora_saida'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['data_saida'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['odo_retorno'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['hora_saida'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['data_retorno'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['odo_retorno'];?>
 </td>
-            <td><?php echo $_smarty_tpl->tpl_vars['vtr']->value['hora_retorno'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['data_retorno'];?>
+</td>
+            <td><?php echo $_smarty_tpl->tpl_vars['tbl1']->value['hora_retorno'];?>
 </td>
         </tr>
     <?php
-$_smarty_tpl->tpl_vars['vtr'] = $__foreach_vtr_3_saved_local_item;
+$_smarty_tpl->tpl_vars['tbl1'] = $__foreach_relacao_vtr_fechadas_3_saved_local_item;
 }
 }
-if ($__foreach_vtr_3_saved_item) {
-$_smarty_tpl->tpl_vars['vtr'] = $__foreach_vtr_3_saved_item;
+if ($__foreach_relacao_vtr_fechadas_3_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_relacao_vtr_fechadas'] = $__foreach_relacao_vtr_fechadas_3_saved;
+}
+if ($__foreach_relacao_vtr_fechadas_3_saved_item) {
+$_smarty_tpl->tpl_vars['tbl1'] = $__foreach_relacao_vtr_fechadas_3_saved_item;
 }
 ?>    
 </table>  

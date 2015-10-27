@@ -63,9 +63,63 @@ class Viatura{
                 echo $e->getMessage();
             }
     }   
+    
+    public function listarViaturasPercursos(){
+        include '../configs/conexao.php';
+         try {
+                $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+                                                        FROM percursos, viaturas, motoristas, marcas, modelos, destinos
+                                                        WHERE data_retorno IS NULL 
+                                                        AND percursos.id_motorista = motoristas.id_motorista
+                                                        AND percursos.id_viatura = viaturas.id_viatura
+                                                        AND viaturas.id_marca = marcas.id_marca
+                                                        AND viaturas.id_modelo = modelos.id_modelo
+                                                        AND percursos.id_destino = destinos.id_destino
+                                                        ORDER BY id_percurso DESC");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);                    
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+                
+                } catch (PDOException $e) {
+                    echo $e->getMessage();                    
+                }            
+            }
+            
+            public function listarViaturasPercursosDisponiveis(){
+        include '../configs/conexao.php';
+         try {
+                $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
+                                                    FROM viaturas, marcas, modelos
+                                                    WHERE viaturas.id_marca = marcas.id_marca 
+                                                    AND viaturas.id_modelo = modelos.id_modelo 
+                                                    AND id_viatura NOT IN (SELECT id_viatura 
+                                                                                          FROM percursos 
+                                                                                          WHERE data_retorno IS NULL)
+                                                    AND id_situacao != 2
+                                                    ORDER BY marcas.descricao AND modelos.descricao");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);                    
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+                
+                } catch (PDOException $e) {
+                    echo $e->getMessage();                    
+                }            
+            }
 }
 
-class Combustiveis{ 
+class Combustivel{ 
     public function listarCombustiveisAbastecimento(){
         include '../configs/conexao.php';
          try {
@@ -107,8 +161,27 @@ class Combustiveis{
     }   
 
 
-class TiposCombustiveis{ 
-    public function listarTiposCombustiveisAbastecimento(){
+class TipoCombustivel{ 
+    
+public function listarTiposCombustiveis(){
+        include '../configs/conexao.php';
+          try {
+                $stmt = $pdo->prepare("SELECT * FROM tipos_combustiveis");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                    print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela.');
+                         </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+    }    
+
+public function listarTiposCombustiveisAbastecimento(){
         include '../configs/conexao.php';
           try {
                 $stmt = $pdo->prepare("SELECT tipos_combustiveis.id_tipo_combustivel AS id_tipo, descricao 
@@ -130,7 +203,7 @@ class TiposCombustiveis{
     }   
 }
 
-class Abastecimentos{ 
+class Abastecimento{ 
     public function listarAbastecimentos(){
         include '../configs/conexao.php';
           try {
@@ -157,7 +230,7 @@ class Abastecimentos{
     }   
 }
 
-class Marcas{ 
+class Marca{ 
     public function listarMarcas(){
         include '../configs/conexao.php';
           try{
@@ -177,7 +250,7 @@ class Marcas{
     }   
 }
 
-class Habilitacoes{ 
+class Habilitacao{ 
     public function listarHabilitacoes(){
         include '../configs/conexao.php';
           try {
@@ -197,7 +270,7 @@ class Habilitacoes{
     }   
 }
 
-class Modelos{ 
+class Modelo{ 
     public function listarModelos(){
         include '../configs/conexao.php';
          try {
@@ -236,5 +309,60 @@ class PostoGrad{
             echo $e->getMessage();
         }
         }
+}
+
+class Percurso{
+    public function listarPercursosFechadas(){
+        include '../configs/conexao.php';
+         try {
+                $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+                                                    FROM percursos, viaturas, motoristas, marcas, modelos, destinos
+                                                    WHERE data_retorno IS NOT NULL 
+                                                    AND percursos.id_motorista = motoristas.id_motorista
+                                                    AND percursos.id_viatura = viaturas.id_viatura
+                                                    AND viaturas.id_marca = marcas.id_marca
+                                                    AND viaturas.id_modelo = modelos.id_modelo
+                                                    AND percursos.id_destino = destinos.id_destino
+                                                    AND data_retorno BETWEEN (SELECT DATE_SUB(date(now()), INTERVAL 7 DAY)) AND  (SELECT DATE(NOW()))
+                                                    ORDER BY id_percurso DESC");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);                    
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+                
+                } catch (PDOException $e) {
+                    echo $e->getMessage();                    
+                }            
+            }
+    
+}
+
+class RecebimentoCombustivel{
+    public function listarRecebimentoCombustiveis(){
+        include '../configs/conexao.php';
+         try {
+                $stmt = $pdo->prepare("SELECT id_recibo_combustivel,combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo,qnt, motivo, data, hora
+                                                    FROM tipos_combustiveis,combustiveis,recibos_combustiveis
+                                                    WHERE recibos_combustiveis.id_combustivel =combustiveis.id_combustivel
+                                                    AND recibos_combustiveis.id_tipo_combustivel =tipos_combustiveis.id_tipo_combustivel; ");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);                    
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+                
+                } catch (PDOException $e) {
+                    echo $e->getMessage();                    
+                }            
+            }
 }
 ?>

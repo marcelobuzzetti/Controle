@@ -515,7 +515,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./recibos_combustiveis/');
+        header('Location: ../recibos_combustiveis/');
 
         break;
 
@@ -524,7 +524,8 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("DELETE FROM recibos_combustiveis
-                                                WHERE id_recibo_combustivel =" . $id);
+                                                WHERE id_recibo_combustivel = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -536,7 +537,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./recibos_combustiveis');
+        header('Location: ../recibos_combustiveis');
 
         break;
 
@@ -549,11 +550,12 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("UPDATE recibos_combustiveis
-                                                SET id_combustivel = ?, id_tipo_combustivel =?, qnt = ?, motivo = ?, data = NOW(), hora = NOW() WHERE id_recibo_combustivel =" . $id);
+                                                SET id_combustivel = ?, id_tipo_combustivel =?, qnt = ?, motivo = ?, data = NOW(), hora = NOW() WHERE id_recibo_combustivel = ?");
             $stmt->bindParam(1, $combustivel, PDO::PARAM_INT);
             $stmt->bindParam(2, $tp, PDO::PARAM_INT);
             $stmt->bindParam(3, $qnt, PDO::PARAM_INT);
             $stmt->bindParam(4, $motivo, PDO::PARAM_STR);
+            $stmt->bindParam(5, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -565,7 +567,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./recibos_combustiveis');
+        header('Location: ../recibos_combustiveis');
 
         break;
 
