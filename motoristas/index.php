@@ -10,16 +10,17 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     include '../configs/conexao.php';
     include '../class/relacao.php';
     
+    $postograd = new PostoGrad();
+    $relacao_posto_grad = $postograd->listarPostoGrad();
+
+    $habiltacoes = new Habilitacao();
+    $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
+
+    $motoristas = new Motorista();
+    $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
+
+    
     if(!isset($_POST['id'])){
-        
-        $postograd = new PostoGrad();
-        $relacao_posto_grad = $postograd->listarPostoGrad();
-        
-        $habiltacoes = new Habilitacao();
-        $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
-        
-        $motoristas = new Motorista();
-        $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
         
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Motoristas');
@@ -71,15 +72,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        
-        $postograd = new PostoGrad();
-        $relacao_posto_grad = $postograd->listarPostoGrad();
-        
-        $habiltacoes = new Habilitacao();
-        $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
-        
-        $motoristas = new Motorista();
-        $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
         
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Motoristas');

@@ -14,8 +14,8 @@
                     <li><a href="../recibos_combustiveis/index.php">Cadastrar Recebimento de Combustível</a></li>
                     <li><a href="../abastecimentos/index.php">Cadastrar Abastecimento</a></li>
                     <li><a href="../usuarios/index.php">Cadastrar Usuário</a></li>
-                    <li><a href="../tabelas/tabela_relacao_vtr.php" target="_blank">Relatório do Sv</a></li>
-                    <li><a href="../tabelas/index.php" >Relatório por Data</a></li>
+                    <li><a href="../relatorios/tabela_relacao_vtr.php" target="_blank">Relatório do Sv</a></li>
+                    <li><a href="../relatorios/index.php" >Relatório por Data</a></li>
                 </ul>
             </li>
             <li><a>Olá {$login}</a></li>

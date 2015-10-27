@@ -10,17 +10,17 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     include '../configs/conexao.php';
     include '../class/relacao.php';
     
+    $marcas = new Marca();
+    $relacao_marcas = $marcas->listarMarcas();
+
+    $habiltacoes = new Habilitacao();
+    $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
+
+    $modelos = new Modelo();
+    $tabela_modelos_cadastrados = $modelos->listarModelos();
+    
     if(!isset($_POST['id'])){
         
-        $marcas = new Marca();
-        $relacao_marcas = $marcas->listarMarcas();
-
-        $habiltacoes = new Habilitacao();
-        $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
-
-        $modelos = new Modelo();
-        $tabela_modelos_cadastrados = $modelos->listarModelos();
-
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Modelos');
         $smarty->assign('botao', 'Cadastrar');
@@ -77,17 +77,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage();
-            }        
-
-            $marcas = new Marca();
-            $relacao_marcas = $marcas->listarMarcas();
-
-            $habiltacoes = new Habilitacao();
-            $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
-
-            $modelos = new Modelo();
-            $tabela_modelos_cadastrados = $modelos->listarModelos();
-
+            }
+            
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Atualização de Modelos');
             $smarty->assign('botao', 'Atualizar');

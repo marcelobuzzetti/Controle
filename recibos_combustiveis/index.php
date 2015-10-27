@@ -8,17 +8,18 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     include '../configs/sessao.php';
     include '../configs/conexao.php';
     include '../class/relacao.php';
+
+    $combustiveis = new Combustivel();
+    $relacao_combustiveis = $combustiveis->listarCombustiveis();
+
+    $tipos_combustiveis = new TipoCombustivel();
+    $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveis();
+
+    $rcb_combustiveis = new RecebimentoCombustivel();
+    $relacao_rcb_combustiveis = $rcb_combustiveis->listarRecebimentoCombustiveis();
+
     
     if(!isset($_POST['id'])){
-        
-        $combustiveis = new Combustivel();
-        $relacao_combustiveis = $combustiveis->listarCombustiveis();
-        
-        $tipos_combustiveis = new TipoCombustivel();
-        $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveis();
-        
-        $rcb_combustiveis = new RecebimentoCombustivel();
-        $relacao_rcb_combustiveis = $rcb_combustiveis->listarRecebimentoCombustiveis();
         
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Recebimento de Combustíveis');
@@ -68,15 +69,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        
-        $combustiveis = new Combustivel();
-        $relacao_combustiveis = $combustiveis->listarCombustiveis();
-        
-        $tipos_combustiveis = new TipoCombustivel();
-        $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveis();
-        
-        $rcb_combustiveis = new RecebimentoCombustivel();
-        $relacao_rcb_combustiveis = $rcb_combustiveis->listarRecebimentoCombustiveis();
         
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Atualização de Recebimento de Combustíveis');

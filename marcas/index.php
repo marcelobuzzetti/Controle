@@ -9,11 +9,12 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     include '../configs/conexao.php';
     include '../class/relacao.php'; 
     
-    if(!isset($_POST['id'])){
-       
-        $marcas = new Marca();
-        $relacao_marcas = $marcas->listarMarcas();
+    $marcas = new Marca();
+    $relacao_marcas = $marcas->listarMarcas();
 
+    
+    if(!isset($_POST['id'])){
+        
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Cadastro de Marcas');
         $smarty->assign('botao', 'Cadastrar');
@@ -62,10 +63,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-
-        $marcas = new Marca();
-        $relacao_marcas = $marcas->listarMarcas();
-
+        
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Atualização de Marcas');
         $smarty->assign('botao', 'Atualizar');

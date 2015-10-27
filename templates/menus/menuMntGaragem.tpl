@@ -8,7 +8,7 @@
                     <li><a href="../marcas/index.php">Cadastrar Marca</a></li>
                     <li><a href="../modelos/index.php">Cadastrar Modelo</a></li>
                     <li><a href="../viaturas/index.php">Cadastrar Viatura</a></li>
-                    <li><a href="../tabelas/index.php" >Relatório por Data</a></li>
+                    <li><a href="../relatorios/index.php" >Relatório por Data</a></li>
                 </ul>
             </li>
             <li><a>Olá {$login}</a></li>

@@ -1,16 +1,16 @@
-<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-21 15:24:26
+<?php /* Smarty version 3.1.28-dev/66, created on 2015-10-27 14:55:32
          compiled from "/var/www/html/controle/templates/menus/menuAdmin.tpl" */ ?>
 <?php
 $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/66',
-  'unifunc' => 'content_5627ca4a54cd77_07681135',
+  'unifunc' => 'content_562fac84c48e48_99757553',
   'file_dependency' => 
   array (
     '1a1b6e7fe1e0edcbb3717581c3d19237f3ba1e3b' => 
     array (
       0 => '/var/www/html/controle/templates/menus/menuAdmin.tpl',
-      1 => 1445444171,
+      1 => 1445964686,
       2 => 'file',
     ),
   ),
@@ -18,8 +18,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
   ),
 ),false);
-if ($_valid && !is_callable('content_5627ca4a54cd77_07681135')) {
-function content_5627ca4a54cd77_07681135 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_562fac84c48e48_99757553')) {
+function content_562fac84c48e48_99757553 ($_smarty_tpl) {
 ?>
 <ul id="nav" class="nav nav-pills">
             <li role="presentation" class="dropdown">
@@ -37,8 +37,8 @@ function content_5627ca4a54cd77_07681135 ($_smarty_tpl) {
                     <li><a href="../recibos_combustiveis/index.php">Cadastrar Recebimento de Combustível</a></li>
                     <li><a href="../abastecimentos/index.php">Cadastrar Abastecimento</a></li>
                     <li><a href="../usuarios/index.php">Cadastrar Usuário</a></li>
-                    <li><a href="../tabelas/tabela_relacao_vtr.php" target="_blank">Relatório do Sv</a></li>
-                    <li><a href="../tabelas/index.php" >Relatório por Data</a></li>
+                    <li><a href="../relatorios/tabela_relacao_vtr.php" target="_blank">Relatório do Sv</a></li>
+                    <li><a href="../relatorios/index.php" >Relatório por Data</a></li>
                 </ul>
             </li>
             <li><a>Olá <?php echo $_smarty_tpl->tpl_vars['login']->value;?>

@@ -9,23 +9,23 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     include '../configs/conexao.php';
     include '../class/relacao.php';
     
+    $motoristas = new Motorista();
+    $relacao_motoristas = $motoristas->listarMotoristas();
+
+    $viaturas = new Viatura();
+    $relacao_viaturas = $viaturas->listarViaturas();
+
+    $combustiveis = new Combustivel();
+    $relacao_combustiveis = $combustiveis->listarCombustiveisAbastecimento();
+
+    $tipos_combustiveis = new TipoCombustivel();
+    $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveisAbastecimento();
+
+   $abastecimentos = new Abastecimento();
+   $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();            
+           
         if(!isset($_POST['id'])){
             
-            $motoristas = new Motorista();
-            $relacao_motoristas = $motoristas->listarMotoristas();
-            
-            $viaturas = new Viatura();
-            $relacao_viaturas = $viaturas->listarViaturas();
-            
-            $combustiveis = new Combustivel();
-            $relacao_combustiveis = $combustiveis->listarCombustiveisAbastecimento();
-            
-            $tipos_combustiveis = new TipoCombustivel();
-            $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveisAbastecimento();
-
-           $abastecimentos = new Abastecimento();
-           $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();            
-
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Cadastro de Abastecimentos');
             $smarty->assign('botao', 'Cadastrar');
@@ -78,21 +78,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-
-        $motoristas = new Motorista();
-        $relacao_motoristas = $motoristas->listarMotoristas();
-        
-        $viaturas = new Viatura();
-        $relacao_viaturas = $viaturas->listarViaturas();
-        
-        $combustiveis = new Combustivel();
-        $relacao_combustiveis = $combustiveis->listarCombustiveisAbastecimento();
-            
-        $tipos_combustiveis = new TiposCombustiveis();
-        $relacao_tipo_combustiveis = $tipos_combustiveis->listarTiposCombustiveisAbastecimento();
-
-        $abastecimentos = new Abastecimento();
-        $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();            
 
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Atualização de Abastecimentos');

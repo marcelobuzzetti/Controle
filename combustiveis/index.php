@@ -9,10 +9,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     include '../configs/conexao.php';
     include '../class/relacao.php';
     
+    $combustiveis = new Combustivel();
+    $relacao_combustiveis = $combustiveis->listarCombustiveis();
+    
         if(!isset($_POST['id'])){
-
-            $combustiveis = new Combustivel();
-            $relacao_combustiveis = $combustiveis->listarCombustiveis();
             
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Cadastro de Combustível');
@@ -62,9 +62,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                     echo $e->getMessage();
 
                   }
-
-            $combustiveis = new Combustivel();
-            $relacao_combustiveis = $combustiveis->listarCombustiveis();
             
             $smarty = new Smarty();
             $smarty->assign('titulo', 'Atualização de Combustível');
