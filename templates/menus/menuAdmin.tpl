@@ -19,5 +19,5 @@
                 </ul>
             </li>
             <li><a>Olá {$login}</a></li>
-            <li><a href="../usuarios/logout.php">Logout</a></li>
+            <li><a href="../configs/logout.php">Logout</a></li>
         </ul>
