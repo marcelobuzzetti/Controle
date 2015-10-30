@@ -35,7 +35,7 @@ CREATE TABLE percursos (
   id_motorista int(11) NOT NULL, 
   id_destino int(11)  NOT NULL,
   odo_saida float NOT NULL,
-  acompanhante varchar(100)  NOT NULL,
+  acompanhante varchar(100) ,
   data_saida date NOT NULL,
   hora_saida time NOT NULL,
   odo_retorno float DEFAULT NULL,

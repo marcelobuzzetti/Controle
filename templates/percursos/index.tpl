@@ -25,7 +25,7 @@
                             </select></label></td>
                             <td><label for="destino"><input class="form-control" type="text" style='width: 150px' id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
                     <td><label for="odo_saida"><input class="form-control" type="number" style='width: 150px' id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></label></td>
-                    <td><label for="acompanhante"><input class="form-control" type="text" style='width: 150px' id="acompanhante" name="acompanhante" placeholder="Acompanhante" required="required"/></label></td>
+                    <td><label for="acompanhante"><input class="form-control" type="text" style='width: 150px' id="acompanhante" name="acompanhante" placeholder="Acompanhante"/></label></td>
                     <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
                     </tr>
             </table>
@@ -39,7 +39,7 @@
             <td>Motorista</td>
             <td>Destino</td>
             <td>Odômetro Saída</td>
-            <td>Ch Vtr</td>
+            <td>Acompanhante</td>
             <td>Data Saída</td>
             <td>Hora Saída</td>
             <td>Odômetro Chegada</td>
