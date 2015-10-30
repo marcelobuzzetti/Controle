@@ -1,51 +1,100 @@
-<html>
-    <head>
-        <title>Formulário - Cadastro Usuário</title>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
-        <meta charset="UTF-8">
-    </head>
-    <body>        
-        <?php
-        include("verificarLogin.php");
-        include"../menu.php";
-        include '../sessao.php';
-        ?>
-        <form action="../executar.php" method="post">
-            <fieldset>
-                <legend>Cadastro de Usuário</legend>
-                <table border=2px text-align='center' style='width: 40%'>
-                    <tr>
-                        <td>Login:</td>
-                        <td><label for="login"><input autofocus class="form-control" style="width: 150px"  type="text" name="login" id="login" required="required"/></label></td>
-                    </tr>
-                    <tr>
-                        <td>Senha</td>
-                        <td><label for="senha"><input class="form-control" style="width: 150px"  type="password" name="senha" id="senha" required="required"/></label></td>
-                    </tr>
-                    <tr>
-                        <td>Perfil:</td>
-                        <td><label for="perfil"><select class="form-control" style="width: 150px"  name="perfil">
-                                    <?php
-                                    include 'relacao_perfil.php';
-                                    ?>
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td>Apelido:</td>
-                        <td><label for="apelido"><input autofocus class="form-control" style="width: 150px"  type="text" name="apelido" id="apelido" required="required" placeholder="Como quer ser chamado"/></label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><button type="submit" class="btn btn-primary" value="cadastrar_usuario" name="enviar">Cadastrar Usuário</button></td>
-                    </tr>
-            </fieldset>
-        </form></table>
-</body>
-</html>
-
 <?php
-include "tabela_relacao_usuario.php";
-?>
+
+session_start();
+
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
+    header('Location: ../percursos');
+} else {
+    require_once('../libs/smarty/Smarty.class.php');
+    include '../configs/sessao.php';
+    include '../configs/conexao.php';
+    include '../class/relacao.php';
+    
+    $usuarios =new Usuario();
+    $relacao_usuarios = $usuarios->listarUsuario();
+    
+    $perfis = new Perfil();
+    $relacao_perfis = $perfis->listarPerfil();
+    
+    if(!isset($_POST['id'])){
+        
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Cadastro de Usuários');
+        $smarty->assign('botao', 'Cadastrar');
+        $smarty->assign('evento', 'cadastrar_usuario');
+        $smarty->assign('relacao_usuarios', $relacao_usuarios);
+        $smarty->assign('relacao_perfis', $relacao_perfis);
+        $smarty->assign('login', $_SESSION['login']);
+        $smarty->display('../templates/headers/header.tpl');
+
+        switch ($_SESSION['perfil']) {
+            case 1:
+                $smarty->display('../templates/menus/menuAdmin.tpl');
+                break;
+            case 2:
+                $smarty->display('../templates/menus/menuOperador.tpl');
+                break;
+            case 3:
+                $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                break;
+            case 4:
+                $smarty->display('../templates/menus/menuMntS4.tpl');
+                break;
+            default:
+        }
+
+        $smarty->display('../templates/usuarios/index.tpl');
+
+    } else {
+        $id = $_POST['id'];
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id_usuario = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+            
+            if($executa){
+                $dados_usuarios = $stmt->fetch(PDO::FETCH_OBJ);
+                $id_usuario = $dados_usuarios->id_usuario;
+                $login1 = $dados_usuarios->login;
+                $apelido = $dados_usuarios->nome;
+                
+            } else {
+                      print("<script language=JavaScript>
+                               alert('Não foi possível criar tabela.');
+                               </script>");                      
+            }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Atualizar de Usuários');
+        $smarty->assign('botao', 'Atualizar');
+        $smarty->assign('evento', 'atualizar_usuario');
+        $smarty->assign('id_usuario', $id_usuario);
+        $smarty->assign('login1', $login1);
+        $smarty->assign('apelido', $apelido);
+        $smarty->assign('relacao_usuarios', $relacao_usuarios);
+        $smarty->assign('relacao_perfis', $relacao_perfis);
+        $smarty->assign('login', $_SESSION['login']);
+        $smarty->display('../templates/headers/header.tpl');
+        
+        switch ($_SESSION['perfil']) {
+            case 1:
+                $smarty->display('../templates/menus/menuAdmin.tpl');
+                break;
+            case 2:
+                $smarty->display('../templates/menus/menuOperador.tpl');
+                break;
+            case 3:
+                $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                break;
+            case 4:
+                $smarty->display('../templates/menus/menuMntS4.tpl');
+                break;
+            default:
+        }
+
+        $smarty->display('../templates/usuarios/index.tpl');
+    }
+}
