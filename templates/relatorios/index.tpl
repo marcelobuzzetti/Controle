@@ -33,7 +33,7 @@
                                     </tr>
                                     {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
                                     <tr>
-                                        <td>{$smarty.foreach.relacao_relatorio.iterator}</td>
+                                        <td>{$smarty.foreach.relacao_relatorio.iteration}</td>
                                         <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                                         <td>{$tbl.apelido}</td>
                                         <td>{$tbl.destino}</td>
