@@ -1,67 +1,118 @@
-﻿<HTML>
-    <HEAD>
-        <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
-        <meta charset="UTF-8"/>
-        <script src="../js/jquery.js"></script>
-        <link   href="../css/bootstrap.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/script.js"></script>
+<?php 
 
-    </HEAD>
-    <BODY>
-        <?php
-        include "verificarLogin.php";
-        include"../menu.php";
-        include '../sessao.php';
-        ?>
+session_start();
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
+    header('Location: ../percursos');
+} else {
+
+    require_once('../libs/smarty/Smarty.class.php');
+    include '../configs/sessao.php';
+    include '../configs/conexao.php';
+    include '../class/relacao.php';
+    
+    $marcas = new Marca();
+    $relacao_marcas = $marcas->listarMarcas();
+
+    $modelos = new Modelo();
+    $relacao_modelos = $modelos->listarModelosCadastrados();
+    
+    $situacao = new Situacao();
+    $relacao_situacao = $situacao->listarSituacao();
+    
+    $viaturas = new Viatura();
+    $relacao_viaturas = $viaturas->listarViaturasCadastradas();
+    
+    if(!isset($_POST['id'])){
+        
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Cadastro de Viaturas');
+        $smarty->assign('botao', 'Cadastrar');
+        $smarty->assign('evento', 'viatura');
+        $smarty->assign('relacao_marcas', $relacao_marcas);
+        $smarty->assign('relacao_modelos', $relacao_modelos);
+        $smarty->assign('relacao_situacao', $relacao_situacao);
+        $smarty->assign('relacao_viaturas', $relacao_viaturas);
+        $smarty->assign('login', $_SESSION['login']);
+        $smarty->display('../templates/headers/header.tpl');
+
+        switch ($_SESSION['perfil']) {
+            case 1:
+                $smarty->display('../templates/menus/menuAdmin.tpl');
+                break;
+            case 2:
+                $smarty->display('../templates/menus/menuOperador.tpl');
+                break;
+            case 3:
+                $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                break;
+            case 4:
+                $smarty->display('../templates/menus/menuMntS4.tpl');
+                break;
+            default:
+        }
+
+        $smarty->display('../templates/viaturas/index.tpl');
 
 
-        <fieldset>
-            <legend>Cadastro de Viatura</legend>
-            <table border=2px text-align='center' style='width: 40%'>
-                <form action="../executar.php" method="post">
-                    <tr>
-                        <td>Marca</td>
-                        <td><label for="marca"><select class="form-control" id="marca" name="marca">
-                                    <?php
-                                    include 'relacao_marca.php';
-                                    ?>
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td>Modelo</td>
-                        <td><label for="modelo"><select class="form-control" id="modelo" name="modelo">
-                                    <?php
-                                    include 'relacao_modelo.php';
-                                    ?>
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td>Placa</td>
-                        <td><label for="placa"><input class="form-control" type="text" style='width: 150px' id="placa" name="placa" placeholder="Placa" required="required"/></label><br /></td>
-                    </tr>
-                    <tr>
-                        <td>Odômetro</td>
-                        <td><label for="odometro"><input class="form-control" type="number" style='width: 150px' id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1"/></label></td>
-                    </tr>
-                    <tr>
-                        <td>Situação</td>
-                        <td><label for="situacao"><select class="form-control" name="situacao">
-                                    <?php
-                                    include 'relacao_disponibilidade.php';
-                                    ?>
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label><button type="submit" class="btn btn-primary" id="enviar" value="viatura" name="enviar">Cadastrar</button></label></td>
-                    </tr>
-                </form>
-            </table>
-        </fieldset>
-    </BODY>
-</HTML>
+        } else {
 
-<?php
-include 'tabela_vtr_cadastradas.php';
+            $id = $_POST['id'];
+
+            try {
+                $stmt = $pdo->prepare("SELECT * FROM viaturas WHERE id_viatura = ?");
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    $dados_viaturas = $stmt->fetch(PDO::FETCH_OBJ);
+                    $id_viatura = $dados_viaturas->id_viatura;
+                    $marca = $dados_viaturas->id_marca;
+                    $modelo = $dados_viaturas->id_modelo;
+                    $placa = $dados_viaturas->placa;
+                    $odometro = $dados_viaturas->odometro;
+
+                } else {
+                print("<script language=JavaScript>
+                       alert('Não foi possível criar tabela.');
+                       </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+            
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Atualização de Viaturas');
+        $smarty->assign('botao', 'Atualizar');
+        $smarty->assign('evento', 'atualizar_viatura');
+        $smarty->assign('id_viatura', $id_viatura);
+        $smarty->assign('marca', $marca);
+        $smarty->assign('modelo', $modelo);
+        $smarty->assign('placa', $placa);
+        $smarty->assign('odometro', $odometro);
+        $smarty->assign('relacao_marcas', $relacao_marcas);
+        $smarty->assign('relacao_modelos', $relacao_modelos);
+        $smarty->assign('relacao_situacao', $relacao_situacao);
+        $smarty->assign('relacao_viaturas', $relacao_viaturas);
+        $smarty->assign('login', $_SESSION['login']);
+        $smarty->display('../templates/headers/header.tpl');
+
+        switch ($_SESSION['perfil']) {
+            case 1:
+                $smarty->display('../templates/menus/menuAdmin.tpl');
+                break;
+            case 2:
+                $smarty->display('../templates/menus/menuOperador.tpl');
+                break;
+            case 3:
+                $smarty->display('../templates/menus/menuMntGaragem.tpl');
+                break;
+            case 4:
+                $smarty->display('../templates/menus/menuMntS4.tpl');
+                break;
+            default:
+        }
+
+        $smarty->display('../templates/viaturas/index.tpl');
+    }
+}
 ?>
