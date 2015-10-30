@@ -64,6 +64,27 @@ class Viatura{
             }
     }   
     
+    public function listarViaturasCadastradas(){
+        include '../configs/conexao.php';
+         try {
+                $stmt = $pdo->prepare("SELECT id_viatura, marcas.descricao AS marca, modelos.descricao AS modelo, placa, odometro, modelos.cap_tanque, modelos.consumo_padrao, modelos.cap_transp, habilitacoes.categoria, situacao.disponibilidade
+                                                    FROM viaturas, marcas, modelos, habilitacoes, situacao
+                                                    WHERE modelos.id_habilitacao = habilitacoes.id_habilitacao
+                                                    AND viaturas.id_situacao = situacao.id_situacao ");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                    print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela.');
+                         </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+    }
+    
     public function listarViaturasPercursos(){
         include '../configs/conexao.php';
          try {
@@ -291,6 +312,24 @@ class Modelo{
             echo $e->getMessage();
         }
     }   
+    
+    public function listarModelosCadastrados(){
+        include '../configs/conexao.php';
+         try {
+            $stmt = $pdo->prepare("SELECT * FROM  modelos");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                       alert('Não foi possível criar tabela.');
+                       </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }   
 }
 
 class PostoGrad{ 
@@ -423,6 +462,27 @@ class Perfil{
         include '../configs/conexao.php';
           try {
             $stmt = $pdo->prepare("SELECT * FROM perfis");
+            $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);                    
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+                
+                } catch (PDOException $e) {
+                    echo $e->getMessage();                    
+                }            
+            }
+}
+
+class Situacao{
+    public function listarSituacao(){
+        include '../configs/conexao.php';
+          try {
+            $stmt = $pdo->prepare("SELECT * FROM situacao");
             $executa = $stmt->execute();
 
                 if ($executa) {
