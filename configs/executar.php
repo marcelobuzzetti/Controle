@@ -299,7 +299,34 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'cadastrar_usuario':
 
+        $login = $_POST['login'];
+        $senha = md5($_POST['senha']);
+        $perfil = $_POST['perfil'];
+        $apelido = mb_strtoupper($_POST['apelido']);
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO usuarios 
+                                                VALUES(NULL,?,?,?,?)");
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+            $stmt->bindParam(3, $perfil, PDO::PARAM_INT);
+            $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<script>
+                alert('Não foi possível cadastrar o usuário.');
+                </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: ../usuarios');
+
+        break;
 
     case 'apagar_usuario':
         $id = $_POST['id'];
@@ -318,7 +345,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./usuarios/cadastrar_usuario.php');
+        header('Location: ../usuarios');
 
         break;
 
@@ -350,7 +377,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./usuarios/cadastrar_usuario.php');
+        header('Location: ../usuarios');
 
         break;
 
@@ -450,7 +477,8 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("DELETE FROM tipos_combustiveis
-                                                WHERE id_tipo_combustivel=" . $id);
+                                                WHERE id_tipo_combustivel= ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -486,7 +514,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./tipos_combustiveis');
+        header('Location: ../tipos_combustiveis');
 
         break;
 
@@ -857,35 +885,6 @@ switch ($_POST['enviar']) {
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-
-        break;
-
-    case 'cadastrar_usuario':
-
-        $login = $_POST['login'];
-        $senha = md5($_POST['senha']);
-        $perfil = $_POST['perfil'];
-        $apelido = mb_strtoupper($_POST['apelido']);
-
-        try {
-            $stmt = $pdo->prepare("INSERT INTO usuarios 
-                                                VALUES(NULL,?,?,?,?)");
-            $stmt->bindParam(1, $login, PDO::PARAM_STR);
-            $stmt->bindParam(2, $senha, PDO::PARAM_STR);
-            $stmt->bindParam(3, $perfil, PDO::PARAM_INT);
-            $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
-            $executa = $stmt->execute();
-
-            if (!$executa) {
-                print("<script>
-                alert('Não foi possível cadastrar o usuário.');
-                </script>");
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        header('Location: ./usuarios/cadastrar_usuario.php');
 
         break;
 
