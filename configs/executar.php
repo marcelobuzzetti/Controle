@@ -116,9 +116,7 @@ switch ($_POST['enviar']) {
         $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
         $situacao = $_POST["situacao"];
-
-
-
+        
         try {
             $stmt = $pdo->prepare("INSERT INTO viaturas 
                                                 VALUES(NULL,?,?,?,?,?)");
@@ -138,7 +136,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./viaturas');
+        header('Location: ../viaturas');
 
         break;
 
@@ -159,7 +157,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./viaturas');
+        header('Location: ../viaturas');
 
         break;
 
@@ -194,7 +192,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./viaturas');
+        header('Location: ../viaturas');
 
         break;
 
