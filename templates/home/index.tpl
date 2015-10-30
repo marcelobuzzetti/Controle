@@ -30,7 +30,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Ch Vtr</td>
+                <td>Acompanhante</td>
                 <td>Data Saída</td>
                 <td>Hora Saída</td>
             </tr>
