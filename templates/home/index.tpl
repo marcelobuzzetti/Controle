@@ -25,6 +25,7 @@
         <table class='table'>
             <caption>Viaturas Rodando</caption>
             <tr>
+                <td>Ordem</td>
                 <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Destino</td>
@@ -33,8 +34,9 @@
                 <td>Data Saída</td>
                 <td>Hora Saída</td>
             </tr>
-            {foreach $tabela_relacao_vtr as $vtr}
+            {foreach $tabela_relacao_vtr as $vtr name='vtr'}
                 <tr>
+                    <td>{$smarty.foreach.vtr.iteration}</td>
                     <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
                     <td>{$vtr.apelido}</td>
                     <td>{$vtr.nome_destino}</td>
