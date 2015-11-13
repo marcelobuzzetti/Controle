@@ -1,11 +1,9 @@
 <?php
-
 /**
  * Smarty Autoloader
  *
  * @package    Smarty
  */
-
 /**
  * Smarty Autoloader
  *
@@ -19,28 +17,24 @@
  *             Composer will automatically add the classes of the Smarty package to it common autoloader.
  */
 class Smarty_Autoloader {
-
     /**
      * Filepath to Smarty root
      *
      * @var string
      */
     public static $SMARTY_DIR = '';
-
     /**
      * Filepath to Smarty internal plugins
      *
      * @var string
      */
     public static $SMARTY_SYSPLUGINS_DIR = '';
-
     /**
      * Array with Smarty core classes and their filename
      *
      * @var array
      */
     public static $rootClasses = array('smarty' => 'Smarty.class.php', 'smartybc' => 'SmartyBC.class.php',);
-
     /**
      * Registers Smarty_Autoloader backward compatible to older installations.
      *
@@ -62,9 +56,8 @@ class Smarty_Autoloader {
             }
         } else {
             self::register($prepend);
-        }
+            }
     }
-
     /**
      * Registers Smarty_Autoloader as an SPL autoloader.
      *
@@ -80,7 +73,6 @@ class Smarty_Autoloader {
             spl_autoload_register(array(__CLASS__, 'autoload'));
         }
     }
-
     /**
      * Handles auto loading of classes.
      *
@@ -119,5 +111,4 @@ class Smarty_Autoloader {
         }
         return;
     }
-
 }

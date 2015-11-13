@@ -11,7 +11,7 @@ if (!isset($_SESSION['login'])) {
     include '../configs/sessao.php';
     include '../configs/conexao.php';
     include '../class/relacao.php';
-
+    
     $viaturas = new Viatura();
     $tabela_relacao_viaturas = $viaturas->listarViaturasPercursos();
 
