@@ -1,27 +1,10 @@
 <?php
+
 require_once('vendor/autoload.php');
 
-include 'configs/conexao.php';
-try {
-    $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
-                                            FROM percursos, viaturas, motoristas, marcas, modelos, destinos
-                                            WHERE data_retorno IS NULL 
-                                            AND percursos.id_motorista = motoristas.id_motorista
-                                            AND percursos.id_viatura = viaturas.id_viatura
-                                            AND viaturas.id_marca = marcas.id_marca
-                                            AND viaturas.id_modelo = modelos.id_modelo
-                                            AND percursos.id_destino = destinos.id_destino
-                                            ORDER BY id_percurso DESC");
-    $executa = $stmt->execute();
-
-    if ($executa) {
-        $tabela_relacao_vtr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } else {
-        echo 'Erro ao inserir os dados';
-    }
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
+$viatura = new Viatura();
+$tabela_relacao_vtr = $viaturas->ViaturasRodando();
+       
 session_start();
 if ($_SESSION['erro'] == 1) {
     echo "  <div class='alert alert-danger alert-dismissible' role='alert'>

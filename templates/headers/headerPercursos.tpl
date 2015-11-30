@@ -2,6 +2,7 @@
     <HEAD>
         <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
         <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../libs/js/jquery.js"></script>
         <link href="../libs/css/bootstrap.css" rel="stylesheet">
         <script src="../libs/js/bootstrap.js"></script>

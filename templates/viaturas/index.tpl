@@ -70,7 +70,7 @@
                             <td>{$tbl.cap_tanque}</td>
                             <td>{$tbl.consumo_padrao}</td>
                             <td>{$tbl.cap_transp}</td>
-                            ]<td>{$tbl.categoria}</td>
+                            <td>{$tbl.categoria}</td>
                             <td>{$tbl.disponibilidade}</td>
                                 <form action='../configs/executar.php' method='post'>
                                     <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}'/>

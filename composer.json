@@ -1,10 +1,34 @@
 {
     "require": {
-        "smarty/smarty": "~3.1"
+        "smarty/smarty": "~3.1",
+        "twbs/bootstrap": "v4.0.0-alpha",
+        "components/jquery": "2.1.4"
     },
     "autoload": {
         "classmap": [
-              "class"
+              "class",
+            "vendor/smarty/smarty/libs/Smarty.class.php", 
+            "vendor/smarty/smarty/libs/SmartyBC.class.php",
+            "vendor/smarty/smarty/libs/sysplugins/smarty_security.php"
             ]
-    }
+    },
+    "extra": {
+        "component": {
+            "name": "jquery-ui",
+            "scripts": [
+                "jquery-ui.js"
+            ],
+            "files": [
+                "ui/**",
+                "themes/**",
+                "jquery-ui.min.js"
+            ],
+            "shim": {
+                "deps": [
+                    "jquery"
+                ],
+                "exports": "jQuery"
+            }
+        }
+}
 }
