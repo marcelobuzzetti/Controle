@@ -6,11 +6,7 @@ if (!isset($_SESSION['login'])) {
     header('Location: ../percurso');
 } else {
     
-    require_once('../libs/smarty/Smarty.class.php');
-    include_once("../configs/autoload.php");
-    include '../configs/sessao.php';
-    include '../configs/conexao.php';
-    include '../class/relacao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/Site/vendor/autoload.php';
     
     $verificador = 0;
     

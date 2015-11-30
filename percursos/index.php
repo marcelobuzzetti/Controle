@@ -6,11 +6,8 @@ if (!isset($_SESSION['login'])) {
     session_unset();
     header('Location: ..');
 } else {
-    require_once('../libs/smarty/Smarty.class.php');
-    include_once("../configs/autoload.php");
-    include '../configs/sessao.php';
-    include '../configs/conexao.php';
-    include '../class/relacao.php';
+    
+require_once $_SERVER['DOCUMENT_ROOT'].'/Site/vendor/autoload.php';
     
     $viaturas = new Viatura();
     $tabela_relacao_viaturas = $viaturas->listarViaturasPercursos();

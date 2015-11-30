@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "debd7ea44df759e19ef40113b57b65d3",
-    "content-hash": "e579680d7880c28e233c3769d4c9fd4c",
+    "hash": "42fa79d8cee9bae4f18cb59c31cca031",
+    "content-hash": "f0119ce3d231193fcf9c9d86693b5db3",
     "packages": [
         {
             "name": "components/jquery",
@@ -103,65 +103,12 @@
                 "templating"
             ],
             "time": "2015-06-18 00:55:59"
-        },
-        {
-            "name": "twbs/bootstrap",
-            "version": "v4.0.0-alpha",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "980d8ea2d828fe1796a423f80d84d526b0252a89"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/980d8ea2d828fe1796a423f80d84d526b0252a89",
-                "reference": "980d8ea2d828fe1796a423f80d84d526b0252a89",
-                "shasum": ""
-            },
-            "replace": {
-                "twitter/bootstrap": "self.version"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "http://getbootstrap.com",
-            "keywords": [
-                "JS",
-                "css",
-                "framework",
-                "front-end",
-                "mobile-first",
-                "responsive",
-                "sass",
-                "web"
-            ],
-            "time": "2015-08-19 07:07:59"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "twbs/bootstrap": 15
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

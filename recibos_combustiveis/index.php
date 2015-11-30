@@ -4,11 +4,7 @@ session_start();
 if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
     header('Location: ../percursos');
 } else {
-    require_once('../libs/smarty/Smarty.class.php');
-    include_once("../configs/autoload.php");
-    include '../configs/sessao.php';
-    include '../configs/conexao.php';
-    include '../class/relacao.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/Site/vendor/autoload.php';
 
     $combustiveis = new Combustivel();
     $relacao_combustiveis = $combustiveis->listarCombustiveis();
