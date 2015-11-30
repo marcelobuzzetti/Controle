@@ -5,9 +5,7 @@
     "autoload": {
         "classmap": [
               "class",
-            "vendor/smarty/smarty/libs/Smarty.class.php", 
-            "vendor/smarty/smarty/libs/SmartyBC.class.php",
-            "vendor/smarty/smarty/libs/sysplugins/smarty_security.php"
+            "vendor"
             ]
         }
 }
