@@ -1,6 +1,6 @@
 <?php
 
-include '../configs/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Site/include/config.inc.php';
 
 switch ($_POST['enviar']) {
 
@@ -23,7 +23,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../percursos/');
+        header('Location: '.constant("HOST").'/controller/percurso.php');
 
         break;
 
@@ -44,7 +44,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../percursos/');
+        header('Location: '.constant("HOST").'/controller/percurso.php');
 
         break;
 
@@ -106,7 +106,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../percursos/');
+        header('Location: '.constant("HOST").'/controller/percurso.php');
 
         break;
 
@@ -136,7 +136,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../viaturas');
+       header('Location: '.constant("HOST").'/controller/viatura.php');
 
         break;
 
@@ -157,7 +157,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../viaturas');
+       header('Location: '.constant("HOST").'/controller/viatura.php');
 
         break;
 
@@ -192,7 +192,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../viaturas');
+       header('Location: '.constant("HOST").'/controller/viatura.php');
 
         break;
 
@@ -230,7 +230,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../motoristas');
+header('Location: '.constant("HOST").'/controller/motorista.php');
 
         break;
 
@@ -270,7 +270,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../motoristas');
+header('Location: '.constant("HOST").'/controller/motorista.php');
 
         break;
 
@@ -293,7 +293,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../motoristas');
+header('Location: '.constant("HOST").'/controller/motorista.php');
 
         break;
 
@@ -322,7 +322,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../usuarios');
+header('Location: '.constant("HOST").'/controller/usuario.php');
 
         break;
 
@@ -343,7 +343,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../usuarios');
+header('Location: '.constant("HOST").'/controller/usuario.php');
 
         break;
 
@@ -375,7 +375,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../usuarios');
+header('Location: '.constant("HOST").'/controller/usuario.php');
 
         break;
 
@@ -419,7 +419,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../combustiveis');
+header('Location: '.constant("HOST").'/controller/combustivel.php');
 
         break;
 
@@ -443,7 +443,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../combustiveis');
+header('Location: '.constant("HOST").'/controller/combustivel.php');
 
         break;
 
@@ -466,7 +466,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../tipos_combustiveis/');
+header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
 
         break;
 
@@ -488,8 +488,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../tipos_combustiveis');
-
+header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
         break;
 
     case 'atualizar_tipo':
@@ -512,8 +511,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../tipos_combustiveis');
-
+header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
         break;
 
     case 'rcb_comb':
@@ -541,7 +539,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../recibos_combustiveis/');
+header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
 
         break;
 
@@ -563,7 +561,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../recibos_combustiveis');
+header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
 
         break;
 
@@ -593,7 +591,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../recibos_combustiveis');
+header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
 
         break;
 
@@ -626,7 +624,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./abastecimentos/');
+header('Location: '.constant("HOST").'/controller/abastecimento.php');
 
         break;
 
@@ -647,7 +645,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./abastecimentos');
+header('Location: '.constant("HOST").'/controller/abastecimento.php');
 
         break;
 
@@ -681,7 +679,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ./abastecimentos');
+header('Location: '.constant("HOST").'/controller/abastecimento.php');
 
         break;
 
@@ -714,7 +712,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../modelos/');
+header('Location: '.constant("HOST").'/controller/modelo.php');
 
         break;
 
@@ -736,7 +734,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../modelos');
+header('Location: '.constant("HOST").'/controller/modelo.php');
 
         break;
 
@@ -771,7 +769,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../modelos');
+header('Location: '.constant("HOST").'/controller/modelo.php');
 
         break;
 
@@ -793,7 +791,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../marcas/');
+header('Location: '.constant("HOST").'/controller/marca.php');
 
         break;
 
@@ -814,7 +812,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../marcas');
+header('Location: '.constant("HOST").'/controller/marca.php');
 
         break;
 
@@ -839,7 +837,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: ../marcas');
+header('Location: '.constant("HOST").'/controller/marca.php');
 
         break;
 
@@ -874,7 +872,7 @@ switch ($_POST['enviar']) {
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['temposessao'] = time() + 120;
 
-                header('Location: ../percursos');
+            header('Location: '.constant("HOST").'/controller/percurso.php');
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;

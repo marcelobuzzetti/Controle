@@ -1,7 +1,7 @@
     <fieldset>
                 <legend>{$titulo}</legend>
                 <table border=2px text-align='center' style='width: 40%'>
-                    <form action="../configs/executar.php" method="post">
+                    <form action="../model/executar.php" method="post">
                     <tr>
                         <td>Login:</td>
                         <td><label for="login"><input autofocus class="form-control" style="width: 150px"  type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required /></label></td>
@@ -46,11 +46,11 @@
                         <td>{$tbl.login}</td>
                         <td>{$tbl.descricao}</td>
                         <td>{$tbl.nome}</td>
-                            <form action='../configs/executar.php' method='post'>
+                            <form action='../model/executar.php' method='post'>
                                     <input type='hidden' id='id'  name='id' value='{$tbl.id_usuario}'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_usuario'/>Apagar Usuário</form></td>
                             </form>
-                            <form action='index.php' method='post'>
+                            <form action='usuario.php' method='post'>
                                     <input type='hidden' id='id'  name='id' value='{$tbl.id_usuario}'/>
                                     <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_usuario'/>Atualizar Usuário</form></td>
                             </form>

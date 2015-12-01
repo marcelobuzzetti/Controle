@@ -1,4 +1,4 @@
-        <form class="form-inline" action="./configs/executar.php" method="post">
+        <form class="form-inline" action="./model/executar.php" method="post">
             <div class="form-group">
                 <label for="login">Login</label>
                 <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">

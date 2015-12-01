@@ -4,13 +4,13 @@
                     Cadastros <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="../motoristas/index.php">Cadastrar Motorista</a></li>
-                    <li><a href="../marcas/index.php">Cadastrar Marca</a></li>
-                    <li><a href="../modelos/index.php">Cadastrar Modelo</a></li>
-                    <li><a href="../viaturas/index.php">Cadastrar Viatura</a></li>
-                    <li><a href="../relatorios/index.php" >Relatório por Data</a></li>
+                    <li><a href="../controller/motorista.php">Cadastrar Motorista</a></li>
+                    <li><a href="../controller/marca.php">Cadastrar Marca</a></li>
+                    <li><a href="../controller/modelo.php">Cadastrar Modelo</a></li>
+                    <li><a href="../controller/viatura.php">Cadastrar Viatura</a></li>
+                    <li><a href="../controller/relatorio.php" >Relatório por Data</a></li>
                 </ul>
             </li>
             <li><a>Olá {$login}</a></li>
-            <li><a href="../configs/logout.php">Logout</a></li>
+            <li><a href="../model/logout.php">Logout</a></li>
         </ul>

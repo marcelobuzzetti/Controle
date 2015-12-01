@@ -1,7 +1,7 @@
 <fieldset>
             <legend>{$titulo}</legend>
             <table border=2px text-align='center'style='width: 30%'>
-                <form action="../configs/executar.php" method="post">
+                <form action="../model/executar.php" method="post">
                     <tr>
                         <td>Nome de Guerra</td>
                         <td><label for="nome"><input class="form-control" type="text" style='width: 150px' id="nome" name="nome" placeholder="Nome" required="required" value="{$nome}"/></label></td>
@@ -46,11 +46,11 @@
                         <td>{$tbl.sigla}</td>
                         <td>{$tbl.nome}</td>
                         <td>{$tbl.categoria}</td>
-                        <form action='../configs/executar.php' method='post'>
+                        <form action='../model/executar.php' method='post'>
                                     <input type='hidden' id='{$tbl.$id_motorista}' value='{$tbl.id_motorista}' name='id'/>
                                     <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar Motorista'/></form></td>
                         </form>
-                        <form action='index.php' method='post'>
+                        <form action='motorista.php' method='post'>
                                     <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
                                     <td><input class='btn btn-success' type='submit' id='apagar' name='enviar' value='Atualizar Motorista'/></form></td>
                         </form>

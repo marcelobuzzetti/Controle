@@ -4,17 +4,17 @@
                     Cadastros <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="../motoristas/index.php">Cadastrar Motorista</a></li>
-                    <li><a href="../marcas/index.php">Cadastrar Marca</a></li>
-                    <li><a href="../modelos/index.php">Cadastrar Modelo</a></li>
-                    <li><a href="../viaturas/index.php">Cadastrar Viatura</a></li>
-                    <li><a href="../combustiveis/index.php">Cadastrar Combustível</a></li>
-                    <li><a href="../tipos_combustiveis/index.php">Cadastrar Tipo de Combustível</a></li>
-                    <li><a href="../recibos_combustiveis/index.php">Cadastrar Recebimento de Combustível</a></li>
-                    <li><a href="../abastecimentos/index.php">Cadastrar Abastecimento</a></li>
-                    <li><a href="../relatorios/index.php" >Relatório por Data</a></li>
+                    <li><a href="../controller/motorista.php">Cadastrar Motorista</a></li>
+                    <li><a href="../controller/marca.php">Cadastrar Marca</a></li>
+                    <li><a href="../controller/modelo.php">Cadastrar Modelo</a></li>
+                    <li><a href="../controller/viatura.php">Cadastrar Viatura</a></li>
+                    <li><a href="../controller/combustivel.php">Cadastrar Combustível</a></li>
+                    <li><a href="../controller/tipocombustivel.php">Cadastrar Tipo de Combustível</a></li>
+                    <li><a href="../controller/recebimentocombustivel.php">Cadastrar Recebimento de Combustível</a></li>
+                    <li><a href="../controller/abastecimento.php">Cadastrar Abastecimento</a></li>
+                    <li><a href="../controller/relatorio.php" >Relatório por Data</a></li>
                 </ul>
             </li>
             <li><a>Olá {$login}</a></li>
-            <li><a href="../configs/logout.php">Logout</a></li>
+            <li><a href="../model/logout.php">Logout</a></li>
         </ul>

@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/Site/include/config.inc.php';
 session_start();
 
 if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
-    header('Location: '.$_SERVER['DOCUMENT_ROOT'].'/Site'.'/percursos');
+    header('Location: '.$_SERVER['DOCUMENT_ROOT'].'/Site'.'/controller/percurso.php');
 } else {
 
     $combustiveis = new Combustivel();
