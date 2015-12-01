@@ -2,7 +2,7 @@
 
 class Situacao{
     public function listarSituacao(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
             $stmt = $pdo->prepare("SELECT * FROM situacao");
             $executa = $stmt->execute();

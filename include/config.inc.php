@@ -1,10 +1,12 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/Site/vendor/autoload.php';
-include $_SERVER['DOCUMENT_ROOT'].'/Site/model/conexao.php';
-
-define("HOST", "http://localhost/Site");
+define("PATH", "");
+define("HOST", "http://".$_SERVER['SERVER_NAME'].constant("PATH"));
+require_once $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/vendor/autoload.php';
+include $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/model/conexao.php';
 
  $smarty = new Smarty();
- $smarty->template_dir = $_SERVER['DOCUMENT_ROOT'].'/Site/view/';
- $smarty->compile_dir = $_SERVER['DOCUMENT_ROOT'].'/Site/templates_c/';
- $smarty->cache_dir = $_SERVER['DOCUMENT_ROOT'].'/Site/cache/';
+ $smarty->template_dir = $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/view/';
+ $smarty->compile_dir = $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/templates_c/';
+ $smarty->cache_dir = $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/cache/';
+ $smarty->assign('HOST',  constant("HOST"));
+

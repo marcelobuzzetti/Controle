@@ -2,7 +2,7 @@
 
 class Marca{ 
     public function listarMarcas(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try{
         $stmt = $pdo->prepare("SELECT * FROM marcas;");
         $executa = $stmt->execute();

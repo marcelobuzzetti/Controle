@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'].'/Site/include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/include/config.inc.php';
 
 switch ($_POST['enviar']) {
 
@@ -15,9 +15,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o percurso.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -36,9 +37,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o percurso.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -98,9 +100,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Inserir o Pecurso.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -128,9 +131,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Inserir a Viatura.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -149,9 +153,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar a Viatura.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -184,9 +189,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar a viatura.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -222,9 +228,10 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Inserir o Motorista.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -262,9 +269,10 @@ header('Location: '.constant("HOST").'/controller/motorista.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o motorista.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -285,9 +293,10 @@ header('Location: '.constant("HOST").'/controller/motorista.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o motorista.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -314,9 +323,10 @@ header('Location: '.constant("HOST").'/controller/motorista.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível cadastrar o usuário.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -335,9 +345,10 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o Usuário.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -367,9 +378,10 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o usuário.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -390,9 +402,10 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível inserir o Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -411,9 +424,10 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -435,9 +449,10 @@ header('Location: '.constant("HOST").'/controller/combustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o Combustível.');
-              </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -458,9 +473,10 @@ header('Location: '.constant("HOST").'/controller/combustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível inserir o Tipo de Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -480,9 +496,10 @@ header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o Tipo de Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -503,9 +520,10 @@ header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o Tipo de Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -531,9 +549,10 @@ header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível inserir o recibo de combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -553,9 +572,10 @@ header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o Recibo de Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -583,9 +603,10 @@ header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o recibo de Combustível.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -616,9 +637,10 @@ header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível inserir o abastecimento.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -637,9 +659,10 @@ header('Location: '.constant("HOST").'/controller/abastecimento.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível Apagar o abastecimento.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -671,9 +694,10 @@ header('Location: '.constant("HOST").'/controller/abastecimento.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o abastecimento.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -704,9 +728,10 @@ header('Location: '.constant("HOST").'/controller/abastecimento.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível inserir o modelo.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -726,9 +751,10 @@ header('Location: '.constant("HOST").'/controller/modelo.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível apagar o modelo.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -761,9 +787,10 @@ header('Location: '.constant("HOST").'/controller/modelo.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar o modelo.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -783,9 +810,10 @@ header('Location: '.constant("HOST").'/controller/modelo.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível inserir a marca.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -804,9 +832,10 @@ header('Location: '.constant("HOST").'/controller/marca.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível apagar a marca.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -829,9 +858,10 @@ header('Location: '.constant("HOST").'/controller/marca.php');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<script>
-                alert('Não foi possível atualizar a marca.');
-                </script>");
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();

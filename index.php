@@ -16,15 +16,12 @@ if ($_SESSION['timeout'] == 1) {
 }
 session_destroy();
 
-include $_SERVER['DOCUMENT_ROOT'].'/Site/include/config.inc.php';
+include './include/config.inc.php';
 
 $viatura = new Viatura();
 $tabela_relacao_vtr = $viatura->ViaturasRodando();
 
-$smarty = new Smarty();
-$smarty->template_dir = $_SERVER['DOCUMENT_ROOT'].'/Site/view/';
-$smarty->compile_dir = $_SERVER['DOCUMENT_ROOT'].'/Site/templates_c/';
-$smarty->cache_dir = $_SERVER['DOCUMENT_ROOT'].'/Site/cache/';
+$smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
 $smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
 $smarty->display('./headers/header.tpl');
 $smarty->display('home.tpl');

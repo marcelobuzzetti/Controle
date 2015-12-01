@@ -2,7 +2,7 @@
 
 class Habilitacao{ 
     public function listarHabilitacoes(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
             $stmt = $pdo->prepare("SELECT * FROM habilitacoes");
             $executa = $stmt->execute();

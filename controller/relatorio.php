@@ -1,10 +1,10 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/Site/include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/include/config.inc.php';
 
 session_start();
 
 if (!isset($_SESSION['login'])) {
-    header('Location: '.$_SERVER['DOCUMENT_ROOT'].'/Site'.'/controller/percurso.php');
+    header('Location: '.  constant("HOST").'/controller/percurso.php');
 } else {
      
     $verificador = 0;

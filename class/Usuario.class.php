@@ -2,7 +2,7 @@
 
 class Usuario{
     public function listarUsuario(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
             $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome 
                                                 FROM usuarios, perfis

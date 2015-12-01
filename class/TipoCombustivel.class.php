@@ -3,7 +3,7 @@
 class TipoCombustivel{ 
     
 public function listarTiposCombustiveis(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
                 $stmt = $pdo->prepare("SELECT * FROM tipos_combustiveis");
                 $executa = $stmt->execute();
@@ -21,7 +21,7 @@ public function listarTiposCombustiveis(){
     }    
 
 public function listarTiposCombustiveisAbastecimento(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
                 $stmt = $pdo->prepare("SELECT tipos_combustiveis.id_tipo_combustivel AS id_tipo, descricao 
                                                     FROM tipos_combustiveis, recibos_combustiveis

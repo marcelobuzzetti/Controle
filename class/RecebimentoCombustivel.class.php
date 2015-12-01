@@ -2,7 +2,7 @@
 
 class RecebimentoCombustivel{
     public function listarRecebimentoCombustiveis(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                 $stmt = $pdo->prepare("SELECT id_recibo_combustivel,combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo,qnt, motivo, data, hora
                                                     FROM tipos_combustiveis,combustiveis,recibos_combustiveis

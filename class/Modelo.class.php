@@ -2,7 +2,7 @@
 
 class Modelo{ 
     public function listarModelos(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
             $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp, habilitacoes.categoria AS habilitacao
                                                FROM modelos, habilitacoes, marcas
@@ -23,7 +23,7 @@ class Modelo{
     }   
     
     public function listarModelosCadastrados(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
             $stmt = $pdo->prepare("SELECT * FROM  modelos");
             $executa = $stmt->execute();

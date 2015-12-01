@@ -1,7 +1,7 @@
 <?php
 class Motorista{ 
     public function listarMotoristas(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM motoristas");
             $executa = $stmt->execute();
@@ -20,7 +20,7 @@ class Motorista{
     }   
     
     public function listarMotoristasCadastrados(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_motorista, nome, habilitacoes.categoria AS categoria, sigla
                                                 FROM motoristas, habilitacoes, posto_grad

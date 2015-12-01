@@ -2,7 +2,7 @@
 
 class Relatorio{
     public function listarPercursos($inicio,$fim){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
             $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
                                                         FROM percursos, viaturas, motoristas, marcas, modelos, destinos

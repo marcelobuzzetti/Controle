@@ -12,7 +12,7 @@
         <script>
             $(function () {
                 $("#destino").autocomplete({
-                    source: "../configs/buscador.php",
+                    source: "../model/buscador.php",
                     minLength: 3
                 });
             });

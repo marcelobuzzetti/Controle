@@ -2,7 +2,7 @@
 
 class Combustivel{ 
     public function listarCombustiveisAbastecimento(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                 $stmt = $pdo->prepare("SELECT combustiveis.id_combustivel AS id_comb, descricao
                                                     FROM combustiveis, recibos_combustiveis
@@ -23,7 +23,7 @@ class Combustivel{
     }
     
     public function listarCombustiveis(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                     $stmt = $pdo->prepare("SELECT * FROM combustiveis;");
                     $executa = $stmt->execute();

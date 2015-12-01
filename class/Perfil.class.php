@@ -2,7 +2,7 @@
 
 class Perfil{
     public function listarPerfil(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
           try {
             $stmt = $pdo->prepare("SELECT * FROM perfis");
             $executa = $stmt->execute();

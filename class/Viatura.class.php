@@ -2,7 +2,7 @@
 
 class Viatura{ 
     public function listarViaturas(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                 $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
                                                     FROM viaturas, marcas, modelos
@@ -23,7 +23,7 @@ class Viatura{
     }   
     
     public function listarViaturasCadastradas(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                 $stmt = $pdo->prepare("SELECT id_viatura, marcas.descricao AS marca, modelos.descricao AS modelo, placa, odometro, modelos.cap_tanque, modelos.consumo_padrao, modelos.cap_transp, habilitacoes.categoria, situacao.disponibilidade
                                                     FROM viaturas, marcas, modelos, habilitacoes, situacao
@@ -46,7 +46,7 @@ class Viatura{
     }
     
     public function listarViaturasPercursos(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                 $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
                                                         FROM percursos, viaturas, motoristas, marcas, modelos, destinos
@@ -73,7 +73,7 @@ class Viatura{
             }
             
             public function listarViaturasPercursosDisponiveis(){
-        include '../configs/conexao.php';
+        include '../model/conexao.php';
          try {
                 $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
                                                     FROM viaturas, marcas, modelos
@@ -100,7 +100,7 @@ class Viatura{
             }
             
         public function ViaturasRodando(){
-           include './configs/conexao.php';
+           include './model/conexao.php';
             try {
                    $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
                                                        FROM percursos, viaturas, motoristas, marcas, modelos, destinos
