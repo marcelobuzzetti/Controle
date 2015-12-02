@@ -1,7 +1,7 @@
         <fieldset>
             <legend>{$titulo}</legend>
             <table border=2px text-align='center' style='width: 40%'>
-                <form action="../model/executar.php" method="post">
+                <form action="executar" method="post">
                     <tr>
                         <td>Marca</td>
                         <td><label for="marca"><select class="form-control" name="marca" required>
@@ -65,11 +65,11 @@
                             <td>{$tbl.consumo_padrao}</td>
                             <td>{$tbl.cap_transp}</td>
                             <td>{$tbl.habilitacao}</td>
-                            <form action='../model/executar.php' method='post'>
+                            <form action='executar' method='post'>
                                         <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
                                         <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_modelo'/>Apagar Modelo</form></td>
                             </form>
-                            <form action='modelo.php' method='post'>
+                            <form action='modelo' method='post'>
                                         <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
                                         <td><button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/>Atualizar Modelo</form></td>
                             </form>

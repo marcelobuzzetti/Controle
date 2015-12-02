@@ -10,7 +10,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                <form autocomplete="off" action="../model/executar.php" method="post">
+                <form autocomplete="off" action="executar" method="post">
                     <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
                                 <option value='' disabled selected>Selecione a Viatura</option>
                                 {foreach $relacao_viaturas as $viatura}
@@ -47,7 +47,7 @@
             <td></td> 
         </tr>
         {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
-            <tr><form action='../model/executar.php' method='post' id="{$contador}">
+            <tr><form action='executar' method='post' id="{$contador}">
                 <input type='hidden' style='width: 40px;text-align: right;border: 0px' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
                 <td>{$smarty.foreach.relacao_vtr.iteration}</td>
                 <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
@@ -59,7 +59,7 @@
                 <td>{$tbl.hora_saida}</td>
                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' min="{$vtr.odo_saida}" style='width: 120px;'/></td>
                 <td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>
-                <form action='../model/executar.php' method='post'>
+                <form action='executar' method='post'>
                     <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
                     <td><input class='btn btn-danger' type='submit' id='apagar' name='enviar' value='Apagar' onclick='preenche({$contador},{$vtr.id_percurso})'/></form></td>";
                 </tr>

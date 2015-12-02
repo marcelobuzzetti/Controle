@@ -10,7 +10,8 @@ class Relatorio{
                                                         AND percursos.id_motorista = motoristas.id_motorista
                                                         AND percursos.id_viatura = viaturas.id_viatura
                                                         AND viaturas.id_marca = marcas.id_marca
-                                                        AND viaturas.id_modelo = modelos.id_modelo ");
+                                                        AND viaturas.id_modelo = modelos.id_modelo 
+                                                        AND percursos.id_destino = destinos.id_destino");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
             $stmt->bindParam(2, $fim, PDO::PARAM_STR);
             $executa = $stmt->execute();

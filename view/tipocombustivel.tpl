@@ -1,7 +1,7 @@
         <fieldset>
             <legend>{$titulo}</legend>
             <table border=2px text-align='center' style='width: 40%'>
-                <form action="../model/executar.php" method="post">
+                <form action="executar" method="post">
                     <tr>
                         <td>Descrição</td>
                         <td><label for="descricao"><input autofocus class="form-control" type="text" style='width: 150px' id="descricao" name="descricao" placeholder="Descrição" value='{$descricao}' required/></label></td>
@@ -24,11 +24,11 @@
                         <tr>
                             <td>{$smarty.foreach.tipos_combustiveis.iteration}</td>
                             <td>{$tbl.descricao}</td>
-                                <form action='../model/executar.php' method='post'>
+                                <form action='executar' method='post'>
                                     <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_tipo'/>Apagar Tipo de Combustível</form></td>
                                 </form>
-                                <form action='tipocombustivel.php' method='post'>
+                                <form action='tipocombustivel' method='post'>
                                     <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
                                     <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/>Atualizar Tipo de Combustível</form></td>
                                 </form>

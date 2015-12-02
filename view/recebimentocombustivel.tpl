@@ -1,7 +1,7 @@
 <fieldset>
             <legend>{$titulo}</legend>
             <table border=2px text-align='center' style='width: 40%'>
-                <form action="../model/executar.php" method="post">
+                <form action="executar" method="post">
                     <tr>
                         <td>Combustível</td>
                         <td><label for="combustivel"><select class="form-control" name="combustivel">
@@ -57,11 +57,11 @@
                             <td>{$tbl.motivo}</td>
                             <td>{$tbl.data}</td>
                             <td>{$tbl.hora}</td>
-                                <form action='../model/executar.php' method='post'>
+                                <form action='executar' method='post'>
                                     <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
                                     <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/>Apagar Recebimento de Combustível</form></td>
                                 </form>
-                                <form action='recebimentocombustivel.php' method='post'>
+                                <form action='recebimentocombustivel' method='post'>
                                     <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
                                     <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/>Atualizar Recebimento de Combustível</form></td>
                                 </form>

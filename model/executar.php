@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'].'/Site/model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'].'/model/conexao.php';
 
 switch ($_POST['enviar']) {
 
@@ -24,7 +24,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /Site/controller/percurso.php');
+        header('Location: /percurso');
 
         break;
 
@@ -46,7 +46,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /Site/controller/percurso.php');
+        header('Location: /percurso');
 
         break;
 
@@ -109,7 +109,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /Site/controller/percurso.php');
+        header('Location: /percurso');
 
         break;
 
@@ -140,7 +140,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /Site/controller/viatura.php');
+       header('Location: /viatura');
 
         break;
 
@@ -162,7 +162,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /Site/controller/viatura.php');
+       header('Location: /viatura');
 
         break;
 
@@ -198,7 +198,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /Site/controller/viatura.php');
+       header('Location: /viatura');
 
         break;
 
@@ -237,7 +237,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/motorista.php');
+header('Location: /motorista');
 
         break;
 
@@ -278,7 +278,7 @@ header('Location: /Site/controller/motorista.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/motorista.php');
+header('Location: /motorista');
 
         break;
 
@@ -302,7 +302,7 @@ header('Location: /Site/controller/motorista.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/motorista.php');
+header('Location: /motorista');
 
         break;
 
@@ -332,7 +332,7 @@ header('Location: /Site/controller/motorista.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/usuario.php');
+header('Location: /usuario');
 
         break;
 
@@ -354,7 +354,7 @@ header('Location: /Site/controller/usuario.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/usuario.php');
+header('Location: /usuario');
 
         break;
 
@@ -387,7 +387,7 @@ header('Location: /Site/controller/usuario.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/usuario.php');
+header('Location: /usuario');
 
         break;
 
@@ -411,7 +411,7 @@ header('Location: /Site/controller/usuario.php');
             echo $e->getMessage();
         }
 
-        header('Location: ../combustiveis/');
+        header('Location: /combustivel');
 
         break;
 
@@ -433,7 +433,7 @@ header('Location: /Site/controller/usuario.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/combustivel.php');
+header('Location: /combustivel');
 
         break;
 
@@ -458,7 +458,7 @@ header('Location: /Site/controller/combustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/combustivel.php');
+header('Location: /combustivel');
 
         break;
 
@@ -482,7 +482,7 @@ header('Location: /Site/controller/combustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/tipocombustivel.php');
+header('Location: /tipocombustivel');
 
         break;
 
@@ -505,7 +505,7 @@ header('Location: /Site/controller/tipocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/tipocombustivel.php');
+header('Location: /tipocombustivel');
         break;
 
     case 'atualizar_tipo':
@@ -529,7 +529,7 @@ header('Location: /Site/controller/tipocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/tipocombustivel.php');
+header('Location: /tipocombustivel');
         break;
 
     case 'rcb_comb':
@@ -558,7 +558,7 @@ header('Location: /Site/controller/tipocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/recebimentocombustivel.php');
+header('Location: /recebimentocombustivel');
 
         break;
 
@@ -581,7 +581,7 @@ header('Location: /Site/controller/recebimentocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/recebimentocombustivel.php');
+header('Location: /recebimentocombustivel');
 
         break;
 
@@ -612,7 +612,7 @@ header('Location: /Site/controller/recebimentocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/recebimentocombustivel.php');
+header('Location: /recebimentocombustivel');
 
         break;
 
@@ -646,7 +646,7 @@ header('Location: /Site/controller/recebimentocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/abastecimento.php');
+header('Location: /abastecimento');
 
         break;
 
@@ -668,7 +668,7 @@ header('Location: /Site/controller/abastecimento.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/abastecimento.php');
+header('Location: /abastecimento');
 
         break;
 
@@ -703,7 +703,7 @@ header('Location: /Site/controller/abastecimento.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/abastecimento.php');
+header('Location: /abastecimento');
 
         break;
 
@@ -737,7 +737,7 @@ header('Location: /Site/controller/abastecimento.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/modelo.php');
+header('Location: /modelo');
 
         break;
 
@@ -760,7 +760,7 @@ header('Location: /Site/controller/modelo.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/modelo.php');
+header('Location: /modelo');
 
         break;
 
@@ -796,7 +796,7 @@ header('Location: /Site/controller/modelo.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/modelo.php');
+header('Location: /modelo');
 
         break;
 
@@ -819,7 +819,7 @@ header('Location: /Site/controller/modelo.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/marca.php');
+header('Location: /marca');
 
         break;
 
@@ -841,7 +841,7 @@ header('Location: /Site/controller/marca.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/marca.php');
+header('Location: /marca');
 
         break;
 
@@ -867,7 +867,7 @@ header('Location: /Site/controller/marca.php');
             echo $e->getMessage();
         }
 
-header('Location: /Site/controller/marca.php');
+header('Location: /marca');
 
         break;
 
@@ -902,11 +902,11 @@ header('Location: /Site/controller/marca.php');
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['temposessao'] = time() + 120;
 
-            header('Location: /Site/controller/percurso.php');
+            header('Location: /percurso');
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;
-                header('Location: ../');
+                header('Location: /');
             }
         } catch (PDOException $e) {
             echo $e->getMessage();

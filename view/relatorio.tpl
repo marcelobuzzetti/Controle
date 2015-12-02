@@ -1,7 +1,7 @@
        <fieldset>
             <legend>{$titulo}</legend>
             <table border=2px text-align='center' style='width: 40%'>
-                <form action="relatorio.php" method="post">
+                <form action="relatorio" method="post">
                     <tr>
                         <td>Data Início</td>
                         <td><label for="data_inicio"><input autofocus class="form-control" type="date" style='width: 150px' id="data_inicio" name="data_inicio"  required="required"/></label></td>
