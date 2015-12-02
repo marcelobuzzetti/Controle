@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Site/model/conexao.php';
 
 switch ($_POST['enviar']) {
 
@@ -24,7 +24,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: '.constant("HOST").'/controller/percurso.php');
+        header('Location: /Site/controller/percurso.php');
 
         break;
 
@@ -46,7 +46,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: '.constant("HOST").'/controller/percurso.php');
+        header('Location: /Site/controller/percurso.php');
 
         break;
 
@@ -109,7 +109,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: '.constant("HOST").'/controller/percurso.php');
+        header('Location: /Site/controller/percurso.php');
 
         break;
 
@@ -140,7 +140,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: '.constant("HOST").'/controller/viatura.php');
+       header('Location: /Site/controller/viatura.php');
 
         break;
 
@@ -162,7 +162,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: '.constant("HOST").'/controller/viatura.php');
+       header('Location: /Site/controller/viatura.php');
 
         break;
 
@@ -198,7 +198,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: '.constant("HOST").'/controller/viatura.php');
+       header('Location: /Site/controller/viatura.php');
 
         break;
 
@@ -237,7 +237,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/motorista.php');
+header('Location: /Site/controller/motorista.php');
 
         break;
 
@@ -278,7 +278,7 @@ header('Location: '.constant("HOST").'/controller/motorista.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/motorista.php');
+header('Location: /Site/controller/motorista.php');
 
         break;
 
@@ -302,7 +302,7 @@ header('Location: '.constant("HOST").'/controller/motorista.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/motorista.php');
+header('Location: /Site/controller/motorista.php');
 
         break;
 
@@ -332,7 +332,7 @@ header('Location: '.constant("HOST").'/controller/motorista.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/usuario.php');
+header('Location: /Site/controller/usuario.php');
 
         break;
 
@@ -354,7 +354,7 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/usuario.php');
+header('Location: /Site/controller/usuario.php');
 
         break;
 
@@ -387,7 +387,7 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/usuario.php');
+header('Location: /Site/controller/usuario.php');
 
         break;
 
@@ -433,7 +433,7 @@ header('Location: '.constant("HOST").'/controller/usuario.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/combustivel.php');
+header('Location: /Site/controller/combustivel.php');
 
         break;
 
@@ -458,7 +458,7 @@ header('Location: '.constant("HOST").'/controller/combustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/combustivel.php');
+header('Location: /Site/controller/combustivel.php');
 
         break;
 
@@ -482,7 +482,7 @@ header('Location: '.constant("HOST").'/controller/combustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
+header('Location: /Site/controller/tipocombustivel.php');
 
         break;
 
@@ -505,7 +505,7 @@ header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
+header('Location: /Site/controller/tipocombustivel.php');
         break;
 
     case 'atualizar_tipo':
@@ -529,7 +529,7 @@ header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
+header('Location: /Site/controller/tipocombustivel.php');
         break;
 
     case 'rcb_comb':
@@ -558,7 +558,7 @@ header('Location: '.constant("HOST").'/controller/tipocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
+header('Location: /Site/controller/recebimentocombustivel.php');
 
         break;
 
@@ -581,7 +581,7 @@ header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
+header('Location: /Site/controller/recebimentocombustivel.php');
 
         break;
 
@@ -612,7 +612,7 @@ header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
+header('Location: /Site/controller/recebimentocombustivel.php');
 
         break;
 
@@ -646,7 +646,7 @@ header('Location: '.constant("HOST").'/controller/recebimentocombustivel.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/abastecimento.php');
+header('Location: /Site/controller/abastecimento.php');
 
         break;
 
@@ -668,7 +668,7 @@ header('Location: '.constant("HOST").'/controller/abastecimento.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/abastecimento.php');
+header('Location: /Site/controller/abastecimento.php');
 
         break;
 
@@ -703,7 +703,7 @@ header('Location: '.constant("HOST").'/controller/abastecimento.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/abastecimento.php');
+header('Location: /Site/controller/abastecimento.php');
 
         break;
 
@@ -737,7 +737,7 @@ header('Location: '.constant("HOST").'/controller/abastecimento.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/modelo.php');
+header('Location: /Site/controller/modelo.php');
 
         break;
 
@@ -760,7 +760,7 @@ header('Location: '.constant("HOST").'/controller/modelo.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/modelo.php');
+header('Location: /Site/controller/modelo.php');
 
         break;
 
@@ -796,7 +796,7 @@ header('Location: '.constant("HOST").'/controller/modelo.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/modelo.php');
+header('Location: /Site/controller/modelo.php');
 
         break;
 
@@ -819,7 +819,7 @@ header('Location: '.constant("HOST").'/controller/modelo.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/marca.php');
+header('Location: /Site/controller/marca.php');
 
         break;
 
@@ -841,7 +841,7 @@ header('Location: '.constant("HOST").'/controller/marca.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/marca.php');
+header('Location: /Site/controller/marca.php');
 
         break;
 
@@ -867,7 +867,7 @@ header('Location: '.constant("HOST").'/controller/marca.php');
             echo $e->getMessage();
         }
 
-header('Location: '.constant("HOST").'/controller/marca.php');
+header('Location: /Site/controller/marca.php');
 
         break;
 
@@ -902,7 +902,7 @@ header('Location: '.constant("HOST").'/controller/marca.php');
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['temposessao'] = time() + 120;
 
-            header('Location: '.constant("HOST").'/controller/percurso.php');
+            header('Location: /Site/controller/percurso.php');
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;

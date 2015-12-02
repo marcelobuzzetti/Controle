@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].constant("PATH").'/include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Site/include/config.inc.php';
 
 session_start();
 
