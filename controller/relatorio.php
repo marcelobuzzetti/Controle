@@ -20,6 +20,7 @@ if (!isset($_SESSION['login'])) {
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('relatorio.tpl');    
+        $smarty->display('./footer/footer.tpl');
         
         } else {
         
@@ -37,6 +38,7 @@ if (!isset($_SESSION['login'])) {
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('relatorio.tpl');
+        $smarty->display('./footer/footer.tpl');
         
     }
 }

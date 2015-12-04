@@ -32,5 +32,6 @@ if (!isset($_SESSION['login'])) {
     $smarty->display('./headers/headerPercursos.tpl');
     $smarty->display($menu);
     $smarty->display('percurso.tpl');
+    $smarty->display('./footer/footer.tpl');
 }
 ?>

@@ -25,5 +25,6 @@ $smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
 $smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
 $smarty->display('./headers/header.tpl');
 $smarty->display('home.tpl');
+$smarty->display('./footer/footer.tpl');
 
 ?>

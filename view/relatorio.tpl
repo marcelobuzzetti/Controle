@@ -24,12 +24,12 @@
         </div>
     </div>
 </div>
-<div class="wrapper" role="main">
-    <div class='container-fluid'>
-        <div class="row">
-            <div class="table-responsive" >
-                <fieldset>
-                    {if $verificador == 1}
+{if $verificador == 1}
+    <div class="wrapper" role="main">
+        <div class='container-fluid'>
+            <div class="row">
+                <div class="table-responsive" >
+                    <fieldset>                    
                         <table class='table' text-align='center'>
                             <legend>Viaturas</legend>
                             <tr>
@@ -61,11 +61,9 @@
                                 </tr>
                             {/foreach}
                         </table>
+                    </fieldset>
                 </div>
             </div>
         </div>
     </div>
 {/if}
-</fieldset>
-</body>
-</html>

@@ -34,6 +34,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('viatura.tpl');
+        $smarty->display('./footer/footer.tpl');
         
     } else {
 
@@ -77,6 +78,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('viatura.tpl');
+        $smarty->display('./footer/footer.tpl');
     }
 }
 ?>

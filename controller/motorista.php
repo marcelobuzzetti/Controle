@@ -31,6 +31,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('motorista.tpl');
+        $smarty->display('./footer/footer.tpl');
 
     } else {
         
@@ -66,7 +67,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
-        $smarty->display('motorista.tpl');        
+        $smarty->display('motorista.tpl');   
+        $smarty->display('./footer/footer.tpl');
     }
        
 }

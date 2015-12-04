@@ -47,5 +47,7 @@
                             </tr>
                         {/foreach}    
                     </table>  
-                    </body>
-                    </html>
+            </div>
+        </div>
+    </div>
+</div>

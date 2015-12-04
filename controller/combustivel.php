@@ -22,6 +22,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty->display('./headers/header.tpl');
             $smarty->display($menu);
             $smarty->display('combustivel.tpl');
+            $smarty->display('./footer/footer.tpl');
 
     } else {
                 $id = $_POST['id'];
@@ -56,5 +57,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty->display('./headers/header.tpl');
             $smarty->display($menu);
             $smarty->display('combustivel.tpl');
+            $smarty->display('./footer/footer.tpl');
             }
 }

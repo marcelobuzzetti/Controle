@@ -27,6 +27,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
+        $smarty->display('./footer/footer.tpl');
 
     } else {
         $id = $_POST['id'];
@@ -62,5 +63,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
+        $smarty->display('./footer/footer.tpl');
     }
 }
