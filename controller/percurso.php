@@ -22,6 +22,7 @@ if (!isset($_SESSION['login'])) {
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
     
+    $smarty->assign('titulo', 'Controle de Saída de Viatura');
     $smarty->assign('contador', $contador);
     $smarty->assign('tabela_relacao_vtr', $tabela_relacao_viaturas);
     $smarty->assign('tabela_relacao_vtr_fechadas', $tabela_relacao_viaturas_fechadas);
