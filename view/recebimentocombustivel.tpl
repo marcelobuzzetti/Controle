@@ -1,73 +1,89 @@
-<fieldset>
-            <legend>{$titulo}</legend>
-            <table border=2px text-align='center' style='width: 40%'>
-                <form action="executar" method="post">
-                    <tr>
-                        <td>Combustível</td>
-                        <td><label for="combustivel"><select class="form-control" name="combustivel">
-                                <option value='' disabled selected>Selecione o Combustível</option>
-                                {foreach $relacao_combustiveis as $combustiveis}
-                                    <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
-                                {/foreach}
-                                </select></label></td>
-                    </tr>
-                    <tr>
-                        <td>Tipo</td>
-                        <td><label for="tipo"><select class="form-control" name="tp">
-                                 <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
-                                {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
-                                    <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
-                                {/foreach}
-                            </select></label></td>
-                    </tr>
-                    <tr>
-                        <td>Quantidade</td>
-                        <td><label for="qnt"><input class="form-control" type="number" style='width: 150px' id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></label><br /></td>
-                    </tr>
-                    <tr>
-                        <td>Motivo</td>
-                        <td><label for="motivo"><input class="form-control" type="text" style='width: 150px' id="motivo" name="motivo" placeholder="Descrição do Motivo" required="required" value="{$motivo}"/></label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    <input type='hidden' id='{$id_rcb_comb}' value='{$id_rcb_comb}' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
-                    </tr>
-                </form>
-            </table>
-            <table border=2px style='width:100%'>
-                 <caption>Combustível Recebido</caption>
-                    <tr>
-                        <td>Ordem</td>
-                        <td>Combustível</td>
-                        <td>Tipo</td>
-                        <td>Quantidade</td>
-                        <td>Motivo</td>
-                        <td>Data</td>
-                        <td>Hora</td>
-                        <td></td>
-                        <td></td>
+<div class="wrapper" role="main">
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6" >
+                <fieldset>
+                    <legend>{$titulo}</legend>
+                    <table class='table table-responsive' text-align='center'>
+                        <form action="executar" method="post">
+                            <tr>
+                                <td>Combustível</td>
+                                <td><label for="combustivel"><select class="form-control" name="combustivel">
+                                            <option value='' disabled selected>Selecione o Combustível</option>
+                                            {foreach $relacao_combustiveis as $combustiveis}
+                                                <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
+                                            {/foreach}
+                                        </select></label></td>
+                            </tr>
+                            <tr>
+                                <td>Tipo</td>
+                                <td><label for="tipo"><select class="form-control" name="tp">
+                                            <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
+                                            {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
+                                                <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
+                                            {/foreach}
+                                        </select></label></td>
+                            </tr>
+                            <tr>
+                                <td>Quantidade</td>
+                                <td><label for="qnt"><input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></label><br /></td>
+                            </tr>
+                            <tr>
+                                <td>Motivo</td>
+                                <td><label for="motivo"><input class="form-control" type="text" id="motivo" name="motivo" placeholder="Descrição do Motivo" required="required" value="{$motivo}"/></label></td>
+                            </tr>
+                            <tr>
+                            <input type='hidden' id='{$id_rcb_comb}' value='{$id_rcb_comb}' name='id'/>
+                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
+                            </tr>
+                        </form>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper" role="main">
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="table-responsive" >
+                <fieldset>
+                    <legend>Combustível Recebido</legend>
+                    <table class='table' text-align='center'>
+                        <tr>
+                            <td>Ordem</td>
+                            <td>Combustível</td>
+                            <td>Tipo</td>
+                            <td>Quantidade</td>
+                            <td>Motivo</td>
+                            <td>Data</td>
+                            <td>Hora</td>
+                            <td colspan="2">Ações</td>
                         </tr>
                         {foreach $relacao_rcb_combustiveis as $tbl name=relacao_rcb_combustiveis}
-                        <tr>
-                            <td>{$smarty.foreach.relacao_rcb_combustiveis.iteration}</td>
-                            <td>{$tbl.combustivel}</td>
-                            <td>{$tbl.tipo}</td>
-                            <td>{$tbl.qnt}</td>
-                            <td>{$tbl.motivo}</td>
-                            <td>{$tbl.data}</td>
-                            <td>{$tbl.hora}</td>
-                                <form action='executar' method='post'>
-                                    <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
-                                    <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/>Apagar Recebimento de Combustível</form></td>
-                                </form>
-                                <form action='recebimentocombustivel' method='post'>
-                                    <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
-                                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/>Atualizar Recebimento de Combustível</form></td>
-                                </form>
-                        </tr>
+                            <tr>
+                                <td>{$smarty.foreach.relacao_rcb_combustiveis.iteration}</td>
+                                <td>{$tbl.combustivel}</td>
+                                <td>{$tbl.tipo}</td>
+                                <td>{$tbl.qnt}</td>
+                                <td>{$tbl.motivo}</td>
+                                <td>{$tbl.data}</td>
+                                <td>{$tbl.hora}</td>
+                            <form action='executar' method='post'>
+                                <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/><span class="glyphicon glyphicon-remove"/></form></td>
+                            </form>
+                            <form action='recebimentocombustivel' method='post'>
+                                <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
+                                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class="glyphicon glyphicon-refresh"/></form></td>
+                            </form>
+                            </tr>
                         {/foreach}
-            </table>
-        </fieldset>
-    </body>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

@@ -1,25 +1,36 @@
-﻿      <fieldset>
-            <legend>{$titulo}</legend>
-            <table border=2px text-align='center' style='width: 40%'>
-                <form action="executar" method="post">
+<div class="wrapper" role="main">
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6" >
+                <fieldset>
+                    <legend>{$titulo}</legend>
+                    <table class='table table-responsive' text-align='center'>
+                        <form action="executar" method="post">
                     <tr>
                         <td>Descrição</td>
-                        <td><label for="descricao"><input class="form-control" type="text" style='width: 150px' id="descricao" name="descricao" placeholder="Descrição" required="required" value='{$descricao}'/></label></td>
+                        <td><label for="descricao"><input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" value='{$descricao}'/></label></td>
                     </tr>
-                    <td></td>
                     <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
-                    <td><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
+                    <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
                     </tr>
                 </form>
-            </table>
-        </fieldset>
-        <table border=2px style='width:100%'>
-                 <caption>Combustíveis Cadastrados</caption>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper" role="main">
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="table-responsive" >
+                <fieldset>
+                    <legend>Combustíveis Cadastrados</legend>
+                    <table class='table' text-align='center'>
                     <tr>
                         <td>Ordem</td>
                         <td>Combustível</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2">Ações</td>
                     </tr>
                     {foreach $relacao_combustiveis as $comb name=relacao_combustiveis}
                         <tr>
@@ -27,11 +38,11 @@
                             <td>{$comb.descricao}</td>
                         <form action='executar' method='post'>
                             <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
-                                    <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_combustivel'/>Apagar Combustível</form></td>
+                                    <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_combustivel'/><span class='glyphicon glyphicon-remove'/></form></td>
                         </form>
                         <form action='combustivel' method='post'>
                                     <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
-                                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/>Atualizar Combustível</form></td>
+                                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/><span class='glyphicon glyphicon-refresh'/></form></td>
                         </form>
                         </tr>
         {/foreach}
