@@ -6857,3 +6857,21 @@ button.close {
 .ui-helper-hidden-accessible {
     display: none;
 }
+
+#social-icons {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 45px;
+}
+
+#social-icons img {
+  width: 36px;
+  opacity: 0.67;
+  transition: 0.3s all ease-out;
+}
+
+#social-icons img:hover {
+  opacity: 1;
+  transform: translateY(-6px) scale(1.1);
+  -webkit-transform: translateY(-6px) scale(1.1);
+}
