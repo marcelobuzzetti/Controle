@@ -4,6 +4,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # e também não é um diretório (-d)
 RewriteCond %{REQUEST_FILENAME} !-d
 
+#Acesso as Páginas
 RewriteRule ^abastecimento/?$ controller/abastecimento.php
 RewriteRule ^combustivel/?$ controller/combustivel.php
 RewriteRule ^marca/?$ controller/marca.php
@@ -16,6 +17,11 @@ RewriteRule ^tipocombustivel/?$ controller/tipocombustivel.php
 RewriteRule ^usuario/?$ controller/usuario.php
 RewriteRule ^viatura/?$ controller/viatura.php
 
+#Acesso ao Model
 RewriteRule ^conexao/?$ model/conexao.php
 RewriteRule ^executar/?$ model/executar.php
 RewriteRule ^logout/?$ model/logout.php
+
+#Erros
+ErrorDocument 404 /controller/404.php
+ErrorDocument 403 /controller/404.php
