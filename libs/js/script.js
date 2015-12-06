@@ -6,3 +6,16 @@ function preenche(a, b) {
 function imprimir() {
     self.print();
 }
+
+$(function () {
+    $('input[name=data_inicio]').datepicker({
+        showButtonPanel:true,
+        dateFormat: 'yy-mm-dd'
+    });
+    $('input[id=data_fim]').datepicker({
+        showButtonPanel:true,
+        dateFormat: 'yy-mm-dd'
+    });
+});
+
+
