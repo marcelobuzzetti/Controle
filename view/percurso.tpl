@@ -1,5 +1,5 @@
 <div class="wrapper" role="main">
-    <div class='container-fluid'>
+    <div class='container'>
         <div class="row">
             <div class="table-responsive" >
                 <fieldset>
@@ -40,7 +40,7 @@
     </div>
 </div>
 <div class="wrapper" role="main">
-    <div class='container-fluid'>
+    <div class='container'>
         <div class="row">
             <div class="table-responsive" >
                 <fieldset>
@@ -85,7 +85,7 @@
     </div>
 </div>
 <div class="wrapper" role="main">
-    <div class='container-fluid'>
+    <div class='container'>
         <div class="row">
             <div class="table-responsive" >
                 <fieldset>

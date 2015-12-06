@@ -1,18 +1,18 @@
 <div class="wrapper" role="main">
-    <div class='container-fluid'>
+    <div class='container'>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6" >
                 <fieldset>
                     <legend>{$titulo}</legend>
                     <table class='table table-responsive' text-align='center'>
-                        <form action="executar" method="post">
+                        <form autocomplete="off" action="relatorio" method="post">
                             <tr>
                                 <td>Data Início</td>
-                                <td><label for="data_inicio"><input autofocus class="form-control" type="date" style='width: 150px' id="data_inicio" name="data_inicio"  required="required"/></label></td>
+                                <td><label for="data_inicio"><input autofocus class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required"/></label></td>
                             </tr>
                             <tr>
                                 <td>Data Fim</td>
-                                <td><label for="data_fim"><input autofocus class="form-control" type="date" style='width: 150px' id="data_fim" name="data_fim"  required="required"/></label></td>
+                                <td><label for="data_fim"><input autofocus class="form-control" type="text" id="data_fim" name="data_fim"  required="required"/></label></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="relatorio" name="enviar">Gerar Relatório</button></label></td>
@@ -26,7 +26,7 @@
 </div>
 {if $verificador == 1}
     <div class="wrapper" role="main">
-        <div class='container-fluid'>
+        <div class='container'>
             <div class="row">
                 <div class="table-responsive" >
                     <fieldset>                    
