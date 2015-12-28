@@ -15,13 +15,13 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
+                                <td><label for="viatura" ><select class="form-control" name="viatura" id="viatura" required="required" onchange="buscar_motorista">
                                             <option value='' disabled selected>Selecione a Viatura</option>
                                             {foreach $relacao_viaturas as $viatura}
                                                 <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
                                             {/foreach}
                                         </select></label></td>
-                                <td><label for="motorista"><select class="form-control" name="motorista" required="required">
+                                <td><label for="motorista"><select class="form-control" name="motorista" id="motorista" required="required">
                                             <option value='' disabled selected>Selecione o Motorista</option>
                                             {foreach $relacao_motoristas as $motorista}
                                                 <option value={$motorista.id_motorista}>{$motorista.apelido}</option>
@@ -69,11 +69,11 @@
                                 <td>{$tbl.acompanhante}</td>
                                 <td>{$tbl.data_saida}</td>
                                 <td>{$tbl.hora_saida}</td>
-                                <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required' min="{$vtr.odo_saida}"/></td>
+                                <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                                 <td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>
                             <form action='executar' method='post'>
                                 <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
-                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' onclick='preenche({$contador},{$vtr.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>";
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>";
                             </tr>
                             </form>
                             </tr>
