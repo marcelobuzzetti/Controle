@@ -6,7 +6,8 @@ class Usuario{
           try {
             $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome 
                                                 FROM usuarios, perfis
-                                                WHERE cod_perfil = usuarios.id_perfil");
+                                                WHERE cod_perfil = usuarios.id_perfil
+						AND login != 'admin'");
             $executa = $stmt->execute();
 
                 if ($executa) {
