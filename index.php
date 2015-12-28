@@ -15,8 +15,7 @@ if ($_SESSION['timeout'] == 1) {
                          </div>";
 }
 session_destroy();
-
-include './include/config.inc.php';
+include __DIR__.'/include/config.inc.php';
 
 $viatura = new Viatura();
 $tabela_relacao_vtr = $viatura->ViaturasRodando();
