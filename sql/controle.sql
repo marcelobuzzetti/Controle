@@ -9,17 +9,17 @@ CREATE TABLE abastecimentos (
   qnt int(11) NOT NULL,
   hora time DEFAULT NULL, 
   data date DEFAULT NULL
- );
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE destinos ( 
   id_destino int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome_destino varchar(100) NOT NULL 
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE habilitacoes ( 
   id_habilitacao int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   categoria varchar(2)  NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE motoristas (
   id_motorista int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -27,7 +27,7 @@ CREATE TABLE motoristas (
   id_habilitacao int(11) NOT NULL, 
   id_posto_grad int(11) NOT NULL,
   apelido varchar(20) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE percursos ( 
   id_percurso int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -41,19 +41,19 @@ CREATE TABLE percursos (
   odo_retorno float DEFAULT NULL,
   data_retorno date DEFAULT NULL,
   hora_retorno time DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE perfis ( 
   id_perfil int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao varchar(20)  NOT NULL,
   cod_perfil int(11) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE posto_grad ( 
   id_posto_grad int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao varchar(20) NOT NULL, 
   sigla varchar(10) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE recibos_combustiveis ( 
   id_recibo_combustivel int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
@@ -63,22 +63,22 @@ CREATE TABLE recibos_combustiveis (
   motivo varchar(50) NOT NULL, 
   data date NOT NULL, 
   hora time NOT NULL 
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE situacao (
   id_situacao int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   disponibilidade varchar(20) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE tipos_combustiveis ( 
   id_tipo_combustivel int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
   descricao varchar(50) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE combustiveis (
   id_combustivel int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao varchar(50) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE usuarios (
   id_usuario int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -86,7 +86,7 @@ CREATE TABLE usuarios (
   senha varchar(50)  NOT NULL,
   id_perfil int(11) NOT NULL,
   nome varchar(20) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE viaturas (
   id_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -95,12 +95,12 @@ CREATE TABLE viaturas (
   placa varchar(50)  NOT NULL,
   odometro int(11) NOT NULL, 
   id_situacao int(11) NOT NULL 
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE marcas (
   id_marca int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao varchar(50)  NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE modelos (
   id_modelo int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -110,7 +110,7 @@ CREATE TABLE modelos (
   consumo_padrao int(11) NOT NULL, 
   cap_transp int(11) NOT NULL, 
   id_habilitacao int(11) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 ALTER TABLE abastecimentos
   ADD CONSTRAINT FK_motorista FOREIGN KEY (id_motorista) REFERENCES motoristas (id_motorista),
