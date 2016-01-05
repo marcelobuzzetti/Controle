@@ -1,7 +1,8 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'].'/model/conexao.php';
-
+session_start();
+$usuario = $_SESSION['usuario'];
 switch ($_POST['enviar']) {
 
     case 'Retornou':
@@ -91,7 +92,7 @@ switch ($_POST['enviar']) {
             }
 
             $stmt = $pdo->prepare("INSERT INTO percursos
-                                                VALUES(NULL,?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL)");
+                                                VALUES(NULL,?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL,$usuario)");
             $stmt->bindParam(1, $viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $nome, PDO::PARAM_INT);
             $stmt->bindParam(3, $destino, PDO::PARAM_INT);
@@ -122,7 +123,7 @@ switch ($_POST['enviar']) {
         
         try {
             $stmt = $pdo->prepare("INSERT INTO viaturas 
-                                                VALUES(NULL,?,?,?,?,?)");
+                                                VALUES(NULL,?,?,?,?,?,$usuario,1)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
@@ -220,7 +221,7 @@ switch ($_POST['enviar']) {
             $apelido = $sigla[0] . " " . $nome;
 
             $stmt = $pdo->prepare("INSERT INTO motoristas
-                                                VALUES(NULL,?,?,?,?)");
+                                                VALUES(NULL,?,?,?,?,$usuario,1)");
             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
             $stmt->bindParam(2, $categoria, PDO::PARAM_INT);
             $stmt->bindParam(3, $pg, PDO::PARAM_INT);
@@ -315,7 +316,7 @@ header('Location: /motorista');
 
         try {
             $stmt = $pdo->prepare("INSERT INTO usuarios 
-                                                VALUES(NULL,?,?,?,?)");
+                                                VALUES(NULL,?,?,?,?,1)");
             $stmt->bindParam(1, $login, PDO::PARAM_STR);
             $stmt->bindParam(2, $senha, PDO::PARAM_STR);
             $stmt->bindParam(3, $perfil, PDO::PARAM_INT);
@@ -397,7 +398,7 @@ header('Location: /usuario');
 
         try {
             $stmt = $pdo->prepare("INSERT INTO combustiveis
-                                                VALUES(NULL,?)");
+                                                VALUES(NULL,?,$usuario)");
             $stmt->bindParam(1, $descricao, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
@@ -468,7 +469,7 @@ header('Location: /combustivel');
 
         try {
             $stmt = $pdo->prepare("INSERT INTO tipos_combustiveis
-                                                VALUES(NULL,?)");
+                                                VALUES(NULL,?,$usuario)");
             $stmt->bindParam(1, $descricao, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
@@ -541,7 +542,7 @@ header('Location: /tipocombustivel');
 
         try {
             $stmt = $pdo->prepare("INSERT INTO recibos_combustiveis
-                                                VALUES(NULL,?,?,?,?,NOW(),NOW())");
+                                                VALUES(NULL,?,?,?,?,NOW(),NOW(),$usuario)");
             $stmt->bindParam(1, $combustivel, PDO::PARAM_INT);
             $stmt->bindParam(2, $tp, PDO::PARAM_INT);
             $stmt->bindParam(3, $qnt, PDO::PARAM_INT);
@@ -627,7 +628,7 @@ header('Location: /recebimentocombustivel');
 
         try {
             $stmt = $pdo->prepare("INSERT INTO abastecimentos
-                                               VALUES(NULL,?,?,?,?,?,?,NOW(),NOW())");
+                                               VALUES(NULL,?,?,?,?,?,?,NOW(),NOW(),$usuario)");
             $stmt->bindParam(1, $nrvale, PDO::PARAM_STR);
             $stmt->bindParam(2, $motorista, PDO::PARAM_INT);
             $stmt->bindParam(3, $viatura, PDO::PARAM_INT);
@@ -886,7 +887,7 @@ header('Location: /marca');
 
             $resultado = $stmt->fetch();
 
-            $stmt = $pdo->prepare('SELECT id_perfil, nome 
+            $stmt = $pdo->prepare('SELECT id_perfil, nome, id_usuario
                                                 FROM usuarios 
                                                 WHERE login = ?');
             $stmt->bindParam(1, $login, PDO::PARAM_STR);
@@ -900,6 +901,7 @@ header('Location: /marca');
 
                 $_SESSION['login'] = $resultado1[1];
                 $_SESSION['perfil'] = $resultado1[0];
+                $_SESSION['usuario'] = $resultado1[2];
                 $_SESSION['temposessao'] = time() + 120;
 
             header('Location: /percurso');
