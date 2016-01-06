@@ -16,6 +16,9 @@ $(function () {
         showButtonPanel:true,
         dateFormat: 'yy-mm-dd'
     });
+    
+     $("#destino").autocomplete({
+                    source: "../model/buscador.php",
+                    minLength: 3
+                });
 });
-
-
