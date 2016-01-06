@@ -1,7 +1,7 @@
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="row">
-            <div class="table-responsive" >
+            <div class="table table-responsive" >
                 <fieldset>
                     <legend>{$titulo}</legend>
                     <table class='table' text-align='center'>
@@ -15,7 +15,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><label for="viatura" ><select class="form-control" name="viatura" id="viatura" required="required" onchange="buscar_motorista">
+                                <td><label for="viatura" ><select class="form-control" name="viatura" id="viatura" required="required">
                                             <option value='' disabled selected>Selecione a Viatura</option>
                                             {foreach $relacao_viaturas as $viatura}
                                                 <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
@@ -42,7 +42,7 @@
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="row">
-            <div class="table-responsive" >
+            <div class="table table-responsive" >
                 <fieldset>
                     <legend>Viaturas Rodando</legend>
                     <table class='table' text-align='center'>
@@ -86,10 +86,10 @@
 </div>
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="table-responsive" >
+        <button class="btn btn-info" data-toggle="collapse" data-target="#fechadas">Viaturas Fechadas</button>
+        <div id="fechadas" class="collapse">
+            <div class="table table-responsive" >
                 <fieldset>
-                    <legend>Viaturas Fechadas</legend>
                     <table class='table' text-align='center'>
                         <tr>
                             <td>Ordem</td>
@@ -97,7 +97,7 @@
                             <td>Motorista</td>
                             <td>Destino</td>
                             <td>Odômetro Saída</td>
-                            <td>Ch Vtr</td>
+                            <td>Acompanhante</td>
                             <td>Data Saída</td>
                             <td>Hora Saída</td>
                             <td>Odômetro Retorno</td>
