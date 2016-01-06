@@ -60,11 +60,11 @@
                             <td>{$tbl.categoria}</td>
                             <form action='executar' method='post'>
                                 <input type='hidden' id='{$tbl.$id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' /><span class='glyphicon glyphicon-remove'/></form></td>
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar Motorista"/><span class='glyphicon glyphicon-remove'/></form></td>
                             </form>
                             <form action='motorista' method='post'>
                                 <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' /><span class='glyphicon glyphicon-refresh'/></form></td>
+                                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
                             </form>
                             </tr> 
                         {/foreach}
