@@ -8,21 +8,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Controle</a>
+             <a class="navbar-brand" href="#">Controle</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="http://{$HOST}/percurso">Home</a></li>
+                <li><a href="{$HOST}/percurso">Viatura Saindo?</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Percurso <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/percurso">Cadastrar Saída de Viatura</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Viatura <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Viaturas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/marca">Cadastrar Marca</a></li>
                         <li><a href="{$HOST}/modelo">Cadastrar Modelo</a></li>
@@ -30,13 +24,13 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Motorista <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Motoristas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/motorista">Cadastrar Motorista</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Combustivel <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Combustíveis <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/combustivel">Cadastrar Combustível</a></li>
                         <li><a href="{$HOST}/tipocombustivel">Cadastrar Tipo de Combustível</a></li>
@@ -44,7 +38,7 @@
                         <li><a href="{$HOST}/abastecimento">Cadastrar Abastecimento</a></li>
                     </ul>
                 </li>
-                <li><a href="{$HOST}/usuario">Cadastrar Usuário</a></li>
+                <li><a href="{$HOST}/usuario">Cadastrar Usuário?</a></li>
                 <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
                 <li><a>Olá {$login}</a></li>
                 <li><a href="{$HOST}/logout">Logout</a></li>

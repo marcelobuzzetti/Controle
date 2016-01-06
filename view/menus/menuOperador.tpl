@@ -15,12 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="http://{$HOST}/percurso">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Percurso <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/percurso">Cadastrar Saída de Viatura</a></li>
-                    </ul>
-                </li>
+                <li><a href="{$HOST}/percurso">Viatura Saindo?</a></li>
                 <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
                 <li><a>Olá {$login}</a></li>
                 <li><a href="{$HOST}/logout">Logout</a></li>
