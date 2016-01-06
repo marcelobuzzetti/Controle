@@ -1,6 +1,6 @@
 <?php
 
-$pdo = new PDO("mysql:host=localhost;dbname=controle1", "controle1", "controle1");
+$pdo = new PDO("mysql:host=localhost;dbname=controle", "controle", "controle");
 if (!$pdo) {
     die("Erro ao criar a conexão");
 }
