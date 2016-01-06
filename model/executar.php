@@ -154,10 +154,17 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+                  try {
+                      $stmt = $pdo->prepare("UPDATE viaturas
+                                                SET id_status = 2
+                                                WHERE id_viatura = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -292,12 +299,19 @@ header('Location: /motorista');
                                                 WHERE id_motorista= ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-
+            
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            try {
+                      $stmt = $pdo->prepare("UPDATE motoristas
+                                                SET id_status = 2
+                                                WHERE id_motorista = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -346,10 +360,17 @@ header('Location: /usuario');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            try {
+                      $stmt = $pdo->prepare("UPDATE usuarios
+                                                SET id_status = 2
+                                                WHERE id_usuario = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -425,10 +446,17 @@ header('Location: /usuario');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            try {
+                      $stmt = $pdo->prepare("UPDATE combustiveis
+                                                SET id_status = 2
+                                                WHERE id_combustivel = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -496,11 +524,18 @@ header('Location: /tipocombustivel');
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-            if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+           if (!$executa) {
+            try {
+                      $stmt = $pdo->prepare("UPDATE tipos_combustiveis
+                                                SET id_status = 2
+                                                WHERE id_tipo_combustivel = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -573,14 +608,22 @@ header('Location: /recebimentocombustivel');
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            try {
+                      $stmt = $pdo->prepare("UPDATE recibos_combustiveis
+                                                SET id_status = 2
+                                                WHERE id_recibo_combustivel = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
+
 
 header('Location: /recebimentocombustivel');
 
@@ -656,14 +699,22 @@ header('Location: /abastecimento');
 
         try {
             $stmt = $pdo->prepare("DELETE FROM abastecimentos
-                                                WHERE id_abastecimento =" . $id);
+                                                WHERE id_abastecimento = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            try {
+                      $stmt = $pdo->prepare("UPDATE abastecimentos
+                                                SET id_status = 2
+                                                WHERE id_abastecimento = ?");
+                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                      $executa = $stmt->execute();
+                      
+                  } catch (PDOException $e) {
+                      echo $e->getMessage();
+                      
+                  }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
