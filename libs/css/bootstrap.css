@@ -1087,13 +1087,13 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: blue;
+    color: black;
     //background-image: url("../imagens/parede.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-color: whitesmoke;
+    background-color: white;
 }
-input,
+input,  
 button,
 select,
 textarea {
@@ -2256,7 +2256,7 @@ pre code {
 }
 table {
     background-color: transparent;
-    color: blue;
+    color: black;
 }
 caption {
     padding-top: 8px;
@@ -2508,7 +2508,7 @@ legend {
     margin-bottom: 20px;
     font-size: 21px;
     line-height: inherit;
-    color: blue;
+    color: black;
     border: 0;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -6805,8 +6805,9 @@ button.close {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 .ui-autocomplete {
+    cursor: default;
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     z-index: 1000;
     float: left;
