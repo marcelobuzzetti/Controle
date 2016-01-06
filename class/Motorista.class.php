@@ -3,7 +3,7 @@ class Motorista{
     public function listarMotoristas(){
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM motoristas");
+            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_status != 2");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -25,7 +25,8 @@ class Motorista{
             $stmt = $pdo->prepare("SELECT id_motorista, nome, habilitacoes.categoria AS categoria, sigla
                                                 FROM motoristas, habilitacoes, posto_grad
                                                 WHERE motoristas.id_habilitacao = habilitacoes.id_habilitacao
-                                                AND motoristas.id_posto_grad = posto_grad.id_posto_grad");
+                                                AND motoristas.id_posto_grad = posto_grad.id_posto_grad
+                                                AND motoristas.id_status != 2");
             $executa = $stmt->execute();
 
             if ($executa) {

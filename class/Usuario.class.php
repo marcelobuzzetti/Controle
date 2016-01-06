@@ -7,7 +7,8 @@ class Usuario{
             $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome 
                                                 FROM usuarios, perfis
                                                 WHERE cod_perfil = usuarios.id_perfil
-						AND login != 'admin'");
+                                                AND login != 'admin'
+                                                AND usuarios.id_status != 2");
             $executa = $stmt->execute();
 
                 if ($executa) {

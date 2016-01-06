@@ -7,7 +7,8 @@ class Viatura{
                 $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
                                                     FROM viaturas, marcas, modelos
                                                     WHERE viaturas.id_marca = marcas.id_marca AND
-                                                    viaturas.id_modelo = modelos.id_modelo");
+                                                    viaturas.id_modelo = modelos.id_modelo
+                                                    AND viaturas.id_status != 2");
                 $executa = $stmt->execute();
 
                 if ($executa) {
@@ -30,7 +31,8 @@ class Viatura{
                                                     WHERE modelos.id_habilitacao = habilitacoes.id_habilitacao
                                                     AND viaturas.id_marca = marcas.id_marca
                                                     AND viaturas.id_modelo = modelos.id_modelo
-                                                    AND viaturas.id_situacao = situacao.id_situacao ");
+                                                    AND viaturas.id_situacao = situacao.id_situacao
+                                                    AND viaturas.id_status != 2");
                 $executa = $stmt->execute();
 
                 if ($executa) {
@@ -56,6 +58,7 @@ class Viatura{
                                                         AND viaturas.id_marca = marcas.id_marca
                                                         AND viaturas.id_modelo = modelos.id_modelo
                                                         AND percursos.id_destino = destinos.id_destino
+                                                        AND viaturas.id_status != 2
                                                         ORDER BY id_percurso DESC");
                 $executa = $stmt->execute();
 
@@ -83,6 +86,7 @@ class Viatura{
                                                                                           FROM percursos 
                                                                                           WHERE data_retorno IS NULL)
                                                     AND id_situacao != 2
+                                                    AND viaturas.id_status != 2
                                                     ORDER BY marcas.descricao AND modelos.descricao");
                 $executa = $stmt->execute();
 
