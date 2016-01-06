@@ -29,7 +29,7 @@ if (!isset($_SESSION['login'])) {
     $smarty->assign('relacao_motoristas', $relacao_motoristas);
     $smarty->assign('relacao_viaturas', $relacao_viaturas);
     $smarty->assign('login', $_SESSION['login']);
-    $smarty->display('./headers/headerPercursos.tpl');
+    $smarty->display('./headers/header.tpl');
     $smarty->display($menu);
     $smarty->display('percurso.tpl');
     $smarty->display('./footer/footer.tpl');
