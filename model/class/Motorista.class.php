@@ -3,7 +3,10 @@ class Motorista{
     public function listarMotoristas(){
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_status != 2");
+            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_status != 2 AND 
+                                                                                            id_motorista NOT IN (SELECT id_motorista
+                                                                                                                             FROM percursos 
+                                                                                                                             WHERE data_retorno IS NULL)");
             $executa = $stmt->execute();
 
             if ($executa) {
