@@ -21,4 +21,8 @@ $(function () {
                     source: "../model/buscador.php",
                     minLength: 3
                 });
+                
+    $('#viatura').change(function(){
+            $('#motorista').load('../model/listaMotoristas.php?viatura='+$('#viatura').val());
+        });
 });
