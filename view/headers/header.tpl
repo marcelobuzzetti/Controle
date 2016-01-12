@@ -1,14 +1,20 @@
-<HTML>
-    <HEAD>
+<html>
+    <head>
         <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
         <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="{$HOST}/libs/js/jquery.js" type="text/javascript"></script>
-        <script src="{$HOST}/libs/js/jquery.validate.js" type="text/javascript"></script>
+        <meta name="description" content="Aplicação Web desenvolvida como TCC">
+        <meta name="author" content="Marcelo">
+        <link rel="icon" href="../../libs/imagens/social_icons/rss.png">
+        
         <link href="{$HOST}/libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <script src="{$HOST}/libs/js/bootstrap.js" type="text/javascript"></script>
-        <script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
-        <script src="{$HOST}/libs/js/jquery-ui.js" type="text/javascript"></script>
         <link href="{$HOST}/libs/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    </HEAD>
+        
+        <!-- Suporte para HTML5 no IE -->
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <!-- Suporte para HTML5 no IE -->
+        
+    </head>
     <body>
