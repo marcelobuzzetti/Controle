@@ -4558,8 +4558,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #5e5e5e;
-    background-color: transparent;
+    color: black;
+    background-color: white;
 }
 .navbar-default .navbar-text {
     color: #777;
@@ -4570,8 +4570,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
-    background-color: transparent;
+    color: black;
+    background-color: white;
+    //Cor do menu quando o mouse esta em cima
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -4602,7 +4603,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
+    color: black;
     background-color: #e7e7e7;
 }
 @media (max-width: 767px) {
