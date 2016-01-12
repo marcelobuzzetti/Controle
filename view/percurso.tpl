@@ -15,22 +15,20 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><label for="viatura" ><select class="form-control" name="viatura" id="viatura" required="required">
+                                <td><select class="form-control" name="viatura" id="viatura" required="required">
                                             <option value='' disabled selected>Selecione a Viatura</option>
                                             {foreach $relacao_viaturas as $viatura}
                                                 <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
                                             {/foreach}
-                                        </select></label></td>
-                                <td><label for="motorista"><select class="form-control" name="motorista" id="motorista" required="required">
-                                            <option value='' disabled selected>Selecione o Motorista</option>
-                                            {foreach $relacao_motoristas as $motorista}
-                                                <option value={$motorista.id_motorista}>{$motorista.apelido}</option>
-                                            {/foreach}   
-                                        </select></label></td>
-                                <td><label for="destino"><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required"/></label><br /></td>
-                                <td><label for="odo_saida"><input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></label></td>
-                                <td><label for="acompanhante"><input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante"/></label></td>
-                                <td><label><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></label></td>
+                                        </select></td>
+                                <td><select class="form-control" name="motorista" id="motorista" required="required">
+                                            <option value='' disabled selected>Selecione a Viatura</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required"/><br /></td>
+                                <td><input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></td>
+                                <td><input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante"/></td>
+                                <td><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></td>
                             </tr>
                         </form>
                     </table>
