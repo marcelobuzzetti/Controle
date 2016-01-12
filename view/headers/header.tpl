@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Aplicação Web desenvolvida como TCC">
         <meta name="author" content="Marcelo">
-        <link rel="icon" href="../../libs/imagens/social_icons/rss.png">
+        <link rel="icon" href="../../libs/imagens/download.jpg">
         
         <link href="{$HOST}/libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="{$HOST}/libs/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
