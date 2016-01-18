@@ -19,10 +19,13 @@
         </div>
     </div>
 </div>
-<script src="{$HOST}/libs/js/jquery.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/jquery.validate.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/bootstrap.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/jquery-ui.js" type="text/javascript"></script>
+<script src="../../libs/js/LAB.min.js" type="text/javascript"></script>
+<script>
+   $LAB
+   .script("../../libs/js/jquery.js")
+   .script("../../libs/js/bootstrap.js").wait()
+   .script("../../libs/js/script.js").wait()
+   .script("../../libs/js/jquery-ui.js").wait();
+</script>
 </body>
 </html>
