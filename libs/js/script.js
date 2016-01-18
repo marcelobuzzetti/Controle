@@ -23,6 +23,8 @@ $(function () {
                 });
                 
     $('#viatura').change(function(){
-            $('#motorista').load('../model/listaMotoristas.php?viatura='+$('#viatura').val());
+        $('.Selecione').hide();
+        $('.carregando').removeAttr("hidden");
+        $('#motorista').load('../model/listaMotoristas.php?viatura='+$('#viatura').val());
         });
 });
