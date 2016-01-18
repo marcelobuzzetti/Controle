@@ -8,13 +8,7 @@
         <meta name="author" content="Marcelo">
         <link rel="icon" href="../../libs/imagens/download.jpg">
         
-        <link href="{$HOST}/libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="{$HOST}/libs/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
-        
-        <!-- Suporte para HTML5 no IE -->
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <!-- Suporte para HTML5 no IE -->
-        
+        <link href="../../libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../libs/css/jquery-ui.css" rel="stylesheet" type="text/css"/>        
     </head>
     <body>
