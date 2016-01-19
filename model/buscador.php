@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/model/conexao.php';
+include '../model/conexao.php';
 
 if (isset($_GET['term'])) {
     $return_arr = array();

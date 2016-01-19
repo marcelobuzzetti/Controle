@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'].'/model/conexao.php';
+include '../model/conexao.php';
 session_start();
 $usuario = $_SESSION['usuario'];
 switch ($_POST['enviar']) {
