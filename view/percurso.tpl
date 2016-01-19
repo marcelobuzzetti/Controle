@@ -25,9 +25,9 @@
                                             <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required"/><br /></td>
-                                <td><input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1"/></td>
-                                <td><input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante"/></td>
+                                <td><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20"/><br /></td>
+                                <td><input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1" min="0" max="999999"/></td>
+                                <td><input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" maxlength="20"/></td>
                                 <td><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar">Cadastrar</button></td>
                             </tr>
                         </form>
