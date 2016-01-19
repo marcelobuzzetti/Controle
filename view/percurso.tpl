@@ -23,7 +23,6 @@
                                         </select></td>
                                 <td><select class="form-control" name="motorista" id="motorista" required="required">
                                             <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
-                                            <option value="" class="carregando" disable hidden="">Carregando ...</option>
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required"/><br /></td>
