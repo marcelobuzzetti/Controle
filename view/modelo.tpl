@@ -8,37 +8,37 @@
                         <form action="executar" method="post">
                             <tr>
                                 <td>Marca</td>
-                                <td><label for="marca"><select class="form-control" name="marca" required>
+                                <td><select class="form-control" name="marca" required>
                                             <option value='' disabled selected>Selecione a Marca</option>
                                             {foreach $relacao_marcas as $marca}
                                                 <option value={$marca.id_marca}>{$marca.descricao}</option>
                                             {/foreach}
-                                        </select></label></td>
+                                        </select></td>
                             </tr>
                             <tr>
                                 <td>Modelo</td>
-                                <td><label for="modelo"><input autofocus class="form-control" type="text"  id="modelo" name="modelo" placeholder="Modelo" required="required" value="{$descricao}"/></label></td>
+                                <td><input autofocus class="form-control" type="text"  id="modelo" name="modelo" placeholder="Modelo" required="required" value="{$descricao}"/></td>
                             </tr>
                             <tr>
                                 <td>Capacidade do Tanque</td>
-                                <td><label for="cap_tanque"><input class="form-control" type="number" id="cap_tanque" name="cap_tanque" placeholder="Capacidade Tanque" required="required" value="{$cap_tanque}"/></label></td>
+                                <td><input class="form-control" type="number" id="cap_tanque" name="cap_tanque" placeholder="Capacidade Tanque" required="required" value="{$cap_tanque}"/></td>
                             </tr>
                             <tr>
                                 <td>Consumo</td>
-                                <td><label for="cons_padrao"><input class="form-control" type="number"  id="cons_padrao" name="consumo_padrao" placeholder="Consumo Km/L" required="required" value="{$consumo_padrao}"/></label></td>
+                                <td><input class="form-control" type="number"  id="cons_padrao" name="consumo_padrao" placeholder="Consumo Km/L" required="required" value="{$consumo_padrao}"/></td>
                             </tr>
                             <tr>
                                 <td>Capacidade de Transporte</td>
-                                <td><label for="cap_transp"><input class="form-control" type="number" id="cap_transp" name="cap_transp" placeholder="Cap Transp Pessoas" required="required" value="{$cap_transp}"/></label></td>
+                                <td><input class="form-control" type="number" id="cap_transp" name="cap_transp" placeholder="Cap Transp Pessoas" required="required" value="{$cap_transp}"/></td>
                             </tr>
                             <tr>
                                 <td>Habilitação Necessária</td>
-                                <td><label for="habilitacao"><select class="form-control" name="habilitacao" required>
+                                <td><select class="form-control" name="habilitacao" required>
                                             <option value='' disabled selected>Selecione a Habilitação</option>
                                             {foreach $relacao_habilitacoes as $habilitacao}
                                                 <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
                                             {/foreach}
-                                        </select></label></td>
+                                        </select></td>
                             </tr>
                             <tr>
                             <input type='hidden' id='{$id_modelo}' value='{$id_modelo}' name='id'/>

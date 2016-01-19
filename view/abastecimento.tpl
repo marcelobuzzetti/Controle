@@ -15,33 +15,33 @@
                                 <td>Quantidade</td>
                             </tr>
                             <tr>
-                                <td><label for="nrvale"><input class="form-control" type="text" id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" value="{$dados_abastecimentos.nrvale}"/></label></td>
-                                <td><label for="motorista"><select class="form-control" name="motorista" required="required">
+                                <td><input class="form-control" type="text" id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" value="{$dados_abastecimentos.nrvale}"/></td>
+                                <td><select class="form-control" name="motorista" required="required">
                                             <option value='' disabled selected>Selecione o Motorista</option>
                                             {foreach $relacao_motoristas as $motorista}
                                                 <option value={$motorista.id_motorista}>{$motorista.apelido}</option>
                                             {/foreach}
-                                        </select></label></td>
-                                <td><label for="viatura" ><select class="form-control" name="viatura" required="required">
+                                        </select></td>
+                                <td><select class="form-control" name="viatura" required="required">
                                             <option value='' disabled selected>Selecione a Viatura</option>
                                             {foreach $relacao_viaturas as $viaturas}
                                                 <option value={$viaturas.id_viatura}>{$viaturas.marca} - {$viaturas.modelo} - {$viaturas.placa}</option>
                                             {/foreach}
-                                        </select></label></td>
-                                <td><label for="combustivel"><select class="form-control" name="combustivel">
+                                        </select></td>
+                                <td><select class="form-control" name="combustivel">
                                             <option value='' disabled selected>Selecione o Combustível</option>
                                             {foreach $relacao_combustiveis as $combustiveis}
                                                 <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
                                             {/foreach}
-                                        </select></label></td>
-                                <td><label for="tp"><select class="form-control" name="tp">
+                                        </select></td>
+                                <td><select class="form-control" name="tp">
                                             <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
                                             {foreach $relacao_tipos_combustiveis as $tipos_combustiveis}
                                                 <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
                                             {/foreach}
-                                        </select></label></td>
+                                        </select></td>
                             <input type='hidden' id='{$id_abastecimento}' value='{$id_abastecimento}' name='id'/>
-                            <td><label for="qnt"><input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></label></td>
+                            <td><input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/></td>
                             <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
                             </tr>
                         </form>

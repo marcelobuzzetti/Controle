@@ -8,24 +8,24 @@
                         <form action="executar" method="post">
                                 <tr>
                                     <td>Login:</td>
-                                    <td><label for="login"><input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required /></label></td>
+                                    <td><input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required /></td>
                                 </tr>
                                 <tr>
                                     <td>Senha</td>
-                                    <td><label for="senha"><input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required/></label></td>
+                                    <td><input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required/></td>
                                 </tr>
                                 <tr>
                                     <td>Perfil:</td>
-                                    <td><label for="perfil"><select class="form-control" name="perfil" required>
+                                    <td><select class="form-control" name="perfil" required>
                                                 <option value='' disabled selected>Selecione o Perfil</option>
                                                 {foreach $relacao_perfis as $perfil}
                                                     <option value={$perfil.id_perfil}>{$perfil.descricao}</option>
                                                 {/foreach}
-                                            </select></label></td>
+                                            </select></td>
                                 </tr>
                                 <tr>
                                     <td>Apelido:</td>
-                                    <td><label for="apelido"><input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado"/></label></td>
+                                    <td><input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado"/></td>
                                 </tr>
                                 <tr>
                                 <input type='hidden' id='id' name='id' value='{$id_usuario}'/>

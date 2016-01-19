@@ -8,10 +8,10 @@
                         <form action="executar" method="post">
                             <tr>
                                 <td>Descrição</td>
-                                <td><label for="descricao"><input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" value='{$descricao}'/></label></td>
+                                <td><input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" value='{$descricao}'/></td>
                             </tr>
                             <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
-                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
+                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></td>
                             </tr>
                         </form>
                     </table>
