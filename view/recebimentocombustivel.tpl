@@ -26,7 +26,7 @@
                             </tr>
                             <tr>
                                 <td>Quantidade</td>
-                                <td><input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="999999" step="1" value="{$qnt}" tabindex="3"/><br /></td>
+                                <td><input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="999999" step="1" value="{$qnt}" tabindex="3"/></td>
                             </tr>
                             <tr>
                                 <td>Motivo</td>
@@ -34,7 +34,7 @@
                             </tr>
                             <tr>
                             <input type='hidden' id='{$id_rcb_comb}' value='{$id_rcb_comb}' name='id'/>
-                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button></label></td>
+                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button></td>
                             </tr>
                         </form>
                     </table>
