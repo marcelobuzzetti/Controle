@@ -16,6 +16,7 @@ class Menu{
                     return './menus/menuMntS4.tpl';
                     break;
                 default:
+                    return './menus/menuLogin.tpl';
             }
     }   
 }
