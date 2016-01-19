@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/include/config.inc.php';
+include '../include/config.inc.php';
 
 session_start();
 
