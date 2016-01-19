@@ -8,42 +8,39 @@
                         <form action="executar" method="post">
                             <tr>
                                 <td>Marca</td>
-                                <td><label for="marca"><select class="form-control" id="marca" name="marca" required>
+                                <td><select class="form-control" id="marca" name="marca" required>
                                             <option value='' disabled selected>Selecione a Marca</option>
                                             {foreach $relacao_marcas as $marca}
                                                 <option value={$marca.id_marca}>{$marca.descricao}</option>
                                             {/foreach}
-                                        </select></label></td>
+                                        </select></td>
                             </tr>
                             <tr>
                                 <td>Modelo</td>
-                                <td><label for="modelo"><select class="form-control" id="modelo" name="modelo"  required>
-                                            <option value='' disabled selected>Selecione o Modelo</option>
-                                            {foreach $relacao_modelos as $modelo}
-                                                <option value={$modelo.id_modelo}>{$modelo.descricao}</option>
-                                            {/foreach}
-                                        </select></label></td>
+                                <td><select class="form-control" id="modelo" name="modelo"  required>
+                                            <option value='' class="Selecione" disabled selected>Selecione a Marca</option>
+                                        </select></td>
                             </tr>
                             <tr>
                                 <td>Placa</td>
-                                <td><label for="placa"><input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}'/></label><br /></td>
+                                <td><input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}'/></td>
                             </tr>
                             <tr>
                                 <td>Odômetro</td>
-                                <td><label for="odometro"><input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" value='{$odometro}' step="0.1"/></label></td>
+                                <td><input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" value='{$odometro}' step="0.1" min="0" max="999999"/></td>
                             </tr>
                             <tr>
                                 <td>Situação</td>
-                                <td><label for="situacao"><select class="form-control" name="situacao">
+                                <td><select class="form-control" name="situacao">
                                             <option value='' disabled selected>Selecione a Situação</option>
                                             {foreach $relacao_situacao as $situacao}
                                                 <option value={$situacao.id_situacao}>{$situacao.disponibilidade}</option>
                                             {/foreach}
-                                        </select></label></td>
+                                        </select></td>
                             </tr>
                             <tr>
                             <input type='hidden' id='id' name='id' value='{$id_viatura}' />
-                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
+                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></td>
                             </tr>
                         </form>
                     </table>
