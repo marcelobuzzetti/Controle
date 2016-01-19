@@ -25,7 +25,8 @@ if ($categoria == "A") {
     WHERE data_retorno IS NULL)
     AND motoristas.id_habilitacao = habilitacoes.id_habilitacao
     AND categoria like '%$categoria%'
-    AND id_motorista NOT IN (SELECT id_motorista FROM percursos WHERE data_retorno IS NULL)");
+    AND id_motorista NOT IN (SELECT id_motorista FROM percursos WHERE data_retorno IS NULL)
+    ORDER BY apelido");
     if (mysql_num_rows($rs) > 0) {
         echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
         echo "<option value='' disabled selected>Selecione o Motoristas</option>";
@@ -46,7 +47,8 @@ if ($categoria == "A") {
     WHERE data_retorno IS NULL)
     AND motoristas.id_habilitacao = habilitacoes.id_habilitacao
     AND (categoria like '%$categoria%' OR ordem >= $ordem)
-    AND id_motorista NOT IN (SELECT id_motorista FROM percursos WHERE data_retorno IS NULL)");
+    AND id_motorista NOT IN (SELECT id_motorista FROM percursos WHERE data_retorno IS NULL)
+    ORDER BY apelido");
     if (mysql_num_rows($rs) > 0) {
         echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
         echo "<option value='' disabled selected>Selecione o Motoristas</option>";
