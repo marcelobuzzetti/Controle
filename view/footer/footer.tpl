@@ -19,13 +19,9 @@
         </div>
     </div>
 </div>
-<script src="../../libs/js/LAB.min.js" type="text/javascript"></script>
-<script>
-   $LAB
-   .script("../../libs/js/jquery.js")
-   .script("../../libs/js/bootstrap.js").wait()
-   .script("../../libs/js/script.js").wait()
-   .script("../../libs/js/jquery-ui.js").wait();
-</script>
+<script src="../../libs/js/jquery.js" type="text/javascript"></script>
+<script src="../../libs/js/bootstrap.js" type="text/javascript"></script>
+<script src="../../libs/js/jquery-ui.js" type="text/javascript"></script>
+<script src="../../libs/js/script.js" type="text/javascript"></script>
 </body>
 </html>
