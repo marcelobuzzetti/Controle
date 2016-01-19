@@ -8,9 +8,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     
     $marcas = new Marca();
     $relacao_marcas = $marcas->listarMarcas();
-
-    $modelos = new Modelo();
-    $relacao_modelos = $modelos->listarModelosCadastrados();
     
     $situacao = new Situacao();
     $relacao_situacao = $situacao->listarSituacao();
@@ -27,7 +24,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'viatura');
         $smarty->assign('relacao_marcas', $relacao_marcas);
-        $smarty->assign('relacao_modelos', $relacao_modelos);
         $smarty->assign('relacao_situacao', $relacao_situacao);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('login', $_SESSION['login']);
@@ -67,7 +63,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('evento', 'atualizar_viatura');
         $smarty->assign('id_viatura', $id_viatura);
         $smarty->assign('marca', $marca);
-        $smarty->assign('modelo', $modelo);
         $smarty->assign('placa', $placa);
         $smarty->assign('odometro', $odometro);
         $smarty->assign('relacao_marcas', $relacao_marcas);
