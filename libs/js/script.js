@@ -8,14 +8,10 @@ function imprimir() {
 }
 
 $(function () {
-    $('input[name=data_inicio]').datepicker({
-        showButtonPanel:true,
-        dateFormat: 'yy-mm-dd'
-    });
-    $('input[id=data_fim]').datepicker({
-        showButtonPanel:true,
-        dateFormat: 'yy-mm-dd'
-    });
+    $('#data').datepicker({
+            showButtonPanel:true,
+            dateFormat: 'yy-mm-dd',
+        });
     
      $("#destino").autocomplete({
                     source: "../model/buscador.php",
@@ -24,7 +20,6 @@ $(function () {
                 
     $('#viatura').change(function(){
         $('.Selecione').hide();
-        $('.carregando').removeAttr("hidden");
         $('#motorista').load('../model/listaMotoristas.php?viatura='+$('#viatura').val());
         });
 });
