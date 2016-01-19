@@ -19,7 +19,8 @@ CREATE TABLE destinos (
 
 CREATE TABLE habilitacoes ( 
   id_habilitacao int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  categoria varchar(2)  NOT NULL
+  categoria varchar(2)  NOT NULL,
+  ordem int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE motoristas (
@@ -210,13 +211,13 @@ INSERT INTO combustiveis (id_combustivel, descricao,id_usuario) VALUES
 (2, 'Álcool',1),
 (3, 'Óleo Diesel',1);
 
-INSERT INTO habilitacoes (id_habilitacao, categoria) VALUES
-(1, 'A'),
-(2, 'B'),
-(3, 'C'),
-(4, 'D'),
-(5, 'E'),
-(6, 'AB'),
-(7, 'AC'),
-(8, 'AD'),
-(9, 'AE');
+INSERT INTO habilitacoes (id_habilitacao, categoria, ordem) VALUES
+(1, 'A', 1),
+(2, 'B', 2),
+(3, 'C', 4),
+(4, 'D', 6),
+(5, 'E', 8),
+(6, 'AB', 3),
+(7, 'AC', 5),
+(8, 'AD', 7),
+(9, 'AE', 9);
