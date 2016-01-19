@@ -15,13 +15,13 @@
                 <form class="navbar-form navbar-collapse" action="./model/executar.php" method="post">
                     <div class="form-group">
                         <label for="login">Login</label>
-                        <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário">
+                        <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário" tabindex="1">
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a sua senha">
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a sua senha" tabindex="2">
                     </div>
-                    <button type="submit" value="login" name="enviar" class="btn btn-default">Login</button>
+                    <button type="submit" value="login" name="enviar" class="btn btn-default" tabindex="3">Login</button>
                 </form>  
             </div>
             </nav>

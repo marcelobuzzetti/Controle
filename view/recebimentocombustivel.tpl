@@ -8,7 +8,7 @@
                         <form action="executar" method="post">
                             <tr>
                                 <td>Combustível</td>
-                                <td><select class="form-control" name="combustivel">
+                                <td><select class="form-control" name="combustivel" tabindex="1">
                                             <option value='' disabled selected>Selecione o Combustível</option>
                                             {foreach $relacao_combustiveis as $combustiveis}
                                                 <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
@@ -17,7 +17,7 @@
                             </tr>
                             <tr>
                                 <td>Tipo</td>
-                                <td><select class="form-control" name="tp">
+                                <td><select class="form-control" name="tp" tabindex="2">
                                             <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
                                             {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
                                                 <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
@@ -26,15 +26,15 @@
                             </tr>
                             <tr>
                                 <td>Quantidade</td>
-                                <td><input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" value="{$qnt}"/><br /></td>
+                                <td><input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="999999" step="1" value="{$qnt}" tabindex="3"/><br /></td>
                             </tr>
                             <tr>
                                 <td>Motivo</td>
-                                <td><input class="form-control" type="text" id="motivo" name="motivo" placeholder="Descrição do Motivo" required="required" value="{$motivo}"/></td>
+                                <td><input class="form-control" type="text" id="motivo" name="motivo" placeholder="Descrição do Motivo" required="required" maxlength="20" value="{$motivo}" tabindex="4"/></td>
                             </tr>
                             <tr>
                             <input type='hidden' id='{$id_rcb_comb}' value='{$id_rcb_comb}' name='id'/>
-                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></label></td>
+                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button></label></td>
                             </tr>
                         </form>
                     </table>

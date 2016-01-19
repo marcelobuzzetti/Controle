@@ -8,11 +8,11 @@
                         <form action="executar" method="post">
                             <tr>
                                 <td>Nome de Guerra</td>
-                                <td><input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" value="{$nome}"/></td>
+                                <td><input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" maxlength="20" value="{$nome}" tabindex="1"/></td>
                             </tr>
                             <tr>
                                 <td>Posto/Grad</td>
-                                <td><select class="form-control" name="pg" required'>
+                                <td><select class="form-control" name="pg" required tabindex="2">
                                                             <option value='' disabled selected>Selecione o Posto/Grad</option>
                                             {foreach $relacao_posto_grad as $pg}
                                                 <option value={$pg.id_posto_grad}>{$pg.sigla}</option>
@@ -21,7 +21,7 @@
                             </tr>
                             <tr>
                                 <td>Categoria</td>
-                                <td><select class="form-control" name="categoria" required>
+                                <td><select class="form-control" name="categoria" required tabindex="3">
                                             <option value='' disabled selected>Selecione a Habilitação</option>
                                             {foreach $relacao_habilitacoes as $habilitacao}
                                                 <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
@@ -30,7 +30,7 @@
                             </tr>
                             <tr>
                             <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
-                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></td>
+                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="4">{$botao}</button></td>
                             </tr>
                         </form>
                     </table>

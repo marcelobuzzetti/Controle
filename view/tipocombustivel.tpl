@@ -8,10 +8,10 @@
                         <form action="executar" method="post">
                     <tr>
                         <td>Descrição</td>
-                        <td><input autofocus class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" value='{$descricao}' required/></td>
+                        <td><input autofocus class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" value='{$descricao}' required maxlength="20" tabindex="1"/></td>
                     </tr>
                     <input type='hidden' id='id'  name='id' value='{$id_tipo_combustivel}'/>
-                    <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></td>
+                    <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button></td>
                     </tr>
                 </form>
                     </table>

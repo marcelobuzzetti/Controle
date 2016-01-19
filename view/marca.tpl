@@ -8,7 +8,7 @@
                         <form action="executar" method="post">
                             <tr>
                                 <td>Marcas</td>
-                                <td><input autofocus class="form-control" type="text" id="marca" name="marca" placeholder="Marca" required="required" value="{$descricao}"/></td>
+                                <td><input autofocus class="form-control" type="text" id="marca" name="marca" placeholder="Marca" required="required" value="{$descricao}" maxlength="20" tabindex="1"/></td>
                             </tr>
                             <input type='hidden' id='{$id_marca}' value='{$id_marca}' name='id'/>
                             <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar">{$botao}</button></td>

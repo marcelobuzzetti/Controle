@@ -8,15 +8,15 @@
                         <form action="executar" method="post">
                                 <tr>
                                     <td>Login:</td>
-                                    <td><input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required /></td>
+                                    <td><input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/></td>
                                 </tr>
                                 <tr>
                                     <td>Senha</td>
-                                    <td><input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required/></td>
+                                    <td><input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required maxlength="20" tabindex="2"/></td>
                                 </tr>
                                 <tr>
                                     <td>Perfil:</td>
-                                    <td><select class="form-control" name="perfil" required>
+                                    <td><select class="form-control" name="perfil" required tabindex="3">
                                                 <option value='' disabled selected>Selecione o Perfil</option>
                                                 {foreach $relacao_perfis as $perfil}
                                                     <option value={$perfil.id_perfil}>{$perfil.descricao}</option>
@@ -25,11 +25,11 @@
                                 </tr>
                                 <tr>
                                     <td>Apelido:</td>
-                                    <td><input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado"/></td>
+                                    <td><input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado" maxlength="20" tabindex="4"/></td>
                                 </tr>
                                 <tr>
                                 <input type='hidden' id='id' name='id' value='{$id_usuario}'/>
-                                <td colspan="2"><button type="submit" class="btn btn-primary" value="{$evento}" name="enviar">{$botao}</button></td>
+                                <td colspan="2"><button type="submit" class="btn btn-primary" value="{$evento}" name="enviar" tabindex="5">{$botao}</button></td>
                                 </tr>
                             </form>
                         </table>

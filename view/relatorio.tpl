@@ -8,14 +8,14 @@
                         <form autocomplete="off" action="relatorio" method="post">
                             <tr>
                                 <td>Data Início</td>
-                                <td><input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required"/></td>
+                                <td><input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required" tabindex="1"/></td>
                             </tr>
                             <tr>
                                 <td>Data Fim</td>
-                                <td><input class="form-control" type="text" id="data_fim" name="data_fim"  required="required"/></td>
+                                <td><input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="relatorio" name="enviar">Gerar Relatório</button></td>
+                                <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button></td>
                             </tr>
                         </form>
                     </table>
