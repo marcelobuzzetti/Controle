@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <TITLE>Controle de Entrada e Saída de Viaturas</TITLE>
