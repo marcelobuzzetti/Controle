@@ -36,29 +36,10 @@
                             <tr>
                                 <td>{$smarty.foreach.relacao_combustiveis.iteration}</td>
                                 <td>{$comb.descricao}</td>
-                                <td><a class='btn btn-danger' data-toggle="modal" data-target="#delete-modal"/><span class='glyphicon glyphicon-remove'/></form></td>
-                                <!-- Modal -->
-                            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="modalLabel">Excluir Combustivel</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja realmente excluir este combustivel?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action='executar' method='post'>
-                                                <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
-                                                <button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_combustivel'/>Sim</button>
-                                            </form>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.modal -->
+                            <form action='executar' method='post'>
+                                <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_combustivel'/><span class='glyphicon glyphicon-remove'/></form></td>
+                            </form>
                             <form action='combustivel' method='post'>
                                 <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
                                 <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/><span class='glyphicon glyphicon-refresh'/></form></td>
