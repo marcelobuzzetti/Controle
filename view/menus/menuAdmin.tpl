@@ -18,6 +18,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Viaturas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/viaturascadastradas">Viaturas Cadastradas</a></li>
                         <li><a href="{$HOST}/marca">Cadastrar Marca</a></li>
                         <li><a href="{$HOST}/modelo">Cadastrar Modelo</a></li>
                         <li><a href="{$HOST}/viatura">Cadastrar Viatura</a></li>
@@ -26,13 +27,16 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Motoristas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
                         <li><a href="{$HOST}/motorista">Cadastrar Motorista</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Combustíveis <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/combustiveiscadastrados">Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/combustivel">Cadastrar Combustível</a></li>
+                        <li><a href="{$HOST}/tiposcombustiveiscadastrados">Tipos de Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/tipocombustivel">Cadastrar Tipo de Combustível</a></li>
                         <li><a href="{$HOST}/recebimentocombustivel">Cadastrar Recebimento de Combustível</a></li>
                         <li><a href="{$HOST}/abastecimento">Cadastrar Abastecimento</a></li>
