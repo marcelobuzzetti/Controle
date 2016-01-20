@@ -16,13 +16,13 @@
                             </tr>
                             <tr>
                                 <td><select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
-                                        <option value='' disabled selected>Selecione a Viatura</option>
-                                        {foreach $relacao_viaturas as $viatura}
-                                            <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
-                                        {/foreach}
-                                    </select></td>
-                                <td><select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
-                                        <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
+                                            <option value='' disabled selected>Selecione a Viatura</option>
+                                            {foreach $relacao_viaturas as $viatura}
+                                                <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
+                                            {/foreach}
+                                        </select></td>
+                                        <td><select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
+                                            <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20" tabindex="3"/><br /></td>
@@ -69,30 +69,11 @@
                                 <td>{$tbl.hora_saida}</td>
                                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                                 <td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>
-                            <td><a class='btn btn-danger' data-toggle="modal" data-target="#delete-modal"/><span class='glyphicon glyphicon-remove'/></form></td>
-                            <!-- Modal -->
-                            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="modalLabel">Excluir Percurso</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja realmente excluir este percurso?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action='executar' method='post'>
-                                                <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
-                                                <button type="submit" class="btn btn-primary"  name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})' >Sim</button>
-                                            </form>
-                                            <button type="button" class='btn btn-danger' data-dismiss="modal">N&atilde;o</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.modal -->
+                            <form action='executar' method='post'>
+                                <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>";
                             </tr>
+                            </form>
                             </tr>
                         {/foreach}    
                     </table>

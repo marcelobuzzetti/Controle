@@ -9,20 +9,20 @@
                             <tr>
                                 <td>Combustível</td>
                                 <td><select class="form-control" name="combustivel" tabindex="1">
-                                        <option value='' disabled selected>Selecione o Combustível</option>
-                                        {foreach $relacao_combustiveis as $combustiveis}
-                                            <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
-                                        {/foreach}
-                                    </select></td>
+                                            <option value='' disabled selected>Selecione o Combustível</option>
+                                            {foreach $relacao_combustiveis as $combustiveis}
+                                                <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
+                                            {/foreach}
+                                        </select></td>
                             </tr>
                             <tr>
                                 <td>Tipo</td>
                                 <td><select class="form-control" name="tp" tabindex="2">
-                                        <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
-                                        {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
-                                            <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
-                                        {/foreach}
-                                    </select></td>
+                                            <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
+                                            {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
+                                                <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
+                                            {/foreach}
+                                        </select></td>
                             </tr>
                             <tr>
                                 <td>Quantidade</td>
@@ -69,29 +69,10 @@
                                 <td>{$tbl.motivo}</td>
                                 <td>{$tbl.data}</td>
                                 <td>{$tbl.hora}</td>
-                                <td><a class='btn btn-danger' data-toggle="modal" data-target="#delete-modal"/><span class="glyphicon glyphicon-remove"/></form></td>
-                                <!-- Modal -->
-                            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="modalLabel">Excluir Recebimento de Combustivel</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja realmente excluir este recebimento de combustivel?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action='executar' method='post'>
-                                                <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
-                                                <button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/>Sim</button>
-                                            </form>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.modal -->
+                            <form action='executar' method='post'>
+                                <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_rcb_comb'/><span class="glyphicon glyphicon-remove"/></form></td>
+                            </form>
                             <form action='recebimentocombustivel' method='post'>
                                 <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
                                 <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class="glyphicon glyphicon-refresh"/></form></td>

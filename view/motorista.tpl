@@ -13,20 +13,20 @@
                             <tr>
                                 <td>Posto/Grad</td>
                                 <td><select class="form-control" name="pg" required tabindex="2">
-                                        <option value='' disabled selected>Selecione o Posto/Grad</option>
-                                        {foreach $relacao_posto_grad as $pg}
-                                            <option value={$pg.id_posto_grad}>{$pg.sigla}</option>
-                                        {/foreach}
-                                    </select></td>
+                                                            <option value='' disabled selected>Selecione o Posto/Grad</option>
+                                            {foreach $relacao_posto_grad as $pg}
+                                                <option value={$pg.id_posto_grad}>{$pg.sigla}</option>
+                                            {/foreach}
+                                        </select></td>
                             </tr>
                             <tr>
                                 <td>Categoria</td>
                                 <td><select class="form-control" name="categoria" required tabindex="3">
-                                        <option value='' disabled selected>Selecione a Habilitação</option>
-                                        {foreach $relacao_habilitacoes as $habilitacao}
-                                            <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
-                                        {/foreach}
-                                    </select></td>
+                                            <option value='' disabled selected>Selecione a Habilitação</option>
+                                            {foreach $relacao_habilitacoes as $habilitacao}
+                                                <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
+                                            {/foreach}
+                                        </select></td>
                             </tr>
                             <tr>
                             <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
@@ -58,29 +58,10 @@
                             <td>{$tbl.sigla}</td>
                             <td>{$tbl.nome}</td>
                             <td>{$tbl.categoria}</td>
-                            <td><a class='btn btn-danger' data-toggle="modal" data-target="#delete-modal"/><span class='glyphicon glyphicon-remove'/></form></td>
-                            <!-- Modal -->
-                            <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="modalLabel">Excluir Motorista</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Deseja realmente excluir este motorista?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action='executar' method='post'>
-                                                <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                                                <button type="submit" class='btn btn-danger'  name='enviar' value="Apagar Motorista" >Sim</button>
-                                            </form>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.modal -->
+                            <form action='executar' method='post'>
+                                <input type='hidden' id='{$tbl.$id_motorista}' value='{$tbl.id_motorista}' name='id'/>
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar Motorista"/><span class='glyphicon glyphicon-remove'/></form></td>
+                            </form>
                             <form action='motorista' method='post'>
                                 <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
                                 <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
