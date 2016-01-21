@@ -141,7 +141,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /viatura');
+       header('Location: /viaturascadastradas');
 
         break;
 
@@ -170,7 +170,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /viatura');
+       header('Location: /viaturascadastradas');
 
         break;
 
@@ -206,7 +206,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /viatura');
+       header('Location: /viaturascadastradas');
 
         break;
 
@@ -245,7 +245,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-header('Location: /motorista');
+header('Location: /motoristascadastrados');
 
         break;
 
@@ -286,7 +286,7 @@ header('Location: /motorista');
             echo $e->getMessage();
         }
 
-header('Location: /motorista');
+header('Location: /motoristascadastrados');
 
         break;
 
@@ -317,7 +317,7 @@ header('Location: /motorista');
             echo $e->getMessage();
         }
 
-header('Location: /motorista');
+header('Location: /motoristascadastrados');
 
         break;
 
@@ -433,7 +433,7 @@ header('Location: /usuario');
             echo $e->getMessage();
         }
 
-        header('Location: /combustivel');
+        header('Location: /combustiveiscadastrados');
 
         break;
 
@@ -462,7 +462,7 @@ header('Location: /usuario');
             echo $e->getMessage();
         }
 
-header('Location: /combustivel');
+header('Location: /combustiveiscadastrados');
 
         break;
 
@@ -487,7 +487,7 @@ header('Location: /combustivel');
             echo $e->getMessage();
         }
 
-header('Location: /combustivel');
+header('Location: /combustiveiscadastrados');
 
         break;
 
@@ -511,7 +511,7 @@ header('Location: /combustivel');
             echo $e->getMessage();
         }
 
-header('Location: /tipocombustivel');
+header('Location: /tiposcombustiveiscadastrados');
 
         break;
 
@@ -541,7 +541,7 @@ header('Location: /tipocombustivel');
             echo $e->getMessage();
         }
 
-header('Location: /tipocombustivel');
+header('Location: /tiposcombustiveiscadastrados');
         break;
 
     case 'atualizar_tipo':
@@ -565,7 +565,7 @@ header('Location: /tipocombustivel');
             echo $e->getMessage();
         }
 
-header('Location: /tipocombustivel');
+header('Location: /tiposcombustiveiscadastrados');
         break;
 
     case 'rcb_comb':
