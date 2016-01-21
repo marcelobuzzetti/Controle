@@ -1,3 +1,25 @@
+<!--Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Excluir</h4>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir este Motorista?
+            </div>
+            <div class="modal-footer">
+                <form action='executar' method='post'>
+                    <input type="hidden" class="form-control" id="recipient-name" name='id'/>
+                    <button type="submit" class="btn btn-danger" name='enviar' value="Apagar Motorista">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Nao</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="row">
@@ -17,11 +39,7 @@
                             <td>{$tbl.sigla}</td>
                             <td>{$tbl.nome}</td>
                             <td>{$tbl.categoria}</td>
-                            <form action='executar' method='post'>
-                                <input type='hidden' id='{$tbl.$id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar Motorista"/><span class='glyphicon glyphicon-remove'/></form></td>
-                            </form>
-                            <form action='motorista' method='post'>
+                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}"><span class='glyphicon glyphicon-remove-sign'</button></td>                            <form action='motorista' method='post'>
                                 <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
                                 <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
                             </form>
