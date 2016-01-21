@@ -1,3 +1,25 @@
+<!--Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Excluir</h4>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir este Modelo?
+            </div>
+            <div class="modal-footer">
+                <form action='executar' method='post'>
+                    <input type="hidden" class="form-control" id="recipient-name" name='id'/>
+                    <button type="submit" class="btn btn-danger" name='enviar' value="apagar_modelo">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="row">
@@ -9,11 +31,11 @@
                             <tr>
                                 <td>Marca</td>
                                 <td><select class="form-control" name="marca" required tabindex="1">
-                                            <option value='' disabled selected>Selecione a Marca</option>
-                                            {foreach $relacao_marcas as $marca}
-                                                <option value={$marca.id_marca}>{$marca.descricao}</option>
-                                            {/foreach}
-                                        </select></td>
+                                        <option value='' disabled selected>Selecione a Marca</option>
+                                        {foreach $relacao_marcas as $marca}
+                                            <option value={$marca.id_marca}>{$marca.descricao}</option>
+                                        {/foreach}
+                                    </select></td>
                             </tr>
                             <tr>
                                 <td>Modelo</td>
@@ -34,11 +56,11 @@
                             <tr>
                                 <td>Habilitação Necessária</td>
                                 <td><select class="form-control" name="habilitacao" required tabindex="6">
-                                            <option value='' disabled selected>Selecione a Habilitação</option>
-                                            {foreach $relacao_habilitacoes as $habilitacao}
-                                                <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
-                                            {/foreach}
-                                        </select></td>
+                                        <option value='' disabled selected>Selecione a Habilitação</option>
+                                        {foreach $relacao_habilitacoes as $habilitacao}
+                                            <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
+                                        {/foreach}
+                                    </select></td>
                             </tr>
                             <tr>
                             <input type='hidden' id='{$id_modelo}' value='{$id_modelo}' name='id'/>
@@ -77,10 +99,7 @@
                                 <td>{$tbl.consumo_padrao}</td>
                                 <td>{$tbl.cap_transp}</td>
                                 <td>{$tbl.habilitacao}</td>
-                            <form action='executar' method='post'>
-                                <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
-                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value='apagar_modelo'/><span class='glyphicon glyphicon-remove'/></form></td>
-                            </form>
+                                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                             <form action='modelo' method='post'>
                                 <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
                                 <td><button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/><span class='glyphicon glyphicon-refresh'/></form></td>
