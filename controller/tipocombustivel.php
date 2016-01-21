@@ -53,7 +53,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('descricao', $descricao);
         $smarty->assign('relacao_tipos_combustiveis', $relacao_tipos_combustiveis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('../templates/headers/header.tpl');
+        $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('tipocombustivel.tpl');
         $smarty->display('./footer/footer.tpl');
