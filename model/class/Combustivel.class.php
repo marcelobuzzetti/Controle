@@ -4,7 +4,7 @@ class Combustivel{
     public function listarCombustiveisAbastecimento(){
         include '../model/conexao.php';
          try {
-                $stmt = $pdo->prepare("SELECT combustiveis.id_combustivel AS id_comb, descricao
+                $stmt = $pdo->prepare("SELECT combustiveis.id_combustivel AS id_combustivel, descricao
                                                     FROM combustiveis, recibos_combustiveis
                                                     WHERE combustiveis.id_combustivel IN (SELECT recibos_combustiveis.id_combustivel
                                                                                                                   FROM recibos_combustiveis)");
