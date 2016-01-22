@@ -685,6 +685,7 @@ header('Location: /recebimentocombustivel');
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+                header("Location: /percurso");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
