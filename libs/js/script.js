@@ -51,10 +51,14 @@ $(function () {
 
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var recipient = button.data('whatever')
+        var sigla = button.data("sigla")
+        var nome = button.data("nome")
+        var categoria = button.data("categoria")
         var modal = $(this)
         modal.find('.modal-footer input').val(recipient)
+        modal.find('.nome input').val(nome)
+        modal.find('.sigla input').val(sigla)
+        modal.find('.categoria input').val(categoria)
     });
 });
