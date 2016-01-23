@@ -8,6 +8,24 @@
             </div>
             <div class="modal-body">
                 Deseja realmente excluir este Motorista?
+                <div class="sigla">
+                    <div class="input-group">
+                        <div class="input-group-addon">Posto</div>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="nome">
+                    <div class="input-group">
+                        <div class="input-group-addon">Nome</div>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="categoria">
+                    <div class="input-group">
+                        <div class="input-group-addon">Categoria</div>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <form action='executar' method='post'>
@@ -80,7 +98,7 @@
                             <td>{$tbl.sigla}</td>
                             <td>{$tbl.nome}</td>
                             <td>{$tbl.categoria}</td>
-                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                             <form action='motorista' method='post'>
                                 <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
                                 <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
