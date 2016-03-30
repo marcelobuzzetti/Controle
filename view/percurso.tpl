@@ -1,40 +1,38 @@
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="table table-responsive" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table' text-align='center'>
-                        <form autocomplete="off" action="executar" method="post">
-                            <tr>
-                                <td>Viatura - Placa</td>
-                                <td>Motorista</td>
-                                <td>Destino</td>
-                                <td>Odômetro Saída</td>
-                                <td>Acompanhante</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
-                                            <option value='' disabled selected>Selecione a Viatura</option>
-                                            {foreach $relacao_viaturas as $viatura}
-                                                <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
-                                            {/foreach}
-                                        </select></td>
-                                        <td><select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
-                                            <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20" tabindex="3"/><br /></td>
-                                <td><input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1" min="0" max="999999" tabindex="4"/></td>
-                                <td><input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" maxlength="20" tabindex="5"/></td>
-                                <td><button type="submit" class="btn btn-primary" id="enviar" value="Cadastrar" name="enviar" tabindex="6">Cadastrar</button></td>
-                            </tr>
-                        </form>
-                    </table>
-                </fieldset>
-            </div>
-        </div>
+        <legend>Controle de Saída de Viatura</legend>
+                <form autocomplete="off" action="executar" method="post">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                        <label for="viatura">Viatura - Placa</label>
+                        <select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
+                            <option value='' disabled selected>Selecione a Viatura</option>
+                            {foreach $relacao_viaturas as $viatura}
+                                <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                        <label for="motorista">Motorista</label>
+                        <select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
+                            <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-2">
+                        <label for="destino">Destino</label>
+                        <input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20" tabindex="3"/>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-2">
+                        <label for="odo_saida">Odômetro Saída</label>
+                        <input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1" min="0" max="999999" tabindex="4"/>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-2">
+                        <label for="acompanhante">Acompanhante</label>
+                        <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" maxlength="20" tabindex="5"/>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-12">
+                        <button type="submit" class="btn btn-primary col-xs-12 col-sm-6 col-md-12" id="enviar" value="Cadastrar" name="enviar" tabindex="6">Cadastrar</button>
+                    </div>
+                </form>
     </div>
 </div>
 <div class="wrapper" role="main">
@@ -71,7 +69,7 @@
                                 <td><input class='btn btn-success' type='submit' id='retornou' name='enviar' value='Retornou'/></form></td>
                             <form action='executar' method='post'>
                                 <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
-                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>";
+                                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>
                             </tr>
                             </form>
                             </tr>
