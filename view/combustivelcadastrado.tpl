@@ -22,10 +22,9 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="table-responsive" >
-                <fieldset>
-                    <legend>Combustíveis Cadastrados</legend>
+        <div class="jumbotron">
+            <h1>Combustíveis Cadastrados</h1>
+            <div class="table-responsive col-xs-12 col-sm-12 col-md-12" >
                     <table class='table' text-align='center'>
                         <tr>
                             <td>Ordem</td>
@@ -44,7 +43,6 @@
                             </tr>
                         {/foreach}
                     </table>
-                </fieldset>
             </div>
         </div>
     </div>
