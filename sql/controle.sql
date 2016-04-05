@@ -4,6 +4,7 @@ CREATE TABLE abastecimentos (
   nrvale varchar(50) NOT NULL,
   id_motorista int(11) NOT NULL, 
   id_viatura int(11) NOT NULL,
+  odometro float NOT NULL,
   id_combustivel int(11) NOT NULL, 
   id_tipo_combustivel int(11) NOT NULL, 
   qnt int(11) NOT NULL,
