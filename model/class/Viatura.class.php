@@ -15,7 +15,7 @@ class Viatura{
                     return $stmt->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     print("<script language=JavaScript>
-                         alert('Não foi possível criar tabela.');
+                         alert('Não foi possível criar tabela viaturas.');
                          </script>");
                 }
             } catch (PDOException $e) {
@@ -28,7 +28,7 @@ class Viatura{
          try {
                 $stmt = $pdo->prepare("SELECT id_viatura, marcas.descricao AS marca, modelos.descricao AS modelo, placa, odometro, modelos.cap_tanque, modelos.consumo_padrao, modelos.cap_transp, habilitacoes.categoria, situacao.disponibilidade
                                                     FROM viaturas, marcas, modelos, habilitacoes, situacao
-                                                    WHERE modelos.id_habilitacao = habilitacoes.id_habilitacao
+                                                    WHERE viaturas.id_habilitacao = habilitacoes.id_habilitacao
                                                     AND viaturas.id_marca = marcas.id_marca
                                                     AND viaturas.id_modelo = modelos.id_modelo
                                                     AND viaturas.id_situacao = situacao.id_situacao
@@ -39,7 +39,7 @@ class Viatura{
                     return $stmt->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     print("<script language=JavaScript>
-                         alert('Não foi possível criar tabela.');
+                         alert('Não foi possível criar tabela de viaturas cadastradas.');
                          </script>");
                 }
             } catch (PDOException $e) {
