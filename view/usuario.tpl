@@ -22,43 +22,38 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table table-responsive table-bordered' text-align='center'>
-                        <form action="executar" method="post">
-                            <tr>
-                                <td>Login:</td>
-                                <td><input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/></td>
-                            </tr>
-                            <tr>
-                                <td>Senha</td>
-                                <td><input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required maxlength="20" tabindex="2"/></td>
-                            </tr>
-                            <tr>
-                                <td>Perfil:</td>
-                                <td><select class="form-control" name="perfil" required tabindex="3">
-                                        <option value='' disabled selected>Selecione o Perfil</option>
-                                        {foreach $relacao_perfis as $perfil}
-                                            <option value={$perfil.id_perfil}>{$perfil.descricao}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Apelido:</td>
-                                <td><input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado" maxlength="20" tabindex="4"/></td>
-                            </tr>
-                            <tr>
-                            <input type='hidden' id='id' name='id' value='{$id_usuario}'/>
-                            <td colspan="2"><button type="submit" class="btn btn-primary" value="{$evento}" name="enviar" tabindex="5">{$botao}</button></td>
-                            </tr>
-                        </form>
-                    </table>
-                </fieldset>
-            </div>
+        <div class="jumbotron">
+            <h1>{$titulo}</h1>
+            <form action="executar" method="post">
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="login">Login</label>
+                    <input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="senha">Senha</label>
+                    <input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required maxlength="20" tabindex="2"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="perfil">Perfil</label>
+                    <select class="form-control" name="perfil" required tabindex="3">
+                        <option value='' disabled selected>Selecione o Perfil</option>
+                        {foreach $relacao_perfis as $perfil}
+                            <option value={$perfil.id_perfil}>{$perfil.descricao}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="apelido">Apelido</label>
+                    <input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado" maxlength="20" tabindex="4"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                    <input type='hidden' id='id' name='id' value='{$id_usuario}'/>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" value="{$evento}" name="enviar" tabindex="5">{$botao}</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <div class="wrapper" role="main">
     <div class='container'>
