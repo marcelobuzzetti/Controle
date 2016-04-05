@@ -23,7 +23,7 @@
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="row">
-            <div class="table-responsive" >
+            <div class="table-responsive col-xs-12 col-sm-12 col-md-12" >
                 <fieldset>
                     <legend>Tipos Combustíveis Cadastrados</legend>
                     <table class='table' text-align='center'>
