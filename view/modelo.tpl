@@ -22,56 +22,42 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table table-responsive' text-align='center'>
-                        <form action="executar" method="post">
-                            <tr>
-                                <td>Marca</td>
-                                <td><select class="form-control" name="marca" required tabindex="1">
-                                        <option value='' disabled selected>Selecione a Marca</option>
-                                        {foreach $relacao_marcas as $marca}
-                                            <option value={$marca.id_marca}>{$marca.descricao}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Modelo</td>
-                                <td><input class="form-control" type="text"  id="modelo" name="modelo" placeholder="Modelo" required="required" value="{$descricao}" tabindex="2"/></td>
-                            </tr>
-                            <tr>
-                                <td>Capacidade do Tanque</td>
-                                <td><input class="form-control" type="number" id="cap_tanque" name="cap_tanque" placeholder="Capacidade Tanque" required="required" min="1" max="200" step="1" value="{$cap_tanque}" tabindex="3"/></td>
-                            </tr>
-                            <tr>
-                                <td>Consumo</td>
-                                <td><input class="form-control" type="number"  id="cons_padrao" name="consumo_padrao" placeholder="Consumo Km/L" required="required" min="0" max="100" step="1" value="{$consumo_padrao}" tabindex="4"/></td>
-                            </tr>
-                            <tr>
-                                <td>Capacidade de Transporte</td>
-                                <td><input class="form-control" type="number" id="cap_transp" name="cap_transp" placeholder="Cap Transp Pessoas" required="required" min="0" max="50" step="1" value="{$cap_transp}" tabindex="5"/></td>
-                            </tr>
-                            <tr>
-                                <td>Habilitação Necessária</td>
-                                <td><select class="form-control" name="habilitacao" required tabindex="6">
-                                        <option value='' disabled selected>Selecione a Habilitação</option>
-                                        {foreach $relacao_habilitacoes as $habilitacao}
-                                            <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                            <input type='hidden' id='{$id_modelo}' value='{$id_modelo}' name='id'/>
-                            <td colspan="2"><label><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="7">{$botao}</button></label></td>
-                            </tr>
-                        </form>
-                    </table>
-                </fieldset>
-            </div>
+        <div class="jumbotron">
+            <h1>{$titulo}</h1>
+            <form action="executar" method="post">
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="marca">Marca</label>
+                    <select class="form-control" name="marca" required tabindex="1">
+                        <option value='' disabled selected>Selecione a Marca</option>
+                        {foreach $relacao_marcas as $marca}
+                            <option value={$marca.id_marca}>{$marca.descricao}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="modelo">Modelo</label>
+                    <input class="form-control" type="text"  id="modelo" name="modelo" placeholder="Modelo" required="required" value="{$descricao}" tabindex="2"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="cap_tanque">Capacidade do Tanque</label>
+                    <input class="form-control" type="number" id="cap_tanque" name="cap_tanque" placeholder="Capacidade Tanque" required="required" min="1" max="200" step="1" value="{$cap_tanque}" tabindex="3"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="consumo">Consumo</label>
+                    <td><input class="form-control" type="number"  id="cons_padrao" name="consumo_padrao" placeholder="Consumo Km/L" required="required" min="0" max="100" step="1" value="{$consumo_padrao}" tabindex="4"/></td>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="cap_transp">Capacidade de Transporte</label>
+                    <input class="form-control" type="number" id="cap_transp" name="cap_transp" placeholder="Cap Transp Pessoas" required="required" min="0" max="50" step="1" value="{$cap_transp}" tabindex="5"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                    <input type='hidden' id='{$id_modelo}' value='{$id_modelo}' name='id'/>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="7">{$botao}</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <div class="wrapper" role="main">
     <div class='container'>
