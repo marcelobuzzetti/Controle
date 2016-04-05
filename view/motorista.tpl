@@ -40,44 +40,39 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table table-responsive' text-align='center'>
-                        <form action="executar" method="post">
-                            <tr>
-                                <td>Nome de Guerra</td>
-                                <td><input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" maxlength="20" value="{$nome}" tabindex="1"/></td>
-                            </tr>
-                            <tr>
-                                <td>Posto/Grad</td>
-                                <td><select class="form-control" name="pg" required tabindex="2">
-                                        <option value='' disabled selected>Selecione o Posto/Grad</option>
-                                        {foreach $relacao_posto_grad as $pg}
-                                            <option value={$pg.id_posto_grad}>{$pg.sigla}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Categoria</td>
-                                <td><select class="form-control" name="categoria" required tabindex="3">
-                                        <option value='' disabled selected>Selecione a Habilitação</option>
-                                        {foreach $relacao_habilitacoes as $habilitacao}
-                                            <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                            <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
-                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="4">{$botao}</button></td>
-                            </tr>
-                        </form>
-                    </table>
-                </fieldset>
-            </div>
+        <div class="jumbotron">
+            <h1>{$titulo}</h1>
+            <form action="executar" method="post">
+                <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                    <label for="nome">Nome de Guerra</label>
+                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" maxlength="20" value="{$nome}" tabindex="1"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                    <label for="pg">Posto/Grad</label>
+                    <select class="form-control" name="pg" required tabindex="2">
+                        <option value='' disabled selected>Selecione o Posto/Grad</option>
+                        {foreach $relacao_posto_grad as $pg}
+                            <option value={$pg.id_posto_grad}>{$pg.sigla}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-control" name="categoria" required tabindex="3">
+                        <option value='' disabled selected>Selecione a Habilitação</option>
+                        {foreach $relacao_habilitacoes as $habilitacao}
+                            <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                    <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="4">{$botao}</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <div class="wrapper" role="main">
     <div class='container'>
