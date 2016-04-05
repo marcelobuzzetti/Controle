@@ -22,48 +22,43 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table table-responsive' text-align='center'>
-                        <form action="executar" method="post">
-                            <tr>
-                                <td>Combustível</td>
-                                <td><select class="form-control" name="combustivel" tabindex="1">
-                                        <option value='' disabled selected>Selecione o Combustível</option>
-                                        {foreach $relacao_combustiveis as $combustiveis}
-                                            <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Tipo</td>
-                                <td><select class="form-control" name="tp" tabindex="2">
-                                        <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
-                                        {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
-                                            <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
-                                        {/foreach}
-                                    </select></td>
-                            </tr>
-                            <tr>
-                                <td>Quantidade</td>
-                                <td><input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="999999" step="1" value="{$qnt}" tabindex="3"/></td>
-                            </tr>
-                            <tr>
-                                <td>Motivo</td>
-                                <td><input class="form-control" type="text" id="motivo" name="motivo" placeholder="Descrição do Motivo" required="required" maxlength="20" value="{$motivo}" tabindex="4"/></td>
-                            </tr>
-                            <tr>
-                            <input type='hidden' id='{$id_rcb_comb}' value='{$id_rcb_comb}' name='id'/>
-                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button></td>
-                            </tr>
-                        </form>
-                    </table>
-                </fieldset>
-            </div>
+        <div class="jumbotron">
+            <h1>{$titulo}</h1>
+            <form action="executar" method="post">
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="combustivel">Combustível</label>
+                    <select class="form-control" name="combustivel" tabindex="1">
+                        <option value='' disabled selected>Selecione o Combustível</option>
+                        {foreach $relacao_combustiveis as $combustiveis}
+                            <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="tipo">Tipo</label>
+                    <select class="form-control" name="tp" tabindex="2">
+                        <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
+                        {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
+                            <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="quantidade">Quantidade</label>
+                    <input class="form-control" type="number" id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="999999" step="1" value="{$qnt}" tabindex="3"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label for="motivo">Motivo</label>
+                    <input class="form-control" type="text" id="motivo" name="motivo" placeholder="Descrição do Motivo" required="required" maxlength="20" value="{$motivo}" tabindex="4"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                    <input type='hidden' id='{$id_rcb_comb}' value='{$id_rcb_comb}' name='id'/>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <div class="wrapper" role="main">
     <div class='container'>
