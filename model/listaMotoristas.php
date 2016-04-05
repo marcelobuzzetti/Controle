@@ -11,7 +11,7 @@ $id_viatura = $_GET['viatura'];
 $query = mysql_query("SELECT categoria, ordem
 FROM habilitacoes, viaturas, modelos
 WHERE viaturas.id_modelo = modelos.id_modelo
-AND modelos.id_habilitacao = habilitacoes.id_habilitacao
+AND viaturas.id_habilitacao = habilitacoes.id_habilitacao
 AND viaturas.id_viatura = $id_viatura");
 $row = mysql_fetch_row($query);
 $categoria = $row[0];
