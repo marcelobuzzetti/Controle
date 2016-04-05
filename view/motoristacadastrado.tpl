@@ -40,10 +40,9 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
+        <div class="jumbotron">
+            <h1>Motoristas Cadastrados</h1>
             <div class="table-responsive" >
-                <fieldset>
-                    <legend>Motoristas Cadastrados</legend>
                     <table class='table' text-align='center'>
                         <tr>
                             <td>Ordem</td>
@@ -65,7 +64,6 @@
                             </tr> 
                         {/foreach}
                     </table>
-                </fieldset>
             </div>
         </div>
     </div>
