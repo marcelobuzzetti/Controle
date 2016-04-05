@@ -102,10 +102,14 @@ CREATE TABLE viaturas (
   id_marca int(11)  NOT NULL, 
   id_modelo int(11)  NOT NULL, 
   placa varchar(50)  NOT NULL,
-  odometro int(11) NOT NULL, 
+  odometro float NOT NULL, 
+  ano int(11) NOT NULL,
+  id_tipo_viatura int(11) NOT NULL,
   id_situacao int(11) NOT NULL,
   id_usuario int(11) NOT NULL,
-  id_status int(11) NOT NULL
+  id_status int(11) NOT NULL,
+  id_habilitacao int(11) NOT NULL,
+  id_combustivel int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE marcas (
@@ -119,8 +123,12 @@ CREATE TABLE modelos (
   descricao varchar(50)  NOT NULL, 
   cap_tanque int(11) NOT NULL, 
   consumo_padrao int(11) NOT NULL, 
-  cap_transp int(11) NOT NULL, 
-  id_habilitacao int(11) NOT NULL
+  cap_transp int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE tipos_viaturas (
+  id_tipo_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  descricao varchar(50)  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE status (
@@ -154,13 +162,15 @@ ALTER TABLE recibos_combustiveis
 
 ALTER TABLE viaturas
   ADD CONSTRAINT FK_modelo1 FOREIGN KEY (id_modelo) REFERENCES modelos (id_modelo),
+  ADD CONSTRAINT FK_tipo_vtr FOREIGN KEY (id_tipo_viatura) REFERENCES tipos_viaturas (id_tipo_viatura),
+  ADD CONSTRAINT FK_combustivel2 FOREIGN KEY (id_combustivel) REFERENCES combustiveis (id_combustivel),
   ADD CONSTRAINT FK_situacao FOREIGN KEY (id_situacao) REFERENCES situacao (id_situacao),
   ADD CONSTRAINT FK_marca FOREIGN KEY (id_marca) REFERENCES marcas (id_marca),
   ADD CONSTRAINT FK_usuario5 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
+  ADD CONSTRAINT FK_habilitacao1 FOREIGN KEY (id_habilitacao) REFERENCES habilitacoes (id_habilitacao),
   ADD CONSTRAINT FK_status1 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE modelos
-  ADD CONSTRAINT FK_habilitacao1 FOREIGN KEY (id_habilitacao) REFERENCES habilitacoes (id_habilitacao),
   ADD CONSTRAINT FK_marca1 FOREIGN KEY (id_marca) REFERENCES marcas (id_marca);
 
 ALTER TABLE combustiveis
@@ -197,6 +207,10 @@ INSERT INTO posto_grad (id_posto_grad, descricao, sigla) VALUES
 (9, 'Primeiro Tenente', '1º Ten'),
 (10, 'Capitão', 'Cap'),
 (11, 'Major', 'Maj');
+
+INSERT INTO tipos_viaturas (id_tipo_viatura, descricao) VALUES
+(1, 'Operacional'),
+(2, 'Administrativa');
 
 INSERT INTO situacao (id_situacao, disponibilidade) VALUES
 (1, 'Disponível'),
