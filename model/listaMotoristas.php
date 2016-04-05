@@ -18,7 +18,7 @@ $categoria = $row[0];
 $ordem = $row[1];
 
 if ($categoria == "A") {
-    $rs = mysql_query("SELECT id_motorista, apelido , id_statusFROM motoristas, habilitacoes
+    $rs = mysql_query("SELECT id_motorista, apelido , id_status FROM motoristas, habilitacoes
     WHERE id_status != 2 
     AND id_motorista NOT IN (SELECT id_motorista
     FROM percursos 
