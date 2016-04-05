@@ -22,25 +22,21 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table table-responsive' text-align='center'>
-                        <form action="executar" method="post">
-                    <tr>
-                        <td>Descrição</td>
-                        <td><input autofocus class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" value='{$descricao}' required maxlength="20" tabindex="1"/></td>
-                    </tr>
+        <div class="jumbotron">
+            <h1>{$titulo}</h1>
+            <form action="executar" method="post">
+                <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                    <label for="descricao">Descrição</label>
+                    <input autofocus class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" value='{$descricao}' required maxlength="20" tabindex="1"/>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12">
                     <input type='hidden' id='id'  name='id' value='{$id_tipo_combustivel}'/>
-                    <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button></td>
-                    </tr>
-                </form>
-                    </table>
-                </fieldset>
-            </div>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button></td>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <div class="wrapper" role="main">
     <div class='container'>
@@ -49,23 +45,23 @@
                 <fieldset>
                     <legend>Tipos Combustíveis Cadastrados</legend>
                     <table class='table' text-align='center'>
-                    <tr>
-                        <td>Ordem</td>
-                        <td>Tipo</td>
-                        <td colspan='2'>Ações</td>
+                        <tr>
+                            <td>Ordem</td>
+                            <td>Tipo</td>
+                            <td colspan='2'>Ações</td>
                         </tr>
                         {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
-                        <tr>
-                            <td>{$smarty.foreach.tipos_combustiveis.iteration}</td>
-                            <td>{$tbl.descricao}</td>
-                               <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                                <form action='tipocombustivel' method='post'>
-                                    <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
-                                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
-                                </form>
-                        </tr>
+                            <tr>
+                                <td>{$smarty.foreach.tipos_combustiveis.iteration}</td>
+                                <td>{$tbl.descricao}</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                            <form action='tipocombustivel' method='post'>
+                                <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
+                                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
+                            </form>
+                            </tr>
                         {/foreach}
-            </table>
+                    </table>
             </div>
         </div>
     </div>
