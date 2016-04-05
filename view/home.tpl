@@ -28,10 +28,9 @@
         </div>
         <div class="wrapper" role="main">
             <div class='container'>
-                <div class="row">
-                    <div class="table-responsive" >
-                        <fieldset>
-                            <legend>Viaturas Rodando</legend>
+                <div class="jumbotron">
+                    <h1>Viaturas Rodando</h1>
+                    <div class="table-responsive col-xs-12 col-sm-12 col-md-12" >
                             <table class='table' text-align='center'>
                                 <tr>
                                     <td>Ordem</td>
