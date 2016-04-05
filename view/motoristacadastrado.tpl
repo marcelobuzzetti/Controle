@@ -42,7 +42,7 @@
     <div class='container'>
         <div class="jumbotron">
             <h1>Motoristas Cadastrados</h1>
-            <div class="table-responsive" >
+            <div class="table-responsive col-xs-12 col-sm-12 col-md-12" >
                     <table class='table' text-align='center'>
                         <tr>
                             <td>Ordem</td>
