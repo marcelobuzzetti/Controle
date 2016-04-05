@@ -49,10 +49,13 @@
                         {/foreach}
                     </select>
                 </div>
-                <td></td>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                <label for="odometro">Odômetro</label>
+                <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1" min="0" max="999999" tabindex="4"/>
+            </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="combustivel">Combustível</label>
-                    <select class="form-control" name="combustivel" tabindex="4">
+                    <select class="form-control" name="combustivel" tabindex="5">
                         <option value='' disabled selected>Selecione o Combustível</option>
                         {foreach $relacao_combustiveis as $combustiveis}
                             <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
@@ -61,7 +64,7 @@
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="tp">Tipo Combustível</label>
-                    <select class="form-control" name="tp" tabindex="5">
+                    <select class="form-control" name="tp" tabindex="6">
                         <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
                         {foreach $relacao_tipos_combustiveis as $tipos_combustiveis}
                             <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
@@ -70,11 +73,11 @@
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="qnt">Quantidade</label>
-                    <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="1000" step="1" value="{$qnt}" tabindex="6"/>
+                    <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="1000" step="1" value="{$qnt}" tabindex="7"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12">
                     <input type='hidden' id='{$id_abastecimento}' value='{$id_abastecimento}' name='id'/>
-                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="7">{$botao}</button>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>
                 </div>
             </form>
         </div>
