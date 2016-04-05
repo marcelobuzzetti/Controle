@@ -119,16 +119,24 @@ switch ($_POST['enviar']) {
         $modelo = $_POST["modelo"];
         $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
+        $ano = $_POST["ano"];
+        $tipo_viatura = $_POST["tipo_viatura"];
         $situacao = $_POST["situacao"];
+        $habilitacao = $_POST["habilitacao"];
+        $combustivel = $_POST["combustivel"];
         
         try {
-            $stmt = $pdo->prepare("INSERT INTO viaturas 
-                                                VALUES(NULL,?,?,?,?,?,$usuario,1)");
+                $stmt = $pdo->prepare("INSERT INTO viaturas
+                                                    VALUES(NULL,?,?,?,?,?,?,?,$usuario,1,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
-            $stmt->bindParam(5, $situacao, PDO::PARAM_INT);
+            $stmt->bindParam(5, $ano, PDO::PARAM_INT);
+            $stmt->bindParam(6, $tipo_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(7, $situacao, PDO::PARAM_INT);
+            $stmt->bindParam(8, $habilitacao, PDO::PARAM_INT);
+            $stmt->bindParam(9, $combustivel, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -664,6 +672,7 @@ header('Location: /recebimentocombustivel');
         $nrvale = $_POST['nrvale'];
         $motorista = $_POST['motorista'];
         $viatura = $_POST['viatura'];
+        $odometro = $_POST['odometro'];
         $combustivel = $_POST['combustivel'];
         $tp = $_POST['tp'];
         $qnt = $_POST['qnt'];
@@ -671,13 +680,14 @@ header('Location: /recebimentocombustivel');
 
         try {
             $stmt = $pdo->prepare("INSERT INTO abastecimentos
-                                               VALUES(NULL,?,?,?,?,?,?,NOW(),NOW(),$usuario)");
+                                               VALUES(NULL,?,?,?,?,?,?,?,NOW(),NOW(),$usuario)");
             $stmt->bindParam(1, $nrvale, PDO::PARAM_STR);
             $stmt->bindParam(2, $motorista, PDO::PARAM_INT);
             $stmt->bindParam(3, $viatura, PDO::PARAM_INT);
-            $stmt->bindParam(4, $combustivel, PDO::PARAM_INT);
-            $stmt->bindParam(5, $tp, PDO::PARAM_INT);
-            $stmt->bindParam(6, $qnt, PDO::PARAM_INT);
+            $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(5, $combustivel, PDO::PARAM_INT);
+            $stmt->bindParam(6, $tp, PDO::PARAM_INT);
+            $stmt->bindParam(7, $qnt, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -766,18 +776,16 @@ header('Location: /abastecimento');
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
         $cap_transp = $_POST['cap_transp'];
-        $id_habilitacao = $_POST['habilitacao'];
 
 
         try {
             $stmt = $pdo->prepare("INSERT INTO modelos
-                                                VALUES(NULL,?,?,?,?,?,?)");
+                                                VALUES(NULL,?,?,?,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_STR);
             $stmt->bindParam(3, $cap_tanque, PDO::PARAM_INT);
             $stmt->bindParam(4, $consumo_padrao, PDO::PARAM_INT);
             $stmt->bindParam(5, $cap_transp, PDO::PARAM_INT);
-            $stmt->bindParam(6, $id_habilitacao, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -824,18 +832,16 @@ header('Location: /modelo');
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
         $cap_transp = $_POST['cap_transp'];
-        $id_habilitacao = $_POST['habilitacao'];
 
         try {
             $stmt = $pdo->prepare("UPDATE modelos
-                                                SET id_marca = ?, descricao = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ?, id_habilitacao = ? 
+                                                SET id_marca = ?, descricao = ?, cap_tanque = ?, consumo_padrao = ?, cap_transp = ? 
                                                 WHERE id_modelo = ?");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_STR);
             $stmt->bindParam(3, $cap_tanque, PDO::PARAM_INT);
             $stmt->bindParam(4, $consumo_padrao, PDO::PARAM_INT);
             $stmt->bindParam(5, $cap_transp, PDO::PARAM_INT);
-            $stmt->bindParam(6, $id_habilitacao, PDO::PARAM_INT);
             $stmt->bindParam(7, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
