@@ -22,10 +22,10 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
+        <div class="jumbotron">
+            <h1>Viaturas Cadastradas</h1>
             <div class="table-responsive" >
                 <fieldset>
-                    <legend>Viaturas Cadastradas</legend>
                     <table class='table' text-align='center'>
                         <tr>
                             <td>Ordem</td>
