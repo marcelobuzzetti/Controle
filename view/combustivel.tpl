@@ -22,26 +22,21 @@
 <!--Modal-->
 <div class="wrapper" role="main">
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6" >
-                <fieldset>
-                    <legend>{$titulo}</legend>
-                    <table class='table table-responsive' text-align='center'>
+        <div class="jumbotron">
+            <h1>{$titulo}</h1>
                         <form action="executar" method="post">
-                            <tr>
-                                <td>Descrição</td>
-                                <td><input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" maxlength="20" value='{$descricao}' tabindex="1"/></td>
-                            </tr>
+                        <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
+                            <label for="marca">Descrição</label>
+                            <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" maxlength="20" value='{$descricao}' tabindex="1"/>
+                        </div>
+                        <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
                             <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
-                            <td colspan="2"><button type="submit" class="btn btn-primary" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button></td>
-                            </tr>
+                            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button>
+                        </div>
                         </form>
-                    </table>
-                </fieldset>
             </div>
         </div>
     </div>
-</div>
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="row">
