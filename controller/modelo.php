@@ -49,7 +49,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                     $consumo_padrao = $dados_modelos->consumo_padrao;
                     $cap_transp = $dados_modelos->cap_transp;
                     $descricao = $dados_modelos->descricao;
-                    $id_habilitacao = $dados_modelos->id_habilitacao;
 
                 } else {
                 print("<script language=JavaScript>
