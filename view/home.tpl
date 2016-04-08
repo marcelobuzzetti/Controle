@@ -12,7 +12,7 @@
         </div>
         <div class='container'>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-collapse" action="./model/executar.php" method="post">
+                <form class="navbar-form navbar-collapse" autocomplete="off" action="./model/executar.php" method="post">
                     <div class="form-group">
                         <label for="login">Login</label>
                         <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário" tabindex="1">
