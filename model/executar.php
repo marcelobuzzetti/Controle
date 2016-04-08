@@ -842,7 +842,7 @@ header('Location: /modelo');
             $stmt->bindParam(3, $cap_tanque, PDO::PARAM_INT);
             $stmt->bindParam(4, $consumo_padrao, PDO::PARAM_INT);
             $stmt->bindParam(5, $cap_transp, PDO::PARAM_INT);
-            $stmt->bindParam(7, $id, PDO::PARAM_INT);
+            $stmt->bindParam(6, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
