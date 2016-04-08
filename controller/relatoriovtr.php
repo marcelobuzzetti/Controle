@@ -31,13 +31,12 @@ if (!isset($_SESSION['login'])) {
         $relatorios = new Relatorio();
         $relacao_relatorio = $relatorios->listarVtrUtilizacao($data_inicio, $data_fim);
         foreach ($relacao_relatorio as $value) {
-        $a .= '"'.$value['marca'].'-'.$value['modelo'].'-'.$value['placa'].'"'.',';
+        $a .= '"'.$value['modelo'].'-'.$value['placa'].'"'.',';
         }
         foreach ($relacao_relatorio as $value) {
         $b .= $value['qnt'].',';
         }
-        echo $a;
-        echo $b;
+        
         $data_inicio = date('d/m/Y',strtotime($data_inicio));
         $data_fim = date('d/m/Y',strtotime($data_fim));
         
