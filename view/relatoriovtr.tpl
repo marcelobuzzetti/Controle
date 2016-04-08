@@ -1,9 +1,6 @@
-<div class="wrapper" role="main">
-    <div class='container'>
-        <div class="jumbotron">
-            {if $verificador == 1}
-                <div style="margin: 0 auto;width:100%">
-                    <canvas id="canvas" class="col-xs-12 col-sm-12 col-md-12"></canvas>
+ {if $verificador == 1}
+                <div style="margin: 0 auto;width:50%">
+                    <canvas id="canvas" height="450" width="600"></canvas>
                 </div>
                 <script>
                     var barChartData = {
@@ -28,6 +25,9 @@
 
                 </script>
             {/if}
+<div class="wrapper" role="main">
+    <div class='container'>
+        <div class="jumbotron">
             <h1>{$titulo}</h1>
             <form autocomplete="off" action="relatoriovtr" method="post">
                 <tr>
