@@ -1,4 +1,4 @@
-<footer> <!-- Aqui e a area do footer -->
+<footer class="col-xs-12 col-sm-12 col-md-12"> <!-- Aqui e a area do footer -->
     <div class="container">
         <div class="row">
             <div id="social-icons">
@@ -23,5 +23,6 @@
 <script src="{$HOST}/libs/js/bootstrap.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/jquery-ui.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/Chart.js" type="text/javascript"></script>
 </body>
 </html>
