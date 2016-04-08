@@ -31,6 +31,9 @@ if (!isset($_SESSION['login'])) {
         $relatorios = new Relatorio();
         $relacao_relatorio = $relatorios->listarPercursos($data_inicio, $data_fim);
         
+        $data_inicio = date('d/m/Y',strtotime($data_inicio));
+        $data_fim = date('d/m/Y',strtotime($data_fim));
+        
         $smarty->assign('verificador',$verificador);
         $smarty->assign('titulo','Relatórios de '.$data_inicio.' a '.$data_fim);
         $smarty->assign('relacao_relatorio',$relacao_relatorio);
