@@ -51,8 +51,8 @@
                     <input class="form-control" type="number" id="cap_transp" name="cap_transp" placeholder="Cap Transp Pessoas" required="required" min="0" max="50" step="1" value="{$cap_transp}" tabindex="5"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12">
-                    <input type='hidden' id='{$id_modelo}' value='{$id_modelo}' name='id'/>
-                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="7">{$botao}</button>
+                    <input type='hidden' value='{$id_modelo}' name='id'/>
+                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="6">{$botao}</button>
                 </div>
             </form>
         </div>
@@ -73,7 +73,6 @@
                             <td>Capacidade do Tanque</td>
                             <td>Consumo Km/L</td>
                             <td>Capacidade(Pessoas)</td>
-                            <td>Habilitação Necessária</td>
                             <td colspan="2">Ações</td>
                         </tr>
                         {foreach $tabela_modelos_cadastrados as $tbl name=relacao_modelos}
@@ -84,7 +83,6 @@
                                 <td>{$tbl.cap_tanque}</td>
                                 <td>{$tbl.consumo_padrao}</td>
                                 <td>{$tbl.cap_transp}</td>
-                                <td>{$tbl.habilitacao}</td>
                                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                             <form action='modelo' method='post'>
                                 <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
