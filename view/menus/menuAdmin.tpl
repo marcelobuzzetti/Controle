@@ -47,7 +47,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
-                        <li><a href="{$HOST}/relatoriovtr" >Relatório por Vitr</a></li>
+                        <li><a href="{$HOST}/relatoriovtr" >Relatório por Vtr</a></li>
                     </ul>
                 </li>
                 <li><a>Olá {$login}</a></li>
