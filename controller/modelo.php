@@ -9,8 +9,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $marcas = new Marca();
     $relacao_marcas = $marcas->listarMarcas();
 
-    $habiltacoes = new Habilitacao();
-    $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
+    
 
     $modelos = new Modelo();
     $tabela_modelos_cadastrados = $modelos->listarModelos();
@@ -24,7 +23,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_modelo');
         $smarty->assign('relacao_marcas', $relacao_marcas);
-        $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_modelos_cadastrados', $tabela_modelos_cadastrados);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
@@ -71,7 +69,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             $smarty->assign('consumo_padrao', $consumo_padrao);
             $smarty->assign('cap_transp', $cap_transp);
             $smarty->assign('relacao_marcas', $relacao_marcas);
-            $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
             $smarty->assign('tabela_modelos_cadastrados', $tabela_modelos_cadastrados);
             $smarty->assign('login', $_SESSION['login']);
             $smarty->display('./headers/header.tpl');
