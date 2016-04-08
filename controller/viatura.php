@@ -12,6 +12,15 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $situacao = new Situacao();
     $relacao_situacao = $situacao->listarSituacao();
     
+    $habiltacoes = new Habilitacao();
+    $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
+    
+    $combustivel = new Combustivel();
+    $relacao_combustiveis = $combustivel->listarCombustiveis();
+    
+    $tipos_viaturas = new TipoViatura();
+    $relacao_tipos_viaturas = $tipos_viaturas->listarTiposViaturas();
+    
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->listarViaturasCadastradas();
     
@@ -26,6 +35,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('relacao_situacao', $relacao_situacao);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
+         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
+         $smarty->assign('relacao_tipos_viaturas', $relacao_tipos_viaturas);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
@@ -69,6 +81,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('relacao_modelos', $relacao_modelos);
         $smarty->assign('relacao_situacao', $relacao_situacao);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
+         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
+         $smarty->assign('relacao_tipos_viaturas', $relacao_tipos_viaturas);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
