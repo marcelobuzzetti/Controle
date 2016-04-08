@@ -4,7 +4,7 @@ include '../model/conexao.php';
 session_start();
 $usuario = $_SESSION['usuario'];
 switch ($_POST['enviar']) {
-
+    
     case 'Retornou':
         $id = $_POST['id'];
         $odo_retorno = $_POST['odo_retorno'];
