@@ -8107,3 +8107,13 @@ body .ui-tooltip {
 	filter: Alpha(Opacity=20); /* support: IE8 */
 	border-radius: 5px;
 }
+
+
+/*Legenda Chart.js*/
+.chart-legend li span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+/*Legenda Chart.js*/
