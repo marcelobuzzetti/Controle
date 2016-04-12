@@ -722,7 +722,7 @@ switch ($_POST['enviar']) {
                     $executa = $stmt->execute();
 
                     if ($executa) {
-                        $_SESSION['apagado'] = 0;
+                        $_SESSION['apagado'] = 1;
                     }
                 } catch (PDOException $e) {
                     echo $e->getMessage();
@@ -819,10 +819,19 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+                  try {
+                    $stmt = $pdo->prepare("UPDATE modelos
+                                                SET id_status = 2
+                                                WHERE id_modelo = ?");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+
+                    if ($executa) {
+                        $_SESSION['apagado'] = 1;
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             } else {
                 $_SESSION['apagada'] = 1;                
             }
@@ -859,6 +868,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
