@@ -246,12 +246,14 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-        header('Location: /motoristascadastrados');
+        header('Location: /motorista');
 
         break;
 
@@ -287,12 +289,14 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-        header('Location: /motoristascadastrados');
+        header('Location: /motorista');
 
         break;
 
@@ -313,15 +317,20 @@ switch ($_POST['enviar']) {
                                                 WHERE id_motorista = ?");
                     $stmt->bindParam(1, $id, PDO::PARAM_INT);
                     $executa = $stmt->execute();
+                    if($executa){
+                        $_SESSION['apagado'] = 1;
+                    }
                 } catch (PDOException $e) {
                     echo $e->getMessage();
                 }
-            }
+            } else {
+                $_SESSION['apagado'] = 1;
+            } 
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-        header('Location: /motoristascadastrados');
+        header('Location: /motorista');
 
         break;
 
