@@ -32,13 +32,13 @@ class Relatorio {
     public function listarVtrUtilizacao($inicio, $fim) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, marcas.descricao AS marca, modelos.descricao AS modelo, placa, data_saida
-                                                        FROM percursos, viaturas, marcas, modelos
-                                                        WHERE data_saida BETWEEN ? AND ?
-                                                       AND percursos.id_viatura = viaturas.id_viatura
-                                                        AND viaturas.id_marca = marcas.id_marca
-                                                        AND viaturas.id_modelo = modelos.id_modelo 
-                                                        GROUP BY marca, modelo, placa");
+            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
+                                                FROM percursos p
+                                                RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura AND p.data_saida BETWEEN ? AND ?
+                                                INNER JOIN marcas m ON m.id_marca = v.id_marca
+                                                INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
+                                                GROUP BY v.id_viatura
+                                                ORDER BY v.id_viatura");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
             $stmt->bindParam(2, $fim, PDO::PARAM_STR);
             $executa = $stmt->execute();
