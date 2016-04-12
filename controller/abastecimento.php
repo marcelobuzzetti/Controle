@@ -8,7 +8,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
 
     
     $motoristas = new Motorista();
-    $relacao_motoristas = $motoristas->listarMotoristas();
+    $relacao_motoristas = $motoristas->listarMotoristasCompleto();
 
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->listarViaturas();
@@ -54,6 +54,12 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             if ($executa) {
                 $dados_abastecimentos = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_abastecimento = $dados_abastecimentos->id_abastecimento;
+                $nrvale= $dados_abastecimentos->nrvale;
+                echo $motorista = $dados_abastecimentos->id_motorista;
+                $viatura = $dados_abastecimentos->id_viatura;
+                $odometro = $dados_abastecimentos->odometro;
+                $combustivel = $dados_abastecimentos->id_combustivel;
+                $tipo_combustivel = $dados_abastecimentos->id_tipo_combustivel;
                 $qnt = $dados_abastecimentos->qnt;
 
             } else {
@@ -69,6 +75,12 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_abst');
         $smarty->assign('id_abastecimento', $id_abastecimento);
+        $smarty->assign('nrvale', $nrvale);
+        $smarty->assign('motorista', $motorista);
+        $smarty->assign('viatura', $viatura);
+        $smarty->assign('odometro', $odometro);
+        $smarty->assign('combustivel', $combustivel);
+        $smarty->assign('tipo_combustivel', $tipo_combustivel);
         $smarty->assign('qnt', $qnt);
         $smarty->assign('relacao_motoristas', $relacao_motoristas );
         $smarty->assign('relacao_viaturas', $relacao_viaturas );
@@ -78,7 +90,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
-        $smarty->display('./abastecimentos/index.tpl');
+        $smarty->display('abastecimento.tpl');
         $smarty->display('./footer/footer.tpl');
         }
         }
