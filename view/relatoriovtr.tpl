@@ -1,30 +1,43 @@
- {if $verificador == 1}
-                <div style="margin: 0 auto;width:50%">
-                    <canvas id="canvas" height="450" width="600"></canvas>
-                </div>
-                <script>
-                    var barChartData = {
-                        labels: [{$a}],
-                        datasets: [
-                            {
-                                fillColor: "rgba(151,187,205,0.5)",
-                                strokeColor: "rgba(151,187,205,0.8)",
-                                highlightFill: "rgba(151,187,205,0.75)",
-                                highlightStroke: "rgba(151,187,205,1)",
-                                data: [{$b}]
-                            }
-                        ]
+{if $verificador == 1}
+    <div class="container-fluid">
+        <div style="margin: 0 auto;width:50%">
+            <div id="js-legend" class="chart-legend"></div>
+            <canvas id="canvas" height="100%" width="100%"></canvas>
+        </div>
+    </div>
+    <script>
+        var barChartData = {
+            labels: [{$a}],
+            datasets: [
+                {
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    label: "Qnt",
+                    data: [{$b}]
+                },
+                {
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    label: "Km",
+                    data: [{$c}]
+                }
+            ]
 
-                    }
-                    window.onload = function () {
-                        var ctx = document.getElementById("canvas").getContext("2d");
-                        window.myBar = new Chart(ctx).Bar(barChartData, {
-                            responsive: true
-                        });
-                    }
+        }
+        window.onload = function () {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myBar = new Chart(ctx).Bar(barChartData, {
+                responsive: true
+            });
+            document.getElementById('js-legend').innerHTML = window.myBar.generateLegend();
+        }
 
-                </script>
-            {/if}
+    </script>
+{/if}
 <div class="wrapper" role="main">
     <div class='container'>
         <div class="jumbotron">
