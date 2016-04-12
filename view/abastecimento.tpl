@@ -29,15 +29,15 @@
             <form action="executar" method="post">
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="nrvale">Número Vale</label>
-                    <input class="form-control" type="text" id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" maxlength="20" value="{$dados_abastecimentos.nrvale}" tabindex="1"/>
+                    <input class="form-control" type="text" id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" maxlength="20" value="{$nrvale}" tabindex="1"/>
                 </div>
                 <td></td>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="motorista">Motorista</label>
                     <select class="form-control" name="motorista" required="required" tabindex="2">
                         <option value='' disabled selected>Selecione o Motorista</option>
-                        {foreach $relacao_motoristas as $motorista}
-                            <option value={$motorista.id_motorista}>{$motorista.apelido}</option>
+                        {foreach $relacao_motoristas as $motoristas}
+                            <option value={$motoristas.id_motorista} {if {$motoristas.id_motorista} == {$motorista}}selected{/if}>{$motoristas.apelido}</option>
                         {/foreach}
                     </select>
                 </div>
@@ -47,20 +47,20 @@
                     <select class="form-control" name="viatura" required="required" tabindex="3">
                         <option value='' disabled selected>Selecione a Viatura</option>
                         {foreach $relacao_viaturas as $viaturas}
-                            <option value={$viaturas.id_viatura}>{$viaturas.marca} - {$viaturas.modelo} - {$viaturas.placa}</option>
+                            <option value={$viaturas.id_viatura} {if {$viaturas.id_viatura} == {$viatura}}selected{/if}>{$viaturas.marca} - {$viaturas.modelo} - {$viaturas.placa}</option>
                         {/foreach}
                     </select>
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="odometro">Odômetro</label>
-                    <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1" min="0" max="999999" value="{$dados_abastecimentos.odometro}" tabindex="4"/>
+                    <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" step="0.1" min="0" max="999999" value="{$odometro}" tabindex="4"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="combustivel">Combustível</label>
                     <select class="form-control" name="combustivel" tabindex="5">
                         <option value='' disabled selected>Selecione o Combustível</option>
                         {foreach $relacao_combustiveis as $combustiveis}
-                            <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
+                            <option value={$combustiveis.id_combustivel} {if {$combustiveis.id_combustivel} == {$combustivel}}selected{/if}>{$combustiveis.descricao}</option>
                         {/foreach}
                     </select>
                 </div>
@@ -69,7 +69,7 @@
                     <select class="form-control" name="tp" tabindex="6">
                         <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
                         {foreach $relacao_tipos_combustiveis as $tipos_combustiveis}
-                            <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
+                            <option value={$tipos_combustiveis.id_tipo_combustivel} {if {$tipos_combustiveis.id_tipo_combustivel} == {$tipo_combustivel}}selected{/if}>{$tipos_combustiveis.descricao}</option>
                         {/foreach}
                     </select>
                 </div>
@@ -98,6 +98,7 @@
                             <td>Nº Vale</td>
                             <td>Motorista</td>
                             <td>Viatura</td>
+                            <td>Odômetro</td>
                             <td>Combustível</td>
                             <td>Tipo</td>
                             <td>Quantidade</td>
