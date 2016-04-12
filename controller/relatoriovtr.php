@@ -25,8 +25,9 @@ if (!isset($_SESSION['login'])) {
         } else {
         
         $verificador = 1;
-        $data_inicio = $_POST['data_inicio'];
-        $data_fim = $_POST['data_fim'];
+        $data_inicio = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data-inicio'])));
+        $data_fim = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_fim'])));
+
         
         $relatorios = new Relatorio();
         $relacao_relatorio = $relatorios->listarVtrUtilizacao($data_inicio, $data_fim);
@@ -36,14 +37,18 @@ if (!isset($_SESSION['login'])) {
         foreach ($relacao_relatorio as $value) {
         $b .= $value['qnt'].',';
         }
+         foreach ($relacao_relatorio as $value) {
+        $c .= $value['KM'].',';
+        }
         
-        $data_inicio = date('d/m/Y',strtotime($data_inicio));
-        $data_fim = date('d/m/Y',strtotime($data_fim));
+        $data_inicio = $_POST['data_inicio'];
+        $data_fim = $_POST['data_fim'];
         
         $smarty->assign('verificador',$verificador);
         $smarty->assign('titulo','Relatório de Utilizaçao de Vtr por Periodo de '.$data_inicio.' a '.$data_fim);
         $smarty->assign('a',$a);
         $smarty->assign('b',$b);
+        $smarty->assign('c',$c);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
