@@ -6,7 +6,8 @@ class Modelo{
          try {
             $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp
                                                FROM modelos, marcas
-                                               WHERE modelos.id_marca = marcas.id_marca;");
+                                               WHERE modelos.id_marca = marcas.id_marca
+                                               AND modelos.id_status != 2");
             $executa = $stmt->execute();
 
             if ($executa) {
