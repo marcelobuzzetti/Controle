@@ -44,4 +44,23 @@ class Motorista{
                 echo $e->getMessage();
             }   
     }
+    
+      public function listarMotoristasCompleto(){
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM motoristas");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                } else {
+                    print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }   
+    }   
 }
