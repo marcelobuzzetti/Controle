@@ -696,7 +696,9 @@ header('Location: /recebimentocombustivel');
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
                 header("Location: /percurso");
-            }
+        } else {
+            $_SESSION['cadastrado'] = 1;
+        }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -722,10 +724,16 @@ header('Location: /abastecimento');
                       $stmt->bindParam(1, $id, PDO::PARAM_INT);
                       $executa = $stmt->execute();
                       
+                      if($executa){
+                         $_SESSION['apagado'] = 0; 
+                      }
+                      
                   } catch (PDOException $e) {
                       echo $e->getMessage();
                       
                   }
+            } else {
+                $_SESSION['apagado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -761,6 +769,8 @@ header('Location: /abastecimento');
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                 $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
