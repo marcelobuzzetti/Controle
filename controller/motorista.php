@@ -1,11 +1,12 @@
-<?php 
+<?php
+
 include '../include/config.inc.php';
 
 session_start();
 if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3)) {
-    header('Location: '.  constant("HOST").'/percurso');
+    header('Location: ' . constant("HOST") . '/percurso');
 } else {
-    
+
     $postograd = new PostoGrad();
     $relacao_posto_grad = $postograd->listarPostoGrad();
 
@@ -14,27 +15,32 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
 
     $motoristas = new Motorista();
     $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
-    
+
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
-    
-    if(!isset($_POST['id'])){
-        
+
+    if (!isset($_POST['id'])) {
+
         $smarty->assign('titulo', 'Cadastro de Motoristas');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'motorista');
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+        $smarty->assign('apagado', $_SESSION['apagado']);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
         $smarty->display('motorista.tpl');
         $smarty->display('./footer/footer.tpl');
-
+        unset($_SESSION['cadastrado']);
+        unset($_SESSION['atualizado']);
+        unset($_SESSION['apagado']);
     } else {
-        
+
         $id = $_POST['id'];
 
         try {
@@ -45,21 +51,24 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             if ($executa) {
                 $dados_motoristas = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_motorista = $dados_motoristas->id_motorista;
+                $pg = $dados_motoristas->id_posto_grad;
+                $categoria = $dados_motoristas->id_habilitacao;
                 $nome = $dados_motoristas->nome;
-
             } else {
-            print("<script language=JavaScript>
+                print("<script language=JavaScript>
                    alert('Não foi possível criar tabela.');
                    </script>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        
+
         $smarty->assign('titulo', 'Cadastro de Motoristas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_motorista');
         $smarty->assign('id_motorista', $id_motorista);
+        $smarty->assign('id_pg', $pg);
+        $smarty->assign('categoria', $categoria);
         $smarty->assign('nome', $nome);
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
@@ -67,8 +76,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
-        $smarty->display('motorista.tpl');   
+        $smarty->display('motorista.tpl');
         $smarty->display('./footer/footer.tpl');
     }
-       
 }
