@@ -125,7 +125,8 @@ CREATE TABLE modelos (
   descricao varchar(50)  NOT NULL, 
   cap_tanque int(11) NOT NULL, 
   consumo_padrao int(11) NOT NULL, 
-  cap_transp int(11) NOT NULL
+  cap_transp int(11) NOT NULL,
+  id_status int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE tipos_viaturas (
@@ -173,7 +174,8 @@ ALTER TABLE viaturas
   ADD CONSTRAINT FK_status1 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE modelos
-  ADD CONSTRAINT FK_marca1 FOREIGN KEY (id_marca) REFERENCES marcas (id_marca);
+  ADD CONSTRAINT FK_marca1 FOREIGN KEY (id_marca) REFERENCES marcas (id_marca),
+  ADD CONSTRAINT FK_status3 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE combustiveis
   ADD CONSTRAINT FK_usuario6 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
@@ -185,7 +187,7 @@ ALTER TABLE  usuarios
   ADD CONSTRAINT FK_status2 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE  marcas
-  ADD CONSTRAINT FK_status3 FOREIGN KEY (id_status) REFERENCES status (id_status);
+  ADD CONSTRAINT FK_status4 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 INSERT INTO status (id_status, status) VALUES
 (1, 'Ativo'),
