@@ -115,7 +115,8 @@ CREATE TABLE viaturas (
 
 CREATE TABLE marcas (
   id_marca int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  descricao varchar(50)  NOT NULL
+  descricao varchar(50)  NOT NULL,
+  id_status int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE modelos (
@@ -182,6 +183,9 @@ ALTER TABLE  tipos_combustiveis
 
 ALTER TABLE  usuarios
   ADD CONSTRAINT FK_status2 FOREIGN KEY (id_status) REFERENCES status (id_status);
+
+ALTER TABLE  marcas
+  ADD CONSTRAINT FK_status3 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 INSERT INTO status (id_status, status) VALUES
 (1, 'Ativo'),
