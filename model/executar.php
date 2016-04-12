@@ -798,6 +798,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -821,6 +823,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['apagada'] = 1;                
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -869,7 +873,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO marcas
-                                                VALUES(NULL,?)");
+                                                VALUES(NULL,?,1)");
             $stmt->bindParam(1, $marca, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
@@ -878,6 +882,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -892,14 +898,26 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("DELETE FROM marcas 
-                                                WHERE id_marca =" . $id);
+                                                WHERE id_marca = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+                try {
+                    $stmt = $pdo->prepare("UPDATE marcas
+                                                SET id_status = 2
+                                                WHERE id_marca = ?");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+
+                    if ($executa) {
+                        $_SESSION['apagado'] = 1;
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                $_SESSION['apagado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -926,6 +944,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
