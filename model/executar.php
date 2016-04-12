@@ -4,7 +4,7 @@ include '../model/conexao.php';
 session_start();
 $usuario = $_SESSION['usuario'];
 switch ($_POST['enviar']) {
-    
+
     case 'Retornou':
         $id = $_POST['id'];
         $odo_retorno = $_POST['odo_retorno'];
@@ -124,9 +124,9 @@ switch ($_POST['enviar']) {
         $situacao = $_POST["situacao"];
         $habilitacao = $_POST["habilitacao"];
         $combustivel = $_POST["combustivel"];
-        
+
         try {
-                $stmt = $pdo->prepare("INSERT INTO viaturas
+            $stmt = $pdo->prepare("INSERT INTO viaturas
                                                     VALUES(NULL,?,?,?,?,?,?,?,$usuario,1,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
@@ -149,7 +149,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /viaturascadastradas');
+        header('Location: /viaturascadastradas');
 
         break;
 
@@ -162,23 +162,21 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                  try {
-                      $stmt = $pdo->prepare("UPDATE viaturas
+                try {
+                    $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_status = 2
                                                 WHERE id_viatura = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-       header('Location: /viaturascadastradas');
+        header('Location: /viaturascadastradas');
 
         break;
 
@@ -214,7 +212,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-       header('Location: /viaturascadastradas');
+        header('Location: /viaturascadastradas');
 
         break;
 
@@ -253,7 +251,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-header('Location: /motoristascadastrados');
+        header('Location: /motoristascadastrados');
 
         break;
 
@@ -294,7 +292,7 @@ header('Location: /motoristascadastrados');
             echo $e->getMessage();
         }
 
-header('Location: /motoristascadastrados');
+        header('Location: /motoristascadastrados');
 
         break;
 
@@ -307,25 +305,23 @@ header('Location: /motoristascadastrados');
                                                 WHERE id_motorista= ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
+
             if (!$executa) {
-            try {
-                      $stmt = $pdo->prepare("UPDATE motoristas
+                try {
+                    $stmt = $pdo->prepare("UPDATE motoristas
                                                 SET id_status = 2
                                                 WHERE id_motorista = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /motoristascadastrados');
+        header('Location: /motoristascadastrados');
 
         break;
 
@@ -355,7 +351,7 @@ header('Location: /motoristascadastrados');
             echo $e->getMessage();
         }
 
-header('Location: /usuario');
+        header('Location: /usuario');
 
         break;
 
@@ -368,23 +364,21 @@ header('Location: /usuario');
             $executa = $stmt->execute();
 
             if (!$executa) {
-            try {
-                      $stmt = $pdo->prepare("UPDATE usuarios
+                try {
+                    $stmt = $pdo->prepare("UPDATE usuarios
                                                 SET id_status = 2
                                                 WHERE id_usuario = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /usuario');
+        header('Location: /usuario');
 
         break;
 
@@ -417,7 +411,7 @@ header('Location: /usuario');
             echo $e->getMessage();
         }
 
-header('Location: /usuario');
+        header('Location: /usuario');
 
         break;
 
@@ -436,12 +430,14 @@ header('Location: /usuario');
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-        header('Location: /combustiveiscadastrados');
+        header('Location: /combustivel');
 
         break;
 
@@ -454,23 +450,26 @@ header('Location: /usuario');
             $executa = $stmt->execute();
 
             if (!$executa) {
-            try {
-                      $stmt = $pdo->prepare("UPDATE combustiveis
+                try {
+                    $stmt = $pdo->prepare("UPDATE combustiveis
                                                 SET id_status = 2
                                                 WHERE id_combustivel = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                if ($executa) {    
+                      $_SESSION['apagado'] = 1;                    
+                }                    
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                 $_SESSION['apagado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /combustiveiscadastrados');
+        header('Location: /combustivel');
 
         break;
 
@@ -490,12 +489,14 @@ header('Location: /combustiveiscadastrados');
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else{
+                  $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /combustiveiscadastrados');
+        header('Location: /combustivel');
 
         break;
 
@@ -519,7 +520,7 @@ header('Location: /combustiveiscadastrados');
             echo $e->getMessage();
         }
 
-header('Location: /tiposcombustiveiscadastrados');
+        header('Location: /tiposcombustiveiscadastrados');
 
         break;
 
@@ -532,24 +533,22 @@ header('Location: /tiposcombustiveiscadastrados');
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-           if (!$executa) {
-            try {
-                      $stmt = $pdo->prepare("UPDATE tipos_combustiveis
+            if (!$executa) {
+                try {
+                    $stmt = $pdo->prepare("UPDATE tipos_combustiveis
                                                 SET id_status = 2
                                                 WHERE id_tipo_combustivel = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /tiposcombustiveiscadastrados');
+        header('Location: /tiposcombustiveiscadastrados');
         break;
 
     case 'atualizar_tipo':
@@ -573,7 +572,7 @@ header('Location: /tiposcombustiveiscadastrados');
             echo $e->getMessage();
         }
 
-header('Location: /tiposcombustiveiscadastrados');
+        header('Location: /tiposcombustiveiscadastrados');
         break;
 
     case 'rcb_comb':
@@ -602,7 +601,7 @@ header('Location: /tiposcombustiveiscadastrados');
             echo $e->getMessage();
         }
 
-header('Location: /recebimentocombustivel');
+        header('Location: /recebimentocombustivel');
 
         break;
 
@@ -616,24 +615,22 @@ header('Location: /recebimentocombustivel');
             $executa = $stmt->execute();
 
             if (!$executa) {
-            try {
-                      $stmt = $pdo->prepare("UPDATE recibos_combustiveis
+                try {
+                    $stmt = $pdo->prepare("UPDATE recibos_combustiveis
                                                 SET id_status = 2
                                                 WHERE id_recibo_combustivel = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
 
-header('Location: /recebimentocombustivel');
+        header('Location: /recebimentocombustivel');
 
         break;
 
@@ -664,7 +661,7 @@ header('Location: /recebimentocombustivel');
             echo $e->getMessage();
         }
 
-header('Location: /recebimentocombustivel');
+        header('Location: /recebimentocombustivel');
 
         break;
 
@@ -696,14 +693,14 @@ header('Location: /recebimentocombustivel');
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
                 header("Location: /percurso");
-        } else {
-            $_SESSION['cadastrado'] = 1;
-        }
+            } else {
+                $_SESSION['cadastrado'] = 1;
+            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /abastecimento');
+        header('Location: /abastecimento');
 
         break;
 
@@ -717,21 +714,19 @@ header('Location: /abastecimento');
             $executa = $stmt->execute();
 
             if (!$executa) {
-            try {
-                      $stmt = $pdo->prepare("UPDATE abastecimentos
+                try {
+                    $stmt = $pdo->prepare("UPDATE abastecimentos
                                                 SET id_status = 2
                                                 WHERE id_abastecimento = ?");
-                      $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                      $executa = $stmt->execute();
-                      
-                      if($executa){
-                         $_SESSION['apagado'] = 0; 
-                      }
-                      
-                  } catch (PDOException $e) {
-                      echo $e->getMessage();
-                      
-                  }
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+
+                    if ($executa) {
+                        $_SESSION['apagado'] = 0;
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             } else {
                 $_SESSION['apagado'] = 1;
             }
@@ -739,7 +734,7 @@ header('Location: /abastecimento');
             echo $e->getMessage();
         }
 
-header('Location: /abastecimento');
+        header('Location: /abastecimento');
 
         break;
 
@@ -770,13 +765,13 @@ header('Location: /abastecimento');
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
             } else {
-                 $_SESSION['atualizado'] = 1;
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
 
-header('Location: /abastecimento');
+        header('Location: /abastecimento');
 
         break;
 
@@ -808,7 +803,7 @@ header('Location: /abastecimento');
             echo $e->getMessage();
         }
 
-header('Location: /modelo');
+        header('Location: /modelo');
 
         break;
 
@@ -831,7 +826,7 @@ header('Location: /modelo');
             echo $e->getMessage();
         }
 
-header('Location: /modelo');
+        header('Location: /modelo');
 
         break;
 
@@ -865,7 +860,7 @@ header('Location: /modelo');
             echo $e->getMessage();
         }
 
-header('Location: /modelo');
+        header('Location: /modelo');
 
         break;
 
@@ -888,7 +883,7 @@ header('Location: /modelo');
             echo $e->getMessage();
         }
 
-header('Location: /marca');
+        header('Location: /marca');
 
         break;
 
@@ -910,7 +905,7 @@ header('Location: /marca');
             echo $e->getMessage();
         }
 
-header('Location: /marca');
+        header('Location: /marca');
 
         break;
 
@@ -936,7 +931,7 @@ header('Location: /marca');
             echo $e->getMessage();
         }
 
-header('Location: /marca');
+        header('Location: /marca');
 
         break;
 
@@ -972,7 +967,7 @@ header('Location: /marca');
                 $_SESSION['usuario'] = $resultado1[2];
                 $_SESSION['temposessao'] = time() + 120;
 
-            header('Location: /percurso');
+                header('Location: /percurso');
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;
