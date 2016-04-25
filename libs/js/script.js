@@ -42,6 +42,7 @@ $(function () {
     $('#viatura').change(function () {
         $('.Selecione').hide();
         $('#motorista').load('../model/listaMotoristas.php?viatura=' + $('#viatura').val());
+        $('#odo_saida').load('../model/odometro.php?viatura=' + $('#viatura').val());
     });
 
     $('#marca').change(function () {
