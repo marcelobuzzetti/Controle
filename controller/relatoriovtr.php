@@ -25,7 +25,7 @@ if (!isset($_SESSION['login'])) {
         } else {
         
         $verificador = 1;
-        $data_inicio = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data-inicio'])));
+        $data_inicio = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_inicio'])));
         $data_fim = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_fim'])));
 
         
@@ -46,6 +46,7 @@ if (!isset($_SESSION['login'])) {
         
         $smarty->assign('verificador',$verificador);
         $smarty->assign('titulo','Relatório de Utilizaçao de Vtr por Periodo de '.$data_inicio.' a '.$data_fim);
+        $smarty->assign('relacao_relatorio',$relacao_relatorio);
         $smarty->assign('a',$a);
         $smarty->assign('b',$b);
         $smarty->assign('c',$c);
