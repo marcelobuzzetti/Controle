@@ -8120,3 +8120,16 @@ body .ui-tooltip {
     list-style-type: none;
 }
 /*Legenda Chart.js*/
+
+/*Ocultar grafico em telas menores*/
+@media (max-width: 767px) {
+    .grafico {
+        display: none;
+    }
+}
+/*Ocultar grafico em telas menores*/
+@media (min-width: 767px) {
+    .tabela {
+        display: none;
+    }
+}
