@@ -1,8 +1,8 @@
 {if $verificador == 1}
-    <div class="container-fluid">
-        <div style="margin: 0 auto;width:50%">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
             <div id="js-legend" class="chart-legend"></div>
-            <canvas id="canvas" height="100%" width="100%"></canvas>
+            <canvas id="canvas" ></canvas>
         </div>
     </div>
     <script>
@@ -28,6 +28,9 @@
             ]
 
         }
+        window.onresize = function () {
+            location.reload();
+        };
         window.onload = function () {
             var ctx = document.getElementById("canvas").getContext("2d");
             window.myBar = new Chart(ctx).Bar(barChartData, {
@@ -37,6 +40,27 @@
         }
 
     </script>
+    <div class='container tabela'>
+        <fieldset>
+            <legend>Relatório Utilização de Vtr</legend>
+            <table class='table table-striped table-hover' text-align='center'>
+                {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
+                    <tr>                            
+                        <td>Ordem: {$smarty.foreach.relacao_relatorio.iteration}</td>
+                    </tr>
+                    <tr>
+                        <td>Viatura: {$tbl.modelo} - {$tbl.placa}</td>
+                    </tr>
+                    <tr>
+                        <td>Qnt Uso: {$tbl.qnt}</td>
+                    </tr>
+                    <tr>
+                        <td>KM: {$tbl.KM}</td>
+                    </tr>
+                {/foreach}    
+            </table>
+        </fieldset>
+    </div>
 {/if}
 <div class="wrapper" role="main">
     <div class='container'>
