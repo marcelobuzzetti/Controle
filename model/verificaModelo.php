@@ -14,12 +14,23 @@ $row = mysql_fetch_row($query);
 $qnt = $row[0];
 
 if ($id_marca == NULL || $modelo == NULL) {
-    echo "<div class='container'>
+    if ($id_marca == NULL) {
+        echo "<div class='container'>
         <div class='alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12'>
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            Preencha os camapo
+            Escolha a marca
         </div>";
-    echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+    }
+
+    if ($modelo == NULL) {
+        echo "<div class='container'>
+        <div class='alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            Preencha o modelo
+        </div>";
+        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+    }
 } else {
     if ($qnt > 0) {
         echo "<div class='container'>
