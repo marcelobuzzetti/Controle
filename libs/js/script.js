@@ -64,7 +64,7 @@ $(function () {
 
 /*Verifica se a modelo existe*/
     $('#modelo').keyup(function () {
-        $('#alerta').load('../model/verificaModelo.php?'+$.param({ marca: $('#marca').val(), modelo: $('#modelo').val()  }) );
+        $('#alerta').load('../model/verificaModelo.php?'+$.param({ marca_modelo: $('#marca_modelo').val(), modelo: $('#modelo').val()  }) );
     });
 /*Verifica se a modelo existe*/
 
