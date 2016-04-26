@@ -20,6 +20,7 @@ RewriteRule ^percurso/?$ controller/percurso.php
 RewriteRule ^recebimentocombustivel/?$ controller/recebimentocombustivel.php
 RewriteRule ^relatorio/?$ controller/relatorio.php
 RewriteRule ^relatoriovtr/?$ controller/relatoriovtr.php
+RewriteRule ^relatoriomotorista/?$ controller/relatoriomotorista.php
 RewriteRule ^tipocombustivel/?$ controller/tipocombustivel.php
 RewriteRule ^tiposcombustiveiscadastrados/?$ controller/tipocombustivelcadastrado.php
 RewriteRule ^usuario/?$ controller/usuario.php
