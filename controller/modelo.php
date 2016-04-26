@@ -37,7 +37,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     } else {
 
         $id = $_POST['id'];
-
+        
         try {
             $stmt = $pdo->prepare("SELECT * FROM modelos WHERE id_modelo = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
