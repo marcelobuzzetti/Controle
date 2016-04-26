@@ -5,14 +5,16 @@ session_start();
 $usuario = $_SESSION['usuario'];
 switch ($_POST['enviar']) {
 
-    case 'Retornou':
+    case 'percurso_retornou':
         $id = $_POST['id'];
         $odo_retorno = $_POST['odo_retorno'];
 
         try {
             $stmt = $pdo->prepare("UPDATE percursos 
-                                                SET odo_retorno=$odo_retorno, data_retorno=NOW(), hora_retorno=NOW() 
-                                                WHERE id_percurso=" . $id);
+                                                SET odo_retorno= ?, data_retorno=NOW(), hora_retorno=NOW() 
+                                                WHERE id_percurso= ?");
+            $stmt->bindParam(1, $odo_retorno, PDO::PARAM_STR);
+            $stmt->bindParam(2, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -20,6 +22,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -34,7 +38,8 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("DELETE FROM percursos
-                                                WHERE id_percurso=" . $id);
+                                                WHERE id_percurso= ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -42,6 +47,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['apagado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -51,13 +58,16 @@ switch ($_POST['enviar']) {
 
         break;
 
-    case 'Cadastrar':
+    case 'percurso':
         $viatura = $_POST["viatura"];
         $nome = $_POST["motorista"];
         $destino = mb_strtoupper($_POST["destino"]);
         $odometro = $_POST["odo_saida"];
+        if (empty($_POST["acompanhante"])){
+            $acompanhante = NULL;
+        } else {
         $acompanhante = mb_strtoupper($_POST["acompanhante"]);
-
+        }
         try {
             $stmt = $pdo->prepare("SELECT COUNT(nome_destino) AS existente
                                                 FROM destinos
@@ -105,6 +115,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
