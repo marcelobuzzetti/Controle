@@ -26,7 +26,7 @@
         <form action="executar" method="post">
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="marca">Marca</label>
-                <select class="form-control" name="marca" required tabindex="1">
+                <select class="form-control" id="marca" name="marca" required tabindex="1">
                     <option value='' disabled selected>Selecione a Marca</option>
                     {foreach $relacao_marcas as $marcas}
                         <option value={$marcas.id_marca} {if {$marcas.id_marca} == {$marca}} selected {/if}>{$marcas.descricao}</option>
@@ -51,12 +51,16 @@
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <input type='hidden' value='{$id_modelo}' name='id'/>
-                <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="6">{$botao}</button>
+                <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="6">{$botao}</button>
             </div>
         </form>
     </div>
 </div>
+<!--Alerta-->
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <span name="alerta" id="alerta"></span>
 </div>
+<!--Alerta-->
 <div class='container'>
     {if $cadastrado != NULL}
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
