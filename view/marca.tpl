@@ -23,18 +23,23 @@
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
-        <form action="executar" method="post">
+        <form autocomplete="off" action="executar" method="post">
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="viatura">Marcas</label>
+                <label for="marca">Marcas</label>
                 <input autofocus class="form-control" type="text" id="marca" name="marca" placeholder="Marca" required="required" value="{$descricao}" maxlength="20" tabindex="1"/>
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <input type='hidden' id='{$id_marca}' value='{$id_marca}' name='id'/>
-                <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button>
+                <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" id="enviar" name="enviar" tabindex="2">{$botao}</button>
             </div>
         </form>
     </div>
 </div>
+<!--Alerta-->
+<div class="col-xs-12 col-sm-12 col-md-12">
+    <span name="alerta" id="alerta"></span>
+</div>
+<!--Alerta-->
 <div class='container'>
     {if $cadastrado != NULL}
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
@@ -51,7 +56,7 @@
     {if $apagado != NULL}
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-           A marca foi apagada com sucesso!
+            A marca foi apagada com sucesso!
         </div>              
     {/if}
 </div>
