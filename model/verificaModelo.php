@@ -7,7 +7,7 @@ mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
 
-$id_marca = $_GET['marca'];
+$id_marca = $_GET['marca_modelo'];
 $modelo = $_GET['modelo'];
 $query = mysql_query("SELECT count(id_modelo) FROM modelos WHERE id_marca =  $id_marca AND descricao = '$modelo'");
 $row = mysql_fetch_row($query);
