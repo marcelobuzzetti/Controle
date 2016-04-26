@@ -23,10 +23,10 @@
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
-        <form action="executar" method="post">
+        <form autocomplete="off" action="executar" method="post">
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="marca">Marca</label>
-                <select class="form-control" id="marca" name="marca" required tabindex="1">
+                <label for="marca_modelo">Marca</label>
+                <select class="form-control" id="marca_modelo" name="marca_modelo" required tabindex="1">
                     <option value='' disabled selected>Selecione a Marca</option>
                     {foreach $relacao_marcas as $marcas}
                         <option value={$marcas.id_marca} {if {$marcas.id_marca} == {$marca}} selected {/if}>{$marcas.descricao}</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="consumo">Consumo</label>
-                <td><input class="form-control" type="number"  id="cons_padrao" name="consumo_padrao" placeholder="Consumo Km/L" required="required" min="0" max="100" step="1" value="{$consumo_padrao}" tabindex="4"/></td>
+                <input class="form-control" type="number"  id="cons_padrao" name="consumo_padrao" placeholder="Consumo Km/L" required="required" min="0" max="100" step="1" value="{$consumo_padrao}" tabindex="4"/>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="cap_transp">Capacidade de Transporte</label>
@@ -51,7 +51,7 @@
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <input type='hidden' value='{$id_modelo}' name='id'/>
-                <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="6">{$botao}</button>
+                <button type="submit" {if {$id_modelo} == NULL} disabled  {/if}class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" id="enviar" name="enviar" tabindex="6">{$botao}</button>
             </div>
         </form>
     </div>
