@@ -25,7 +25,7 @@ if (!isset($_SESSION['login'])) {
     } else {
 
         $verificador = 1;
-        $data_inicio = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data-inicio'])));
+        $data_inicio = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_inicio'])));
         $data_fim = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_fim'])));
 
         $relatorios = new Relatorio();
