@@ -24,6 +24,5 @@
 <script src="{$HOST}/libs/js/jquery-ui.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/Chart.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/legend.js" type="text/javascript"></script>
 </body>
 </html>
