@@ -30,7 +30,7 @@
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <input type='hidden' id='{$id_marca}' value='{$id_marca}' name='id'/>
-                <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" id="enviar" name="enviar" tabindex="2">{$botao}</button>
+                <button type="submit" {if {$id_marca} == NULL} disabled  {/if} class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" id="enviar" name="enviar" tabindex="2">{$botao}</button>
             </div>
         </form>
     </div>
