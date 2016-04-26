@@ -48,6 +48,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
                         <li><a href="{$HOST}/relatoriovtr" >Relatório por Vtr</a></li>
+                        <li><a href="{$HOST}/relatoriomotorista" >Relatório por Motorista</a></li>
                     </ul>
                 </li>
                 <li><a>Olá {$login}</a></li>
