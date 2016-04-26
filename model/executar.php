@@ -61,12 +61,12 @@ switch ($_POST['enviar']) {
     case 'percurso':
         $viatura = $_POST["viatura"];
         $nome = $_POST["motorista"];
-        $destino = mb_strtoupper($_POST["destino"]);
+        $destino = ucwords(strtolower($_POST["destino"]));
         $odometro = $_POST["odo_saida"];
         if (empty($_POST["acompanhante"])){
             $acompanhante = NULL;
         } else {
-        $acompanhante = mb_strtoupper($_POST["acompanhante"]);
+        $acompanhante = ucwords(strtolower($_POST["acompanhante"]));
         }
         try {
             $stmt = $pdo->prepare("SELECT COUNT(nome_destino) AS existente
@@ -229,7 +229,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'motorista':
-        $nome = mb_strtoupper($_POST['nome']);
+        $nome = ucwords(strtolower($_POST['nome']));
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
 
@@ -271,7 +271,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_motorista':
         $id = $_POST['id'];
-        $nome = mb_strtoupper($_POST['nome']);
+        $nome = ucwords(strtolower($_POST['nome']));
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
 
@@ -351,7 +351,7 @@ switch ($_POST['enviar']) {
         $login = $_POST['login'];
         $senha = md5($_POST['senha']);
         $perfil = $_POST['perfil'];
-        $apelido = mb_strtoupper($_POST['apelido']);
+        $apelido = ucwords(strtolower($_POST['apelido']));
 
         try {
             $stmt = $pdo->prepare("INSERT INTO usuarios 
@@ -408,7 +408,7 @@ switch ($_POST['enviar']) {
         $login = $_POST['login'];
         $senha = md5($_POST['senha']);
         $perfil = $_POST['perfil'];
-        $apelido = mb_strtoupper($_POST['apelido']);
+        $apelido = ucwords(strtolower($_POST['apelido']));
 
 
         try {
@@ -437,7 +437,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'combustivel':
-        $descricao = mb_strtoupper($_POST['descricao']);
+        $descricao = ucwords(strtolower($_POST['descricao']));
 
 
         try {
@@ -496,7 +496,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_combustivel':
         $id = $_POST['id'];
-        $descricao = mb_strtoupper($_POST['descricao']);
+        $descricao = ucwords(strtolower($_POST['descricao']));
 
         try {
             $stmt = $pdo->prepare("UPDATE combustiveis
@@ -522,7 +522,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'tipo':
-        $descricao = mb_strtoupper($_POST['descricao']);
+        $descricao = ucwords(strtolower($_POST['descricao']));
 
 
         try {
@@ -574,7 +574,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_tipo':
         $id = $_POST['id'];
-        $descricao = mb_strtoupper($_POST['descricao']);
+        $descricao = ucwords(strtolower($_POST['descricao']));
 
         try {
             $stmt = $pdo->prepare("UPDATE tipos_combustiveis
@@ -798,7 +798,7 @@ switch ($_POST['enviar']) {
 
     case 'cadastrar_modelo':
         $marca = $_POST['marca'];
-        $modelo = mb_strtoupper($_POST['modelo']);
+        $modelo = ucwords(strtolower($_POST['modelo']));
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
         $cap_transp = $_POST['cap_transp'];
@@ -867,7 +867,7 @@ switch ($_POST['enviar']) {
     case 'atualizar_modelo':
         $id = $_POST['id'];
         $marca = $_POST['marca'];
-        $modelo = mb_strtoupper($_POST['modelo']);
+        $modelo = ucwords(strtolower($_POST['modelo']));
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
         $cap_transp = $_POST['cap_transp'];
@@ -901,7 +901,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'marca':
-        $marca = mb_strtoupper($_POST['marca']);
+        $marca = ucwords(strtolower($_POST['marca']));
 
         try {
             $stmt = $pdo->prepare("INSERT INTO marcas
@@ -961,7 +961,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_marca':
         $id = $_POST['id'];
-        $marca = mb_strtoupper($_POST['marca']);
+        $marca = ucwords(strtolower($_POST['marca']));
 
         try {
             $stmt = $pdo->prepare("UPDATE marcas
