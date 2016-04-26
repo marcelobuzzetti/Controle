@@ -54,5 +54,29 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
+    
+     public function listarMotoristaUtilizacao($inicio, $fim) {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
+                                                FROM percursos p
+                                                RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista  AND p.data_saida BETWEEN ? AND ?                                             
+                                                GROUP BY m.id_motorista
+                                                ORDER BY m.id_motorista");
+            $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
+            $stmt->bindParam(2, $fim, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
 }
