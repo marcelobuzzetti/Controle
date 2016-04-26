@@ -797,7 +797,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'cadastrar_modelo':
-        $marca = $_POST['marca'];
+        $marca = $_POST['marca_modelo'];
         $modelo = ucwords(strtolower($_POST['modelo']));
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
@@ -806,7 +806,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO modelos
-                                                VALUES(NULL,?,?,?,?,?)");
+                                                VALUES(NULL,?,?,?,?,?,1)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_STR);
             $stmt->bindParam(3, $cap_tanque, PDO::PARAM_INT);
@@ -866,7 +866,7 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_modelo':
         $id = $_POST['id'];
-        $marca = $_POST['marca'];
+        $marca = $_POST['marca_modelo'];
         $modelo = ucwords(strtolower($_POST['modelo']));
         $cap_tanque = $_POST['cap_tanque'];
         $consumo_padrao = $_POST['consumo_padrao'];
