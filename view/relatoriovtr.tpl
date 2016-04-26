@@ -57,6 +57,7 @@
                     <tr>
                         <td>KM: {$tbl.KM}</td>
                     </tr>
+                    <tr><td></td></tr>
                 {/foreach}    
             </table>
         </fieldset>
