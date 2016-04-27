@@ -24,7 +24,7 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
         <form autocomplete="off" action="executar" method="post">
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
+            <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <label for="marca">Marcas</label>
                 <input autofocus class="form-control" type="text" id="marca" name="marca" placeholder="Marca" required="required" value="{$descricao}" maxlength="20" tabindex="1"/>
             </div>
