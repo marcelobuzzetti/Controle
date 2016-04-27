@@ -13,7 +13,7 @@
                     <input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12">
-                    <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
+                    <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
                 </div>
             </form>
         </div>
