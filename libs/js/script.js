@@ -32,43 +32,56 @@ $(function () {
         nextText: 'Pr&oacute;ximo',
         prevText: 'Anterior'
     });
-/*Coloca datepicker nas datas*/
+    /*Coloca datepicker nas datas*/
 
-/*Autocompleta o destino em percurso*/
+    /*Autocompleta o destino em percurso*/
     $("#destino").autocomplete({
         source: "../model/buscador.php",
         minLength: 3
     });
-/*Autocompleta o destino em percurso*/
+    /*Autocompleta o destino em percurso*/
 
-/*Completa o motorista e o odometro em percurso*/
+    /*Completa o motorista e o odometro em percurso*/
     $('#viatura').change(function () {
-        $('.Selecione').hide();
         $('#motorista').load('../model/listaMotoristas.php?viatura=' + $('#viatura').val());
         $('#odo_saida').load('../model/odometro.php?viatura=' + $('#viatura').val());
     });
-/*Completa o motorista e o odometro em percurso*/
+    /*Completa o motorista e o odometro em percurso*/
 
-/*Completa modelos no cadastro de viatura*/
+    /*Completa modelos no cadastro de viatura*/
     $('#marca').change(function () {
-        $('.Selecione').hide();
         $('#modelo').load('../model/listaModelos.php?marca=' + $('#marca').val());
     });
-/*Completa modelos no cadastro de viatura*/
+    /*Completa modelos no cadastro de viatura*/
 
-/*Verifica se a marca existe*/
+    /*Verifica se a marca existe*/
     $('#marca').keyup(function () {
-        $('#alerta').load('../model/verificaMarca.php?'+$.param({ marca: $('#marca').val() }) );
+        $('#alerta').load('../model/verificaMarca.php?' + $.param({marca: $('#marca').val()}));
     });
-/*Verifica se a marca existe*/
+    /*Verifica se a marca existe*/
 
-/*Verifica se a modelo existe*/
+    /*Verifica se a modelo existe*/
     $('#modelo').keyup(function () {
-        $('#alerta').load('../model/verificaModelo.php?'+$.param({ marca_modelo: $('#marca_modelo').val(), modelo: $('#modelo').val()  }) );
+        $('#alerta').load('../model/verificaModelo.php?' + $.param({marca_modelo: $('#marca_modelo').val(), modelo: $('#modelo').val()}));
     });
-/*Verifica se a modelo existe*/
+    /*Verifica se a modelo existe*/
 
-/*Modal dos motoristas*/
+    /*Verificar as datas*/
+    $('#data_fim').change(function () {
+        var data_inicio = $('#data_inicio').val();
+        var data_fim = $('#data_fim').val();
+        var compara1 = parseInt(data_inicio.split("/")[2].toString() + data_inicio.split("/")[1].toString() + data_inicio.split("/")[0].toString());
+        var compara2 = parseInt(data_fim.split("/")[2].toString() + data_fim.split("/")[1].toString() + data_fim.split("/")[0].toString());
+        if (compara1 > compara2) {
+            window.alert('A Data Fim é maior que a Data Início')
+            $('#enviar').attr('disabled', 'disabled');
+        } else {
+            $('#enviar').removeAttr('disabled');
+        }
+    });
+    /*Verificar as datas*/
+
+    /*Modal dos motoristas*/
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var recipient = button.data('whatever')
