@@ -1,17 +1,17 @@
 <?php
-
-mysql_connect('localhost', 'controle', 'controle') or die('Erro ao conectar com o servidor');
-mysql_select_db('controle') or die('Erro ao conectar com o banco de dados');
-mysql_query("SET NAMES 'utf8'");
-mysql_query('SET character_set_connection=utf8');
-mysql_query('SET character_set_client=utf8');
-mysql_query('SET character_set_results=utf8');
+include '../model/conexao.php';
 
 $id_marca = $_GET['marca_modelo'];
 $modelo = $_GET['modelo'];
-$query = mysql_query("SELECT count(id_modelo) FROM modelos WHERE id_marca =  $id_marca AND descricao = '$modelo'");
-$row = mysql_fetch_row($query);
-$qnt = $row[0];
+
+$stmt = $pdo->prepare("SELECT count(id_modelo) AS qnt FROM modelos WHERE id_marca =  ? AND descricao = ?");
+$stmt->bindParam(1, $id_marca, PDO::PARAM_INT);
+$stmt->bindParam(2, $modelo, PDO::PARAM_STR);
+$executa = $stmt->execute();
+
+$resultado = $stmt->fetch(PDO::FETCH_OBJ);
+
+$qnt = $resultado->qnt;
 
 if ($id_marca == NULL || $modelo == NULL) {
     if ($id_marca == NULL) {
