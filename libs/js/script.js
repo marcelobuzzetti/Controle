@@ -65,6 +65,18 @@ $(function () {
         $('#alerta').load('../model/verificaModelo.php?' + $.param({marca_modelo: $('#marca_modelo').val(), modelo: $('#modelo').val()}));
     });
     /*Verifica se a modelo existe*/
+    
+    /*Completa o tipo de combustivel*/
+    $('#combustivel').change(function () {
+        $('#tp').load('../model/listaTipoCombustivel.php?' + $.param({combustivel: $('#combustivel').val()}));
+    });
+    /*Verifica se a modelo existe*/
+    
+    /*Define o maximo de combustivel que poder ser abastecido*/
+    $('#tp').change(function () {
+        $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
+    });
+    /*Verifica se a modelo existe*/
 
     /*Verificar as datas*/
     $('#data_fim').change(function () {
@@ -73,7 +85,7 @@ $(function () {
         var compara1 = parseInt(data_inicio.split("/")[2].toString() + data_inicio.split("/")[1].toString() + data_inicio.split("/")[0].toString());
         var compara2 = parseInt(data_fim.split("/")[2].toString() + data_fim.split("/")[1].toString() + data_fim.split("/")[0].toString());
         if (compara1 > compara2) {
-            window.alert('A Data Fim é maior que a Data Início')
+            window.alert('A Data Fim é menor que a Data Início')
             $('#enviar').attr('disabled', 'disabled');
         } else {
             $('#enviar').removeAttr('disabled');
