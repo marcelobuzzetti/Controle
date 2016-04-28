@@ -21,6 +21,27 @@
 </div>
 <!--Modal-->
 <div class='container'>
+            <fieldset>
+                <legend>Existência de Combustíveis</legend>
+                <table class='table table-hover table-striped table-responsive' text-align='center'>
+                    <tr>
+                        <td>Ordem</td>
+                        <td>Combustível</td>
+                        <td>Tipo Combustível</td>
+                        <td>Qnt</td>
+                    </tr>
+                    {foreach $tabela_existencia as $tbl name=tabela_existencia}
+                        <tr>
+                            <td>{$smarty.foreach.tabela_existencia.iteration}</td>
+                            <td>{$tbl.combustivel}</td>
+                            <td>{$tbl.tipo_combustivel}</td>
+                            <td>{$tbl.qnt}</td>
+                        </tr>
+                    {/foreach}    
+                </table>
+            </fieldset>
+        </div>
+<div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
         <form action="executar" method="post">
@@ -54,7 +75,7 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="combustivel">Combustível</label>
-                <select class="form-control" name="combustivel" tabindex="5">
+                <select class="form-control" id="combustivel" name="combustivel" tabindex="5">
                     <option value='' disabled selected>Selecione o Combustível</option>
                     {foreach $relacao_combustiveis as $combustiveis}
                         <option value={$combustiveis.id_combustivel} {if {$combustiveis.id_combustivel} == {$combustivel}}selected{/if}>{$combustiveis.descricao}</option>
@@ -63,11 +84,8 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="tp">Tipo Combustível</label>
-                <select class="form-control" name="tp" tabindex="6">
-                    <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
-                    {foreach $relacao_tipos_combustiveis as $tipos_combustiveis}
-                        <option value={$tipos_combustiveis.id_tipo_combustivel} {if {$tipos_combustiveis.id_tipo_combustivel} == {$tipo_combustivel}}selected{/if}>{$tipos_combustiveis.descricao}</option>
-                    {/foreach}
+                <select class="form-control" id="tp" name="tp" tabindex="6">
+                    <option value='' disabled selected>Selecione Combustível</option>
                 </select>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
