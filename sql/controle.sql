@@ -189,6 +189,16 @@ ALTER TABLE  usuarios
 ALTER TABLE  marcas
   ADD CONSTRAINT FK_status4 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
+CREATE VIEW combustivel_recebido AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( rc.qnt ),0) AS qnt
+FROM recibos_combustiveis rc
+RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (rc.id_combustivel = c.id_combustivel AND rc.id_tipo_combustivel = tc.id_tipo_combustivel)
+GROUP BY c.id_combustivel, tc.id_tipo_combustivel;
+
+CREATE VIEW combustivel_abastecido AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
+FROM abastecimentos a
+RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
+GROUP BY c.id_combustivel, tc.id_tipo_combustivel;
+
 INSERT INTO status (id_status, status) VALUES
 (1, 'Ativo'),
 (2, 'Inativo');
