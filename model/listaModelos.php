@@ -7,7 +7,7 @@ mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
 
-$id_marca = $_GET['marca'];
+$id_marca = addslashes($_GET['marca']);
 
 $rs = mysql_query("SELECT * FROM  modelos WHERE id_marca = $id_marca");
 if (mysql_num_rows($rs) > 0) {
