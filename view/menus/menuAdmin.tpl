@@ -39,6 +39,11 @@
                         <li><a href="{$HOST}/tiposcombustiveiscadastrados">Tipos de Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/tipocombustivel">Cadastrar Tipo de Combustível</a></li>
                         <li><a href="{$HOST}/recebimentocombustivel">Cadastrar Recebimento de Combustível</a></li>
+                    </ul>
+                </li>
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Abastecimento <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
                         <li><a href="{$HOST}/abastecimento">Cadastrar Abastecimento</a></li>
                     </ul>
                 </li>
