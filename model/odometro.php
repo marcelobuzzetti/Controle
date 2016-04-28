@@ -7,7 +7,7 @@ mysql_query('SET character_set_connection=utf8');
 mysql_query('SET character_set_client=utf8');
 mysql_query('SET character_set_results=utf8');
 
-$id_viatura = $_GET['viatura'];
+$id_viatura = addslashes($_GET['viatura']);
 $query = mysql_query("SELECT MAX(odo_retorno) FROM percursos WHERE id_viatura = $id_viatura");
 $row = mysql_fetch_row($query);
 $odometro = $row[0];
