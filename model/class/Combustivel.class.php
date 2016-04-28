@@ -7,7 +7,8 @@ class Combustivel{
                 $stmt = $pdo->prepare("SELECT combustiveis.id_combustivel AS id_combustivel, descricao
                                                     FROM combustiveis, recibos_combustiveis
                                                     WHERE combustiveis.id_combustivel IN (SELECT recibos_combustiveis.id_combustivel
-                                                                                                                  FROM recibos_combustiveis)");
+                                                                                                                  FROM recibos_combustiveis)
+                                                    GROUP BY combustiveis.id_combustivel");
                 $executa = $stmt->execute();
 
                 if ($executa) {
