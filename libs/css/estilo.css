@@ -1088,7 +1088,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: black;
-    //background-image: url("../imagens/parede.jpg");
+    /*background-image: url("../imagens/parede.jpg");*/
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: white;
@@ -4548,12 +4548,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
     color:white;
-    //background-color: #f8f8f8;
+    /*background-color: #f8f8f8;*/
     background-color: black;
     border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-    //color: #777;
+    /*color: #777;*/
     color: white;
 }
 .navbar-default .navbar-brand:hover,
@@ -4565,14 +4565,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-    //color: #777;
+    /*color: #777;*/
     color: white;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: black;
     background-color: white;
-    //Cor do menu quando o mouse esta em cima
+    /*Cor do menu quando o mouse esta em cima*/
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,

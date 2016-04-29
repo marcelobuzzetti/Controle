@@ -84,7 +84,17 @@ $(function () {
         $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
         $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
     });
+    
+      $('#qnt').change(function () {
+        $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
+        $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
+    });
     /*Informa a quantidade de combustivel*/
+    
+    /*Formato data*/
+    $("#data_nascimento").mask("99/99/9999");
+     $("#validade").mask("99/99/9999");
+    /*Formato data*/
 
     /*Verificar as datas*/
     $('#data_fim').change(function () {
@@ -103,7 +113,7 @@ $(function () {
 
     /*Modal dos motoristas*/
     $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
+        var button = $(event.relatedTarget)
         var recipient = button.data('whatever')
         var sigla = button.data("sigla")
         var nome = button.data("nome")
