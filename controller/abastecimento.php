@@ -7,9 +7,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
-    $existencia_combustivel = new CombustivelExistencia();
-    $tabela_existencia = $existencia_combustivel->listarCombustiveisExistentes();
-    
     $motoristas = new Motorista();
     $relacao_motoristas = $motoristas->listarMotoristasCompleto();
 
@@ -34,7 +31,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('titulo', 'Cadastro de Abastecimentos');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'abst');
-        $smarty->assign('tabela_existencia', $tabela_existencia);
         $smarty->assign('relacao_motoristas', $relacao_motoristas);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
@@ -92,7 +88,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('combustivel', $combustivel);
         $smarty->assign('tipo_combustivel', $tipo_combustivel);
         $smarty->assign('qnt', $qnt);
-        $smarty->assign('tabela_existencia', $tabela_existencia);
         $smarty->assign('relacao_motoristas', $relacao_motoristas);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
