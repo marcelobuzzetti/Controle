@@ -70,13 +70,21 @@ $(function () {
     $('#combustivel').change(function () {
         $('#tp').load('../model/listaTipoCombustivel.php?' + $.param({combustivel: $('#combustivel').val()}));
     });
-    /*Verifica se a modelo existe*/
+    /*Completa o tipo de combustivel*/
     
     /*Define o maximo de combustivel que poder ser abastecido*/
     $('#tp').change(function () {
         $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
+        $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
     });
-    /*Verifica se a modelo existe*/
+    /*Define o maximo de combustivel que poder ser abastecido*/
+    
+    /*Informa a quantidade de combustivel*/
+    $('#qnt').keyup(function () {
+        $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
+        $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
+    });
+    /*Informa a quantidade de combustivel*/
 
     /*Verificar as datas*/
     $('#data_fim').change(function () {
