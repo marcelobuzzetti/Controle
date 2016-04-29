@@ -34,6 +34,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Combustíveis <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/combustiveldisponivel">Combustível Disponível</a></li>
                         <li><a href="{$HOST}/combustiveiscadastrados">Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/combustivel">Cadastrar Combustível</a></li>
                         <li><a href="{$HOST}/tiposcombustiveiscadastrados">Tipos de Combustíveis Cadastrados</a></li>
