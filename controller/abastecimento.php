@@ -54,6 +54,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     } else {
 
         $id = $_POST['id'];
+        $update = 1;
 
         try {
             $stmt = $pdo->prepare("SELECT * FROM abastecimentos WHERE id_abastecimento = ?");
@@ -82,6 +83,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('titulo', 'Atualização de Abastecimentos');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_abst');
+        $smarty->assign('update', $update);
         $smarty->assign('id_abastecimento', $id_abastecimento);
         $smarty->assign('nrvale', $nrvale);
         $smarty->assign('motorista', $motorista);
@@ -90,6 +92,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('combustivel', $combustivel);
         $smarty->assign('tipo_combustivel', $tipo_combustivel);
         $smarty->assign('qnt', $qnt);
+        $smarty->assign('tabela_existencia', $tabela_existencia);
         $smarty->assign('relacao_motoristas', $relacao_motoristas);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
