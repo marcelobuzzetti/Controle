@@ -21,26 +21,26 @@
 </div>
 <!--Modal-->
 <div class='container'>
-            <fieldset>
-                <legend>Existência de Combustíveis</legend>
-                <table class='table table-hover table-striped table-responsive' text-align='center'>
-                    <tr>
-                        <td>Ordem</td>
-                        <td>Combustível</td>
-                        <td>Tipo Combustível</td>
-                        <td>Qnt</td>
-                    </tr>
-                    {foreach $tabela_existencia as $tbl name=tabela_existencia}
-                        <tr>
-                            <td>{$smarty.foreach.tabela_existencia.iteration}</td>
-                            <td>{$tbl.combustivel}</td>
-                            <td>{$tbl.tipo_combustivel}</td>
-                            <td>{$tbl.qnt}</td>
-                        </tr>
-                    {/foreach}    
-                </table>
-            </fieldset>
-        </div>
+    <fieldset>
+        <legend>Existência de Combustíveis</legend>
+        <table class='table table-hover table-striped table-responsive' text-align='center'>
+            <tr>
+                <td>Ordem</td>
+                <td>Combustível</td>
+                <td>Tipo Combustível</td>
+                <td>Qnt</td>
+            </tr>
+            {foreach $tabela_existencia as $tbl name=tabela_existencia}
+                <tr>
+                    <td>{$smarty.foreach.tabela_existencia.iteration}</td>
+                    <td>{$tbl.combustivel}</td>
+                    <td>{$tbl.tipo_combustivel}</td>
+                    <td>{$tbl.qnt}</td>
+                </tr>
+            {/foreach}    
+        </table>
+    </fieldset>
+</div>
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
@@ -75,7 +75,7 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="combustivel">Combustível</label>
-                <select class="form-control" id="combustivel" name="combustivel" tabindex="5">
+                <select class="form-control" id="combustivel" id="combustivel" name="combustivel" tabindex="5">
                     <option value='' disabled selected>Selecione o Combustível</option>
                     {foreach $relacao_combustiveis as $combustiveis}
                         <option value={$combustiveis.id_combustivel} {if {$combustiveis.id_combustivel} == {$combustivel}}selected{/if}>{$combustiveis.descricao}</option>
@@ -84,14 +84,24 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="tp">Tipo Combustível</label>
-                <select class="form-control" id="tp" name="tp" tabindex="6">
-                    <option value='' disabled selected>Selecione Combustível</option>
-                </select>
+                {if $update > 0}
+                    <select class="form-control" id="tp" name="tp" tabindex="6">
+                        <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
+                        {foreach $relacao_tipos_combustiveis as $tipos_combustiveis}
+                            <option value={$tipos_combustiveis.id_tipo_combustivel} {if {$tipos_combustiveis.id_tipo_combustivel} == {$tipo_combustivel}}selected{/if}>{$tipos_combustiveis.descricao}</option>
+                        {/foreach}
+                    </select>
+                {else}
+                    <select class="form-control" id="tp" name="tp" tabindex="6">
+                        <option value='' disabled selected>Selecione Combustível</option>
+                    </select>
+                {/if}
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="qnt">Quantidade</label>
                 <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="1000" step="1" value="{$qnt}" tabindex="7"/>
             </div>
+                <span name="alerta" id="alerta"></span>
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <input type='hidden' id='{$id_abastecimento}' value='{$id_abastecimento}' name='id'/>
                 <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>
@@ -101,24 +111,24 @@
 </div>
 </div>
 <div class='container'>
-{if $cadastrado != NULL}
-    <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-        O abastecimento foi adicionado com sucesso!
-    </div>              
-{/if}
-{if $atualizado != NULL}
-    <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-        O abastecimento foi atualizado com sucesso!
-    </div>              
-{/if}
-{if $apagado != NULL}
-    <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-        O abastecimento foi apagado com sucesso!
-    </div>              
-{/if}
+    {if $cadastrado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O abastecimento foi adicionado com sucesso!
+        </div>              
+    {/if}
+    {if $atualizado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O abastecimento foi atualizado com sucesso!
+        </div>              
+    {/if}
+    {if $apagado != NULL}
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O abastecimento foi apagado com sucesso!
+        </div>              
+    {/if}
 </div>
 <div class='container'>
     <div class="row">
