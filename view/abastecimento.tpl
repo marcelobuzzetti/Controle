@@ -21,27 +21,6 @@
 </div>
 <!--Modal-->
 <div class='container'>
-    <fieldset>
-        <legend>Existência de Combustíveis</legend>
-        <table class='table table-hover table-striped table-responsive' text-align='center'>
-            <tr>
-                <td>Ordem</td>
-                <td>Combustível</td>
-                <td>Tipo Combustível</td>
-                <td>Qnt</td>
-            </tr>
-            {foreach $tabela_existencia as $tbl name=tabela_existencia}
-                <tr>
-                    <td>{$smarty.foreach.tabela_existencia.iteration}</td>
-                    <td>{$tbl.combustivel}</td>
-                    <td>{$tbl.tipo_combustivel}</td>
-                    <td>{$tbl.qnt}</td>
-                </tr>
-            {/foreach}    
-        </table>
-    </fieldset>
-</div>
-<div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
         <form action="executar" method="post">
@@ -154,7 +133,7 @@
                             <td>{$smarty.foreach.tabela_relacao_abastecimentos.iteration}</td>
                             <td>{$tbl.nrvale}</td>
                             <td>{$tbl.apelido}</td>
-                            <td>{$tbl.marca} - {$tbl.placa} - {$tbl.modelos}</td>
+                            <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                             <td>{$tbl.odometro}</td>
                             <td>{$tbl.combustivel}</td>
                             <td>{$tbl.tipo}</td>
