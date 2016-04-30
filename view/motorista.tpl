@@ -42,9 +42,9 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
         <form action="executar" method="post">
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="nome">Nome de Guerra</label>
-                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required="required" maxlength="20" value="{$nome}" tabindex="1"/>
+            <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                <label for="nome_completo">Nome Completo</label>
+                <input class="form-control" type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo" required="required" maxlength="100" value="{$nome_completo}" tabindex="1"/>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="pg">Posto/Grad</label>
@@ -56,17 +56,45 @@
                 </select>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="nome">Nome de Guerra</label>
+                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome de Guerra" required="required" maxlength="20" value="{$nome}" tabindex="3"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="data_nascimento">Data de Nascimento</label>
+                <input class="form-control" type="text" id="data_nascimento" name="data_nascimento" placeholder="dd/mm/aaaa" required="required" maxlength="20" value="{$data_nascimento}" tabindex="4"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="rg">RG</label>
+                <input class="form-control" type="text" id="rg" name="rg" placeholder="RG" required="required" maxlength="20" value="{$rg}" tabindex="5"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="orgao_expedidor">Orgão Expedidor</label>
+                <input class="form-control" type="text" id="orgao_expedidor" name="orgao_expedidor" placeholder="Orgão Expedidor" required="required" maxlength="20" value="{$orgao_expedidor}" tabindex="6"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="cpf">CPF</label>
+                <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required="required" maxlength="20" value="{$cpf}" tabindex="7"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="cnh">CNH</label>
+                <input class="form-control" type="text" id="cnh" name="cnh" placeholder="CNH" required="required" maxlength="20" value="{$cnh}" tabindex="8"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="categoria">Categoria</label>
-                <select class="form-control" name="categoria" required tabindex="3">
+                <select class="form-control" name="categoria" required tabindex="9">
                     <option value='' disabled selected>Selecione a Habilitação</option>
                     {foreach $relacao_habilitacoes as $habilitacao}
                         <option value={$habilitacao.id_habilitacao}{if {$habilitacao.id_habilitacao} == {$categoria}} selected {/if}>{$habilitacao.categoria}</option>
                     {/foreach}
                 </select>
             </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label for="validade">Validade</label>
+                <input class="form-control" type="text" id="validade" name="validade" placeholder="dd/mm/aaaa" required="required" maxlength="20" value="{$validade}" tabindex="10"/>
+            </div>    
             <div class="form-group col-xs-12 col-sm-12 col-md-12">
                 <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
-                <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="4">{$botao}</button>
+                <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="11">{$botao}</button>
             </div>
         </form>
     </div>
