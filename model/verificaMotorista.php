@@ -18,8 +18,8 @@ $qnt = $resultado->qnt;
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O motorista já está cadastrado
         </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled'), $('#nome').attr('style','border-color: red;'), $('#pg').attr('style','border-color: red;');</script>";
     } else {
-        echo "<script> $('#enviar').removeAttr('disabled');</script>";
+        echo "<script> $('#enviar').removeAttr('disabled'), $('#nome').removeAttr('style'), $('#pg').removeAttr('style');</script>";
     }
 ?>
