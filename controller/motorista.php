@@ -31,6 +31,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('cadastrado', $_SESSION['cadastrado']);
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);
+        $smarty->assign('erro', $_SESSION['erro']);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header.tpl');
         $smarty->display($menu);
@@ -39,6 +40,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
+         unset($_SESSION['erro']);
     } else {
 
         $id = $_POST['id'];
