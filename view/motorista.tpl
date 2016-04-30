@@ -46,9 +46,12 @@
                 <label for="nome_completo">Nome Completo</label>
                 <input class="form-control" type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo" required="required" maxlength="100" value="{$nome_completo}" tabindex="1"/>
             </div>
+            <div class=>
+                <span name="alerta" id="alerta"></span>
+            </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="pg">Posto/Grad</label>
-                <select class="form-control" name="pg" required tabindex="2">
+                <select class="form-control" id="pg" name="pg" required tabindex="2">
                     <option value='' disabled selected>Selecione o Posto/Grad</option>
                     {foreach $relacao_posto_grad as $pg}
                         <option value={$pg.id_posto_grad}{if {$pg.id_posto_grad} == {$id_pg}} selected {/if}>{$pg.sigla}</option>
@@ -81,7 +84,7 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="categoria">Categoria</label>
-                <select class="form-control" name="categoria" required tabindex="9">
+                <select class="form-control" id="categoria" name="categoria" required tabindex="9">
                     <option value='' disabled selected>Selecione a Habilitação</option>
                     {foreach $relacao_habilitacoes as $habilitacao}
                         <option value={$habilitacao.id_habilitacao}{if {$habilitacao.id_habilitacao} == {$categoria}} selected {/if}>{$habilitacao.categoria}</option>
