@@ -26,14 +26,14 @@ if ($marca == NULL) {
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             A marca $marca já está cadastrada
         </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled'), $('#marca').attr('style','border-color: red;');</script>";
     } else {
         echo "<div class='container'>
         <div class='alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12'>
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             A marca $marca não está cadastrada
         </div>";
-        echo "<script> $('#enviar').removeAttr('disabled');</script>";
+        echo "<script> $('#enviar').removeAttr('disabled'), $('#marca').removeAttr('style');</script>";
     }
 }
 ?>
