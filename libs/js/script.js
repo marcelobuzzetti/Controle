@@ -97,6 +97,24 @@ $(function () {
     $("#cpf").mask("99999999999");
     $("#cnh").mask("99999999999");
     /*Formato data*/
+    
+    /*Verifica se o motorista existe*/
+    $('#nome').blur(function () {
+        $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
+    });
+     $('#pg').blur(function () {
+        $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
+    });
+    $('#nome').change(function () {
+        $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
+    });
+     $('#pg').change(function () {
+        $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
+    });
+    $('#nome').keyup(function () {
+        $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
+    });
+    /*Verifica se a modelo existe*/
 
     /*Verificar as datas*/
     $('#data_fim').change(function () {
