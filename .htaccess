@@ -10,6 +10,7 @@ Options -Indexes
 #Acesso as Páginas
 RewriteRule ^/?$ controller/home.php
 RewriteRule ^abastecimento/?$ controller/abastecimento.php
+RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
 RewriteRule ^combustiveldisponivel/?$ controller/combustiveldisponivel.php
 RewriteRule ^combustivel/?$ controller/combustivel.php
 RewriteRule ^combustiveiscadastrados/?$ controller/combustivelcadastrado.php
