@@ -48,6 +48,7 @@
                             <label for="placa">Placa</label>
                             <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}' tabindex="4"/>
                         </div>
+                        <span name="alerta" id="alerta"></span>
                         <div class="form-group col-xs-12 col-sm-6 col-md-3">
                             <label for="odometro">Odômetro</label>
                             <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" value='{$odometro}' step="0.1" min="0" max="999999" tabindex="5"/>
