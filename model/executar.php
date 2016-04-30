@@ -229,12 +229,17 @@ switch ($_POST['enviar']) {
         break;
 
     case 'motorista':
+        $nome_completo = ucwords(strtolower($_POST['nome_completo']));
         $nome = ucwords(strtolower($_POST['nome']));
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
-
-
-
+        $data_nascimento = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        $rg = $_POST['rg'];
+        $orgao_expedidor = strtoupper($_POST['orgao_expedidor']);
+        $cpf = $_POST['cpf'];
+        $cnh = $_POST['cnh'];
+        $validade = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['validade'])));
+        
         try {
 
             $stmt = $pdo->prepare("SELECT sigla
@@ -246,11 +251,18 @@ switch ($_POST['enviar']) {
             $apelido = $sigla[0] . " " . $nome;
 
             $stmt = $pdo->prepare("INSERT INTO motoristas
-                                                VALUES(NULL,?,?,?,?,$usuario,1)");
+                                                VALUES(NULL,?,?,?,?,?,?,?,?,?,?,$usuario,1)");
             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
-            $stmt->bindParam(2, $categoria, PDO::PARAM_INT);
-            $stmt->bindParam(3, $pg, PDO::PARAM_INT);
-            $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
+            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+            $stmt->bindParam(4, $rg, PDO::PARAM_INT);
+            $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+            $stmt->bindParam(6, $cpf, PDO::PARAM_INT);
+            $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
+            $stmt->bindParam(8, $cnh, PDO::PARAM_INT);
+            $stmt->bindParam(9, $validade, PDO::PARAM_STR);
+            $stmt->bindParam(10, $pg, PDO::PARAM_INT);
+            $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -271,9 +283,16 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_motorista':
         $id = $_POST['id'];
+        $nome_completo = ucwords(strtolower($_POST['nome_completo']));
         $nome = ucwords(strtolower($_POST['nome']));
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
+        $data_nascimento = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        $rg = $_POST['rg'];
+        $orgao_expedidor = $_POST['orgao_expedidor'];
+        $cpf = $_POST['cpf'];
+        $cnh = $_POST['cnh'];
+        $validade = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['validade'])));
 
 
         try {
@@ -287,13 +306,20 @@ switch ($_POST['enviar']) {
             $apelido = $sigla[0] . " " . $nome;
 
             $stmt = $pdo->prepare("UPDATE motoristas
-                                                SET nome = ?, id_habilitacao = ?, id_posto_grad = ?, apelido = ?
+                                                SET nome = ?, nome_completo = ?, data_nascimento = ?, rg = ?, orgao_expedidor = ?, cpf = ?, id_habilitacao = ?, cnh = ?, validade = ?, id_posto_grad = ?, apelido = ?
                                                 WHERE id_motorista = ?");
-            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
-            $stmt->bindParam(2, $categoria, PDO::PARAM_INT);
-            $stmt->bindParam(3, $pg, PDO::PARAM_INT);
-            $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
-            $stmt->bindParam(5, $id, PDO::PARAM_INT);
+             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+            $stmt->bindParam(4, $rg, PDO::PARAM_INT);
+            $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+            $stmt->bindParam(6, $cpf, PDO::PARAM_INT);
+            $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
+            $stmt->bindParam(8, $cnh, PDO::PARAM_INT);
+            $stmt->bindParam(9, $validade, PDO::PARAM_STR);
+            $stmt->bindParam(10, $pg, PDO::PARAM_INT);
+            $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
+            $stmt->bindParam(12, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
