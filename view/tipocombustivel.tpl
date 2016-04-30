@@ -27,8 +27,9 @@
             <form action="executar" method="post">
                 <div class="form-group col-xs-12 col-sm-12 col-md-12">
                     <label for="descricao">Descrição</label>
-                    <input autofocus class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" value='{$descricao}' required maxlength="20" tabindex="1"/>
+                    <input autofocus class="form-control" type="text" id="descricao_tipo" name="descricao" placeholder="Descrição" value='{$descricao}' required maxlength="20" tabindex="1"/>
                 </div>
+                <span name="alerta" id="alerta"></span>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12">
                     <input type='hidden' id='id'  name='id' value='{$id_tipo_combustivel}'/>
                     <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button></td>
