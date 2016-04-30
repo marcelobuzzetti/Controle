@@ -47,7 +47,7 @@ $(function () {
         $('#odo_saida').load('../model/odometro.php?viatura=' + $('#viatura').val());
     });
     $('#viatura_abastecimento').change(function () {
-        $('#odometro').load('../model/odometro_abastecimento.php?viatura=' + $('#viatura_abastecimento').val());
+        $('#odometro').load('../model/odometroAbastecimento.php?viatura=' + $('#viatura_abastecimento').val());
     });
     /*Completa o motorista e o odometro em percurso*/
 
