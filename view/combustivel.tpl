@@ -25,9 +25,10 @@
         <h1>{$titulo}</h1>
         <form action="executar" method="post">
             <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
-                <label for="marca">Descrição</label>
+                <label for="descricao">Descrição</label>
                 <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" maxlength="20" value='{$descricao}' tabindex="1"/>
             </div>
+            <span name="alerta" id="alerta"></span>
             <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
                 <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
                 <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button>
