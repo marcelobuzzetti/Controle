@@ -31,7 +31,7 @@
             <td></td>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="motorista">Motorista</label>
-                <select class="form-control" name="motorista" required="required" tabindex="2">
+                <select class="form-control" id="motorista" name="motorista" required="required" tabindex="2">
                     <option value='' disabled selected>Selecione o Motorista</option>
                     {foreach $relacao_motoristas as $motoristas}
                         <option value={$motoristas.id_motorista} {if {$motoristas.id_motorista} == {$motorista}}selected{/if}>{$motoristas.apelido}</option>
@@ -41,7 +41,7 @@
             <td></td>
             <div class="form-group col-xs-12 col-sm-6 col-md-3">
                 <label for="viatura">Viatura</label>
-                <select class="form-control" name="viatura" required="required" tabindex="3">
+                <select class="form-control" id="viatura_abastecimento" name="viatura" required="required" tabindex="3">
                     <option value='' disabled selected>Selecione a Viatura</option>
                     {foreach $relacao_viaturas as $viaturas}
                         <option value={$viaturas.id_viatura} {if {$viaturas.id_viatura} == {$viatura}}selected{/if}>{$viaturas.marca} - {$viaturas.modelo} - {$viaturas.placa}</option>
