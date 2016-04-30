@@ -93,7 +93,9 @@ $(function () {
     
     /*Formato data*/
     $("#data_nascimento").mask("99/99/9999");
-     $("#validade").mask("99/99/9999");
+    $("#validade").mask("99/99/9999");
+    $("#cpf").mask("99999999999");
+    $("#cnh").mask("99999999999");
     /*Formato data*/
 
     /*Verificar as datas*/
