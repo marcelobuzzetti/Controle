@@ -20,7 +20,7 @@ if ($id_marca == NULL || $modelo == NULL) {
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             Escolha a marca
         </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled')</script>";
     }
 
     if ($modelo == NULL) {
@@ -29,7 +29,7 @@ if ($id_marca == NULL || $modelo == NULL) {
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             Preencha o modelo
         </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled')";
     }
 } else {
     if ($qnt > 0) {
@@ -38,14 +38,14 @@ if ($id_marca == NULL || $modelo == NULL) {
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O modelo $modelo já está cadastrada
         </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled'), $('#marca_modelo').attr('style','border-color: red;'), $('#modelo').attr('style','border-color: red;');</script>";
     } else {
         echo "<div class='container'>
         <div class='alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12'>
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O modelo $modelo não está cadastrada
         </div>";
-        echo "<script> $('#enviar').removeAttr('disabled');</script>";
+        echo "<script> $('#enviar').removeAttr('disabled'), $('#marca_modelo').removeAttr('style'), $('#modelo').removeAttr('style');</script>";
     }
 }
 ?>
