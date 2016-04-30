@@ -54,6 +54,14 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                 $pg = $dados_motoristas->id_posto_grad;
                 $categoria = $dados_motoristas->id_habilitacao;
                 $nome = $dados_motoristas->nome;
+                $nome_completo = $dados_motoristas->nome_completo;
+                $orgao_expedidor = $dados_motoristas->orgao_expedidor;
+                $data_nascimento = date('d-m-Y',strtotime(str_replace('-', '/', $dados_motoristas->data_nascimento)));
+                $rg = $dados_motoristas->rg;
+                $cpf = $dados_motoristas->cpf;
+                $cnh = $dados_motoristas->cnh;
+                $validade = date('d-m-Y',strtotime(str_replace('-', '/', $dados_motoristas->validade)));
+                
             } else {
                 print("<script language=JavaScript>
                    alert('Não foi possível criar tabela.');
@@ -70,6 +78,13 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('id_pg', $pg);
         $smarty->assign('categoria', $categoria);
         $smarty->assign('nome', $nome);
+        $smarty->assign('nome_completo', $nome_completo);
+        $smarty->assign('data_nascimento', $data_nascimento);
+        $smarty->assign('rg', $rg);
+        $smarty->assign('orgao_expedidor', $orgao_expedidor);
+        $smarty->assign('cpf', $cpf);
+        $smarty->assign('cnh', $cnh);
+        $smarty->assign('validade', $validade);
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
