@@ -125,6 +125,12 @@ $(function () {
     });
     /*Verifica se o usuario existe*/
     
+     /*Verifica se o login existe*/
+    $('#usuario').keyup(function () {
+        $('#usuario').load('../model/verificaLogin.php?' + $.param({login: $('#usuario').val()}));
+    });
+    /*Verifica se o login existe*/
+    
     /*Verifica se viatura existe*/
     $('#placa').keyup(function () {
         $('#alerta').load('../model/verificaViatura.php?' + $.param({marca: $('#marca').val(), modelo: $('#modelo').val(), placa:$('#placa').val()}));
