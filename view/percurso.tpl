@@ -100,7 +100,7 @@
     </div>
 </div>
 <div class='container'>
-    <button class="btn btn-info" data-toggle="collapse" data-target="#fechadas">Viaturas Fechadas</button>
+    <button class="btn btn-primary" data-toggle="collapse" data-target="#fechadas">Viaturas Fechadas</button>
     <div id="fechadas" class="collapse">
         <div class="table table-responsive" >
             <fieldset>
