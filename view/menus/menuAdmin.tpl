@@ -42,12 +42,7 @@
                         <li><a href="{$HOST}/recebimentocombustivel">Cadastrar Recebimento de Combustível</a></li>
                     </ul>
                 </li>
-                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1004">Abastecimento <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/abastecimento">Cadastrar Abastecimento</a></li>
-                    </ul>
-                </li>
+                <li><a href="{$HOST}/abastecimento" tabindex="1004">Abastecimento?</a></li>
                 <li><a href="{$HOST}/usuario" tabindex="1005">Cadastrar Usuário?</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1006">Relatórios<b class="caret"></b></a>
