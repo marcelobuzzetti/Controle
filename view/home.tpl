@@ -15,7 +15,7 @@
                 <form class="navbar-form navbar-collapse" autocomplete="off" action="./model/executar.php" method="post">
                     <div class="form-group">
                         <label for="login">Login</label>
-                        <input autofocus type="text" class="form-control" id="login" name="login" placeholder="Digite seu usuário" tabindex="1">
+                        <input autofocus type="text" class="form-control" id="usuario" name="login" placeholder="Digite seu usuário" tabindex="1">
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha</label>
