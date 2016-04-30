@@ -102,31 +102,38 @@
         </form>
     </div>
 </div>
-<div class='container'>
-    {if $cadastrado != NULL}
+{if $cadastrado != NULL}
+    <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O motorista foi adicionada com sucesso!
         </div>              
-    {/if}
-    {if $atualizado != NULL}
+    </div>
+{/if}
+{if $atualizado != NULL}
+    <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O motorista foi atualizado com sucesso!
-        </div>              
-    {/if}
-    {if $apagado != NULL}
+        </div>  
+    </div>
+{/if}
+{if $apagado != NULL}
+    <div class='container'>
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O motorista foi apagado com sucesso!
         </div>              
-    {/if}
-     {if $erro != NULL}
+    </div>
+{/if}
+{if $erro != NULL}
+    <div class='container'>
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             Não foi possível acessar o BD
-        </div>              
-    {/if}
+        </div>    
+    </div>
+{/if}
 </div>
 <div class='container'>
     <div class="row">
