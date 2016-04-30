@@ -13,7 +13,7 @@ $resultado = $stmt->fetch(PDO::FETCH_OBJ);
 $qnt = $resultado->qnt;
 
 if ($qnt > 0) {
-    echo "<script>$('#usuario').attr('style','border-color: green;');</script>";
+    echo "<script>$('#usuario').attr('style','border:3px solid #7FFF00;');</script>";
 } else {
     echo "<script> $('#usuario').attr('style','border-color: red;');</script>";
 }
