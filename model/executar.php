@@ -251,25 +251,22 @@ switch ($_POST['enviar']) {
             $apelido = $sigla[0] . " " . $nome;
 
             $stmt = $pdo->prepare("INSERT INTO motoristas
-                                                VALUES(NULL,?,?,?,?,?,?,?,?,?,?,$usuario,1)");
+                                                VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,$usuario,1)");
             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
             $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
             $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(4, $rg, PDO::PARAM_INT);
+            $stmt->bindParam(4, $rg, PDO::PARAM_STR);
             $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
-            $stmt->bindParam(6, $cpf, PDO::PARAM_INT);
+            $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
             $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
-            $stmt->bindParam(8, $cnh, PDO::PARAM_INT);
+            $stmt->bindParam(8, $cnh, PDO::PARAM_STR);
             $stmt->bindParam(9, $validade, PDO::PARAM_STR);
             $stmt->bindParam(10, $pg, PDO::PARAM_INT);
             $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+                 $_SESSION['erro'] = 1;
             } else {
                 $_SESSION['cadastrado'] = 1;
             }
@@ -308,14 +305,14 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("UPDATE motoristas
                                                 SET nome = ?, nome_completo = ?, data_nascimento = ?, rg = ?, orgao_expedidor = ?, cpf = ?, id_habilitacao = ?, cnh = ?, validade = ?, id_posto_grad = ?, apelido = ?
                                                 WHERE id_motorista = ?");
-             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
             $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
             $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(4, $rg, PDO::PARAM_INT);
+            $stmt->bindParam(4, $rg, PDO::PARAM_STR);
             $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
-            $stmt->bindParam(6, $cpf, PDO::PARAM_INT);
+            $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
             $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
-            $stmt->bindParam(8, $cnh, PDO::PARAM_INT);
+            $stmt->bindParam(8, $cnh, PDO::PARAM_STR);
             $stmt->bindParam(9, $validade, PDO::PARAM_STR);
             $stmt->bindParam(10, $pg, PDO::PARAM_INT);
             $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
@@ -323,10 +320,7 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+               $_SESSION['erro'] = 1;
             } else {
                 $_SESSION['atualizado'] = 1;
             }
@@ -357,6 +351,8 @@ switch ($_POST['enviar']) {
                     $executa = $stmt->execute();
                     if($executa){
                         $_SESSION['apagado'] = 1;
+                    } else {
+                        $_SESSION['erro'] = 1;
                     }
                 } catch (PDOException $e) {
                     echo $e->getMessage();
