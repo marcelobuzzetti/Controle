@@ -46,7 +46,7 @@
                 <label for="nome_completo">Nome Completo</label>
                 <input class="form-control" type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo" required="required" maxlength="100" value="{$nome_completo}" tabindex="1"/>
             </div>
-            <div class=>
+            <div>
                 <span name="alerta" id="alerta"></span>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
@@ -68,19 +68,19 @@
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="rg">RG</label>
-                <input class="form-control" type="text" id="rg" name="rg" placeholder="RG" required="required" maxlength="20" value="{$rg}" tabindex="5"/>
+                <input class="form-control" type="text" id="rg" name="rg" placeholder="RG" required="required" maxlength="11" value="{$rg}" tabindex="5"/>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="orgao_expedidor">Orgão Expedidor</label>
-                <input class="form-control" type="text" id="orgao_expedidor" name="orgao_expedidor" placeholder="Orgão Expedidor" required="required" maxlength="20" value="{$orgao_expedidor}" tabindex="6"/>
+                <input class="form-control" type="text" id="orgao_expedidor" name="orgao_expedidor" placeholder="Orgão Expedidor" required="required" maxlength="6" value="{$orgao_expedidor}" tabindex="6"/>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="cpf">CPF</label>
-                <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required="required" maxlength="20" value="{$cpf}" tabindex="7"/>
+                <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required="required" maxlength="11" value="{$cpf}" tabindex="7"/>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="cnh">CNH</label>
-                <input class="form-control" type="text" id="cnh" name="cnh" placeholder="CNH" required="required" maxlength="20" value="{$cnh}" tabindex="8"/>
+                <input class="form-control" type="text" id="cnh" name="cnh" placeholder="CNH" required="required" maxlength="11" value="{$cnh}" tabindex="8"/>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-4">
                 <label for="categoria">Categoria</label>
@@ -119,6 +119,12 @@
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O motorista foi apagado com sucesso!
+        </div>              
+    {/if}
+     {if $erro != NULL}
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            Não foi possível acessar o BD
         </div>              
     {/if}
 </div>
