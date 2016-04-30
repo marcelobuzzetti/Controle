@@ -46,6 +46,9 @@ $(function () {
         $('#motorista').load('../model/listaMotoristas.php?viatura=' + $('#viatura').val());
         $('#odo_saida').load('../model/odometro.php?viatura=' + $('#viatura').val());
     });
+    $('#viatura_abastecimento').change(function () {
+        $('#odometro').load('../model/odometro_abastecimento.php?viatura=' + $('#viatura_abastecimento').val());
+    });
     /*Completa o motorista e o odometro em percurso*/
 
     /*Completa modelos no cadastro de viatura*/
@@ -114,7 +117,31 @@ $(function () {
     $('#nome').keyup(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
-    /*Verifica se a modelo existe*/
+    /*Verifica se a motorista existe*/
+    
+    /*Verifica se o usuario existe*/
+    $('#login').keyup(function () {
+        $('#alerta').load('../model/verificaUsuario.php?' + $.param({login: $('#login').val()}));
+    });
+    /*Verifica se o usuario existe*/
+    
+    /*Verifica se viatura existe*/
+    $('#placa').keyup(function () {
+        $('#alerta').load('../model/verificaViatura.php?' + $.param({marca: $('#marca').val(), modelo: $('#modelo').val(), placa:$('#placa').val()}));
+    });
+    /*Verifica se o viatura existe*/
+    
+     /*Verifica se combustivel existe*/
+    $('#descricao').keyup(function () {
+        $('#alerta').load('../model/verificaCombustivel.php?' + $.param({descricao: $('#descricao').val()}));
+    });
+    /*Verifica se o combustivel existe*/
+    
+    /*Verifica se tipo combustivel existe*/
+    $('#descricao_tipo').keyup(function () {
+        $('#alerta').load('../model/verificaTipoCombustivel.php?' + $.param({descricao: $('#descricao_tipo').val()}));
+    });
+    /*Verifica se o tipo combustivel existe*/
 
     /*Verificar as datas*/
     $('#data_fim').change(function () {
