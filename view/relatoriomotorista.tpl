@@ -1,10 +1,10 @@
 {if $verificador == 1}
-      <div class="container">
-            <div class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
-                <div id="js-legend" class="chart-legend"></div>
-                <canvas id="canvas" ></canvas>
-            </div>
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
+            <div id="js-legend" class="chart-legend"></div>
+            <canvas id="canvas" ></canvas>
         </div>
+    </div>
     <script>
         var barChartData = {
             labels: [{$a}],
@@ -40,7 +40,7 @@
         }
 
     </script>
-     <div class='container tabela'>
+    <div class='container tabela'>
         <fieldset>
             <legend>Relatório de Motoristas</legend>
             <table class='table table-striped table-hover' text-align='center'>
@@ -63,25 +63,21 @@
         </fieldset>
     </div>
 {/if}
-<div class="wrapper" role="main">
-    <div class='container'>
-        <div class="jumbotron">
-            <h1>{$titulo}</h1>
-            <form autocomplete="off" action="relatoriomotorista" method="post">
-                <tr>
-                <div class="form-group col-xs-12 col-sm-6 col-md-6">
-                    <label for="data_inicio">Data Início</label>
-                    <input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required" tabindex="1"/>
-                </div>
-                <div class="form-group col-xs-12 col-sm-6 col-md-6">
-                    <label for="data_fim">Data Fim</label>
-                    <input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/>
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-md-12">
-                    <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
-                </div>
-            </form>
-        </div>
+<div class='container'>
+    <div class="jumbotron">
+        <h1>{$titulo}</h1>
     </div>
-</div>
+    <form autocomplete="off" action="relatoriomotorista" method="post">
+        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+            <label for="data_inicio">Data Início</label>
+            <input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required" tabindex="1"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+            <label for="data_fim">Data Fim</label>
+            <input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
+        </div>
+    </form>
 </div>

@@ -23,6 +23,7 @@
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
+    </div>
     <div class="table-responsive" >
         <fieldset>
             <table class='table' text-align='center'>

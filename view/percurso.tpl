@@ -1,40 +1,40 @@
 
 <div class='container'>
     <div class="jumbotron">
-        <h1>Controle de Saída de Viatura</h1>      
-        <form autocomplete="off" action="executar" method="post">
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="viatura">Viatura - Placa</label>
-                <select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
-                    <option value='' disabled selected>Selecione a Viatura</option>
-                    {foreach $relacao_viaturas as $viatura}
-                        <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="motorista">Motorista</label>
-                <select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
-                    <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-2">
-                <label for="destino">Destino</label>
-                <input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20" tabindex="3"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-2">
-                <label for="odo_saida">Odômetro Saída</label>
-                <input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1" min="0" tabindex="4"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-2">
-                <label for="acompanhante">Acompanhante</label>
-                <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" maxlength="20" tabindex="5"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-12 col-md-12">
-                <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="percurso" name="enviar" tabindex="6">Cadastrar</button>
-            </div>
-        </form>
+        <h1>Controle de Saída de Viatura</h1>     
     </div>
+    <form autocomplete="off" action="executar" method="post">
+        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+            <label for="viatura">Viatura - Placa</label>
+            <select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
+                <option value='' disabled selected>Selecione a Viatura</option>
+                {foreach $relacao_viaturas as $viatura}
+                    <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+            <label for="motorista">Motorista</label>
+            <select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
+                <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
+            </select>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="destino">Destino</label>
+            <input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20" tabindex="3"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="odo_saida">Odômetro Saída</label>
+            <input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1" min="0" tabindex="4"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="acompanhante">Acompanhante</label>
+            <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" maxlength="20" tabindex="5"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="percurso" name="enviar" tabindex="6">Cadastrar</button>
+        </div>
+    </form>
 </div>
 <div class='container'>
     {if $cadastrado != NULL}

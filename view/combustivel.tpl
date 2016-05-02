@@ -23,18 +23,18 @@
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
-        <form action="executar" method="post">
-            <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
-                <label for="descricao">Descrição</label>
-                <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" maxlength="20" value='{$descricao}' tabindex="1"/>
-            </div>
-            <span name="alerta" id="alerta"></span>
-            <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
-                <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
-                <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button>
-            </div>
-        </form>
     </div>
+    <form action="executar" method="post">
+        <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
+            <label for="descricao">Descrição</label>
+            <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição" required="required" maxlength="20" value='{$descricao}' tabindex="1"/>
+        </div>
+        <span name="alerta" id="alerta"></span>
+        <div class=" form-group col-xs-12 col-sm-12 col-md-12" >
+            <input type='hidden' id='{$id_combustivel}' value='{$id_combustivel}' name='id'/>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="2">{$botao}</button>
+        </div>
+    </form>
 </div>
 <div class='container'>
     {if $cadastrado != NULL}
@@ -57,29 +57,27 @@
     {/if}
 </div>
 <div class='container'>
-    <div class="row">
-        <div class="table-responsive" >
-            <fieldset>
-                <legend>Combustíveis Cadastrados</legend>
-                <table class='table' text-align='center'>
+    <div class="table-responsive" >
+        <fieldset>
+            <legend>Combustíveis Cadastrados</legend>
+            <table class='table' text-align='center'>
+                <tr>
+                    <td>Ordem</td>
+                    <td>Combustível</td>
+                    <td colspan="2">Ações</td>
+                </tr>
+                {foreach $relacao_combustiveis as $comb name=relacao_combustiveis}
                     <tr>
-                        <td>Ordem</td>
-                        <td>Combustível</td>
-                        <td colspan="2">Ações</td>
+                        <td>{$smarty.foreach.relacao_combustiveis.iteration}</td>
+                        <td>{$comb.descricao}</td>
+                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$comb.id_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                    <form action='combustivel' method='post'>
+                        <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
+                        <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/><span class='glyphicon glyphicon-refresh'/></form></td>
+                    </form>
                     </tr>
-                    {foreach $relacao_combustiveis as $comb name=relacao_combustiveis}
-                        <tr>
-                            <td>{$smarty.foreach.relacao_combustiveis.iteration}</td>
-                            <td>{$comb.descricao}</td>
-                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$comb.id_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                        <form action='combustivel' method='post'>
-                            <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
-                            <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                        </form>
-                        </tr>
-                    {/foreach}
-                </table>
-            </fieldset>
-        </div>
+                {/foreach}
+            </table>
+        </fieldset>
     </div>
 </div>

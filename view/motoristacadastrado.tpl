@@ -38,45 +38,43 @@
     </div>
 </div>
 <!--Modal-->
-<div class="wrapper" role="main">
-    <div class='container'>
-        <div class="jumbotron">
-            <h1>Motoristas Cadastrados</h1>
-            <div class="table-responsive col-xs-12 col-sm-12 col-md-12" >
-                    <table class='table' text-align='center'>
-                        <tr>
-                            <td>Ordem</td>
-                            <td>Nome Completo</td>
-                            <td>Posto/Grad</td>
-                            <td>Nome de Guerra</td>
-                            <td>Data de Nascimento</td>
-                            <td>RG</td>
-                            <td>CPF</td>
-                            <td>CNH</td>
-                            <td>Categoria</td>
-                            <td>Validade</td>
-                            <td colspan="2">Ações</td>
-                        </tr>
-                        {foreach $tabela_motoristas_cadastrados as $tbl name=relacao_motoristas}
-                            <td>{$smarty.foreach.relacao_motoristas.iteration}</td>
-                            <td>{$tbl.nome_completo}</td>
-                            <td>{$tbl.sigla}</td>
-                            <td>{$tbl.nome}</td>
-                            <td>{$tbl.data_nascimento}</td>
-                            <td>{$tbl.rg}</td>
-                            <td>{$tbl.cpf}</td>
-                            <td>{$tbl.cnh}</td>
-                            <td>{$tbl.categoria}</td>
-                            <td>{$tbl.validade}</td>
-                            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                            <form action='motorista' method='post'>
-                                <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
-                            </form>
-                            </tr> 
-                        {/foreach}
-                    </table>
-            </div>
-        </div>
+<div class='container'>
+    <div class="jumbotron">
+    </div>
+    <h1>Motoristas Cadastrados</h1>
+    <div class="table-responsive col-xs-12 col-sm-12 col-md-12" >
+        <table class='table' text-align='center'>
+            <tr>
+                <td>Ordem</td>
+                <td>Nome Completo</td>
+                <td>Posto/Grad</td>
+                <td>Nome de Guerra</td>
+                <td>Data de Nascimento</td>
+                <td>RG</td>
+                <td>CPF</td>
+                <td>CNH</td>
+                <td>Categoria</td>
+                <td>Validade</td>
+                <td colspan="2">Ações</td>
+            </tr>
+            {foreach $tabela_motoristas_cadastrados as $tbl name=relacao_motoristas}
+                <td>{$smarty.foreach.relacao_motoristas.iteration}</td>
+                <td>{$tbl.nome_completo}</td>
+                <td>{$tbl.sigla}</td>
+                <td>{$tbl.nome}</td>
+                <td>{$tbl.data_nascimento}</td>
+                <td>{$tbl.rg}</td>
+                <td>{$tbl.cpf}</td>
+                <td>{$tbl.cnh}</td>
+                <td>{$tbl.categoria}</td>
+                <td>{$tbl.validade}</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                <form action='motorista' method='post'>
+                    <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
+                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
+                </form>
+                </tr> 
+            {/foreach}
+        </table>
     </div>
 </div>
