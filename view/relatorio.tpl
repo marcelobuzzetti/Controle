@@ -3,11 +3,16 @@
         <div class="jumbotron">
             <h1>{$titulo1}</h1>
         </div>
+        <div class="input-group col-xs-12 col-sm-12 col-md-4">
+            <div class="input-group-addon">Pesquisar</div>
+            <input type="text" class="form-control" id="pesquisa_relatorio" name="pesquisa_relatorio" placeholder="Digite aqui">
+            <div class="input-group-addon"><span class='glyphicon glyphicon-search'/></div>
+        </div>
+        <p></p>
     </div>
-    <div class='container table-responsive grafico'>
-        <table class='table table-striped table-hover' text-align='center'>
+    <div class='container table-responsive grafico' >
+        <table class='table table-striped table-hover grafico' id="relatorio" text-align='center'>
             <tr>
-                <td>Ordem</td>
                 <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Destino</td>
@@ -21,7 +26,6 @@
             </tr>
             {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
                 <tr>
-                    <td>{$smarty.foreach.relacao_relatorio.iteration}</td>
                     <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                     <td>{$tbl.apelido}</td>
                     <td>{$tbl.destino}</td>
@@ -40,11 +44,8 @@
 <div class='container tabela'>
     <fieldset>                    
         <legend>Viaturas</legend>
-        <table class='table table-hover table-striped' text-align='center'>
+        <table class='table table-hover table-striped'  id="relatorio1" text-align='center'>
             {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
-                <tr>
-                    <td>Ordem: {$smarty.foreach.relacao_relatorio.iteration}</td>
-                </tr>
                 <tr>
                     <td>Viatura: {$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                 </tr>
