@@ -1,4 +1,9 @@
 {if $verificador == 1}
+    <div class='container'>
+        <div class="jumbotron">
+            <h1>{$titulo1}</h1>
+        </div>
+    </div>
     <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
             <div id="js-legend" class="chart-legend"></div>
@@ -81,4 +86,11 @@
             <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
         </div>
     </form>
+</div>
+<div class=" container">
+    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+        <form action="relatoriovtr" method="post">
+            <button type="submit" class="btn btn-success col-xs-12 col-sm-12 col-md-12" id="enviar_completo" value="relatorio_completo" name="enviar" tabindex="3">Gerar Relatório Completo</button>
+        </form>
+    </div>
 </div>

@@ -1,4 +1,9 @@
 {if $verificador == 1}
+    <div class='container'>
+        <div class="jumbotron">
+            <h1>{$titulo1}</h1>
+        </div>
+    </div>
     <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
             <div id="js-legend" class="chart-legend"></div>
@@ -41,43 +46,46 @@
 
     </script>
     <div class='container tabela'>
-        <fieldset>
-            <legend>Relatório de Motoristas</legend>
-            <table class='table table-striped table-hover' text-align='center'>
-                {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
-                    <tr>                            
-                        <td>Ordem: {$smarty.foreach.relacao_relatorio.iteration}</td>
-                    </tr>
-                    <tr>
-                        <td>Motorista: {$tbl.apelido}</td>
-                    </tr>
-                    <tr>
-                        <td>Qnt Uso: {$tbl.qnt}</td>
-                    </tr>
-                    <tr>
-                        <td>KM: {$tbl.KM}</td>
-                    </tr>
-                    <tr><td></td></tr>
-                {/foreach}    
-            </table>
-        </fieldset>
+        <table class='table table-striped table-hover' text-align='center'>
+            {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
+                <tr>                            
+                    <td>Ordem: {$smarty.foreach.relacao_relatorio.iteration}</td>
+                </tr>
+                <tr>
+                    <td>Motorista: {$tbl.apelido}</td>
+                </tr>
+                <tr>
+                    <td>Qnt Uso: {$tbl.qnt}</td>
+                </tr>
+                <tr>
+                    <td>KM: {$tbl.KM}</td>
+                </tr>
+                <tr><td></td></tr>
+            {/foreach}    
+        </table>
     </div>
 {/if}
-<div class='container'>
-    <div class="jumbotron">
-        <h1>{$titulo}</h1>
+<div class="jumbotron">
+    <h1>{$titulo}</h1>
+</div>
+<form autocomplete="off" action="relatoriomotorista" method="post">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6">
+        <label for="data_inicio">Data Início</label>
+        <input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required" tabindex="1"/>
     </div>
-    <form autocomplete="off" action="relatoriomotorista" method="post">
-        <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label for="data_inicio">Data Início</label>
-            <input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required" tabindex="1"/>
-        </div>
-        <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label for="data_fim">Data Fim</label>
-            <input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/>
-        </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
-        </div>
-    </form>
+    <div class="form-group col-xs-12 col-sm-6 col-md-6">
+        <label for="data_fim">Data Fim</label>
+        <input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/>
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+        <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
+    </div>
+</form>
+</div>
+<div class=" container">
+    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+        <form action="relatoriomotorista" method="post">
+            <button type="submit" class="btn btn-success col-xs-12 col-sm-12 col-md-12" id="enviar_completo" value="relatorio_completo" name="enviar" tabindex="3">Gerar Relatório Completo</button>
+        </form>
+    </div>
 </div>
