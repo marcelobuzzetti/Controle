@@ -163,6 +163,13 @@ $(function () {
         }
     });
     /*Verificar as datas*/
+    
+    /*Realiza pesquisa em relatorio*/
+    $('#pesquisa_relatorio').keyup(function () {
+        $('#relatorio').load('../model/pesquisaRelatorio.php?' + $.param({pesquisa_relatorio: $('#pesquisa_relatorio').val()}));
+        $('#relatorio1').load('../model/pesquisaRelatorioResponsivo.php?' + $.param({pesquisa_relatorio: $('#pesquisa_relatorio').val()}));
+    });
+    /*Realiza pesquisa em relatorio*/
 
     /*Modal dos motoristas*/
     $('#exampleModal').on('show.bs.modal', function (event) {
