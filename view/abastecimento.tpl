@@ -108,7 +108,7 @@
         </div>              
     {/if}
 </div>
-<div class='container grafico'>
+<div class='container table-responsive grafico'>
     <legend>Abastecimentos</legend>
     <table class='table table-striped table-hover' text-align='center'>
         <tr>

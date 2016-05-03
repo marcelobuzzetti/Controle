@@ -56,85 +56,174 @@
         </div>              
     {/if}
 </div>
-<div class='container'>
-    <div class="row">
-        <div class="table table-responsive" >
-            <fieldset>
-                <legend>Viaturas Rodando</legend>
-                <table class='table' text-align='center'>
-                    <tr>
-                        <td>Ordem</td>
-                        <td>Viatura</td>
-                        <td>Motorista</td>
-                        <td>Destino</td>
-                        <td>Odômetro Saída</td>
-                        <td>Acompanhante</td>
-                        <td>Data Saída</td>
-                        <td>Hora Saída</td>
-                        <td>Odômetro Chegada</td>
-                        <td colspan="2">Ações</td> 
-                    </tr>
-                    {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
-                        <tr><form action='executar' method='post' id="{$contador}">
-                            <input type='hidden' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
-                            <td>{$smarty.foreach.relacao_vtr.iteration}</td>
-                            <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
-                            <td>{$tbl.apelido}</td>
-                            <td>{$tbl.nome_destino}</td>
-                            <td>{$tbl.odo_saida}</td>
-                            <td>{$tbl.acompanhante}</td>
-                            <td>{$tbl.data_saida}</td>
-                            <td>{$tbl.hora_saida}</td>
-                            <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
-                            <td><button class='btn btn-success' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form></td>
-                        <form action='executar' method='post'>
-                            <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
-                            <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>
-                        </tr>
-                        </form>
-                        </tr>
-                    {/foreach}    
-                </table>
-            </fieldset>
-        </div>
-    </div>
+<div class='container table-responsive grafico'>
+    <legend>Viaturas Rodando</legend>
+    <table class='table table-striped table-hover' text-align='center'>
+        <tr>
+            <td>Ordem</td>
+            <td>Viatura</td>
+            <td>Motorista</td>
+            <td>Destino</td>
+            <td>Odômetro Saída</td>
+            <td>Acompanhante</td>
+            <td>Data Saída</td>
+            <td>Hora Saída</td>
+            <td>Odômetro Chegada</td>
+            <td colspan="2">Ações</td> 
+        </tr>
+        {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
+            <tr><form action='executar' method='post' id="{$contador}">
+                <input type='hidden' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
+                <td>{$smarty.foreach.relacao_vtr.iteration}</td>
+                <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
+                <td>{$tbl.apelido}</td>
+                <td>{$tbl.nome_destino}</td>
+                <td>{$tbl.odo_saida}</td>
+                <td>{$tbl.acompanhante}</td>
+                <td>{$tbl.data_saida}</td>
+                <td>{$tbl.hora_saida}</td>
+                <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
+                <td><button class='btn btn-success' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form></td>
+            <form action='executar' method='post'>
+                <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
+                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>
+            </tr>
+            </form>
+            </tr>
+        {/foreach}    
+    </table>
+</fieldset>
 </div>
-<div class='container'>
+<div class='container tabela'>
+    <legend>Viaturas Rodando</legend>
+    <table class='table table-striped table-hover' text-align='center'>
+        {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
+            <tr><form action='executar' method='post' id="{$contador}">
+                <input type='hidden' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
+                <td>Ordem {$smarty.foreach.relacao_vtr.iteration}</td>
+                </tr>
+                <tr>
+                    <td>Viatura {$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
+                </tr>
+                <tr>
+                    <td>Motorista {$tbl.apelido}</td>
+                </tr>
+                <tr>
+                    <td>Destino {$tbl.nome_destino}</td>
+                </tr>
+                <tr>
+                    <td>Odômetro Saída {$tbl.odo_saida}</td>
+                </tr>
+                <tr>
+                    <td>Acompanhante {$tbl.acompanhante}</td>
+                </tr>
+                <tr>
+                    <td>Data Saída {$tbl.data_saida}</td>
+                </tr>
+                <tr>
+                    <td>Hora Saída {$tbl.hora_saida}</td>
+                </tr>
+                <tr>
+                    <td>Odômetro Chegada <input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
+                </tr>
+                <tr>
+                    <td>Ações</td> 
+                </tr>
+                <tr>
+                    <td><button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form>
+            <form action='executar' method='post'>
+                <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
+                <button class='btn btn-danger col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>
+            </tr>
+            </form>
+            <tr>
+                <td></td>
+            </tr>
+        {/foreach}    
+    </table>
+</fieldset>
+</div>
+<div class='container table-responsive grafico'>
     <button class="btn btn-primary" data-toggle="collapse" data-target="#fechadas">Viaturas Fechadas</button>
     <div id="fechadas" class="collapse">
-        <div class="table table-responsive" >
-            <fieldset>
-                <table class='table' text-align='center'>
+        <fieldset>
+            <table class='table' text-align='center'>
+                <tr>
+                    <td>Ordem</td>
+                    <td>Viatura</td>
+                    <td>Motorista</td>
+                    <td>Destino</td>
+                    <td>Odômetro Saída</td>
+                    <td>Acompanhante</td>
+                    <td>Data Saída</td>
+                    <td>Hora Saída</td>
+                    <td>Odômetro Retorno</td>
+                    <td>Data Chegada</td>
+                    <td>Hora Chegada</td>
+                </tr>
+                {foreach $tabela_relacao_vtr_fechadas as $tbl1 name=relacao_vtr_fechadas}
                     <tr>
-                        <td>Ordem</td>
-                        <td>Viatura</td>
-                        <td>Motorista</td>
-                        <td>Destino</td>
-                        <td>Odômetro Saída</td>
-                        <td>Acompanhante</td>
-                        <td>Data Saída</td>
-                        <td>Hora Saída</td>
-                        <td>Odômetro Retorno</td>
-                        <td>Data Chegada</td>
-                        <td>Hora Chegada</td>
+                        <td>{$smarty.foreach.relacao_vtr_fechadas.iteration}</td>
+                        <td>{$tbl1.marca} - {$tbl1.modelo} - {$tbl1.placa}</td>
+                        <td>{$tbl1.apelido}</td>
+                        <td>{$tbl1.nome_destino}</td>
+                        <td>{$tbl1.odo_saida}</td>
+                        <td>{$tbl1.acompanhante}</td>
+                        <td>{$tbl1.data_saida}</td>
+                        <td>{$tbl1.hora_saida}</td>
+                        <td>{$tbl1.odo_retorno}</td>
+                        <td>{$tbl1.data_retorno}</td>
+                        <td>{$tbl1.hora_retorno}</td>
                     </tr>
-                    {foreach $tabela_relacao_vtr_fechadas as $tbl1 name=relacao_vtr_fechadas}
-                        <tr>
-                            <td>{$smarty.foreach.relacao_vtr_fechadas.iteration}</td>
-                            <td>{$tbl1.marca} - {$tbl1.modelo} - {$tbl1.placa}</td>
-                            <td>{$tbl1.apelido}</td>
-                            <td>{$tbl1.nome_destino}</td>
-                            <td>{$tbl1.odo_saida}</td>
-                            <td>{$tbl1.acompanhante}</td>
-                            <td>{$tbl1.data_saida}</td>
-                            <td>{$tbl1.hora_saida}</td>
-                            <td>{$tbl1.odo_retorno}</td>
-                            <td>{$tbl1.data_retorno}</td>
-                            <td>{$tbl1.hora_retorno}</td>
-                        </tr>
-                    {/foreach}    
-                </table>  
-            </fieldset>
-        </div>
+                {/foreach}    
+            </table>  
+        </fieldset>
+    </div>
+</div>
+<div class='container tabela'>
+    <button class="btn btn-primary" data-toggle="collapse" data-target="#fechadas1">Viaturas Fechadas</button>
+    <div id="fechadas1" class="collapse">
+        <fieldset>
+            <table class='table table-striped table-hover' text-align='center'>
+                {foreach $tabela_relacao_vtr_fechadas as $tbl1 name=relacao_vtr_fechadas}
+                    <tr>
+                        <td>Ordem {$smarty.foreach.relacao_vtr_fechadas.iteration}</td>
+                    </tr>
+                    <tr>
+                        <td>Viatura {$tbl1.marca} - {$tbl1.modelo} - {$tbl1.placa}</td>
+                    </tr>
+                    <tr>
+                        <td>Motorista {$tbl1.apelido}</td>
+                    </tr>
+                    <tr>
+                        <td>Destino {$tbl1.nome_destino}</td>
+                    </tr>
+                    <tr>
+                        <td>Odômetro Saída {$tbl1.odo_saida}</td>
+                    </tr>
+                    <tr>
+                        <td>Acompanhante {$tbl1.acompanhante}</td>
+                    </tr>
+                    <tr>
+                        <td>Data Saída {$tbl1.data_saida}</td>
+                    </tr>
+                    <tr>
+                        <td>Hora Saída {$tbl1.hora_saida}</td>
+                    </tr>
+                    <tr>
+                        <td>Odômetro Retorno {$tbl1.odo_retorno}</td>
+                    </tr>
+                    <tr>
+                        <td>Data Chegada {$tbl1.data_retorno}</td>
+                    </tr>
+                    <tr>
+                        <td>Hora Chegada {$tbl1.hora_retorno}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                {/foreach}    
+            </table>  
+        </fieldset>
     </div>
 </div>

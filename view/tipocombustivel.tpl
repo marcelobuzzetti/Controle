@@ -36,26 +36,45 @@
         </div>
     </form>
 </div>
-<div class='container'>
-    <div class="table-responsive" >
-        <legend>Tipos Combustíveis Cadastrados</legend>
-        <table class='table' text-align='center'>
+<div class='container table-responsive grafico'>
+    <legend>Tipos Combustíveis Cadastrados</legend>
+    <table class='table table-striped table-hover' text-align='center'>
+        <tr>
+            <td>Tipo</td>
+            <td>Ações</td>
+        </tr>
+        {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
             <tr>
-                <td>Ordem</td>
-                <td>Tipo</td>
-                <td colspan='2'>Ações</td>
+                <td>{$tbl.descricao}</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+            <form action='tipocombustivel' method='post'>
+                <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
+                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
+            </form>
             </tr>
-            {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
-                <tr>
-                    <td>{$smarty.foreach.tipos_combustiveis.iteration}</td>
-                    <td>{$tbl.descricao}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                <form action='tipocombustivel' method='post'>
-                    <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
-                    <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
+        {/foreach}
+    </table>
+</div>
+<div class='container tabela'>
+    <legend>Tipos Combustíveis Cadastrados</legend>
+    <table class='table table-striped table-hover' text-align='center'>
+        {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
+            <tr>
+                <td>Tipo {$tbl.descricao}</td>
+            </tr>
+            <tr>
+                <td>Ações</td>
+            </tr>
+            <tr>
+                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button>
+                    <form action='tipocombustivel' method='post'>
+                        <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
+                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
                 </form>
-                </tr>
-            {/foreach}
-        </table>
-    </div>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        {/foreach}
+    </table>
 </div>

@@ -81,36 +81,70 @@
         </div>              
     {/if}
 </div>
-<div class='container'>
-    <div class="table-responsive" >
-        <fieldset>
-            <legend>Modelos Cadastradas</legend>
-            <table class='table' text-align='center'>
-                <tr>
-                    <td>Ordem</td>
-                    <td>Marca</td>
-                    <td>Modelo</td>
-                    <td>Capacidade do Tanque</td>
-                    <td>Consumo Km/L</td>
-                    <td>Capacidade(Pessoas)</td>
-                    <td colspan="2">Ações</td>
-                </tr>
-                {foreach $tabela_modelos_cadastrados as $tbl name=relacao_modelos}
-                    <tr>
-                        <td>{$smarty.foreach.relacao_modelos.iteration}</td>
-                        <td>{$tbl.marca}</td>
-                        <td>{$tbl.descricao}</td>
-                        <td>{$tbl.cap_tanque}</td>
-                        <td>{$tbl.consumo_padrao}</td>
-                        <td>{$tbl.cap_transp}</td>
-                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+<div class='container table-responsive grafico'>
+    <legend>Modelos Cadastradas</legend>
+    <table class='table table-striped table-hover' text-align='center'>
+        <tr>
+            <td>Ordem</td>
+            <td>Marca</td>
+            <td>Modelo</td>
+            <td>Capacidade do Tanque</td>
+            <td>Consumo Km/L</td>
+            <td>Capacidade(Pessoas)</td>
+            <td colspan="2">Ações</td>
+        </tr>
+        {foreach $tabela_modelos_cadastrados as $tbl name=relacao_modelos}
+            <tr>
+                <td>{$smarty.foreach.relacao_modelos.iteration}</td>
+                <td>{$tbl.marca}</td>
+                <td>{$tbl.descricao}</td>
+                <td>{$tbl.cap_tanque}</td>
+                <td>{$tbl.consumo_padrao}</td>
+                <td>{$tbl.cap_transp}</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+            <form action='modelo' method='post'>
+                <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
+                <td><button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/><span class='glyphicon glyphicon-refresh'/></form></td>
+            </form>
+            </tr>
+        {/foreach}
+    </table>
+</div>
+<div class='container table-responsive tabela'>
+    <legend>Modelos Cadastradas</legend>
+    <table class='table table-striped table-hover' text-align='center'>
+        {foreach $tabela_modelos_cadastrados as $tbl name=relacao_modelos}
+            <tr>
+                <td>Ordem {$smarty.foreach.relacao_modelos.iteration}</td>
+            </tr>
+            <tr>
+                <td>Marca {$tbl.marca}</td>
+            </tr>
+            <tr>
+                <td>Modelo {$tbl.descricao}</td>
+            </tr>
+            <tr>
+                <td>Capacidade do Tanque {$tbl.cap_tanque}</td>
+            </tr>
+            <tr>
+                <td>Consumo Km/L {$tbl.consumo_padrao}</td>
+            </tr>
+            <tr>
+                <td>Capacidade(Pessoas) {$tbl.cap_transp}</td>
+            </tr>
+            <tr>
+                <td>Ações</td>
+            </tr>
+            <tr>
+                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'</button>
                     <form action='modelo' method='post'>
                         <input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
-                        <td><button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form>
-                    </tr>
-                {/foreach}
-            </table>
-        </fieldset>
-    </div>
+                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/><span class='glyphicon glyphicon-refresh'/></form></td>
+                </form>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        {/foreach}
+    </table>
 </div>
