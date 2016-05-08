@@ -25,10 +25,10 @@ if (!isset($_SESSION['login'])) {
         $smarty->assign('titulo1', 'Relatório de Completo de Vtr');
         $smarty->assign('relacao_relatorio', $relacao_relatorio);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_relatorio.tpl');
         $smarty->display($menu);
         $smarty->display('relatorio.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_relatorio.tpl');
         
     } else {
 
@@ -37,10 +37,10 @@ if (!isset($_SESSION['login'])) {
             $smarty->assign('verificador', $verificador);
             $smarty->assign('titulo', 'Relatórios');
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header.tpl');
+            $smarty->display('./headers/header_relatorio.tpl');
             $smarty->display($menu);
             $smarty->display('relatorio.tpl');
-            $smarty->display('./footer/footer.tpl');
+            $smarty->display('./footer/footer_relatorio.tpl');
         } else {
 
             $verificador = 1;
@@ -57,10 +57,10 @@ if (!isset($_SESSION['login'])) {
             $smarty->assign('titulo', 'Relatórios de ' . $data_inicio . ' a ' . $data_fim);
             $smarty->assign('relacao_relatorio', $relacao_relatorio);
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header.tpl');
+            $smarty->display('./headers/header_relatorio.tpl');
             $smarty->display($menu);
             $smarty->display('relatorio.tpl');
-            $smarty->display('./footer/footer.tpl');
+            $smarty->display('./footer/footer_relatorio.tpl');
         }
     }
 }
