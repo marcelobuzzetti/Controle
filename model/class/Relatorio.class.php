@@ -5,7 +5,7 @@ class Relatorio {
     public function listarPercursos($inicio, $fim) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                         FROM percursos, viaturas, motoristas, marcas, modelos, destinos
                                                         WHERE data_saida BETWEEN ? AND ?
                                                         AND percursos.id_motorista = motoristas.id_motorista
@@ -32,7 +32,7 @@ class Relatorio {
      public function listarPercursosCompleto() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, acompanhante, data_saida, hora_saida, odo_retorno, data_retorno, hora_retorno
+            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                 FROM percursos, viaturas, motoristas, marcas, modelos, destinos
                                                 WHERE percursos.id_motorista = motoristas.id_motorista
                                                 AND percursos.id_viatura = viaturas.id_viatura
