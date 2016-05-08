@@ -54,7 +54,8 @@ if (!isset($_SESSION['login'])) {
             $data_fim = $_POST['data_fim'];
 
             $smarty->assign('verificador', $verificador);
-            $smarty->assign('titulo', 'Relatórios de ' . $data_inicio . ' a ' . $data_fim);
+            $smarty->assign('titulo', 'Relatórios');
+            $smarty->assign('titulo1', 'Relatórios de ' . $data_inicio . ' a ' . $data_fim);
             $smarty->assign('relacao_relatorio', $relacao_relatorio);
             $smarty->assign('login', $_SESSION['login']);
             $smarty->display('./headers/header_relatorio.tpl');
