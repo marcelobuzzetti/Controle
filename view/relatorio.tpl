@@ -35,6 +35,20 @@
                 </tr>
             {/foreach}
         </tbody>
+         <tfoot>
+            <tr>
+                <th>Viatura</th>
+                <th>Motorista</th>
+                <th>Destino</th>
+                <th>Odômetro Saída</th>
+                <th>Acompanhante</th>
+                <th>Data Saída</th>
+                <th>Hora Saída</th>
+                <th>Odômetro Retorno</th>
+                <th>Data Chegada</th>
+                <th>Hora Chegada</th>
+            </tr>
+        </tfoot>
     </table>
 {/if}
 <div class='container'>
