@@ -119,11 +119,11 @@ $(function () {
     });
     /*Verifica se a motorista existe*/
     
-    /*Verifica se o usuario existe*/
+    /*Verifica se o usuario existe
     $('#login').keyup(function () {
         $('#alerta').load('../model/verificaUsuario.php?' + $.param({login: $('#login').val()}));
     });
-    /*Verifica se o usuario existe*/
+    Verifica se o usuario existe*/
     
      /*Verifica se o login existe*/
     $('#usuario').keyup(function () {
