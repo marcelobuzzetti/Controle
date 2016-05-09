@@ -8132,9 +8132,6 @@ body .ui-tooltip {
     .tabela {
         display: none;
     }
+    .dropdown:hover .dropdown-menu{display:block}
 }
 
-/*Hover Menu*/
-.dropdown:hover .dropdown-menu {
-display: block;
-}
