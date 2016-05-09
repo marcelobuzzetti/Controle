@@ -22,8 +22,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $smarty->assign('titulo', 'Motoritas Cadastrados');
     $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
     $smarty->assign('login', $_SESSION['login']);
-    $smarty->display('./headers/header.tpl');
+    $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('motoristacadastrado.tpl');
-    $smarty->display('./footer/footer.tpl');
+    $smarty->display('./footer/footer_motorista.tpl');
 }

@@ -33,10 +33,10 @@ if (!isset($_SESSION['login'])) {
     $smarty->assign('atualizado', $_SESSION['atualizado']);
     $smarty->assign('apagado', $_SESSION['apagado']);
     $smarty->assign('login', $_SESSION['login']);
-    $smarty->display('./headers/header.tpl');
+    $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('percurso.tpl');
-    $smarty->display('./footer/footer.tpl');
+    $smarty->display('./footer/footer_percursos.tpl');
     unset($_SESSION['cadastrado']);
     unset($_SESSION['atualizado']);
     unset($_SESSION['apagado']);

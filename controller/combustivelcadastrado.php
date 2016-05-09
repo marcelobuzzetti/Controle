@@ -16,8 +16,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $smarty->assign('titulo', 'Combustíveis Cadastrados');
     $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
     $smarty->assign('login', $_SESSION['login']);
-    $smarty->display('./headers/header.tpl');
+    $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('combustivelcadastrado.tpl');
-    $smarty->display('./footer/footer.tpl');
+    $smarty->display('./footer/footer_combustivel.tpl');
 }

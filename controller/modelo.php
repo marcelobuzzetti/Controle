@@ -27,10 +27,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('modelo.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_modelo.tpl');
         unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
@@ -73,9 +73,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('tabela_modelos_cadastrados', $tabela_modelos_cadastrados);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('modelo.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_modelo.tpl');
     }
 }

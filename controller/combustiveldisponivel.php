@@ -16,8 +16,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $smarty->assign('titulo', 'Existência de Combustível');
     $smarty->assign('tabela_existencia', $tabela_existencia);
     $smarty->assign('login', $_SESSION['login']);
-    $smarty->display('./headers/header.tpl');
+    $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('combustiveldisponivel.tpl');
-    $smarty->display('./footer/footer.tpl');
+    $smarty->display('./footer/footer_combustivel.tpl');
 }

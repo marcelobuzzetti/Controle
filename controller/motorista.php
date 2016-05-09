@@ -33,10 +33,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('apagado', $_SESSION['apagado']);
         $smarty->assign('erro', $_SESSION['erro']);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('motorista.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_motorista.tpl');
         unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
@@ -91,9 +91,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('motorista.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_motorista.tpl');
     }
 }

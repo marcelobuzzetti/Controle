@@ -16,8 +16,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
 
     $smarty->assign('titulo', 'Abastecimentos Realizados');
     $smarty->assign('tabela_relacao_abastecimentos', $tabela_relacao_abastecimentos);
-    $smarty->display('./headers/header.tpl');
+    $smarty->assign('login', $_SESSION['login']);
+    $smarty->display('./headers/header_abastecimento.tpl');
     $smarty->display($menu);
     $smarty->display('abastecimentorealizado.tpl');
-    $smarty->display('./footer/footer.tpl');
+    $smarty->display('./footer/footer_abastecimento.tpl');
 }
