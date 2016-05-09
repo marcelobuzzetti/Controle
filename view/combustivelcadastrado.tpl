@@ -20,49 +20,37 @@
     </div>
 </div>
 <!--Modal-->
-<div class='container table-responsive grafico'>
+<div class='container'>
     <div class="jumbotron">
         <h1>Combustíveis Cadastrados</h1>
     </div>
-    <table class='table table-striped table-hover' text-align='center'>
+</div>
+   <legend>Combustíveis Cadastrados</legend>
+<table id="combustivel" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
         <tr>
             <td>Combustível</td>
-            <td colspan="2">Ações</td>
+            <td>Apagar</td>
+            <td>Atualizar</td>
         </tr>
+    </thead>
+    <tbody>
         {foreach $relacao_combustiveis as $comb name=relacao_combustiveis}
             <tr>
                 <td>{$comb.descricao}</td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$comb.id_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <form action='combustivel' method='post'>
-                <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
-                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/><span class='glyphicon glyphicon-refresh'/></form></td>
-            </form>
-            </tr>
-        {/foreach}
-    </table>
-</div>
-<div class='container tabela'>
-    <div class="jumbotron">
-        <h1>Combustíveis Cadastrados</h1>
-    </div>
-    <table class='table table-striped table-hover' text-align='center'>
-        {foreach $relacao_combustiveis as $comb name=relacao_combustiveis}
-            <tr>
-                <td>Combustível: {$comb.descricao}</td>
-            </tr>
-            <tr>
-                <td>Ações</td>
-            </tr>
-            <tr>
-                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$comb.id_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button>
-                    <form action='combustivel' method='post'>
+                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$comb.id_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                <td>    <form action='combustivel' method='post'>
                         <input type='hidden' id='{$comb.id_combustivel}' value='{$comb.id_combustivel}' name='id'/>
                         <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value='atualiza_combustivel'/><span class='glyphicon glyphicon-refresh'/></form></td>
                 </form>
             </tr>
-            <tr>
-                <td></td>
-            </tr>
         {/foreach}
-    </table>
-</div>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Combustível</td>
+            <td>Apagar</td>
+            <td>Atualizar</td>
+        </tr>
+    </tfoot>
+</table>

@@ -30,7 +30,7 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#relatorio').DataTable({            
+        $('#abastecimento').DataTable({
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",

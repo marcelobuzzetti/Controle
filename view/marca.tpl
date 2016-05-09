@@ -60,45 +60,32 @@
         </div>              
     {/if}
 </div>
-<div class='container table-responsive grafico'>
-    <legend>Marcas Cadastradas</legend>
-    <table class='table' text-align='center'>
+<legend>Marcas Cadastradas</legend>
+<table id="marcas" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
         <tr>
             <td>Marca</td>
-            <td colspan="2">Ações</td>
+            <td>Apagar</td>
+            <td>Atualizar</td>
         </tr>
+    </thead>
+    <tbody>
         {foreach $relacao_marcas as $marca name=relacao_marcas}
             <tr>
                 <td>{$marca.descricao}</td>
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$marca.id_marca}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <form action='marca' method='post'>
-                <input type='hidden' id='{$marca.id_marca}' value='{$marca.id_marca}' name='id'/>
-                <td><button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_marca'/><span class="glyphicon glyphicon-refresh"/></form></td>
-            </form>
-            </tr>
-        {/foreach}
-    </table>
-</div>
-<div class='container tabela'>
-    <legend>Marcas Cadastradas</legend>
-    <table class='table' text-align='center'>
-        {foreach $relacao_marcas as $marca name=relacao_marcas}
-            <tr>
-                <td>Marca {$marca.descricao}</td>
-            </tr>
-            <tr>
-                <td>Ações</td>
-            </tr>                
-            <tr>
-                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$marca.id_marca}"><span class='glyphicon glyphicon-remove-sign'</button>
-                    <form action='marca' method='post'>
+                <td><form action='marca' method='post'>
                         <input type='hidden' id='{$marca.id_marca}' value='{$marca.id_marca}' name='id'/>
-                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='atualizar' name='enviar' value='atualizar_marca'/><span class="glyphicon glyphicon-refresh"/></form></td>
+                        <button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_marca'/><span class="glyphicon glyphicon-refresh"/></form></td>
                 </form>
             </tr>
-            <tr>
-                <td></td>
-            </tr>
-        {/foreach}        
-    </table>
-</div>
+        {/foreach}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Marca</td>
+             <td>Apagar</td>
+            <td>Atualizar</td>
+        </tr>
+    </tfoot>
+</table>

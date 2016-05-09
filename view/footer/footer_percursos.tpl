@@ -30,7 +30,9 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#relatorio').DataTable({            
+        $('#vtr_fechadas').DataTable({
+            "info": false,
+            "paging": false,
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",

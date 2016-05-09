@@ -24,71 +24,47 @@
                     <button type="submit" value="login" name="enviar" class="btn btn-default" tabindex="3">Login</button>
                 </form>  
             </div>
-            </nav>
-            <div class='container table-responsive grafico'>
-                <div class="jumbotron">
-                    <h1>Viaturas Rodando</h1>
-                </div>
-                <table class='table table-striped table-hover' text-align='center'>
-                    <tr>
-                        <td>Ordem</td>
-                        <td>Viatura</td>
-                        <td>Motorista</td>
-                        <td>Destino</td>
-                        <td>Odômetro Saída</td>
-                        <td>Acompanhante</td>
-                        <td>Data Saída</td>
-                        <td>Hora Saída</td>
-                    </tr>
-                    {foreach $tabela_relacao_vtr as $vtr name='vtr'}
-                        <tr>
-                            <td>{$smarty.foreach.vtr.iteration}</td>
-                            <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
-                            <td>{$vtr.apelido}</td>
-                            <td>{$vtr.nome_destino}</td>
-                            <td>{$vtr.odo_saida}</td>
-                            <td>{$vtr.acompanhante}</td>
-                            <td>{$vtr.data_saida}</td>
-                            <td>{$vtr.hora_saida}</td>
-                        </tr>
-                    {/foreach}    
-                </table>  
-            </div>
         </div>
-        <div class='container tabela'>
-            <div class="jumbotron">
-                <h1>Viaturas Rodando</h1>
-            </div>
-            <table class='table table-striped table-hover' text-align='center'>
-                {foreach $tabela_relacao_vtr as $vtr name='vtr'}
-                    <tr>
-                        <td>Ordem {$smarty.foreach.vtr.iteration}</td>
-                    </tr>
-                    <tr>
-                        <td>Viatura {$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
-                    </tr>
-                    <tr>
-                        <td>Motorista {$vtr.apelido}</td>
-                    </tr>
-                    <tr>
-                        <td>Destino {$vtr.nome_destino}</td>
-                    </tr>
-                    <tr>
-                        <td>Odômetro Saída {$vtr.odo_saida}</td>
-                    </tr>
-                    <tr>
-                        <td>Acompanhante {$vtr.acompanhante}</td>
-                    </tr>
-                    <tr>
-                        <td>Data Saída {$vtr.data_saida}</td>
-                    </tr>
-                    <tr>
-                        <td>Hora Saída {$vtr.hora_saida}</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                {/foreach}    
-            </table>  
-        </div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Viaturas Rodando</h1>
     </div>
+</div>
+<table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <td>Viatura</td>
+            <td>Motorista</td>
+            <td>Destino</td>
+            <td>Odômetro Saída</td>
+            <td>Acompanhante</td>
+            <td>Data Saída</td>
+            <td>Hora Saída</td>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $tabela_relacao_vtr as $vtr name='vtr'}
+            <tr>
+                <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
+                <td>{$vtr.apelido}</td>
+                <td>{$vtr.nome_destino}</td>
+                <td>{$vtr.odo_saida}</td>
+                <td>{$vtr.acompanhante}</td>
+                <td>{$vtr.data_saida}</td>
+                <td>{$vtr.hora_saida}</td>
+            </tr>
+        {/foreach}     
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Viatura</td>
+            <td>Motorista</td>
+            <td>Destino</td>
+            <td>Odômetro Saída</td>
+            <td>Acompanhante</td>
+            <td>Data Saída</td>
+            <td>Hora Saída</td>
+        </tr>
+    </tfoot>
+</table>

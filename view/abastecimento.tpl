@@ -108,11 +108,9 @@
         </div>              
     {/if}
 </div>
-<div class='container table-responsive grafico'>
-    <legend>Abastecimentos</legend>
-    <table class='table table-striped table-hover' text-align='center'>
+<table id="abastecimento" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead>
         <tr>
-            <td>Ordem</td>
             <td>Nº Vale</td>
             <td>Motorista</td>
             <td>Viatura</td>
@@ -122,8 +120,11 @@
             <td>Quantidade</td>
             <td>Data</td>
             <td>Hora</td>
-            <td colspan="2">Ações</td>
+            <td>Apagar</td>
+            <td>Atualizar</td>
         </tr>
+    </thead>
+    <tbody>
         {foreach $tabela_relacao_abastecimentos as $tbl name=tabela_relacao_abastecimentos}
             <tr>
                 <td>{$smarty.foreach.tabela_relacao_abastecimentos.iteration}</td>
@@ -137,59 +138,24 @@
                 <td>{$tbl.data}</td>
                 <td>{$tbl.hora}</td>
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_abastecimento}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <form action='abastecimento' method='post'>
-                <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/>
-                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/><span class='glyphicon glyphicon-refresh'/></form></td>
-            </form></tr>
-        {/foreach}    
-    </table>
-</div>
-<div class='container tabela'>
-    <legend>Abastecimentos</legend>
-    <table class='table table-striped table-hover' text-align='center'>
-        {foreach $tabela_relacao_abastecimentos as $tbl name=tabela_relacao_abastecimentos}
-            <tr>
-                <td>Ordem {$smarty.foreach.tabela_relacao_abastecimentos.iteration}</td>
-            </tr>
-            <tr>
-                <td>Nº Vale {$tbl.nrvale}</td>
-            </tr>
-            <tr>
-                <td>Motorista {$tbl.apelido}</td>
-            </tr>
-            <tr>
-                <td>Viatura {$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
-            </tr>
-            <tr>
-                <td>Odômetro {$tbl.odometro}</td>
-            </tr>
-            <tr>
-                <td>Combustível {$tbl.combustivel}</td>
-            </tr>
-            <tr>
-                <td>Tipo {$tbl.tipo}</td>
-            </tr>
-            <tr>
-                <td>Quantidade {$tbl.qnt}</td>
-            </tr>
-            <tr>
-                <td>Data {$tbl.data}</td>
-            </tr>
-            <tr>
-                <td>Hora {$tbl.hora}</td>
-            </tr>
-            <tr>
-                <td>Ações</td>
-            </tr>
-            <tr>
-                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_abastecimento}"><span class='glyphicon glyphicon-remove-sign'</button>
-                    <form action='abastecimento' method='post'>
-                        <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/>
-                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value='atualiza_abst'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                </form> </tr>
-            <tr>
-                <td></td>
-            </tr>
-        {/foreach}    
-    </table>
-</div>
+                <td> <form action='abastecimento' method='post'>
+                        <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/><span class='glyphicon glyphicon-refresh'/></form></td>
+                </form></tr>
+            {/foreach}    
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Nº Vale</td>
+            <td>Motorista</td>
+            <td>Viatura</td>
+            <td>Odômetro</td>
+            <td>Combustível</td>
+            <td>Tipo</td>
+            <td>Quantidade</td>
+            <td>Data</td>
+            <td>Hora</td>
+            <td>Apagar</td>
+            <td>Atualizar</td>
+        </tr>
+    </tfoot>
+</table>
