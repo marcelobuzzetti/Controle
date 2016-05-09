@@ -8133,3 +8133,8 @@ body .ui-tooltip {
         display: none;
     }
 }
+
+/*Hover Menu*/
+.dropdown:hover .dropdown-menu {
+display: block;
+}
