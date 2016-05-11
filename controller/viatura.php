@@ -9,6 +9,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $marcas = new Marca();
     $relacao_marcas = $marcas->listarMarcas();
     
+    $modelos = new Modelo();
+    $relacao_modelos = $modelos->listarModelos();
+    
     $situacao = new Situacao();
     $relacao_situacao = $situacao->listarSituacao();
     
@@ -47,6 +50,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     } else {
 
             $id = $_POST['id'];
+            $update = 1;
 
             try {
                 $stmt = $pdo->prepare("SELECT * FROM viaturas WHERE id_viatura = ?");
@@ -60,6 +64,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                     $modelo = $dados_viaturas->id_modelo;
                     $placa = $dados_viaturas->placa;
                     $odometro = $dados_viaturas->odometro;
+                    $situacao = $dados_viaturas->id_situacao;
 
                 } else {
                 print("<script language=JavaScript>
@@ -73,8 +78,11 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('titulo', 'Atualização de Viaturas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_viatura');
+        $smarty->assign('update', $update);
         $smarty->assign('id_viatura', $id_viatura);
         $smarty->assign('marca', $marca);
+        $smarty->assign('modelo', $modelo);
+        $smarty->assign('situacao', $situacao);
         $smarty->assign('placa', $placa);
         $smarty->assign('odometro', $odometro);
         $smarty->assign('relacao_marcas', $relacao_marcas);

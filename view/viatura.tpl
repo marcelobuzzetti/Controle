@@ -29,16 +29,25 @@
             <label for="marca">Marca</label>
             <select class="form-control" id="marca" name="marca" required tabindex="1">
                 <option value='' disabled selected>Selecione a Marca</option>
-                {foreach $relacao_marcas as $marca}
-                    <option value={$marca.id_marca}>{$marca.descricao}</option>
+                {foreach $relacao_marcas as $marcas}
+                    <option value={$marcas.id_marca} {if {$marcas.id_marca} == {$marca}}selected{/if}>{$marcas.descricao}</option>
                 {/foreach}
             </select>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="modelo">Modelo</label>
+            {if $update > 0}
+               <select class='form-control' name='modelo' id='modelo' required tabindex="2">
+                <option value='' disabled selected>Selecione o Modelo</option>
+                    {foreach $relacao_modelos as $modelos}
+                        <option value={$modelos.id_modelo} {if {$modelos.id_modelo} == {$modelo}}selected{/if}>{$modelos.descricao}</option>
+                    {/foreach}
+                </select>
+            {else}
             <select class="form-control" id="modelo" name="modelo"  required tabindex="2">
                 <option value='' class="Selecione" disabled selected>Selecione a Marca</option>
             </select>
+            {/if}
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Ano</label>
@@ -84,8 +93,8 @@
             <label for="situacao">Situação</label>
             <select class="form-control" name="situacao" tabindex="9">
                 <option value='' disabled selected>Selecione a Situação</option>
-                {foreach $relacao_situacao as $situacao}
-                    <option value={$situacao.id_situacao}>{$situacao.disponibilidade}</option>
+                {foreach $relacao_situacao as $situacoes}
+                    <option value={$situacoes.id_situacao} {if {$situacoes.id_situacao} == {$situacao}}selected{/if}>{$situacoes.disponibilidade}</option>
                 {/foreach}
             </select>
         </div>
