@@ -1,4 +1,3 @@
-
 <div class='container'>
     <div class="jumbotron">
         <h1>Controle de Saída de Viatura</h1>     
@@ -143,50 +142,52 @@
     </table>
 </fieldset>
 </div>
-<legend>10 últimas viaturas fechadas</legend>
-<table id="vtr_fechadas" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <td>Viatura</td>
-            <td>Motorista</td>
-            <td>Destino</td>
-            <td>Odômetro Saída</td>
-            <td>Acompanhante</td>
-            <td>Data Saída</td>
-            <td>Hora Saída</td>
-            <td>Odômetro Retorno</td>
-            <td>Data Chegada</td>
-            <td>Hora Chegada</td>
-        </tr>
-    </thead>
-    <tbody>
-        {foreach $tabela_relacao_vtr_fechadas as $tbl1 name=relacao_vtr_fechadas}
+<div class="container">
+    <legend>10 últimas viaturas fechadas</legend>
+    <table id="vtr_fechadas" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                <td>{$tbl1.marca} - {$tbl1.modelo} - {$tbl1.placa}</td>
-                <td>{$tbl1.apelido}</td>
-                <td>{$tbl1.nome_destino}</td>
-                <td>{$tbl1.odo_saida}</td>
-                <td>{$tbl1.acompanhante}</td>
-                <td>{$tbl1.data_saida}</td>
-                <td>{$tbl1.hora_saida}</td>
-                <td>{$tbl1.odo_retorno}</td>
-                <td>{$tbl1.data_retorno}</td>
-                <td>{$tbl1.hora_retorno}</td>
+                <td>Viatura</td>
+                <td>Motorista</td>
+                <td>Destino</td>
+                <td>Odômetro Saída</td>
+                <td>Acompanhante</td>
+                <td>Data Saída</td>
+                <td>Hora Saída</td>
+                <td>Odômetro Retorno</td>
+                <td>Data Chegada</td>
+                <td>Hora Chegada</td>
             </tr>
-        {/foreach}    
-    </tbody>
-    <tfoot>
-        <tr>
-            <td>Viatura</td>
-            <td>Motorista</td>
-            <td>Destino</td>
-            <td>Odômetro Saída</td>
-            <td>Acompanhante</td>
-            <td>Data Saída</td>
-            <td>Hora Saída</td>
-            <td>Odômetro Retorno</td>
-            <td>Data Chegada</td>
-            <td>Hora Chegada</td>
-        </tr>
-    </tfoot>
-</table>
+        </thead>
+        <tbody>
+            {foreach $tabela_relacao_vtr_fechadas as $tbl1 name=relacao_vtr_fechadas}
+                <tr>
+                    <td>{$tbl1.marca} - {$tbl1.modelo} - {$tbl1.placa}</td>
+                    <td>{$tbl1.apelido}</td>
+                    <td>{$tbl1.nome_destino}</td>
+                    <td>{$tbl1.odo_saida}</td>
+                    <td>{$tbl1.acompanhante}</td>
+                    <td>{$tbl1.data_saida}</td>
+                    <td>{$tbl1.hora_saida}</td>
+                    <td>{$tbl1.odo_retorno}</td>
+                    <td>{$tbl1.data_retorno}</td>
+                    <td>{$tbl1.hora_retorno}</td>
+                </tr>
+            {/foreach}    
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Viatura</td>
+                <td>Motorista</td>
+                <td>Destino</td>
+                <td>Odômetro Saída</td>
+                <td>Acompanhante</td>
+                <td>Data Saída</td>
+                <td>Hora Saída</td>
+                <td>Odômetro Retorno</td>
+                <td>Data Chegada</td>
+                <td>Hora Chegada</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

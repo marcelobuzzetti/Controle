@@ -45,27 +45,32 @@
         }
 
     </script>
-    <div class='container tabela'>
-        <fieldset>
-            <legend>Relatório Utilização de Vtr</legend>
-            <table class='table table-striped table-hover' text-align='center'>
+    <div class="container">
+        <table id="relatorio" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <td>Viatura</td>
+                    <td>Qnt x rodou</td>
+                    <td>KM rodada</td>
+                </tr>
+            </thead>
+            <tbody>
                 {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
                     <tr>                            
-                        <td>Ordem: {$smarty.foreach.relacao_relatorio.iteration}</td>
+                        <td>{$tbl.modelo} - {$tbl.placa}</td>
+                        <td>{$tbl.qnt}</td>
+                        <td>{$tbl.KM}</td>
                     </tr>
-                    <tr>
-                        <td>Viatura: {$tbl.modelo} - {$tbl.placa}</td>
-                    </tr>
-                    <tr>
-                        <td>Qnt Uso: {$tbl.qnt}</td>
-                    </tr>
-                    <tr>
-                        <td>KM: {$tbl.KM}</td>
-                    </tr>
-                    <tr><td></td></tr>
                 {/foreach}    
-            </table>
-        </fieldset>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Viatura</td>
+                    <td>Qnt x rodou</td>
+                    <td>KM rodada</td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 {/if}
 <div class='container'>

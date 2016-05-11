@@ -81,44 +81,46 @@
         </div>              
     {/if}
 </div>
-<legend>Modelos Cadastradas</legend>
-<table id="modelos" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <td>Marca</td>
-            <td>Modelo</td>
-            <td>Capacidade do Tanque</td>
-            <td>Consumo Km/L</td>
-            <td>Capacidade(Pessoas)</td>
-            <td>Apagar</td>
-            <td>Atualizar</td>
-        </tr>
-    </thead>
-    <tbody>
-        {foreach $tabela_modelos_cadastrados as $tbl name=relacao_modelos}
+<div class="container">
+    <legend>Modelos Cadastradas</legend>
+    <table id="modelos" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                <td>{$tbl.marca}</td>
-                <td>{$tbl.descricao}</td>
-                <td>{$tbl.cap_tanque}</td>
-                <td>{$tbl.consumo_padrao}</td>
-                <td>{$tbl.cap_transp}</td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'/></button></td>
-        <form action='modelo' method='post'>
-            <td><input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
-                <button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/><span class='glyphicon glyphicon-refresh'/></form></td>
-</form>
-</tr>
-{/foreach} 
-</tbody>
-<tfoot>
-    <tr>
-        <td>Marca</td>
-        <td>Modelo</td>
-        <td>Capacidade do Tanque</td>
-        <td>Consumo Km/L</td>
-        <td>Capacidade(Pessoas)</td>
-        <td>Apagar</td>
-        <td>Atualizar</td>
-    </tr>
-</tfoot>
-</table>
+                <td>Marca</td>
+                <td>Modelo</td>
+                <td>Capacidade do Tanque</td>
+                <td>Consumo Km/L</td>
+                <td>Capacidade(Pessoas)</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $tabela_modelos_cadastrados as $tbl name=relacao_modelos}
+                <tr>
+                    <td>{$tbl.marca}</td>
+                    <td>{$tbl.descricao}</td>
+                    <td>{$tbl.cap_tanque}</td>
+                    <td>{$tbl.consumo_padrao}</td>
+                    <td>{$tbl.cap_transp}</td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_modelo}"><span class='glyphicon glyphicon-remove-sign'/></button></td>
+            <form action='modelo' method='post'>
+                <td><input type='hidden' id='{$tbl.id_modelo}' value='{$tbl.id_modelo}' name='id'/>
+                    <button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_modelo'/><span class='glyphicon glyphicon-refresh'/></form></td>
+            </form>
+            </tr>
+        {/foreach} 
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Marca</td>
+                <td>Modelo</td>
+                <td>Capacidade do Tanque</td>
+                <td>Consumo Km/L</td>
+                <td>Capacidade(Pessoas)</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

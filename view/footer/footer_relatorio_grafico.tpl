@@ -20,6 +20,7 @@
     </div>
 </div>
 <script src="{$HOST}/libs/js/jquery.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/Chart.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/jquery-ui.min.js" type="text/javascript"></script>
@@ -30,9 +31,7 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#combustivel').DataTable({
-            "info": false,
-            "paging": false,
+        $('#relatorio').DataTable({            
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",

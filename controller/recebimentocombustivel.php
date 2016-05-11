@@ -29,10 +29,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('relacao_tipo_combustiveis', $relacao_tipo_combustiveis);
         $smarty->assign('relacao_rcb_combustiveis', $relacao_rcb_combustiveis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('recebimentocombustivel.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_recebimentocombustivel.tpl');
 
     } else {
         $id = $_POST['id'];
@@ -65,9 +65,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('relacao_tipo_combustiveis', $relacao_tipo_combustiveis);
         $smarty->assign('relacao_rcb_combustiveis', $relacao_rcb_combustiveis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('recebimentocombustivel.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_recebimentocombustivel.tpl');
     }
 }

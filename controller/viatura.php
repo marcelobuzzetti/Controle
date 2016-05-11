@@ -39,10 +39,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
          $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
          $smarty->assign('relacao_tipos_viaturas', $relacao_tipos_viaturas);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('viatura.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_viatura.tpl');
         
     } else {
 
@@ -85,10 +85,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
          $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
          $smarty->assign('relacao_tipos_viaturas', $relacao_tipos_viaturas);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('viatura.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_viatura.tpl');
     }
 }
 ?>

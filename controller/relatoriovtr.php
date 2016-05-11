@@ -38,10 +38,10 @@ if (!isset($_SESSION['login'])) {
         $smarty->assign('b', $b);
         $smarty->assign('c', $c);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('relatoriovtr.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_relatorio_grafico.tpl');
         
     } else {
 
@@ -50,10 +50,10 @@ if (!isset($_SESSION['login'])) {
             $smarty->assign('verificador', $verificador);
             $smarty->assign('titulo', 'Relatório de Utilizaçao de Vtr por Periodo');
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header.tpl');
+            $smarty->display('./headers/header_datatables.tpl');
             $smarty->display($menu);
             $smarty->display('relatoriovtr.tpl');
-            $smarty->display('./footer/footer.tpl');
+            $smarty->display('./footer/footer_relatorio_grafico.tpl');
         } else {
 
             $verificador = 1;
@@ -83,10 +83,10 @@ if (!isset($_SESSION['login'])) {
             $smarty->assign('b', $b);
             $smarty->assign('c', $c);
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header.tpl');
+            $smarty->display('./headers/header_datatables.tpl');
             $smarty->display($menu);
             $smarty->display('relatoriovtr.tpl');
-            $smarty->display('./footer/footer.tpl');
+            $smarty->display('./footer/footer_relatorio_grafico.tpl');
         }
     }
 }

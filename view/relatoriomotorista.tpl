@@ -45,23 +45,31 @@
         }
 
     </script>
-    <div class='container tabela'>
-        <table class='table table-striped table-hover' text-align='center'>
-            {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
-                <tr>                            
-                    <td>Ordem: {$smarty.foreach.relacao_relatorio.iteration}</td>
-                </tr>
+    <div class="container">
+        <table id="relatorio" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
                 <tr>
-                    <td>Motorista: {$tbl.apelido}</td>
+                    <td>Motorista</td>
+                    <td>Qnt x dirigiu</td>
+                    <td>KM rodada</td>
                 </tr>
+            </thead>
+            <tbody>
+                {foreach $relacao_relatorio as $tbl name=relacao_relatorio}
+                    <tr>                            
+                        <td>{$tbl.apelido}</td>
+                        <td>{$tbl.qnt}</td>
+                        <td>{$tbl.KM}</td>
+                    </tr>
+                {/foreach}    
+            </tbody>
+            <tfoot>
                 <tr>
-                    <td>Qnt Uso: {$tbl.qnt}</td>
+                    <td>Motorista</td>
+                    <td>Qnt x dirigiu</td>
+                    <td>KM rodada</td>
                 </tr>
-                <tr>
-                    <td>KM: {$tbl.KM}</td>
-                </tr>
-                <tr><td></td></tr>
-            {/foreach}    
+            </tfoot>
         </table>
     </div>
 {/if}

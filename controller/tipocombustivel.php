@@ -20,10 +20,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('evento', 'tipo');
         $smarty->assign('relacao_tipos_combustiveis', $relacao_tipos_combustiveis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('tipocombustivel.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_combustivel.tpl');
 
     } else {
         $id = $_POST['id'];
@@ -53,9 +53,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('descricao', $descricao);
         $smarty->assign('relacao_tipos_combustiveis', $relacao_tipos_combustiveis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('tipocombustivel.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_combustivel.tpl');
     }
 }

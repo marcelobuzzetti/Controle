@@ -53,55 +53,39 @@
         </div>
     </form>
 </div>
-<div class='container table-responsive grafico'>
-    <table class='table table-striped table-hover' text-align='center'>
-        <legend>Usuários Cadastrados</legend>
-        <tr>
-            <td>Login</td>
-            <td>Perfil</td>
-            <td>Apelido</td>
-            <td colspan="2">Ações</td>
-        </tr>
-        {foreach $relacao_usuarios as $tbl name='usuarios'}
+<div class="container">
+    <table id="usuario" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                <td>{$tbl.login}</td>
-                <td>{$tbl.descricao}</td>
-                <td>{$tbl.nome}</td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_usuario}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <form action='usuario' method='post'>
-                <input type='hidden' id='id'  name='id' value='{$tbl.id_usuario}'/>
-                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_usuario'/><span class='glyphicon glyphicon-refresh  '/></form></td>
-            </form>
+                <td>Login</td>
+                <td>Perfil</td>
+                <td>Apelido</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
             </tr>
-        {/foreach}
-    </table>
-</div>
-<div class='container tabela'>
-    <table class='table table-striped table-hover' text-align='center'>
-        <legend>Usuários Cadastrados</legend>
-        {foreach $relacao_usuarios as $tbl name='usuarios'}
+        </thead>
+        <tbody>
+            {foreach $relacao_usuarios as $tbl name='usuarios'}
+                <tr>
+                    <td>{$tbl.login}</td>
+                    <td>{$tbl.descricao}</td>
+                    <td>{$tbl.nome}</td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_usuario}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                    <td><form action='usuario' method='post'>
+                            <input type='hidden' id='id'  name='id' value='{$tbl.id_usuario}'/>
+                            <button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_usuario'/><span class='glyphicon glyphicon-refresh  '/></form></td>
+                    </form>
+                </tr>
+            {/foreach}   
+        </tbody>
+        <tfoot>
             <tr>
-                <td>Login {$tbl.login}</td>
+                <td>Login</td>
+                <td>Perfil</td>
+                <td>Apelido</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
             </tr>
-            <tr>
-                <td>Perfil {$tbl.descricao}</td>
-            </tr>
-            <tr>
-                <td>Apelido {$tbl.nome}</td>
-            </tr>
-            <tr>
-                <td>Ações</td>
-            </tr>
-            <tr>
-                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_usuario}"><span class='glyphicon glyphicon-remove-sign'</button>
-                    <form action='usuario' method='post'>
-                        <input type='hidden' id='id'  name='id' value='{$tbl.id_usuario}'/>
-                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value='atualiza_usuario'/><span class='glyphicon glyphicon-refresh  '/></form></td>
-                </form>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-        {/foreach}
+        </tfoot>
     </table>
 </div>

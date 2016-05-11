@@ -20,49 +20,36 @@
     </div>
 </div>
 <!--Modal-->
-<div class='container table-responsive grafico'>
+<div class='container'>
     <div class="jumbotron">
         <h1>Tipos Combustíveis Cadastrados</h1>
     </div>
-    <table class='table table-striped table-hover' text-align='center'>
-        <tr>
-            <td>Tipo</td>
-            <td colspan='2'>Ações</td>
-        </tr>
-        {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
+    <table id="combustivel" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                <td>{$tbl.descricao}</td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <form action='tipocombustivel' method='post'>
-                <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
-                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
-            </form>
+                <td>Tipo</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
             </tr>
-        {/foreach}
-    </table>
-</div>
-<div class='container tabela'>
-    <div class="jumbotron">
-        <h1>Tipos Combustíveis Cadastrados</h1>
-    </div>
-    <table class='table table-striped table-hover' text-align='center'>
-        {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
+        </thead>
+        <tbody>
+            {foreach $relacao_tipos_combustiveis as $tbl name='tipos_combustiveis'}
+                <tr>
+                    <td>{$tbl.descricao}</td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                    <td><form action='tipocombustivel' method='post'>
+                            <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
+                            <button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
+                    </form>
+                </tr>
+            {/foreach}
+        </tbody>
+        <tfoot>
             <tr>
-                <td>Tipo {$tbl.descricao}</td>
+                <td>Tipo</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
             </tr>
-            <tr>
-                <td>Ações</td>
-            </tr>
-            <tr>      
-                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_tipo_combustivel}"><span class='glyphicon glyphicon-remove-sign'</button>
-                    <form action='tipocombustivel' method='post'>
-                        <input type='hidden' id='id' name='id' value='{$tbl.id_tipo_combustivel}' />
-                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value='atualiza_tipo'/><span class="glyphicon glyphicon-refresh"/></form></td>
-                </form>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-        {/foreach}
+        </tfoot>
     </table>
 </div>

@@ -22,7 +22,7 @@ if (!isset($_SESSION['login'])) {
 
         $smarty->assign('verificador', $verificador);
         $smarty->assign('titulo', 'Relatórios');
-        $smarty->assign('titulo1', 'Relatório de Completo de Vtr');
+        $smarty->assign('titulo1', 'Relatório Completo de Vtr');
         $smarty->assign('relacao_relatorio', $relacao_relatorio);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_relatorio.tpl');

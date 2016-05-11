@@ -38,10 +38,10 @@ if (!isset($_SESSION['login'])) {
         $smarty->assign('b', $b);
         $smarty->assign('c', $c);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('relatoriomotorista.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_relatorio_grafico.tpl');
         
     } else {
 
@@ -50,10 +50,10 @@ if (!isset($_SESSION['login'])) {
             $smarty->assign('verificador', $verificador);
             $smarty->assign('titulo', 'Relatório de Utilizaçao de Motorista por Periodo');
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header.tpl');
+            $smarty->display('./headers/header_datatables.tpl');
             $smarty->display($menu);
             $smarty->display('relatoriomotorista.tpl');
-            $smarty->display('./footer/footer.tpl');
+            $smarty->display('./footer/footer_relatorio_grafico.tpl');
         } else {
 
             $verificador = 1;
@@ -77,16 +77,17 @@ if (!isset($_SESSION['login'])) {
             $data_fim = $_POST['data_fim'];
 
             $smarty->assign('verificador', $verificador);
-            $smarty->assign('titulo', 'Relatório de Utilizaçao de Motorista por Periodo de ' . $data_inicio . ' a ' . $data_fim);
+            $smarty->assign('titulo1', 'Relatório de Utilizaçao de Motorista por Periodo de ' . $data_inicio . ' a ' . $data_fim);
+            $smarty->assign('titulo', 'Relatório de Utilizaçao de Motorista por Periodo');
             $smarty->assign('relacao_relatorio', $relacao_relatorio);
             $smarty->assign('a', $a);
             $smarty->assign('b', $b);
             $smarty->assign('c', $c);
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header.tpl');
+            $smarty->display('./headers/header_datatables.tpl');
             $smarty->display($menu);
             $smarty->display('relatoriomotorista.tpl');
-            $smarty->display('./footer/footer.tpl');
+            $smarty->display('./footer/footer_relatorio_grafico.tpl');
         }
     }
 }

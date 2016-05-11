@@ -22,9 +22,9 @@ $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 $smarty->assign('titulo', 'Viaturas Cadastradas');
 $smarty->assign('relacao_viaturas', $relacao_viaturas);
 $smarty->assign('login', $_SESSION['login']);
-$smarty->display('./headers/header.tpl');
+$smarty->display('./headers/header_datatables.tpl');
 $smarty->display($menu);
 $smarty->display('viaturacadastrada.tpl');
-$smarty->display('./footer/footer.tpl');
+$smarty->display('./footer/footer_viatura.tpl');
 }
 ?>

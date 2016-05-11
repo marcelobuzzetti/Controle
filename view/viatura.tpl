@@ -95,87 +95,61 @@
         </div>
     </form>
 </div>
-<div class='container table-responsive'>
+<div class="container">
     <legend>Viaturas Cadastradas</legend>
-    <table class='table table-striped table-hover' text-align='center'>
-        <tr>
-            <td>Ordem</td>
-            <td>Marca</td>
-            <td>Modelo</td>
-            <td>Placa</td>
-            <td>Odômetro</td>
-            <td>Capacidade do Tanque</td>
-            <td>Consumo Km/L</td>
-            <td>Capacidade(Pessoas)</td>
-            <td>Habilitação Necessária</td>
-            <td>Situação</td>
-            <td colspan='2'>Ações</td>
-        </tr>
-        {foreach $relacao_viaturas as $tbl name='viaturas'}
+    <table id="viatura" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
             <tr>
-                <td>{$smarty.foreach.viaturas.iteration}</td>
-                <td>{$tbl.marca}</td>
-                <td>{$tbl.modelo}</td>
-                <td>{$tbl.placa}</td>
-                <td>{$tbl.odometro}</td>
-                <td>{$tbl.cap_tanque}</td>
-                <td>{$tbl.consumo_padrao}</td>
-                <td>{$tbl.cap_transp}</td>
-                <td>{$tbl.categoria}</td>
-                <td>{$tbl.disponibilidade}</td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <form action='viatura' method='post'>
-                <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
-                <td><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class='glyphicon glyphicon-refresh'/></form></td>
-            </form>
+                <td>Ordem</td>
+                <td>Marca</td>
+                <td>Modelo</td>
+                <td>Placa</td>
+                <td>Odômetro</td>
+                <td>Capacidade do Tanque</td>
+                <td>Consumo Km/L</td>
+                <td>Capacidade(Pessoas)</td>
+                <td>Habilitação Necessária</td>
+                <td>Situação</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
             </tr>
-        {/foreach}
-    </table>
-</div>
-<div class='container tabela'>
-    <legend>Viaturas Cadastradas</legend>
-    <table class='table table-striped table-hover' text-align='center'>
-        {foreach $relacao_viaturas as $tbl name='viaturas'}
+        </thead>
+        <tbody>
+            {foreach $relacao_viaturas as $tbl name='viaturas'}
+                <tr>
+                    <td>{$smarty.foreach.viaturas.iteration}</td>
+                    <td>{$tbl.marca}</td>
+                    <td>{$tbl.modelo}</td>
+                    <td>{$tbl.placa}</td>
+                    <td>{$tbl.odometro}</td>
+                    <td>{$tbl.cap_tanque}</td>
+                    <td>{$tbl.consumo_padrao}</td>
+                    <td>{$tbl.cap_transp}</td>
+                    <td>{$tbl.categoria}</td>
+                    <td>{$tbl.disponibilidade}</td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                    <td><form action='viatura' method='post'>
+                            <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
+                            <button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class='glyphicon glyphicon-refresh'/></form></td>
+                    </form>
+                </tr>
+            {/foreach}  
+        </tbody>
+        <tfoot>
             <tr>
-                <td>Ordem {$smarty.foreach.viaturas.iteration}</td>
+                <td>Ordem</td>
+                <td>Marca</td>
+                <td>Modelo</td>
+                <td>Placa</td>
+                <td>Odômetro</td>
+                <td>Capacidade do Tanque</td>
+                <td>Consumo Km/L</td>
+                <td>Capacidade(Pessoas)</td>
+                <td>Habilitação Necessária</td>
+                <td>Situação</td>
+                <td>Apagar</td>
+                <td>Atualizar</td>
             </tr>
-            <tr>
-                <td>Marca {$tbl.marca}</td>
-            </tr>
-            <tr>
-                <td>Modelo {$tbl.modelo}</td>
-            </tr>
-            <tr>
-                <td>Placa {$tbl.placa}</td>
-            </tr>
-            <tr>
-                <td>Odômetro {$tbl.odometro}</td>
-            </tr>
-            <tr>
-                <td>Capacidade do Tanque {$tbl.cap_tanque}</td>
-            </tr>
-            <tr>
-                <td>Consumo Km/L {$tbl.consumo_padrao}</td>
-            </tr>
-            <tr>
-                <td>Capacidade(Pessoas) {$tbl.cap_transp}</td>
-            </tr>
-            <tr>
-                <td>Habilitação Necessária {$tbl.categoria}</td>
-            </tr>
-            <tr>
-                <td>Situação {$tbl.disponibilidade}</td>
-            </tr>
-            <tr>
-                <td>Ações</td>
-            </tr>
-            <tr>                 
-                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_viatura}"><span class='glyphicon glyphicon-remove-sign'</button>
-                    <form action='viatura' method='post'>
-                        <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
-                        <button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                </form>
-            </tr>
-        {/foreach}
+        </tfoot>
     </table>
 </div>

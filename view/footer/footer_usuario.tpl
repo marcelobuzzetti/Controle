@@ -30,9 +30,7 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#combustivel').DataTable({
-            "info": false,
-            "paging": false,
+        $('#usuario').DataTable({
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",

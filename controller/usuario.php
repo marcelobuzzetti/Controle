@@ -24,10 +24,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_usuario.tpl');
 
     } else {
         $id = $_POST['id'];
@@ -60,9 +60,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
-        $smarty->display('./footer/footer.tpl');
+        $smarty->display('./footer/footer_usuario.tpl');
     }
 }
