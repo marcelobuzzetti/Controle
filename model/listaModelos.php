@@ -18,7 +18,7 @@ if (mysql_num_rows($rs) > 0) {
     }
     echo "</select>";
 } else {
-    echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
+    echo "<select class='form-control' name='modelo' id='modelo' required='required'>";
     echo "<option value='' disabled selected>Sem Modelos</option>";
     echo "</select>";
 }
