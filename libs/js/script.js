@@ -94,12 +94,13 @@ $(function () {
     });
     /*Informa a quantidade de combustivel*/
     
-    /*Formato data*/
+    /*Formatos*/
     $("#data_nascimento").mask("99/99/9999");
     $("#validade").mask("99/99/9999");
     $("#cpf").mask("99999999999");
     $("#cnh").mask("99999999999");
-    /*Formato data*/
+    $("#placa").mask("aaa9999");
+    /*Formatos*/
     
     /*Verifica se o motorista existe*/
     $('#nome').blur(function () {
@@ -118,12 +119,6 @@ $(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
     /*Verifica se a motorista existe*/
-    
-    /*Verifica se o usuario existe
-    $('#login').keyup(function () {
-        $('#alerta').load('../model/verificaUsuario.php?' + $.param({login: $('#login').val()}));
-    });
-    Verifica se o usuario existe*/
     
      /*Verifica se o login existe*/
     $('#usuario').keyup(function () {
