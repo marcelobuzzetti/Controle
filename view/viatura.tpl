@@ -109,7 +109,6 @@
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <td>Ordem</td>
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Placa</td>
@@ -126,7 +125,6 @@
         <tbody>
             {foreach $relacao_viaturas as $tbl name='viaturas'}
                 <tr>
-                    <td>{$smarty.foreach.viaturas.iteration}</td>
                     <td>{$tbl.marca}</td>
                     <td>{$tbl.modelo}</td>
                     <td>{$tbl.placa}</td>
@@ -146,7 +144,6 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Ordem</td>
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Placa</td>
