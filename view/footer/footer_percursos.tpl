@@ -30,7 +30,7 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#vtr_fechadas').DataTable({
+        $('#tabela').DataTable({
             "info": false,
             "paging": false,
             "oLanguage": {
