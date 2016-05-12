@@ -36,7 +36,7 @@ if (!isset($_SESSION['login'])) {
     $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('percurso.tpl');
-    $smarty->display('./footer/footer_datatables.tpl');
+    $smarty->display('./footer/footer_percursos.tpl');
     unset($_SESSION['cadastrado']);
     unset($_SESSION['atualizado']);
     unset($_SESSION['apagado']);
