@@ -144,7 +144,7 @@
 </div>
 <div class="container">
     <legend>10 últimas viaturas fechadas</legend>
-    <table id="vtr_fechadas" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Viatura</td>

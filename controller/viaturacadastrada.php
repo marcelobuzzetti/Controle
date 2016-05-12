@@ -25,6 +25,6 @@ $smarty->assign('login', $_SESSION['login']);
 $smarty->display('./headers/header_datatables.tpl');
 $smarty->display($menu);
 $smarty->display('viaturacadastrada.tpl');
-$smarty->display('./footer/footer_viatura.tpl');
+$smarty->display('./footer/footer_datatables.tpl');
 }
 ?>

@@ -54,7 +54,7 @@
     </form>
 </div>
 <div class="container">
-    <table id="usuario" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Login</td>

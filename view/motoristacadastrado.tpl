@@ -42,9 +42,7 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>    
-
-
-    <table id="motoristas" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Posto/Grad</td>

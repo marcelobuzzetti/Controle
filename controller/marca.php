@@ -26,7 +26,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('marca.tpl');
-        $smarty->display('./footer/footer_marca.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
         unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
@@ -64,7 +64,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('marca.tpl');
-        $smarty->display('./footer/footer_marca.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
         }
         
         }

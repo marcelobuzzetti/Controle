@@ -58,8 +58,8 @@
     </form>
 </div>
 <div class="container">
-    <legend>Motoristas Cadastrados</legend>
-    <table id="recebimento_combustivel" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <legend>Combustiveis Recebidos</legend>
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Combustível</td>

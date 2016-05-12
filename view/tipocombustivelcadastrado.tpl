@@ -24,7 +24,7 @@
     <div class="jumbotron">
         <h1>Tipos Combustíveis Cadastrados</h1>
     </div>
-    <table id="combustivel" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Tipo</td>

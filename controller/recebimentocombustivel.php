@@ -32,7 +32,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('recebimentocombustivel.tpl');
-        $smarty->display('./footer/footer_recebimentocombustivel.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
 
     } else {
         $id = $_POST['id'];
@@ -72,6 +72,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('recebimentocombustivel.tpl');
-        $smarty->display('./footer/footer_recebimentocombustivel.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
     }
 }

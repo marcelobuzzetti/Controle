@@ -20,5 +20,5 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $smarty->display('./headers/header_abastecimento.tpl');
     $smarty->display($menu);
     $smarty->display('abastecimentorealizado.tpl');
-    $smarty->display('./footer/footer_abastecimento.tpl');
+    $smarty->display('./footer/footer_datatables.tpl');
 }

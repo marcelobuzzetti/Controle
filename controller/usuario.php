@@ -27,7 +27,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
-        $smarty->display('./footer/footer_usuario.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
 
     } else {
         $id = $_POST['id'];
@@ -65,6 +65,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
-        $smarty->display('./footer/footer_usuario.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
     }
 }

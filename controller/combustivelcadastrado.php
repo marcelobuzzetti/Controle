@@ -19,5 +19,5 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
     $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('combustivelcadastrado.tpl');
-    $smarty->display('./footer/footer_combustivel.tpl');
+    $smarty->display('./footer/footer_datatables.tpl');
 }

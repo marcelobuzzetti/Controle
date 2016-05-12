@@ -43,7 +43,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header_abastecimento.tpl');
         $smarty->display($menu);
         $smarty->display('abastecimento.tpl');
-        $smarty->display('./footer/footer_abastecimento.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
         unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
@@ -97,6 +97,6 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->display('./headers/header_abastecimento.tpl');
         $smarty->display($menu);
         $smarty->display('abastecimento.tpl');
-        $smarty->display('./footer/footer_abastecimento.tpl');
+        $smarty->display('./footer/footer_datatables.tpl');
     }
 }
