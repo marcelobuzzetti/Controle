@@ -1056,4 +1056,5 @@ switch ($_POST['enviar']) {
     default:
     //no action sent
 }
+unset($_POST, $_GET); 
 ?>
