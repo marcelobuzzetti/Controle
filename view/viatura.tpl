@@ -37,25 +37,25 @@
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="modelo">Modelo</label>
             {if $update > 0}
-               <select class='form-control' name='modelo' id='modelo' required tabindex="2">
-                <option value='' disabled selected>Selecione o Modelo</option>
+                <select class='form-control' name='modelo' id='modelo' required tabindex="2">
+                    <option value='' disabled selected>Selecione o Modelo</option>
                     {foreach $relacao_modelos as $modelos}
                         <option value={$modelos.id_modelo} {if {$modelos.id_modelo} == {$modelo}}selected{/if}>{$modelos.descricao}</option>
                     {/foreach}
                 </select>
             {else}
-            <select class="form-control" id="modelo" name="modelo"  required tabindex="2">
-                <option value='' class="Selecione" disabled selected>Selecione a Marca</option>
-            </select>
+                <select class="form-control" id="modelo" name="modelo"  required tabindex="2">
+                    <option value='' class="Selecione" disabled selected>Selecione a Marca</option>
+                </select>
             {/if}
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Ano</label>
-            <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$odometro}' step="1" min="1980" max="2016" tabindex="3"/>
+            <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$odometro}' step="1" min="1980" max="2016" maxlength="4" tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="placa">Placa</label>
-            <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}' tabindex="4"/>
+            <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}'  maxlength="6" tabindex="4"/>
         </div>
         <span name="alerta" id="alerta"></span>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
@@ -67,7 +67,7 @@
             <select class="form-control" name="tipo_viatura" tabindex="6">
                 <option value='' disabled selected>Selecione o Tipo de Viatura</option>
                 {foreach $relacao_tipos_viaturas as $tipo_viatura}
-                    <option value={$tipo_viatura.id_tipo_viatura}>{$tipo_viatura.descricao}</option>
+                    <option value={$tipo_viatura.id_tipo_viatura} {if {$tipo_viatura.id_tipo_viatura} == {$tipo_vtr}}selected{/if}>{$tipo_viatura.descricao}</option>
                 {/foreach}
             </select>
         </div>
@@ -75,8 +75,8 @@
             <label for="habilitacao">Habilitação Necessária</label>
             <select class="form-control" name="habilitacao" required tabindex="7">
                 <option value='' disabled selected>Selecione a Habilitação</option>
-                {foreach $relacao_habilitacoes as $habilitacao}
-                    <option value={$habilitacao.id_habilitacao}>{$habilitacao.categoria}</option>
+                {foreach $relacao_habilitacoes as $habilitacoes}
+                    <option value={$habilitacoes.id_habilitacao} {if {$habilitacoes.id_habilitacao} == {$habilitacao}}selected{/if}>{$habilitacoes.categoria}</option>
                 {/foreach}
             </select>
         </div>
@@ -84,8 +84,8 @@
             <label for="combustivel">Combustível</label>
             <select class="form-control" name="combustivel" required tabindex="8">
                 <option value='' disabled selected>Selecione o Combustivel</option>
-                {foreach $relacao_combustiveis as $combustivel}
-                    <option value={$combustivel.id_combustivel}>{$combustivel.descricao}</option>
+                {foreach $relacao_combustiveis as $combustiveis}
+                    <option value={$combustiveis.id_combustivel} {if {$combustiveis.id_combustivel} == {$combustivel}}selected{/if}>{$combustiveis.descricao}</option>
                 {/foreach}
             </select>
         </div>

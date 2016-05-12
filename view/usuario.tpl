@@ -37,8 +37,8 @@
             <label for="perfil">Perfil</label>
             <select class="form-control" name="perfil" required tabindex="3">
                 <option value='' disabled selected>Selecione o Perfil</option>
-                {foreach $relacao_perfis as $perfil}
-                    <option value={$perfil.id_perfil}>{$perfil.descricao}</option>
+                {foreach $relacao_perfis as $perfis}
+                    <option value={$perfis.id_perfil} {if {$perfis.id_perfil} == {$perfil}}selected{/if}>{$perfis.descricao}</option>
                 {/foreach}
             </select>
         </div>

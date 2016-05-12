@@ -39,6 +39,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
             if($executa){
                 $dados_usuarios = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_usuario = $dados_usuarios->id_usuario;
+                $perfil = $dados_usuarios->id_perfil;
                 $login1 = $dados_usuarios->login;
                 $apelido = $dados_usuarios->nome;
                 
@@ -55,6 +56,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_usuario');
         $smarty->assign('id_usuario', $id_usuario);
+        $smarty->assign('perfil', $perfil);
         $smarty->assign('login1', $login1);
         $smarty->assign('apelido', $apelido);
         $smarty->assign('relacao_usuarios', $relacao_usuarios);

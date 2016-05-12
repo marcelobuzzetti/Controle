@@ -44,6 +44,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             if($executa){
                 $dados_rcb_combustiveis = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_rcb_comb = $dados_rcb_combustiveis->id_recibo_combustivel;
+                $combustivel = $dados_rcb_combustiveis->id_combustivel;
+                $tipo_combustivel = $dados_rcb_combustiveis->id_tipo_combustivel;
                 $qnt = $dados_rcb_combustiveis->qnt;
                 $motivo = $dados_rcb_combustiveis->motivo;
             } else {
@@ -59,6 +61,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_rcb_comb');
         $smarty->assign('id_rcb_comb', $id_rcb_comb);
+        $smarty->assign('combustivel', $combustivel);
+        $smarty->assign('tipo_combustivel', $tipo_combustivel);
         $smarty->assign('qnt', $qnt);
         $smarty->assign('motivo', $motivo);
         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);

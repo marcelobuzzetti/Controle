@@ -30,7 +30,7 @@
             <select class="form-control" name="combustivel" tabindex="1">
                 <option value='' disabled selected>Selecione o Combustível</option>
                 {foreach $relacao_combustiveis as $combustiveis}
-                    <option value={$combustiveis.id_combustivel}>{$combustiveis.descricao}</option>
+                    <option value={$combustiveis.id_combustivel} {if {$combustiveis.id_combustivel} == {$combustivel}}selected{/if}>{$combustiveis.descricao}</option>
                 {/foreach}
             </select>
         </div>
@@ -39,7 +39,7 @@
             <select class="form-control" name="tp" tabindex="2">
                 <option value='' disabled selected>Selecione o Tipo  de Combustível</option>
                 {foreach $relacao_tipo_combustiveis as $tipos_combustiveis}
-                    <option value={$tipos_combustiveis.id_tipo_combustivel}>{$tipos_combustiveis.descricao}</option>
+                    <option value={$tipos_combustiveis.id_tipo_combustivel} {if {$tipos_combustiveis.id_tipo_combustivel} == {$tipo_combustivel}}selected{/if}>{$tipos_combustiveis.descricao}</option>
                 {/foreach}
             </select>
         </div>
