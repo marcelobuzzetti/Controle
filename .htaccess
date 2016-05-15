@@ -9,6 +9,7 @@ Options -Indexes
 
 #Acesso as Páginas
 RewriteRule ^/?$ controller/home.php
+RewriteRule ^inicio/?$ controller/inicio.php
 RewriteRule ^abastecimento/?$ controller/abastecimento.php
 RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
 RewriteRule ^combustiveldisponivel/?$ controller/combustiveldisponivel.php
@@ -28,6 +29,8 @@ RewriteRule ^tiposcombustiveiscadastrados/?$ controller/tipocombustivelcadastrad
 RewriteRule ^usuario/?$ controller/usuario.php
 RewriteRule ^viatura/?$ controller/viatura.php
 RewriteRule ^viaturascadastradas/?$ controller/viaturacadastrada.php
+
+RewriteRule ^json/?$ model/listaMilitares.php
 
 #Acesso ao Model
 RewriteRule ^conexao/?$ model/conexao.php
