@@ -5,8 +5,25 @@ function preenche(a, b) {
 }
 /*Remove atributo required em percurso*/
 
-/*Coloca datepicker nas datas*/
-$(function () {
+$(function start() {
+
+    /*Abrir Select*/
+    $('select').hover(function () {
+        start();
+        var count = $(this).children().length;
+        $(this).attr('size', count);
+    }, function () {
+        $(this).removeAttr('size');
+    });
+    $('option').mouseenter(function () {
+        $(this).attr('style', 'background-color:#0166FD;color:white');
+    });
+    $('option').mouseleave(function () {
+        $(this).removeAttr('style');
+    });
+    /*Abrir Select*/
+
+    /*Coloca datepicker nas datas*/
     $('#data_inicio').datepicker({
         showButtonPanel: true,
         dateFormat: 'dd/mm/yy',
@@ -68,32 +85,32 @@ $(function () {
         $('#alerta').load('../model/verificaModelo.php?' + $.param({marca_modelo: $('#marca_modelo').val(), modelo: $('#modelo').val()}));
     });
     /*Verifica se a modelo existe*/
-    
+
     /*Completa o tipo de combustivel*/
     $('#combustivel').change(function () {
         $('#tp').load('../model/listaTipoCombustivel.php?' + $.param({combustivel: $('#combustivel').val()}));
     });
     /*Completa o tipo de combustivel*/
-    
+
     /*Define o maximo de combustivel que poder ser abastecido*/
     $('#tp').change(function () {
         $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
         $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
     });
     /*Define o maximo de combustivel que poder ser abastecido*/
-    
+
     /*Informa a quantidade de combustivel*/
     $('#qnt').keyup(function () {
         $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
         $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
     });
-    
-      $('#qnt').change(function () {
+
+    $('#qnt').change(function () {
         $('#qnt').load('../model/qntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val()}));
         $('#alerta').load('../model/informaQntCombustivel.php?' + $.param({combustivel: $('#combustivel').val(), tp: $('#tp').val(), qnt: $('#qnt').val()}));
     });
     /*Informa a quantidade de combustivel*/
-    
+
     /*Formatos*/
     $("#data_nascimento").mask("99/99/9999");
     $("#validade").mask("99/99/9999");
@@ -101,37 +118,37 @@ $(function () {
     $("#cnh").mask("99999999999");
     $("#placa").mask("aaa9999");
     /*Formatos*/
-    
+
     /*Verifica se o motorista existe*/
     $('#nome').blur(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
-     $('#pg').blur(function () {
+    $('#pg').blur(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
     $('#nome').change(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
-     $('#pg').change(function () {
+    $('#pg').change(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
     $('#nome').keyup(function () {
         $('#alerta').load('../model/verificaMotorista.php?' + $.param({nome: $('#nome').val(), pg: $('#pg').val()}));
     });
     /*Verifica se a motorista existe*/
-    
+
     /*Verifica se viatura existe*/
     $('#placa').keyup(function () {
-        $('#alerta').load('../model/verificaViatura.php?' + $.param({marca: $('#marca').val(), modelo: $('#modelo').val(), placa:$('#placa').val()}));
+        $('#alerta').load('../model/verificaViatura.php?' + $.param({marca: $('#marca').val(), modelo: $('#modelo').val(), placa: $('#placa').val()}));
     });
     /*Verifica se o viatura existe*/
-    
-     /*Verifica se combustivel existe*/
+
+    /*Verifica se combustivel existe*/
     $('#descricao').keyup(function () {
         $('#alerta').load('../model/verificaCombustivel.php?' + $.param({descricao: $('#descricao').val()}));
     });
     /*Verifica se o combustivel existe*/
-    
+
     /*Verifica se tipo combustivel existe*/
     $('#descricao_tipo').keyup(function () {
         $('#alerta').load('../model/verificaTipoCombustivel.php?' + $.param({descricao: $('#descricao_tipo').val()}));
@@ -152,7 +169,7 @@ $(function () {
         }
     });
     /*Verificar as datas*/
-    
+
     /*Realiza pesquisa em relatorio*/
     $('#pesquisa_relatorio').keyup(function () {
         $('#relatorio').load('../model/pesquisaRelatorio.php?' + $.param({pesquisa_relatorio: $('#pesquisa_relatorio').val()}));
