@@ -10,11 +10,8 @@
         <meta name="author" content="Marcelo">
         <link rel="icon" href="../../libs/imagens/download.jpg">
         <link href="{$HOST}/libs/css/estilo.min.css" rel="stylesheet" type="text/css"/>
-        <link href="{$HOST}/libs/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="{$HOST}/libs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-
     </head>
     <body>
