@@ -5,23 +5,27 @@ function preenche(a, b) {
 }
 /*Remove atributo required em percurso*/
 
-$(function start() {
+/*Abrir Select com o passar do mouse
+ $(function start(){
+ $('select').hover(function () {
+ start();
+ var count = $(this).children().length;
+ $(this).attr('size', count);
+ }, function () {
+ $(this).removeAttr('size');
+ });
+ $('option').mouseenter(function () {
+ $(this).attr('style', 'background-color:#0166FD;color:white');
+ });
+ $('option').mouseleave(function () {
+ $(this).removeAttr('style');
+ });
+ });
+ Abrir Select*/
 
-    /*Abrir Select*/
-    $('select').hover(function () {
-        start();
-        var count = $(this).children().length;
-        $(this).attr('size', count);
-    }, function () {
-        $(this).removeAttr('size');
-    });
-    $('option').mouseenter(function () {
-        $(this).attr('style', 'background-color:#0166FD;color:white');
-    });
-    $('option').mouseleave(function () {
-        $(this).removeAttr('style');
-    });
-    /*Abrir Select*/
+$(function () {
+
+
 
     /*Coloca datepicker nas datas*/
     $('#data_inicio').datepicker({
