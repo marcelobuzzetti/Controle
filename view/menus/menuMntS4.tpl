@@ -8,39 +8,56 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/percurso">Controle</a>
+            <a class="navbar-brand tabela" href="/percurso">Controle</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="http://{$HOST}/percurso">Home</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Viaturas <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1001">Viaturas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/viaturascadastradas">Viaturas Cadastradas</a></li>
                         <li><a href="{$HOST}/marca">Cadastrar Marca</a></li>
                         <li><a href="{$HOST}/modelo">Cadastrar Modelo</a></li>
                         <li><a href="{$HOST}/viatura">Cadastrar Viatura</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Motoristas <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1002">Motoristas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
                         <li><a href="{$HOST}/motorista">Cadastrar Motorista</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Combustíveis <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1003">Combustíveis <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/combustiveldisponivel">Combustível Disponível</a></li>
+                        <li><a href="{$HOST}/combustiveiscadastrados">Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/combustivel">Cadastrar Combustível</a></li>
+                        <li><a href="{$HOST}/tiposcombustiveiscadastrados">Tipos de Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/tipocombustivel">Cadastrar Tipo de Combustível</a></li>
                         <li><a href="{$HOST}/recebimentocombustivel">Cadastrar Recebimento de Combustível</a></li>
-                        <li><a href="{$HOST}/abastecimento">Cadastrar Abastecimento</a></li>
                     </ul>
                 </li>
-                <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
-                <li><a>Olá {$login}</a></li>
-                <li><a href="{$HOST}/logout">Logout</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1004">Abastecimento<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/abastecimentorealizado">Abastecimentos Realizados</a></li>
+                        <li><a href="{$HOST}/abastecimento">Abastecer?</a></li>
+                    </ul>
+                </li>                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1006">Relatórios<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
+                        <li><a href="{$HOST}/relatoriovtr" >Relatório por Vtr</a></li>
+                        <li><a href="{$HOST}/relatoriomotorista" >Relatório por Motorista</a></li>
+                    </ul>
+                </li>
+                <li><a tabindex="1007">Olá {$login}</a></li>
+                <li><a href="{$HOST}/logout" tabindex="1008">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
