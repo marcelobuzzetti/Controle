@@ -31,6 +31,7 @@
 <script>
     $(document).ready(function () {
         $('#tabela').DataTable({
+            "sPaginationType": "full_numbers",
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",
