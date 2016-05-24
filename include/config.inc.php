@@ -1,16 +1,23 @@
 <?php
 
-define("HOST", "http://".$_SERVER['SERVER_NAME']);
-require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
-include $_SERVER['DOCUMENT_ROOT'].'/model/conexao.php';
+$protocolo = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
+$endereco = $_SERVER['SERVER_NAME'];
 
- $smarty = new Smarty();
- $smarty->template_dir = $_SERVER['DOCUMENT_ROOT'].'/view/';
- $smarty->compile_dir = $_SERVER['DOCUMENT_ROOT'].'/templates_c/';
- $smarty->cache_dir = $_SERVER['DOCUMENT_ROOT'].'/cache/';
- $smarty->assign('HOST',  constant("HOST"));
- 
- /*Criar um contador de acesso de páginas do usuário
+if ($endereco == "sistemasc2.com.br" || $endereco == "www.sistemasc2.com.br") {
+    define("HOST", "https://" . $endereco);
+} else {
+    define("HOST", $protocolo . "://" . $endereco);
+}
+require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
+
+$smarty = new Smarty();
+$smarty->template_dir = $_SERVER['DOCUMENT_ROOT'] . '/view/';
+$smarty->compile_dir = $_SERVER['DOCUMENT_ROOT'] . '/templates_c/';
+$smarty->cache_dir = $_SERVER['DOCUMENT_ROOT'] . '/cache/';
+$smarty->assign('HOST', constant("HOST"));
+
+/*Criar um contador de acesso de páginas do usuário
  echo $url = $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI'];
 
  echo "<script>window.alert(window.location.href)</script>";
