@@ -38,8 +38,7 @@
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Acompanhante</td>
-                <td>Data Saída</td>
-                <td>Hora Saída</td>
+                <td>Data e Hora da Saída</td>
             </tr>
         </thead>
         <tbody>
@@ -50,8 +49,7 @@
                     <td>{$vtr.nome_destino}</td>
                     <td>{$vtr.odo_saida}</td>
                     <td>{$vtr.acompanhante}</td>
-                    <td>{$vtr.data_saida}</td>
-                    <td>{$vtr.hora_saida}</td>
+                    <td>{$vtr.data_saida} {$vtr.hora_saida}</td>
                 </tr>
             {/foreach}     
         </tbody>
@@ -62,8 +60,7 @@
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Acompanhante</td>
-                <td>Data Saída</td>
-                <td>Hora Saída</td>
+                <td>Data e Hora da Saída</td>
             </tr>
         </tfoot>
     </table>
