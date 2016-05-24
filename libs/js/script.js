@@ -24,9 +24,10 @@ function preenche(a, b) {
  Abrir Select*/
 
 $(function () {
-
-
-
+    /*Ocultar alertas automaticamente*/
+    $('.alert').hide(10000);
+    /*Ocultar alertas automaticamente*/
+    
     /*Coloca datepicker nas datas*/
     $('#data_inicio').datepicker({
         showButtonPanel: true,
@@ -58,7 +59,7 @@ $(function () {
     /*Autocompleta o destino em percurso*/
     $("#destino").autocomplete({
         source: "../model/buscador.php",
-        minLength: 3
+        minLength: 1
     });
     /*Autocompleta o destino em percurso*/
 
@@ -86,7 +87,7 @@ $(function () {
 
     /*Verifica se a modelo existe*/
     $('#modelo').keyup(function () {
-        $('#alerta').load('../model/verificaModelo.php?' + $.param({marca_modelo: $('#marca_modelo').val(), modelo: $('#modelo').val()}));
+        $('#alerta').load('../model/verificaModelo.php?' + $.param({marca: $('#marca_modelo').val(), modelo: $('#modelo').val()}));
     });
     /*Verifica se a modelo existe*/
 
@@ -116,11 +117,17 @@ $(function () {
     /*Informa a quantidade de combustivel*/
 
     /*Formatos*/
-    $("#data_nascimento").mask("99/99/9999");
-    $("#validade").mask("99/99/9999");
-    $("#cpf").mask("99999999999");
-    $("#cnh").mask("99999999999");
-    $("#placa").mask("aaa9999");
+    $("#data_nascimento").mask("00/00/0000");
+    $("#validade").mask("00/00/0000");
+    $("#cpf").mask("00000000000");
+    $("#cnh").mask("00000000000");
+    $("#placa").mask("ZZZ0000", {
+        translation: {
+            'Z': {
+                pattern: /[A-Za-z]/, optional: false
+            }
+        }
+    });
     /*Formatos*/
 
     /*Verifica se o motorista existe*/
@@ -158,6 +165,26 @@ $(function () {
         $('#alerta').load('../model/verificaTipoCombustivel.php?' + $.param({descricao: $('#descricao_tipo').val()}));
     });
     /*Verifica se o tipo combustivel existe*/
+
+    /*Utilização AJAX
+     $('#teste').click(function () {
+     var formdata = $("#form").serialize();
+     $.ajax({
+     type: 'POST',
+     url: '../model/cadastra_viatura.php',
+     async: true,
+     data: formdata,
+     error: function (request, status, error) {
+     // Aqui você trata um erro que possa vir a ocorrer
+     // Exemplo:
+     alert('Não foi possível inserir o modelo');
+     }, 
+     success: function (data, textStatus, jqXHR) {
+     $('#alerta').html('<div>Viatura foi inserida com Sucesso</div>').addClass('alert alert-success alert-dismissible').attr('data-dismiss', 'alert').hide(10000);
+     }
+     });
+     });
+     Utilização AJAX*/
 
     /*Verificar as datas*/
     $('#data_fim').change(function () {
