@@ -27,7 +27,7 @@
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Placa</td>
-                <td>Odômetro</td>
+                <td>Odômetro Atual</td>
                 <td>Capacidade do Tanque</td>
                 <td>Consumo Km/L</td>
                 <td>Capacidade(Pessoas)</td>
@@ -62,7 +62,7 @@
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Placa</td>
-                <td>Odômetro</td>
+                <td>Odômetro Atual</td>
                 <td>Capacidade do Tanque</td>
                 <td>Consumo Km/L</td>
                 <td>Capacidade(Pessoas)</td>

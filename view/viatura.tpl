@@ -55,7 +55,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="placa">Placa</label>
-            <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}'  maxlength="6" tabindex="4"/>
+            <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}'  maxlength="7" tabindex="4"/>
         </div>
         <span name="alerta" id="alerta"></span>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
@@ -112,7 +112,7 @@
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Placa</td>
-                <td>Odômetro</td>
+                <td>Odômetro Atual</td>
                 <td>Capacidade do Tanque</td>
                 <td>Consumo Km/L</td>
                 <td>Capacidade(Pessoas)</td>
@@ -147,7 +147,7 @@
                 <td>Marca</td>
                 <td>Modelo</td>
                 <td>Placa</td>
-                <td>Odômetro</td>
+                <td>Odômetro Atual</td>
                 <td>Capacidade do Tanque</td>
                 <td>Consumo Km/L</td>
                 <td>Capacidade(Pessoas)</td>
