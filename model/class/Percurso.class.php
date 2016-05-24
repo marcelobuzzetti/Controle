@@ -12,8 +12,8 @@ class Percurso{
                                                     AND viaturas.id_marca = marcas.id_marca
                                                     AND viaturas.id_modelo = modelos.id_modelo
                                                     AND percursos.id_destino = destinos.id_destino
-                                                    AND data_retorno BETWEEN (SELECT DATE_SUB(date(now()), INTERVAL 7 DAY)) AND  (SELECT DATE(NOW()))
-                                                    ORDER BY id_percurso DESC");
+                                                    ORDER BY id_percurso DESC
+                                                    LIMIT 10");
                 $executa = $stmt->execute();
 
                 if ($executa) {
