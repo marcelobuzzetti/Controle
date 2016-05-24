@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 mysql_connect('localhost', 'controle', 'controle') or die('Erro ao conectar com o servidor');
 mysql_select_db('controle') or die('Erro ao conectar com o banco de dados');
