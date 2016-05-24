@@ -65,8 +65,7 @@
             <td>Destino</td>
             <td>Odômetro Saída</td>
             <td>Acompanhante</td>
-            <td>Data Saída</td>
-            <td>Hora Saída</td>
+            <td>Data e Hora da Saída</td>
             <td>Odômetro Chegada</td>
             <td colspan="2">Ações</td> 
         </tr>
@@ -79,8 +78,7 @@
                 <td>{$tbl.nome_destino}</td>
                 <td>{$tbl.odo_saida}</td>
                 <td>{$tbl.acompanhante}</td>
-                <td>{$tbl.data_saida}</td>
-                <td>{$tbl.hora_saida}</td>
+                <td>{$tbl.data_saida} {$tbl.hora_saida}</td>
                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                 <td><button class='btn btn-success' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form></td>
             <form action='executar' method='post'>
@@ -117,10 +115,7 @@
                     <td>Acompanhante {$tbl.acompanhante}</td>
                 </tr>
                 <tr>
-                    <td>Data Saída {$tbl.data_saida}</td>
-                </tr>
-                <tr>
-                    <td>Hora Saída {$tbl.hora_saida}</td>
+                    <td>Data e Hora da Saída {$tbl.data_saida} {$tbl.hora_saida}</td>
                 </tr>
                 <tr>
                     <td>Odômetro Chegada <input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
@@ -152,11 +147,9 @@
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Acompanhante</td>
-                <td>Data Saída</td>
-                <td>Hora Saída</td>
+                <td>Data e Hora da Saída</td>
                 <td>Odômetro Retorno</td>
-                <td>Data Chegada</td>
-                <td>Hora Chegada</td>
+                <td>Data e Hora da Chegada</td>
             </tr>
         </thead>
         <tbody>
@@ -167,26 +160,22 @@
                     <td>{$tbl1.nome_destino}</td>
                     <td>{$tbl1.odo_saida}</td>
                     <td>{$tbl1.acompanhante}</td>
-                    <td>{$tbl1.data_saida}</td>
-                    <td>{$tbl1.hora_saida}</td>
+                    <td>{$tbl1.data_saida} {$tbl1.hora_saida}</td>
                     <td>{$tbl1.odo_retorno}</td>
-                    <td>{$tbl1.data_retorno}</td>
-                    <td>{$tbl1.hora_retorno}</td>
+                    <td>{$tbl1.data_retorno} {$tbl1.hora_retorno}</td>
                 </tr>
             {/foreach}    
         </tbody>
         <tfoot>
             <tr>
-                <td>Viatura</td>
+                 <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Acompanhante</td>
-                <td>Data Saída</td>
-                <td>Hora Saída</td>
+                <td>Data e Hora da Saída</td>
                 <td>Odômetro Retorno</td>
-                <td>Data Chegada</td>
-                <td>Hora Chegada</td>
+                <td>Data e Hora da Chegada</td>
             </tr>
         </tfoot>
     </table>
