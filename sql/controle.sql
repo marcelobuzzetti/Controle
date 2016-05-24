@@ -130,9 +130,9 @@ CREATE TABLE modelos (
   id_modelo int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_marca int(11) NOT NULL,
   descricao varchar(50)  NOT NULL, 
-  cap_tanque int(11) NOT NULL, 
-  consumo_padrao int(11) NOT NULL, 
-  cap_transp int(11) NOT NULL,
+  cap_tanque int(11) , 
+  consumo_padrao int(11) , 
+  cap_transp int(11) ,
   id_status int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
