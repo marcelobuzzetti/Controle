@@ -60,6 +60,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
                 $acompanhante = $dados_acidente_viaturas->acompanhante;
                 $odometro = $dados_acidente_viaturas->odometro;
                 $descricao = $dados_acidente_viaturas->descricao;
+                $avarias = $dados_acidente_viaturas->avarias;
                 $data = $dados_acidente_viaturas->data;
             } else {
                 print("<script language=JavaScript>
@@ -79,6 +80,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
         $smarty->assign('acompanhante', $acompanhante);
         $smarty->assign('odometro', $odometro);
         $smarty->assign('descricao', $descricao);
+        $smarty->assign('avarias', $avarias);
         $smarty->assign('data', $data);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_motoristas', $relacao_motoristas);
