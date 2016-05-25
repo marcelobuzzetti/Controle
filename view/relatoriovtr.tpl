@@ -81,11 +81,11 @@
         <tr>
         <div class="form-group col-xs-12 col-sm-6 col-md-6">
             <label for="data_inicio">Data Início</label>
-            <input class="form-control" type="text" id="data_inicio" name="data_inicio"  required="required" tabindex="1"/>
+            <input class="form-control" type="text" id="data_inicio" name="data_inicio"  placeholder='Digite a Data de início do Relatório' required="required" tabindex="1"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-6">
             <label for="data_fim">Data Fim</label>
-            <input class="form-control" type="text" id="data_fim" name="data_fim"  required="required" tabindex="2"/>
+            <input class="form-control" type="text" id="data_fim" name="data_fim" placeholder='Digite a Data final do Relatório' required="required" tabindex="2"/>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <button type="submit" disabled class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="relatorio" name="enviar" tabindex="3">Gerar Relatório</button>
