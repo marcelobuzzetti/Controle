@@ -1143,6 +1143,103 @@ switch ($_POST['enviar']) {
 
         break;
 
+            case 'cadastrar_acidente':
+        $id_viatura = $_POST['viatura_acidente'];
+        $id_motorista = $_POST['motorista'];
+        $acompanhante = $_POST['acompanhante'];
+        $odometro = $_POST['odometro'];
+        $acidente = $_POST['acidente'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO acidentes_viaturas
+                                                VALUES(NULL,?,?,?,?,?,?,$usuario)");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $id_motorista, PDO::PARAM_INT);
+            $stmt->bindParam(3, $acompanhante, PDO::PARAM_STR);
+            $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(5, $acidente, PDO::PARAM_STR);
+            $stmt->bindParam(6, $data, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /acidentevtr');
+
+        break;
+
+    case 'apagar_acidente':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM acidentes_viaturas
+                                                WHERE id_acidente_viatura = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /acidentevtr');
+
+        break;
+
+    case 'atualizar_acidente':
+        $id = $_POST['id'];
+        $id_viatura = $_POST['viatura_acidente'];
+        $id_motorista = $_POST['motorista'];
+        $acompanhante = $_POST['acompanhante'];
+        $odometro = $_POST['odometro'];
+        $acidente = $_POST['acidente'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("UPDATE acidentes_viaturas
+                                                SET id_viatura = ?, id_motorista = ?, acompanhante = ?, odometro = ?, descricao = ?, data = ?, id_usuario = $usuario 
+                                                WHERE id_acidente_viatura = ?");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $id_motorista, PDO::PARAM_INT);
+            $stmt->bindParam(3, $acompanhante, PDO::PARAM_STR);
+            $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(5, $acidente, PDO::PARAM_STR);
+            $stmt->bindParam(6, $data, PDO::PARAM_STR);
+            $stmt->bindParam(7, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /acidentevtr');
+
+        break;
 
     default:
     //no action sent
