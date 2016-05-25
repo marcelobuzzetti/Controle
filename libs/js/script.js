@@ -29,6 +29,19 @@ $(function () {
     /*Ocultar alertas automaticamente*/
     
     /*Coloca datepicker nas datas*/
+     $('#data').datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        currentText: 'Hoje',
+        nextText: 'Pr&oacute;ximo',
+        prevText: 'Anterior'
+    });
+    
     $('#data_inicio').datepicker({
         showButtonPanel: true,
         dateFormat: 'dd/mm/yy',
