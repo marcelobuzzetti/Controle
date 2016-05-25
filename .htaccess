@@ -15,6 +15,7 @@ RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
 RewriteRule ^combustiveldisponivel/?$ controller/combustiveldisponivel.php
 RewriteRule ^combustivel/?$ controller/combustivel.php
 RewriteRule ^combustiveiscadastrados/?$ controller/combustivelcadastrado.php
+RewriteRule ^manutencaovtr/?$ controller/manutencao_viatura.php
 RewriteRule ^marca/?$ controller/marca.php
 RewriteRule ^modelo/?$ controller/modelo.php
 RewriteRule ^motorista/?$ controller/motorista.php
