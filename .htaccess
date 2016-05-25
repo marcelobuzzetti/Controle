@@ -12,6 +12,7 @@ RewriteRule ^/?$ controller/home.php
 RewriteRule ^inicio/?$ controller/inicio.php
 RewriteRule ^abastecimento/?$ controller/abastecimento.php
 RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
+RewriteRule ^acidentevtr/?$ controller/acidente_viatura.php
 RewriteRule ^combustiveldisponivel/?$ controller/combustiveldisponivel.php
 RewriteRule ^combustivel/?$ controller/combustivel.php
 RewriteRule ^combustiveiscadastrados/?$ controller/combustivelcadastrado.php
