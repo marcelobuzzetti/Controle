@@ -58,7 +58,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1 && $_SESSION['perfil
             echo $e->getMessage();
         }
 
-         $smarty->assign('titulo', 'Atualizaão de Manutenção de Viaturas');
+         $smarty->assign('titulo', 'Atualização de Manutenção de Viaturas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_manutencao');
         $smarty->assign('id_manutencao_viatura', $id_manutencao_viatura);
