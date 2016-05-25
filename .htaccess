@@ -4,6 +4,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # e também não é um diretório (-d)
 RewriteCond %{REQUEST_FILENAME} !-d
 
+#Redirecionar para https
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
 #Proibindo Acesso aos diretorios
 Options -Indexes
 
