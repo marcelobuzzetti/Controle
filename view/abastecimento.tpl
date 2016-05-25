@@ -39,7 +39,6 @@
                 {/foreach}
             </select>
         </div>
-        <td></td>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Viatura</label>
             <select class="form-control" id="viatura_abastecimento" name="viatura" required="required" tabindex="3">
