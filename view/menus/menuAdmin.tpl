@@ -20,6 +20,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/viaturascadastradas">Viaturas Cadastradas</a></li>
                         <li><a href="{$HOST}/manutencaovtr">Cadastrar Manutenção de Viatura</a></li>
+                        <li><a href="{$HOST}/acidentevtr">Cadastrar Acidente de Viatura</a></li>
                         <li><a href="{$HOST}/marca">Cadastrar Marca</a></li>
                         <li><a href="{$HOST}/modelo">Cadastrar Modelo</a></li>
                         <li><a href="{$HOST}/viatura">Cadastrar Viatura</a></li>
