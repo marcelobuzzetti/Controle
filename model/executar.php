@@ -1149,17 +1149,19 @@ switch ($_POST['enviar']) {
         $acompanhante = $_POST['acompanhante'];
         $odometro = $_POST['odometro'];
         $acidente = $_POST['acidente'];
+        $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
 
         try {
             $stmt = $pdo->prepare("INSERT INTO acidentes_viaturas
-                                                VALUES(NULL,?,?,?,?,?,?,$usuario)");
+                                                VALUES(NULL,?,?,?,?,?,?,?,$usuario)");
             $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $id_motorista, PDO::PARAM_INT);
             $stmt->bindParam(3, $acompanhante, PDO::PARAM_STR);
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
             $stmt->bindParam(5, $acidente, PDO::PARAM_STR);
-            $stmt->bindParam(6, $data, PDO::PARAM_STR);
+            $stmt->bindParam(6, $avarias, PDO::PARAM_STR);
+            $stmt->bindParam(7, $data, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -1210,11 +1212,12 @@ switch ($_POST['enviar']) {
         $acompanhante = $_POST['acompanhante'];
         $odometro = $_POST['odometro'];
         $acidente = $_POST['acidente'];
+        $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
 
         try {
             $stmt = $pdo->prepare("UPDATE acidentes_viaturas
-                                                SET id_viatura = ?, id_motorista = ?, acompanhante = ?, odometro = ?, descricao = ?, data = ?, id_usuario = $usuario 
+                                                SET id_viatura = ?, id_motorista = ?, acompanhante = ?, odometro = ?, descricao = ?, data = ?, avarias = ?, id_usuario = $usuario 
                                                 WHERE id_acidente_viatura = ?");
             $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $id_motorista, PDO::PARAM_INT);
@@ -1222,7 +1225,8 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
             $stmt->bindParam(5, $acidente, PDO::PARAM_STR);
             $stmt->bindParam(6, $data, PDO::PARAM_STR);
-            $stmt->bindParam(7, $id, PDO::PARAM_INT);
+            $stmt->bindParam(7, $avarias, PDO::PARAM_STR);
+            $stmt->bindParam(8, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
