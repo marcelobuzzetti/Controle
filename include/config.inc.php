@@ -3,11 +3,8 @@
 $protocolo = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
 $endereco = $_SERVER['SERVER_NAME'];
 
-if ($endereco == "sistemasc2.com.br" || $endereco == "www.sistemasc2.com.br") {
-    define("HOST", "https://" . $endereco);
-} else {
-    define("HOST", $protocolo . "://" . $endereco);
-}
+define("HOST", "https://" . $endereco);
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
