@@ -120,6 +120,26 @@ CREATE TABLE viaturas (
   id_combustivel int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+CREATE TABLE manutencao_viaturas (
+  id_manutencao_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_viatura int(11)  NOT NULL, 
+  odometro float(10,1) NOT NULL,
+  descricao varchar(200) NOT NULL,
+  data date NOT NULL,
+  id_usuario int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE acidentes_viaturas (
+  id_acidente_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_viatura int(11)  NOT NULL, 
+  id_motorista int(11)  NOT NULL, 
+  acompanhante varchar(100),
+  odometro float(10,1) NOT NULL,
+  descricao varchar(200) NOT NULL,
+  data date NOT NULL,
+  id_usuario int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 CREATE TABLE marcas (
   id_marca int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao varchar(50)  NOT NULL,
@@ -195,6 +215,15 @@ ALTER TABLE  usuarios
 
 ALTER TABLE  marcas
   ADD CONSTRAINT FK_status4 FOREIGN KEY (id_status) REFERENCES status (id_status);
+
+ALTER TABLE  manutencao_viaturas
+  ADD CONSTRAINT FK_viaturas1 FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
+  ADD CONSTRAINT FK_usuario8 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+
+ALTER TABLE  acidentes_viaturas
+  ADD CONSTRAINT FK_viaturas2 FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
+  ADD CONSTRAINT FK_motorista1 FOREIGN KEY (id_motorista) REFERENCES motoristas (id_motorista),
+  ADD CONSTRAINT FK_usuario9 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
 CREATE VIEW combustivel_recebido AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( rc.qnt ),0) AS qnt
 FROM recibos_combustiveis rc
