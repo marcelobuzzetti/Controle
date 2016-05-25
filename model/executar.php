@@ -63,10 +63,10 @@ switch ($_POST['enviar']) {
         $nome = $_POST["motorista"];
         $destino = ucwords(strtolower($_POST["destino"]));
         $odometro = $_POST["odo_saida"];
-        if (empty($_POST["acompanhante"])){
+        if (empty($_POST["acompanhante"])) {
             $acompanhante = NULL;
         } else {
-        $acompanhante = ucwords(strtolower($_POST["acompanhante"]));
+            $acompanhante = ucwords(strtolower($_POST["acompanhante"]));
         }
         try {
             $stmt = $pdo->prepare("SELECT COUNT(nome_destino) AS existente
@@ -233,13 +233,13 @@ switch ($_POST['enviar']) {
         $nome = ucwords(strtolower($_POST['nome']));
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
-        $data_nascimento = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
         $rg = $_POST['rg'];
         $orgao_expedidor = strtoupper($_POST['orgao_expedidor']);
         $cpf = $_POST['cpf'];
         $cnh = $_POST['cnh'];
-        $validade = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['validade'])));
-        
+        $validade = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['validade'])));
+
         try {
 
             $stmt = $pdo->prepare("SELECT sigla
@@ -266,7 +266,7 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                 $_SESSION['erro'] = 1;
+                $_SESSION['erro'] = 1;
             } else {
                 $_SESSION['cadastrado'] = 1;
             }
@@ -284,12 +284,12 @@ switch ($_POST['enviar']) {
         $nome = ucwords(strtolower($_POST['nome']));
         $categoria = $_POST['categoria'];
         $pg = $_POST['pg'];
-        $data_nascimento = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
         $rg = $_POST['rg'];
         $orgao_expedidor = $_POST['orgao_expedidor'];
         $cpf = $_POST['cpf'];
         $cnh = $_POST['cnh'];
-        $validade = date('Y-m-d',strtotime(str_replace('/', '-', $_POST['validade'])));
+        $validade = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['validade'])));
 
 
         try {
@@ -320,7 +320,7 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-               $_SESSION['erro'] = 1;
+                $_SESSION['erro'] = 1;
             } else {
                 $_SESSION['atualizado'] = 1;
             }
@@ -349,7 +349,7 @@ switch ($_POST['enviar']) {
                                                 WHERE id_motorista = ?");
                     $stmt->bindParam(1, $id, PDO::PARAM_INT);
                     $executa = $stmt->execute();
-                    if($executa){
+                    if ($executa) {
                         $_SESSION['apagado'] = 1;
                     } else {
                         $_SESSION['erro'] = 1;
@@ -359,7 +359,7 @@ switch ($_POST['enviar']) {
                 }
             } else {
                 $_SESSION['apagado'] = 1;
-            } 
+            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -499,14 +499,14 @@ switch ($_POST['enviar']) {
                                                 WHERE id_combustivel = ?");
                     $stmt->bindParam(1, $id, PDO::PARAM_INT);
                     $executa = $stmt->execute();
-                if ($executa) {    
-                      $_SESSION['apagado'] = 1;                    
-                }                    
+                    if ($executa) {
+                        $_SESSION['apagado'] = 1;
+                    }
                 } catch (PDOException $e) {
                     echo $e->getMessage();
                 }
             } else {
-                 $_SESSION['apagado'] = 1;
+                $_SESSION['apagado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -532,8 +532,8 @@ switch ($_POST['enviar']) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
-            } else{
-                  $_SESSION['atualizado'] = 1;
+            } else {
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -862,7 +862,7 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                  try {
+                try {
                     $stmt = $pdo->prepare("UPDATE modelos
                                                 SET id_status = 2
                                                 WHERE id_modelo = ?");
@@ -876,7 +876,7 @@ switch ($_POST['enviar']) {
                     echo $e->getMessage();
                 }
             } else {
-                $_SESSION['apagada'] = 1;                
+                $_SESSION['apagada'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -1053,8 +1053,99 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'cadastrar_manutencao':
+        $id_viatura = $_POST['viatura'];
+        $odometro = $_POST['odometro'];
+        $manutencao = $_POST['manutencao'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO manutencao_viaturas
+                                                VALUES(NULL,?,?,?,?,$usuario)");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(3, $manutencao, PDO::PARAM_STR);
+            $stmt->bindParam(4, $data, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /manutencaovtr');
+
+        break;
+
+    case 'apagar_manutencao':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM manutencao_viaturas
+                                                WHERE id_manutencao_viatura = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /manutencaovtr');
+
+        break;
+
+    case 'atualizar_manutencao':
+        $id = $_POST['id'];
+        $id_viatura = $_POST['viatura'];
+        $odometro = $_POST['odometro'];
+        $manutencao = $_POST['manutencao'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("UPDATE manutencao_viaturas
+                                                SET id_viatura = ?, odometro = ?, descricao = ?, data = ?, id_usuario = $usuario 
+                                                WHERE id_manutencao_viatura = ?");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(3, $manutencao, PDO::PARAM_STR);
+            $stmt->bindParam(4, $data, PDO::PARAM_STR);
+            $stmt->bindParam(5, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /manutencaovtr');
+
+        break;
+
+
     default:
     //no action sent
 }
-unset($_POST, $_GET); 
+unset($_POST, $_GET);
 ?>
