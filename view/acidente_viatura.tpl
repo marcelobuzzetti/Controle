@@ -59,9 +59,13 @@
             <label for="acidente">Descrição do Acidente</label>
             <textarea class="form-control" rows="5" id="acidente" name="acidente" placeholder="Descrição do Acidente" required='required'  tabindex="6">{$descricao}</textarea>
         </div>
+         <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label for="avarias">Descrição das Avarias</label>
+            <textarea class="form-control" rows="5" id="avarias" name="avarias" placeholder="Descrição das Avarias" required='required'  tabindex="7">{$avarias}</textarea>
+        </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' value='{$id_acidente_viatura}' name='id'/>
-            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="7">{$botao}</button>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>
         </div>
     </form>
 </div>
@@ -96,6 +100,7 @@
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
+                <td>Avarias</td>
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
@@ -109,6 +114,7 @@
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.descricao}</td>
+                    <td>{$tbl.avarias}</td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_acidente_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td> <form action='acidentevtr' method='post'>
                             <input type='hidden' id='{$tbl.id_acidente_viatura}' value='{$tbl.id_acidente_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_acidente'/><span class='glyphicon glyphicon-refresh'/></form></td>
@@ -124,6 +130,7 @@
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
+                <td>Avarias</td>
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
