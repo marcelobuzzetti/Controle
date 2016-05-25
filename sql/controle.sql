@@ -136,6 +136,7 @@ CREATE TABLE acidentes_viaturas (
   acompanhante varchar(100),
   odometro float(10,1) NOT NULL,
   descricao varchar(200) NOT NULL,
+  avarias varchar(200) NOT NULL,
   data date NOT NULL,
   id_usuario int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
