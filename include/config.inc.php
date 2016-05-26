@@ -1,6 +1,5 @@
 <?php
 
-$protocolo = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
 $endereco = $_SERVER['SERVER_NAME'];
 
 define("HOST", "https://" . $endereco);
