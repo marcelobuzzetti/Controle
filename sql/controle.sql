@@ -141,6 +141,13 @@ CREATE TABLE acidentes_viaturas (
   id_usuario int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+CREATE TABLE imagens_acidentes_viaturas (
+  id_imagens_acidente_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  imagem blob NOT NULL, 
+  data date NOT NULL,
+  id_usuario int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 CREATE TABLE marcas (
   id_marca int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao varchar(50)  NOT NULL,
