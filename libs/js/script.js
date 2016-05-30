@@ -213,6 +213,16 @@ $(function () {
         }
     });
     /*Verificar as datas*/
+    
+    /*Motorista*/
+    $('#sim_motorista').click(function (){
+            $('.motorista').toggle();
+    })
+    
+    
+    $('#sim_usuario').click(function (){
+            $('.usuario').toggle();
+    })
 
     /*Realiza pesquisa em relatorio*/
     $('#pesquisa_relatorio').keyup(function () {
