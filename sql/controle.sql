@@ -24,18 +24,24 @@ CREATE TABLE habilitacoes (
   ordem int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE motoristas (
-  id_motorista int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE militares (
+  id_militar int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome varchar(50)  NOT NULL,
   nome_completo varchar(100)  NOT NULL,
   data_nascimento date NOT NULL,
   rg varchar(11) NOT NULL,
   orgao_expedidor varchar(50)  NOT NULL,
   cpf varchar(11) NOT NULL,
+  id_posto_grad int(11) NOT NULL,
+  id_status int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE motoristas (
+  id_motorista int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_militar int(11) NOT NULL,
   id_habilitacao int(11) NOT NULL, 
   cnh varchar(11) NOT NULL, 
   validade date NOT NULL, 
-  id_posto_grad int(11) NOT NULL,
   apelido varchar(20) NOT NULL,
   id_usuario int(11) NOT NULL,
   id_status int(11) NOT NULL
@@ -98,6 +104,7 @@ CREATE TABLE combustiveis (
 
 CREATE TABLE usuarios (
   id_usuario int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_militar int(11) NOT NULL,
   login varchar(50)  NOT NULL UNIQUE,
   senha varchar(50)  NOT NULL,
   id_perfil int(11) NOT NULL,
@@ -181,22 +188,26 @@ ALTER TABLE abastecimentos
   ADD CONSTRAINT FK_combustivel FOREIGN KEY (id_combustivel) REFERENCES combustiveis (id_combustivel),
   ADD CONSTRAINT FK_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
-ALTER TABLE motoristas
-  ADD CONSTRAINT FK_habilitacao FOREIGN KEY (id_habilitacao) REFERENCES habilitacoes (id_habilitacao),
+ALTER TABLE militares
   ADD CONSTRAINT FK_posto_grad FOREIGN KEY (id_posto_grad) REFERENCES posto_grad (id_posto_grad),
-  ADD CONSTRAINT FK_usuario1 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
   ADD CONSTRAINT FK_status FOREIGN KEY (id_status) REFERENCES status (id_status);
+
+ALTER TABLE motoristas
+  ADD CONSTRAINT FK_militar FOREIGN KEY (id_militar) REFERENCES militares (id_militar),
+  ADD CONSTRAINT FK_habilitacao FOREIGN KEY (id_habilitacao) REFERENCES habilitacoes (id_habilitacao),
+  ADD CONSTRAINT FK_usuario2 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
+  ADD CONSTRAINT FK_status1 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE percursos
   ADD CONSTRAINT FK_motoristas FOREIGN KEY (id_motorista) REFERENCES motoristas (id_motorista),
   ADD CONSTRAINT FK_destino FOREIGN KEY (id_destino) REFERENCES destinos (id_destino),
   ADD CONSTRAINT FK_viaturas FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
-  ADD CONSTRAINT FK_usuario2 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+  ADD CONSTRAINT FK_usuario3 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
 ALTER TABLE recibos_combustiveis
   ADD CONSTRAINT FK_tipo_combustivel1 FOREIGN KEY (id_tipo_combustivel) REFERENCES tipos_combustiveis (id_tipo_combustivel),
   ADD CONSTRAINT FK_combustivel1 FOREIGN KEY (id_combustivel) REFERENCES combustiveis (id_combustivel),
-  ADD CONSTRAINT FK_usuario3 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+  ADD CONSTRAINT FK_usuario4 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
 ALTER TABLE viaturas
   ADD CONSTRAINT FK_modelo1 FOREIGN KEY (id_modelo) REFERENCES modelos (id_modelo),
@@ -206,7 +217,7 @@ ALTER TABLE viaturas
   ADD CONSTRAINT FK_marca FOREIGN KEY (id_marca) REFERENCES marcas (id_marca),
   ADD CONSTRAINT FK_usuario5 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
   ADD CONSTRAINT FK_habilitacao1 FOREIGN KEY (id_habilitacao) REFERENCES habilitacoes (id_habilitacao),
-  ADD CONSTRAINT FK_status1 FOREIGN KEY (id_status) REFERENCES status (id_status);
+  ADD CONSTRAINT FK_status2 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE modelos
   ADD CONSTRAINT FK_marca1 FOREIGN KEY (id_marca) REFERENCES marcas (id_marca),
@@ -219,10 +230,11 @@ ALTER TABLE  tipos_combustiveis
   ADD CONSTRAINT FK_usuario7 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
 ALTER TABLE  usuarios
-  ADD CONSTRAINT FK_status2 FOREIGN KEY (id_status) REFERENCES status (id_status);
+  ADD CONSTRAINT FK_militar1 FOREIGN KEY (id_militar) REFERENCES militares (id_militar),
+  ADD CONSTRAINT FK_status4 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE  marcas
-  ADD CONSTRAINT FK_status4 FOREIGN KEY (id_status) REFERENCES status (id_status);
+  ADD CONSTRAINT FK_status5 FOREIGN KEY (id_status) REFERENCES status (id_status);
 
 ALTER TABLE  manutencao_viaturas
   ADD CONSTRAINT FK_viaturas1 FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
@@ -247,15 +259,6 @@ INSERT INTO status (id_status, status) VALUES
 (1, 'Ativo'),
 (2, 'Inativo');
 
-INSERT INTO usuarios (id_usuario, login, senha, id_perfil, nome,id_status) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR',1);
-
-INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
-(1, 'Administrador', 1),
-(2, 'Operador', 2),
-(3, 'Mantenedor - Garagem', 3),
-(4, 'Mantenedor - S4', 4);
-
 INSERT INTO posto_grad (id_posto_grad, descricao, sigla) VALUES
 (1, 'Soldado', 'Sd'),
 (2, 'Cabo', 'Cb'),
@@ -277,15 +280,6 @@ INSERT INTO situacao (id_situacao, disponibilidade) VALUES
 (1, 'Disponível'),
 (2, 'Indisponível');
 
-INSERT INTO tipos_combustiveis (id_tipo_combustivel, descricao,id_usuario) VALUES
-(1, 'Operacional',1),
-(2, 'Administrativo',1);
-
-INSERT INTO combustiveis (id_combustivel, descricao,id_usuario) VALUES
-(1, 'Gasolina',1),
-(2, 'Álcool',1),
-(3, 'Óleo Diesel',1);
-
 INSERT INTO habilitacoes (id_habilitacao, categoria, ordem) VALUES
 (1, 'A', 1),
 (2, 'B', 2),
@@ -296,3 +290,25 @@ INSERT INTO habilitacoes (id_habilitacao, categoria, ordem) VALUES
 (7, 'AC', 5),
 (8, 'AD', 7),
 (9, 'AE', 9);
+
+INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
+(1, 'Administrador', 1),
+(2, 'Operador', 2),
+(3, 'Mantenedor - Garagem', 3),
+(4, 'Mantenedor - S4', 4);
+
+INSERT INTO militares (id_militar, nome, nome_completo, data_nascimento,  rg ,  orgao_expedidor , cpf , id_posto_grad, id_status) VALUES
+(1, 'Ferreira', 'Marcelo Aparecido Ferreira Silva', '1986-03-04', '0400319257','MD','07691481667',4,1);
+
+INSERT INTO usuarios (id_usuario, id_militar, login, senha, id_perfil, nome,id_status) VALUES
+(1,1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR',1);
+
+INSERT INTO tipos_combustiveis (id_tipo_combustivel, descricao,id_usuario) VALUES
+(1, 'Operacional',1),
+(2, 'Administrativo',1);
+
+INSERT INTO combustiveis (id_combustivel, descricao,id_usuario) VALUES
+(1, 'Gasolina',1),
+(2, 'Álcool',1),
+(3, 'Óleo Diesel',1);
+
