@@ -27,8 +27,9 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1002">Motoristas <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1002">Militares<b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/militar">Cadastrar Militar</a></li>
                         <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
                         <li><a href="{$HOST}/motorista">Cadastrar Motorista</a></li>
                     </ul>
