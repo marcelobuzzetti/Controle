@@ -79,54 +79,23 @@
             <label for="cpf">CPF</label>
             <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required="required" maxlength="11" value="{$cpf}" tabindex="7"/>
         </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <label class="checkbox-inline"><input type="checkbox" id="sim_motorista" name="sim_motorista" value="motorista"/>Motorista</label>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="cnh">CNH</label>
+            <input class="form-control" type="text" id="cnh" name="cnh" placeholder="CNH" required="required" maxlength="11" value="{$cnh}" tabindex="8"/>
         </div>
-        <div class="motorista">
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="cnh">CNH</label>
-                <input class="form-control" type="text" id="cnh" name="cnh" placeholder="CNH" required="required" maxlength="11" value="{$cnh}" tabindex="8"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="categoria">Categoria</label>
-                <select class="form-control" id="categoria" name="categoria" required tabindex="9">
-                    <option value='' disabled selected>Selecione a Habilitação</option>
-                    {foreach $relacao_habilitacoes as $habilitacao}
-                        <option value={$habilitacao.id_habilitacao}{if {$habilitacao.id_habilitacao} == {$categoria}} selected {/if}>{$habilitacao.categoria}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="validade">Validade</label>
-                <input class="form-control" type="text" id="validade" name="validade" placeholder="dd/mm/aaaa" required="required" maxlength="20" value="{$validade}" tabindex="10"/>
-            </div>    
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="categoria">Categoria</label>
+            <select class="form-control" id="categoria" name="categoria" required tabindex="9">
+                <option value='' disabled selected>Selecione a Habilitação</option>
+                {foreach $relacao_habilitacoes as $habilitacao}
+                    <option value={$habilitacao.id_habilitacao}{if {$habilitacao.id_habilitacao} == {$categoria}} selected {/if}>{$habilitacao.categoria}</option>
+                {/foreach}
+            </select>
         </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <label class="checkbox-inline"><input type="checkbox" id="sim_usuario" name="sim_usuario" value="usuario"/>Usuário</label>
-        </div>
-        <div class="usuario">
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="login">Login</label>
-                <input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="senha">Senha</label>
-                <input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required maxlength="20" tabindex="2"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="perfil">Perfil</label>
-                <select class="form-control" name="perfil" required tabindex="3">
-                    <option value='' disabled selected>Selecione o Perfil</option>
-                    {foreach $relacao_perfis as $perfis}
-                        <option value={$perfis.id_perfil} {if {$perfis.id_perfil} == {$perfil}}selected{/if}>{$perfis.descricao}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="apelido">Apelido</label>
-                <input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado" maxlength="20" tabindex="4"/>
-            </div>
-        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="validade">Validade</label>
+            <input class="form-control" type="text" id="validade" name="validade" placeholder="dd/mm/aaaa" required="required" maxlength="20" value="{$validade}" tabindex="10"/>
+        </div>    
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="11">{$botao}</button>
