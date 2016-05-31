@@ -1143,7 +1143,7 @@ switch ($_POST['enviar']) {
 
         break;
 
-            case 'cadastrar_acidente':
+    case 'cadastrar_acidente':
         $id_viatura = $_POST['viatura_acidente'];
         $id_motorista = $_POST['motorista'];
         $acompanhante = $_POST['acompanhante'];
@@ -1245,8 +1245,292 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'cadastrar_militar':
+        $nome_completo = ucwords(strtolower($_POST['nome_completo']));
+        $nome = ucwords(strtolower($_POST['nome']));
+        $pg = $_POST['pg'];
+        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        $rg = $_POST['rg'];
+        $orgao_expedidor = strtoupper($_POST['orgao_expedidor']);
+        $cpf = $_POST['cpf'];
+
+        $cnh = $_POST['cnh'];
+        $categoria = $_POST['categoria'];
+        $validade = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['validade'])));
+
+        $login = $_POST['login'];
+        $senha = md5($_POST['senha']);
+        $perfil = $_POST['perfil'];
+        $nickname = ucwords(strtolower($_POST['apelido']));
+
+        if (isset($_POST['sim_motorista']) && isset($_POST['sim_usuario'])) {
+
+            try {
+
+                $stmt = $pdo->prepare("SELECT sigla
+                                                FROM posto_grad 
+                                                WHERE id_posto_grad = ?");
+                $stmt->bindParam(1, $pg, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+                $sigla = $stmt->fetch();
+                $apelido = $sigla[0] . " " . $nome;
+
+                $pdo->beginTransaction();
+
+                $stmt = $pdo->prepare("INSERT INTO militares
+                                                VALUES(NULL,?,?,?,?,?,?,?,1);");
+                $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+                $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+                $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+                $stmt->bindParam(4, $rg, PDO::PARAM_STR);
+                $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+                $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
+                ;
+                $stmt->bindParam(7, $pg, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("SELECT LAST_INSERT_ID() INTO @ID;");
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("INSERT INTO motoristas
+                                                VALUES(NULL,@id,?,?,?,?,$usuario,1);");
+                $stmt->bindParam(1, $categoria, PDO::PARAM_INT);
+                $stmt->bindParam(2, $cnh, PDO::PARAM_STR);
+                $stmt->bindParam(3, $validade, PDO::PARAM_STR);
+                $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("INSERT INTO usuarios 
+                                                VALUES(NULL,@id,?,?,?,?,1);");
+                $stmt->bindParam(1, $login, PDO::PARAM_STR);
+                $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+                $stmt->bindParam(3, $perfil, PDO::PARAM_INT);
+                $stmt->bindParam(4, $nickname, PDO::PARAM_STR);
+                $executa = $stmt->execute();
+
+                $pdo->commit();
+
+                if (!$executa) {
+                    $_SESSION['erro'] = 1;
+                } else {
+                    $_SESSION['cadastrado'] = 1;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        } elseif (isset($_POST['sim_motorista']) && !isset($_POST['sim_usuario'])) {
+
+            try {
+
+                $stmt = $pdo->prepare("SELECT sigla
+                                                FROM posto_grad 
+                                                WHERE id_posto_grad = ?");
+                $stmt->bindParam(1, $pg, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+                $sigla = $stmt->fetch();
+                $apelido = $sigla[0] . " " . $nome;
+
+                $pdo->beginTransaction();
+
+                $stmt = $pdo->prepare("INSERT INTO militares
+                                                VALUES(NULL,?,?,?,?,?,?,?,1);");
+                $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+                $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+                $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+                $stmt->bindParam(4, $rg, PDO::PARAM_STR);
+                $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+                $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
+                ;
+                $stmt->bindParam(7, $pg, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("SELECT LAST_INSERT_ID() INTO @ID;");
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("INSERT INTO motoristas
+                                                VALUES(NULL,@id,?,?,?,?,$usuario,1);");
+                $stmt->bindParam(1, $categoria, PDO::PARAM_INT);
+                $stmt->bindParam(2, $cnh, PDO::PARAM_STR);
+                $stmt->bindParam(3, $validade, PDO::PARAM_STR);
+                $stmt->bindParam(4, $apelido, PDO::PARAM_STR);
+                $executa = $stmt->execute();
+
+                $pdo->commit();
+
+                if (!$executa) {
+                    $_SESSION['erro'] = 1;
+                } else {
+                    $_SESSION['cadastrado'] = 1;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        } elseif (isset($_POST['sim_usuario']) && !isset($_POST['sim_motorista'])) {
+
+            try {
+
+
+                $pdo->beginTransaction();
+
+                $stmt = $pdo->prepare("INSERT INTO militares
+                                                VALUES(NULL,?,?,?,?,?,?,?,1);");
+                $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+                $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+                $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+                $stmt->bindParam(4, $rg, PDO::PARAM_STR);
+                $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+                $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
+                ;
+                $stmt->bindParam(7, $pg, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("SELECT LAST_INSERT_ID() INTO @ID;");
+                $executa = $stmt->execute();
+
+                $stmt = $pdo->prepare("INSERT INTO usuarios 
+                                                VALUES(NULL,@id,?,?,?,?,1);");
+                $stmt->bindParam(1, $login, PDO::PARAM_STR);
+                $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+                $stmt->bindParam(3, $perfil, PDO::PARAM_INT);
+                $stmt->bindParam(4, $nickname, PDO::PARAM_STR);
+                $executa = $stmt->execute();
+
+                $pdo->commit();
+
+                if (!$executa) {
+                    $_SESSION['erro'] = 1;
+                } else {
+                    $_SESSION['cadastrado'] = 1;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        } else {
+
+            try {
+
+
+                $pdo->beginTransaction();
+
+                $stmt = $pdo->prepare("INSERT INTO militares
+                                                VALUES(NULL,?,?,?,?,?,?,?,1);");
+                $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+                $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+                $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+                $stmt->bindParam(4, $rg, PDO::PARAM_STR);
+                $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+                $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
+                ;
+                $stmt->bindParam(7, $pg, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                $pdo->commit();
+
+                if (!$executa) {
+                    $_SESSION['erro'] = 1;
+                } else {
+                    $_SESSION['cadastrado'] = 1;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        header('Location: /militar');
+
+        break;
+
+    case 'atualizar_motorista':
+        $id = $_POST['id'];
+        $nome_completo = ucwords(strtolower($_POST['nome_completo']));
+        $nome = ucwords(strtolower($_POST ['nome']));
+        $categoria = $_POST['categoria'];
+        $pg = $_POST['pg'];
+        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        $rg = $_POST['rg'];
+        $orgao_expedidor = $_POST['orgao_expedidor'];
+        $cpf = $_POST['cpf'];
+        $cnh = $_POST['cnh'];
+        $validade = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['validade'])));
+
+
+        try {
+
+            $stmt = $pdo->prepare("SELECT sigla 
+                                                FROM posto_grad 
+                                                WHERE id_posto_grad = ?");
+            $stmt->bindParam(1, $pg, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+            $sigla = $stmt->fetch();
+            $apelido = $sigla[0] . " " . $nome;
+
+            $stmt = $pdo->prepare("UPDATE motoristas
+                                                SET nome = ?, nome_completo = ?, data_nascimento = ?, rg = ?, orgao_expedidor = ?, cpf = ?, id_habilitacao = ?, cnh = ?, validade = ?, id_posto_grad = ?, apelido = ?
+                                                WHERE id_motorista = ?");
+            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+            $stmt->bindParam(4, $rg, PDO::PARAM_STR);
+            $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
+            $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
+            $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
+            $stmt->bindParam(8, $cnh, PDO ::PARAM_STR);
+            $stmt->bindParam(9, $validade, PDO::PARAM_STR);
+            $stmt->bindParam(10, $pg, PDO::PARAM_INT);
+            $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
+            $stmt->bindParam(12, $id, PDO:: PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                $_SESSION['erro'] = 1;
+            } else {
+                $_SESSION['atualizado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /motorista');
+
+        break;
+
+
+    case 'Apagar Motorista':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM motoristas
+                                                WHERE id_motorista= ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                try {
+                    $stmt = $pdo->prepare("UPDATE motoristas
+                                                SET id_status = 2
+                                                WHERE id_motorista = ?");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                    if ($executa) {
+                        $_SESSION['apagado'] = 1;
+                    } else {
+                        $_SESSION['erro'] = 1;
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        } header('Location: /motorista');
+
+        break;
+
     default:
     //no action sent
 }
 unset($_POST, $_GET);
 ?>
+     
