@@ -25,15 +25,41 @@ CREATE TABLE habilitacoes (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE militares (
-  id_militar int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nome varchar(50)  NOT NULL,
-  nome_completo varchar(100)  NOT NULL,
-  data_nascimento date NOT NULL,
-  rg varchar(11) NOT NULL,
-  orgao_expedidor varchar(50)  NOT NULL,
-  cpf varchar(11) NOT NULL,
-  id_posto_grad int(11) NOT NULL,
-  id_status int(11) NOT NULL
+ id_militar int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ numero_militar int(11) NOT NULL,
+ cp varchar(11) NOT NULL,
+ grupo varchar(11) NOT NULL 
+ antiguidade int(11) NOT NULL,
+ data_praca date NOT NULL,
+ nome varchar(50)  NOT NULL,
+ nome_completo varchar(100)  NOT NULL,
+ data_nascimento date NOT NULL,
+ cidade_nascimento varchar(50) NOT NULL,
+ estado_nascimento varchar(50) NOT NULL,
+ idt_militar varchar(10) NOT NULL,
+ rg varchar(11) NOT NULL,
+ orgao_expedidor varchar(50)  NOT NULL,
+ cpf varchar(11) NOT NULL,
+ pai varchar(100),
+ mae varchar(100) NOT NULL,
+ conjuge varchar(100),
+ data_nascimento_conjuge date,
+ rua varchar(100) NOT NULL,
+ bairro varchar(100) NOT NULL,
+ cidade varchar(100) NOT NULL,
+ estado varchar(2) NOT NULL,
+ complemento varchar(100),
+ telefone varchar(100) NOT NULL,
+ rua_familiar varchar(100) NOT NULL,
+ bairro_familiar varchar(100) NOT NULL,
+ cidade_familiar varchar(100) NOT NULL,
+ estado_familiar varchar(2) NOT NULL,
+ complemento_familiar varchar(100),
+ telefone_familiar varchar(100) NOT NULL,
+ email varchar(100),
+ laranjeira varchar(3) NOT NULL,
+ id_posto_grad int(11) NOT NULL,
+ id_status int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE motoristas (
