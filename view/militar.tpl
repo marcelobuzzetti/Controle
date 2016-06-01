@@ -20,17 +20,11 @@
                         <input type="text" class="form-control" disabled>
                     </div>
                 </div>
-                <div class="categoria">
-                    <div class="input-group">
-                        <div class="input-group-addon">Categoria</div>
-                        <input type="text" class="form-control" disabled>
-                    </div>
                 </div>
-            </div>
             <div class="modal-footer">
                 <form action='executar' method='post'>
                     <input type="hidden" class="form-control" id="recipient-name" name='id'/>
-                    <button type="submit" class="btn btn-danger" name='enviar' value="Apagar Motorista">Sim</button>
+                    <button type="submit" class="btn btn-danger" name='enviar' value="apagar_militar">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Nao</button>
                 </form>
             </div>
@@ -43,14 +37,27 @@
         <h1>{$titulo}</h1>
     </div>
     <form action="executar" method="post">
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <label for="nome_completo">Nome Completo</label>
-            <input class="form-control" type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo" required="required" maxlength="100" value="{$nome_completo}" tabindex="1"/>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="numero_militar">Número do Militar</label>
+            <input class="form-control" type="number" id="numero_militar" name="numero_militar" placeholder="Número" required="required" maxlength="100" value="{$numero_militar}" tabindex="1"/>
         </div>
-        <div>
-            <span name="alerta" id="alerta"></span>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="cp">CP</label>
+            <input class="form-control" type="text" id="cp" name="cp" placeholder="CP" required="required" maxlength="100" value="{$cp}" tabindex="2"/>
         </div>
-        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="grupo">Grupo</label>
+            <input class="form-control" type="number" id="grupo" name="grupo" placeholder="Grupo" required="required" maxlength="100" value="{$grupo}" tabindex="3"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="antiguidade">Antiguidade</label>
+            <input class="form-control" type="number" id="antiguidade" name="antiguidade" placeholder="Antiguidade" required="required" maxlength="100" value="{$antiguidade}" tabindex="4"/>
+        </div>
+         <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="data_praca">Data de Praça</label>
+            <input class="form-control" type="text" id="data_praca" name="data_praca" placeholder="Data de Praça" required="required" maxlength="100" value="{$data_praca}" tabindex="5"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
             <label for="pg">Posto/Grad</label>
             <select class="form-control" id="pg" name="pg" required tabindex="2">
                 <option value='' disabled selected>Selecione o Posto/Grad</option>
@@ -58,6 +65,13 @@
                     <option value={$pg.id_posto_grad}{if {$pg.id_posto_grad} == {$id_pg}} selected {/if}>{$pg.sigla}</option>
                 {/foreach}
             </select>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label for="nome_completo">Nome Completo</label>
+            <input class="form-control" type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo" required="required" maxlength="100" value="{$nome_completo}" tabindex="1"/>
+        </div>
+        <div>
+            <span name="alerta" id="alerta"></span>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-4">
             <label for="nome">Nome de Guerra</label>
@@ -68,10 +82,22 @@
             <input class="form-control" type="text" id="data_nascimento" name="data_nascimento" placeholder="dd/mm/aaaa" required="required" maxlength="20" value="{$data_nascimento}" tabindex="4"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="cidade">Cidade</label>
+            <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade" required="required" maxlength="20" value="{$cidade_nascimento}" tabindex="4"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+            <label for="estado">Estado</label>
+            <input class="form-control" type="text" id="estado" name="estado" placeholder="Estado" required="required" maxlength="20" value="{$estado_nascimento}" tabindex="4"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="idt_militar">Identidade Militar</label>
+            <input class="form-control" type="text" id="idt_militar" name="idt_militar" placeholder="Identidade Militar" required="required" maxlength="11" value="{$idt_militar}" tabindex="5"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
             <label for="rg">RG</label>
             <input class="form-control" type="text" id="rg" name="rg" placeholder="RG" required="required" maxlength="11" value="{$rg}" tabindex="5"/>
         </div>
-        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+        <div class="form-group col-xs-12 col-sm-6 col-md-2">
             <label for="orgao_expedidor">Orgão Expedidor</label>
             <input class="form-control" type="text" id="orgao_expedidor" name="orgao_expedidor" placeholder="Orgão Expedidor" required="required" maxlength="6" value="{$orgao_expedidor}" tabindex="6"/>
         </div>
@@ -79,57 +105,25 @@
             <label for="cpf">CPF</label>
             <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required="required" maxlength="11" value="{$cpf}" tabindex="7"/>
         </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <label class="checkbox-inline"><input type="checkbox" id="sim_motorista" name="sim_motorista" tabindex="8"/>Motorista</label>
+          <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label for="pai">Pai</label>
+            <input class="form-control" type="text" id="pai" name="pai" placeholder="Pai" required="required" maxlength="100" value="{$pai}" tabindex="1"/>
         </div>
-        <div class="motorista">
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="cnh">CNH</label>
-                <input class="form-control" type="text" id="cnh" name="cnh" placeholder="CNH"  maxlength="11" value="{$cnh}" tabindex="9"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="categoria">Categoria</label>
-                <select class="form-control" id="categoria" name="categoria"  tabindex="10">
-                    <option value='' disabled selected>Selecione a Habilitação</option>
-                    {foreach $relacao_habilitacoes as $habilitacao}
-                        <option value={$habilitacao.id_habilitacao}{if {$habilitacao.id_habilitacao} == {$categoria}} selected {/if}>{$habilitacao.categoria}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                <label for="validade">Validade</label>
-                <input class="form-control" type="text" id="validade" name="validade" placeholder="dd/mm/aaaa" maxlength="20" value="{$validade}" tabindex="11"/>
-            </div>    
+          <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label for="mae">Mãe</label>
+            <input class="form-control" type="text" id="mae" name="mae" placeholder="Mãe" required="required" maxlength="100" value="{$mae}" tabindex="1"/>
+        </div>
+          <div class="form-group col-xs-12 col-sm-12 col-md-8">
+            <label for="conjuge">Cônjuge</label>
+            <input class="form-control" type="text" id="conjuge" name="conjuge" placeholder="Nome Completo" required="required" maxlength="100" value="{$conjuge}" tabindex="1"/>
+        </div>
+         <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="data_nascimento_conjuge">Data de Nascimento Cônjuge</label>
+            <input class="form-control" type="text" id="data_nascimento_conjuge" name="data_nascimento_conjuge" placeholder="dd/mm/aaaa" required="required" maxlength="20" value="{$data_nascimento}" tabindex="4"/>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <label class="checkbox-inline"><input type="checkbox" id="sim_usuario" name="sim_usuario" tabindex="12"/>Usuário</label>
-        </div>
-        <div class="usuario">
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="login">Login</label>
-                <input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' maxlength="20" tabindex="13"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="senha">Senha</label>
-                <input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' maxlength="20" tabindex="14"/>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="perfil">Perfil</label>
-                <select class="form-control" name="perfil" tabindex="15">
-                    <option value='' disabled selected>Selecione o Perfil</option>
-                    {foreach $relacao_perfis as $perfis}
-                        <option value={$perfis.id_perfil} {if {$perfis.id_perfil} == {$perfil}}selected{/if}>{$perfis.descricao}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                <label for="apelido">Apelido</label>
-                <input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' placeholder="Como quer ser chamado" maxlength="20" tabindex="16"/>
-            </div>
-        </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <input type='hidden' id='{$id_motorista}' value='{$id_motorista}' name='id'/>
-            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="17">{$botao}</button>
+            <input type='hidden' id='id' value='{$id_militar}' name='id'/>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>
         </div>
     </form>
 </div>
@@ -137,7 +131,7 @@
     <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O motorista foi adicionada com sucesso!
+            O militar foi adicionada com sucesso!
         </div>              
     </div>
 {/if}
@@ -145,7 +139,7 @@
     <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O motorista foi atualizado com sucesso!
+            O militar foi atualizado com sucesso!
         </div>  
     </div>
 {/if}
@@ -153,7 +147,7 @@
     <div class='container'>
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O motorista foi apagado com sucesso!
+            O militar foi apagado com sucesso!
         </div>              
     </div>
 {/if}
@@ -167,7 +161,7 @@
 {/if}
 </div>
 <div class="container">
-    <legend>Motoristas Cadastrados</legend>
+    <legend>Militares Cadastrados</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -176,29 +170,25 @@
                 <td>Nome Completo</td>
                 <td>Data de Nascimento</td>
                 <td>RG</td>
+                <td>Órgão Expedidor</td>
                 <td>CPF</td>
-                <td>CNH</td>
-                <td>Categoria</td>
-                <td>Validade</td>
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
         </thead>
         <tbody>
-            {foreach $tabela_motoristas_cadastrados as $tbl name=relacao_motoristas}
+            {foreach $militares_cadastrados as $tbl}
             <td>{$tbl.sigla}</td>
             <td>{$tbl.nome}</td>
             <td>{$tbl.nome_completo}</td>
             <td>{$tbl.data_nascimento}</td>
             <td>{$tbl.rg}</td>
+            <td>{$tbl.orgao_expedidor}</td>
             <td>{$tbl.cpf}</td>
-            <td>{$tbl.cnh}</td>
-            <td>{$tbl.categoria}</td>
-            <td>{$tbl.validade}</td>
-            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <td><form action='motorista' method='post'>
-                    <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                    <button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_militar}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+            <td><form action='militar' method='post'>
+                    <input type='hidden' id='id' value='{$tbl.id_militar}' name='id'/>
+                    <button class='btn btn-success' type='submit' id='enviar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
             </form>
             </tr> 
         {/foreach}
@@ -210,10 +200,8 @@
                 <td>Nome Completo</td>
                 <td>Data de Nascimento</td>
                 <td>RG</td>
+                <td>Órgão Expedidor</td>
                 <td>CPF</td>
-                <td>CNH</td>
-                <td>Categoria</td>
-                <td>Validade</td>
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
