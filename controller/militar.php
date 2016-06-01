@@ -13,6 +13,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
     $habiltacoes = new Habilitacao();
     $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
     
+    $militares = new Militar();
+    $militares_cadastrados = $militares->listarMilitar();
+    
     $perfis = new Perfil();
     $relacao_perfis = $perfis->listarPerfil();
 
@@ -27,6 +30,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('evento', 'cadastrar_militar');
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+        $smarty->assign('militares_cadastrados', $militares_cadastrados);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('cadastrado', $_SESSION['cadastrado']);
         $smarty->assign('atualizado', $_SESSION['atualizado']);
@@ -46,23 +50,23 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $id = $_POST['id'];
 
         try {
-            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_motorista = ?");
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, id_posto_grad, militares.nome AS nome, nome_completo, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, 
+                                                rg, orgao_expedidor, cpf, cnh, id_habilitacao, DATE_FORMAT(validade, '%d/%m/%Y') AS validade, id_perfil, login, usuarios.nome AS usuario, senha
+                                                FROM militares, motoristas, usuarios 
+                                                WHERE militares.id_militar = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if ($executa) {
-                $dados_motoristas = $stmt->fetch(PDO::FETCH_OBJ);
-                $id_motorista = $dados_motoristas->id_motorista;
-                $pg = $dados_motoristas->id_posto_grad;
-                $categoria = $dados_motoristas->id_habilitacao;
-                $nome = $dados_motoristas->nome;
-                $nome_completo = $dados_motoristas->nome_completo;
-                $orgao_expedidor = $dados_motoristas->orgao_expedidor;
-                $data_nascimento = date('d-m-Y',strtotime(str_replace('-', '/', $dados_motoristas->data_nascimento)));
-                $rg = $dados_motoristas->rg;
-                $cpf = $dados_motoristas->cpf;
-                $cnh = $dados_motoristas->cnh;
-                $validade = date('d-m-Y',strtotime(str_replace('-', '/', $dados_motoristas->validade)));
+                $dados_militares = $stmt->fetch(PDO::FETCH_OBJ);
+                $id_militar = $dados_militares->id_militar;
+                $pg = $dados_militares->id_posto_grad;
+                $nome = $dados_militares->nome;
+                $nome_completo = $dados_militares->nome_completo;
+                $data_nascimento = $dados_militares->data_nascimento;
+                $rg = $dados_militares->rg;
+                $orgao_expedidor = $dados_militares->orgao_expedidor;
+                $cpf = $dados_militares->cpf;
                 
             } else {
                 print("<script language=JavaScript>
@@ -73,10 +77,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
             echo $e->getMessage();
         }
 
-        $smarty->assign('titulo', 'Atuallizar Militares');
+        $smarty->assign('titulo', 'Atualizar Militares');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_militar');
-        $smarty->assign('id_motorista', $id_motorista);
+        $smarty->assign('id_militar', $id_militar);
         $smarty->assign('id_pg', $pg);
         $smarty->assign('categoria', $categoria);
         $smarty->assign('nome', $nome);
@@ -85,15 +89,22 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('rg', $rg);
         $smarty->assign('orgao_expedidor', $orgao_expedidor);
         $smarty->assign('cpf', $cpf);
-        $smarty->assign('cnh', $cnh);
-        $smarty->assign('validade', $validade);
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+        $smarty->assign('militares_cadastrados', $militares_cadastrados);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+        $smarty->assign('apagado', $_SESSION['apagado']);
+        $smarty->assign('erro', $_SESSION['erro']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('militar.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
+         unset($_SESSION['cadastrado']);
+        unset($_SESSION['atualizado']);
+        unset($_SESSION['apagado']);
+         unset($_SESSION['erro']);
     }
 }
