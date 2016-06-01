@@ -25,11 +25,13 @@ class Motorista{
     public function listarMotoristasCadastrados(){
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_motorista, nome, apelido, habilitacoes.categoria AS categoria, sigla, nome_completo, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, cnh, cpf, rg, orgao_expedidor, DATE_FORMAT(validade,'%d/%m/%Y') AS validade
-                                                FROM motoristas, habilitacoes, posto_grad
-                                                WHERE motoristas.id_habilitacao = habilitacoes.id_habilitacao
-                                                AND motoristas.id_posto_grad = posto_grad.id_posto_grad
-                                                AND motoristas.id_status != 2");
+            $stmt = $pdo->prepare("SELECT sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status
+                                                FROM militares, posto_grad, 
+                                                STATUS , motoristas, habilitacoes
+                                                WHERE militares.id_status = status.id_status
+                                                AND militares.id_posto_grad = posto_grad.id_posto_grad
+                                                AND militares.id_militar = motoristas.id_militar
+                                                AND motoristas.id_habilitacao = habilitacoes.id_habilitacao");
             $executa = $stmt->execute();
 
             if ($executa) {
