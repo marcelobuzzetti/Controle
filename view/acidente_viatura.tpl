@@ -57,12 +57,20 @@
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="acidente">Descrição do Acidente</label>
-            <textarea class="form-control" rows="5" id="acidente" name="acidente" placeholder="Descrição do Acidente" required='required'  tabindex="6">{$descricao}</textarea>
+            <textarea class="form-control" rows="10" id="acidente" name="acidente" placeholder="Descrição do Acidente" required='required'  tabindex="6">{$descricao}</textarea>
         </div>
-         <div class="form-group col-xs-12 col-sm-12 col-md-12">
+        <script type="text/javascript">
+            CKEDITOR.replace('acidente');
+            CKEDITOR.add
+        </script>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="avarias">Descrição das Avarias</label>
-            <textarea class="form-control" rows="5" id="avarias" name="avarias" placeholder="Descrição das Avarias" required='required'  tabindex="7">{$avarias}</textarea>
+            <textarea class="form-control" rows="10" id="avarias" name="avarias" placeholder="Descrição das Avarias" required='required'  tabindex="7">{$avarias}</textarea>
         </div>
+        <script type="text/javascript">
+            CKEDITOR.replace('avarias');
+            CKEDITOR.add
+        </script>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' value='{$id_acidente_viatura}' name='id'/>
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>
