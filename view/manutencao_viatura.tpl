@@ -44,7 +44,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="manutencao">Descrição da Manutenção</label>
-             <textarea class="form-control" rows="5" id="manutencao" name="manutencao" placeholder="Descrição da Manutenção" required='required'  tabindex="4">{$descricao}</textarea>
+            <textarea class="form-control" rows="10" id="manutencao" name="manutencao" placeholder="Descrição da Manutenção" required='required'  tabindex="4">{$descricao}</textarea>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
              <input type='hidden' value='{$id_manutencao_viatura}' name='id'/>
