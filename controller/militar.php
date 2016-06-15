@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
-
+ 
     $postograd = new PostoGrad();
     $relacao_posto_grad = $postograd->listarPostoGrad();
 
