@@ -26,11 +26,11 @@ CREATE TABLE habilitacoes (
 
 CREATE TABLE militares (
  id_militar int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
- numero_militar int(11) NOT NULL,
- cp varchar(11) NOT NULL,
- grupo varchar(11) NOT NULL 
- antiguidade int(11) NOT NULL,
- data_praca date NOT NULL,
+ numero_militar int(11) ,
+ cp varchar(11) ,
+ grupo varchar(11), 
+ antiguidade int(11),
+ data_praca date ,
  nome varchar(50)  NOT NULL,
  nome_completo varchar(100)  NOT NULL,
  data_nascimento date NOT NULL,
@@ -44,22 +44,33 @@ CREATE TABLE militares (
  mae varchar(100) NOT NULL,
  conjuge varchar(100),
  data_nascimento_conjuge date,
- rua varchar(100) NOT NULL,
- bairro varchar(100) NOT NULL,
- cidade varchar(100) NOT NULL,
- estado varchar(2) NOT NULL,
- complemento varchar(100),
- telefone varchar(100) NOT NULL,
- rua_familiar varchar(100) NOT NULL,
- bairro_familiar varchar(100) NOT NULL,
- cidade_familiar varchar(100) NOT NULL,
- estado_familiar varchar(2) NOT NULL,
- complemento_familiar varchar(100),
- telefone_familiar varchar(100) NOT NULL,
- email varchar(100),
  laranjeira varchar(3) NOT NULL,
  id_posto_grad int(11) NOT NULL,
  id_status int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE enderecos (
+  id_endereco int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_militar int(11) NOT NULL,
+  tipo varchar(10) NOT NULL,
+  rua varchar(100) NOT NULL, 
+  bairro varchar(100) NOT NULL, 
+  cidade varchar(100) NOT NULL, 
+  estado varchar(2) NOT NULL, 
+  complemento varchar(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE telefones (
+  id_telefone int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_militar int(11) NOT NULL,
+  tipo varchar(10) NOT NULL,
+  numero varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE emails (
+  id_email int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_militar int(11) NOT NULL,
+  email varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE motoristas (
