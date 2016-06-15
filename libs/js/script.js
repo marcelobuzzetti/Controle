@@ -24,6 +24,25 @@ function preenche(a, b) {
  Abrir Select*/
 
 $(function () {
+
+    $("#outro").click(function () {
+        $("#endereco").clone().appendTo("#outro_endereco").find('input').val('');
+    $('input').attr('tabindex', function(index, attr) {
+        return index + 1;
+    });
+    
+    });
+
+    $("#outros_telefones").click(function () {
+        $("#telefones").clone().appendTo("#outro_telefone").find('input').val('');
+    });
+
+    $("#outros_emails").click(function () {
+        $("#emails").clone().appendTo("#outro_email").find('input').val('');
+    });
+    
+
+
     /*Ocultar alertas automaticamente*/
     $('.alert').hide(10000);
     /*Ocultar alertas automaticamente*/
@@ -56,6 +75,19 @@ $(function () {
     });
 
     $('#data_fim').datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        currentText: 'Hoje',
+        nextText: 'Pr&oacute;ximo',
+        prevText: 'Anterior'
+    });
+    
+       $('.data').datepicker({
         showButtonPanel: true,
         dateFormat: 'dd/mm/yy',
         dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
@@ -131,6 +163,7 @@ $(function () {
 
     /*Formatos*/
     $("#data_nascimento").mask("00/00/0000");
+    $(".data").mask("00/00/0000");
     $("#validade").mask("00/00/0000");
     $("#cpf").mask("00000000000");
     $("#cnh").mask("00000000000");
