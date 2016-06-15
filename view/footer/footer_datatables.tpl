@@ -30,6 +30,7 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+        CKEDITOR.replace( 'manutencao' );
         $('#tabela').DataTable({
             "sPaginationType": "full_numbers",
             "oLanguage": {
