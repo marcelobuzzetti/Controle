@@ -4,7 +4,7 @@ include '../model/conexao.php';
 
 $id_marca = $_GET['marca'];
 $id_modelo = $_GET['modelo'];
-$placa = $_GET['placa'];
+$placa = htmlentities($_GET['placa']);
 
 $stmt = $pdo->prepare("SELECT count(id_viatura) AS qnt FROM viaturas WHERE id_marca =  ? AND id_modelo = ? AND placa = ?");
 $stmt->bindParam(1, $id_marca, PDO::PARAM_INT);

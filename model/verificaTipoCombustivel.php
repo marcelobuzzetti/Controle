@@ -2,7 +2,7 @@
 
 include '../model/conexao.php';
 
-$combustivel = $_GET['descricao'];
+$combustivel = htmlentities($_GET['descricao']);
 
 $stmt = $pdo->prepare("SELECT count(id_tipo_combustivel) AS qnt FROM tipos_combustiveis WHERE descricao =  ?");
 $stmt->bindParam(1, $combustivel, PDO::PARAM_STR);

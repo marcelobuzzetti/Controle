@@ -2,7 +2,7 @@
 include '../model/conexao.php';
 
 $id_marca = $_GET['marca'];
-$modelo = $_GET['modelo'];
+$modelo = htmlentities($_GET['modelo']);
 
 $stmt = $pdo->prepare("SELECT count(id_modelo) AS qnt FROM modelos WHERE id_marca =  ? AND descricao = ?");
 $stmt->bindParam(1, $id_marca, PDO::PARAM_INT);
