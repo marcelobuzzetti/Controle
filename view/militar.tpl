@@ -199,7 +199,7 @@
                 {if $telefones != 0}
                 {foreach $militar_atualizar_telefone as $telefone}
                 <div id="telefones" class='telefones'>
-                    <input type='hidden' id='id_telefones' name="id_telefones[]" class='telefones' value='{$telefone.id_militar}'/>
+                    <input type='hidden' id='id_telefones' name="id_telefones[]" class='telefones' value='{$telefone.id_telefone}'/>
                     <div class="form-group col-xs-12 col-sm-6 col-md-4">
                         <label for="tipo_telefone">Tipo</label>
                         <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}" tabindex="26"/>
