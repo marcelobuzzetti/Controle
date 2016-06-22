@@ -25,12 +25,25 @@ function preenche(a, b) {
 
 $(function () {
 
+/*Remoção de Telefones*/
+    $('.teste').click(function () {
+        $(this).parent('#telefones')
+                .off('click')
+                .hide('slow', function () {
+                    $this = $(this);
+                    window.alert($this.children("#telefones").val());
+                    $(this).remove();
+                });
+    });
+/*Remoção de Telefones*/
+
+/*Adicionado campos*/
     $("#outro").click(function () {
         $("#endereco").clone().appendTo("#outro_endereco").find('input').val('');
-    $('input').attr('tabindex', function(index, attr) {
-        return index + 1;
-    });
-    
+        $('input').attr('tabindex', function (index, attr) {
+            return index + 1;
+        });
+
     });
 
     $("#outros_telefones").click(function () {
@@ -40,7 +53,8 @@ $(function () {
     $("#outros_emails").click(function () {
         $("#emails").clone().appendTo("#outro_email").find('input').val('');
     });
-    
+/*Adicionado campos*/
+
 
 
     /*Ocultar alertas automaticamente*/
@@ -86,19 +100,7 @@ $(function () {
         nextText: 'Pr&oacute;ximo',
         prevText: 'Anterior'
     });
-    
-       $('.data').datepicker({
-        showButtonPanel: true,
-        dateFormat: 'dd/mm/yy',
-        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-        monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-        currentText: 'Hoje',
-        nextText: 'Pr&oacute;ximo',
-        prevText: 'Anterior'
-    });
+
     /*Coloca datepicker nas datas*/
 
     /*Autocompleta o destino em percurso*/
@@ -163,6 +165,7 @@ $(function () {
 
     /*Formatos*/
     $("#data_nascimento").mask("00/00/0000");
+    $("#idt_militar").mask("0000000000");
     $(".data").mask("00/00/0000");
     $("#validade").mask("00/00/0000");
     $("#cpf").mask("00000000000");
@@ -298,12 +301,10 @@ $(function () {
         var recipient = button.data('whatever')
         var sigla = button.data("sigla")
         var nome = button.data("nome")
-        var categoria = button.data("categoria")
         var modal = $(this)
         modal.find('.modal-footer input').val(recipient)
         modal.find('.nome input').val(nome)
         modal.find('.sigla input').val(sigla)
-        modal.find('.categoria input').val(categoria)
     });
 });
 /*Modal dos motoristas*/
