@@ -6,7 +6,7 @@ class Militar {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, nome, nome_completo, DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,'\n' ) SEPARATOR ' ') 
+                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,'<br/>' ) SEPARATOR ' ') 
                                                 FROM telefones
                                                 WHERE militares.id_militar = telefones.id_militar
                                                 ),'-') AS telefones, IFNULL((
@@ -107,7 +107,7 @@ class Militar {
      public function listarTelefoneMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  tipo, numero
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero
                                                 FROM militares, telefones
                                                 WHERE militares.id_militar = $id
                                                 AND militares.id_status !=2
