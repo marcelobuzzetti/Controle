@@ -46,7 +46,8 @@ CREATE TABLE militares (
  data_nascimento_conjuge date,
  laranjeira varchar(3) NOT NULL,
  id_posto_grad int(11) NOT NULL,
- id_status int(11) NOT NULL
+ id_status int(11) NOT NULL,
+ id_usuario int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE enderecos (
@@ -146,7 +147,8 @@ CREATE TABLE usuarios (
   senha varchar(50)  NOT NULL,
   id_perfil int(11) NOT NULL,
   nome varchar(20) DEFAULT NULL,
-  id_status int(11) NOT NULL
+  id_status int(11) NOT NULL,
+  id_usuario int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE viaturas (
@@ -227,7 +229,17 @@ ALTER TABLE abastecimentos
 
 ALTER TABLE militares
   ADD CONSTRAINT FK_posto_grad FOREIGN KEY (id_posto_grad) REFERENCES posto_grad (id_posto_grad),
-  ADD CONSTRAINT FK_status FOREIGN KEY (id_status) REFERENCES status (id_status);
+  ADD CONSTRAINT FK_status FOREIGN KEY (id_status) REFERENCES status (id_status),
+   ADD CONSTRAINT FK_usuario1 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+
+ALTER TABLE enderecos
+  ADD CONSTRAINT FK_id_militar FOREIGN KEY (id_militar) REFERENCES militares(id_militar);
+
+ALTER TABLE telefones
+  ADD CONSTRAINT FK_id_militar1 FOREIGN KEY (id_militar) REFERENCES militares(id_militar);
+
+ALTER TABLE emails
+  ADD CONSTRAINT FK_id_militar2 FOREIGN KEY (id_militar) REFERENCES militares(id_militar);
 
 ALTER TABLE motoristas
   ADD CONSTRAINT FK_militar FOREIGN KEY (id_militar) REFERENCES militares (id_militar),
