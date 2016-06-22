@@ -6,7 +6,10 @@ session_start();
 if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
    header('Location: '.  constant("HOST").'/percurso');
 } else {
-        
+    
+    $militar = new Militar();
+    $relacao_militares = $militar->listarMilitarUsuario();
+    
     $usuarios =new Usuario();
     $relacao_usuarios = $usuarios->listarUsuario();
     
@@ -21,6 +24,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('titulo', 'Cadastro de Usuários');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_usuario');
+        $smarty->assign('relacao_militares', $relacao_militares);
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
