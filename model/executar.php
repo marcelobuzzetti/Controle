@@ -1419,13 +1419,14 @@ switch ($_POST['enviar']) {
         $complemento = $_POST['complemento'];
         $estado = $_POST['estado'];
         $cidade = $_POST['cidade'];
-
+*/
         $id_telefones = $_POST['id_telefones'];
         $tipo_telefone = $_POST['tipo_telefone'];
         $telefone = $_POST['telefone'];
-
+/*
         $email = $_POST['email'];
- * */
+ */
+ 
 
 
         if (isset($_POST['laranjeira'])) {
@@ -1481,6 +1482,32 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(20, $pg, PDO::PARAM_STR);
             $stmt->bindParam(21, $id_militar, PDO::PARAM_INT);
             $executa = $stmt->execute();
+            
+            for ($i = 0; $i < sizeof($tipo_telefone); $i++) {
+            if(empty($id_telefones[$i])){
+                if (empty($tipo_telefone[$i]) && empty($telefone[$i])) {
+                    continue;
+                } else {
+                    $stmt = $pdo->prepare("INSERT INTO telefones
+                                                VALUES(NULL,?,?,?);");
+                    $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
+                    $stmt->bindParam(2, htmlentities(ucwords(strtolower($tipo_telefone[$i]))), PDO::PARAM_STR);
+                    $stmt->bindParam(3, $telefone[$i], PDO::PARAM_STR);
+                    $executa = $stmt->execute();
+                }
+            } else {
+                    $stmt = $pdo->prepare("UPDATE telefones
+                                                        SET id_militar = ?,
+                                                        tipo = ?,
+                                                        numero = ?
+                                                        WHERE id_telefone = ?");
+                    $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
+                    $stmt->bindParam(2, htmlentities(ucwords(strtolower($tipo_telefone[$i]))), PDO::PARAM_STR);
+                    $stmt->bindParam(3, $telefone[$i], PDO::PARAM_STR);
+                    $stmt->bindParam(4, $id_telefones[$i], PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                }
+            }
 
             if (!$executa) {
                 $_SESSION['erro'] = 1;
