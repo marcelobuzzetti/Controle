@@ -20,11 +20,54 @@
     </div>
 </div>
 <!--Modal-->
+<!--Alertas-->
+{if $cadastrado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O usuario foi adicionada com sucesso!
+        </div>              
+    </div>
+{/if}
+{if $atualizado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O usuario foi atualizado com sucesso!
+        </div>  
+    </div>
+{/if}
+{if $apagado != NULL}
+    <div class='container'>
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O usuario foi apagado com sucesso!
+        </div>              
+    </div>
+{/if}
+{if $erro != NULL}
+    <div class='container'>
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            Não foi possível acessar o BD
+        </div>    
+    </div>
+{/if}
+<!--Alertas-->
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
     <form action="executar" method="post">
+        <div class=" form-group col-xs-12 col-sm-6 col-md-3" >
+            <label for="militar">Militar</label>
+            <select class="form-control" id="militar" name="militar" required tabindex="1">
+                <option value='' disabled selected>Selecione o Militar</option>
+                {foreach $relacao_militares as $militares}
+                    <option value={$militares.id_militar} {if {$militares.id_militar} == {$militar}}selected{/if}>{$militares.sigla} {$militares.nome} </option>
+                {/foreach}
+            </select>
+        </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="login">Login</label>
             <input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>
