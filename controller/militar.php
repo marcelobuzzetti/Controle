@@ -24,7 +24,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
 
 
     if (!isset($_POST['id'])) {
-
+        
         $smarty->assign('titulo', 'Cadastro de Militares');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_militar');
@@ -52,6 +52,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
 
         $militar_atualizar = $militares->listarMilitarAtualizar($id);
         $militar_atualizar_telefone = $militares->listarTelefoneMilitarAtualizar($id);
+        $militar_atualizar_endereco = $militares->listarEnderecoMilitarAtualizar($id);
         
         if(empty($militar_atualizar_telefone) ){
             $telefones = 0;
@@ -59,12 +60,18 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
             $telefones = 1;
         }
         
+        if(empty($militar_atualizar_endereco) ){
+            $enderecos = 0;
+        } else {
+            $enderecos = 1;
+        }
         
         $smarty->assign('titulo', 'Atualizar Militares');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_militar');
         $smarty->assign('update', $update);
         $smarty->assign('telefones', $telefones);
+        $smarty->assign('enderecos', $enderecos);
         $smarty->assign('id_militar', $militar_atualizar[0]['id_militar']);
         $smarty->assign('numero_militar', $militar_atualizar[0]['numero_militar']);
         $smarty->assign('cp', $militar_atualizar[0]['cp']);
@@ -86,6 +93,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('conjuge', $militar_atualizar[0]['conjuge']);
         $smarty->assign('data_nascimento_conjuge', $militar_atualizar[0]['data_nascimento_conjuge']);
         $smarty->assign('militar_atualizar_telefone', $militar_atualizar_telefone);
+        $smarty->assign('militar_atualizar_endereco', $militar_atualizar_endereco);
         $smarty->assign('militares_cadastrados', $militares_cadastrados);
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_perfis', $relacao_perfis);
