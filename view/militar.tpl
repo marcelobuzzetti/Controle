@@ -162,33 +162,68 @@
         </div>
         <div class = "panel panel-primary">
             <div class="panel-heading btn" data-toggle="collapse" data-target="#endereco_militar">Endereço do Militar</div>
-            <div class = "panel-body collapse in" id="endereco_militar">        
-                <div id="endereco">
-                    <div class="form-group col-xs-12 col-sm-6 col-md-2">
-                        <label for="rua">Tipo</label>
-                        <input class="form-control" type="text" id="tipo_endereco" name="tipo_endereco[]" placeholder="Tipo"  maxlength="20" value="{$rua}" tabindex="20"/>
+            <div class = "panel-body collapse in" id="endereco_militar">    
+                {if $enderecos != 0}
+                    {foreach $militar_atualizar_endereco as $endereco}
+                        <div id="endereco">
+                            <input type='hidden' id='id_enderecos' name="id_enderecos[]" class='enderecos' value='{$endereco.id_endereco}'/>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-2">
+                                <label for="rua">Tipo</label>
+                                <input class="form-control" type="text" id="tipo_endereco" name="tipo_endereco[]" placeholder="Tipo"  maxlength="20" value="{$endereco.tipo}" tabindex="20"/>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                <label for="rua">Rua</label>
+                                <input class="form-control" type="text" id="rua" name="rua[]" placeholder="Rua e Número" value="{$endereco.rua}" tabindex="20"/>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="bairro">Bairro</label>
+                                <input class="form-control" type="text" id="bairro" name="bairro[]" placeholder="Bairro"  value="{$endereco.bairro}" tabindex="21"/>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="complemento">Complemento</label>
+                                <input class="form-control" type="text" id="complemento" name="complemento[]" placeholder="Complemento" value="{$endereco.complemento}" tabindex="22"/>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="estado">Estado</label>
+                                <input class="form-control" type="text" id="estado" name="estado[]" placeholder="Estado"  maxlength="2" value="{$endereco.estado}" tabindex="23"/>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="cidade">Cidade</label>
+                                <input class="form-control" type="text" id="cidade" name="cidade[]" placeholder="Cidade"   value="{$endereco.cidade}" tabindex="24"/>
+                            </div>       
+                             {if $update != NULL}
+                                <span id='enderecos' class='endereco col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
+                            {/if}
+                        </div>
+                    {/foreach}
+                {else}
+                    <div id="endereco">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-2">
+                            <label for="rua">Tipo</label>
+                            <input class="form-control" type="text" id="tipo_endereco" name="tipo_endereco[]" placeholder="Tipo"  maxlength="20" value="{$rua}" tabindex="20"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <label for="rua">Rua</label>
+                            <input class="form-control" type="text" id="rua" name="rua[]" placeholder="Rua e Número" value="{$rua}" tabindex="20"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="bairro">Bairro</label>
+                            <input class="form-control" type="text" id="bairro" name="bairro[]" placeholder="Bairro"  value="{$bairro}" tabindex="21"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="complemento">Complemento</label>
+                            <input class="form-control" type="text" id="complemento" name="complemento[]" placeholder="Complemento" value="{$complemento}" tabindex="22"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="estado">Estado</label>
+                            <input class="form-control" type="text" id="estado" name="estado[]" placeholder="Estado"  maxlength="2" value="{$estado}" tabindex="23"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="cidade">Cidade</label>
+                            <input class="form-control" type="text" id="cidade" name="cidade[]" placeholder="Cidade"   value="{$cidade}" tabindex="24"/>
+                        </div>        
                     </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-6">
-                        <label for="rua">Rua</label>
-                        <input class="form-control" type="text" id="rua" name="rua[]" placeholder="Rua e Número" value="{$rua}" tabindex="20"/>
-                    </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="bairro">Bairro</label>
-                        <input class="form-control" type="text" id="bairro" name="bairro[]" placeholder="Bairro"  value="{$bairro}" tabindex="21"/>
-                    </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="complemento">Complemento</label>
-                        <input class="form-control" type="text" id="complemento" name="complemento[]" placeholder="Complemento" value="{$complemento}" tabindex="22"/>
-                    </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="estado">Estado</label>
-                        <input class="form-control" type="text" id="estado" name="estado[]" placeholder="Estado"  maxlength="2" value="{$estado}" tabindex="23"/>
-                    </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="cidade">Cidade</label>
-                        <input class="form-control" type="text" id="cidade" name="cidade[]" placeholder="Cidade"   value="{$cidade}" tabindex="24"/>
-                    </div>        
-                </div>
+                {/if}
                 <div id="outro_endereco"></div>
                 <span class="btn btn-default col-xs-12 col-sm-12 col-md-12" id="outro" tabindex="25">Mais Endereço</span>
             </div>
@@ -197,34 +232,33 @@
             <div class="panel-heading btn" data-toggle="collapse" data-target="#contatos">Contatos do Militar</div>
             <div class = "panel-body collapse in" id="contatos">     
                 {if $telefones != 0}
-                {foreach $militar_atualizar_telefone as $telefone}
-                <div id="telefones" class='telefones'>
-                    <input type='hidden' id='id_telefones' name="id_telefones[]" class='telefones' value='{$telefone.id_telefone}'/>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="tipo_telefone">Tipo</label>
-                        <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}" tabindex="26"/>
-                    </div>                
-                    <div class="form-group col-xs-12 col-sm-6 col-md-6">
-                        <label for="telefone">Telefone</label>
-                        <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}" tabindex="26"/>
-                    </div>
-                    {if $update != NULL}
-                        <span id='teste' class='teste col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
-                    {/if}
-                </div>
-                {/foreach}
+                    {foreach $militar_atualizar_telefone as $telefone}
+                        <div id="telefones" class='telefones'>
+                            <input type='hidden' id='id_telefones' name="id_telefones[]" class='telefones' value='{$telefone.id_telefone}'/>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="tipo_telefone">Tipo</label>
+                                <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}" tabindex="26"/>
+                            </div>                
+                            <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                                <label for="telefone">Telefone</label>
+                                <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}" tabindex="26"/>
+                            </div>
+                            {if $update != NULL}
+                                <span id='teste' class='teste col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
+                            {/if}
+                        </div>
+                    {/foreach}
                 {else}
-                <div id="telefones" class='telefones'>
-                    <input type='hidden' id='telefones' class='telefones' value='{$telefone.id_militar}'/>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="tipo_telefone">Tipo</label>
-                        <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}" tabindex="26"/>
-                    </div>                
-                    <div class="form-group col-xs-12 col-sm-6 col-md-6">
-                        <label for="telefone">Telefone</label>
-                        <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}" tabindex="26"/>
+                    <div id="telefones" class='telefones'>
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="tipo_telefone">Tipo</label>
+                            <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}" tabindex="26"/>
+                        </div>                
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6">
+                            <label for="telefone">Telefone</label>
+                            <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}" tabindex="26"/>
+                        </div>
                     </div>
-                </div>
                 {/if}
                 <div id="outro_telefone"></div>
                 <span class="btn btn-default col-xs-12 col-sm-12 col-md-12" id="outros_telefones" tabindex="27">Mais Telefone</span>
