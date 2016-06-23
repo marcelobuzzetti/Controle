@@ -1640,7 +1640,7 @@ switch ($_POST['enviar']) {
         try {
             $stmt = $pdo->prepare("UPDATE emails
                                                 SET id_status = 2
-                                                WHERE id_emails = ?");
+                                                WHERE id_email = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
         } catch (PDOException $e) {
