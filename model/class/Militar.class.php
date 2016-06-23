@@ -125,4 +125,26 @@ class Militar {
             echo $e->getMessage();
         }
     }
+    
+      public function listarEnderecoMilitarAtualizar($id) {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT enderecos.*
+                                                FROM militares, enderecos
+                                                WHERE militares.id_militar = $id
+                                                AND militares.id_status !=2
+                                                AND militares.id_militar = enderecos.id_militar");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
