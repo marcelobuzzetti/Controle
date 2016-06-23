@@ -5,19 +5,28 @@ class Militar {
     public function listarMilitar() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, nome, nome_completo, DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,'<br/>' ) SEPARATOR ' ') 
-                                                FROM telefones
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, 
+                                                IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
+                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, nome, nome_completo, 
+                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, 
+                                                estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
+                                                IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
+                                                IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
+                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
+                                                FROM telefones, status
                                                 WHERE militares.id_militar = telefones.id_militar
+                                                AND status.id_status = telefones.id_status
                                                 ),'-') AS telefones, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT('Tipo: ', tipo,  ' Rua: ', rua,  ' Bairro: ', bairro,  ' Comp.: ', complemento,  ' Cidade: ', cidade,  ' Estado: ', estado,  '<br/>' ) 
+                                                SELECT GROUP_CONCAT( CONCAT('Tipo: ', tipo,  ' Rua: ', rua,  ' Bairro: ', bairro,  ' Comp.: ', complemento,  ' Cidade: ', cidade,  ' Estado: ', estado,' ',status,  '<br/>' ) 
                                                 SEPARATOR  ' ' ) 
                                                 FROM enderecos
                                                 WHERE militares.id_militar = enderecos.id_militar
+                                                AND status.id_status = enderecos.id_status
                                                 ),'-') AS enderecos, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT(email,'<br/>') SEPARATOR ' ' ) 
+                                                SELECT GROUP_CONCAT( CONCAT(email, ' ',status,'<br/>') SEPARATOR ' ' ) 
                                                 FROM emails
                                                 WHERE militares.id_militar = emails.id_militar
+                                                AND status.id_status = emails.id_status
                                                 ),'-') AS emails, 
                                                 status, laranjeira
                                                 FROM militares, posto_grad, 
@@ -110,7 +119,7 @@ class Militar {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero
                                                 FROM militares, telefones
                                                 WHERE militares.id_militar = $id
-                                                AND militares.id_status !=2
+                                                AND telefones.id_status !=2
                                                 AND militares.id_militar = telefones.id_militar");
             $executa = $stmt->execute();
 
@@ -132,8 +141,30 @@ class Militar {
             $stmt = $pdo->prepare("SELECT enderecos.*
                                                 FROM militares, enderecos
                                                 WHERE militares.id_militar = $id
-                                                AND militares.id_status !=2
+                                                AND enderecos.id_status !=2
                                                 AND militares.id_militar = enderecos.id_militar");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
+     public function listarEmailMilitarAtualizar($id) {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT emails.*
+                                                FROM militares, emails
+                                                WHERE militares.id_militar = $id
+                                                AND emails.id_status !=2
+                                                AND militares.id_militar = emails.id_militar");
             $executa = $stmt->execute();
 
             if ($executa) {
