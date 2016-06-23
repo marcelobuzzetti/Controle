@@ -25,19 +25,33 @@ function preenche(a, b) {
 
 $(function () {
 
-/*Remoção de Telefones*/
+    /*Remoção de Telefones*/
     $('.teste').click(function () {
         $(this).parent('#telefones')
                 .off('click')
                 .hide('slow', function () {
                     $this = $(this);
-                    window.alert($this.children("#telefones").val());
+                    $id = $this.children("#id_telefones").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../model/executar.php',
+                        async: true,
+                        data: {id: $id, enviar: 'apagar_telefone'},
+                        error: function (request, status, error) {
+                            // Aqui você trata um erro que possa vir a ocorrer
+                            // Exemplo:
+                            alert('Não foi possível apagar o telefone');
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            $('#alerta_telefone').html('<div>Telefone removido com sucesso</div>').addClass('alert alert-success alert-dismissible').attr('data-dismiss', 'alert').hide(10000);
+                        }
+                    });
                     $(this).remove();
                 });
     });
-/*Remoção de Telefones*/
+    /*Remoção de Telefones*/
 
-/*Adicionado campos*/
+    /*Adicionado campos*/
     $("#outro").click(function () {
         $("#endereco").clone().appendTo("#outro_endereco").find('input').val('');
         $('input').attr('tabindex', function (index, attr) {
@@ -53,7 +67,7 @@ $(function () {
     $("#outros_emails").click(function () {
         $("#emails").clone().appendTo("#outro_email").find('input').val('');
     });
-/*Adicionado campos*/
+    /*Adicionado campos*/
 
 
 
