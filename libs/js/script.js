@@ -43,7 +43,7 @@ $(function () {
                             alert('Não foi possível apagar o telefone');
                         },
                         success: function (data, textStatus, jqXHR) {
-                            $('#alerta_telefone').html('<div>Telefone removido com sucesso</div>').addClass('alert alert-success alert-dismissible').attr('data-dismiss', 'alert').hide(10000);
+                            $('#alerta_telefone').html('<div>Telefone removido</div>').addClass('alert alert-success alert-dismissible').attr('data-dismiss', 'alert').hide(10000);
                         }
                     });
                     $(this).remove();
