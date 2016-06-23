@@ -107,9 +107,6 @@
                     <label for="nome_completo">Nome Completo</label>
                     <input class="form-control" type="text" id="nome_completo" name="nome_completo" placeholder="Nome Completo"  maxlength="100" value="{$nome_completo}" tabindex="7"/>
                 </div>
-                <div>
-                    <span name="alerta" id="alerta"></span>
-                </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="nome">Nome de Guerra</label>
                     <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome de Guerra"  maxlength="20" value="{$nome}" tabindex="8"/>
@@ -165,7 +162,7 @@
             <div class = "panel-body collapse in" id="endereco_militar">    
                 {if $enderecos != 0}
                     {foreach $militar_atualizar_endereco as $endereco}
-                        <div id="endereco">
+                        <div id="enderecos">
                             <input type='hidden' id='id_enderecos' name="id_enderecos[]" class='enderecos' value='{$endereco.id_endereco}'/>
                             <div class="form-group col-xs-12 col-sm-6 col-md-2">
                                 <label for="rua">Tipo</label>
@@ -191,13 +188,13 @@
                                 <label for="cidade">Cidade</label>
                                 <input class="form-control" type="text" id="cidade" name="cidade[]" placeholder="Cidade"   value="{$endereco.cidade}" tabindex="24"/>
                             </div>       
-                             {if $update != NULL}
-                                <span id='enderecos' class='endereco col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
+                            {if $update != NULL}
+                                <span id='apagar_endereco' class='endereco col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
                             {/if}
                         </div>
                     {/foreach}
                 {else}
-                    <div id="endereco">
+                    <div id="enderecos">
                         <div class="form-group col-xs-12 col-sm-6 col-md-2">
                             <label for="rua">Tipo</label>
                             <input class="form-control" type="text" id="tipo_endereco" name="tipo_endereco[]" placeholder="Tipo"  maxlength="20" value="{$rua}" tabindex="20"/>
@@ -244,7 +241,7 @@
                                 <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}" tabindex="26"/>
                             </div>
                             {if $update != NULL}
-                                <span id='teste' class='teste col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
+                                <span id='apaga_telefone' class='telefone col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
                             {/if}
                         </div>
                     {/foreach}
@@ -260,14 +257,32 @@
                         </div>
                     </div>
                 {/if}
+                <div  class="col-xs-12 col-sm-12 col-md-12">
+                    <span name="alerta_telefone" id="alerta_telefone"></span>
+                </div>
                 <div id="outro_telefone"></div>
                 <span class="btn btn-default col-xs-12 col-sm-12 col-md-12" id="outros_telefones" tabindex="27">Mais Telefone</span>
-                <div id="emails">
-                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                        <label for="email">E-mail</label>
-                        <input class="form-control" type="text" id="email" name="email[]" placeholder="E-mail"  value="{$estado}" tabindex="28"/>
+                {if $emails != 0}
+                    {foreach $militar_atualizar_email as $email}
+                        <div id="emails">
+                            <input type='hidden' id='id_emails' name="id_emails[]" class='telefones' value='{$email.id_email}'/>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                <label for="email">E-mail</label>
+                                <input class="form-control" type="text" id="email" name="email[]" placeholder="E-mail"  value="{$email.email}" tabindex="28"/>
+                            </div>
+                            {if $update != NULL}
+                                <span id='apagar_email' class='email col-xs-12 col-sm-12 col-md-12 btn btn-danger glyphicon glyphicon-remove-sign'/>
+                            {/if}
+                        </div>
+                    {/foreach}
+                {else}
+                    <div id="emails">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                            <label for="email">E-mail</label>
+                            <input class="form-control" type="text" id="email" name="email[]" placeholder="E-mail"  tabindex="28"/>
+                        </div>
                     </div>
-                </div>
+                {/if}
                 <div id="outro_email"></div>
                 <span class="btn btn-default col-xs-12 col-sm-12 col-md-12" id="outros_emails" tabindex="29">Mais E-mail</span>
             </div>
