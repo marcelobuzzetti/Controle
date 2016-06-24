@@ -26,7 +26,7 @@ function preenche(a, b) {
 $(function () {
 
     /*Remoção de Telefones*/
-    $('.teste').click(function () {
+    $('.telefone').click(function () {
         $(this).parent('#telefones')
                 .off('click')
                 .hide('slow', function () {
@@ -43,13 +43,65 @@ $(function () {
                             alert('Não foi possível apagar o telefone');
                         },
                         success: function (data, textStatus, jqXHR) {
-                            $('#alerta_telefone').html('<div>Telefone removido</div>').addClass('alert alert-success alert-dismissible').attr('data-dismiss', 'alert').hide(10000);
+                            $('#alerta_telefone').html("<div>Telefone removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
                         }
                     });
                     $(this).remove();
                 });
     });
     /*Remoção de Telefones*/
+   
+    /*Remoção Email*/
+     $('.email').click(function () {
+        $(this).parent('#emails')
+                .off('click')
+                .hide('slow', function () {
+                    $this = $(this);
+                    $id = $this.children("#id_emails").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../model/executar.php',
+                        async: true,
+                        data: {id: $id, enviar: 'apagar_email'},
+                        error: function (request, status, error) {
+                            // Aqui você trata um erro que possa vir a ocorrer
+                            // Exemplo:
+                            alert('Não foi possível apagar o email');
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            $('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                        }
+                    });
+                    $(this).remove();
+                });
+    });
+    /*Remoção Email*/
+    
+     /*Remoção Endereço*/
+     $('.endereco').click(function () {
+        $(this).parent('#enderecos')
+                .off('click')
+                .hide('slow', function () {
+                    $this = $(this);
+                    $id = $this.children("#id_enderecos").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../model/executar.php',
+                        async: true,
+                        data: {id: $id, enviar: 'apagar_endereco'},
+                        error: function (request, status, error) {
+                            // Aqui você trata um erro que possa vir a ocorrer
+                            // Exemplo:
+                            alert('Não foi possível apagar o email');
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            $('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                        }
+                    });
+                    $(this).remove();
+                });
+    });
+    /*Remoção Endereço*/
 
     /*Adicionado campos*/
     $("#outro").click(function () {
