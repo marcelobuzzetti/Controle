@@ -1266,7 +1266,7 @@ switch ($_POST['enviar']) {
         $nome = htmlentities(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
         $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
-        $estado_natal = htmlentities(ucwords(strtolower($_POST['estado_natal'])));
+        $estado_natal = htmlentities(strtoupper($_POST['estado_natal']));
         $cidade_natal = htmlentities(ucwords(strtolower($_POST['cidade_natal'])));
         $idt_militar = htmlentities($_POST['idt_militar']);
         $rg = htmlentities($_POST['rg']);
@@ -1401,8 +1401,8 @@ switch ($_POST['enviar']) {
         $nome = htmlentities(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
         $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
-        $estado_natal = ucwords(strtolower($_POST['estado_natal']));
-        $cidade_natal = ucwords(strtolower($_POST['cidade_natal']));
+        $estado_natal = htmlentities(strtoupper($_POST['estado_natal']));
+        $cidade_natal = htmlentities(ucwords(strtolower($_POST['cidade_natal'])));
         $idt_militar = $_POST['idt_militar'];
         $rg = $_POST['rg'];
         $orgao_expedidor = htmlentities(strtoupper($_POST['orgao_expedidor']));
@@ -1522,7 +1522,7 @@ switch ($_POST['enviar']) {
                         $stmt->bindParam(3, htmlentities(ucwords(strtolower($rua[$i]))), PDO::PARAM_STR);
                         $stmt->bindParam(4, htmlentities(ucwords(strtolower($bairro[$i]))), PDO::PARAM_STR);
                         $stmt->bindParam(5, htmlentities(ucwords(strtolower($cidade[$i]))), PDO::PARAM_STR);
-                        $stmt->bindParam(6, htmlentities(ucwords(strtolower($estado[$i]))), PDO::PARAM_STR);
+                        $stmt->bindParam(6, htmlentities(strtoupper($estado[$i])), PDO::PARAM_STR);
                         $stmt->bindParam(7, htmlentities(ucwords(strtolower($complemento[$i]))), PDO::PARAM_STR);
                         $executa = $stmt->execute();
                     }
@@ -1539,29 +1539,29 @@ switch ($_POST['enviar']) {
                     $stmt->bindParam(2, htmlentities(ucwords(strtolower($rua[$i]))), PDO::PARAM_STR);
                     $stmt->bindParam(3, htmlentities(ucwords(strtolower($bairro[$i]))), PDO::PARAM_STR);
                     $stmt->bindParam(4, htmlentities(ucwords(strtolower($cidade[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(5, htmlentities(ucwords(strtolower($estado[$i]))), PDO::PARAM_STR);
+                    $stmt->bindParam(5, htmlentities(strtoupper($estado[$i])), PDO::PARAM_STR);
                     $stmt->bindParam(6, htmlentities(ucwords(strtolower($complemento[$i]))), PDO::PARAM_STR);
                     $stmt->bindParam(7, $id_enderecos[$i], PDO::PARAM_INT);
                     $executa = $stmt->execute();
                 }
             }
 
-                for ($i = 0; $i < sizeof($email); $i++) {
+            for ($i = 0; $i < sizeof($email); $i++) {
                 if (empty($id_emails[$i])) {
-                   if (empty($email[$i])) {
+                    if (empty($email[$i])) {
                         continue;
                     } else {
                         $stmt = $pdo->prepare("INSERT INTO emails
                                                 VALUES(NULL,?,?,1);");
-                       $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
-                       $stmt->bindParam(2, htmlentities($email[$i]), PDO::PARAM_STR);
+                        $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
+                        $stmt->bindParam(2, htmlentities($email[$i]), PDO::PARAM_STR);
                         $executa = $stmt->execute();
                     }
                 } else {
                     $stmt = $pdo->prepare("UPDATE emails
                                                         SET email = ?
                                                         WHERE id_email= ?");
-                    $stmt->bindParam(1, htmlentities(ucwords(strtolower($email[$i]))), PDO::PARAM_STR);
+                    $stmt->bindParam(1, htmlentities($email[$i]), PDO::PARAM_STR);
                     $stmt->bindParam(2, $id_emails[$i], PDO::PARAM_INT);
                     $executa = $stmt->execute();
                 }
@@ -1603,8 +1603,8 @@ switch ($_POST['enviar']) {
         header('Location: /militar');
 
         break;
-        
-         case 'apagar_telefone':
+
+    case 'apagar_telefone':
         $id = $_POST['id'];
 
         try {
@@ -1618,8 +1618,23 @@ switch ($_POST['enviar']) {
         }
 
         break;
-    
-      case 'apagar_endereco':
+
+    case 'ativar_telefone':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE telefones
+                                                SET id_status = 1
+                                                WHERE id_telefone = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        break;
+
+    case 'apagar_endereco':
         $id = $_POST['id'];
 
         try {
@@ -1633,8 +1648,23 @@ switch ($_POST['enviar']) {
         }
 
         break;
-    
-      case 'apagar_email':
+
+    case 'ativar_endereco':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE enderecos
+                                                SET id_status = 1
+                                                WHERE id_endereco = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        break;
+
+    case 'apagar_email':
         $id = $_POST['id'];
 
         try {
@@ -1648,6 +1678,22 @@ switch ($_POST['enviar']) {
         }
 
         break;
+
+    case 'ativar_email':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE emails
+                                                SET id_status = 1
+                                                WHERE id_email = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        break;
+
 
     default:
     //no action sent
