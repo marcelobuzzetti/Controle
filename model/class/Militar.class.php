@@ -17,14 +17,14 @@ class Militar {
                                                 WHERE militares.id_militar = telefones.id_militar
                                                 AND status.id_status = telefones.id_status
                                                 ),'-') AS telefones, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT('Tipo: ', tipo,  ' Rua: ', rua,  ' Bairro: ', bairro,  ' Comp.: ', complemento,  ' Cidade: ', cidade,  ' Estado: ', estado,' ',status,  '<br/>' ) 
+                                                SELECT GROUP_CONCAT( CONCAT(tipo,  ' ', rua,  ' - ', bairro,  ' - ', complemento,  ' ', cidade,  '/', estado,' ',status,  '<br/>' ) 
                                                 SEPARATOR  ' ' ) 
-                                                FROM enderecos
+                                                FROM enderecos, status
                                                 WHERE militares.id_militar = enderecos.id_militar
                                                 AND status.id_status = enderecos.id_status
                                                 ),'-') AS enderecos, IFNULL((
                                                 SELECT GROUP_CONCAT( CONCAT(email, ' ',status,'<br/>') SEPARATOR ' ' ) 
-                                                FROM emails
+                                                FROM emails,status
                                                 WHERE militares.id_militar = emails.id_militar
                                                 AND status.id_status = emails.id_status
                                                 ),'-') AS emails, 
@@ -34,7 +34,7 @@ class Militar {
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=2
-                                                ORDER BY antiguidade, militares.id_militar");
+                                                ORDER BY posto_grad.id_posto_grad DESC,antiguidade, militares.id_militar");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -116,10 +116,9 @@ class Militar {
      public function listarTelefoneMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero, telefones.id_status AS id_status
                                                 FROM militares, telefones
                                                 WHERE militares.id_militar = $id
-                                                AND telefones.id_status !=2
                                                 AND militares.id_militar = telefones.id_militar");
             $executa = $stmt->execute();
 
@@ -141,7 +140,6 @@ class Militar {
             $stmt = $pdo->prepare("SELECT enderecos.*
                                                 FROM militares, enderecos
                                                 WHERE militares.id_militar = $id
-                                                AND enderecos.id_status !=2
                                                 AND militares.id_militar = enderecos.id_militar");
             $executa = $stmt->execute();
 
@@ -163,7 +161,6 @@ class Militar {
             $stmt = $pdo->prepare("SELECT emails.*
                                                 FROM militares, emails
                                                 WHERE militares.id_militar = $id
-                                                AND emails.id_status !=2
                                                 AND militares.id_militar = emails.id_militar");
             $executa = $stmt->execute();
 
