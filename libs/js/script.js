@@ -29,7 +29,7 @@ $(function () {
     $('.telefone').click(function () {
         $(this).parent('#telefones')
                 .off('click')
-                .hide('slow', function () {
+                .hide( function () {
                     $this = $(this);
                     $id = $this.children("#id_telefones").val();
                     $.ajax({
@@ -43,13 +43,38 @@ $(function () {
                             alert('Não foi possível apagar o telefone');
                         },
                         success: function (data, textStatus, jqXHR) {
-                            $('#alerta_telefone').html("<div>Telefone removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                            //$('#alerta_telefone').html("<div>Telefone removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                            $(this).remove();
                         }
                     });
-                    $(this).remove();
                 });
     });
     /*Remoção de Telefones*/
+    /*Ativação de Telefones*/
+    $('.ativartelefone').click(function () {
+        $(this).parent('#telefones')
+                .off('click')
+                .hide( function () {
+                    $this = $(this);
+                    $id = $this.children("#id_telefones").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../model/executar.php',
+                        async: true,
+                        data: {id: $id, enviar: 'ativar_telefone'},
+                        error: function (request, status, error) {
+                            // Aqui você trata um erro que possa vir a ocorrer
+                            // Exemplo:
+                            alert('Não foi possível ativar o telefone');
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            //$('#alerta_telefone').html("<div>Telefone removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                            $(this).remove();
+                        }
+                    });
+                });
+    });
+    /*Ativação de Telefones*/
    
     /*Remoção Email*/
      $('.email').click(function () {
@@ -69,13 +94,38 @@ $(function () {
                             alert('Não foi possível apagar o email');
                         },
                         success: function (data, textStatus, jqXHR) {
-                            $('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                            //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                             $(this).remove();
                         }
                     });
-                    $(this).remove();
                 });
     });
     /*Remoção Email*/
+    /*Ativação Email*/
+     $('.ativaremail').click(function () {
+        $(this).parent('#emails')
+                .off('click')
+                .hide('slow', function () {
+                    $this = $(this);
+                    $id = $this.children("#id_emails").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../model/executar.php',
+                        async: true,
+                        data: {id: $id, enviar: 'ativar_email'},
+                        error: function (request, status, error) {
+                            // Aqui você trata um erro que possa vir a ocorrer
+                            // Exemplo:
+                            alert('Não foi possível ativar o email');
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                             $(this).remove();
+                        }
+                    });
+                });
+    });
+    /*Ativação Email*/
     
      /*Remoção Endereço*/
      $('.endereco').click(function () {
@@ -92,20 +142,47 @@ $(function () {
                         error: function (request, status, error) {
                             // Aqui você trata um erro que possa vir a ocorrer
                             // Exemplo:
-                            alert('Não foi possível apagar o email');
+                            alert('Não foi possível apagar o emdereço');
                         },
                         success: function (data, textStatus, jqXHR) {
-                            $('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                            //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                            $(this).remove();
                         }
                     });
-                    $(this).remove();
                 });
     });
     /*Remoção Endereço*/
+    /*Ativar Endereço*/
+     $('.ativarendereco').click(function () {
+        $(this).parent('#enderecos')
+                .off('click')
+                .hide('slow', function () {
+                    $this = $(this);
+                    $id = $this.children("#id_enderecos").val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '../model/executar.php',
+                        async: true,
+                        data: {id: $id, enviar: 'ativar_endereco'},
+                        error: function (request, status, error) {
+                            // Aqui você trata um erro que possa vir a ocorrer
+                            // Exemplo:
+                            alert('Não foi possível ativar o endereço');
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
+                              $(this).remove();
+                        }
+                    });
+                });
+    });
+    /*Ativar Endereço*/
+
 
     /*Adicionado campos*/
     $("#outro").click(function () {
-        $("#endereco").clone().appendTo("#outro_endereco").find('input').val('');
+        $endereco = "<div id='enderecos'><div class='form-group col-xs-12 col-sm-6 col-md-2'><label for='rua'>Tipo</label><input class='form-control' type='text' id='tipo_endereco' name='tipo_endereco[]' placeholder='Tipo'  maxlength='20'/></div><div class='form-group col-xs-12 col-sm-6 col-md-6'><label for='rua'>Rua</label><input class='form-control' type='text' id='rua' name='rua[]' placeholder='Rua e Número' /></div><div class='form-group col-xs-12 col-sm-6 col-md-4'><label for='bairro'>Bairro</label><input class='form-control' type='text' id='bairro' name='bairro[]' placeholder='Bairro'/></div><div class='form-group col-xs-12 col-sm-6 col-md-4'><label for='complemento'>Complemento</label><input class='form-control' type='text' id='complemento' name='complemento[]' placeholder='Complemento'/></div><div class='form-group col-xs-12 col-sm-6 col-md-4'><label for='estado'>Estado</label><input class='form-control' type='text' id='estado' name='estado[]' placeholder='Estado'  maxlength='2'/></div><div class='form-group col-xs-12 col-sm-6 col-md-4'><label for='cidade'>Cidade</label><input class='form-control' type='text' id='cidade' name='cidade[]' placeholder='Cidade'/></div></div>";
+        $($endereco).appendTo("#outro_endereco").find('input').val('');
         $('input').attr('tabindex', function (index, attr) {
             return index + 1;
         });
@@ -113,11 +190,13 @@ $(function () {
     });
 
     $("#outros_telefones").click(function () {
-        $("#telefones").clone().appendTo("#outro_telefone").find('input').val('');
+        $telefone = "<div id='telefones' class='telefones'><div class='form-group col-xs-12 col-sm-6 col-md-4'><label for='tipo_telefone'>Tipo</label><input class='form-control' type='text' id='tipo_telefone' name='tipo_telefone[]' placeholder='Tipo'/></div><div class='form-group col-xs-12 col-sm-6 col-md-6'><label for='telefone'>Telefone</label><input class='form-control' type='text' id='telefone' name='telefone[]' placeholder='Telefone'/></div></div>";
+        $($telefone).appendTo("#outro_telefone").find('input').val('');
     });
 
     $("#outros_emails").click(function () {
-        $("#emails").clone().appendTo("#outro_email").find('input').val('');
+        $email = "<div id='emails'><div class='form-group col-xs-12 col-sm-6 col-md-4'><label for='email'>E-mail</label><input class='form-control' type='text' id='email' name='email[]' placeholder='E-mail'/></div></div>";
+        $($email).appendTo("#outro_email").find('input').val('');
     });
     /*Adicionado campos*/
 
