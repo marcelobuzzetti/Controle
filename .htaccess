@@ -23,6 +23,8 @@ RewriteRule ^manutencaovtr/?$ controller/manutencao_viatura.php
 RewriteRule ^marca/?$ controller/marca.php
 RewriteRule ^modelo/?$ controller/modelo.php
 RewriteRule ^militar/?$ controller/militar.php
+RewriteRule ^militarescadastrados/?$ controller/militarescadastrados.php
+RewriteRule ^militaresinativos/?$ controller/militaresinativos.php
 RewriteRule ^motorista/?$ controller/motorista.php
 RewriteRule ^motoristascadastrados/?$ controller/motoristacadastrado.php
 RewriteRule ^percurso/?$ controller/percurso.php
