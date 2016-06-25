@@ -1600,7 +1600,29 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /militar');
+        header('Location: /militarescadastrados');
+
+        break;
+        
+        case 'ativar_militar':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE militares
+                                                SET id_status = 1
+                                                WHERE id_militar = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+            if ($executa) {
+                $_SESSION['apagado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /militarescadastrados');
 
         break;
 
