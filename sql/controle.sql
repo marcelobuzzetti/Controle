@@ -53,7 +53,7 @@ CREATE TABLE militares (
 CREATE TABLE enderecos (
   id_endereco int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_militar int(11) NOT NULL,
-  tipo varchar(10) NOT NULL,
+  tipo varchar(20) NOT NULL,
   rua varchar(100) NOT NULL, 
   bairro varchar(100) NOT NULL, 
   cidade varchar(100) NOT NULL, 
