@@ -32,6 +32,40 @@
     </div>
 </div>
 <!--Modal-->
+<!--Alertas-->
+{if $cadastrado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O militar foi adicionada com sucesso!
+        </div>              
+    </div>
+{/if}
+{if $atualizado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O militar foi atualizado com sucesso!
+        </div>  
+    </div>
+{/if}
+{if $apagado != NULL}
+    <div class='container'>
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O militar foi apagado com sucesso!
+        </div>              
+    </div>
+{/if}
+{if $erro != NULL}
+    <div class='container'>
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            Não foi possível acessar o BD
+        </div>    
+    </div>
+{/if}
+<!--Alertas-->
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
