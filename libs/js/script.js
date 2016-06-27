@@ -24,12 +24,28 @@ function preenche(a, b) {
  Abrir Select*/
 
 $(function () {
-
+    /*Cadastro Rápido e Completo*/
+    count = 0;
+    $('.vira').click(function () {
+        if (count === 0) {
+            $('.rapido').show();
+            $('.cadastro').hide();
+            $('.vira').attr('value', 'Rápido');
+            count++;
+        } else {
+            $('.rapido').hide();
+            $('.cadastro').show();
+            $('.vira').attr('value', 'Completo');
+            count--;
+        }
+    });
+    /*Cadastro Rápido e Completo*/
+    
     /*Remoção de Telefones*/
     $('.telefone').click(function () {
         $(this).parent('#telefones')
                 .off('click')
-                .hide( function () {
+                .hide(function () {
                     $this = $(this);
                     $id = $this.children("#id_telefones").val();
                     $.ajax({
@@ -54,7 +70,7 @@ $(function () {
     $('.ativartelefone').click(function () {
         $(this).parent('#telefones')
                 .off('click')
-                .hide( function () {
+                .hide(function () {
                     $this = $(this);
                     $id = $this.children("#id_telefones").val();
                     $.ajax({
@@ -75,9 +91,9 @@ $(function () {
                 });
     });
     /*Ativação de Telefones*/
-   
+
     /*Remoção Email*/
-     $('.email').click(function () {
+    $('.email').click(function () {
         $(this).parent('#emails')
                 .off('click')
                 .hide('slow', function () {
@@ -95,14 +111,14 @@ $(function () {
                         },
                         success: function (data, textStatus, jqXHR) {
                             //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
-                             $(this).remove();
+                            $(this).remove();
                         }
                     });
                 });
     });
     /*Remoção Email*/
     /*Ativação Email*/
-     $('.ativaremail').click(function () {
+    $('.ativaremail').click(function () {
         $(this).parent('#emails')
                 .off('click')
                 .hide('slow', function () {
@@ -120,15 +136,15 @@ $(function () {
                         },
                         success: function (data, textStatus, jqXHR) {
                             //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
-                             $(this).remove();
+                            $(this).remove();
                         }
                     });
                 });
     });
     /*Ativação Email*/
-    
-     /*Remoção Endereço*/
-     $('.endereco').click(function () {
+
+    /*Remoção Endereço*/
+    $('.endereco').click(function () {
         $(this).parent('#enderecos')
                 .off('click')
                 .hide('slow', function () {
@@ -153,7 +169,7 @@ $(function () {
     });
     /*Remoção Endereço*/
     /*Ativar Endereço*/
-     $('.ativarendereco').click(function () {
+    $('.ativarendereco').click(function () {
         $(this).parent('#enderecos')
                 .off('click')
                 .hide('slow', function () {
@@ -171,7 +187,7 @@ $(function () {
                         },
                         success: function (data, textStatus, jqXHR) {
                             //$('#alerta_telefone').html("<div>E-mail removido</div>").addClass('alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12').attr('data-dismiss', 'alert').hide(10000);
-                              $(this).remove();
+                            $(this).remove();
                         }
                     });
                 });
