@@ -1,71 +1,3 @@
-<!--Modal-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Excluir</h4>
-            </div>
-            <div class="modal-body">
-                Deseja realmente excluir este Militar?
-                <div class="sigla">
-                    <div class="input-group">
-                        <div class="input-group-addon">Posto</div>
-                        <input type="text" class="form-control" disabled>
-                    </div>
-                </div>
-                <div class="nome">
-                    <div class="input-group">
-                        <div class="input-group-addon">Nome</div>
-                        <input type="text" class="form-control" disabled>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <form action='executar' method='post'>
-                    <input type="hidden" class="form-control" id="recipient-name" name='id'/>
-                    <button type="submit" class="btn btn-danger" name='enviar' value="apagar_militar">Sim</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Nao</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Modal-->
-<!--Alertas-->
-{if $cadastrado != NULL}
-    <div class='container'>
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O militar foi adicionada com sucesso!
-        </div>              
-    </div>
-{/if}
-{if $atualizado != NULL}
-    <div class='container'>
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O militar foi atualizado com sucesso!
-        </div>  
-    </div>
-{/if}
-{if $apagado != NULL}
-    <div class='container'>
-        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O militar foi apagado com sucesso!
-        </div>              
-    </div>
-{/if}
-{if $erro != NULL}
-    <div class='container'>
-        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            Não foi possível acessar o BD
-        </div>    
-    </div>
-{/if}
-<!--Alertas-->
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
@@ -297,7 +229,7 @@
             </div>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-4">
-            <label class="checkbox-inline"><input type="checkbox" id="laranjeira" name="laranjeira"><label>Laranjeira</label></label>
+            <label class="checkbox-inline"><input type="checkbox" id="laranjeira" name="laranjeira" {$laranjeira}><label>Laranjeira</label></label>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' id='id_militar' name='id_militar' value='{$id_militar}' />
