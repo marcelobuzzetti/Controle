@@ -32,19 +32,11 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('militares_cadastrados', $militares_cadastrados);
         $smarty->assign('relacao_perfis', $relacao_perfis);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
-        $smarty->assign('erro', $_SESSION['erro']);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('militar.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-        unset($_SESSION['cadastrado']);
-        unset($_SESSION['atualizado']);
-        unset($_SESSION['apagado']);
-        unset($_SESSION['erro']);
     } else {
 
         $id = $_POST['id'];
@@ -71,6 +63,10 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
             $emails = 0;
         } else {
             $emails = 1;
+        }
+        
+        if ($militar_atualizar[0]['laranjeira'] == "Sim"){
+            $laranjeira = "checked";
         }
         
         $smarty->assign('titulo', 'Atualizar Militares');
@@ -100,6 +96,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('mae', $militar_atualizar[0]['mae']);
         $smarty->assign('conjuge', $militar_atualizar[0]['conjuge']);
         $smarty->assign('data_nascimento_conjuge', $militar_atualizar[0]['data_nascimento_conjuge']);
+        $smarty->assign('laranjeira', $laranjeira);
         $smarty->assign('militar_atualizar_telefone', $militar_atualizar_telefone);
         $smarty->assign('militar_atualizar_endereco', $militar_atualizar_endereco);
         $smarty->assign('militar_atualizar_email', $militar_atualizar_email);
@@ -107,17 +104,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
-        $smarty->assign('erro', $_SESSION['erro']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('militar.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-        unset($_SESSION['cadastrado']);
-        unset($_SESSION['atualizado']);
-        unset($_SESSION['apagado']);
-        unset($_SESSION['erro']);
     }
 }
