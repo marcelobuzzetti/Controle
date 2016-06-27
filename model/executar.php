@@ -1385,7 +1385,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /militar');
+        header('Location: /militarescadastrados');
 
         break;
 
