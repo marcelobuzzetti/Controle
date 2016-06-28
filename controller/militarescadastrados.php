@@ -20,12 +20,14 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);
         $smarty->assign('erro', $_SESSION['erro']);
+        $smarty->assign('ativado', $_SESSION['ativado']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('militarcadastrado.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-         unset($_SESSION['cadastrado']);
+        unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
         unset($_SESSION['erro']);
+        unset($_SESSION['ativado']);
     }
