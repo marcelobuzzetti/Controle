@@ -41,6 +41,14 @@
         </div>              
     </div>
 {/if}
+{if $ativado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O militar foi ativado com sucesso!
+        </div>              
+    </div>
+{/if}
 {if $atualizado != NULL}
     <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
