@@ -25,19 +25,19 @@ function preenche(a, b) {
 
 $(function () {
     /*Cadastro Rápido e Completo*/
-    count = 0;
-    $('.vira').click(function () {
-        if (count === 0) {
+    
+    $('.cadastrocompleto').click(function () {
+            $('.cadastro').show();
+            $('.rapido').hide();
+             $('.cadastrocompleto').addClass('btn-danger');
+              $('.cadastrorapido').removeClass('btn-danger');
+    });
+    
+    $('.cadastrorapido').click(function () {
             $('.rapido').show();
             $('.cadastro').hide();
-            $('.vira').attr('value', 'Rápido');
-            count++;
-        } else {
-            $('.rapido').hide();
-            $('.cadastro').show();
-            $('.vira').attr('value', 'Completo');
-            count--;
-        }
+            $('.cadastrorapido').addClass('btn-danger');
+            $('.cadastrocompleto').removeClass('btn-danger');
     });
     /*Cadastro Rápido e Completo*/
     
