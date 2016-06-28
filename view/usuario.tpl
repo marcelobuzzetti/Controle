@@ -29,6 +29,14 @@
         </div>              
     </div>
 {/if}
+{if $ativado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O usuario foi ativado com sucesso!
+        </div>              
+    </div>
+{/if}
 {if $atualizado != NULL}
     <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
@@ -100,6 +108,7 @@
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
+                <td>Militar</td>
                 <td>Login</td>
                 <td>Perfil</td>
                 <td>Apelido</td>
@@ -110,6 +119,7 @@
         <tbody>
             {foreach $relacao_usuarios as $tbl name='usuarios'}
                 <tr>
+                    <td>{$tbl.sigla} {$tbl.nome_guerra}</td>
                     <td>{$tbl.login}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.nome}</td>
@@ -123,6 +133,7 @@
         </tbody>
         <tfoot>
             <tr>
+                <td>Militar</td>
                 <td>Login</td>
                 <td>Perfil</td>
                 <td>Apelido</td>
