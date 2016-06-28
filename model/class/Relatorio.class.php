@@ -109,7 +109,9 @@ class Relatorio {
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
                                                 FROM percursos p
-                                                RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista  AND p.data_saida BETWEEN ? AND ?                                             
+                                                RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista  
+                                                AND p.data_saida BETWEEN ? AND ?                                             
+                                                AND p.odo_retorno > 0
                                                 GROUP BY m.id_motorista
                                                 ORDER BY m.id_motorista");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
@@ -133,7 +135,8 @@ class Relatorio {
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
                                                 FROM percursos p
-                                                RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista                                             
+                                                RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista   
+                                                WHERE p.odo_retorno > 0
                                                 GROUP BY m.id_motorista
                                                 ORDER BY m.id_motorista");
             $executa = $stmt->execute();
