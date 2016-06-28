@@ -31,9 +31,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/militar">Cadastrar Militar</a></li>
                         <li><a href="{$HOST}/militarescadastrados">Militares Cadastrados</a></li>
-                         <li><a href="{$HOST}/militaresinativos">Militares Inativos</a></li>
-                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
+                        <li><a href="{$HOST}/militaresinativos">Militares Inativos</a></li>
                         <li><a href="{$HOST}/motorista">Cadastrar Motorista</a></li>
+                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
+                        <li><a href="{$HOST}/motoristasinativos">Motoristas Inativos</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -54,12 +55,12 @@
                         <li><a href="{$HOST}/abastecimento">Abastecer?</a></li>
                     </ul>
                 </li>                
-              
-                 <li class="dropdown">
+
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1005">Usuários <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/usuario">Cadastrar Usuário?</a></li>
-                          <li><a href="{$HOST}/usuariosinativos">Usuários Inativos</a></li>
+                        <li><a href="{$HOST}/usuariosinativos">Usuários Inativos</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
