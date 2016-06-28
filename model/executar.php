@@ -266,7 +266,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /motorista');
+        header('Location: /motoristascadastrados');
 
         break;
 
@@ -312,7 +312,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /motorista');
+        header('Location: /motoristascadastrados');
 
         break;
 
@@ -348,7 +348,29 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /motorista');
+        header('Location: /motoristascadastrados');
+
+        break;
+        
+         case 'ativar_motorista':
+        $id = $_POST['id'];
+
+                try {
+                    $stmt = $pdo->prepare("UPDATE motoristas
+                                                SET id_status = 1
+                                                WHERE id_motorista = ?");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                    if ($executa) {
+                        $_SESSION['ativado'] = 1;
+                    } else {
+                        $_SESSION['erro'] = 1;
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+
+        header('Location: /motoristascadastrados');
 
         break;
 
