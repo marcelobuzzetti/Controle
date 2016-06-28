@@ -2,7 +2,12 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
-    <input type="button" class='btn btn-default vira' onclick="return false;" value='Completo'/>
+    <div class="text-center">
+    <div class="btn-group" role="group" aria-label="...">
+        <input type="button" class='btn btn-default btn-danger cadastrocompleto col-xs-6 col-sm-6 col-md-6' onclick="return false;" value='Completo'/>
+        <input type="button" class='btn btn-default cadastrorapido col-xs-6 col-sm-6 col-md-6' onclick="return false;" value='Rápido'/>
+    </div>
+    </div>
     <form action="executar" method="post" class="cadastro">
         <div class = "panel panel-primary">
             <div class="panel-heading btn" data-toggle="collapse" data-target="#dados_militares">Dados do Militar</div>
@@ -209,7 +214,7 @@
                                 <label for="email">E-mail</label>
                                 <input class="form-control" type="text" id="email" name="email[]" placeholder="E-mail"  value="{$email.email}"/>
                             </div>
-                             {if {$email.id_status} != 2}
+                            {if {$email.id_status} != 2}
                                 <span id='apaga_email' class='email col-xs-12 col-sm-12 col-md-12 btn btn-danger'>Remover Email</span>
                             {/if}
                             {if {$email.id_status} != 1}
@@ -241,8 +246,8 @@
 <div class="container">
     <form action="executar" method="post" class="rapido">
         <div class = "panel panel-primary">
-            <div class="panel-heading btn" data-toggle="collapse" data-target="#dados_militares">Dados do Militar</div>
-            <div class = "panel-body collapse in" id="dados_militares">
+            <div class="panel-heading btn" data-toggle="collapse" data-target="#dados_militares1">Dados do Militar</div>
+            <div class = "panel-body collapse in" id="dados_militares1">
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="pg">Posto/Grad</label>
                     <select class="form-control" id="pg" name="pg">
@@ -307,8 +312,8 @@
             </div>
         </div>
         <div class = "panel panel-primary">
-            <div class="panel-heading btn" data-toggle="collapse" data-target="#contatos">Contatos do Militar</div>
-            <div class = "panel-body collapse in" id="contatos">     
+            <div class="panel-heading btn" data-toggle="collapse" data-target="#contatos1">Contatos do Militar</div>
+            <div class = "panel-body collapse in" id="contatos1">     
                 {if $telefones != 0}
                     {foreach $militar_atualizar_telefone as $telefone}
                         <div id="telefones" class='telefones'>
@@ -354,7 +359,7 @@
                                 <label for="email">E-mail</label>
                                 <input class="form-control" type="text" id="email" name="email[]" placeholder="E-mail"  value="{$email.email}"/>
                             </div>
-                             {if {$email.id_status} != 2}
+                            {if {$email.id_status} != 2}
                                 <span id='apaga_email' class='email col-xs-12 col-sm-12 col-md-12 btn btn-danger'>Remover Email</span>
                             {/if}
                             {if {$email.id_status} != 1}
