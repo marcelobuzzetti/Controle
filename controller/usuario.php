@@ -28,42 +28,39 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+        $smarty->assign('apagado', $_SESSION['apagado']);
+        $smarty->assign('erro', $_SESSION['erro']);
+        $smarty->assign('ativado', $_SESSION['ativado']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
+        unset($_SESSION['cadastrado']);
+        unset($_SESSION['atualizado']);
+        unset($_SESSION['apagado']);
+        unset($_SESSION['erro']);
+        unset($_SESSION['ativado']);
 
     } else {
         $id = $_POST['id'];
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id_usuario = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-            
-            if($executa){
-                $dados_usuarios = $stmt->fetch(PDO::FETCH_OBJ);
-                $id_usuario = $dados_usuarios->id_usuario;
-                $perfil = $dados_usuarios->id_perfil;
-                $login1 = $dados_usuarios->login;
-                $apelido = $dados_usuarios->nome;
-                
-            } else {
-                      print("<script language=JavaScript>
-                               alert('Não foi possível criar tabela.');
-                               </script>");                      
-            }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-            
+        
+         $relacao_militares = $militar->listarMilitar();
+         $usuarios = $usuarios->listarUsuarioAtualizar($id);
+        
+        
+    
         $smarty->assign('titulo', 'Atualizar de Usuários');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_usuario');
-        $smarty->assign('id_usuario', $id_usuario);
-        $smarty->assign('perfil', $perfil);
-        $smarty->assign('login1', $login1);
-        $smarty->assign('apelido', $apelido);
+        $smarty->assign('id_usuario', $usuarios[0]['id_usuario']);
+        $smarty->assign('militar', $usuarios[0]['id_militar']);
+        $smarty->assign('perfil', $usuarios[0]['id_perfil']);
+        $smarty->assign('login1', $usuarios[0]['login']);
+        $smarty->assign('apelido', $usuarios[0]['nome']);
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
+        $smarty->assign('relacao_militares', $relacao_militares);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
