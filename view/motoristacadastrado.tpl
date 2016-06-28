@@ -48,10 +48,6 @@
                 <td>Posto/Grad</td>
                 <td>Nome de Guerra</td>
                 <td>Nome Completo</td>
-                <td>Data de Nascimento</td>
-                <td>RG</td>
-                <td>CPF</td>
-                <td>CNH</td>
                 <td>Categoria</td>
                 <td>Validade</td>
                 <td>Apagar</td>
@@ -63,10 +59,6 @@
             <td>{$tbl.sigla}</td>
             <td>{$tbl.nome}</td>
             <td>{$tbl.nome_completo}</td>
-            <td>{$tbl.data_nascimento}</td>
-            <td>{$tbl.rg}</td>
-            <td>{$tbl.cpf}</td>
-            <td>{$tbl.cnh}</td>
             <td>{$tbl.categoria}</td>
             <td>{$tbl.validade}</td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
@@ -79,13 +71,9 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Posto/Grad</td>
+              <td>Posto/Grad</td>
                 <td>Nome de Guerra</td>
                 <td>Nome Completo</td>
-                <td>Data de Nascimento</td>
-                <td>RG</td>
-                <td>CPF</td>
-                <td>CNH</td>
                 <td>Categoria</td>
                 <td>Validade</td>
                 <td>Apagar</td>
