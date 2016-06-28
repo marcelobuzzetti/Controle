@@ -4,7 +4,11 @@ include '../model/conexao.php';
 if (isset($_GET['term'])) {
     $return_arr = array();
     try {
-        $stmt = $pdo->prepare('SELECT apelido FROM motoristas WHERE apelido LIKE :term');
+        $stmt = $pdo->prepare("SELECT CONCAT(sigla,' ',nome) AS apelido 
+                                            FROM militares, posto_grad 
+                                            WHERE nome LIKE :term 
+                                            AND posto_grad.id_posto_grad = militares.id_posto_grad
+                                            AND militares.id_status = 1");
         $executa = $stmt->execute(array('term' => '%' . $_GET['term'] . '%'));
 
         while ($row = $stmt->fetch()) {
