@@ -229,40 +229,32 @@ switch ($_POST['enviar']) {
         break;
 
     case 'motorista':
-        $nome_completo = ucwords(strtolower($_POST['nome_completo']));
-        $nome = ucwords(strtolower($_POST['nome']));
+        $id_militar = $_POST['militar'];
         $categoria = $_POST['categoria'];
-        $pg = $_POST['pg'];
-        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
-        $rg = $_POST['rg'];
-        $orgao_expedidor = strtoupper($_POST['orgao_expedidor']);
-        $cpf = $_POST['cpf'];
         $cnh = $_POST['cnh'];
         $validade = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['validade'])));
 
         try {
 
-            $stmt = $pdo->prepare("SELECT sigla
-                                                FROM posto_grad 
-                                                WHERE id_posto_grad = ?");
-            $stmt->bindParam(1, $pg, PDO::PARAM_INT);
+            $stmt = $pdo->prepare("SELECT sigla, nome
+                                                FROM posto_grad, militares
+                                                WHERE posto_grad.id_posto_grad = militares.id_posto_grad
+                                                AND militares.id_militar = ?");
+            $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            $sigla = $stmt->fetch();
-            $apelido = $sigla[0] . " " . $nome;
+            $dados_motoristas = $stmt->fetch(PDO::FETCH_OBJ);
+            $sigla = $dados_motoristas->sigla;
+            $nome = $dados_motoristas->nome;
+
+            $apelido = $sigla . " " . $nome;
 
             $stmt = $pdo->prepare("INSERT INTO motoristas
-                                                VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,$usuario,1)");
-            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
-            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
-            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(4, $rg, PDO::PARAM_STR);
-            $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
-            $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
-            $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
-            $stmt->bindParam(8, $cnh, PDO::PARAM_STR);
-            $stmt->bindParam(9, $validade, PDO::PARAM_STR);
-            $stmt->bindParam(10, $pg, PDO::PARAM_INT);
-            $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
+                                                VALUES(NULL,?,?,?,?,?,$usuario,1)");
+            $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
+            $stmt->bindParam(2, $categoria, PDO::PARAM_INT);
+            $stmt->bindParam(3, $cnh, PDO::PARAM_STR);
+            $stmt->bindParam(4, $validade, PDO::PARAM_STR);
+            $stmt->bindParam(5, $apelido, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -280,43 +272,35 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_motorista':
         $id = $_POST['id'];
-        $nome_completo = ucwords(strtolower($_POST['nome_completo']));
-        $nome = ucwords(strtolower($_POST['nome']));
+        $id_militar = $_POST['militar'];
         $categoria = $_POST['categoria'];
-        $pg = $_POST['pg'];
-        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
-        $rg = $_POST['rg'];
-        $orgao_expedidor = $_POST['orgao_expedidor'];
-        $cpf = $_POST['cpf'];
         $cnh = $_POST['cnh'];
         $validade = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['validade'])));
 
 
         try {
 
-            $stmt = $pdo->prepare("SELECT sigla 
-                                                FROM posto_grad 
-                                                WHERE id_posto_grad = ?");
-            $stmt->bindParam(1, $pg, PDO::PARAM_INT);
+            $stmt = $pdo->prepare("SELECT sigla, nome
+                                                FROM posto_grad, militares
+                                                WHERE posto_grad.id_posto_grad = militares.id_posto_grad
+                                                AND militares.id_militar = ?");
+            $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            $sigla = $stmt->fetch();
-            $apelido = $sigla[0] . " " . $nome;
+            $dados_motoristas = $stmt->fetch(PDO::FETCH_OBJ);
+            $sigla = $dados_motoristas->sigla;
+            $nome = $dados_motoristas->nome;
+
+            $apelido = $sigla . " " . $nome;
 
             $stmt = $pdo->prepare("UPDATE motoristas
-                                                SET nome = ?, nome_completo = ?, data_nascimento = ?, rg = ?, orgao_expedidor = ?, cpf = ?, id_habilitacao = ?, cnh = ?, validade = ?, id_posto_grad = ?, apelido = ?
+                                                SET id_militar = ?, id_habilitacao = ?, cnh = ?, validade = ?, apelido = ?
                                                 WHERE id_motorista = ?");
-            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
-            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
-            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(4, $rg, PDO::PARAM_STR);
-            $stmt->bindParam(5, $orgao_expedidor, PDO::PARAM_STR);
-            $stmt->bindParam(6, $cpf, PDO::PARAM_STR);
-            $stmt->bindParam(7, $categoria, PDO::PARAM_INT);
-            $stmt->bindParam(8, $cnh, PDO::PARAM_STR);
-            $stmt->bindParam(9, $validade, PDO::PARAM_STR);
-            $stmt->bindParam(10, $pg, PDO::PARAM_INT);
-            $stmt->bindParam(11, $apelido, PDO::PARAM_STR);
-            $stmt->bindParam(12, $id, PDO::PARAM_INT);
+            $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
+            $stmt->bindParam(2, $categoria, PDO::PARAM_INT);
+            $stmt->bindParam(3, $cnh, PDO::PARAM_STR);
+            $stmt->bindParam(4, $validade, PDO::PARAM_STR);
+            $stmt->bindParam(5, $apelido, PDO::PARAM_STR);
+            $stmt->bindParam(6, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -386,11 +370,10 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(6, $usuario, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-            if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            if ($executa) {
+                $_SESSION['cadastrado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -410,20 +393,40 @@ switch ($_POST['enviar']) {
         $id = $_POST['id'];
 
         try {
-            $stmt = $pdo->prepare("DELETE FROM usuarios 
+
+
+            $stmt = $pdo->prepare("UPDATE usuarios
+                                                SET id_status = 2
+                                                WHERE id_usuario = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                $_SESSION['apagado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /usuario');
+
+        break;
+
+    case 'ativar_usuario':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE usuarios 
+                                                SET id_status = 1
                                                 WHERE id_usuario=" . $id);
             $executa = $stmt->execute();
 
-            if (!$executa) {
-                try {
-                    $stmt = $pdo->prepare("UPDATE usuarios
-                                                SET id_status = 2
-                                                WHERE id_usuario = ?");
-                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                    $executa = $stmt->execute();
-                } catch (PDOException $e) {
-                    echo $e->getMessage();
-                }
+            if ($executa) {
+                $_SESSION['ativado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -454,11 +457,10 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(6, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-            if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+            if ($executa) {
+                $_SESSION['atualizado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -1027,7 +1029,9 @@ switch ($_POST['enviar']) {
         try {
             $stmt = $pdo->prepare('SELECT COUNT(*) AS total 
                                                 FROM usuarios 
-                                                WHERE login = ? AND senha = ?');
+                                                WHERE login = ? 
+                                                AND senha = ?
+                                                AND id_status != 2');
             $stmt->bindParam(1, $login, PDO::PARAM_STR);
             $stmt->bindParam(2, $senha, PDO::PARAM_STR);
             $stmt->execute();
@@ -1591,6 +1595,13 @@ switch ($_POST['enviar']) {
                                                 WHERE id_militar = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
+
+            $stmt = $pdo->prepare("UPDATE usuarios
+                                                SET id_status = 2
+                                                WHERE id_militar = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
             if ($executa) {
                 $_SESSION['apagado'] = 1;
             } else {
@@ -1603,8 +1614,8 @@ switch ($_POST['enviar']) {
         header('Location: /militarescadastrados');
 
         break;
-        
-        case 'ativar_militar':
+
+    case 'ativar_militar':
         $id = $_POST['id'];
 
         try {
@@ -1614,7 +1625,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
             if ($executa) {
-                $_SESSION['apagado'] = 1;
+                $_SESSION['ativado'] = 1;
             } else {
                 $_SESSION['erro'] = 1;
             }
@@ -1718,7 +1729,7 @@ switch ($_POST['enviar']) {
 
 
     default:
-    //no action sent
+//no action sent
 }
 unset($_POST, $_GET);
 ?>
