@@ -13,6 +13,9 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
     $habiltacoes = new Habilitacao();
     $relacao_habilitacoes = $habiltacoes->listarHabilitacoes();
 
+    $militar = new Militar();
+    $relacao_militares = $militar->listarMilitarMotorista();
+    
     $motoristas = new Motorista();
     $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
 
@@ -26,6 +29,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'motorista');
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
+        $smarty->assign('relacao_militares', $relacao_militares);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
         $smarty->assign('cadastrado', $_SESSION['cadastrado']);
@@ -45,49 +49,21 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
 
         $id = $_POST['id'];
 
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_motorista = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-
-            if ($executa) {
-                $dados_motoristas = $stmt->fetch(PDO::FETCH_OBJ);
-                $id_motorista = $dados_motoristas->id_motorista;
-                $pg = $dados_motoristas->id_posto_grad;
-                $categoria = $dados_motoristas->id_habilitacao;
-                $nome = $dados_motoristas->nome;
-                $nome_completo = $dados_motoristas->nome_completo;
-                $orgao_expedidor = $dados_motoristas->orgao_expedidor;
-                $data_nascimento = date('d-m-Y',strtotime(str_replace('-', '/', $dados_motoristas->data_nascimento)));
-                $rg = $dados_motoristas->rg;
-                $cpf = $dados_motoristas->cpf;
-                $cnh = $dados_motoristas->cnh;
-                $validade = date('d-m-Y',strtotime(str_replace('-', '/', $dados_motoristas->validade)));
-                
-            } else {
-                print("<script language=JavaScript>
-                   alert('Não foi possível criar tabela.');
-                   </script>");
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        $militar = new Militar();
+        $relacao_militares = $militar->listarMilitar();
+    
+        $motoristas = new Motorista();
+        $motoristas_atualizar = $motoristas->listarMotoristasAtualizar($id);
 
         $smarty->assign('titulo', 'Cadastro de Motoristas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_motorista');
-        $smarty->assign('id_motorista', $id_motorista);
-        $smarty->assign('id_pg', $pg);
-        $smarty->assign('categoria', $categoria);
-        $smarty->assign('nome', $nome);
-        $smarty->assign('nome_completo', $nome_completo);
-        $smarty->assign('data_nascimento', $data_nascimento);
-        $smarty->assign('rg', $rg);
-        $smarty->assign('orgao_expedidor', $orgao_expedidor);
-        $smarty->assign('cpf', $cpf);
-        $smarty->assign('cnh', $cnh);
-        $smarty->assign('validade', $validade);
-        $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
+        $smarty->assign('id_motorista', $motoristas_atualizar[0]['id_motorista']);
+        $smarty->assign('id_militar', $motoristas_atualizar[0]['id_militar']);
+        $smarty->assign('id_habilitacao', $motoristas_atualizar[0]['id_habilitacao']);
+        $smarty->assign('cnh', $motoristas_atualizar[0]['cnh']);
+        $smarty->assign('validade', $motoristas_atualizar[0]['validade']);
+        $smarty->assign('relacao_militares', $relacao_militares);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
         $smarty->assign('tabela_motoristas_cadastrados', $tabela_motoristas_cadastrados);
         $smarty->assign('login', $_SESSION['login']);
