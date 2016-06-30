@@ -15,6 +15,9 @@ class Menu{
                 case 4:
                     return './menus/menuMntS4.tpl';
                     break;
+                 case 5:
+                    return './menus/menuRp.tpl';
+                    break;
                 default:
                     return './menus/menuLogin.tpl';
             }
