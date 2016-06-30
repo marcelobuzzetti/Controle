@@ -3,7 +3,7 @@
 include '../include/config.inc.php';
 
 session_start();
-if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
+if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
@@ -41,7 +41,8 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
     } else {
 
         $id = $_POST['id'];
-
+         $update = "disabled";
+         
         $militar = new Militar();
         $relacao_militares = $militar->listarMilitar();
     
@@ -51,6 +52,7 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] == 2)) {
         $smarty->assign('titulo', 'Cadastro de Motoristas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_motorista');
+        $smarty->assign('update', $update);
         $smarty->assign('id_motorista', $motoristas_atualizar[0]['id_motorista']);
         $smarty->assign('id_militar', $motoristas_atualizar[0]['id_militar']);
         $smarty->assign('id_habilitacao', $motoristas_atualizar[0]['id_habilitacao']);

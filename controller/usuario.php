@@ -1,26 +1,27 @@
 <?php
+
 include '../include/config.inc.php';
 
 session_start();
 
-if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
-   header('Location: '.  constant("HOST").'/percurso');
+if (isset($_SESSION['login']) && ($_SESSION['perfil'] != 1)) {
+    header('Location: ' . constant("HOST") . '/percurso');
 } else {
-    
+
     $militar = new Militar();
     $relacao_militares = $militar->listarMilitarUsuario();
-    
-    $usuarios =new Usuario();
+
+    $usuarios = new Usuario();
     $relacao_usuarios = $usuarios->listarUsuario();
-    
+
     $perfis = new Perfil();
     $relacao_perfis = $perfis->listarPerfil();
-    
+
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
-    
-    if(!isset($_POST['id'])){
-        
+
+    if (!isset($_POST['id'])) {
+
         $smarty->assign('titulo', 'Cadastro de Usuários');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_usuario');
@@ -42,18 +43,17 @@ if (!isset($_SESSION['login']) || ($_SESSION['perfil'] != 1)) {
         unset($_SESSION['apagado']);
         unset($_SESSION['erro']);
         unset($_SESSION['ativado']);
-
     } else {
         $id = $_POST['id'];
-        
-         $relacao_militares = $militar->listarMilitar();
-         $usuarios = $usuarios->listarUsuarioAtualizar($id);
-        
-        
-    
+        $update = "disabled";
+
+        $relacao_militares = $militar->listarMilitar();
+        $usuarios = $usuarios->listarUsuarioAtualizar($id);
+
         $smarty->assign('titulo', 'Atualizar de Usuários');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_usuario');
+        $smarty->assign('update', $update);
         $smarty->assign('id_usuario', $usuarios[0]['id_usuario']);
         $smarty->assign('militar', $usuarios[0]['id_militar']);
         $smarty->assign('perfil', $usuarios[0]['id_perfil']);
