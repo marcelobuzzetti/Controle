@@ -30,7 +30,8 @@
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#relatorio').DataTable({            
+         $('#relatorio').DataTable({
+            "sPaginationType": "full_numbers",
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",
