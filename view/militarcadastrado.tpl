@@ -80,7 +80,7 @@
     </div>
 </div>
 <div class="container">
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Nome de Guerra</td>
