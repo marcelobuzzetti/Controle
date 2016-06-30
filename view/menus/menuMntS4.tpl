@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -18,16 +18,19 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1001">Viaturas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/viaturascadastradas">Viaturas Cadastradas</a></li>
+                        <li><a href="{$HOST}/manutencaovtr">Cadastrar Manutenção de Viatura</a></li>
+                        <li><a href="{$HOST}/acidentevtr">Cadastrar Acidente de Viatura</a></li>
                         <li><a href="{$HOST}/marca">Cadastrar Marca</a></li>
                         <li><a href="{$HOST}/modelo">Cadastrar Modelo</a></li>
                         <li><a href="{$HOST}/viatura">Cadastrar Viatura</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1002">Motoristas <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1002">Motoristas<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
                         <li><a href="{$HOST}/motorista">Cadastrar Motorista</a></li>
+                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
+                        <li><a href="{$HOST}/motoristasinativos">Motoristas Inativos</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

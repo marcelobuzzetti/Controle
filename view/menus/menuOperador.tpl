@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -8,17 +8,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/percurso">Controle</a>
+            <a class="navbar-brand tabela" href="/percurso">Controle</a>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="http://{$HOST}/percurso">Home</a></li>
-                <li><a href="{$HOST}/percurso">Viatura Saindo?</a></li>
+                <li><a href="{$HOST}/percurso" tabindex="1000">Viatura Saindo?</a></li>
                 <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
-                <li><a>Olá {$login}</a></li>
-                <li><a href="{$HOST}/logout">Logout</a></li>
+                <li><a tabindex="1007">Olá {$login}</a></li>
+                <li><a href="{$HOST}/logout" tabindex="1008">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
