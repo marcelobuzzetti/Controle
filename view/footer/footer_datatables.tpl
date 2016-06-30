@@ -48,7 +48,6 @@
                 }
             }
         });
-      CKEDITOR.replace( 'manutencao' );  
     });
 </script>
 </body>
