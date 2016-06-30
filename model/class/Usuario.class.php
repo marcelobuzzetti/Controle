@@ -57,7 +57,8 @@ class Usuario {
                                                 WHERE cod_perfil = usuarios.id_perfil
                                                 AND militares.id_militar = usuarios.id_militar
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
-                                                AND usuarios.id_status = 2");
+                                                AND usuarios.id_status = 2
+                                                AND militares.id_status = 1");
             $executa = $stmt->execute();
 
                 if ($executa) {
