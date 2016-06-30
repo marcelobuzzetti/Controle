@@ -351,7 +351,8 @@ INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
 (1, 'Administrador', 1),
 (2, 'Operador', 2),
 (3, 'Mantenedor - Garagem', 3),
-(4, 'Mantenedor - S4', 4);
+(4, 'Mantenedor - S4', 4),
+(5, 'Mantenedor - RP', 5);
 
 INSERT INTO militares (id_militar, nome, nome_completo, data_nascimento,  rg ,  orgao_expedidor , cpf , id_posto_grad, id_status) VALUES
 (1, 'Ferreira', 'Marcelo Aparecido Ferreira Silva', '1986-03-04', '0400319257','MD','07691481667',4,1);
