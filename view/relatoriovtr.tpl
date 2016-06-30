@@ -5,12 +5,15 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
+        <div id="grafico" class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
             <div id="js-legend" class="chart-legend"></div>
             <canvas id="canvas" ></canvas>
         </div>
     </div>
     <script>
+        $(document).ready(function () {
+            window.location.href = '#grafico';
+        });
         var barChartData = {
             labels: [{$a}],
             datasets: [
