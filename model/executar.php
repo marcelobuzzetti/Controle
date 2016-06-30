@@ -351,24 +351,24 @@ switch ($_POST['enviar']) {
         header('Location: /motoristascadastrados');
 
         break;
-        
-         case 'ativar_motorista':
+
+    case 'ativar_motorista':
         $id = $_POST['id'];
 
-                try {
-                    $stmt = $pdo->prepare("UPDATE motoristas
+        try {
+            $stmt = $pdo->prepare("UPDATE motoristas
                                                 SET id_status = 1
                                                 WHERE id_motorista = ?");
-                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
-                    $executa = $stmt->execute();
-                    if ($executa) {
-                        $_SESSION['ativado'] = 1;
-                    } else {
-                        $_SESSION['erro'] = 1;
-                    }
-                } catch (PDOException $e) {
-                    echo $e->getMessage();
-                }
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+            if ($executa) {
+                $_SESSION['ativado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
 
         header('Location: /motoristascadastrados');
 
@@ -1076,8 +1076,23 @@ switch ($_POST['enviar']) {
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['usuario'] = $resultado1[2];
                 $_SESSION['temposessao'] = time() + 120;
-
-                header('Location: /percurso');
+                
+                if ($_SESSION['perfil'] == 1) {
+                    header('Location: /percurso');
+                }
+                if ($_SESSION['perfil'] == 2) {
+                    header('Location: /percurso');
+                }
+                if ($_SESSION['perfil'] == 3) {
+                    header('Location: /viaturascadastradas');
+                }
+                if ($_SESSION['perfil'] == 4) {
+                    header('Location: /relatorio');
+                }
+                if ($_SESSION['perfil'] == 5) {
+                    header('Location: /militarescadastrados');
+                }
+                
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;
