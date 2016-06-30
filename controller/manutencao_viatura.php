@@ -4,7 +4,7 @@ include '../include/config.inc.php';
 
 session_start();
 
-if (!isset($_SESSION['login']) && ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3 && $_SESSION['perfil'] != 4)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3 && $_SESSION['perfil'] != 4)) {
     session_unset();
     header('Location: ' . constant("HOST"));
 } else {
