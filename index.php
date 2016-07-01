@@ -11,6 +11,6 @@ $tabela_relacao_vtr = $viatura->ViaturasRodando();
 $smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
 $smarty->display('./headers/header_datatables.tpl');
 $smarty->display('home.tpl');
-$smarty->display('./footer/footer_datatables.tpl');
+$smarty->display('./footer/footer_inicio.tpl');
 
 ?>
