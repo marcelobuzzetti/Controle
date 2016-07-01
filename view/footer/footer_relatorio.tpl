@@ -33,9 +33,14 @@
 <script src="{$HOST}/libs/js/pdfmake.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/vfs_fonts.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/buttons.html5.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('#relatorio').DataTable({
+             fixedHeader: {
+                header: true,
+                footer: true
+            },
             "sPaginationType": "full_numbers",
             dom: 'Bfrtip',
             buttons: [
