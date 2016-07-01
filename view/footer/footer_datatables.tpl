@@ -19,7 +19,6 @@
         </div>
     </div>
 </div>
-<script src="{$HOST}/libs/js/jquery.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/jquery-ui.min.js" type="text/javascript"></script>
@@ -33,22 +32,30 @@
 <script src="{$HOST}/libs/js/pdfmake.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/vfs_fonts.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/buttons.html5.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+        var title = $('h1').text();
         $('#tabela').DataTable({
+            fixedHeader: {
+                header: true,
+                footer: true,
+                 headerOffset: 50
+            },
             "sPaginationType": "full_numbers",
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
                 'excelHtml5',
-                'csvHtml5',
                 {
                     extend: 'pdfHtml5',
                     orientation: 'landscape',
                     pageSize: 'LEGAL',
-                    exportOptions: {
+                    /*exportOptions: {
                         columns: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-                    }
+                    },*/
+                    title: title,
+                    download: 'open'
                 }
             ],
             "oLanguage": {
