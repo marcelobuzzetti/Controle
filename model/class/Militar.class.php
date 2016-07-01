@@ -7,9 +7,10 @@ class Militar {
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, 
                                                 IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
-                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, nome, nome_completo, 
-                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, 
-                                                estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
+                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, militares.nome AS nome, nome_completo, 
+                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
+                                                IFNULL((SELECT cidades.nome FROM cidades, militares where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
+                                                IFNULL((SELECT estados.uf FROM estados, militares where militares.id_estado = estados.id_estado),'-') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
                                                 IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
                                                 IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
                                                 SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
@@ -30,7 +31,7 @@ class Militar {
                                                 ),'-') AS emails, 
                                                 status, laranjeira
                                                 FROM militares, posto_grad, 
-                                                status 
+                                                status
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=2
@@ -54,9 +55,9 @@ class Militar {
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, 
                                                 IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
-                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, nome, nome_completo, 
-                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, 
-                                                estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
+                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, militares.nome AS nome, nome_completo, 
+                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, IFNULL((SELECT cidades.nome FROM cidades, militares where militares.id_cidade = cidades.id_cidade),' ') AS cidade_nascimento, 
+                                                IFNULL((SELECT estados.uf FROM estados, militares where militares.id_estado = estados.id_estado),' ') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
                                                 IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
                                                 IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
                                                 SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
@@ -77,7 +78,7 @@ class Militar {
                                                 ),'-') AS emails, 
                                                 status, laranjeira
                                                 FROM militares, posto_grad, 
-                                                status 
+                                                status
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=1
@@ -100,21 +101,8 @@ class Militar {
      public function listarMilitarUsuario() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, nome, nome_completo, DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,'\n' ) SEPARATOR ' ') 
-                                                FROM telefones
-                                                WHERE militares.id_militar = telefones.id_militar
-                                                ),'-') AS telefones, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT('Tipo: ', tipo,  ' Rua: ', rua,  ' Bairro: ', bairro,  ' Comp.: ', complemento,  ' Cidade: ', cidade,  ' Estado: ', estado,  '<br/>' ) 
-                                                SEPARATOR  ' ' ) 
-                                                FROM enderecos
-                                                WHERE militares.id_militar = enderecos.id_militar
-                                                ),'-') AS enderecos, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT(email,'<br/>') SEPARATOR ' ' ) 
-                                                FROM emails
-                                                WHERE militares.id_militar = emails.id_militar
-                                                ),'-') AS emails, 
-                                                status, laranjeira
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(antiguidade,'-') AS antiguidade,sigla, nome, nome_completo, 
+                                                status
                                                 FROM militares, posto_grad, 
                                                 status 
                                                 WHERE militares.id_status = status.id_status
@@ -162,7 +150,17 @@ class Militar {
      public function listarMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,militares.id_posto_grad AS id_posto_grad,sigla, nome, nome_completo, DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, cidade_nascimento, estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, status, laranjeira
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
+                                                IFNULL(numero_militar,'-') AS numero_militar, 
+                                                IFNULL(cp,'-') AS cp, IFNULL(grupo,'-') AS grupo, 
+                                                IFNULL(antiguidade,'-') AS antiguidade, 
+                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,
+                                                militares.id_posto_grad AS id_posto_grad,sigla, nome, nome_completo, 
+                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
+                                                id_cidade, id_estado, idt_militar,rg, orgao_expedidor, cpf, 
+                                                IFNULL(conjuge,'-') AS conjuge, 
+                                                IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
+                                                IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, status, laranjeira
                                                 FROM militares, posto_grad, 
                                                 status 
                                                 WHERE militares.id_status = status.id_status
