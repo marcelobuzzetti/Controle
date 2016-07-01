@@ -28,10 +28,22 @@
 <script src="{$HOST}/libs/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/dataTables.responsive.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/jszip.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/pdfmake.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/vfs_fonts.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/buttons.html5.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-         $('#relatorio').DataTable({
+        $('#relatorio').DataTable({
             "sPaginationType": "full_numbers",
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",
