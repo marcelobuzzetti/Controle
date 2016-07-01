@@ -264,6 +264,15 @@ $(function () {
 
     /*Coloca datepicker nas datas*/
 
+     /*Completa cidades*/
+    $('.estado').change(function () {
+        $('.cidade').load('../model/listaCidades.php?estado=' + $('.estado').val());
+    });
+    $('.estado1').change(function () {
+        $('.cidade1').load('../model/listaCidades.php?estado=' + $('.estado1').val());
+    });
+    /*Completa cidades*/
+
     /*Autocompleta o destino em percurso*/
     $("#destino").autocomplete({
         source: "../model/buscador.php",
