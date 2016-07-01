@@ -25,7 +25,7 @@ if (isset($_SESSION['login']) == FALSE) {
         $smarty->assign('titulo1', 'Relatório Completo de Vtr');
         $smarty->assign('relacao_relatorio', $relacao_relatorio);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header_relatorio.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('relatorio.tpl');
         $smarty->display('./footer/footer_relatorio.tpl');
@@ -58,7 +58,7 @@ if (isset($_SESSION['login']) == FALSE) {
             $smarty->assign('titulo1', 'Relatórios de ' . $data_inicio . ' a ' . $data_fim);
             $smarty->assign('relacao_relatorio', $relacao_relatorio);
             $smarty->assign('login', $_SESSION['login']);
-            $smarty->display('./headers/header_relatorio.tpl');
+            $smarty->display('./headers/header_datatables.tpl');
             $smarty->display($menu);
             $smarty->display('relatorio.tpl');
             $smarty->display('./footer/footer_relatorio.tpl');
