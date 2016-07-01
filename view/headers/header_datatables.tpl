@@ -11,6 +11,8 @@
         <link rel="icon" href="../../libs/imagens/download.jpg">
         <link href="{$HOST}/libs/css/estilo.min.css" rel="stylesheet" type="text/css"/>
         <link href="{$HOST}/libs/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="{$HOST}/libs/css/fixedHeader.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <script src="{$HOST}/libs/js/jquery.min.js" type="text/javascript"></script>
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
