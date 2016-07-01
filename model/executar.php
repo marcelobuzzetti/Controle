@@ -1355,8 +1355,8 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(6, $nome, PDO::PARAM_STR);
             $stmt->bindParam(7, $nome_completo, PDO::PARAM_STR);
             $stmt->bindParam(8, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(9, $cidade_natal, PDO::PARAM_STR);
-            $stmt->bindParam(10, $estado_natal, PDO::PARAM_STR);
+            $stmt->bindParam(9, $cidade_natal, PDO::PARAM_INT);
+            $stmt->bindParam(10, $estado_natal, PDO::PARAM_INT);
             $stmt->bindParam(11, $idt_militar, PDO::PARAM_STR);
             $stmt->bindParam(12, $rg, PDO::PARAM_STR);
             $stmt->bindParam(13, $orgao_expedidor, PDO::PARAM_STR);
@@ -1489,8 +1489,8 @@ switch ($_POST['enviar']) {
                                                 nome =  ?,
                                                 nome_completo =  ?,
                                                 data_nascimento =  ?,
-                                                cidade_nascimento =  ?,
-                                                estado_nascimento =  ?,
+                                                id_cidade =  ?,
+                                                id_estado =  ?,
                                                 idt_militar =  ?,
                                                 rg =  ?,
                                                 orgao_expedidor =  ?,
@@ -1510,8 +1510,8 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(6, $nome, PDO::PARAM_STR);
             $stmt->bindParam(7, $nome_completo, PDO::PARAM_STR);
             $stmt->bindParam(8, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(9, $cidade_natal, PDO::PARAM_STR);
-            $stmt->bindParam(10, $estado_natal, PDO::PARAM_STR);
+            $stmt->bindParam(9, $cidade_natal, PDO::PARAM_INT);
+            $stmt->bindParam(10, $estado_natal, PDO::PARAM_INT);
             $stmt->bindParam(11, $idt_militar, PDO::PARAM_STR);
             $stmt->bindParam(12, $rg, PDO::PARAM_STR);
             $stmt->bindParam(13, $orgao_expedidor, PDO::PARAM_STR);
