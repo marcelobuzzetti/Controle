@@ -3,7 +3,7 @@
 include '../include/config.inc.php';
 
 session_start();
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
@@ -16,6 +16,9 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
     $militares = new Militar();
     $militares_cadastrados = $militares->listarMilitar();
 
+    $estados = new EstadoCidade();
+    $relacao_estados = $estados->listarEstado();
+
     $perfis = new Perfil();
     $relacao_perfis = $perfis->listarPerfil();
 
@@ -24,12 +27,13 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
 
 
     if (!isset($_POST['id'])) {
-        
+
         $smarty->assign('titulo', 'Cadastro de Militares');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_militar');
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
         $smarty->assign('relacao_habilitacoes', $relacao_habilitacoes);
+        $smarty->assign('relacao_estados', $relacao_estados);
         $smarty->assign('militares_cadastrados', $militares_cadastrados);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
@@ -46,29 +50,32 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $militar_atualizar_telefone = $militares->listarTelefoneMilitarAtualizar($id);
         $militar_atualizar_endereco = $militares->listarEnderecoMilitarAtualizar($id);
         $militar_atualizar_email = $militares->listarEmailMilitarAtualizar($id);
-        
-        if(empty($militar_atualizar_telefone) ){
+
+        $cidades = new EstadoCidade();
+        $relacao_cidades = $cidades->listarCidades();
+
+        if (empty($militar_atualizar_telefone)) {
             $telefones = 0;
         } else {
             $telefones = 1;
         }
-        
-        if(empty($militar_atualizar_endereco) ){
+
+        if (empty($militar_atualizar_endereco)) {
             $enderecos = 0;
         } else {
             $enderecos = 1;
         }
-        
-         if(empty($militar_atualizar_email) ){
+
+        if (empty($militar_atualizar_email)) {
             $emails = 0;
         } else {
             $emails = 1;
         }
-        
-        if ($militar_atualizar[0]['laranjeira'] == "Sim"){
+
+        if ($militar_atualizar[0]['laranjeira'] == "Sim") {
             $laranjeira = "checked";
         }
-        
+
         $smarty->assign('titulo', 'Atualizar Militares');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_militar');
@@ -86,8 +93,8 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->assign('nome_completo', $militar_atualizar[0]['nome_completo']);
         $smarty->assign('nome', $militar_atualizar[0]['nome']);
         $smarty->assign('data_nascimento', $militar_atualizar[0]['data_nascimento']);
-        $smarty->assign('estado_nascimento', $militar_atualizar[0]['estado_nascimento']);
-        $smarty->assign('cidade_nascimento', $militar_atualizar[0]['cidade_nascimento']);
+        $smarty->assign('estado_nascimento', $militar_atualizar[0]['id_estado']);
+        $smarty->assign('cidade_nascimento', $militar_atualizar[0]['id_cidade']);
         $smarty->assign('idt_militar', $militar_atualizar[0]['idt_militar']);
         $smarty->assign('rg', $militar_atualizar[0]['rg']);
         $smarty->assign('orgao_expedidor', $militar_atualizar[0]['orgao_expedidor']);
@@ -101,7 +108,9 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->assign('militar_atualizar_endereco', $militar_atualizar_endereco);
         $smarty->assign('militar_atualizar_email', $militar_atualizar_email);
         $smarty->assign('militares_cadastrados', $militares_cadastrados);
+        $smarty->assign('relacao_cidades', $relacao_cidades);
         $smarty->assign('relacao_posto_grad', $relacao_posto_grad);
+        $smarty->assign('relacao_estados', $relacao_estados);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
