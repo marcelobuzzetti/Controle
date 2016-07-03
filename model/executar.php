@@ -1342,7 +1342,7 @@ switch ($_POST['enviar']) {
             $pdo->beginTransaction();
 
             $stmt = $pdo->prepare("INSERT INTO militares (id_militar, numero_militar, cp, grupo, antiguidade, data_praca, nome, 
-                                                                                         nome_completo, data_nascimento, cidade_nascimento, estado_nascimento, 
+                                                                                         nome_completo, data_nascimento, id_cidade, id_estado, 
                                                                                          idt_militar, rg, orgao_expedidor, cpf, pai, mae, conjuge, data_nascimento_conjuge, 
                                                                                          laranjeira, id_posto_grad, id_status, id_usuario) 
                                                     VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,$usuario )");
