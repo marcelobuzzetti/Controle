@@ -3,6 +3,7 @@
 include '../include/config.inc.php';
 
 session_start();
+$login = $_SESSION['usuario'];
 
 if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1)) {
     header('Location: ' . constant("HOST") . '/percurso');
@@ -12,7 +13,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1)) {
     $relacao_militares = $militar->listarMilitarUsuario();
 
     $usuarios = new Usuario();
-    $relacao_usuarios = $usuarios->listarUsuario();
+    $relacao_usuarios = $usuarios->listarUsuario($login);
 
     $perfis = new Perfil();
     $relacao_perfis = $perfis->listarPerfil();
