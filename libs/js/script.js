@@ -304,7 +304,7 @@ $(function () {
     
       /*Verifica se o login existe*/
     $('#login').keyup(function () {
-        $('#alerta').load('../model/verificaLogin.php?' + $.param({login: $('#login').val()}));
+        $('#login').load('../model/verificaLogin.php?' + $.param({login: $('#login').val()}));
     });
     /*Verifica se o login existe*/
 
@@ -425,44 +425,6 @@ $(function () {
         }
     });
     /*Verificar as datas*/
-
-    /*Cadastro de Motorista junto ao Cadastro de Militares, tornando o campos required*/
-    var motorista = 0;
-    $('#sim_motorista').click(function () {
-        $('.motorista').toggle();
-        if (motorista == 0) {
-            $('#cnh').attr('required', 'required');
-            $('#validade').attr('required', 'required');
-            $('#categoria').attr('required', 'required');
-            motorista++;
-        } else {
-            $('#cnh').removeAttr('required');
-            $('#validade').removeAttr('required');
-            $('#categoria').removeAttr('required')
-            motorista--;
-        }
-    })
-    /*Cadastro de Motorista junto ao Cadastro de Militares, tornando o campos required*/
-
-    /*Cadastro de Usuario junto ao Cadastro de Militares, tornando o campos required*/
-    var usuario = 0;
-    $('#sim_usuario').click(function () {
-        $('.usuario').toggle();
-        if (usuario == 0) {
-            $('#login').attr('required', 'required');
-            $('#senha').attr('required', 'required');
-            $('#perfil').attr('required', 'required');
-            $('#apelido').attr('required', 'required');
-            usuario++;
-        } else {
-            $('#login').removeAttr('required');
-            $('#senha').removeAttr('required');
-            $('#perfil').removeAttr('required');
-            $('#apelido').removeAttr('required');
-            usuario--;
-        }
-    })
-    /*Cadastro de Usuario junto ao Cadastro de Militares, tornando o campos required*/
 
     /*Realiza pesquisa em relatorio*/
     $('#pesquisa_relatorio').keyup(function () {
