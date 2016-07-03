@@ -59,6 +59,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1005">Usuários <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{$HOST}/usuarioscadastrados">Usuários Cadastrados</a></li>
                         <li><a href="{$HOST}/usuario">Cadastrar Usuário?</a></li>
                         <li><a href="{$HOST}/usuariosinativos">Usuários Inativos</a></li>
                     </ul>
