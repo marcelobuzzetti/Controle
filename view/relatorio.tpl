@@ -1,7 +1,7 @@
 {if $verificador == 1}
     <div class='container'>
         <div class="jumbotron">
-            <h1>{$titulo1}</h1>
+            <h1 class="titulo">{$titulo1}</h1>
         </div>
         <table id="relatorio" class="table table-striped table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
             <thead>
