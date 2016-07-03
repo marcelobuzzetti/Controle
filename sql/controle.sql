@@ -223,23 +223,23 @@ CREATE TABLE status (
   status varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE `paises` (
-  `id_pais` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nome` varchar(60) DEFAULT NULL,
-  `sigla` varchar(10) DEFAULT NULL
+CREATE TABLE paises (
+  id_pais int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome varchar(60),
+  sigla varchar(10) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE `estados` (
-  `id_estado` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nome` varchar(75) DEFAULT NULL,
-  `uf` varchar(5) DEFAULT NULL,
-  `id_pais` int(7) DEFAULT NULL
+CREATE TABLE estados (
+  id_estado int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome varchar(75),
+  uf varchar(5) ,
+  id_pais int(7) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE `cidades` (
-  `id_cidade` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nome` varchar(120) DEFAULT NULL,
-  `id_estado` int(5) DEFAULT NULL
+CREATE TABLE cidades (
+  id_cidade int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome varchar(120) ,
+  id_estado int(5) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ;
 
 ALTER TABLE estados
