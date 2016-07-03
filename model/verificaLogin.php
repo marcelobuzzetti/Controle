@@ -13,27 +13,12 @@ $resultado = $stmt->fetch(PDO::FETCH_OBJ);
 $qnt = $resultado->qnt;
 
 if ($login == NULL) {
-    echo "<div class='container'>
-        <div class='alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12'>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            Preencha com um Login
-        </div>";
-    echo "<script> $('#enviar').attr('disabled','disabled'); $('#login').attr('style','border-color: red;');</script>";
+    echo "<script> $('#enviar').attr('disabled','disabled'); $('#login').attr('style','border-color: red;  box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;');$('#validaLogin').removeClass('glyphicon-pencil glyphicon-ok glyphicon-remove text-success').addClass('glyphicon-pencil text-danger');</script>";
 } else {
     if ($qnt > 0) {
-        echo "<div class='container'>
-        <div class='alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12'>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O login $login já está cadastrado
-        </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled'), $('#login').attr('style','border-color: red;');</script>";
+        echo "<script> $('#enviar').attr('disabled','disabled'), $('#login').attr('style','border-color: red; box-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px red;'); $('#validaLogin').removeClass('glyphicon-pencil glyphicon-ok text-success').addClass('glyphicon-remove text-danger');</script>";
     } else {
-        echo "<div class='container'>
-        <div class='alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12'>
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O login $login não está cadastrado
-        </div>";
-        echo "<script> $('#enviar').removeAttr('disabled'), $('#login').removeAttr('style');</script>";
+        echo "<script> $('#enviar').removeAttr('disabled'), $('#login').removeAttr('style').attr('style','border-color: green; box-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;');; $('#validaLogin').removeClass('glyphicon-pencil glyphicon-remove text-danger').addClass('glyphicon-ok text-success');</script>";
     }
 }
 ?>
