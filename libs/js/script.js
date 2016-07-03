@@ -301,6 +301,12 @@ $(function () {
         $('#alerta').load('../model/verificaMarca.php?' + $.param({marca: $('#marca').val()}));
     });
     /*Verifica se a marca existe*/
+    
+      /*Verifica se o login existe*/
+    $('#login').keyup(function () {
+        $('#alerta').load('../model/verificaLogin.php?' + $.param({login: $('#login').val()}));
+    });
+    /*Verifica se o login existe*/
 
     /*Verifica se a modelo existe*/
     $('#modelo').keyup(function () {
