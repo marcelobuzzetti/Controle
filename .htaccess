@@ -36,6 +36,7 @@ RewriteRule ^relatoriomotorista/?$ controller/relatoriomotorista.php
 RewriteRule ^tipocombustivel/?$ controller/tipocombustivel.php
 RewriteRule ^tiposcombustiveiscadastrados/?$ controller/tipocombustivelcadastrado.php
 RewriteRule ^usuario/?$ controller/usuario.php
+RewriteRule ^usuarioscadastrados/?$ controller/usuarioscadastrados.php
 RewriteRule ^usuariosinativos/?$ controller/usuariosinativos.php
 RewriteRule ^viatura/?$ controller/viatura.php
 RewriteRule ^viaturascadastradas/?$ controller/viaturacadastrada.php
