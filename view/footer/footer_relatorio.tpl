@@ -36,18 +36,34 @@
 <script src="{$HOST}/libs/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+        var title = $('.titulo').text();
         $('#relatorio').DataTable({
-             fixedHeader: {
+            fixedHeader: {
                 header: true,
-                footer: true
+                headerOffset: 50
             },
             "sPaginationType": "full_numbers",
+            "iDisplayLength": 50,
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
                 'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'A4',
+                    /*exportOptions: {
+                     columns: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+                     },*/
+                    title: title,
+                    download: 'open',
+                    customize: function (doc) {
+                        //pageMargins [left, top, right, bottom] 
+                        doc.pageMargins = [20, 20, 20, 20];
+                        doc.alignment = 'center';
+                        doc.footer = title;
+                    }
+                }
             ],
             "oLanguage": {
                 "sSearch": "",
