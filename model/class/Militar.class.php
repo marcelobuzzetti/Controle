@@ -9,8 +9,8 @@ class Militar {
                                                 IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
                                                 IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, militares.nome AS nome, nome_completo, 
                                                 DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
-                                                IFNULL((SELECT cidades.nome FROM cidades, militares where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
-                                                IFNULL((SELECT estados.uf FROM estados, militares where militares.id_estado = estados.id_estado),'-') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
+                                                IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
+                                                IFNULL((SELECT estados.uf FROM estados where militares.id_estado = estados.id_estado),'-') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
                                                 IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
                                                 IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
                                                 SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
@@ -56,8 +56,8 @@ class Militar {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, 
                                                 IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
                                                 IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, militares.nome AS nome, nome_completo, 
-                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, IFNULL((SELECT cidades.nome FROM cidades, militares where militares.id_cidade = cidades.id_cidade),' ') AS cidade_nascimento, 
-                                                IFNULL((SELECT estados.uf FROM estados, militares where militares.id_estado = estados.id_estado),' ') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
+                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),' ') AS cidade_nascimento, 
+                                                IFNULL((SELECT estados.uf FROM estados where militares.id_estado = estados.id_estado),' ') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
                                                 IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
                                                 IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
                                                 SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
