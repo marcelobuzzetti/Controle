@@ -35,26 +35,12 @@
 <script src="{$HOST}/libs/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        var title = $('h1').text();
         $('#tabela').DataTable({
             fixedHeader: {
                 header: true,
-                footer: true,
                  headerOffset: 50
             },
             "sPaginationType": "full_numbers",
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                {
-                    extend: 'pdfHtml5',
-                    orientation: 'landscape',
-                    pageSize: 'LEGAL',
-                    title: title,
-                    download: 'open'
-                }
-            ],
             "oLanguage": {
                 "sSearch": "",
                 "sProcessing": "Aguarde enquanto os dados são carregados ...",
