@@ -2,7 +2,7 @@
 
 class Usuario {
 
-    public function listarUsuario() {
+    public function listarUsuario($login) {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT usuarios.id_usuario AS id_usuario,sigla, militares.nome AS nome_guerra, login,perfis.descricao,usuarios.nome
@@ -11,6 +11,7 @@ class Usuario {
                                                 AND militares.id_militar = usuarios.id_militar
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND login != 'admin'
+                                                AND usuarios.id_usuario != $login
                                                 AND usuarios.id_status != 2");
             $executa = $stmt->execute();
 
