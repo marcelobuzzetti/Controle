@@ -303,8 +303,8 @@ $(function () {
     /*Verifica se a marca existe*/
     
       /*Verifica se o login existe*/
-    $('#login').keyup(function () {
-        $('#login').load('../model/verificaLogin.php?' + $.param({login: $('#login').val()}));
+    $('.login').keyup(function () {
+        $('.login').load('../model/verificaLogin.php?' + $.param({login: $('#login').val()}));
     });
     /*Verifica se o login existe*/
 
