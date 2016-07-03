@@ -407,7 +407,7 @@ switch ($_POST['enviar']) {
             $_SESSION['cadastrado'] = 1;
         }
 
-        header('Location: /usuario');
+        header('Location: /usuarioscadastrados');
 
         break;
 
@@ -432,7 +432,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /usuario');
+        header('Location: /usuarioscadastrados');
 
         break;
 
@@ -454,7 +454,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /usuario');
+        header('Location: /usuarioscadastrados');
 
         break;
 
@@ -488,7 +488,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /usuario');
+        header('Location: /usuarioscadastrados');
 
         break;
 
