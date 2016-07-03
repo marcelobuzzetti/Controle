@@ -14,7 +14,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="login">Login</label>
-            <input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>
+            <input autofocus class="form-control" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>  
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="senha">Senha</label>
@@ -33,9 +33,6 @@
             <label for="apelido">Apelido</label>
             <input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado" maxlength="20" tabindex="4"/>
         </div>
-         <div class="col-xs-12 col-sm-12 col-md-12">
-            <span name="alerta" id="alerta"></span>
-         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' id='id' name='id' value='{$id_usuario}'/>
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" value="{$evento}" id="enviar" name="enviar" tabindex="5">{$botao}</button>
