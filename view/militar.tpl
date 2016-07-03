@@ -14,7 +14,7 @@
             <div class = "panel-body collapse in" id="dados_militares">
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="numero_militar">Número do Militar</label>
-                    <input class="form-control" type="number" id="numero_militar" name="numero_militar" placeholder="Número"  maxlength="100" value="{$numero_militar}" autofocus="true"/>
+                    <input class="form-control" type="number" id="numero_militar" name="numero_militar" placeholder="Número"  min="0" value="{$numero_militar}" min="0" autofocus="true"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="cp">CP</label>
@@ -22,11 +22,11 @@
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="grupo">Grupo</label>
-                    <input class="form-control" type="number" id="grupo" name="grupo" placeholder="Grupo"  maxlength="100" value="{$grupo}"/>
+                    <input class="form-control" type="number" id="grupo" name="grupo" placeholder="Grupo"  min="0" value="{$grupo}"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="antiguidade">Antiguidade</label>
-                    <input class="form-control" type="number" id="antiguidade" name="antiguidade" placeholder="Antiguidade"  maxlength="100" value="{$antiguidade}"/>
+                    <input class="form-control" type="number" id="antiguidade" name="antiguidade" placeholder="Antiguidade"  min="0" value="{$antiguidade}"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="data_praca">Data de Praça</label>
