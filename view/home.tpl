@@ -28,10 +28,8 @@
 </nav>
 <div class="container">
     <div class="jumbotron">
-        <h1>Viaturas Rodando</h1>
+        <h1>Viaturas em Atividade no Momento</h1>
     </div>
- <button class="btn btn-default btn-primary" data-toggle="collapse" data-target="#demo">Viaturas em atividade no momento</button>
- <div id="demo" class="collapse">
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -67,5 +65,3 @@
         </tfoot>
     </table>
 </div>
-</div>
-        
