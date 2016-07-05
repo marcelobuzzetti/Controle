@@ -51,7 +51,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Ano</label>
-            <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$odometro}' step="1" min="1980" max="2016" maxlength="4" tabindex="3"/>
+            <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$ano}' step="1" min="1980" max="2016" maxlength="4" tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="placa">Placa</label>
@@ -103,59 +103,4 @@
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="10">{$botao}</button>
         </div>
     </form>
-</div>
-<div class="container">
-    <legend>Viaturas Cadastradas</legend>
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <td>Marca</td>
-                <td>Modelo</td>
-                <td>Placa</td>
-                <td>Odômetro Atual</td>
-                <td>Capacidade do Tanque</td>
-                <td>Consumo Km/L</td>
-                <td>Capacidade(Pessoas)</td>
-                <td>Habilitação Necessária</td>
-                <td>Situação</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </thead>
-        <tbody>
-            {foreach $relacao_viaturas as $tbl name='viaturas'}
-                <tr>
-                    <td>{$tbl.marca}</td>
-                    <td>{$tbl.modelo}</td>
-                    <td>{$tbl.placa}</td>
-                    <td>{$tbl.odometro}</td>
-                    <td>{$tbl.cap_tanque}</td>
-                    <td>{$tbl.consumo_padrao}</td>
-                    <td>{$tbl.cap_transp}</td>
-                    <td>{$tbl.categoria}</td>
-                    <td>{$tbl.disponibilidade}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td><form action='viatura' method='post'>
-                            <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
-                            <button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form>
-                </tr>
-            {/foreach}  
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>Marca</td>
-                <td>Modelo</td>
-                <td>Placa</td>
-                <td>Odômetro Atual</td>
-                <td>Capacidade do Tanque</td>
-                <td>Consumo Km/L</td>
-                <td>Capacidade(Pessoas)</td>
-                <td>Habilitação Necessária</td>
-                <td>Situação</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </tfoot>
-    </table>
 </div>
