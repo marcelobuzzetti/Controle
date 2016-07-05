@@ -152,10 +152,9 @@ switch ($_POST['enviar']) {
             $executa = $stmt->execute();
 
             if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+                $_SESSION['erro'] = 1;
+            } else {
+                 $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -180,10 +179,17 @@ switch ($_POST['enviar']) {
                                                 WHERE id_viatura = ?");
                     $stmt->bindParam(1, $id, PDO::PARAM_INT);
                     $executa = $stmt->execute();
+                       if (!$executa) {
+                $_SESSION['erro'] = 1;
+            } else {
+                 $_SESSION['apagado'] = 1;
+            }
                 } catch (PDOException $e) {
                     echo $e->getMessage();
                 }
-            }
+            } else{
+                 $_SESSION['apagado'] = 1;
+            } 
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -198,27 +204,36 @@ switch ($_POST['enviar']) {
         $modelo = $_POST["modelo"];
         $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
+        $ano = $_POST["ano"];
         $situacao = $_POST["situacao"];
+        $tipo_viatura = $_POST["tipo_viatura"];
+        $habilitacao = $_POST["habilitacao"];
+        $combustivel = $_POST["combustivel"];
 
 
 
         try {
             $stmt = $pdo->prepare("UPDATE viaturas
-                                                SET id_marca = ?, id_modelo = ?, placa = ?, odometro = ?, id_situacao = ?
+                                                SET id_marca = ?, id_modelo = ?, placa = ?, odometro = ?, 
+                                                ano = ?,   id_tipo_viatura =?, id_situacao = ?, 
+                                                id_habilitacao = ?, id_combustivel = ?
                                                 WHERE id_viatura = ?");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
-            $stmt->bindParam(5, $situacao, PDO::PARAM_INT);
-            $stmt->bindParam(6, $id, PDO::PARAM_INT);
+            $stmt->bindParam(5, $ano, PDO::PARAM_INT);
+            $stmt->bindParam(6, $tipo_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(7, $situacao, PDO::PARAM_INT);
+            $stmt->bindParam(8, $habilitacao, PDO::PARAM_INT);
+            $stmt->bindParam(9, $combustivel, PDO::PARAM_INT);
+            $stmt->bindParam(10, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-            if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+              if (!$executa) {
+                $_SESSION['erro'] = 1;
+            } else {
+                 $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
