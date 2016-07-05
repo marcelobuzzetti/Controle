@@ -3,6 +3,12 @@ function preenche(a, b) {
     $("#" + b).removeAttr("required");
     $("#" + a).submit();
 }
+
+function removerDisabled() {
+    $("select").removeAttr("disabled");
+    $("form").submit();
+}
+
 /*Remove atributo required em percurso*/
 
 /*Abrir Select com o passar do mouse
