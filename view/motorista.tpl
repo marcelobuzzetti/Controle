@@ -71,49 +71,7 @@
         </div>    
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' id='id' value='{$id_motorista}' name='id'/>
-            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="5" onclick="removerDisabled()">{$botao}</button>
         </div>
     </form>
-</div>
-<div class="container">
-    <legend>Motoristas Cadastrados</legend>
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <td>Posto/Grad</td>
-                <td>Nome de Guerra</td>
-                <td>Nome Completo</td>
-                <td>Categoria</td>
-                <td>Validade</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </thead>
-        <tbody>
-            {foreach $tabela_motoristas_cadastrados as $tbl name=relacao_motoristas}
-            <td>{$tbl.sigla}</td>
-            <td>{$tbl.nome}</td>
-            <td>{$tbl.nome_completo}</td>
-            <td>{$tbl.categoria}</td>
-            <td>{$tbl.validade}</td>
-            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-            <td><form action='motorista' method='post'>
-                    <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
-                    <button class='btn btn-success' type='submit' id='apagar' name='enviar' value="atualizar_motorista"/><span class='glyphicon glyphicon-refresh'/></form></td>
-            </form>
-            </tr> 
-        {/foreach}
-        </tbody>
-        <tfoot>
-            <tr>
-              <td>Posto/Grad</td>
-                <td>Nome de Guerra</td>
-                <td>Nome Completo</td>
-                <td>Categoria</td>
-                <td>Validade</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </tfoot>
-    </table>
 </div>
