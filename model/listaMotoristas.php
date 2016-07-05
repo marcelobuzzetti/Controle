@@ -37,7 +37,7 @@ if ($categoria == "A") {
         echo "</select>";
     } else {
         echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
-        echo "<option value='' disabled selected>Sem Motoristas</option>";
+        echo "<option value='' disabled selected>Sem motoristas habilitados</option>";
         echo "</select>";
     }
 } else {
@@ -59,7 +59,7 @@ if ($categoria == "A") {
         echo "</select>";
     } else {
         echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
-        echo "<option value='' disabled selected>Sem Motoristas</option>";
+        echo "<option value='' disabled selected>Sem motoristas habilitados</option>";
         echo "</select>";
     }
 }
