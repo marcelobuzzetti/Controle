@@ -2,10 +2,10 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
-    <form action="executar" method="post">
+    <form class="b" action="executar" method="post">
         <div class=" form-group col-xs-12 col-sm-6 col-md-3" >
             <label for="militar">Militar</label>
-            <select class="form-control" id="militar" name="militar" required tabindex="1" {$update}>
+            <select class="form-control a" id="militar" name="militar" required tabindex="1" {$update}>
                 <option value='' disabled selected>Selecione o Militar</option>
                 {foreach $relacao_militares as $militares}
                     <option value={$militares.id_militar} {if {$militares.id_militar} == {$militar}}selected{/if}>{$militares.sigla} {$militares.nome} </option>
@@ -35,7 +35,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' id='id' name='id' value='{$id_usuario}'/>
-            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" value="{$evento}" id="enviar" name="enviar" tabindex="5">{$botao}</button>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" value="{$evento}" id="enviar" name="enviar" tabindex="5" onclick="removerDisabled()">{$botao}</button>
         </div>
     </form>
 </div>
