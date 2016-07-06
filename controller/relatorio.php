@@ -10,6 +10,9 @@ if (isset($_SESSION['login']) == FALSE) {
 
     $verificador = 0;
 
+    $viatura = new Viatura();
+    $tabela_relacao_vtr = $viatura->ViaturasRodandoRelatorio();
+    
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
@@ -24,6 +27,7 @@ if (isset($_SESSION['login']) == FALSE) {
         $smarty->assign('titulo', 'Relatórios');
         $smarty->assign('titulo1', 'Relatório Completo de Vtr');
         $smarty->assign('relacao_relatorio', $relacao_relatorio);
+        $smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
@@ -57,6 +61,7 @@ if (isset($_SESSION['login']) == FALSE) {
             $smarty->assign('titulo', 'Relatórios');
             $smarty->assign('titulo1', 'Relatórios de ' . $data_inicio . ' a ' . $data_fim);
             $smarty->assign('relacao_relatorio', $relacao_relatorio);
+            $smarty->assign('tabela_relacao_vtr', $tabela_relacao_vtr);
             $smarty->assign('login', $_SESSION['login']);
             $smarty->display('./headers/header_datatables.tpl');
             $smarty->display($menu);
