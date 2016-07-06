@@ -116,7 +116,7 @@ class Relatorio {
                                                 FROM percursos p
                                                 RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista  
                                                 AND p.data_saida BETWEEN ? AND ?                                             
-                                                AND p.odo_retorno > 0
+                                                AND p.odo_retorno IS NOT NULL
                                                 GROUP BY m.id_motorista
                                                 ORDER BY m.id_motorista");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
