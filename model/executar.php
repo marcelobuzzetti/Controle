@@ -154,7 +154,7 @@ switch ($_POST['enviar']) {
             if (!$executa) {
                 $_SESSION['erro'] = 1;
             } else {
-                 $_SESSION['cadastrado'] = 1;
+                $_SESSION['cadastrado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -179,17 +179,17 @@ switch ($_POST['enviar']) {
                                                 WHERE id_viatura = ?");
                     $stmt->bindParam(1, $id, PDO::PARAM_INT);
                     $executa = $stmt->execute();
-                       if (!$executa) {
-                $_SESSION['erro'] = 1;
-            } else {
-                 $_SESSION['apagado'] = 1;
-            }
+                    if (!$executa) {
+                        $_SESSION['erro'] = 1;
+                    } else {
+                        $_SESSION['apagado'] = 1;
+                    }
                 } catch (PDOException $e) {
                     echo $e->getMessage();
                 }
-            } else{
-                 $_SESSION['apagado'] = 1;
-            } 
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -230,10 +230,10 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(10, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-              if (!$executa) {
+            if (!$executa) {
                 $_SESSION['erro'] = 1;
             } else {
-                 $_SESSION['atualizado'] = 1;
+                $_SESSION['atualizado'] = 1;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -1091,7 +1091,7 @@ switch ($_POST['enviar']) {
                 $_SESSION['perfil'] = $resultado1[0];
                 $_SESSION['usuario'] = $resultado1[2];
                 $_SESSION['temposessao'] = time() + 120;
-                
+
                 if ($_SESSION['perfil'] == 1) {
                     header('Location: /percurso');
                 }
@@ -1107,7 +1107,6 @@ switch ($_POST['enviar']) {
                 if ($_SESSION['perfil'] == 5) {
                     header('Location: /militarescadastrados');
                 }
-                
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;
@@ -1779,6 +1778,60 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'verificar_senha':
+        $id = $_POST['id'];
+        $senha_antiga = md5($_POST['senha_antiga']);
+
+        try {
+            $stmt = $pdo->prepare("SELECT COUNT(id_usuario) AS qnt
+                                                FROM usuarios
+                                                WHERE id_usuario = ?
+                                                AND senha = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $stmt->bindParam(2, $senha_antiga, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+            if ($executa) {
+                $usuarios_qnt = $stmt->fetch(PDO::FETCH_OBJ);
+                $qnt = $usuarios_qnt->qnt;
+                if ($qnt == 1) {
+                    echo 1;
+                } else {
+                    echo 0;
+                }
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        break;
+
+         case 'alterar_usuario':
+        $id = $_POST['id'];
+        $login = $_POST['login'];
+        $apelido = $_POST['apelido'];
+        $senha = md5($_POST['senha']);
+
+
+        try {
+            $stmt = $pdo->prepare("UPDATE usuarios
+                                                SET senha = ?, login = ?, nome = ?
+                                               WHERE id_usuario = ?");
+            $stmt->bindParam(1, $senha, PDO::PARAM_STR);
+            $stmt->bindParam(2, $login, PDO::PARAM_STR);
+            $stmt->bindParam(3, $apelido, PDO::PARAM_STR);
+            $stmt->bindParam(4, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                $_SESSION['atualizado'] = 1;
+            } else {
+                $_SESSION['erro'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        break;
 
     default:
 //no action sent
