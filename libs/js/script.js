@@ -3,13 +3,76 @@ function preenche(a, b) {
     $("#" + b).removeAttr("required");
     $("#" + a).submit();
 }
+/*Remove atributo required em percurso*/
 
-function removerDisabled() {
-    $("select").removeAttr("disabled");
-    $("form").submit();
+function atualizarUsuario() {
+    $senha_antiga = $('#senha_antiga').val();
+    $id = $('#id').val();
+    $senha_nova = $('#senha_nova').val();
+    $senha = $('#senha').val();
+    $login = $('#login').val();
+    $apelido = $('#apelido').val();
+    var i = 0;
+    
+    if ($senha_antiga == "") {
+        i++;
+    }
+    if ($senha_nova == "") {
+        i++;
+    }
+    if ($senha == "") {
+        i++;
+    }
+    if ($login == "") {
+        i++;
+    }
+    if ($apelido == "") {
+        i++;
+    }
+    if ($senha_nova != $senha) {
+        alert("As senhas não conferem");
+        i++;
+    }
+
+    if(i != 0){
+        alert("Preencha todos os campos");
+        return false;
+        i = 0;
+    }
+    $.ajax({
+        type: 'POST',
+        url: '../model/executar.php',
+        async: true,
+        data: {id: $id, senha_antiga: $senha_antiga, enviar: 'verificar_senha'},
+        error: function (request, status, error) {
+            alert("O sistema está indisponível no momemto, tente mais tarde");
+            return false;
+        },
+        success: function (result) {
+            if (result == 1) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../model/executar.php',
+                    async: true,
+                    data: {id: $id, login: $login, apelido: $apelido, senha: $senha, enviar: 'alterar_usuario'},
+                    error: function (request, status, error) {
+                        // Aqui você trata um erro que possa vir a ocorrer
+                        // Exemplo:
+                        alert("O sistema está indisponível no momemto, tente mais tarde");
+                    },
+                    success: function () {
+                        alert("Entre com o novo usuário e senha");
+                        document.location.href = '/logout';
+                    }
+                });
+            } else {
+                alert("A senha antiga nao confere");
+            }
+        }
+    });
 }
 
-/*Remove atributo required em percurso*/
+
 
 /*Abrir Select com o passar do mouse
  $(function start(){
@@ -31,22 +94,22 @@ function removerDisabled() {
 
 $(function () {
     /*Cadastro Rápido e Completo*/
-    
+
     $('.cadastrocompleto').click(function () {
-            $('.cadastro').show();
-            $('.rapido').hide();
-             $('.cadastrocompleto').addClass('btn-danger');
-              $('.cadastrorapido').removeClass('btn-danger');
+        $('.cadastro').show();
+        $('.rapido').hide();
+        $('.cadastrocompleto').addClass('btn-danger');
+        $('.cadastrorapido').removeClass('btn-danger');
     });
-    
+
     $('.cadastrorapido').click(function () {
-            $('.rapido').show();
-            $('.cadastro').hide();
-            $('.cadastrorapido').addClass('btn-danger');
-            $('.cadastrocompleto').removeClass('btn-danger');
+        $('.rapido').show();
+        $('.cadastro').hide();
+        $('.cadastrorapido').addClass('btn-danger');
+        $('.cadastrocompleto').removeClass('btn-danger');
     });
     /*Cadastro Rápido e Completo*/
-    
+
     /*Remoção de Telefones*/
     $('.telefone').click(function () {
         $(this).parent('#telefones')
@@ -270,7 +333,7 @@ $(function () {
 
     /*Coloca datepicker nas datas*/
 
-     /*Completa cidades*/
+    /*Completa cidades*/
     $('.estado').change(function () {
         $('.cidade').load('../model/listaCidades.php?estado=' + $('.estado').val());
     });
@@ -307,8 +370,8 @@ $(function () {
         $('#alerta').load('../model/verificaMarca.php?' + $.param({marca: $('#marca').val()}));
     });
     /*Verifica se a marca existe*/
-    
-      /*Verifica se o login existe*/
+
+    /*Verifica se o login existe*/
     $('.login').keyup(function () {
         $('.login').load('../model/verificaLogin.php?' + $.param({login: $('#login').val()}));
     });
