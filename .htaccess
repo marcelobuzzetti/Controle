@@ -12,6 +12,7 @@ Options -Indexes
 
 #Acesso as Páginas
 RewriteRule ^/?$ controller/home.php
+RewriteRule ^alterarusuario/?$ controller/alterarusuario.php
 RewriteRule ^inicio/?$ controller/inicio.php
 RewriteRule ^abastecimento/?$ controller/abastecimento.php
 RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
