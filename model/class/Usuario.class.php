@@ -30,6 +30,7 @@ class Usuario {
     public function listarUsuarioAtualizar($id) {
         include '../model/conexao.php';
         try {
+            if($id != 1){
             $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome, id_militar, usuarios.id_perfil AS id_perfil, nome
                                                 FROM usuarios, perfis
                                                 WHERE cod_perfil = usuarios.id_perfil
@@ -37,6 +38,14 @@ class Usuario {
                                                 AND usuarios.id_usuario = $id
                                                 AND usuarios.id_status != 2");
             $executa = $stmt->execute();
+            } else {
+                $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome, id_militar, usuarios.id_perfil AS id_perfil, nome
+                                                FROM usuarios, perfis
+                                                WHERE cod_perfil = usuarios.id_perfil
+                                                AND usuarios.id_usuario = $id
+                                                AND usuarios.id_status != 2");
+            $executa = $stmt->execute();
+            }
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
