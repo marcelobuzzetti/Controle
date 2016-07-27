@@ -20,7 +20,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-2">
             <label for="destino">Destino</label>
-            <input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="20" tabindex="3"/>
+            <input class="form-control" type="text" id="destino" name="destino" placeholder="Destino" required="required" maxlength="30" tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-2">
             <label for="odo_saida">Odômetro Saída</label>
