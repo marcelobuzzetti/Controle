@@ -40,7 +40,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header_abastecimento.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('abastecimento.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
@@ -94,7 +94,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->assign('relacao_tipos_combustiveis', $relacao_tipo_combustiveis);
         $smarty->assign('tabela_relacao_abastecimentos', $tabela_relacao_abastecimentos);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->display('./headers/header_abastecimento.tpl');
+        $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('abastecimento.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
