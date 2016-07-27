@@ -79,6 +79,7 @@
                     <td>Capacidade(Pessoas)</td>
                     <td>Habilitação Necessária</td>
                     <td>Situação</td>
+                    <td>Detalhes</td>
                     <td>Apagar</td>
                     <td>Atualizar</td>
                 </tr>
@@ -95,6 +96,9 @@
                         <td>{$tbl.cap_transp}</td>
                         <td>{$tbl.categoria}</td>
                         <td>{$tbl.disponibilidade}</td>
+                        <td><form action='detalheviatura' method='post'>
+                                <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
+                                <button class='btn btn-default' type='submit' id='detalhe' name='detalhe'/><span class='glyphicon glyphicon-zoom-in'/></form></td>
                         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                         <td><form action='viatura' method='post'>
                                 <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
@@ -114,6 +118,7 @@
                     <td>Capacidade(Pessoas)</td>
                     <td>Habilitação Necessária</td>
                     <td>Situação</td>
+                    <td>Detalhes</td>
                     <td>Apagar</td>
                     <td>Atualizar</td>
                 </tr>
