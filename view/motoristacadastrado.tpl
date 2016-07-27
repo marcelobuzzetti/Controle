@@ -92,6 +92,7 @@
                 <td>Nome Completo</td>
                 <td>Categoria</td>
                 <td>Validade</td>
+                <td>Detalhes</td>
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
@@ -103,6 +104,9 @@
             <td>{$tbl.nome_completo}</td>
             <td>{$tbl.categoria}</td>
             <td>{$tbl.validade}</td>
+            <td><form action='detalhemotorista' method='post'>
+                    <input type='hidden' id='id' name='id' value='{$tbl.id_motorista}' />
+                    <button class='btn btn-default' type='submit' id='detalhe' name='detalhe'/><span class='glyphicon glyphicon-zoom-in'/></form></td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
             <td><form action='motorista' method='post'>
                     <input type='hidden' id='{$tbl.id_motorista}' value='{$tbl.id_motorista}' name='id'/>
@@ -113,11 +117,12 @@
         </tbody>
         <tfoot>
             <tr>
-              <td>Posto/Grad</td>
+                <td>Posto/Grad</td>
                 <td>Nome de Guerra</td>
                 <td>Nome Completo</td>
                 <td>Categoria</td>
                 <td>Validade</td>
+                <td>Detalhes</td>
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
