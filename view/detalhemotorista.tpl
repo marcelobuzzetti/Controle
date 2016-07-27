@@ -1,6 +1,7 @@
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
+        <h1>{$km} Km Rodados</h1>
     </div>
     <table id="detalhes" class="table table-striped table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
         <thead>
@@ -30,7 +31,7 @@
         {/foreach}
         </tbody>
     </table>
-        <legend>Percursos Realizados</legend>
+    <legend>Percursos Realizados</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -77,7 +78,7 @@
             </tr>
         </tfoot>
     </table>
-<legend>Vtr que utilizou</legend>
+    <legend>Vtr que utilizou</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -89,13 +90,13 @@
                 <td>Odômetro Retorno</td>
                 <td>Data Chegada</td>
                 <td>Hora Chegada</td>
-                <td>Km</td>
+                <td>Km Rodada</td>
             </tr>
         </thead>
         <tbody>
-            {foreach $relacao_motoristas as $tbl name=relacao_relatorio}
+            {foreach $relacao_viaturas as $tbl name=relacao_relatorio}
                 <tr>
-                    <td>{$tbl.apelido}</td>
+                    <td>{$tbl.viatura}</td>
                     <td>{$tbl.nome_destino}</td>
                     <td>{$tbl.odo_saida}</td>
                     <td>{$tbl.data_saida}</td>
@@ -121,86 +122,39 @@
             </tr>
         </tfoot>
     </table>
-    <legend>Manutenções Realizadas</legend>
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <td>Viatura</td>
-                <td>Odômetro</td>
-                <td>Descrição</td>
-                <td>Data</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </thead>
-        <tbody>
-            {foreach $relacao_manutencao as $tbl name=relacao_mnt_vtr}
-                <tr>
-                    <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
-                    <td>{$tbl.odometro}</td>
-                    <td>{$tbl.descricao}</td>
-                    <td>{$tbl.data}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_manutencao_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td> <form action='manutencaovtr' method='post'>
-                            <input type='hidden' id='{$tbl.id_manutencao_viatura}' value='{$tbl.id_manutencao_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_manutencao'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form></tr>
-                </tr>
-            {/foreach}    
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>Viatura</td>
-                <td>Odômetro</td>
-                <td>Descrição</td>
-                <td>Data</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </tfoot>
-    </table>
     <legend>Acidentes</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Viatura</td>
-                <td>Motorista</td>
                 <td>Acompanhante</td>
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </thead>
         <tbody>
             {foreach $relacao_acidentes as $tbl name=relacao_acidentes}
                 <tr>
                     <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
-                    <td>{$tbl.motorista}</td>
                     <td>{$tbl.acompanhante}</td>
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.avarias}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_acidente_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td> <form action='acidentevtr' method='post'>
-                            <input type='hidden' id='{$tbl.id_acidente_viatura}' value='{$tbl.id_acidente_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_acidente'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form></tr>
+                </tr>
                 </tr>
             {/foreach}    
         </tbody>
         <tfoot>
             <tr>
                 <td>Viatura</td>
-                <td>Motorista</td>
                 <td>Acompanhante</td>
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </tfoot>
     </table>
@@ -217,8 +171,6 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </thead>
         <tbody>
@@ -233,11 +185,8 @@
                     <td>{$tbl.qnt}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.hora}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_abastecimento}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td> <form action='abastecimento' method='post'>
-                            <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form></tr>
-                {/foreach}    
+                </tr>
+            {/foreach}    
         </tbody>
         <tfoot>
             <tr>
@@ -250,8 +199,6 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </tfoot>
     </table>
