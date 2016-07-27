@@ -126,7 +126,7 @@
                 <td>Odômetro Retorno</td>
                 <td>Data Chegada</td>
                 <td>Hora Chegada</td>
-                <td>Km</td>
+                <td>Km Rodada</td>
             </tr>
         </tfoot>
     </table>
@@ -138,8 +138,6 @@
                 <td>Odômetro</td>
                 <td>Descrição</td>
                 <td>Data</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </thead>
         <tbody>
@@ -149,10 +147,7 @@
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.data}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_manutencao_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td> <form action='manutencaovtr' method='post'>
-                            <input type='hidden' id='{$tbl.id_manutencao_viatura}' value='{$tbl.id_manutencao_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_manutencao'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form></tr>
+                </tr>
                 </tr>
             {/foreach}    
         </tbody>
@@ -162,8 +157,6 @@
                 <td>Odômetro</td>
                 <td>Descrição</td>
                 <td>Data</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </tfoot>
     </table>
@@ -178,8 +171,6 @@
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </thead>
         <tbody>
@@ -192,10 +183,7 @@
                     <td>{$tbl.data}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.avarias}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_acidente_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td> <form action='acidentevtr' method='post'>
-                            <input type='hidden' id='{$tbl.id_acidente_viatura}' value='{$tbl.id_acidente_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_acidente'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form></tr>
+                </tr>
                 </tr>
             {/foreach}    
         </tbody>
@@ -208,8 +196,6 @@
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </tfoot>
     </table>
@@ -226,8 +212,6 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </thead>
         <tbody>
@@ -242,11 +226,8 @@
                     <td>{$tbl.qnt}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.hora}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_abastecimento}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td> <form action='abastecimento' method='post'>
-                            <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/><span class='glyphicon glyphicon-refresh'/></form></td>
-                    </form></tr>
-                {/foreach}    
+                </tr>
+            {/foreach}    
         </tbody>
         <tfoot>
             <tr>
@@ -259,8 +240,6 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
             </tr>
         </tfoot>
     </table>
