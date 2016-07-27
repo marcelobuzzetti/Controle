@@ -170,4 +170,102 @@ class Motorista{
             echo $e->getMessage();
         }
     }
+    
+     public function listarViatura($id) {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT CONCAT(marcas.descricao,'-',modelos.descricao,'-',placa) AS viatura, odo_saida, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, IFNULL(odo_retorno - odo_saida,0) AS KM, nome_destino
+                                                FROM percursos, motoristas, destinos, marcas, modelos, viaturas
+                                                WHERE percursos.id_viatura = viaturas.id_viatura
+                                                AND percursos.id_destino = destinos.id_destino
+                                                AND percursos.id_viatura = viaturas.id_viatura
+                                                AND viaturas.id_marca = marcas.id_marca
+                                                AND viaturas.id_modelo = modelos.id_modelo
+                                                AND percursos.id_motorista = $id
+                                                ORDER BY data_saida DESC, hora_saida DESC");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
+     public function listarAcidente($id) {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias
+                                                FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas
+                                                WHERE viaturas.id_marca = marcas.id_marca 
+                                                AND viaturas.id_modelo = modelos.id_modelo
+                                                AND motoristas.id_motorista = acidentes_viaturas.id_motorista
+                                                AND acidentes_viaturas.id_viatura = viaturas.id_viatura
+                                                AND acidentes_viaturas.id_motorista  = $id
+                                                ORDER BY data");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela viaturas.');
+                         </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
+    public function listarAbastecimentos($id){
+        include '../model/conexao.php';
+          try {
+                $stmt = $pdo->prepare("SELECT id_abastecimento, nrvale,  motoristas.apelido AS apelido, marcas.descricao AS marca, modelos.descricao AS modelo, viaturas.placa AS placa, abastecimentos.odometro AS odometro, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
+                                                    FROM abastecimentos, marcas, modelos, viaturas, motoristas, combustiveis, tipos_combustiveis
+                                                    WHERE abastecimentos.id_motorista = motoristas.id_motorista
+                                                    AND abastecimentos.id_viatura = viaturas.id_viatura
+                                                    AND abastecimentos.id_combustivel = combustiveis.id_combustivel
+                                                    AND abastecimentos.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
+                                                    AND viaturas.id_modelo = modelos.id_modelo
+                                                    AND viaturas.id_marca = marcas.id_marca
+                                                    AND abastecimentos.id_motorista  = $id
+                                                    ORDER BY data DESC");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                    print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela.');
+                         </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+    }  
+    
+    public function listarKm($id){
+        include '../model/conexao.php';
+          try {
+                $stmt = $pdo->prepare("SELECT SUM(odo_retorno - odo_saida) as KM "
+                        . "                         FROM percursos"
+                        . "                         WHERE id_motorista = $id");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                    print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela.');
+                         </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+    }  
 }
