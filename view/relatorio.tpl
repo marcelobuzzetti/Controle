@@ -6,16 +6,16 @@
         <table id="relatorio" class="table table-striped table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Viatura</th>
-                    <th>Motorista</th>
-                    <th>Destino</th>
-                    <th>Odômetro Saída</th>
-                    <th>Acompanhante</th>
-                    <th>Data Saída</th>
-                    <th>Hora Saída</th>
-                    <th>Odômetro Retorno</th>
-                    <th>Data Chegada</th>
-                    <th>Hora Chegada</th>
+                    <td>Viatura</td>
+                    <td>Motorista</td>
+                    <td>Destino</td>
+                    <td>Odômetro Saída</td>
+                    <td>Acompanhante</td>
+                    <td>Data Saída</td>
+                    <td>Hora Saída</td>
+                    <td>Odômetro Retorno</td>
+                    <td>Data Chegada</td>
+                    <td>Hora Chegada</td>
                 </tr>
             </thead>
             <tbody>
@@ -36,16 +36,16 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Viatura</th>
-                    <th>Motorista</th>
-                    <th>Destino</th>
-                    <th>Odômetro Saída</th>
-                    <th>Acompanhante</th>
-                    <th>Data Saída</th>
-                    <th>Hora Saída</th>
-                    <th>Odômetro Retorno</th>
-                    <th>Data Chegada</th>
-                    <th>Hora Chegada</th>
+                    <td>Viatura</td>
+                    <td>Motorista</td>
+                    <td>Destino</td>
+                    <td>Odômetro Saída</td>
+                    <td>Acompanhante</td>
+                    <td>Data Saída</td>
+                    <td>Hora Saída</td>
+                    <td>Odômetro Retorno</td>
+                    <td>Data Chegada</td>
+                    <td>Hora Chegada</td>
                 </tr>
             </tfoot>
         </table>
