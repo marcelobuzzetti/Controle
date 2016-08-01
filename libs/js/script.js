@@ -5,11 +5,12 @@ function preenche(a, b) {
 }
 /*Remove atributo required em percurso*/
 
-/*Remove atributo required em percurso*/
+/*Remove atributo disabled em class disabled*/
 function removerDisabled() {
     $(".disabled").removeProp('disabled');
 }
-/*Remove atributo required em percurso*/
+/*Remove atributo disabled em class disabled*/
+
 function atualizarUsuario() {
     $senha_antiga = $('#senha_antiga').val();
     $id = $('#id').val();
