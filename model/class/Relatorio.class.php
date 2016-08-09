@@ -161,4 +161,50 @@ class Relatorio {
         }
     }
 
+    public function listarAbastecimento($inicio, $fim) {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT SUM(qnt) AS qnt, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo,  DATE_FORMAT(data,'%d/%m/%Y') AS data 
+                                                FROM abastecimentos, combustiveis, tipos_combustiveis
+                                                WHERE data BETWEEN ? AND ?
+                                                AND abastecimentos.id_combustivel = combustiveis.id_combustivel
+                                                AND abastecimentos.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
+                                                GROUP BY abastecimentos.id_combustivel, abastecimentos.id_tipo_combustivel, DAY(data)");
+            $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
+            $stmt->bindParam(2, $fim, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
+     public function listarAbastecimentoCompleto() {
+        include '../model/conexao.php';
+        try {
+           $stmt = $pdo->prepare("SELECT SUM(qnt) AS qnt, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo
+                                                FROM abastecimentos, combustiveis, tipos_combustiveis
+                                                WHERE abastecimentos.id_combustivel = combustiveis.id_combustivel
+                                                AND abastecimentos.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
+                                                GROUP BY abastecimentos.id_combustivel, abastecimentos.id_tipo_combustivel");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                           alert('Não foi possível criar tabela.');
+                           </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
