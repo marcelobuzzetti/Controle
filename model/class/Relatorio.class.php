@@ -169,7 +169,7 @@ class Relatorio {
                                                 WHERE data BETWEEN ? AND ?
                                                 AND abastecimentos.id_combustivel = combustiveis.id_combustivel
                                                 AND abastecimentos.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
-                                                GROUP BY abastecimentos.id_combustivel, abastecimentos.id_tipo_combustivel, DAY(data)");
+                                                GROUP BY abastecimentos.id_combustivel, abastecimentos.id_tipo_combustivel");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
             $stmt->bindParam(2, $fim, PDO::PARAM_STR);
             $executa = $stmt->execute();
