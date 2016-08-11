@@ -45,6 +45,7 @@
                         <li><a href="{$HOST}/combustivel">Cadastrar Combustível</a></li>
                         <li><a href="{$HOST}/tiposcombustiveiscadastrados">Tipos de Combustíveis Cadastrados</a></li>
                         <li><a href="{$HOST}/tipocombustivel">Cadastrar Tipo de Combustível</a></li>
+                        <li><a href="{$HOST}/recebimentocombustivelcadastrado">Recebimento de Combustível Cadastrado</a></li>
                         <li><a href="{$HOST}/recebimentocombustivel">Cadastrar Recebimento de Combustível</a></li>
                     </ul>
                 </li>
