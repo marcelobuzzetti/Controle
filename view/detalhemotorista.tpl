@@ -9,6 +9,7 @@
                 <td>Posto/Grad</td>
                 <td>Nome de Guerra</td>
                 <td>Nome Completo</td>
+                <td>CNH</td>
                 <td>Categoria</td>
                 <td>Validade</td>
                 <td>Apagar</td>
@@ -20,6 +21,7 @@
             <td>{$tbl.sigla}</td>
             <td>{$tbl.nome}</td>
             <td>{$tbl.nome_completo}</td>
+            <td>{$tbl.cnh}</td>
             <td>{$tbl.categoria}</td>
             <td>{$tbl.validade}</td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}" data-categoria="{$tbl.categoria}"><span class='glyphicon glyphicon-remove-sign'</button></td>
@@ -36,7 +38,6 @@
         <thead>
             <tr>
                 <td>Viatura</td>
-                <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Acompanhante</td>
@@ -51,7 +52,6 @@
             {foreach $relacao_percursos as $tbl name=relacao_relatorio}
                 <tr>
                     <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
-                    <td>{$tbl.apelido}</td>
                     <td>{$tbl.destino}</td>
                     <td>{$tbl.odo_saida}</td>
                     <td>{$tbl.acompanhante}</td>
@@ -66,7 +66,6 @@
         <tfoot>
             <tr>
                 <td>Viatura</td>
-                <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Acompanhante</td>
@@ -163,7 +162,6 @@
         <thead>
             <tr>
                 <td>Nº Vale</td>
-                <td>Motorista</td>
                 <td>Viatura</td>
                 <td>Odômetro</td>
                 <td>Combustível</td>
@@ -177,7 +175,6 @@
             {foreach $relacao_abastecimentos as $tbl name=tabela_relacao_abastecimentos}
                 <tr>
                     <td>{$tbl.nrvale}</td>
-                    <td>{$tbl.apelido}</td>
                     <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.combustivel}</td>
@@ -191,7 +188,6 @@
         <tfoot>
             <tr>
                 <td>Nº Vale</td>
-                <td>Motorista</td>
                 <td>Viatura</td>
                 <td>Odômetro</td>
                 <td>Combustível</td>

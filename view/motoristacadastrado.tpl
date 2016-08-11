@@ -90,6 +90,7 @@
                 <td>Posto/Grad</td>
                 <td>Nome de Guerra</td>
                 <td>Nome Completo</td>
+                <td>CNH</td>
                 <td>Categoria</td>
                 <td>Validade</td>
                 <td>Detalhes</td>
@@ -102,6 +103,7 @@
             <td>{$tbl.sigla}</td>
             <td>{$tbl.nome}</td>
             <td>{$tbl.nome_completo}</td>
+            <td>{$tbl.cnh}</td>
             <td>{$tbl.categoria}</td>
             <td>{$tbl.validade}</td>
             <td><form action='detalhemotorista' method='post'>
@@ -120,6 +122,7 @@
                 <td>Posto/Grad</td>
                 <td>Nome de Guerra</td>
                 <td>Nome Completo</td>
+                <td>CNH</td>
                 <td>Categoria</td>
                 <td>Validade</td>
                 <td>Detalhes</td>
