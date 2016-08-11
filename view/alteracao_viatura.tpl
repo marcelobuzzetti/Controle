@@ -62,11 +62,11 @@
         </div>
              <div class="form-group col-xs-12 col-sm-6 col-md-4">
             <label for="data">Data</label>
-            <input class="form-control" type="text" id="data" name="data"  required="required" value='{$data}' placeholder='Escolha a data da Manutenção' tabindex="3"/>
+            <input class="form-control" type="text" id="data" name="data"  required="required" value='{$data}' placeholder='Escolha a data da Alteração' tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="alteracao">Descrição da Alteração</label>
-            <textarea class="form-control" rows="10" id="alteracao" name="alteracao" placeholder="Descrição da Manutenção" required='required'  tabindex="4">{$descricao}</textarea>
+            <textarea class="form-control" rows="10" id="alteracao" name="alteracao" placeholder="Descrição da Alteração" required='required'  tabindex="4">{$descricao}</textarea>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
              <input type='hidden' value='{$id_alteracao_viatura}' name='id'/>
@@ -96,7 +96,7 @@
                     <td>{$tbl.data}</td>
                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_alteracao_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td> <form action='alteracaovtr' method='post'>
-                            <input type='hidden' id='{$tbl.id_alteracao_viatura}' value='{$tbl.id_alteracao_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_manutencao'/><span class='glyphicon glyphicon-refresh'/></form></td>
+                            <input type='hidden' id='{$tbl.id_alteracao_viatura}' value='{$tbl.id_alteracao_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_alteracao'/><span class='glyphicon glyphicon-refresh'/></form></td>
                     </form></tr>
                 </tr>
             {/foreach}    
