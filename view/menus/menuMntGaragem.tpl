@@ -39,10 +39,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1006">Relatórios<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
-                        <li><a href="{$HOST}/relatoriocombustivel" >Relatório Abastecimentos</a></li>
-                        <li><a href="{$HOST}/relatoriovtr" >Relatório por Vtr</a></li>
-                        <li><a href="{$HOST}/relatoriomotorista" >Relatório por Motorista</a></li>
+                        <li><a href="{$HOST}/relatorio" >Relatório deUtilização Vtr por Data</a></li>
+                        <li><a href="{$HOST}/relatoriocombustivel" >Relatório de Abastecimentos</a></li>
+                        <li><a href="{$HOST}/relatoriovtr" >Relatório de Utilização de Vtr</a></li>
+                        <li><a href="{$HOST}/relatoriomotorista" >Relatório deUtilização de Motorista</a></li>
                     </ul>
                 </li>
                 <li><a href="{$HOST}/alterarusuario" tabindex="1007">Olá {$login}</a></li>
