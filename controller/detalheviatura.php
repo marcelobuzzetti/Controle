@@ -19,6 +19,8 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
     $relacao_manutencao = $viaturas->listarMnt($id);
     
     $relacao_abastecimentos = $viaturas->listarAbastecimentos($id);
+    
+    $relacao_alteracao = $viaturas->listarAlteracaoVtr($id);
 
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
@@ -30,6 +32,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
     $smarty->assign('relacao_manutencao', $relacao_manutencao);
     $smarty->assign('relacao_acidentes', $relacao_acidentes);
     $smarty->assign('relacao_abastecimentos', $relacao_abastecimentos);
+    $smarty->assign('relacao_alteracao', $relacao_alteracao);
     $smarty->assign('login', $_SESSION['login']);
     $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
