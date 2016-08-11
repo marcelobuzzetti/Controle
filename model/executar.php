@@ -1208,6 +1208,96 @@ switch ($_POST['enviar']) {
 
         break;
 
+         case 'cadastrar_alteracao':
+        $id_viatura = $_POST['viatura'];
+        $odometro = $_POST['odometro'];
+        $alteracao = $_POST['alteracao'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO alteracao_viaturas
+                                                VALUES(NULL,?,?,?,?,$usuario)");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(3, $alteracao, PDO::PARAM_STR);
+            $stmt->bindParam(4, $data, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /alteracaovtr');
+
+        break;
+
+    case 'apagar_alteracao':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM alteracao_viaturas
+                                                WHERE id_alteracao_viatura = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /alteracaovtr');
+
+        break;
+
+    case 'atualizar_alteracao':
+        $id = $_POST['id'];
+        $id_viatura = $_POST['viatura'];
+        $odometro = $_POST['odometro'];
+        $alteracao = $_POST['alteracao'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("UPDATE alteracao_viaturas
+                                                SET id_viatura = ?, odometro = ?, descricao = ?, data = ?, id_usuario = $usuario 
+                                                WHERE id_alteracao_viatura = ?");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $odometro, PDO::PARAM_STR);
+            $stmt->bindParam(3, $alteracao, PDO::PARAM_STR);
+            $stmt->bindParam(4, $data, PDO::PARAM_STR);
+            $stmt->bindParam(5, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /alteracaovtr');
+
+        break;
+        
     case 'cadastrar_acidente':
         $id_viatura = $_POST['viatura_acidente'];
         $id_motorista = $_POST['motorista'];
