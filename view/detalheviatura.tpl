@@ -43,7 +43,6 @@
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
@@ -58,7 +57,6 @@
         <tbody>
             {foreach $relacao_percursos as $tbl name=relacao_relatorio}
                 <tr>
-                    <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                     <td>{$tbl.apelido}</td>
                     <td>{$tbl.destino}</td>
                     <td>{$tbl.odo_saida}</td>
@@ -73,7 +71,6 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
@@ -134,7 +131,6 @@
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <td>Viatura</td>
                 <td>Odômetro</td>
                 <td>Descrição</td>
                 <td>Data</td>
@@ -143,7 +139,6 @@
         <tbody>
             {foreach $relacao_manutencao as $tbl name=relacao_mnt_vtr}
                 <tr>
-                    <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.data}</td>
@@ -153,7 +148,6 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Viatura</td>
                 <td>Odômetro</td>
                 <td>Descrição</td>
                 <td>Data</td>
@@ -164,7 +158,6 @@
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Acompanhante</td>
                 <td>Odômetro</td>
@@ -176,7 +169,6 @@
         <tbody>
             {foreach $relacao_acidentes as $tbl name=relacao_acidentes}
                 <tr>
-                    <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                     <td>{$tbl.motorista}</td>
                     <td>{$tbl.acompanhante}</td>
                     <td>{$tbl.odometro}</td>
@@ -189,7 +181,6 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Acompanhante</td>
                 <td>Odômetro</td>
@@ -205,7 +196,6 @@
             <tr>
                 <td>Nº Vale</td>
                 <td>Motorista</td>
-                <td>Viatura</td>
                 <td>Odômetro</td>
                 <td>Combustível</td>
                 <td>Tipo</td>
@@ -219,7 +209,6 @@
                 <tr>
                     <td>{$tbl.nrvale}</td>
                     <td>{$tbl.apelido}</td>
-                    <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.combustivel}</td>
                     <td>{$tbl.tipo}</td>
@@ -233,7 +222,6 @@
             <tr>
                 <td>Nº Vale</td>
                 <td>Motorista</td>
-                <td>Viatura</td>
                 <td>Odômetro</td>
                 <td>Combustível</td>
                 <td>Tipo</td>
