@@ -173,7 +173,7 @@ CREATE TABLE manutencao_viaturas (
   id_manutencao_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_viatura int(11)  NOT NULL, 
   odometro float(10,1) NOT NULL,
-  descricao varchar(200) NOT NULL,
+  descricao varchar(1000) NOT NULL,
   data date NOT NULL,
   id_usuario int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -184,8 +184,8 @@ CREATE TABLE acidentes_viaturas (
   id_motorista int(11)  NOT NULL, 
   acompanhante varchar(100),
   odometro float(10,1) NOT NULL,
-  descricao varchar(200) NOT NULL,
-  avarias varchar(200) NOT NULL,
+  descricao varchar(1000) NOT NULL,
+  avarias varchar(1000) NOT NULL,
   data date NOT NULL,
   id_usuario int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
