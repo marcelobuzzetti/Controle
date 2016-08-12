@@ -65,7 +65,7 @@
                 <div class="form-group col-xs-12 col-sm-6 col-md-3">
                     <label for="cidade">Cidade Natal</label>
                     {if $update > 0}
-                        <select class='form-control' name='cidade_natal' id='cidade_natal' required='required'>
+                        <select class='form-control cidade' name='cidade_natal' id='cidade_natal' required='required'>
                             <option value='' disabled selected>Selecione a Cidade</option>
                             {foreach $relacao_cidades as $cidades}
                                 <option value={$cidades.id_cidade}{if {$cidades.id_cidade} == {$cidade_nascimento}} selected {/if}>{$cidades.nome}</option>
