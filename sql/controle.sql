@@ -145,7 +145,7 @@ CREATE TABLE combustiveis (
 
 CREATE TABLE usuarios (
   id_usuario int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  id_militar int(11) NOT NULL,
+  id_militar int(11),
   login varchar(50)  NOT NULL UNIQUE,
   senha varchar(50)  NOT NULL,
   id_perfil int(11) NOT NULL,
@@ -395,11 +395,8 @@ INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
 (4, 'Mantenedor - S4', 4),
 (5, 'Mantenedor - RP', 5);
 
-INSERT INTO militares (id_militar, nome, nome_completo, data_nascimento,  rg ,  orgao_expedidor , cpf , id_posto_grad, id_status) VALUES
-(1, 'Ferreira', 'Marcelo Aparecido Ferreira Silva', '1986-03-04', '0400319257','MD','07691481667',4,1);
-
-INSERT INTO usuarios (id_usuario, id_militar, login, senha, id_perfil, nome,id_status) VALUES
-(1,1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR',1);
+INSERT INTO usuarios (id_usuario, login, senha, id_perfil, nome,id_status) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR',1);
 
 INSERT INTO tipos_combustiveis (id_tipo_combustivel, descricao,id_usuario) VALUES
 (1, 'Operacional',1),
