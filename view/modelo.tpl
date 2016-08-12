@@ -20,6 +20,27 @@
     </div>
 </div>
 <!--Modal-->
+<!--Alerta-->
+<div class='container'>
+    {if $cadastrado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O modelo foi adicionada com sucesso!
+        </div>              
+    {/if}
+    {if $atualizado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O modelo foi atualizado com sucesso!
+        </div>              
+    {/if}
+    {if $apagado != NULL}
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O modelo foi apagado com sucesso!
+        </div>              
+    {/if}
+</div>
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
@@ -59,27 +80,6 @@
 <!--Alerta-->
 <div class="col-xs-12 col-sm-12 col-md-12">
     <span name="alerta" id="alerta"></span>
-</div>
-<!--Alerta-->
-<div class='container'>
-    {if $cadastrado != NULL}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O modelo foi adicionada com sucesso!
-        </div>              
-    {/if}
-    {if $atualizado != NULL}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O modelo foi atualizado com sucesso!
-        </div>              
-    {/if}
-    {if $apagado != NULL}
-        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O modelo foi apagado com sucesso!
-        </div>              
-    {/if}
 </div>
 <div class="container">
     <legend>Modelos Cadastradas</legend>
