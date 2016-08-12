@@ -21,38 +21,6 @@
 </div>
 <!--Modal-->
 <div class='container'>
-    <div class="jumbotron">
-        <h1>{$titulo}</h1>     
-    </div>
-    <form autocomplete="off" action="executar" method="post">
-        <div class="form-group col-xs-12 col-sm-6 col-md-4">
-            <label for="viatura">Viatura - Placa</label>
-            <select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
-                <option value='' disabled selected>Selecione a Viatura</option>
-                {foreach $relacao_viaturas as $viatura}
-                    <option value={$viatura.id_viatura} {if {$viatura.id_viatura} == {$id_viatura}}selected{/if}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
-                {/foreach}
-            </select>
-        </div>
-        <div class="form-group col-xs-12 col-sm-6 col-md-4">
-            <label for="odometro">Odômetro</label>
-            <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" value='{$odometro}'  step="0.1" min="0" tabindex="2"/>
-        </div>
-             <div class="form-group col-xs-12 col-sm-6 col-md-4">
-            <label for="data">Data</label>
-            <input class="form-control" type="text" id="data" name="data"  required="required" value='{$data}' placeholder='Escolha a data da Manutenção' tabindex="3"/>
-        </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-            <label for="manutencao">Descrição da Manutenção</label>
-            <textarea class="form-control" rows="10" id="manutencao" name="manutencao" placeholder="Descrição da Manutenção" required='required'  tabindex="4">{$descricao}</textarea>
-        </div>
-        <div class="form-group col-xs-12 col-sm-12 col-md-12">
-             <input type='hidden' value='{$id_manutencao_viatura}' name='id'/>
-            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button>
-        </div>
-    </form>
-</div>
-<div class='container'>
     {if $cadastrado != NULL}
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -71,6 +39,38 @@
             A manutenção foi apagado com sucesso!
         </div>              
     {/if}
+</div>
+<div class='container'>
+    <div class="jumbotron">
+        <h1>{$titulo}</h1>     
+    </div>
+    <form autocomplete="off" action="executar" method="post">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="viatura">Viatura - Placa</label>
+            <select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
+                <option value='' disabled selected>Selecione a Viatura</option>
+                {foreach $relacao_viaturas as $viatura}
+                    <option value={$viatura.id_viatura} {if {$viatura.id_viatura} == {$id_viatura}}selected{/if}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="odometro">Odômetro</label>
+            <input class="form-control" type="number" id="odometro" name="odometro" placeholder="Odometro" required="required" value='{$odometro}'  step="0.1" min="0" tabindex="2"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label for="data">Data</label>
+            <input class="form-control" type="text" id="data" name="data"  required="required" value='{$data}' placeholder='Escolha a data da Manutenção' tabindex="3"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <label for="manutencao">Descrição da Manutenção</label>
+            <textarea class="form-control" rows="10" id="manutencao" name="manutencao" placeholder="Descrição da Manutenção" required='required'  tabindex="4">{$descricao}</textarea>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-12">
+            <input type='hidden' value='{$id_manutencao_viatura}' name='id'/>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="5">{$botao}</button>
+        </div>
+    </form>
 </div>
 <div class="container">
     <legend>Manutenções Realizadas</legend>
@@ -92,7 +92,7 @@
                     <td>{$tbl.odometro}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.data}</td>
-                       <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_manutencao_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_manutencao_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td> <form action='manutencaovtr' method='post'>
                             <input type='hidden' id='{$tbl.id_manutencao_viatura}' value='{$tbl.id_manutencao_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_manutencao'/><span class='glyphicon glyphicon-refresh'/></form></td>
                     </form></tr>
