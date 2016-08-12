@@ -33,7 +33,7 @@
     <div class='container'>
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-           A viatura foi ativada com sucesso!
+            A viatura foi ativada com sucesso!
         </div>              
     </div>
 {/if}
@@ -49,7 +49,7 @@
     <div class='container'>
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-           A viatura foi apagada com sucesso!
+            A viatura foi apagada com sucesso!
         </div>              
     </div>
 {/if}
@@ -125,3 +125,4 @@
             </tfoot>
         </table>
     </div>
+</div>
