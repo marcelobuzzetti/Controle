@@ -1,4 +1,24 @@
 <div class='container'>
+    {if $cadastrado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O percurso foi adicionado com sucesso!
+        </div>              
+    {/if}
+    {if $atualizado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            A viatura foi fechada com sucesso!
+        </div>              
+    {/if}
+    {if $apagado != NULL}
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O percurso foi apagado com sucesso!
+        </div>              
+    {/if}
+</div>
+<div class='container'>
     <div class="jumbotron">
         <h1>Controle de Saída de Viatura</h1>     
     </div>
@@ -34,26 +54,6 @@
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="percurso" name="enviar" tabindex="6">Cadastrar</button>
         </div>
     </form>
-</div>
-<div class='container'>
-    {if $cadastrado != NULL}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O percurso foi adicionado com sucesso!
-        </div>              
-    {/if}
-    {if $atualizado != NULL}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            A viatura foi fechada com sucesso!
-        </div>              
-    {/if}
-    {if $apagado != NULL}
-        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O percurso foi apagado com sucesso!
-        </div>              
-    {/if}
 </div>
 <div class='container table-responsive grafico'>
     <legend>Viaturas Rodando</legend>
@@ -168,7 +168,7 @@
         </tbody>
         <tfoot>
             <tr>
-                 <td>Viatura</td>
+                <td>Viatura</td>
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
