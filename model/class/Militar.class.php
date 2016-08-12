@@ -103,12 +103,11 @@ class Militar {
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(antiguidade,'-') AS antiguidade,sigla, nome, nome_completo, 
                                                 status
-                                                FROM militares, posto_grad, 
-                                                status 
+                                                FROM militares, posto_grad, status 
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
-                                                AND militares.id_status !=2
-                                                AND militares.id_militar NOT IN (SELECT id_militar FROM usuarios)
+                                                AND militares.id_status != 2
+                                                AND militares.id_militar NOT IN (SELECT IFNULL(id_militar, 0) as id_militar FROM usuarios)
                                                 ORDER BY antiguidade, militares.id_militar");
             $executa = $stmt->execute();
 
