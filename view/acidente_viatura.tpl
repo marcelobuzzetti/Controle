@@ -21,6 +21,26 @@
 </div>
 <!--Modal-->
 <div class='container'>
+    {if $cadastrado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O Acidente foi adicionado com sucesso!
+        </div>              
+    {/if}
+    {if $atualizado != NULL}
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O Acidente foi fechada com sucesso!
+        </div>              
+    {/if}
+    {if $apagado != NULL}
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O Acidente foi apagado com sucesso!
+        </div>              
+    {/if}
+</div>
+<div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>     
     </div>
@@ -68,26 +88,6 @@
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>
         </div>
     </form>
-</div>
-<div class='container'>
-    {if $cadastrado != NULL}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O Acidente foi adicionado com sucesso!
-        </div>              
-    {/if}
-    {if $atualizado != NULL}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O Acidente foi fechada com sucesso!
-        </div>              
-    {/if}
-    {if $apagado != NULL}
-        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-            O Acidente foi apagado com sucesso!
-        </div>              
-    {/if}
 </div>
 <div class="container">
     <legend>Acidentes</legend>
