@@ -3,7 +3,7 @@
         <div class="jumbotron">
             <h1 class="titulo">{$titulo1}</h1>
         </div>
-        <table id="relatorio" class="table table-striped table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
+        <table id="relatorio" class="relatorio table table-striped table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <td>Viatura</td>
@@ -50,7 +50,7 @@
             </tfoot>
         </table>
         <legend>Viaturas em Atividade no Momento</legend>
-        <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <table id="tabela" class="relatorio table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <td>Viatura</td>

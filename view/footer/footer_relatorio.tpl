@@ -37,7 +37,7 @@
 <script>
     $(document).ready(function () {
         var title = $('.titulo').text();
-        $('#relatorio').DataTable({
+        $('.relatorio').DataTable({
             fixedHeader: {
                 header: true,
                 headerOffset: 50
