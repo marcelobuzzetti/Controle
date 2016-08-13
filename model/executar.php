@@ -792,7 +792,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /abastecimento');
+        header('Location: /abastecimentorealizado');
 
         break;
 
@@ -826,7 +826,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /abastecimento');
+        header('Location: /abastecimentorealizado');
 
         break;
 
@@ -863,7 +863,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /abastecimento');
+        header('Location: /abastecimentorealizado');
 
         break;
 
