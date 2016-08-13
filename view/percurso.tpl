@@ -1,3 +1,37 @@
+<!--Modal-->
+<div class="modal fade" id="modalpercurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Excluir</h4>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir este Percurso?
+                <div class="nome">
+                    <div class="input-group">
+                        <div class="input-group-addon">Motorista</div>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="destino">
+                    <div class="input-group">
+                        <div class="input-group-addon">Destino</div>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form action='executar' method='post'>
+                    <input type="hidden" class="form-control" id="recipient-name" name='id'/>
+                    <button type="submit" class="btn btn-danger" name='enviar' value="Apagar">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Nao</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal-->
 <div class='container'>
     {if $cadastrado != NULL}
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
@@ -81,11 +115,7 @@
                 <td>{$tbl.data_saida} {$tbl.hora_saida}</td>
                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                 <td><button class='btn btn-success' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form></td>
-            <form action='executar' method='post'>
-                <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
-                <td><button class='btn btn-danger' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>
-            </tr>
-            </form>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}"><span class='glyphicon glyphicon-remove'/></button></td>
             </tr>
         {/foreach}    
     </table>
@@ -124,15 +154,14 @@
                     <td>Ações</td> 
                 </tr>
                 <tr>
-                    <td><button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form>
-            <form action='executar' method='post'>
-                <input type='hidden' id="{$tbl.id_percurso}"value="{$tbl.id_percurso}" name='id'/>
-                <button class='btn btn-danger col-xs-12 col-sm-12 col-md-12' type='submit' id='apagar' name='enviar' value="Apagar" onclick='preenche({$contador},{$tbl.id_percurso})'/><span class='glyphicon glyphicon-remove'/></form></td>
-            </tr>
-            </form>
-            <tr>
-                <td></td>
-            </tr>
+                    <td><button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</td></form>
+                </tr>
+                <tr>
+                    <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}"><span class='glyphicon glyphicon-remove'/></button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
         {/foreach}    
     </table>
 </fieldset>
