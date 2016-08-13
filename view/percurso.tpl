@@ -14,6 +14,12 @@
                         <input type="text" class="form-control" disabled>
                     </div>
                 </div>
+                <div class="vtr">
+                    <div class="input-group">
+                        <div class="input-group-addon">Viatura</div>
+                        <input type="text" class="form-control" disabled>
+                    </div>
+                </div>
                 <div class="destino">
                     <div class="input-group">
                         <div class="input-group-addon">Destino</div>
@@ -115,7 +121,7 @@
                 <td>{$tbl.data_saida} {$tbl.hora_saida}</td>
                 <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                 <td><button class='btn btn-success' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form></td>
-            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}"><span class='glyphicon glyphicon-remove'/></button></td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}" data-vtr="{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}"><span class='glyphicon glyphicon-remove'/></button></td>
             </tr>
         {/foreach}    
     </table>
@@ -157,7 +163,7 @@
                     <td><button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</td></form>
                 </tr>
                 <tr>
-                    <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}"><span class='glyphicon glyphicon-remove'/></button></td>
+                   <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}" data-vtr="{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}"><span class='glyphicon glyphicon-remove'/></button></td>
                 </tr>
                 <tr>
                     <td></td>
