@@ -526,10 +526,12 @@ $(function () {
         var recipient = button.data('whatever')
         var destino = button.data("destino")
         var nome = button.data("nome")
+        var viatura = button.data("vtr")
         var modal = $(this)
         modal.find('.modal-footer input').val(recipient)
         modal.find('.nome input').val(nome)
         modal.find('.destino input').val(destino)
+        modal.find('.vtr input').val(viatura)
     });
 /*Modal do percurso*/
 });
