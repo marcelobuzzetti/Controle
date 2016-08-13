@@ -519,5 +519,20 @@ $(function () {
         modal.find('.nome input').val(nome)
         modal.find('.sigla input').val(sigla)
     });
+    /*Modal dos motoristas*/
+    /*Modal do percurso*/
+    $('#modalpercurso').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever')
+        var destino = button.data("destino")
+        var nome = button.data("nome")
+        var modal = $(this)
+        modal.find('.modal-footer input').val(recipient)
+        modal.find('.nome input').val(nome)
+        modal.find('.destino input').val(destino)
+    });
+/*Modal do percurso*/
 });
-/*Modal dos motoristas*/
+
+
+    
