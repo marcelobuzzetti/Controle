@@ -51,7 +51,7 @@
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_recibo_combustivel }"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td><form action='recebimentocombustivel' method='post'>
                             <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
-                            <button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_viatura'/><span class="glyphicon glyphicon-refresh"/></form></td>
+                            <button class='btn btn-success' type='submit' id='apagar' name='enviar'/><span class="glyphicon glyphicon-refresh"/></form></td>
                     </form>
                 </tr>
             {/foreach}
