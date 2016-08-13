@@ -514,10 +514,12 @@ $(function () {
         var recipient = button.data('whatever')
         var sigla = button.data("sigla")
         var nome = button.data("nome")
+        var categoria = button.data("categoria")
         var modal = $(this)
         modal.find('.modal-footer input').val(recipient)
         modal.find('.nome input').val(nome)
         modal.find('.sigla input').val(sigla)
+        modal.find('.categoria input').val(categoria)
     });
     /*Modal dos motoristas*/
     /*Modal do percurso*/
