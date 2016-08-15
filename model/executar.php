@@ -897,7 +897,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /modelo');
+        header('Location: /modelocadastrado');
 
         break;
 
@@ -931,7 +931,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /modelo');
+        header('Location: /modelocadastrado');
 
         break;
 
@@ -967,7 +967,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /modelo');
+        header('Location: /modelocadastrado');
 
         break;
 
