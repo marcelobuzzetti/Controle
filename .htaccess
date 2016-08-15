@@ -25,6 +25,7 @@ RewriteRule ^detalhemotorista/?$ controller/detalhemotorista.php
 RewriteRule ^detalheviatura/?$ controller/detalheviatura.php
 RewriteRule ^manutencaovtr/?$ controller/manutencao_viatura.php
 RewriteRule ^marca/?$ controller/marca.php
+RewriteRule ^marcacadastrada/?$ controller/marcacadastrada.php
 RewriteRule ^modelo/?$ controller/modelo.php
 RewriteRule ^militar/?$ controller/militar.php
 RewriteRule ^militarescadastrados/?$ controller/militarescadastrados.php

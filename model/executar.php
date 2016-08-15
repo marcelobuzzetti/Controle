@@ -992,7 +992,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /marca');
+        header('Location: /marcacadastrada');
 
         break;
 
@@ -1026,7 +1026,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /marca');
+        header('Location: /marcacadastrada');
 
         break;
 
@@ -1054,7 +1054,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /marca');
+        header('Location: /marcacadastrada');
 
         break;
 
