@@ -1,15 +1,13 @@
-<footer class="col-xs-12 col-sm-12 col-md-12"> <!-- Aqui e a area do footer -->
-    <div class="container">
-        <div class="row">
-            <div id="social-icons">
-                <a target="_blank" href="https://twitter.com/marcelobuzzetti" title="Twitter" ><img src="{$HOST}/libs/imagens/social_icons/twitter.png"></a>
-                <a target="_blank" href="https://plus.google.com/u/0/118309322821221542062" title="G+" ><img src="{$HOST}/libs/imagens/social_icons/google.png"></a>
-                <a target="_blank" href="https://br.linkedin.com/in/marcelo-buzzetti-08a4a185" title="Linkedin" ><img src="{$HOST}/libs/imagens/social_icons/linkedin.png"></a>
-                <a target="_blank" href="https://github.com/marcelobuzzetti" title="Linkedin" ><img src="{$HOST}/libs/imagens/social_icons/GitHub-Mark.png"></a>
-            </div> <!-- Aqui e a area das redes sociais -->
-        </div>
+<div class="container">
+    <div class="row">
+        <div id="social-icons">
+            <a target="_blank" href="https://twitter.com/marcelobuzzetti" title="Twitter" ><img src="{$HOST}/libs/imagens/social_icons/twitter.png"></a>
+            <a target="_blank" href="https://plus.google.com/u/0/118309322821221542062" title="G+" ><img src="{$HOST}/libs/imagens/social_icons/google.png"></a>
+            <a target="_blank" href="https://br.linkedin.com/in/marcelo-buzzetti-08a4a185" title="Linkedin" ><img src="{$HOST}/libs/imagens/social_icons/linkedin.png"></a>
+            <a target="_blank" href="https://github.com/marcelobuzzetti" title="Linkedin" ><img src="{$HOST}/libs/imagens/social_icons/GitHub-Mark.png"></a>
+        </div> <!-- Aqui e a area das redes sociais -->
     </div>
-</footer>
+</div>
 <div class="copyright">
     <div class="container">
         <div class="row">
@@ -38,8 +36,8 @@
 <script>
     $(document).ready(function () {
         var title = $('h1').text();
-        $('#relatorio').DataTable({      
-                      fixedHeader: {
+        $('#relatorio').DataTable({
+            fixedHeader: {
                 header: true,
                 headerOffset: 50
             },
@@ -53,8 +51,8 @@
                     orientation: 'landscape',
                     pageSize: 'A4',
                     /*exportOptions: {
-                        columns: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-                    },*/
+                     columns: [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+                     },*/
                     title: title,
                     download: 'open'
                 }
