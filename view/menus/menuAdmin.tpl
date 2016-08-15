@@ -19,6 +19,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1001">Viaturas <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/viaturascadastradas">Viaturas Cadastradas</a></li>
+                        <li><a href="{$HOST}/alteracaovtrcadastrada">Alterações de Viaturas Cadastradas</a></li>
                         <li><a href="{$HOST}/alteracaovtr">Cadastrar Alteração de Viatura</a></li>
                         <li><a href="{$HOST}/manutencaovtrcadastrada">Manutenções de Viaturas Cadastradas</a></li>
                         <li><a href="{$HOST}/manutencaovtr">Cadastrar Manutenção de Viatura</a></li>
