@@ -26,7 +26,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1006">Relatórios<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
+                        <li><a href="{$HOST}/relatorio" >Relatório de Utilização Vtr por Data</a></li>
                     </ul>
                 </li>
                 <li><a href="{$HOST}/alterarusuario" tabindex="1007">Olá {$login}</a></li>

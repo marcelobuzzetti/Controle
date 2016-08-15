@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{$HOST}/percurso" tabindex="1000">Viatura Saindo?</a></li>
-                <li><a href="{$HOST}/relatorio" >Relatório por Data</a></li>
+                <li><a href="{$HOST}/relatorio" >Relatório de Utilização Vtr por Data</a></li>
                 <li><a href="{$HOST}/alterarusuario" tabindex="1007">Olá {$login}</a></li>
                 <li><a href="{$HOST}/logout" tabindex="1008">Logout</a></li>
             </ul>
