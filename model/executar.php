@@ -1145,7 +1145,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /manutencaovtr');
+        header('Location: /manutencaovtrcadastrada');
 
         break;
 
@@ -1170,7 +1170,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /manutencaovtr');
+        header('Location: /manutencaovtrcadastrada');
 
         break;
 
@@ -1204,7 +1204,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        header('Location: /manutencaovtr');
+        header('Location: /manutencaovtrcadastrada');
 
         break;
 
