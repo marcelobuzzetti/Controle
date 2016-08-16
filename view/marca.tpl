@@ -17,34 +17,3 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
     <span name="alerta" id="alerta"></span>
 </div>
-<div class="container">
-    <legend>Marcas Cadastradas</legend>
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <td>Marca</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </thead>
-        <tbody>
-            {foreach $relacao_marcas as $marca name=relacao_marcas}
-                <tr>
-                    <td>{$marca.descricao}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$marca.id_marca}"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td><form action='marca' method='post'>
-                            <input type='hidden' id='{$marca.id_marca}' value='{$marca.id_marca}' name='id'/>
-                            <button class='btn btn-success' type='submit' id='atualizar' name='enviar' value='atualizar_marca'/><span class="glyphicon glyphicon-refresh"/></form></td>
-                    </form>
-                </tr>
-            {/foreach}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>Marca</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
