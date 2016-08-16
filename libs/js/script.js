@@ -354,6 +354,13 @@ $(function () {
         minLength: 1
     });
     /*Autocompleta o destino em percurso*/
+    
+    /*Autocompleta o destino em percurso*/
+    $("#desc").autocomplete({
+        source: "../model/buscador_abastecimento.php",
+        minLength: 1
+    });
+    /*Autocompleta o destino em percurso*/
 
     /*Completa o motorista e o odometro em percurso*/
     $('#viatura').change(function () {
