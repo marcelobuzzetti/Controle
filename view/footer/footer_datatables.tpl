@@ -28,7 +28,7 @@
 <script src="{$HOST}/libs/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        $('#tabela').DataTable({
+        $('.table').DataTable({
             fixedHeader: {
                 header: true,
                 headerOffset: 50
