@@ -5,10 +5,11 @@ include '../model/conexao.php';
 $combustivel = $_GET['combustivel'];
 $tp = $_GET['tp'];
 $qnt = $_GET['qnt'];
-$stmt = $pdo->prepare("SELECT cr.combustivel AS combustivel, cr.tipo_combustivel AS tipo_combustivel, ((cr.qnt - ca.qnt) - ?) AS qnt
-                                    FROM combustivel_abastecido ca, combustivel_recebido cr, combustiveis c, tipos_combustiveis tc
+$stmt = $pdo->prepare("SELECT cr.combustivel AS combustivel, cr.tipo_combustivel AS tipo_combustivel, ((cr.qnt - (ca.qnt + ce.qnt)) - ?) AS qnt
+                                    FROM combustivel_abastecido ca, combustivel_recebido cr, combustiveis c, tipos_combustiveis tc, combustivel_especial ce
                                     WHERE cr.combustivel = ca.combustivel
-                                    AND cr.tipo_combustivel = ca.tipo_combustivel
+                                    AND cr.tipo_combustivel = ca.tipo_combustivel									AND ce.combustivel = ca.combustivel
+                                    AND ce.tipo_combustivel = ca.tipo_combustivel
                                     AND c.descricao = ca.combustivel
                                     AND tc.descricao = ca.tipo_combustivel
                                     AND c.id_combustivel = ?

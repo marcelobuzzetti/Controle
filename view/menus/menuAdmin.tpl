@@ -59,7 +59,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1004">Abastecimento<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{$HOST}/abastecimentorealizado">Abastecimentos Realizados</a></li>
-                        <li><a href="{$HOST}/abastecimento">Abastecer?</a></li>
+                        <li><a href="{$HOST}/abastecimento">Abastecer Vtr?</a></li>
+                        <li><a href="{$HOST}/abastecimentoespecial">Pagar combustível?</a></li>
                     </ul>
                 </li>                
 

@@ -838,10 +838,11 @@ switch ($_POST['enviar']) {
         $combustivel = $_POST['combustivel'];
         $tp = $_POST['tp'];
         $qnt = $_POST['qnt'];
+        $odometro = $_POST['odometro'];
 
         try {
             $stmt = $pdo->prepare("UPDATE abastecimentos
-                                                SET nrvale = ?, id_motorista =?, id_viatura = ?, id_combustivel = ?, id_tipo_combustivel = ?, qnt = ?, hora = NOW(), data = NOW() 
+                                                SET nrvale = ?, id_motorista =?, id_viatura = ?, id_combustivel = ?, id_tipo_combustivel = ?, qnt = ?, odometro = ?, hora = NOW(), data = NOW() 
                                                 WHERE id_abastecimento =" . $id);
             $stmt->bindParam(1, $nrvale, PDO::PARAM_STR);
             $stmt->bindParam(2, $motorista, PDO::PARAM_INT);
@@ -849,6 +850,111 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(4, $combustivel, PDO::PARAM_INT);
             $stmt->bindParam(5, $tp, PDO::PARAM_INT);
             $stmt->bindParam(6, $qnt, PDO::PARAM_INT);
+            $stmt->bindParam(7, $odometro, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /abastecimentorealizado');
+
+        break;
+        
+        case 'abst_especial':
+        $nrvale = $_POST['nrvale'];
+        $descricao = $_POST['desc'];
+        $combustivel = $_POST['combustivel'];
+        $tp = $_POST['tp'];
+        $qnt = $_POST['qnt'];
+
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO abastecimentos_especiais
+                                               VALUES(NULL,?,?,?,?,?,NOW(),NOW(),$usuario)");
+            $stmt->bindParam(1, $nrvale, PDO::PARAM_STR);
+            $stmt->bindParam(2, $descricao, PDO::PARAM_STR);
+            $stmt->bindParam(3, $combustivel, PDO::PARAM_INT);
+            $stmt->bindParam(4, $tp, PDO::PARAM_INT);
+            $stmt->bindParam(5, $qnt, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <strong>Não foi possível acessar a base de dados</strong>
+                         </div>");
+                header("Location: /percurso");
+            } else {
+                $_SESSION['cadastrado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /abastecimentorealizado');
+
+        break;
+
+    case 'apagar_abst_especial':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM abastecimentos_especiais
+                                                WHERE id_abastecimento_especial = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                try {
+                    $stmt = $pdo->prepare("UPDATE abastecimentos_especiais
+                                                SET id_status = 2
+                                                WHERE id_abastecimento_especial = ?");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+
+                    if ($executa) {
+                        $_SESSION['apagado'] = 1;
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /abastecimentorealizado');
+
+        break;
+
+    case 'atualizar_abst_especial':
+        $id = $_POST['id'];
+        $nrvale = $_POST['nrvale'];
+        $descricao = $_POST['desc'];
+        $combustivel = $_POST['combustivel'];
+        $tp = $_POST['tp'];
+        $qnt = $_POST['qnt'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE abastecimentos_especiais
+                                                SET nrvale = ?, descricao = ?, id_combustivel = ?, id_tipo_combustivel = ?, qnt = ?, hora = NOW(), data = NOW() 
+                                                WHERE id_abastecimento_especial =" . $id);
+            $stmt->bindParam(1, $nrvale, PDO::PARAM_STR);
+            $stmt->bindParam(2, $descricao, PDO::PARAM_INT);
+            $stmt->bindParam(3, $combustivel, PDO::PARAM_INT);
+            $stmt->bindParam(4, $tp, PDO::PARAM_INT);
+            $stmt->bindParam(5, $qnt, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {

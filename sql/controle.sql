@@ -13,6 +13,18 @@ CREATE TABLE abastecimentos (
   id_usuario int(11) NOT NULL
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+CREATE TABLE abastecimentos_especiais (
+  id_abastecimento_especial int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nrvale varchar(50) NOT NULL,
+  descricao varchar(50) NOT NULL,
+  id_combustivel int(11) NOT NULL, 
+  id_tipo_combustivel int(11) NOT NULL, 
+  qnt int(11) NOT NULL,
+  hora time DEFAULT NULL, 
+  data date DEFAULT NULL,
+  id_usuario int(11) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 CREATE TABLE destinos ( 
   id_destino int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome_destino varchar(100) NOT NULL 
@@ -342,6 +354,11 @@ ALTER TABLE  alteracao_viaturas
   ADD CONSTRAINT FK_viaturas3 FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
   ADD CONSTRAINT FK_usuario11 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
+ALTER TABLE abastecimentos_especiais
+  ADD CONSTRAINT FK_tipo_combustivel2 FOREIGN KEY (id_tipo_combustivel) REFERENCES tipos_combustiveis (id_tipo_combustivel),
+  ADD CONSTRAINT FK_combustive3 FOREIGN KEY (id_combustivel) REFERENCES combustiveis (id_combustivel),
+  ADD CONSTRAINT FK_usuario12 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+
 CREATE VIEW combustivel_recebido AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( rc.qnt ),0) AS qnt
 FROM recibos_combustiveis rc
 RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (rc.id_combustivel = c.id_combustivel AND rc.id_tipo_combustivel = tc.id_tipo_combustivel)
@@ -349,6 +366,11 @@ GROUP BY c.id_combustivel, tc.id_tipo_combustivel;
 
 CREATE VIEW combustivel_abastecido AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
 FROM abastecimentos a
+RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
+GROUP BY c.id_combustivel, tc.id_tipo_combustivel;
+
+CREATE VIEW combustivel_especial AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
+FROM abastecimentos_especiais a
 RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
 GROUP BY c.id_combustivel, tc.id_tipo_combustivel;
 

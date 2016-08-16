@@ -25,5 +25,27 @@ class Abastecimento{
                 echo $e->getMessage();
             }
     }   
+    
+    public function listarAbastecimentosEspeciais(){
+        include '../model/conexao.php';
+          try {
+                $stmt = $pdo->prepare("SELECT id_abastecimento_especial, nrvale, ae.descricao AS descricao, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
+                                                    FROM abastecimentos_especiais ae, combustiveis, tipos_combustiveis                                                                                                  
+                                                    WHERE ae.id_combustivel = combustiveis.id_combustivel
+                                                    AND ae.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
+                                                    ;");
+                $executa = $stmt->execute();
+
+                if ($executa) {
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                    print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela.');
+                         </script>");
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+    }   
 }
 

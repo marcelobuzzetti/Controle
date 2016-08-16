@@ -9,6 +9,10 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     $abastecimentos = new Abastecimento();
     $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();
+    
+    $abastecimentos = new Abastecimento();
+    $tabela_relacao_abastecimentos_especiais = $abastecimentos->listarAbastecimentosEspeciais();
+
 
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
@@ -16,6 +20,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     $smarty->assign('titulo', 'Abastecimentos Realizados');
     $smarty->assign('tabela_relacao_abastecimentos', $tabela_relacao_abastecimentos);
+    $smarty->assign('tabela_relacao_abastecimentos_especiais', $tabela_relacao_abastecimentos_especiais);
     $smarty->assign('login', $_SESSION['login']);
     $smarty->assign('cadastrado', $_SESSION['cadastrado']);
     $smarty->assign('atualizado', $_SESSION['atualizado']);

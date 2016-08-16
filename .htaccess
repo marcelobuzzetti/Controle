@@ -17,6 +17,7 @@ RewriteRule ^alteracaovtr/?$ controller/alteracao_viatura.php
 RewriteRule ^alteracaovtrcadastrada/?$ controller/alteracao_viatura_cadastrada.php
 RewriteRule ^inicio/?$ controller/inicio.php
 RewriteRule ^abastecimento/?$ controller/abastecimento.php
+RewriteRule ^abastecimentoespecial/?$ controller/abastecimento_especial.php
 RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
 RewriteRule ^acidentevtr/?$ controller/acidente_viatura.php
 RewriteRule ^acidentevtrcadastrado/?$ controller/acidente_viatura_cadastrado.php
