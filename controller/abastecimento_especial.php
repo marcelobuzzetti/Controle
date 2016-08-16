@@ -48,6 +48,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
             if ($executa) {
                 $dados_abastecimentos = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_abastecimento = $dados_abastecimentos->id_abastecimento_especial;
+                $nrvale = $dados_abastecimentos->nrvale;
                 $descricao = $dados_abastecimentos->descricao;
                 $combustivel = $dados_abastecimentos->id_combustivel;
                 $tipo_combustivel = $dados_abastecimentos->id_tipo_combustivel;
@@ -66,7 +67,8 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->assign('evento', 'atualizar_abst_especial');
         $smarty->assign('update', $update);
         $smarty->assign('id_abastecimento', $id_abastecimento);
-        $smarty->assign('nrvale', $descricao);
+        $smarty->assign('nrvale', $nrvale);
+        $smarty->assign('descricao', $descricao);
         $smarty->assign('combustivel', $combustivel);
         $smarty->assign('tipo_combustivel', $tipo_combustivel);
         $smarty->assign('qnt', $qnt);
