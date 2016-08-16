@@ -164,14 +164,19 @@ class Relatorio {
     public function listarAbastecimento($inicio, $fim) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT SUM(qnt) AS qnt, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo,  DATE_FORMAT(data,'%d/%m/%Y') AS data 
-                                                FROM abastecimentos, combustiveis, tipos_combustiveis
-                                                WHERE data BETWEEN ? AND ?
-                                                AND abastecimentos.id_combustivel = combustiveis.id_combustivel
-                                                AND abastecimentos.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
-                                                GROUP BY abastecimentos.id_combustivel, abastecimentos.id_tipo_combustivel");
+            $stmt = $pdo->prepare("SELECT (SELECT SUM(a.qnt) FROM abastecimentos a WHERE ae.id_combustivel = a.id_combustivel
+                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel AND a.data BETWEEN ? AND ?) + (SELECT SUM(ae.qnt) FROM abastecimentos_especiais ae WHERE ae.id_combustivel = a.id_combustivel
+                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel AND ae.data BETWEEN ? AND ?) AS qnt, c.descricao AS combustivel, tc.descricao AS tipo
+                                               FROM abastecimentos a, abastecimentos_especiais ae, combustiveis c, tipos_combustiveis tc
+                                               WHERE ae.id_combustivel = a.id_combustivel
+                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel
+                                               AND c.id_combustivel = a.id_combustivel
+                                               AND tc.id_tipo_combustivel = a.id_tipo_combustivel
+                                               GROUP BY a.id_tipo_combustivel, a.id_combustivel");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
             $stmt->bindParam(2, $fim, PDO::PARAM_STR);
+            $stmt->bindParam(3, $inicio, PDO::PARAM_STR);
+            $stmt->bindParam(4, $fim, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -189,11 +194,15 @@ class Relatorio {
      public function listarAbastecimentoCompleto() {
         include '../model/conexao.php';
         try {
-           $stmt = $pdo->prepare("SELECT SUM(qnt) AS qnt, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo
-                                                FROM abastecimentos, combustiveis, tipos_combustiveis
-                                                WHERE abastecimentos.id_combustivel = combustiveis.id_combustivel
-                                                AND abastecimentos.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
-                                                GROUP BY abastecimentos.id_combustivel, abastecimentos.id_tipo_combustivel");
+           $stmt = $pdo->prepare("SELECT (SELECT SUM(a.qnt) FROM abastecimentos a WHERE ae.id_combustivel = a.id_combustivel
+                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel) + (SELECT SUM(ae.qnt) FROM abastecimentos_especiais ae WHERE ae.id_combustivel = a.id_combustivel
+                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel) AS qnt, c.descricao AS combustivel, tc.descricao AS tipo
+                                               FROM abastecimentos a, abastecimentos_especiais ae, combustiveis c, tipos_combustiveis tc
+                                               WHERE ae.id_combustivel = a.id_combustivel
+                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel
+                                               AND c.id_combustivel = a.id_combustivel
+                                               AND tc.id_tipo_combustivel = a.id_tipo_combustivel
+                                               GROUP BY a.id_tipo_combustivel, a.id_combustivel");
             $executa = $stmt->execute();
 
             if ($executa) {

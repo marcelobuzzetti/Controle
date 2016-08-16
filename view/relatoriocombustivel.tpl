@@ -112,7 +112,6 @@
                 <tr>
                     <td>Combustivel</td>
                     <td>Quantidade</td>
-                    <td>Data</td>
                 </tr>
             </thead>
             <tbody>
@@ -120,7 +119,6 @@
                     <tr>
                         <td>{$tbl.combustivel} {$tbl.tipo}</td>
                         <td>{$tbl.qnt}</td>
-                        <td>{$tbl.data}</td>
                     </tr>
                 {/foreach}
             </tbody>
@@ -128,7 +126,6 @@
                 <tr>
                     <td>Combustivel</td>
                     <td>Quantidade</td>
-                    <td>Data</td>
                 </tr>
             </tfoot>
         </table>
