@@ -5,7 +5,7 @@ if (isset($_GET['term'])) {
     $return_arr = array();
     try {
         $stmt = $pdo->prepare('SELECT descricao FROM abastecimentos_especiais WHERE descricao LIKE :term');
-        $executa = $stmt->execute(array('term' => '%' . htmlentities($_GET['term']) . '%'));
+        $executa = $stmt->execute(array('term' => '%' . htmlspecialchars($_GET['term']) . '%'));
 
         while ($row = $stmt->fetch()) {
             $return_arr[] = $row['descricao'];

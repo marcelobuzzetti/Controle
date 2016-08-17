@@ -2,7 +2,7 @@
 
 include '../model/conexao.php';
 
-$marca = htmlentities($_GET['marca']);
+$marca = htmlspecialchars($_GET['marca']);
 
 $stmt = $pdo->prepare("SELECT count(descricao) AS qnt FROM marcas WHERE descricao =  ?");
 $stmt->bindParam(1, $marca, PDO::PARAM_STR);

@@ -1,7 +1,7 @@
 <?php
 include '../model/conexao.php';
 
-$nome = htmlentities($_GET['nome']);
+$nome = htmlspecialchars($_GET['nome']);
 $pg = $_GET['pg'];
 
 $stmt = $pdo->prepare("SELECT count(id_motorista) AS qnt FROM motoristas WHERE nome =  ? AND id_posto_grad = ?");

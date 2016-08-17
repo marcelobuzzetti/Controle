@@ -2,7 +2,7 @@
 
 include '../model/conexao.php';
 
-$login = htmlentities($_GET['login']);
+$login = htmlspecialchars($_GET['login']);
 
 $stmt = $pdo->prepare("SELECT count(id_usuario) AS qnt FROM usuarios WHERE login =  ?");
 $stmt->bindParam(1, $login, PDO::PARAM_STR);
