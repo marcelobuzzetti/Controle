@@ -191,6 +191,7 @@
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
+                <td>Disponibilidade</td>
             </tr>
         </thead>
         <tbody>
@@ -202,6 +203,7 @@
                     <td>{$tbl.data}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.avarias}</td>
+                    <td>{$tbl.disponibilidade}</td>
                 </tr>
                 </tr>
             {/foreach}    
@@ -214,6 +216,7 @@
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
+                <td>Disponibilidade</td>
             </tr>
         </tfoot>
     </table>
