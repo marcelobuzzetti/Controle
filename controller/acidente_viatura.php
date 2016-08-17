@@ -43,7 +43,7 @@ if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION
     } else {
         $id = $_POST['id'];
         try {
-            $stmt = $pdo->prepare("SELECT id_acidente_viatura, acidentes_viaturas.id_motorista AS id_motorista, acidentes_viaturas.id_viatura AS id_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias
+            $stmt = $pdo->prepare("SELECT id_acidente_viatura, acidentes_viaturas.id_motorista AS id_motorista, acidentes_viaturas.id_viatura AS id_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, acidentes_viaturas.id_situacao
                                                     FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo
@@ -62,15 +62,8 @@ if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION
                 $descricao = $dados_acidente_viaturas->descricao;
                 $avarias = $dados_acidente_viaturas->avarias;
                 $data = $dados_acidente_viaturas->data;
-
-                $stmt = $pdo->prepare("SELECT id_situacao
-                                                    FROM acidentes_viaturas
-                                                    WHERE id_acidente_viatura = ?");
-                $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
-                $executa = $stmt->execute();
-                $dados_acidente_viaturas = $stmt->fetch(PDO::FETCH_OBJ);
-
                 $id_situacao = $dados_acidente_viaturas->id_situacao;
+
                 if ($id_situacao == 2) {
                     $disponibilidade = "checked";
                 }

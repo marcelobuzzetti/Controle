@@ -1421,7 +1421,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO acidentes_viaturas
-                                                VALUES(NULL,?,?,?,?,?,?,?,$usuario)");
+                                                VALUES(NULL,?,?,?,?,?,?,?,?,$usuario)");
             $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $id_motorista, PDO::PARAM_INT);
             $stmt->bindParam(3, $acompanhante, PDO::PARAM_STR);
@@ -1429,14 +1429,17 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(5, $acidente, PDO::PARAM_STR);
             $stmt->bindParam(6, $avarias, PDO::PARAM_STR);
             $stmt->bindParam(7, $data, PDO::PARAM_STR);
+            $stmt->bindParam(8, $disponibilidade, PDO::PARAM_INT);
             $executa = $stmt->execute();
-
+            
+            if ($disponibilidade = 2) {     
             $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_situacao = ?
                                                 WHERE id_viatura = ?");
             $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
             $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
             $executa = $stmt->execute();
+            }   
             
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
@@ -1497,7 +1500,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("UPDATE acidentes_viaturas
-                                                SET id_viatura = ?, id_motorista = ?, acompanhante = ?, odometro = ?, descricao = ?, data = ?, avarias = ?, id_usuario = $usuario 
+                                                SET id_viatura = ?, id_motorista = ?, acompanhante = ?, odometro = ?, descricao = ?, data = ?, avarias = ?, id_situacao = ?, id_usuario = $usuario 
                                                 WHERE id_acidente_viatura = ?");
             $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $id_motorista, PDO::PARAM_INT);
@@ -1506,15 +1509,18 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(5, $acidente, PDO::PARAM_STR);
             $stmt->bindParam(6, $data, PDO::PARAM_STR);
             $stmt->bindParam(7, $avarias, PDO::PARAM_STR);
-            $stmt->bindParam(8, $id, PDO::PARAM_INT);
+            $stmt->bindParam(8, $disponibilidade, PDO::PARAM_INT);
+            $stmt->bindParam(9, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
+           if ($disponibilidade = 2) {     
             $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_situacao = ?
                                                 WHERE id_viatura = ?");
             $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
             $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
             $executa = $stmt->execute();
+            }   
             
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
