@@ -1568,10 +1568,9 @@ switch ($_POST['enviar']) {
         $estado = htmlspecialchars($_POST['estado']);
         $cidade = htmlspecialchars($_POST['cidade']);
 
-        $tipo_telefone = htmlspecialchars($_POST['tipo_telefone']);
-        $telefone = htmlspecialchars($_POST['telefone']);
-
-        $email = htmlspecialchars($_POST['email']);
+        $tipo_telefone = $_POST['tipo_telefone'];
+        $telefone = $_POST['telefone'];
+        $email = $_POST['email'];
 
         if (isset($_POST['laranjeira'])) {
             $laranjeira = "Sim";
