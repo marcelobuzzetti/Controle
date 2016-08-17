@@ -4,17 +4,17 @@ include '../include/config.inc.php';
 
 session_start();
 
-if (isset($_SESSION['login']) == FALSE  && ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3 && $_SESSION['perfil'] != 4)) {
+if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3 && $_SESSION['perfil'] != 4)) {
     session_unset();
     header('Location: ' . constant("HOST"));
 } else {
 
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->listarViaturas();
-    
+
     $motorista = new Motorista();
     $relacao_motoristas = $motorista->listarMotoristasCadastrados();
-    
+
     $acidente = new AcidenteViatura();
     $relacao_acidentes = $acidente->listarAcidenteVtr();
 
@@ -62,6 +62,18 @@ if (isset($_SESSION['login']) == FALSE  && ($_SESSION['perfil'] != 1 && $_SESSIO
                 $descricao = $dados_acidente_viaturas->descricao;
                 $avarias = $dados_acidente_viaturas->avarias;
                 $data = $dados_acidente_viaturas->data;
+
+                $stmt = $pdo->prepare("SELECT id_situacao
+                                                    FROM acidentes_viaturas
+                                                    WHERE id_acidente_viatura = ?");
+                $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+                $dados_acidente_viaturas = $stmt->fetch(PDO::FETCH_OBJ);
+
+                $id_situacao = $dados_acidente_viaturas->id_situacao;
+                if ($id_situacao == 2) {
+                    $disponibilidade = "checked";
+                }
             } else {
                 print("<script language=JavaScript>
                                alert('Não foi possível criar tabela.');
@@ -71,7 +83,7 @@ if (isset($_SESSION['login']) == FALSE  && ($_SESSION['perfil'] != 1 && $_SESSIO
             echo $e->getMessage();
         }
 
-         $smarty->assign('titulo', 'Atualização de Acidente de Viaturas');
+        $smarty->assign('titulo', 'Atualização de Acidente de Viaturas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_acidente');
         $smarty->assign('id_acidente_viatura', $id_acidente_viatura);
@@ -82,9 +94,10 @@ if (isset($_SESSION['login']) == FALSE  && ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->assign('descricao', $descricao);
         $smarty->assign('avarias', $avarias);
         $smarty->assign('data', $data);
+        $smarty->assign('disponibilidade', $disponibilidade);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_motoristas', $relacao_motoristas);
-         $smarty->assign('relacao_acidentes', $relacao_acidentes);
+        $smarty->assign('relacao_acidentes', $relacao_acidentes);
         $smarty->assign('cadastrado', $_SESSION['cadastrado']);
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);

@@ -41,6 +41,9 @@
             <label for="avarias">Descrição das Avarias</label>
             <textarea class="form-control" rows="10" id="avarias" name="avarias" placeholder="Descrição das Avarias" required='required'  tabindex="7">{$avarias}</textarea>
         </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label class="checkbox-inline"><input type="checkbox" id="disponibilidade" name="disponibilidade" {$disponibilidade}><label>Indisponibilizar Vtr</label></label>
+        </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' value='{$id_acidente_viatura}' name='id'/>
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="8">{$botao}</button>

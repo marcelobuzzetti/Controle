@@ -29,9 +29,8 @@ class Viatura {
         try {
             $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
                                                 FROM percursos p
-                                                RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura AND v.id_status != 2
-                                                AND p.data_saida
-                                                INNER JOIN marcas m ON m.id_marca = v.id_marca
+                                                RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura                                                
+                                                INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
                                                 INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
                                                 INNER JOIN situacao s ON s.id_situacao = v.id_situacao
@@ -236,14 +235,15 @@ class Viatura {
     public function listarAcidente($id) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias
-                                                    FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas
-                                                    WHERE viaturas.id_marca = marcas.id_marca 
-                                                    AND viaturas.id_modelo = modelos.id_modelo
-                                                    AND motoristas.id_motorista = acidentes_viaturas.id_motorista
-                                                    AND acidentes_viaturas.id_viatura = viaturas.id_viatura
-                                                    AND acidentes_viaturas.id_viatura  = $id
-                                                    ORDER BY data");
+            $stmt = $pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, disponibilidade
+                                                FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas, situacao
+                                                WHERE viaturas.id_marca = marcas.id_marca 
+                                                AND viaturas.id_modelo = modelos.id_modelo
+                                                AND motoristas.id_motorista = acidentes_viaturas.id_motorista
+                                                AND acidentes_viaturas.id_viatura = viaturas.id_viatura
+                                                AND acidentes_viaturas.id_situacao = situacao.id_situacao
+                                                AND acidentes_viaturas.id_viatura  = $id
+                                                ORDER BY data");
             $executa = $stmt->execute();
 
             if ($executa) {

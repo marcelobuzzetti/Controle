@@ -169,7 +169,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("DELETE FROM viaturas
-                                                WHERE id_viatura=" . $id);
+                                                WHERE id_viatura =" . $id);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -1412,6 +1412,12 @@ switch ($_POST['enviar']) {
         $acidente = $_POST['acidente'];
         $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+        
+         if (isset($_POST['disponibilidade'])) {
+            $disponibilidade = 2;
+         } else {
+            $disponibilidade = 1;
+        }
 
         try {
             $stmt = $pdo->prepare("INSERT INTO acidentes_viaturas
@@ -1425,6 +1431,13 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(7, $data, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
+            $stmt = $pdo->prepare("UPDATE viaturas
+                                                SET id_situacao = ?
+                                                WHERE id_viatura = ?");
+            $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
+            $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+            
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -1475,6 +1488,12 @@ switch ($_POST['enviar']) {
         $acidente = $_POST['acidente'];
         $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+        
+         if (isset($_POST['disponibilidade'])) {
+            $disponibilidade = 2;
+        } else {
+            $disponibilidade = 1;
+        }
 
         try {
             $stmt = $pdo->prepare("UPDATE acidentes_viaturas
@@ -1490,6 +1509,13 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(8, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
+            $stmt = $pdo->prepare("UPDATE viaturas
+                                                SET id_situacao = ?
+                                                WHERE id_viatura = ?");
+            $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
+            $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+            
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>

@@ -199,6 +199,7 @@ CREATE TABLE acidentes_viaturas (
   descricao varchar(1000) NOT NULL,
   avarias varchar(1000) NOT NULL,
   data date NOT NULL,
+  id_situacao int(11) NOT NULL,
   id_usuario int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -348,6 +349,7 @@ ALTER TABLE  manutencao_viaturas
 ALTER TABLE  acidentes_viaturas
   ADD CONSTRAINT FK_viaturas2 FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
   ADD CONSTRAINT FK_motorista1 FOREIGN KEY (id_motorista) REFERENCES motoristas (id_motorista),
+  ADD CONSTRAINT FK_situacao1 FOREIGN KEY (id_situacao) REFERENCES situacao(id_situacao),
   ADD CONSTRAINT FK_usuario9 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
 ALTER TABLE  alteracao_viaturas
