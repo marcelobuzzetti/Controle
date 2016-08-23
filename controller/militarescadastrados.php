@@ -24,7 +24,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('militarcadastrado.tpl');
-        $smarty->display('./footer/footer_datatables.tpl');
+        $smarty->display('./footer/footer_militar.tpl');
         unset($_SESSION['cadastrado']);
         unset($_SESSION['atualizado']);
         unset($_SESSION['apagado']);
