@@ -868,8 +868,8 @@ switch ($_POST['enviar']) {
         header('Location: /abastecimentorealizado');
 
         break;
-        
-        case 'abst_especial':
+
+    case 'abst_especial':
         $nrvale = $_POST['nrvale'];
         $descricao = $_POST['desc'];
         $combustivel = $_POST['combustivel'];
@@ -1314,7 +1314,7 @@ switch ($_POST['enviar']) {
 
         break;
 
-         case 'cadastrar_alteracao':
+    case 'cadastrar_alteracao':
         $id_viatura = $_POST['viatura'];
         $odometro = $_POST['odometro'];
         $alteracao = $_POST['alteracao'];
@@ -1403,7 +1403,7 @@ switch ($_POST['enviar']) {
         header('Location: /alteracaovtrcadastrada');
 
         break;
-        
+
     case 'cadastrar_acidente':
         $id_viatura = $_POST['viatura_acidente'];
         $id_motorista = $_POST['motorista'];
@@ -1412,10 +1412,10 @@ switch ($_POST['enviar']) {
         $acidente = $_POST['acidente'];
         $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
-        
-         if (isset($_POST['disponibilidade'])) {
+
+        if (isset($_POST['disponibilidade'])) {
             $disponibilidade = 2;
-         } else {
+        } else {
             $disponibilidade = 1;
         }
 
@@ -1431,16 +1431,16 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(7, $data, PDO::PARAM_STR);
             $stmt->bindParam(8, $disponibilidade, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
-            if ($disponibilidade = 2) {     
-            $stmt = $pdo->prepare("UPDATE viaturas
+
+            if ($disponibilidade = 2) {
+                $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_situacao = ?
                                                 WHERE id_viatura = ?");
-            $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
-            $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-            }   
-            
+                $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
+                $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+            }
+
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -1491,8 +1491,8 @@ switch ($_POST['enviar']) {
         $acidente = $_POST['acidente'];
         $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
-        
-         if (isset($_POST['disponibilidade'])) {
+
+        if (isset($_POST['disponibilidade'])) {
             $disponibilidade = 2;
         } else {
             $disponibilidade = 1;
@@ -1513,15 +1513,15 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(9, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-           if ($disponibilidade = 2) {     
-            $stmt = $pdo->prepare("UPDATE viaturas
+            if ($disponibilidade = 2) {
+                $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_situacao = ?
                                                 WHERE id_viatura = ?");
-            $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
-            $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-            }   
-            
+                $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
+                $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+            }
+
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -1544,11 +1544,19 @@ switch ($_POST['enviar']) {
         $grupo = htmlspecialchars($_POST['grupo']);
         $numero_militar = htmlspecialchars($_POST['grupo']);
         $antiguidade = htmlspecialchars($_POST['antiguidade']);
-        $data_praca = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_praca'])));
+        if (empty($_POST['data_praca'])) {
+            $data_praca = NULL;
+        } else {
+            $data_praca = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_praca'])));
+        }
         $nome_completo = htmlspecialchars(ucwords(strtolower($_POST['nome_completo'])));
         $nome = htmlspecialchars(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
-        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        if (empty($_POST['data_nascimento'])) {
+            $data_nascimento = NULL;
+        } else {
+            $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        }
         $estado_natal = htmlspecialchars(strtoupper($_POST['estado_natal']));
         $cidade_natal = htmlspecialchars(ucwords(strtolower($_POST['cidade_natal'])));
         $idt_militar = htmlspecialchars($_POST['idt_militar']);
@@ -1558,7 +1566,12 @@ switch ($_POST['enviar']) {
         $pai = htmlspecialchars(ucwords(strtolower($_POST['pai'])));
         $mae = htmlspecialchars(ucwords(strtolower($_POST['mae'])));
         $conjuge = htmlspecialchars(ucwords(strtolower($_POST['conjuge'])));
-        $data_nascimento_conjuge = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento_conjuge'])));
+        if (empty($_POST['data_nascimento_conjuge'])) {
+            $data_nascimento_conjuge = NULL;
+        } else {
+            $data_nascimento_conjuge = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento_conjuge'])));
+        }
+
 
 
         $tipo_endereco = htmlspecialchars($_POST['tipo_endereco']);
@@ -1678,11 +1691,19 @@ switch ($_POST['enviar']) {
         $grupo = $_POST['grupo'];
         $numero_militar = $_POST['grupo'];
         $antiguidade = $_POST['antiguidade'];
-        $data_praca = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_praca'])));
+        if (empty($_POST['data_praca'])) {
+            $data_praca = NULL;
+        } else {
+            $data_praca = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_praca'])));
+        }
         $nome_completo = htmlspecialchars(ucwords(strtolower($_POST['nome_completo'])));
         $nome = htmlspecialchars(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
-        $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        if (empty($_POST['data_nascimento'])) {
+            $data_nascimento = NULL;
+        } else {
+            $data_nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento'])));
+        }
         $estado_natal = htmlspecialchars(strtoupper($_POST['estado_natal']));
         $cidade_natal = htmlspecialchars(ucwords(strtolower($_POST['cidade_natal'])));
         $idt_militar = $_POST['idt_militar'];
@@ -1692,7 +1713,11 @@ switch ($_POST['enviar']) {
         $pai = htmlspecialchars(ucwords(strtolower($_POST['pai'])));
         $mae = htmlspecialchars(ucwords(strtolower($_POST['mae'])));
         $conjuge = htmlspecialchars(ucwords(strtolower($_POST['conjuge'])));
-        $data_nascimento_conjuge = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento_conjuge'])));
+        if (empty($_POST['data_nascimento_conjuge'])) {
+            $data_nascimento_conjuge = NULL;
+        } else {
+            $data_nascimento_conjuge = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento_conjuge'])));
+        }
 
         $id_enderecos = $_POST['id_enderecos'];
         $tipo_endereco = $_POST['tipo_endereco'];
@@ -2032,7 +2057,7 @@ switch ($_POST['enviar']) {
 
         break;
 
-         case 'alterar_usuario':
+    case 'alterar_usuario':
         $id = $_POST['id'];
         $login = $_POST['login'];
         $apelido = $_POST['apelido'];
