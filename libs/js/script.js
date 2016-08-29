@@ -106,6 +106,8 @@ $(function () {
         $('.rapido').hide();
         $('.cadastrocompleto').addClass('btn-danger');
         $('.cadastrorapido').removeClass('btn-danger');
+        /*$(".cadastro .form-control").prop('required','required');
+        $(".rapido .form-control").prop('required',null);*/
     });
 
     $('.cadastrorapido').click(function () {
@@ -113,6 +115,8 @@ $(function () {
         $('.cadastro').hide();
         $('.cadastrorapido').addClass('btn-danger');
         $('.cadastrocompleto').removeClass('btn-danger');
+       /* $(".cadastro .form-control").prop('required',null);
+        $(".rapido .form-control").prop('required','required');*/
     });
     /*Cadastro Rápido e Completo*/
 
