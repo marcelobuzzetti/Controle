@@ -1,3 +1,37 @@
+<!--Alertas-->
+{if $cadastrado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O recebimento de combustível foi adicionada com sucesso!
+        </div>              
+    </div>
+{/if}
+{if $ativado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O recebimento de combustível foi ativado com sucesso!
+        </div>              
+    </div>
+{/if}
+{if $atualizado != NULL}
+    <div class='container'>
+        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O recebimento de combustível foi atualizado com sucesso!
+        </div>  
+    </div>
+{/if}
+{if $apagado != NULL}
+    <div class='container'>
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            O recebimento de combustível foi apagado com sucesso!
+        </div>              
+    </div>
+{/if}
+<!--Alertas-->
 <!--Modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
