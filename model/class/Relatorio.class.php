@@ -164,15 +164,20 @@ class Relatorio {
     public function listarAbastecimento($inicio, $fim) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT (SELECT SUM(a.qnt) FROM abastecimentos a WHERE ae.id_combustivel = a.id_combustivel
-                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel AND a.data BETWEEN ? AND ?) + (SELECT SUM(ae.qnt) FROM abastecimentos_especiais ae WHERE ae.id_combustivel = a.id_combustivel
-                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel AND ae.data BETWEEN ? AND ?) AS qnt, c.descricao AS combustivel, tc.descricao AS tipo
-                                               FROM abastecimentos a, abastecimentos_especiais ae, combustiveis c, tipos_combustiveis tc
-                                               WHERE ae.id_combustivel = a.id_combustivel
-                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel
-                                               AND c.id_combustivel = a.id_combustivel
-                                               AND tc.id_tipo_combustivel = a.id_tipo_combustivel
-                                               GROUP BY a.id_tipo_combustivel, a.id_combustivel");
+            $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
+                                                FROM(
+                                                SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
+                                                FROM abastecimentos_especiais a
+                                                RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
+                                                AND data BETWEEN ? and ?
+                                                GROUP BY c.id_combustivel, tc.id_tipo_combustivel
+                                                UNION ALL
+                                                SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
+                                                FROM abastecimentos a
+                                                RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
+                                                AND data BETWEEN ? and ?
+                                                GROUP BY c.id_combustivel, tc.id_tipo_combustivel) AS t
+                                                GROUP BY t.combustivel, t.tipo_combustivel");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
             $stmt->bindParam(2, $fim, PDO::PARAM_STR);
             $stmt->bindParam(3, $inicio, PDO::PARAM_STR);
@@ -194,15 +199,18 @@ class Relatorio {
      public function listarAbastecimentoCompleto() {
         include '../model/conexao.php';
         try {
-           $stmt = $pdo->prepare("SELECT (SELECT SUM(a.qnt) FROM abastecimentos a WHERE ae.id_combustivel = a.id_combustivel
-                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel) + (SELECT SUM(ae.qnt) FROM abastecimentos_especiais ae WHERE ae.id_combustivel = a.id_combustivel
-                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel) AS qnt, c.descricao AS combustivel, tc.descricao AS tipo
-                                               FROM abastecimentos a, abastecimentos_especiais ae, combustiveis c, tipos_combustiveis tc
-                                               WHERE ae.id_combustivel = a.id_combustivel
-                                               AND ae.id_tipo_combustivel = a.id_tipo_combustivel
-                                               AND c.id_combustivel = a.id_combustivel
-                                               AND tc.id_tipo_combustivel = a.id_tipo_combustivel
-                                               GROUP BY a.id_tipo_combustivel, a.id_combustivel");
+           $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
+                                                FROM(
+                                                SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
+                                                FROM abastecimentos_especiais a
+                                                RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
+                                                GROUP BY c.id_combustivel, tc.id_tipo_combustivel
+                                                UNION ALL
+                                                SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
+                                                FROM abastecimentos a
+                                                RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (a.id_combustivel = c.id_combustivel AND a.id_tipo_combustivel = tc.id_tipo_combustivel)
+                                                GROUP BY c.id_combustivel, tc.id_tipo_combustivel) AS t
+                                                GROUP BY t.combustivel, t.tipo_combustivel");
             $executa = $stmt->execute();
 
             if ($executa) {
