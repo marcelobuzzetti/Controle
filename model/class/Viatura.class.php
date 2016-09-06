@@ -89,7 +89,7 @@ class Viatura {
                                                                                           WHERE data_retorno IS NULL)
                                                     AND id_situacao != 2
                                                     AND viaturas.id_status != 2
-                                                    ORDER BY marcas.descricao AND modelos.descricao");
+                                                    ORDER BY marcas.descricao, modelos.descricao");
             $executa = $stmt->execute();
 
             if ($executa) {
