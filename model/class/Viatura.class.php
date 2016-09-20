@@ -330,5 +330,52 @@ class Viatura {
             echo $e->getMessage();
         }
     }
+    
+    public function quantidadeVtrMarcaModelo() {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, m.descricao AS marca, mo.descricao AS modelo
+                                                FROM viaturas v
+                                                INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1
+                                                INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
+                                                GROUP BY marca, modelo
+                                                ORDER BY marca, modelo");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela viaturas.');
+                         </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
+     public function listarVtrIndisponiveis() {
+        include '../model/conexao.php';
+        try {
+            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, COUNT(v.id_situacao) AS qnt_disponibilidade, s.disponibilidade AS descricao, m.descricao AS marca, mo.descricao AS modelo
+                                                FROM viaturas v
+                                                INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1 AND v.id_situacao = 2
+                                                INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
+                                                INNER JOIN situacao s ON s.id_situacao = v.id_situacao
+                                                GROUP BY marca, modelo, v.id_situacao
+                                                ORDER BY marca, modelo");
+            $executa = $stmt->execute();
+
+            if ($executa) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                print("<script language=JavaScript>
+                         alert('Não foi possível criar tabela viaturas.');
+                         </script>");
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
 }

@@ -52,6 +52,7 @@ RewriteRule ^usuarioscadastrados/?$ controller/usuarioscadastrados.php
 RewriteRule ^usuariosinativos/?$ controller/usuariosinativos.php
 RewriteRule ^viatura/?$ controller/viatura.php
 RewriteRule ^viaturascadastradas/?$ controller/viaturacadastrada.php
+RewriteRule ^viaturasindisponiveis/?$ controller/relatoriodisponibilidadeviatura.php
 
 RewriteRule ^json/?$ model/listaMilitares.php
 
