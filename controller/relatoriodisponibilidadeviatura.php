@@ -25,7 +25,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
                 $i = $i + 1;
             }
         }
-        if ($i > 2){
+        if ($i  > (sizeof($relacao_viaturas1)-1)){
             $c .= 0 .',';
         }
     }
