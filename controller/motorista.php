@@ -3,7 +3,7 @@
 include '../include/config.inc.php';
 
 session_start();
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
@@ -15,7 +15,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
 
     $militar = new Militar();
     $relacao_militares = $militar->listarMilitarMotorista();
-    
+
     $motoristas = new Motorista();
     $tabela_motoristas_cadastrados = $motoristas->listarMotoristasCadastrados();
 
@@ -37,15 +37,14 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
         $smarty->display($menu);
         $smarty->display('motorista.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-       
     } else {
 
         $id = $_POST['id'];
-         $update = "disabled";
-         
+        $update = "disabled";
+
         $militar = new Militar();
         $relacao_militares = $militar->listarMilitar();
-    
+
         $motoristas = new Motorista();
         $motoristas_atualizar = $motoristas->listarMotoristasAtualizar($id);
 

@@ -9,23 +9,23 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
 
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->detalharViatura($id);
-    
+
     $relacao_percursos = $viaturas->listarPercursos($id);
-    
+
     $relacao_motoristas = $viaturas->listarMotorista($id);
-    
+
     $relacao_acidentes = $viaturas->listarAcidente($id);
-    
+
     $relacao_manutencao = $viaturas->listarMnt($id);
-    
+
     $relacao_abastecimentos = $viaturas->listarAbastecimentos($id);
-    
+
     $relacao_alteracao = $viaturas->listarAlteracaoVtr($id);
 
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
-    $smarty->assign('titulo', 'Viatura '.$relacao_viaturas[0]['marca'].' '.$relacao_viaturas[0]['modelo'].' '.$relacao_viaturas[0]['placa'].'  Detalhada ');
+    $smarty->assign('titulo', 'Viatura ' . $relacao_viaturas[0]['marca'] . ' ' . $relacao_viaturas[0]['modelo'] . ' ' . $relacao_viaturas[0]['placa'] . '  Detalhada ');
     $smarty->assign('relacao_viaturas', $relacao_viaturas);
     $smarty->assign('relacao_percursos', $relacao_percursos);
     $smarty->assign('relacao_motoristas', $relacao_motoristas);

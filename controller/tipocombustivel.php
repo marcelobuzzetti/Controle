@@ -1,20 +1,21 @@
 <?php
+
 include '../include/config.inc.php';
 
 session_start();
 
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 4)) {
-   header('Location: '.  constant("HOST").'/percurso');
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 4)) {
+    header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
     $tipos_combustiveis = new TipoCombustivel();
-    $relacao_tipos_combustiveis = $tipos_combustiveis-> listarTiposCombustiveis();
-    
+    $relacao_tipos_combustiveis = $tipos_combustiveis->listarTiposCombustiveis();
+
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
-    
-    if(!isset($_POST['id'])){
-        
+
+    if (!isset($_POST['id'])) {
+
         $smarty->assign('titulo', 'Cadastro de Tipo de Combustíveis');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'tipo');
@@ -24,28 +25,26 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
         $smarty->display($menu);
         $smarty->display('tipocombustivel.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-
     } else {
         $id = $_POST['id'];
         try {
             $stmt = $pdo->prepare("SELECT * FROM tipos_combustiveis WHERE id_tipo_combustivel = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
-            
-            if($executa){
+
+            if ($executa) {
                 $dados_tipos_combustiveis = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_tipo_combustivel = $dados_tipos_combustiveis->id_tipo_combustivel;
                 $descricao = $dados_tipos_combustiveis->descricao;
-                
             } else {
-                      print("<script language=JavaScript>
+                print("<script language=JavaScript>
                                alert('Não foi possível criar tabela.');
-                               </script>");                      
+                               </script>");
             }
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
         $smarty->assign('titulo', 'Atualização de Tipo de Combustíveis');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_tipo');

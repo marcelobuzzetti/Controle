@@ -11,7 +11,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->listarViaturas();
-    
+
     $alteracao = new AlteracaoViatura();
     $relacao_alteracao = $alteracao->listarAlteracaoVtr();
 
@@ -24,7 +24,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_alteracao');
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
-        $smarty->assign('relacao_alteracao',  $relacao_alteracao);
+        $smarty->assign('relacao_alteracao', $relacao_alteracao);
         $smarty->assign('cadastrado', $_SESSION['cadastrado']);
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);
@@ -44,11 +44,11 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
             $executa = $stmt->execute();
             if ($executa) {
                 $dados_alteracao_viaturas = $stmt->fetch(PDO::FETCH_OBJ);
-                $id_alteracao_viatura = $dados_alteracao_viaturas ->id_alteracao_viatura;
-                $id_viatura = $dados_alteracao_viaturas ->id_viatura;
-                $odometro = $dados_alteracao_viaturas ->odometro;
-                $descricao = $dados_alteracao_viaturas ->descricao;
-                $data = $dados_alteracao_viaturas ->data;
+                $id_alteracao_viatura = $dados_alteracao_viaturas->id_alteracao_viatura;
+                $id_viatura = $dados_alteracao_viaturas->id_viatura;
+                $odometro = $dados_alteracao_viaturas->odometro;
+                $descricao = $dados_alteracao_viaturas->descricao;
+                $data = $dados_alteracao_viaturas->data;
             } else {
                 print("<script language=JavaScript>
                                alert('Não foi possível criar tabela.');
@@ -58,7 +58,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
             echo $e->getMessage();
         }
 
-         $smarty->assign('titulo', 'Atualização de Alteração de Viaturas');
+        $smarty->assign('titulo', 'Atualização de Alteração de Viaturas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_alteracao');
         $smarty->assign('id_alteracao_viatura', $id_alteracao_viatura);
@@ -67,7 +67,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
         $smarty->assign('descricao', $descricao);
         $smarty->assign('data', $data);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
-        $smarty->assign('relacao_alteracao',  $relacao_alteracao);
+        $smarty->assign('relacao_alteracao', $relacao_alteracao);
         $smarty->assign('cadastrado', $_SESSION['cadastrado']);
         $smarty->assign('atualizado', $_SESSION['atualizado']);
         $smarty->assign('apagado', $_SESSION['apagado']);

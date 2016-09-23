@@ -44,7 +44,7 @@ echo "<table class='table table-striped table-hover' text-align='center'>
             ";
 foreach ($resultado as $tbl) {
     echo "<tr>";
-    echo "<td>" . $tbl['marca'] ." - ".$tbl['modelo']." - ".$tbl['placa'] . "</td>
+    echo "<td>" . $tbl['marca'] . " - " . $tbl['modelo'] . " - " . $tbl['placa'] . "</td>
                     <td>" . $tbl['apelido'] . "</td>
                     <td>" . $tbl['destino'] . "</td>
                     <td>" . $tbl['odo_saida'] . "</td>

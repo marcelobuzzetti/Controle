@@ -3,16 +3,16 @@ function legend(parent, data) {
 }
 
 function legend(parent, data, chart, legendTemplate) {
-	legendTemplate = typeof legendTemplate !== 'undefined' ? legendTemplate : "<%=label%>";
+    legendTemplate = typeof legendTemplate !== 'undefined' ? legendTemplate : "<%=label%>";
     parent.className = 'legend';
     var datas = data.hasOwnProperty('datasets') ? data.datasets : data;
     // remove possible children of the parent
-    while(parent.hasChildNodes()) {
+    while (parent.hasChildNodes()) {
         parent.removeChild(parent.lastChild);
     }
 
     var show = chart ? showTooltip : noop;
-    datas.forEach(function(d, i) {
+    datas.forEach(function (d, i) {
 
         //span to div: legend appears to all element (color-sample and text-node)
         var title = document.createElement('div');
@@ -24,8 +24,8 @@ function legend(parent, data, chart, legendTemplate) {
         colorSample.style.backgroundColor = d.hasOwnProperty('strokeColor') ? d.strokeColor : d.color;
         colorSample.style.borderColor = d.hasOwnProperty('fillColor') ? d.fillColor : d.color;
         title.appendChild(colorSample);
-        legendNode=legendTemplate.replace("<%=value%>",d.value);
-        legendNode=legendNode.replace("<%=label%>",d.label);
+        legendNode = legendTemplate.replace("<%=value%>", d.value);
+        legendNode = legendNode.replace("<%=label%>", d.label);
         var text = document.createTextNode(legendNode);
         text.className = 'text-node';
         title.appendChild(text);
@@ -35,13 +35,13 @@ function legend(parent, data, chart, legendTemplate) {
 }
 
 //add events to legend that show tool tips on chart
-function showTooltip(chart, elem, indexChartSegment){
+function showTooltip(chart, elem, indexChartSegment) {
     var helpers = Chart.helpers;
 
     var segments = chart.segments;
     //Only chart with segments
-    if(typeof segments != 'undefined'){
-        helpers.addEvent(elem, 'mouseover', function(){
+    if (typeof segments != 'undefined') {
+        helpers.addEvent(elem, 'mouseover', function () {
             var segment = segments[indexChartSegment];
             segment.save();
             segment.fillColor = segment.highlightColor;
@@ -49,10 +49,11 @@ function showTooltip(chart, elem, indexChartSegment){
             segment.restore();
         });
 
-        helpers.addEvent(elem, 'mouseout', function(){
+        helpers.addEvent(elem, 'mouseout', function () {
             chart.draw();
         });
     }
 }
 
-function noop() {}
+function noop() {
+}

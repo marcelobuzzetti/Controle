@@ -9,7 +9,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     $abastecimentos = new Abastecimento();
     $tabela_relacao_abastecimentos = $abastecimentos->listarAbastecimentos();
-    
+
     $abastecimentos = new Abastecimento();
     $tabela_relacao_abastecimentos_especiais = $abastecimentos->listarAbastecimentosEspeciais();
 

@@ -1,4 +1,5 @@
 <?php
+
 include '../include/config.inc.php';
 session_start();
 $menus = new Menu();
@@ -9,5 +10,4 @@ $smarty->display('./headers/header.tpl');
 $smarty->display($menu);
 $smarty->display('./erros/404.tpl');
 $smarty->display('./footer/footer.tpl');
-
 ?>

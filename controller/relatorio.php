@@ -12,7 +12,7 @@ if (isset($_SESSION['login']) == FALSE) {
 
     $viatura = new Viatura();
     $tabela_relacao_vtr = $viatura->ViaturasRodandoRelatorio();
-    
+
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
@@ -33,7 +33,6 @@ if (isset($_SESSION['login']) == FALSE) {
         $smarty->display($menu);
         $smarty->display('relatorio.tpl');
         $smarty->display('./footer/footer_relatorio.tpl');
-        
     } else {
 
         if (!isset($_POST['data_inicio'])) {

@@ -29,7 +29,6 @@ if (isset($_SESSION['login'])) {
         $smarty->display($menu);
         $smarty->display('relatorio.tpl');
         $smarty->display('./footer/footer_relatorio.tpl');
-        
     } else {
 
         if (!isset($_POST['data_inicio'])) {

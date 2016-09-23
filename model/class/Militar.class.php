@@ -97,8 +97,7 @@ class Militar {
         }
     }
 
-    
-     public function listarMilitarUsuario() {
+    public function listarMilitarUsuario() {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(antiguidade,'-') AS antiguidade,sigla, nome, nome_completo, 
@@ -122,7 +121,7 @@ class Militar {
             echo $e->getMessage();
         }
     }
-    
+
     public function listarMilitarMotorista() {
         include '../model/conexao.php';
         try {
@@ -145,8 +144,8 @@ class Militar {
             echo $e->getMessage();
         }
     }
-    
-     public function listarMilitarAtualizar($id) {
+
+    public function listarMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
@@ -180,8 +179,8 @@ class Militar {
             echo $e->getMessage();
         }
     }
-    
-     public function listarTelefoneMilitarAtualizar($id) {
+
+    public function listarTelefoneMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero, telefones.id_status AS id_status
@@ -201,8 +200,8 @@ class Militar {
             echo $e->getMessage();
         }
     }
-    
-      public function listarEnderecoMilitarAtualizar($id) {
+
+    public function listarEnderecoMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT enderecos.*
@@ -222,8 +221,8 @@ class Militar {
             echo $e->getMessage();
         }
     }
-    
-     public function listarEmailMilitarAtualizar($id) {
+
+    public function listarEmailMilitarAtualizar($id) {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT emails.*
@@ -243,4 +242,5 @@ class Militar {
             echo $e->getMessage();
         }
     }
+
 }

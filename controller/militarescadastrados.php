@@ -3,7 +3,7 @@
 include '../include/config.inc.php';
 
 session_start();
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
@@ -12,22 +12,22 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] != 1 && $_SESSIO
 
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
-        
-        $smarty->assign('titulo', 'Militares Cadastrados');
-        $smarty->assign('militares_cadastrados', $militares_cadastrados);
-        $smarty->assign('login', $_SESSION['login']);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
-        $smarty->assign('erro', $_SESSION['erro']);
-        $smarty->assign('ativado', $_SESSION['ativado']);
-        $smarty->display('./headers/header_datatables.tpl');
-        $smarty->display($menu);
-        $smarty->display('militarcadastrado.tpl');
-        $smarty->display('./footer/footer_militar.tpl');
-        unset($_SESSION['cadastrado']);
-        unset($_SESSION['atualizado']);
-        unset($_SESSION['apagado']);
-        unset($_SESSION['erro']);
-        unset($_SESSION['ativado']);
-    }
+
+    $smarty->assign('titulo', 'Militares Cadastrados');
+    $smarty->assign('militares_cadastrados', $militares_cadastrados);
+    $smarty->assign('login', $_SESSION['login']);
+    $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+    $smarty->assign('atualizado', $_SESSION['atualizado']);
+    $smarty->assign('apagado', $_SESSION['apagado']);
+    $smarty->assign('erro', $_SESSION['erro']);
+    $smarty->assign('ativado', $_SESSION['ativado']);
+    $smarty->display('./headers/header_datatables.tpl');
+    $smarty->display($menu);
+    $smarty->display('militarcadastrado.tpl');
+    $smarty->display('./footer/footer_militar.tpl');
+    unset($_SESSION['cadastrado']);
+    unset($_SESSION['atualizado']);
+    unset($_SESSION['apagado']);
+    unset($_SESSION['erro']);
+    unset($_SESSION['ativado']);
+}

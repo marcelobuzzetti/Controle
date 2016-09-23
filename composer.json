@@ -4,9 +4,9 @@
     },
     "autoload": {
         "classmap": [
-              "model/class",
+            "model/class",
             "vendor"
-            ]
-        }
+        ]
+    }
 }
 

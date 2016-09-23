@@ -1,4 +1,5 @@
 <?php
+
 include '../model/conexao.php';
 
 $nome = htmlspecialchars($_GET['nome']);
@@ -12,14 +13,14 @@ $executa = $stmt->execute();
 $resultado = $stmt->fetch(PDO::FETCH_OBJ);
 
 $qnt = $resultado->qnt;
-    if ($qnt > 0) {
-        echo "<div class='container'>
+if ($qnt > 0) {
+    echo "<div class='container'>
         <div class='alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12'>
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O motorista já está cadastrado
         </div>";
-        echo "<script> $('#enviar').attr('disabled','disabled'), $('#nome').attr('style','border-color: red;'), $('#pg').attr('style','border-color: red;');</script>";
-    } else {
-        echo "<script> $('#enviar').removeAttr('disabled'), $('#nome').removeAttr('style'), $('#pg').removeAttr('style');</script>";
-    }
+    echo "<script> $('#enviar').attr('disabled','disabled'), $('#nome').attr('style','border-color: red;'), $('#pg').attr('style','border-color: red;');</script>";
+} else {
+    echo "<script> $('#enviar').removeAttr('disabled'), $('#nome').removeAttr('style'), $('#pg').removeAttr('style');</script>";
+}
 ?>

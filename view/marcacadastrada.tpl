@@ -42,7 +42,7 @@
     {/if}
 </div>
 <div class="container">
-     <div class="jumbotron">
+    <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">

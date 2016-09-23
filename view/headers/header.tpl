@@ -13,7 +13,7 @@
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-         <!-- Chrome, Firefox OS and Opera -->
+        <!-- Chrome, Firefox OS and Opera -->
         <meta name="theme-color" content="#4169E1">
         <!-- Windows Phone -->
         <meta name="msapplication-navbutton-color" content="#4169E1">

@@ -70,7 +70,7 @@
             <h1 class="titulo">{$titulo1}</h1>
         </div>
     </div>
-      <div class="container">
+    <div class="container">
         <div id="grafico" class="col-xs-12 col-sm-12 col-md-12 grafico" style="margin: 0 auto;width:100%;height:100%">
             <div id="js-legend" class="chart-legend"></div>
             <canvas id="canvas" ></canvas>
@@ -84,7 +84,7 @@
             labels: [{$a}],
             datasets: [
                 {
-                     fillColor: ["rgba(205,64,64,0.5)", "rgba(220,220,220,0.5)", "rgba(24,178,235,0.5)", "rgba(220,220,220,0.5)"],
+                    fillColor: ["rgba(205,64,64,0.5)", "rgba(220,220,220,0.5)", "rgba(24,178,235,0.5)", "rgba(220,220,220,0.5)"],
                     strokeColor: "rgba(220,220,220,0.8)",
                     highlightFill: "rgba(220,220,220,0.75)",
                     highlightStroke: "rgba(220,220,220,1)",

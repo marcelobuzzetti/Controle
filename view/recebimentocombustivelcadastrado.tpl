@@ -58,49 +58,49 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
-<div class="container">
-    <legend>Combustiveis Recebidos</legend>
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <td>Combustível</td>
-                <td>Tipo</td>
-                <td>Quantidade</td>
-                <td>Motivo</td>
-                <td>Data</td>
-                <td>Hora</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </thead>
-        <tbody>
-            {foreach $relacao_rcb_combustiveis as $tbl name=relacao_rcb_combustiveis}
+    <div class="container">
+        <legend>Combustiveis Recebidos</legend>
+        <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
                 <tr>
-                    <td>{$tbl.combustivel}</td>
-                    <td>{$tbl.tipo}</td>
-                    <td>{$tbl.qnt}</td>
-                    <td>{$tbl.motivo}</td>
-                    <td>{$tbl.data}</td>
-                    <td>{$tbl.hora}</td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_recibo_combustivel }"><span class='glyphicon glyphicon-remove-sign'</button></td>
-                    <td><form action='recebimentocombustivel' method='post'>
-                            <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
-                            <button class='btn btn-success' type='submit' id='apagar' name='enviar'/><span class="glyphicon glyphicon-refresh"/></form></td>
-                    </form>
+                    <td>Combustível</td>
+                    <td>Tipo</td>
+                    <td>Quantidade</td>
+                    <td>Motivo</td>
+                    <td>Data</td>
+                    <td>Hora</td>
+                    <td>Apagar</td>
+                    <td>Atualizar</td>
                 </tr>
-            {/foreach}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>Combustível</td>
-                <td>Tipo</td>
-                <td>Quantidade</td>
-                <td>Motivo</td>
-                <td>Data</td>
-                <td>Hora</td>
-                <td>Apagar</td>
-                <td>Atualizar</td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                {foreach $relacao_rcb_combustiveis as $tbl name=relacao_rcb_combustiveis}
+                    <tr>
+                        <td>{$tbl.combustivel}</td>
+                        <td>{$tbl.tipo}</td>
+                        <td>{$tbl.qnt}</td>
+                        <td>{$tbl.motivo}</td>
+                        <td>{$tbl.data}</td>
+                        <td>{$tbl.hora}</td>
+                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_recibo_combustivel }"><span class='glyphicon glyphicon-remove-sign'</button></td>
+                        <td><form action='recebimentocombustivel' method='post'>
+                                <input type='hidden' id='{$tbl.id_recibo_combustivel }' value='{$tbl.id_recibo_combustivel }' name='id'/>
+                                <button class='btn btn-success' type='submit' id='apagar' name='enviar'/><span class="glyphicon glyphicon-refresh"/></form></td>
+                        </form>
+                    </tr>
+                {/foreach}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Combustível</td>
+                    <td>Tipo</td>
+                    <td>Quantidade</td>
+                    <td>Motivo</td>
+                    <td>Data</td>
+                    <td>Hora</td>
+                    <td>Apagar</td>
+                    <td>Atualizar</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>

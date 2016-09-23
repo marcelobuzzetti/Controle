@@ -36,8 +36,8 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
-    
-     public function listarPercursosCompleto() {
+
+    public function listarPercursosCompleto() {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
@@ -87,7 +87,7 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
-    
+
     public function listarVtrUtilizacaoCompleto() {
         include '../model/conexao.php';
         try {
@@ -111,8 +111,8 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
-    
-     public function listarMotoristaUtilizacao($inicio, $fim) {
+
+    public function listarMotoristaUtilizacao($inicio, $fim) {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
@@ -137,8 +137,8 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
-    
-     public function listarMotoristaCompleto() {
+
+    public function listarMotoristaCompleto() {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
@@ -195,11 +195,11 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
-    
-     public function listarAbastecimentoCompleto() {
+
+    public function listarAbastecimentoCompleto() {
         include '../model/conexao.php';
         try {
-           $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
+            $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
                                                 FROM(
                                                 SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
                                                 FROM abastecimentos_especiais a
@@ -224,4 +224,5 @@ class Relatorio {
             echo $e->getMessage();
         }
     }
+
 }

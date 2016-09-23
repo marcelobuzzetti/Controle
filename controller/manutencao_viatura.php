@@ -11,7 +11,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->listarViaturas();
-    
+
     $manutencao = new ManutencaoViatura();
     $relacao_manutencao = $manutencao->listarMntVtr();
 
@@ -58,7 +58,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
             echo $e->getMessage();
         }
 
-         $smarty->assign('titulo', 'Atualização de Manutenção de Viaturas');
+        $smarty->assign('titulo', 'Atualização de Manutenção de Viaturas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_manutencao');
         $smarty->assign('id_manutencao_viatura', $id_manutencao_viatura);

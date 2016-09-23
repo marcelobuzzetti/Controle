@@ -19,7 +19,7 @@ function atualizarUsuario() {
     $login = $('#login').val();
     $apelido = $('#apelido').val();
     var i = 0;
-    
+
     if ($senha_antiga == "") {
         i++;
     }
@@ -40,7 +40,7 @@ function atualizarUsuario() {
         i++;
     }
 
-    if(i != 0){
+    if (i != 0) {
         alert("Preencha todos os campos");
         return false;
         i = 0;
@@ -107,7 +107,7 @@ $(function () {
         $('.cadastrocompleto').addClass('btn-danger');
         $('.cadastrorapido').removeClass('btn-danger');
         /*$(".cadastro .form-control").prop('required','required');
-        $(".rapido .form-control").prop('required',null);*/
+         $(".rapido .form-control").prop('required',null);*/
     });
 
     $('.cadastrorapido').click(function () {
@@ -115,8 +115,8 @@ $(function () {
         $('.cadastro').hide();
         $('.cadastrorapido').addClass('btn-danger');
         $('.cadastrocompleto').removeClass('btn-danger');
-       /* $(".cadastro .form-control").prop('required',null);
-        $(".rapido .form-control").prop('required','required');*/
+        /* $(".cadastro .form-control").prop('required',null);
+         $(".rapido .form-control").prop('required','required');*/
     });
     /*Cadastro Rápido e Completo*/
 
@@ -358,7 +358,7 @@ $(function () {
         minLength: 1
     });
     /*Autocompleta o destino em percurso*/
-    
+
     /*Autocompleta o destino em percurso*/
     $("#desc").autocomplete({
         source: "../model/buscador_abastecimento.php",
@@ -546,8 +546,8 @@ $(function () {
         modal.find('.destino input').val(destino)
         modal.find('.vtr input').val(viatura)
     });
-/*Modal do percurso*/
-/*Modal dos abastecimentos*/
+    /*Modal do percurso*/
+    /*Modal dos abastecimentos*/
     $('#exampleModalespecial').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var recipient = button.data('whatever')
@@ -558,4 +558,4 @@ $(function () {
 });
 
 
-    
+

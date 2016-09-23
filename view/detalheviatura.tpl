@@ -127,7 +127,7 @@
             </tr>
         </tfoot>
     </table>
-        <legend>Alterações</legend>
+    <legend>Alterações</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
             <tr>

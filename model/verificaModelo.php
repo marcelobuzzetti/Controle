@@ -1,4 +1,5 @@
 <?php
+
 include '../model/conexao.php';
 
 $id_marca = $_GET['marca'];

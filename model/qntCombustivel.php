@@ -1,4 +1,5 @@
 <?php
+
 include '../model/conexao.php';
 
 $combustivel = $_GET['combustivel'];
@@ -18,6 +19,6 @@ $executa = $stmt->execute();
 
 if ($executa) {
     $resultado = $stmt->fetch(PDO::FETCH_OBJ);
-      echo "<script> $('#qnt').attr('max','$resultado->qnt');</script>";
+    echo "<script> $('#qnt').attr('max','$resultado->qnt');</script>";
 }
 ?>

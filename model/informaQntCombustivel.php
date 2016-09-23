@@ -22,7 +22,7 @@ $executa = $stmt->execute();
 
 if ($executa) {
     $resultado = $stmt->fetch(PDO::FETCH_OBJ);
-    if ($resultado->qnt != NULL){
+    if ($resultado->qnt != NULL) {
         echo "<div class='alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12'>
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             Restam $resultado->qnt lts de $resultado->combustivel $resultado->tipo_combustivel

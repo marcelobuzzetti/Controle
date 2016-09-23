@@ -4,7 +4,7 @@ include '../include/config.inc.php';
 
 session_start();
 
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
@@ -42,7 +42,6 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
         $smarty->display($menu);
         $smarty->display('relatoriomotorista.tpl');
         $smarty->display('./footer/footer_relatorio_grafico.tpl');
-        
     } else {
 
         if (!isset($_POST['data_inicio'])) {

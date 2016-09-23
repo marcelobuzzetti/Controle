@@ -1,7 +1,8 @@
 <?php
 
-class Status{ 
-    public function listarStatus(){
+class Status {
+
+    public function listarStatus() {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM status");
@@ -15,6 +16,6 @@ class Status{
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        }
-}
+    }
 
+}

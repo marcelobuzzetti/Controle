@@ -1,20 +1,21 @@
 <?php
+
 include '../include/config.inc.php';
 
 session_start();
 
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
-    header('Location: '.  constant("HOST").'/percurso');
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
+    header('Location: ' . constant("HOST") . '/percurso');
 } else {
-    
+
     $marcas = new Marca();
     $relacao_marcas = $marcas->listarMarcas();
 
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
-    
-    if(!isset($_POST['id'])){
-        
+
+    if (!isset($_POST['id'])) {
+
         $smarty->assign('titulo', 'Cadastro de Marcas');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'marca');
@@ -24,8 +25,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
         $smarty->display($menu);
         $smarty->display('marca.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-
-} else {
+    } else {
 
         $id = $_POST['id'];
 
@@ -38,16 +38,15 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
                 $dados_marcas = $stmt->fetch(PDO::FETCH_OBJ);
                 $id_marca = $dados_marcas->id_marca;
                 $descricao = $dados_marcas->descricao;
-
             } else {
-            print("<script language=JavaScript>
+                print("<script language=JavaScript>
                    alert('Não foi possível criar tabela.');
                    </script>");
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        
+
         $smarty->assign('titulo', 'Atualização de Marcas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_marca');
@@ -59,7 +58,6 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
         $smarty->display($menu);
         $smarty->display('marca.tpl');
         $smarty->display('./footer/footer_datatables.tpl');
-        }
-        
-        }
+    }
+}
         

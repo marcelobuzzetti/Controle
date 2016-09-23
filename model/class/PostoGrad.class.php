@@ -1,7 +1,8 @@
 <?php
 
-class PostoGrad{ 
-    public function listarPostoGrad(){
+class PostoGrad {
+
+    public function listarPostoGrad() {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM posto_grad");
@@ -15,6 +16,6 @@ class PostoGrad{
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        }
-}
+    }
 
+}

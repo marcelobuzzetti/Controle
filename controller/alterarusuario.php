@@ -9,8 +9,8 @@ if (isset($_SESSION['login']) == FALSE) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
-     $militar = new Militar();
-     
+    $militar = new Militar();
+
     $usuarios = new Usuario();
     $relacao_usuarios = $usuarios->listarUsuario($login);
 
@@ -22,7 +22,7 @@ if (isset($_SESSION['login']) == FALSE) {
 
     $relacao_militares = $militar->listarMilitar();
     $usuario = $usuarios->listarUsuarioAtualizar($login);
-    
+
     $smarty->assign('titulo', 'Atualizar Usuário');
     $smarty->assign('botao', 'Atualizar');
     $smarty->assign('update', $update);

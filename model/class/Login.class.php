@@ -6,21 +6,21 @@ class Login {
 
     function Acesso() {
         if (isset($_SESSION['login']) == TRUE) {
-             if ($_SESSION['perfil'] == 1) {
-                    header('Location: ' . constant("HOST").'/percurso');
-                }
-                if ($_SESSION['perfil'] == 2) {
-                    header('Location: ' . constant("HOST").'/percurso');
-                }
-                if ($_SESSION['perfil'] == 3) {
-                    header('Location: ' . constant("HOST").'/viaturascadastradas');
-                }
-                if ($_SESSION['perfil'] == 4) {
-                    header('Location: ' . constant("HOST").'/relatorio');
-                }
-                if ($_SESSION['perfil'] == 5) {
-                    header('Location: ' . constant("HOST").'/militarescadastrados');
-                }
+            if ($_SESSION['perfil'] == 1) {
+                header('Location: ' . constant("HOST") . '/percurso');
+            }
+            if ($_SESSION['perfil'] == 2) {
+                header('Location: ' . constant("HOST") . '/percurso');
+            }
+            if ($_SESSION['perfil'] == 3) {
+                header('Location: ' . constant("HOST") . '/viaturascadastradas');
+            }
+            if ($_SESSION['perfil'] == 4) {
+                header('Location: ' . constant("HOST") . '/relatorio');
+            }
+            if ($_SESSION['perfil'] == 5) {
+                header('Location: ' . constant("HOST") . '/militarescadastrados');
+            }
         } else {
             if ($_SESSION['erro'] == 1) {
                 echo "  <div class='alert alert-danger alert-dismissible' role='alert'>
@@ -37,4 +37,5 @@ class Login {
             session_destroy();
         }
     }
+
 }

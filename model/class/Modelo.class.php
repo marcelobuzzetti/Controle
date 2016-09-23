@@ -1,9 +1,10 @@
 <?php
 
-class Modelo{ 
-    public function listarModelos(){
+class Modelo {
+
+    public function listarModelos() {
         include '../model/conexao.php';
-         try {
+        try {
             $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp
                                                FROM modelos, marcas
                                                WHERE modelos.id_marca = marcas.id_marca
@@ -20,11 +21,11 @@ class Modelo{
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-    }   
-    
-    public function listarModelosCadastrados(){
+    }
+
+    public function listarModelosCadastrados() {
         include '../model/conexao.php';
-         try {
+        try {
             $stmt = $pdo->prepare("SELECT * FROM  modelos");
             $executa = $stmt->execute();
 
@@ -38,5 +39,6 @@ class Modelo{
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-    }   
+    }
+
 }

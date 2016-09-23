@@ -3,7 +3,7 @@
 include '../include/config.inc.php';
 
 session_start();
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 

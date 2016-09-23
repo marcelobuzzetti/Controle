@@ -1,4 +1,5 @@
 <?php
+
 include '../model/conexao.php';
 
 if (isset($_GET['term'])) {

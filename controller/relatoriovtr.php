@@ -21,14 +21,14 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $relacao_relatorio = $relatorios->listarVtrUtilizacaoCompleto();
 
         foreach ($relacao_relatorio as $value) {
-                $a .= '"' . $value['modelo'] . '-' . $value['placa'] . '"' . ',';
-            }
-            foreach ($relacao_relatorio as $value) {
-                $b .= $value['qnt'] . ',';
-            }
-            foreach ($relacao_relatorio as $value) {
-                $c .= $value['KM'] . ',';
-            }
+            $a .= '"' . $value['modelo'] . '-' . $value['placa'] . '"' . ',';
+        }
+        foreach ($relacao_relatorio as $value) {
+            $b .= $value['qnt'] . ',';
+        }
+        foreach ($relacao_relatorio as $value) {
+            $c .= $value['KM'] . ',';
+        }
 
         $smarty->assign('verificador', $verificador);
         $smarty->assign('titulo1', 'Relatório Completo por Viaturas');
@@ -42,7 +42,6 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->display($menu);
         $smarty->display('relatoriovtr.tpl');
         $smarty->display('./footer/footer_relatorio_grafico.tpl');
-        
     } else {
 
         if (!isset($_POST['data_inicio'])) {

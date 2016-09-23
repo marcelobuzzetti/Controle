@@ -4,7 +4,7 @@ include '../include/config.inc.php';
 
 session_start();
 
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
@@ -13,7 +13,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
 
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
-    
+
     $smarty->assign('titulo', 'Tipo de Combustíveis Cadastrados');
     $smarty->assign('relacao_tipos_combustiveis', $relacao_tipos_combustiveis);
     $smarty->assign('login', $_SESSION['login']);

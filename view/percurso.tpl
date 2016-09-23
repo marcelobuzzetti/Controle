@@ -161,13 +161,13 @@
                 </tr>
                 <tr>
                     <td><button class='btn btn-success col-xs-12 col-sm-12 col-md-12' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</td></form>
-                </tr>
-                <tr>
-                   <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}" data-vtr="{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}"><span class='glyphicon glyphicon-remove'/></button></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
+            </tr>
+            <tr>
+                <td><button type="button" class="btn btn-danger col-xs-12 col-sm-12 col-md-12" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}" data-vtr="{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}"><span class='glyphicon glyphicon-remove'/></button></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
         {/foreach}    
     </table>
 </fieldset>

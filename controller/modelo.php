@@ -3,13 +3,13 @@
 include '../include/config.inc.php';
 
 session_start();
-if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
+if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
     $marcas = new Marca();
     $relacao_marcas = $marcas->listarMarcas();
-    
+
     $modelos = new Modelo();
     $tabela_modelos_cadastrados = $modelos->listarModelos();
 
@@ -37,7 +37,7 @@ if (isset($_SESSION['login']) == FALSE  || ($_SESSION['perfil'] == 2 || $_SESSIO
     } else {
 
         $id = $_POST['id'];
-        
+
         try {
             $stmt = $pdo->prepare("SELECT * FROM modelos WHERE id_modelo = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);

@@ -59,7 +59,7 @@ if (isset($_SESSION['login']) == FALSE) {
             $relacao_relatorio = $relatorios->listarAbastecimento($data_inicio, $data_fim);
 
             foreach ($relacao_relatorio as $value) {
-                $a .= '"' . $value['combustivel'] . " " . $value['tipo'] .'"' . ',';
+                $a .= '"' . $value['combustivel'] . " " . $value['tipo'] . '"' . ',';
             }
             foreach ($relacao_relatorio as $value) {
                 $b .= $value['qnt'] . ',';

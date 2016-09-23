@@ -19,14 +19,14 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '"' . ',';
         $b .= $value['qnt'] . ',';
         foreach ($relacao_viaturas1 as $value1) {
-            if ($value['marca']." ".$value['modelo'] == $value1['marca']." ".$value1['modelo']) {
+            if ($value['marca'] . " " . $value['modelo'] == $value1['marca'] . " " . $value1['modelo']) {
                 $c .= $value1['qnt'] . ',';
             } else {
                 $i = $i + 1;
             }
         }
-        if ($i  > (sizeof($relacao_viaturas1)-1)){
-            $c .= 0 .',';
+        if ($i > (sizeof($relacao_viaturas1) - 1)) {
+            $c .= 0 . ',';
         }
     }
     $smarty->assign('titulo', 'Gráfico Disponibilidade/Indisponibilidade Vtr');

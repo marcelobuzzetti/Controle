@@ -31,7 +31,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo "<table class='table table-striped table-hover' text-align='center'>";
 foreach ($resultado as $tbl) {
     echo "<tr>
-                <td>Viatura " . $tbl['marca']  ." - ". $tbl['modelo']  ." - ". $tbl['placa'] . "</td>
+                <td>Viatura " . $tbl['marca'] . " - " . $tbl['modelo'] . " - " . $tbl['placa'] . "</td>
                     </tr>
                     <tr>
                 <td>Motorista " . $tbl['apelido'] . "</td>

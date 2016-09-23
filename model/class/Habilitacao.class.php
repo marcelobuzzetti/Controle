@@ -1,9 +1,10 @@
 <?php
 
-class Habilitacao{ 
-    public function listarHabilitacoes(){
+class Habilitacao {
+
+    public function listarHabilitacoes() {
         include '../model/conexao.php';
-          try {
+        try {
             $stmt = $pdo->prepare("SELECT * FROM habilitacoes");
             $executa = $stmt->execute();
 
@@ -17,5 +18,6 @@ class Habilitacao{
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-    }   
+    }
+
 }
