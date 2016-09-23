@@ -29,7 +29,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
             $c .= 0 .',';
         }
     }
-    $smarty->assign('titulo', 'Viaturas Indisponiveis');
+    $smarty->assign('titulo', 'Gráfico Disponibilidade/Indisponibilidade Vtr');
     $smarty->assign('a', $a);
     $smarty->assign('b', $b);
     $smarty->assign('c', $c);

@@ -66,7 +66,7 @@
                         <li><a href="{$HOST}/relatoriocombustivel" >Relatório de Abastecimentos</a></li>
                         <li><a href="{$HOST}/relatoriovtr" >Relatório de Utilização de Vtr</a></li>
                         <li><a href="{$HOST}/relatoriomotorista" >Relatório de Utilização de Motorista</a></li>
-                        <li><a href="{$HOST}/viaturasindisponiveis" >Viaturas Indisponíveis</a></li>
+                        <li><a href="{$HOST}/viaturasindisponiveis" >Gráfico Disponibilidade/Indisponibilidade Vtr</a></li>
                     </ul>
                 </li>
                 <li><a href="{$HOST}/alterarusuario" tabindex="1007">Olá {$login}</a></li>
