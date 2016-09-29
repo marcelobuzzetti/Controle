@@ -35,7 +35,7 @@ class Militar {
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=2
-                                                ORDER BY posto_grad.id_posto_grad DESC,antiguidade, militares.id_militar");
+                                                ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -82,7 +82,7 @@ class Militar {
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=1
-                                                ORDER BY posto_grad.id_posto_grad DESC,antiguidade, militares.id_militar");
+                                               ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -107,7 +107,7 @@ class Militar {
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status != 2
                                                 AND militares.id_militar NOT IN (SELECT IFNULL(id_militar, 0) as id_militar FROM usuarios)
-                                                ORDER BY antiguidade, militares.id_militar");
+                                                ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -130,7 +130,7 @@ class Militar {
                                                 WHERE militares.id_posto_grad = posto_grad.id_posto_grad                                                
                                                 AND militares.id_status !=2
                                                 AND militares.id_militar NOT IN (SELECT id_militar FROM motoristas)
-                                                ORDER BY antiguidade");
+                                                ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -165,7 +165,7 @@ class Militar {
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=2
                                                 AND militares.id_militar = $id
-                                                ORDER BY antiguidade, militares.id_militar");
+                                                ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
             $executa = $stmt->execute();
 
             if ($executa) {
