@@ -49,7 +49,7 @@ CREATE TABLE militares (
  id_cidade int(11) NULL,
  id_estado int(11) NULL,
  idt_militar varchar(10) NOT NULL,
- rg varchar(11) NOT NULL,
+ rg varchar(20) NOT NULL,
  orgao_expedidor varchar(50)  NOT NULL,
  cpf varchar(11) NOT NULL,
  pai varchar(100),
