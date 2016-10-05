@@ -72,6 +72,7 @@
                 <tr>
                     <td>Marca</td>
                     <td>Modelo</td>
+                    <td>Tipo de Viatura</td>
                     <td>Placa</td>
                     <td>Odômetro Atual</td>
                     <td>Capacidade do Tanque</td>
@@ -89,6 +90,7 @@
                     <tr {if {$tbl.disponibilidade} eq "Indisponível"} style="background: rgba(255, 0, 0, 0.3);" {/if}>
                         <td>{$tbl.marca}</td>
                         <td>{$tbl.modelo}</td>
+                        <td>{$tbl.tipo_viatura}</td>
                         <td>{$tbl.placa}</td>
                         <td>{$tbl.odometro}</td>
                         <td>{$tbl.cap_tanque}</td>
@@ -111,6 +113,7 @@
                 <tr>
                     <td>Marca</td>
                     <td>Modelo</td>
+                    <td>Tipo de Viatura</td>
                     <td>Placa</td>
                     <td>Odômetro Atual</td>
                     <td>Capacidade do Tanque</td>

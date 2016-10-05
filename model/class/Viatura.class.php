@@ -27,12 +27,13 @@ class Viatura {
     public function listarViaturasCadastradas() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
+            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, tp.descricao AS tipo_viatura , IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura                                                
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
                                                 INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
+                                                INNER JOIN tipos_viaturas tp ON tp.id_tipo_viatura = v.id_tipo_viatura
                                                 INNER JOIN situacao s ON s.id_situacao = v.id_situacao
                                                 GROUP BY v.id_viatura
                                                 ORDER BY v.id_viatura");
@@ -159,13 +160,14 @@ class Viatura {
     public function detalharViatura($id) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
+            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, tp.descricao AS tipo_viatura, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
                                                 FROM percursos p
                                                 INNER JOIN viaturas v ON p.id_viatura = v.id_viatura AND v.id_viatura = $id
                                                 AND p.data_saida
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
                                                 INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
+                                                INNER JOIN tipos_viaturas tp ON tp.id_tipo_viatura = v.id_tipo_viatura
                                                 INNER JOIN situacao s ON s.id_situacao = v.id_situacao
                                                 ORDER BY v.id_viatura");
             $executa = $stmt->execute();
