@@ -56,12 +56,10 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
             $stmt = $pdo->prepare("SELECT v.id_viatura, v.id_marca, v.id_modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, v.id_habilitacao, v.id_tipo_viatura, v.id_combustivel, v.ano, v.id_situacao
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura AND v.id_status != 2
-                                                AND v.id_status !=2
-                                                AND p.data_saida
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
                                                 INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
-                                                INNER JOIN situacao s ON s.id_situacao = v.id_situacao
+                                                INNER JOIN situacao s ON s.id_situacao = v.id_situacao AND v.id_viatura = $id
                                                 GROUP BY v.id_viatura
                                                 ORDER BY v.id_viatura");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
