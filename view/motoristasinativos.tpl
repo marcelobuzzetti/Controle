@@ -54,7 +54,7 @@
             <td>{$tbl.nome_completo}</td>
             <td>{$tbl.categoria}</td>
             <td>{$tbl.validade}</td>
-            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_militar}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}"><span class='glyphicon glyphicon-refresh'/></button></td>
+            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_motorista}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}"><span class='glyphicon glyphicon-refresh'/></button></td>
             </tr> 
         {/foreach}
         </tbody>
