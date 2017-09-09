@@ -11,7 +11,7 @@
         <link rel="icon" href="../../libs/imagens/download.jpg">
         <link href="{$HOST}/libs/css/estilo.min.css" rel="stylesheet" type="text/css"/> 
         <!--[if lt IE 9]>
-        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <![endif]-->
         <!-- Chrome, Firefox OS and Opera -->
         <meta name="theme-color" content="#4169E1">
