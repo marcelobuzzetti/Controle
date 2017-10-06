@@ -29,8 +29,11 @@ Altere o arquivo do configuração do Apache
 /etc/apache2/apache2.conf    (Arquivo no Linux)
 
 Dentro do arquivo apache2.conf procure por <Directory /var/www/> e altere conforme as linhas abaixo
+
         Options Indexes FollowSymLinks
+
         AllowOverride All
+
         Require all granted
 
 Reinicie o Apache
