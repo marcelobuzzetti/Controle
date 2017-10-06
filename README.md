@@ -31,13 +31,11 @@ Altere o arquivo do configuração do Apache
 Coloque as linhas abaixo
 
 <Directory /var/www/>
-
         Options Indexes FollowSymLinks
 
         AllowOverride All
 
         Require all granted
-
 </Directory>
 
 Reinicie o Apache
