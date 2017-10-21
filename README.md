@@ -38,6 +38,29 @@ Dentro do arquivo apache2.conf procure por <Directory /var/www/> e altere confor
 
 Reinicie o Apache
 
-No Linux é necessário dar permissão a pasta do projeto.
+No Linux é necessário dar permissão a pasta do projeto
+
+O .htaccess está configurado para redirecionar as requisições para HTTPS.
+
+#Redirecionar para https
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+E o arquivo config.inc.php utiliza o Server_name do apache e define o protocolo https.
+
+$endereco = $_SERVER['SERVER_NAME'];
+
+define("HOST", "https://" . $endereco);
+
+Caso deseje utilizar somente o protocolo http, comente a as linhas do .htaccess e altere o para http no config.inc.php
+Ficando o .htaccess assim
+
+#Redirecionar para https
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+E o config.inc.php:
+
+define("HOST", "http://" . $endereco);
 
 O Usuário e Senha padrão do sistema é admin
