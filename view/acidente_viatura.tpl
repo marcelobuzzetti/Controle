@@ -22,7 +22,7 @@
             </select>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-2">
-            <label for="acompanhante">Acompanhante</label>
+            <label for="acompanhante">Acompanhante(s)</label>
             <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" value='{$acompanhante}' tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-2">

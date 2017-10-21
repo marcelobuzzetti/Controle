@@ -9,7 +9,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Data e Hora da Saída</td>
             </tr>
         </thead>
@@ -31,7 +31,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Data e Hora da Saída</td>
             </tr>
         </tfoot>

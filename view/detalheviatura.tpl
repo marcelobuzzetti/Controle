@@ -48,7 +48,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Data Saída</td>
                 <td>Hora Saída</td>
                 <td>Odômetro Retorno</td>
@@ -76,7 +76,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Data Saída</td>
                 <td>Hora Saída</td>
                 <td>Odômetro Retorno</td>
@@ -188,7 +188,7 @@
         <thead>
             <tr>
                 <td>Motorista</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
@@ -213,7 +213,7 @@
         <tfoot>
             <tr>
                 <td>Motorista</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>

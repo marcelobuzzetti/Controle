@@ -87,8 +87,8 @@
             <input class="form-control" type="number" id="odo_saida" name="odo_saida" placeholder="Odometro Saida" required="required" step="0.1" min="0" tabindex="4"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-2">
-            <label for="acompanhante">Acompanhante</label>
-            <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante" maxlength="20" tabindex="5"/>
+            <label for="acompanhante">Acompanhante(s)</label>
+            <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante(s)" maxlength="20" tabindex="5"/>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="percurso" name="enviar" tabindex="6">Cadastrar</button>
@@ -104,7 +104,7 @@
             <td>Motorista</td>
             <td>Destino</td>
             <td>Odômetro Saída</td>
-            <td>Acompanhante</td>
+            <td>Acompanhante(s)</td>
             <td>Data e Hora da Saída</td>
             <td>Odômetro Chegada</td>
             <td colspan="2">Ações</td> 
@@ -148,7 +148,7 @@
                     <td>Odômetro Saída {$tbl.odo_saida}</td>
                 </tr>
                 <tr>
-                    <td>Acompanhante {$tbl.acompanhante}</td>
+                    <td>Acompanhante(s) {$tbl.acompanhante}</td>
                 </tr>
                 <tr>
                     <td>Data e Hora da Saída {$tbl.data_saida} {$tbl.hora_saida}</td>
@@ -181,7 +181,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Data e Hora da Saída</td>
                 <td>Odômetro Retorno</td>
                 <td>Data e Hora da Chegada</td>
@@ -207,7 +207,7 @@
                 <td>Motorista</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Data e Hora da Saída</td>
                 <td>Odômetro Retorno</td>
                 <td>Data e Hora da Chegada</td>

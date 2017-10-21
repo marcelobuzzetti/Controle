@@ -49,7 +49,7 @@
             <tr>
                 <td>Viatura</td>
                 <td>Motorista</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
@@ -81,7 +81,7 @@
             <tr>
                 <td>Viatura</td>
                 <td>Motorista</td>
-                <td>Acompanhante</td>
+                <td>Acompanhante(s)</td>
                 <td>Odômetro</td>
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
