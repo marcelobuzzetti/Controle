@@ -21,7 +21,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $relacao_relatorio = $relatorios->listarVtrUtilizacaoCompleto();
 
         foreach ($relacao_relatorio as $value) {
-            $a .= '"' . $value['modelo'] . '-' . $value['placa'] . '"' . ',';
+            $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '"' . ',';
         }
         foreach ($relacao_relatorio as $value) {
             $b .= $value['qnt'] . ',';

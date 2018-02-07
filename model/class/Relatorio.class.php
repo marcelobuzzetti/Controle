@@ -91,12 +91,12 @@ class Relatorio {
     public function listarVtrUtilizacaoCompleto() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
+            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
-                                                GROUP BY v.id_viatura
+                                                GROUP BY m.descricao, mo.descricao
                                                 ORDER BY v.id_viatura");
             $executa = $stmt->execute();
 

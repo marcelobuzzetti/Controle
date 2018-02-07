@@ -109,7 +109,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Motorista</td>
+                <td>Viatura</td>
                 <td>Destino</td>
                 <td>Odômetro Saída</td>
                 <td>Data Saída</td>
@@ -117,7 +117,7 @@
                 <td>Odômetro Retorno</td>
                 <td>Data Chegada</td>
                 <td>Hora Chegada</td>
-                <td>Km</td>
+                <td>Km Rodada</td>
             </tr>
         </tfoot>
     </table>
