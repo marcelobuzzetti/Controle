@@ -10,6 +10,8 @@ Coloque os arquivos do sistema na pasta raiz do apache
 
 /var/www/html     (Local da pasta no Linux)
 
+No diretório raiz rode o "composer"
+
 O arquivo do banco de dados esta na pasta sql, com o nome de controle.sql
 
 Site/sql/controle.sql
