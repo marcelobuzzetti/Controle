@@ -5,7 +5,6 @@ include __DIR__ . '/include/config.inc.php';
 $login = new Login();
 $login->Acesso();
 
-session_start();
 $menus = new Menu();
 $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 

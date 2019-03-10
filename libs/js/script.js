@@ -344,8 +344,8 @@ $(function () {
     /*Coloca datepicker nas datas*/
 
     /*Completa cidades*/
-    $('.estado').change(function () {
-        $('.cidade').load('../model/listaCidades.php?estado=' + $('.estado').val());
+    $('#estado_natal').change(function () {
+        $('#cidade_natal').load('../model/listaCidades.php?estado=' + $('#estado_natal').val());
     });
     $('.estado1').change(function () {
         $('.cidade1').load('../model/listaCidades.php?estado=' + $('.estado1').val());

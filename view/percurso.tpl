@@ -39,13 +39,13 @@
 </div>
 <!--Modal-->
 <div class='container'>
-    {if $cadastrado != NULL}
+    {if ($cadastrado)}
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O percurso foi adicionado com sucesso!
         </div>              
     {/if}
-    {if $atualizado != NULL}
+    {if ($atualizado)}
         <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             A viatura foi fechada com sucesso!

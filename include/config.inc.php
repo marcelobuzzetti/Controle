@@ -2,7 +2,7 @@
 
 $endereco = $_SERVER['SERVER_NAME'];
 
-define("HOST", "https://" . $endereco);
+define("HOST", "http://" . $endereco);
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
