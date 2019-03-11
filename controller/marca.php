@@ -19,6 +19,8 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->assign('titulo', 'Cadastro de Marcas');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'marca');
+        $smarty->assign('id_marca', '');
+        $smarty->assign('descricao', '');
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');

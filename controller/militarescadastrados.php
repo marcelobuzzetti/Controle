@@ -16,11 +16,31 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
     $smarty->assign('titulo', 'Militares Cadastrados');
     $smarty->assign('militares_cadastrados', $militares_cadastrados);
     $smarty->assign('login', $_SESSION['login']);
-    $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-    $smarty->assign('atualizado', $_SESSION['atualizado']);
-    $smarty->assign('apagado', $_SESSION['apagado']);
-    $smarty->assign('erro', $_SESSION['erro']);
-    $smarty->assign('ativado', $_SESSION['ativado']);
+    if (!empty($_SESSION['cadastrado'])) {
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+    } else {
+        $smarty->assign('cadastrado', FALSE);
+    }
+    if (!empty($_SESSION['atualizado'])) {
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+    } else {
+        $smarty->assign('atualizado', FALSE);
+    }
+    if (!empty($_SESSION['apagado'])) {
+        $smarty->assign('apagado', $_SESSION['apagado']);
+    } else {
+        $smarty->assign('apagado', FALSE);
+    }
+    if (!empty($_SESSION['erro'])) {
+        $smarty->assign('erro', $_SESSION['erro']);
+    } else {
+        $smarty->assign('erro', FALSE);
+    }
+    if (!empty($_SESSION['ativado'])) {
+        $smarty->assign('ativado', $_SESSION['ativado']);
+    } else {
+        $smarty->assign('ativado', FALSE);
+    }
     $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
     $smarty->display('militarcadastrado.tpl');

@@ -28,6 +28,15 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('update', '');
+        $smarty->assign('id_abastecimento', '');
+        $smarty->assign('nrvale', '');
+        $smarty->assign('motorista', '');
+        $smarty->assign('viatura', '');
+        $smarty->assign('odometro', '');
+        $smarty->assign('combustivel', '');
+        $smarty->assign('tipo_combustivel', '');
+        $smarty->assign('qnt', '');
         $smarty->assign('titulo', 'Cadastro de Abastecimentos');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'abst');
@@ -36,9 +45,21 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
         $smarty->assign('relacao_combustiveis', $relacao_combustiveis);
         $smarty->assign('relacao_tipos_combustiveis', $relacao_tipo_combustiveis);
         $smarty->assign('tabela_relacao_abastecimentos', $tabela_relacao_abastecimentos);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
@@ -76,6 +97,21 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
             echo $e->getMessage();
         }
 
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
         $smarty->assign('titulo', 'Atualização de Abastecimentos');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_abst');

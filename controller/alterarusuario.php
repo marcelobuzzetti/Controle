@@ -25,7 +25,11 @@ if (isset($_SESSION['login']) == FALSE) {
 
     $smarty->assign('titulo', 'Atualizar Usuário');
     $smarty->assign('botao', 'Atualizar');
-    $smarty->assign('update', $update);
+    if (isset($update)) {
+        $smarty->assign('update', $update);
+    } else {
+        $smarty->assign('update', '');
+    }
     $smarty->assign('id_usuario', $usuario[0]['id_usuario']);
     $smarty->assign('militar', $usuario[0]['id_militar']);
     $smarty->assign('perfil', $usuario[0]['id_perfil']);

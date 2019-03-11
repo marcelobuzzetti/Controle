@@ -28,6 +28,31 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('update', '');
+        $smarty->assign('telefones', '');
+        $smarty->assign('enderecos', '');
+        $smarty->assign('emails', '');
+        $smarty->assign('id_militar', '');
+        $smarty->assign('numero_militar', '');
+        $smarty->assign('cp', '');
+        $smarty->assign('grupo', '');
+        $smarty->assign('antiguidade', '');
+        $smarty->assign('data_praca', '');
+        $smarty->assign('id_pg', '');
+        $smarty->assign('nome_completo', '');
+        $smarty->assign('nome', '');
+        $smarty->assign('data_nascimento', '');
+        $smarty->assign('estado_nascimento', '');
+        $smarty->assign('cidade_nascimento', '');
+        $smarty->assign('idt_militar', '');
+        $smarty->assign('rg', '');
+        $smarty->assign('orgao_expedidor', '');
+        $smarty->assign('cpf', '');
+        $smarty->assign('pai', '');
+        $smarty->assign('mae', '');
+        $smarty->assign('conjuge', '');
+        $smarty->assign('data_nascimento_conjuge', '');
+        $smarty->assign('laranjeira', '');
         $smarty->assign('titulo', 'Cadastro de Militares');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_militar');

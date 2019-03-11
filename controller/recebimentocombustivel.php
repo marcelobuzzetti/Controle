@@ -23,6 +23,11 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('id_rcb_comb', '');
+        $smarty->assign('combustivel', '');
+        $smarty->assign('tipo_combustivel', '');
+        $smarty->assign('qnt', '');
+        $smarty->assign('motivo', '');
         $smarty->assign('titulo', 'Cadastro de Recebimento de Combustíveis');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'rcb_comb');

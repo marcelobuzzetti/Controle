@@ -16,6 +16,8 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('id_tipo_combustivel', '');
+        $smarty->assign('descricao', '');       
         $smarty->assign('titulo', 'Cadastro de Tipo de Combustíveis');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'tipo');

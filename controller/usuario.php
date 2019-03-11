@@ -23,6 +23,12 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1)) {
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('update', '');
+        $smarty->assign('id_usuario', '');
+        $smarty->assign('militar', '');
+        $smarty->assign('perfil', '');
+        $smarty->assign('login1', '');
+        $smarty->assign('apelido', '');
         $smarty->assign('titulo', 'Cadastro de Usuários');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'cadastrar_usuario');
@@ -30,11 +36,31 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
         $smarty->assign('relacao_perfis', $relacao_perfis);
         $smarty->assign('login', $_SESSION['login']);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
-        $smarty->assign('erro', $_SESSION['erro']);
-        $smarty->assign('ativado', $_SESSION['ativado']);
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
+        if (!empty($_SESSION['erro'])) {
+            $smarty->assign('erro', $_SESSION['erro']);
+        } else {
+            $smarty->assign('erro', FALSE);
+        }
+        if (!empty($_SESSION['ativado'])) {
+            $smarty->assign('ativado', $_SESSION['ativado']);
+        } else {
+            $smarty->assign('ativado', FALSE);
+        }
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
         $smarty->display('usuario.tpl');

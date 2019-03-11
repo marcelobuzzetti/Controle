@@ -14,6 +14,9 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
     $viatura = new Viatura();
     $relacao_viaturas = $viatura->quantidadeVtrMarcaModelo();
     $relacao_viaturas1 = $viatura->listarVtrIndisponiveis();
+    $a = '';
+    $b = '';
+    $c = '';
     foreach ($relacao_viaturas as $value) {
         $i = 0;
         $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '"' . ',';

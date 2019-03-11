@@ -1,8 +1,10 @@
 <?php
 
-include '../model/conexao.php';
+include 'conexao.php';
+
 session_start();
 $usuario = $_SESSION['usuario'];
+
 switch ($_POST['enviar']) {
 
     case 'percurso_retornou':
@@ -59,10 +61,12 @@ switch ($_POST['enviar']) {
         break;
 
     case 'percurso':
+    
         $viatura = $_POST["viatura"];
         $nome = $_POST["motorista"];
         $destino = ucwords(strtolower($_POST["destino"]));
         $odometro = $_POST["odo_saida"];
+
         if (empty($_POST["acompanhante"])) {
             $acompanhante = NULL;
         } else {
@@ -102,12 +106,13 @@ switch ($_POST['enviar']) {
             }
 
             $stmt = $pdo->prepare("INSERT INTO percursos
-                                                VALUES(NULL,?,?,?,?,?,NOW(),NOW(),NULL,NULL,NULL,$usuario)");
+                                                VALUES(NULL,?,?,?,?,?,CURDATE(),CURRENT_TIME(),NULL,NULL,NULL,?)");
             $stmt->bindParam(1, $viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $nome, PDO::PARAM_INT);
             $stmt->bindParam(3, $destino, PDO::PARAM_INT);
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
-            $stmt->bindParam(5, $acompanhante, PDO::PARAM_INT);
+            $stmt->bindParam(5, $acompanhante, PDO::PARAM_STR);
+            $stmt->bindParam(6, $usuario, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {

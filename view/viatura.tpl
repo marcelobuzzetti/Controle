@@ -51,7 +51,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Ano</label>
-            <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$ano}' step="1" min="1980" max="2016" maxlength="4" tabindex="3"/>
+            <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$ano}' step="1" min="1980" max='{date("Y")}' maxlength="4" tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="placa">Placa</label>

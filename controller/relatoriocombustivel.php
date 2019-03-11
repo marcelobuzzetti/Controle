@@ -13,18 +13,24 @@ if (isset($_SESSION['login']) == FALSE) {
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
-    if ($_POST['enviar'] == "relatorio_completo") {
+    if (isset($_POST['enviar']) && $_POST['enviar'] == "relatorio_completo") {
 
         $verificador = 1;
 
         $relatorios = new Relatorio();
         $relacao_relatorio = $relatorios->listarAbastecimentoCompleto();
+        $a = '';
+        $b = '';
 
         foreach ($relacao_relatorio as $value) {
             $a .= '"' . $value['combustivel'] . " " . $value['tipo'] . '"' . ',';
         }
         foreach ($relacao_relatorio as $value) {
+            if ($value['qnt'] == 0) {
+                $b .= '0' . ',';    
+            } else {
             $b .= $value['qnt'] . ',';
+            }
         }
 
         $smarty->assign('verificador', $verificador);
@@ -57,6 +63,9 @@ if (isset($_SESSION['login']) == FALSE) {
 
             $relatorios = new Relatorio();
             $relacao_relatorio = $relatorios->listarAbastecimento($data_inicio, $data_fim);
+
+            $a = '';
+            $b = '';
 
             foreach ($relacao_relatorio as $value) {
                 $a .= '"' . $value['combustivel'] . " " . $value['tipo'] . '"' . ',';

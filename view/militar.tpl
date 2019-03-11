@@ -155,27 +155,27 @@
             <div id="enderecos">
                 <div class="form-group col-xs-12 col-sm-6 col-md-2">
                     <label for="rua">Tipo</label>
-                    <input class="form-control" type="text" id="tipo_endereco" name="tipo_endereco[]" placeholder="Tipo"  maxlength="20" value="{$rua}"/>
+                    <input class="form-control" type="text" id="tipo_endereco" name="tipo_endereco[]" placeholder="Tipo"  maxlength="20" />
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-6">
                     <label for="rua">Rua</label>
-                    <input class="form-control" type="text" id="rua" name="rua[]" placeholder="Rua e Número" value="{$rua}"/>
+                    <input class="form-control" type="text" id="rua" name="rua[]" placeholder="Rua e Número"/>
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4">
                     <label for="bairro">Bairro</label>
-                    <input class="form-control" type="text" id="bairro" name="bairro[]" placeholder="Bairro"  value="{$bairro}"/>
+                    <input class="form-control" type="text" id="bairro" name="bairro[]" placeholder="Bairro" />
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4">
                     <label for="complemento">Complemento</label>
-                    <input class="form-control" type="text" id="complemento" name="complemento[]" placeholder="Complemento" value="{$complemento}"/>
+                    <input class="form-control" type="text" id="complemento" name="complemento[]" placeholder="Complemento" />
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4">
                     <label for="estado">Estado</label>
-                    <input class="form-control" type="text" id="estado" name="estado[]" placeholder="Estado"  maxlength="2" value="{$estado}"/>
+                    <input class="form-control" type="text" id="estado" name="estado[]" placeholder="Estado"  maxlength="2" />
                 </div>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4">
                     <label for="cidade">Cidade</label>
-                    <input class="form-control" type="text" id="cidade" name="cidade[]" placeholder="Cidade"   value="{$cidade}"/>
+                    <input class="form-control" type="text" id="cidade" name="cidade[]" placeholder="Cidade"/>
                 </div>        
             </div>
         {/if}
@@ -210,11 +210,11 @@
             <div id="telefones" class='telefones'>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4">
                     <label for="tipo_telefone">Tipo</label>
-                    <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}"/>
+                    <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" />
                 </div>                
                 <div class="form-group col-xs-12 col-sm-6 col-md-6">
                     <label for="telefone">Telefone</label>
-                    <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}"/>
+                    <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" />
                 </div>
             </div>
         {/if}
@@ -372,11 +372,11 @@
             <div id="telefones" class='telefones'>
                 <div class="form-group col-xs-12 col-sm-6 col-md-4">
                     <label for="tipo_telefone">Tipo</label>
-                    <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" value="{$telefone.tipo}"/>
+                    <input class="form-control" type="text" id="tipo_telefone" name="tipo_telefone[]" placeholder="Tipo" />
                 </div>                
                 <div class="form-group col-xs-12 col-sm-6 col-md-6">
                     <label for="telefone">Telefone</label>
-                    <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" value="{$telefone.numero}"/>
+                    <input class="form-control" type="text" id="telefone" name="telefone[]" placeholder="Telefone" />
                 </div>
             </div>
         {/if}

@@ -33,6 +33,17 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('id_viatura', '');
+        $smarty->assign('marca', '');
+        $smarty->assign('modelo', '');
+        $smarty->assign('habilitacao', '');
+        $smarty->assign('ano', '');
+        $smarty->assign('tipo_vtr', '');
+        $smarty->assign('combustivel', '');
+        $smarty->assign('situacao', '');
+        $smarty->assign('placa', '');
+        $smarty->assign('odometro', '');
+        $smarty->assign('update', '');
         $smarty->assign('titulo', 'Cadastro de Viaturas');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'viatura');

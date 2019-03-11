@@ -23,9 +23,27 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->assign('evento', 'cadastrar_modelo');
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('tabela_modelos_cadastrados', $tabela_modelos_cadastrados);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
+        $smarty->assign('marca', '');
+        $smarty->assign('id_modelo', '');
+        $smarty->assign('descricao', '');
+        $smarty->assign('cap_tanque', '');
+        $smarty->assign('consumo_padrao', '');
+        $smarty->assign('cap_transp', '');
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
@@ -61,6 +79,21 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
             echo $e->getMessage();
         }
 
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
         $smarty->assign('titulo', 'Atualização de Modelos');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_modelo');

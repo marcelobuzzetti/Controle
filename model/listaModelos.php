@@ -12,7 +12,9 @@ if ($teste) {
     echo "<select class='form-control' name='modelo' id='modeo' required='required'>";
     echo "<option value='' disabled selected>Selecione o Modelo</option>";
       foreach($teste as $t){
-            	echo "<option value=$t['id_modelo']>$t['descricao']</option>";
+          $numero = $t["id_modelo"];
+          $descricao = $t["descricao"];
+            	echo "<option value=$numero>$descricao</option>";
             }
     echo "</select>";
 } else {

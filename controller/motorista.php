@@ -25,6 +25,9 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
 
     if (!isset($_POST['id'])) {
 
+        $smarty->assign('cnh', '');
+        $smarty->assign('validade', '');
+        $smarty->assign('id_motorista', '');
         $smarty->assign('titulo', 'Cadastro de Motoristas');
         $smarty->assign('botao', 'Cadastrar');
         $smarty->assign('evento', 'motorista');

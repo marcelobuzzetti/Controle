@@ -16,7 +16,7 @@ if (isset($_SESSION['login']) == FALSE) {
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
-    if ($_POST['enviar'] == "relatorio_completo") {
+    if (isset($_POST['enviar']) && $_POST['enviar'] == "relatorio_completo") {
 
         $verificador = 1;
 

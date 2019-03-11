@@ -25,9 +25,25 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
         $smarty->assign('evento', 'cadastrar_manutencao');
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_manutencao', $relacao_manutencao);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
+        $smarty->assign('id_manutencao_viatura', '');
+        $smarty->assign('odometro', '');
+        $smarty->assign('descricao', '');
+        $smarty->assign('data', '');    
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);
@@ -58,6 +74,21 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
             echo $e->getMessage();
         }
 
+         if (!empty($_SESSION['cadastrado'])) {
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+    } else {
+        $smarty->assign('cadastrado', FALSE);
+    }
+    if (!empty($_SESSION['atualizado'])) {
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+    } else {
+        $smarty->assign('atualizado', FALSE);
+    }
+    if (!empty($_SESSION['apagado'])) {
+        $smarty->assign('apagado', $_SESSION['apagado']);
+    } else {
+        $smarty->assign('apagado', FALSE);
+    }
         $smarty->assign('titulo', 'Atualização de Manutenção de Viaturas');
         $smarty->assign('botao', 'Atualizar');
         $smarty->assign('evento', 'atualizar_manutencao');
@@ -68,9 +99,21 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
         $smarty->assign('data', $data);
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_manutencao', $relacao_manutencao);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
+        if (!empty($_SESSION['cadastrado'])) {
+            $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+        } else {
+            $smarty->assign('cadastrado', FALSE);
+        }
+        if (!empty($_SESSION['atualizado'])) {
+            $smarty->assign('atualizado', $_SESSION['atualizado']);
+        } else {
+            $smarty->assign('atualizado', FALSE);
+        }
+        if (!empty($_SESSION['apagado'])) {
+            $smarty->assign('apagado', $_SESSION['apagado']);
+        } else {
+            $smarty->assign('apagado', FALSE);
+        }
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);

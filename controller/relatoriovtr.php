@@ -13,13 +13,16 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
-    if ($_POST['enviar'] == "relatorio_completo") {
+    if (isset($_POST['enviar']) && $_POST['enviar'] == "relatorio_completo") {
 
         $verificador = 1;
 
         $relatorios = new Relatorio();
         $relacao_relatorio = $relatorios->listarVtrUtilizacaoCompleto();
-
+        $a = '';
+        $b = '';
+        $c = '';
+        
         foreach ($relacao_relatorio as $value) {
             $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '"' . ',';
         }
@@ -34,7 +37,11 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->assign('titulo1', 'Relatório Completo por Viaturas');
         $smarty->assign('titulo', 'Relatório de Utilizaçao de Vtr por Periodo');
         $smarty->assign('relacao_relatorio', $relacao_relatorio);
-        $smarty->assign('a', $a);
+        if($a){
+            $smarty->assign('a', $a);
+        } else {
+            $smarty->assign('a', '');
+        }
         $smarty->assign('b', $b);
         $smarty->assign('c', $c);
         $smarty->assign('login', $_SESSION['login']);

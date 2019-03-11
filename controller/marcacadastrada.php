@@ -16,9 +16,21 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
 
     $smarty->assign('titulo', 'Marcas Cadastradas');
     $smarty->assign('relacao_marcas', $relacao_marcas);
-    $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-    $smarty->assign('atualizado', $_SESSION['atualizado']);
-    $smarty->assign('apagado', $_SESSION['apagado']);
+    if (!empty($_SESSION['cadastrado'])) {
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+    } else {
+        $smarty->assign('cadastrado', FALSE);
+    }
+    if (!empty($_SESSION['atualizado'])) {
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+    } else {
+        $smarty->assign('atualizado', FALSE);
+    }
+    if (!empty($_SESSION['apagado'])) {
+        $smarty->assign('apagado', $_SESSION['apagado']);
+    } else {
+        $smarty->assign('apagado', FALSE);
+    }
     $smarty->assign('login', $_SESSION['login']);
     $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);

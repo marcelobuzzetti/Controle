@@ -21,15 +21,42 @@ if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
+    if (!empty($_SESSION['cadastrado'])) {
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+    } else {
+        $smarty->assign('cadastrado', FALSE);
+    }
+    if (!empty($_SESSION['atualizado'])) {
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+    } else {
+        $smarty->assign('atualizado', FALSE);
+    }
+    if (!empty($_SESSION['apagado'])) {
+        $smarty->assign('apagado', $_SESSION['apagado']);
+    } else {
+        $smarty->assign('apagado', FALSE);
+    }
     $smarty->assign('titulo', 'Acidentes de Viaturas Cadastrados');
     $smarty->assign('botao', 'Cadastrar');
     $smarty->assign('evento', 'cadastrar_acidente');
     $smarty->assign('relacao_viaturas', $relacao_viaturas);
     $smarty->assign('relacao_motoristas', $relacao_motoristas);
     $smarty->assign('relacao_acidentes', $relacao_acidentes);
-    $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-    $smarty->assign('atualizado', $_SESSION['atualizado']);
-    $smarty->assign('apagado', $_SESSION['apagado']);
+    if (!empty($_SESSION['cadastrado'])) {
+        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
+    } else {
+        $smarty->assign('cadastrado', FALSE);
+    }
+    if (!empty($_SESSION['atualizado'])) {
+        $smarty->assign('atualizado', $_SESSION['atualizado']);
+    } else {
+        $smarty->assign('atualizado', FALSE);
+    }
+    if (!empty($_SESSION['apagado'])) {
+        $smarty->assign('apagado', $_SESSION['apagado']);
+    } else {
+        $smarty->assign('apagado', FALSE);
+    }
     $smarty->assign('login', $_SESSION['login']);
     $smarty->display('./headers/header_datatables.tpl');
     $smarty->display($menu);
