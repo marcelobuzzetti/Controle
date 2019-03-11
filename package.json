@@ -1,0 +1,19 @@
+{
+  "name": "controle",
+  "version": "1.0.0",
+  "description": "Controle de Viaturas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelobuzzetti/Controle.git"
+  },
+  "author": "Sgt Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelobuzzetti/Controle/issues"
+  },
+  "homepage": "https://github.com/marcelobuzzetti/Controle#readme"
+}
