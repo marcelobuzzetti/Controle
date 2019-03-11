@@ -43,32 +43,28 @@
         let id = [];
         const socket = io('http://localhost:3000');
 
-        $('#enviar').click( function(){
-            socket.emit(
-                    'msgParaServidor',
-                    {
-                        acompanhante: $('#acompanhante').val(), 
-                    }
-                );
+        $('#rfid').change( function(){
+            if($('#rfid').val().length == 10) {
+                socket.emit(
+                        'msgParaServidor',
+                        {
+                            rfid: $('#rfid').val(), 
+                        }
+                    );
+                $('#rfid').attr('disabled','disabled');  
+            }
         });
 
-        function envia(){
-                socket.emit(
-                    'msgParaServidor',
-                    {
-                        numero: $('#numero').val(), 
-                    }
-                );
-                $('#numero').val("");
-            };
-
         socket.on('msgParaCliente', function(data){
-            var html = '';
             console.log(data);
-            html += "<h4>"+ data.numeros +'</h4>';
-            $('#dialogos').append(html)
+            $("#viatura").val(data.rfid).change();
+            if ($("#viatura").val() == data.rfid) {
+                $("#viatura").attr('readonly','readonly');
+                } else {
+                    alert('Viatura rodando ou Inexistente');
+                    window.location.reload();
+                }
 
-            window.scrollTo(0, document.body.scrollHeight);
         });
     </script>
 </body>
