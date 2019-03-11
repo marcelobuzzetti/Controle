@@ -87,6 +87,8 @@ if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION
 
                 if ($id_situacao == 2) {
                     $disponibilidade = "checked";
+                } else {
+                    $disponibilidade= '';
                 }
             } else {
                 print("<script language=JavaScript>

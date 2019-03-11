@@ -88,7 +88,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-2">
             <label for="acompanhante">Acompanhante(s)</label>
-            <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante(s)" maxlength="20" tabindex="5"/>
+            <input class="form-control" type="text"  id="acompanhante" name="acompanhante" placeholder="Acompanhante(s)" tabindex="5"/>
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="percurso" name="enviar" tabindex="6">Cadastrar</button>

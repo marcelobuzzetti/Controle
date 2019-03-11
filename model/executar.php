@@ -1424,13 +1424,13 @@ switch ($_POST['enviar']) {
         $acidente = $_POST['acidente'];
         $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
-
+       
         if (isset($_POST['disponibilidade'])) {
             $disponibilidade = 2;
         } else {
             $disponibilidade = 1;
         }
-
+        
         try {
             $stmt = $pdo->prepare("INSERT INTO acidentes_viaturas
                                                 VALUES(NULL,?,?,?,?,?,?,?,?,$usuario)");
@@ -1444,7 +1444,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(8, $disponibilidade, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-            if ($disponibilidade = 2) {
+            if ($disponibilidade == 2) {
                 $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_situacao = ?
                                                 WHERE id_viatura = ?");

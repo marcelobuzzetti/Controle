@@ -38,5 +38,38 @@
         })
     });
 </script>
+ <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        let id = [];
+        const socket = io('http://localhost:3000');
+
+        $('#enviar').click( function(){
+            socket.emit(
+                    'msgParaServidor',
+                    {
+                        acompanhante: $('#acompanhante').val(), 
+                    }
+                );
+        });
+
+        function envia(){
+                socket.emit(
+                    'msgParaServidor',
+                    {
+                        numero: $('#numero').val(), 
+                    }
+                );
+                $('#numero').val("");
+            };
+
+        socket.on('msgParaCliente', function(data){
+            var html = '';
+            console.log(data);
+            html += "<h4>"+ data.numeros +'</h4>';
+            $('#dialogos').append(html)
+
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+    </script>
 </body>
 </html>
