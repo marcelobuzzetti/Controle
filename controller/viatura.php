@@ -43,6 +43,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->assign('situacao', '');
         $smarty->assign('placa', '');
         $smarty->assign('odometro', '');
+        $smarty->assign('rfid', '');
         $smarty->assign('update', '');
         $smarty->assign('titulo', 'Cadastro de Viaturas');
         $smarty->assign('botao', 'Cadastrar');
@@ -64,7 +65,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $update = 1;
 
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, v.id_marca, v.id_modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, v.id_habilitacao, v.id_tipo_viatura, v.id_combustivel, v.ano, v.id_situacao
+            $stmt = $pdo->prepare("SELECT v.id_viatura, v.id_marca, v.rfid, v.id_modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, v.id_habilitacao, v.id_tipo_viatura, v.id_combustivel, v.ano, v.id_situacao
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura AND v.id_status != 2
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
@@ -82,6 +83,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
                 $marca = $dados_viaturas->id_marca;
                 $modelo = $dados_viaturas->id_modelo;
                 $placa = $dados_viaturas->placa;
+                $rfid = $dados_viaturas->rfid;
                 $habiltacao = $dados_viaturas->id_habilitacao;
                 $tipo_vtr = $dados_viaturas->id_tipo_viatura;
                 $combustivel = $dados_viaturas->id_combustivel;
@@ -111,6 +113,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->assign('situacao', $situacao);
         $smarty->assign('placa', $placa);
         $smarty->assign('odometro', $odometro);
+        $smarty->assign('rfid', $rfid);
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('relacao_modelos', $relacao_modelos);
         $smarty->assign('relacao_situacao', $relacao_situacao);

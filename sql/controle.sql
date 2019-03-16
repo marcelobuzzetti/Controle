@@ -173,6 +173,7 @@ CREATE TABLE viaturas (
   placa varchar(50)  NOT NULL,
   odometro float(10,1) NOT NULL, 
   ano int(11) NOT NULL,
+  rfid VARCHAR(50) default null,
   id_tipo_viatura int(11) NOT NULL,
   id_situacao int(11) NOT NULL,
   id_usuario int(11) NOT NULL,

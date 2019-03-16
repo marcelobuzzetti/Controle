@@ -79,6 +79,7 @@
                     <td>Consumo Km/L</td>
                     <td>Capacidade(Pessoas)</td>
                     <td>Habilitação Necessária</td>
+                    <td>RFID</td>
                     <td>Situação</td>
                     <td>Detalhes</td>
                     <td>Apagar</td>
@@ -97,6 +98,7 @@
                         <td>{$tbl.consumo_padrao}</td>
                         <td>{$tbl.cap_transp}</td>
                         <td>{$tbl.categoria}</td>
+                        <td>{$tbl.rfid}</td>
                         <td>{$tbl.disponibilidade}</td>
                         <td><form action='detalheviatura' method='post'>
                                 <input type='hidden' id='id' name='id' value='{$tbl.id_viatura}' />
@@ -120,6 +122,7 @@
                     <td>Consumo Km/L</td>
                     <td>Capacidade(Pessoas)</td>
                     <td>Habilitação Necessária</td>
+                    <td>RFID</td>
                     <td>Situação</td>
                     <td>Detalhes</td>
                     <td>Apagar</td>

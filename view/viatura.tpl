@@ -54,8 +54,8 @@
             <input class="form-control" type="number" id="ano" name="ano" placeholder="Ano de Fabricação" required="required" value='{$ano}' step="1" min="1980" max='{date("Y")}' maxlength="4" tabindex="3"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
-            <label for="placa">Placa</label>
-            <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}'  maxlength="7" tabindex="4"/>
+            <label for="placa">Placa/EB</label>
+            <input class="form-control" type="text" id="placa" name="placa" placeholder="Placa" required="required" value='{$placa}' maxlength="50" tabindex="4"/>
         </div>
         <span name="alerta" id="alerta"></span>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
@@ -90,8 +90,12 @@
             </select>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
+            <label for="rfid">RFID</label>
+            <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" value='{$rfid}' maxlength="50" tabindex="9"/>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="situacao">Situação</label>
-            <select class="form-control" name="situacao" tabindex="9">
+            <select class="form-control" name="situacao" tabindex="10">
                 <option value='' disabled selected>Selecione a Situação</option>
                 {foreach $relacao_situacao as $situacoes}
                     <option value={$situacoes.id_situacao} {if {$situacoes.id_situacao} == {$situacao}}selected{/if}>{$situacoes.disponibilidade}</option>
@@ -100,7 +104,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">        
             <input type='hidden' id='id' name='id' value='{$id_viatura}' />
-            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="10">{$botao}</button>
+            <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="11">{$botao}</button>
         </div>
     </form>
 </div>

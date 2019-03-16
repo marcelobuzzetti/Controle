@@ -144,16 +144,17 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO viaturas
-                                                    VALUES(NULL,?,?,?,?,?,?,?,$usuario,1,?,?)");
+                                                    VALUES(NULL,?,?,?,?,?,?,?,?,$usuario,1,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
             $stmt->bindParam(5, $ano, PDO::PARAM_INT);
-            $stmt->bindParam(6, $tipo_viatura, PDO::PARAM_INT);
-            $stmt->bindParam(7, $situacao, PDO::PARAM_INT);
-            $stmt->bindParam(8, $habilitacao, PDO::PARAM_INT);
-            $stmt->bindParam(9, $combustivel, PDO::PARAM_INT);
+            $stmt->bindParam(6, $rfid, PDO::PARAM_INT);
+            $stmt->bindParam(7, $tipo_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(8, $situacao, PDO::PARAM_INT);
+            $stmt->bindParam(9, $habilitacao, PDO::PARAM_INT);
+            $stmt->bindParam(10, $combustivel, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -210,6 +211,7 @@ switch ($_POST['enviar']) {
         $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
         $ano = $_POST["ano"];
+        $rfid = $_POST["rfid"];
         $situacao = $_POST["situacao"];
         $tipo_viatura = $_POST["tipo_viatura"];
         $habilitacao = $_POST["habilitacao"];
@@ -221,7 +223,7 @@ switch ($_POST['enviar']) {
             $stmt = $pdo->prepare("UPDATE viaturas
                                                 SET id_marca = ?, id_modelo = ?, placa = ?, odometro = ?, 
                                                 ano = ?,   id_tipo_viatura =?, id_situacao = ?, 
-                                                id_habilitacao = ?, id_combustivel = ?
+                                                id_habilitacao = ?, id_combustivel = ?, rfid = ?
                                                 WHERE id_viatura = ?");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
@@ -232,7 +234,8 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(7, $situacao, PDO::PARAM_INT);
             $stmt->bindParam(8, $habilitacao, PDO::PARAM_INT);
             $stmt->bindParam(9, $combustivel, PDO::PARAM_INT);
-            $stmt->bindParam(10, $id, PDO::PARAM_INT);
+            $stmt->bindParam(10, $rfid, PDO::PARAM_STR);
+            $stmt->bindParam(11, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {

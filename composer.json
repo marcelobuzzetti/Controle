@@ -1,6 +1,7 @@
 {
     "require": {
-        "smarty/smarty": "~3.1"
+        "smarty/smarty": "~3.1",
+        "slim/slim": "^3.12"
     },
     "autoload": {
         "classmap": [
@@ -9,4 +10,3 @@
         ]
     }
 }
-

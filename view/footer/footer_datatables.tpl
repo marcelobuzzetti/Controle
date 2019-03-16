@@ -33,5 +33,35 @@
         });
     });
 </script>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        let id = [];
+        const socket = io('http://localhost:3000');
+
+        $('#rfid').change( function(){
+            if($('#rfid').val().length == 10) {
+                socket.emit(
+                        'msgParaServidor',
+                        {
+                            rfid: $('#rfid').val(), 
+                        }
+                    );
+                $('#rfid').attr('disabled','disabled');  
+            }
+        });
+
+        socket.on('msgParaCliente', function(data){
+            console.log(data);
+            $("#viatura_abastecimento").val(data.rfid).change();
+            if ($("#viatura_abastecimento").val() == data.rfid) {
+                $("#viatura_abastecimento").attr('readonly','readonly');
+                $("#nrvale").focus();
+                } else {
+                    alert('Viatura Inexistente');
+                    window.location.reload();
+                }
+
+        });
+    </script>
 </body>
 </html>

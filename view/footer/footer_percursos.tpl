@@ -60,6 +60,7 @@
             $("#viatura").val(data.rfid).change();
             if ($("#viatura").val() == data.rfid) {
                 $("#viatura").attr('readonly','readonly');
+                $("#motorista").focus();
                 } else {
                     alert('Viatura rodando ou Inexistente');
                     window.location.reload();

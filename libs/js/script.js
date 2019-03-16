@@ -432,13 +432,13 @@ $(function () {
     $("#validade").mask("00/00/0000");
     $("#cpf").mask("00000000000");
     $("#cnh").mask("00000000000");
-    $("#placa").mask("ZZZ0000", {
+    /*$("#placa").mask("ZZZ0000", {
         translation: {
             'Z': {
                 pattern: /[A-Za-z]/, optional: false
             }
         }
-    });
+    });*/
     /*Formatos*/
 
     /*Verifica se o motorista existe*/

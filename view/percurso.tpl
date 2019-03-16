@@ -64,7 +64,7 @@
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="RFID">RFID</label>
-            <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" tabindex="0" autofocus/>            
+            <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" autofocus/>            
     </div>
     <form autocomplete="off" action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
