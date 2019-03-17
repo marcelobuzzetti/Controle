@@ -29,25 +29,25 @@
     </div>
     <form action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
-            <label for="nrvale">Número Vale</label>
-            <input class="form-control" type="text" id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" maxlength="20" value="{$nrvale}" tabindex="1"/>
-        </div>
-        <td></td>
-        <div class="form-group col-xs-12 col-sm-6 col-md-3">
-            <label for="motorista">Motorista</label>
-            <select class="form-control" id="motorista" name="motorista" required="required" tabindex="2">
-                <option value='' disabled selected>Selecione o Motorista</option>
-                {foreach $relacao_motoristas as $motoristas}
-                    <option value={$motoristas.id_motorista} {if {$motoristas.id_motorista} == {$motorista}}selected{/if}>{$motoristas.apelido}</option>
+            <label for="viatura">Viatura</label>
+            <select class="form-control" id="viatura_abastecimento" name="viatura" required="required" tabindex="1">
+                <option value='' disabled selected>Selecione a Viatura</option>
+                {foreach $relacao_viaturas as $viaturas}
+                    <option value={$viaturas.id_viatura} {if {$viaturas.id_viatura} == {$viatura}}selected{/if}>{$viaturas.marca} - {$viaturas.modelo} - {$viaturas.placa}</option>
                 {/foreach}
             </select>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
-            <label for="viatura">Viatura</label>
-            <select class="form-control" id="viatura_abastecimento" name="viatura" required="required" tabindex="3">
-                <option value='' disabled selected>Selecione a Viatura</option>
-                {foreach $relacao_viaturas as $viaturas}
-                    <option value={$viaturas.id_viatura} {if {$viaturas.id_viatura} == {$viatura}}selected{/if}>{$viaturas.marca} - {$viaturas.modelo} - {$viaturas.placa}</option>
+            <label for="nrvale">Número Vale</label>
+            <input class="form-control" type="text" id="nrvale" name="nrvale" placeholder="Numero do Vale" required="required" maxlength="20" value="{$nrvale}" tabindex="2"/>
+        </div>
+        <td></td>
+        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+            <label for="motorista">Motorista</label>
+            <select class="form-control" id="motorista" name="motorista" required="required" tabindex="3">
+                <option value='' disabled selected>Selecione o Motorista</option>
+                {foreach $relacao_motoristas as $motoristas}
+                    <option value={$motoristas.id_motorista} {if {$motoristas.id_motorista} == {$motorista}}selected{/if}>{$motoristas.apelido}</option>
                 {/foreach}
             </select>
         </div>
