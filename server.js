@@ -33,12 +33,19 @@ io.on('connection', function(socket){
 
 	socket.on('msgParaServidor', function(data){
 		
-		pool.query(`SELECT id_viatura from viaturas where rfid = ${data.rfid}`, function (error, results, fields) {
+		pool.query(`SELECT id_viatura from viaturas where rfid = "${data.rfid}"`, function (error, results, fields) {
 			if (error) throw error;
-			socket.emit(
-				'msgParaCliente', 
-				{rfid: results[0].id_viatura}
+			if (typeof(results[0]) !== 'undefined'){
+				socket.emit(
+					'msgParaCliente', 
+					{rfid: results[0].id_viatura}
+					);
+			} else {
+				socket.emit(
+					'msgParaCliente', 
+					{rfid: 0}
 				);
-		});
+			}
+        });
 	});
 });

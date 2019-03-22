@@ -64,7 +64,7 @@
     </div>
     <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="RFID">RFID</label>
-            <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" autofocus/>            
+            <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" autofocus tabindex="-1"/>            
     </div>
     <form autocomplete="off" action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
@@ -123,7 +123,7 @@
                 <td>{$tbl.odo_saida}</td>
                 <td>{$tbl.acompanhante}</td>
                 <td>{$tbl.data_saida} {$tbl.hora_saida}</td>
-                <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
+                <td><input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='{$tbl.id_viatura}' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                 <td><button class='btn btn-success' type='submit' id='retornou' name='enviar' value='percurso_retornou'/>Retornou</form></td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalpercurso" data-whatever="{$tbl.id_percurso}" data-destino="{$tbl.nome_destino}" data-nome="{$tbl.apelido}" data-vtr="{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}"><span class='glyphicon glyphicon-remove'/></button></td>
             </tr>
@@ -158,7 +158,7 @@
                     <td>Data e Hora da Saída {$tbl.data_saida} {$tbl.hora_saida}</td>
                 </tr>
                 <tr>
-                    <td>Odômetro Chegada <input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='odo_retorno' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
+                    <td>Odômetro Chegada <input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='{$tbl.id_viatura}_' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                 </tr>
                 <tr>
                     <td>Ações</td> 
