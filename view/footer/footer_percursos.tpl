@@ -38,10 +38,10 @@
         })
     });
 </script>
- <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+ <script src="{$HOST}:3000/socket.io/socket.io.js"></script>
     <script>
         let id = [];
-        const socket = io('http://localhost:3000');
+        const socket = io('{$HOST}:3000');
 
         $('#rfid').change( function(){
             if($('#rfid').val().length == 10) {
