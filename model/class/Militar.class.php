@@ -5,37 +5,16 @@ class Militar {
     public function listarMilitar() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, 
-                                                IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
-                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, militares.nome AS nome, nome_completo, 
-                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
-                                                IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
-                                                IFNULL((SELECT estados.uf FROM estados where militares.id_estado = estados.id_estado),'-') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
-                                                IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
-                                                IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
-                                                FROM telefones, status
-                                                WHERE militares.id_militar = telefones.id_militar
-                                                AND status.id_status = telefones.id_status
-                                                ),'-') AS telefones, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT(tipo,  ' ', rua,  ' - ', bairro,  ' - ', complemento,  ' ', cidade,  '/', estado,' ',status,  '<br/>' ) 
-                                                SEPARATOR  ' ' ) 
-                                                FROM enderecos, status
-                                                WHERE militares.id_militar = enderecos.id_militar
-                                                AND status.id_status = enderecos.id_status
-                                                ),'-') AS enderecos, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT(email, ' ',status,'<br/>') SEPARATOR ' ' ) 
-                                                FROM emails,status
-                                                WHERE militares.id_militar = emails.id_militar
-                                                AND status.id_status = emails.id_status
-                                                ),'-') AS emails, 
-                                                status, laranjeira
-                                                FROM militares, posto_grad, 
-                                                status
-                                                WHERE militares.id_status = status.id_status
-                                                AND militares.id_posto_grad = posto_grad.id_posto_grad
-                                                AND militares.id_status !=2
-                                                ORDER BY posto_grad.id_posto_grad DESC, CAST(antiguidade AS UNSIGNED INTEGER)");
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
+            sigla, militares.nome AS nome, nome_completo, status,
+            DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
+            IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
+            IFNULL((SELECT estados.uf FROM estados where militares.id_estado = estados.id_estado),'-') AS estado_nascimento, idt_militar, cpf                                                 FROM militares, posto_grad, 
+            status
+            WHERE militares.id_status = status.id_status
+            AND militares.id_posto_grad = posto_grad.id_posto_grad
+            AND militares.id_status !=2
+            ORDER BY posto_grad.id_posto_grad DESC");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -53,36 +32,16 @@ class Militar {
     public function listarMilitarInativo() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(numero_militar,'-') AS numero_militar, IFNULL(cp,'-') AS cp, 
-                                                IFNULL(grupo,'-') AS grupo, IFNULL(antiguidade,'-') AS antiguidade, 
-                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,sigla, militares.nome AS nome, nome_completo, 
-                                                DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),' ') AS cidade_nascimento, 
-                                                IFNULL((SELECT estados.uf FROM estados where militares.id_estado = estados.id_estado),' ') AS estado_nascimento, idt_militar,rg, orgao_expedidor, cpf, IFNULL(conjuge,'-') AS conjuge, 
-                                                IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
-                                                IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT( 'Tipo: ',tipo,  ' Número: ', numero,' ',status,'<br/>' ) SEPARATOR ' ') 
-                                                FROM telefones, status
-                                                WHERE militares.id_militar = telefones.id_militar
-                                                AND status.id_status = telefones.id_status
-                                                ),'-') AS telefones, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT(tipo,  ' ', rua,  ' - ', bairro,  ' - ', complemento,  ' ', cidade,  '/', estado,' ',status,  '<br/>' ) 
-                                                SEPARATOR  ' ' ) 
-                                                FROM enderecos, status
-                                                WHERE militares.id_militar = enderecos.id_militar
-                                                AND status.id_status = enderecos.id_status
-                                                ),'-') AS enderecos, IFNULL((
-                                                SELECT GROUP_CONCAT( CONCAT(email, ' ',status,'<br/>') SEPARATOR ' ' ) 
-                                                FROM emails,status
-                                                WHERE militares.id_militar = emails.id_militar
-                                                AND status.id_status = emails.id_status
-                                                ),'-') AS emails, 
-                                                status, laranjeira
-                                                FROM militares, posto_grad, 
-                                                status
-                                                WHERE militares.id_status = status.id_status
-                                                AND militares.id_posto_grad = posto_grad.id_posto_grad
-                                                AND militares.id_status !=1
-                                               ORDER BY posto_grad.id_posto_grad DESC, CAST(antiguidade AS UNSIGNED INTEGER)");
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
+            sigla, militares.nome AS nome, nome_completo, status,
+            DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
+            IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
+            IFNULL((SELECT estados.uf FROM estados where militares.id_estado = estados.id_estado),'-') AS estado_nascimento, idt_militar, cpf                                                 FROM militares, posto_grad, 
+            status
+            WHERE militares.id_status = status.id_status
+            AND militares.id_posto_grad = posto_grad.id_posto_grad
+            AND militares.id_status !=1
+            ORDER BY posto_grad.id_posto_grad DESC");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -100,14 +59,14 @@ class Militar {
     public function listarMilitarUsuario() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, IFNULL(antiguidade,'-') AS antiguidade,sigla, nome, nome_completo, 
+            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,sigla, nome, nome_completo, 
                                                 status
                                                 FROM militares, posto_grad, status 
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status != 2
                                                 AND militares.id_militar NOT IN (SELECT IFNULL(id_militar, 0) as id_militar FROM usuarios)
-                                                ORDER BY posto_grad.id_posto_grad DESC, CAST(antiguidade AS UNSIGNED INTEGER)");
+                                                ORDER BY posto_grad.id_posto_grad DESC");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -130,7 +89,7 @@ class Militar {
                                                 WHERE militares.id_posto_grad = posto_grad.id_posto_grad                                                
                                                 AND militares.id_status !=2
                                                 AND militares.id_militar NOT IN (SELECT id_militar FROM motoristas)
-                                                ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
+                                                ORDER BY posto_grad.id_posto_grad DESC");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -149,23 +108,16 @@ class Militar {
         include '../model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
-                                                IFNULL(numero_militar,'-') AS numero_militar, 
-                                                IFNULL(cp,'-') AS cp, IFNULL(grupo,'-') AS grupo, 
-                                                IFNULL(antiguidade,'-') AS antiguidade, 
-                                                IFNULL(DATE_FORMAT( data_praca,  '%d/%m/%Y' ),'-') AS data_praca,
                                                 militares.id_posto_grad AS id_posto_grad,sigla, nome, nome_completo, 
                                                 DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
-                                                id_cidade, id_estado, idt_militar,rg, orgao_expedidor, cpf, 
-                                                IFNULL(conjuge,'-') AS conjuge, 
-                                                IFNULL(DATE_FORMAT( data_nascimento_conjuge,  '%d/%m/%Y' ),'-') AS data_nascimento_conjuge,
-                                                IFNULL(pai,'-') AS pai, IFNULL(mae,'-') AS mae, status, laranjeira
+                                                id_cidade, id_estado, idt_militar,cpf, status
                                                 FROM militares, posto_grad, 
                                                 status 
                                                 WHERE militares.id_status = status.id_status
                                                 AND militares.id_posto_grad = posto_grad.id_posto_grad
                                                 AND militares.id_status !=2
                                                 AND militares.id_militar = $id
-                                                ORDER BY posto_grad.id_posto_grad DESC, antiguidade");
+                                                ORDER BY posto_grad.id_posto_grad DESC");
             $executa = $stmt->execute();
 
             if ($executa) {

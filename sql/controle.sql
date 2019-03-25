@@ -35,7 +35,7 @@ CREATE TABLE habilitacoes (
   categoria varchar(2)  NOT NULL,
   ordem int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
+/*
 CREATE TABLE militares (
  id_militar int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
  numero_militar int(11) ,
@@ -87,6 +87,21 @@ CREATE TABLE emails (
   id_militar int(11) NOT NULL,
   email varchar(100) NOT NULL,
   id_status int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+*/
+
+CREATE TABLE militares (
+ id_militar int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ nome varchar(50)  NOT NULL,
+ nome_completo varchar(100)  NOT NULL,
+ data_nascimento date NOT NULL,
+ id_cidade int(11) NULL,
+ id_estado int(11) NULL,
+ idt_militar varchar(10) NOT NULL,
+ cpf varchar(11) NOT NULL,
+ id_posto_grad int(11) NOT NULL,
+ id_status int(11) NOT NULL,
+ id_usuario int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE motoristas (
@@ -278,12 +293,13 @@ ALTER TABLE abastecimentos
   ADD CONSTRAINT FK_combustivel FOREIGN KEY (id_combustivel) REFERENCES combustiveis (id_combustivel),
   ADD CONSTRAINT FK_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
-ALTER TABLE militares
+/*ALTER TABLE militares
   ADD CONSTRAINT FK_posto_grad FOREIGN KEY (id_posto_grad) REFERENCES posto_grad (id_posto_grad),
   ADD CONSTRAINT FK_status FOREIGN KEY (id_status) REFERENCES status (id_status),
   ADD CONSTRAINT FK_estado FOREIGN KEY (id_estado) REFERENCES estados (id_estado),
   ADD CONSTRAINT FK_cidade FOREIGN KEY (id_cidade) REFERENCES cidades (id_cidade),
   ADD CONSTRAINT FK_usuario1 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
+
 
 ALTER TABLE enderecos
   ADD CONSTRAINT FK_id_militar FOREIGN KEY (id_militar) REFERENCES militares(id_militar),
@@ -296,6 +312,7 @@ ADD CONSTRAINT FK_status7 FOREIGN KEY (id_status) REFERENCES status (id_status);
 ALTER TABLE emails
   ADD CONSTRAINT FK_id_militar2 FOREIGN KEY (id_militar) REFERENCES militares(id_militar),
 ADD CONSTRAINT FK_status8 FOREIGN KEY (id_status) REFERENCES status (id_status);
+*/
 
 ALTER TABLE motoristas
   ADD CONSTRAINT FK_militar FOREIGN KEY (id_militar) REFERENCES militares (id_militar),

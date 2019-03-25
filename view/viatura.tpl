@@ -91,7 +91,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="rfid">RFID</label>
-            <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" value='{$rfid}' maxlength="50" tabindex="9"/>
+            <input class="form-control" type="text" id="rfid__" name="rfid__" placeholder="RFID" value='{$rfid}' maxlength="50" tabindex="9"/>
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="situacao">Situação</label>

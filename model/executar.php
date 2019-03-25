@@ -141,6 +141,7 @@ switch ($_POST['enviar']) {
         $situacao = $_POST["situacao"];
         $habilitacao = $_POST["habilitacao"];
         $combustivel = $_POST["combustivel"];
+        $rfid = $_POST["rfid__"];
 
         try {
             $stmt = $pdo->prepare("INSERT INTO viaturas
@@ -211,11 +212,11 @@ switch ($_POST['enviar']) {
         $placa = mb_strtoupper($_POST["placa"]);
         $odometro = $_POST["odometro"];
         $ano = $_POST["ano"];
-        $rfid = $_POST["rfid"];
         $situacao = $_POST["situacao"];
         $tipo_viatura = $_POST["tipo_viatura"];
         $habilitacao = $_POST["habilitacao"];
         $combustivel = $_POST["combustivel"];
+        $rfid = $_POST["rfid__"];
 
 
 
@@ -1554,19 +1555,11 @@ switch ($_POST['enviar']) {
         break;
 
     case 'cadastrar_militar':
-        $numero_militar = htmlspecialchars($_POST['numero_militar']);
-        $cp = htmlspecialchars($_POST['cp']);
-        $grupo = htmlspecialchars($_POST['grupo']);
-        $numero_militar = htmlspecialchars($_POST['grupo']);
-        $antiguidade = htmlspecialchars($_POST['antiguidade']);
-        if (empty($_POST['data_praca'])) {
-            $data_praca = NULL;
-        } else {
-            $data_praca = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_praca'])));
-        }
+        
         $nome_completo = htmlspecialchars(ucwords(strtolower($_POST['nome_completo'])));
         $nome = htmlspecialchars(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
+        $cpf = $_POST['cpf'];
         if (empty($_POST['data_nascimento'])) {
             $data_nascimento = NULL;
         } else {
@@ -1575,116 +1568,23 @@ switch ($_POST['enviar']) {
         $estado_natal = htmlspecialchars(strtoupper($_POST['estado_natal']));
         $cidade_natal = htmlspecialchars(ucwords(strtolower($_POST['cidade_natal'])));
         $idt_militar = htmlspecialchars($_POST['idt_militar']);
-        $rg = htmlspecialchars($_POST['rg']);
-        $orgao_expedidor = htmlspecialchars(strtoupper($_POST['orgao_expedidor']));
-        $cpf = htmlspecialchars($_POST['cpf']);
-        $pai = htmlspecialchars(ucwords(strtolower($_POST['pai'])));
-        $mae = htmlspecialchars(ucwords(strtolower($_POST['mae'])));
-        $conjuge = htmlspecialchars(ucwords(strtolower($_POST['conjuge'])));
-        if (empty($_POST['data_nascimento_conjuge'])) {
-            $data_nascimento_conjuge = NULL;
-        } else {
-            $data_nascimento_conjuge = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento_conjuge'])));
-        }
-
-
-
-        $tipo_endereco = htmlspecialchars($_POST['tipo_endereco']);
-        $rua = htmlspecialchars($_POST['rua']);
-        $bairro = htmlspecialchars($_POST['bairro']);
-        $complemento = htmlspecialchars($_POST['complemento']);
-        $estado = htmlspecialchars($_POST['estado']);
-        $cidade = htmlspecialchars($_POST['cidade']);
-
-        $tipo_telefone = $_POST['tipo_telefone'];
-        $telefone = $_POST['telefone'];
-        $email = $_POST['email'];
-
-        if (isset($_POST['laranjeira'])) {
-            $laranjeira = "Sim";
-        } else {
-            $laranjeira = "Não";
-        }
 
         try {
 
-            $pdo->beginTransaction();
+            $stmt = $pdo->prepare("INSERT INTO militares (nome,nome_completo, data_nascimento, id_cidade, id_estado, 
+                                    idt_militar, cpf, id_posto_grad, id_status, id_usuario) 
+                                                    VALUES (?,?,?,?,?,?,?,?,1,$usuario )");
 
-            $stmt = $pdo->prepare("INSERT INTO militares (id_militar, numero_militar, cp, grupo, antiguidade, data_praca, nome, 
-                                                                                         nome_completo, data_nascimento, id_cidade, id_estado, 
-                                                                                         idt_militar, rg, orgao_expedidor, cpf, pai, mae, conjuge, data_nascimento_conjuge, 
-                                                                                         laranjeira, id_posto_grad, id_status, id_usuario) 
-                                                    VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,$usuario )");
-
-            $stmt->bindParam(1, $numero_militar, PDO::PARAM_INT);
-            $stmt->bindParam(2, $cp, PDO::PARAM_INT);
-            $stmt->bindParam(3, $grupo, PDO::PARAM_INT);
-            $stmt->bindParam(4, $antiguidade, PDO::PARAM_INT);
-            $stmt->bindParam(5, $data_praca, PDO::PARAM_STR);
-            $stmt->bindParam(6, $nome, PDO::PARAM_STR);
-            $stmt->bindParam(7, $nome_completo, PDO::PARAM_STR);
-            $stmt->bindParam(8, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(9, $cidade_natal, PDO::PARAM_INT);
-            $stmt->bindParam(10, $estado_natal, PDO::PARAM_INT);
-            $stmt->bindParam(11, $idt_militar, PDO::PARAM_STR);
-            $stmt->bindParam(12, $rg, PDO::PARAM_STR);
-            $stmt->bindParam(13, $orgao_expedidor, PDO::PARAM_STR);
-            $stmt->bindParam(14, $cpf, PDO::PARAM_STR);
-            $stmt->bindParam(15, $pai, PDO::PARAM_STR);
-            $stmt->bindParam(16, $mae, PDO::PARAM_STR);
-            $stmt->bindParam(17, $conjuge, PDO::PARAM_STR);
-            $stmt->bindParam(18, $data_nascimento_conjuge, PDO::PARAM_STR);
-            $stmt->bindParam(19, $laranjeira, PDO::PARAM_STR);
-            $stmt->bindParam(20, $pg, PDO::PARAM_STR);
+            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+            $stmt->bindParam(4, $cidade_natal, PDO::PARAM_INT);
+            $stmt->bindParam(5, $estado_natal, PDO::PARAM_INT);
+            $stmt->bindParam(6, $idt_militar, PDO::PARAM_STR);           
+            $stmt->bindParam(7, $cpf, PDO::PARAM_STR);            
+            $stmt->bindParam(8, $pg, PDO::PARAM_STR);
 
             $executa = $stmt->execute();
-
-            $stmt = $pdo->prepare("SELECT LAST_INSERT_ID() INTO @ID;");
-            $executa = $stmt->execute();
-
-
-            for ($i = 0; $i < sizeof($rua); $i++) {
-                if (empty($tipo_endereco[$i]) && empty($rua[$i]) && empty($bairro[$i]) && empty($cidade[$i]) && empty($estado[$i]) && empty($complemento[$i])) {
-                    continue;
-                } else {
-                    $stmt = $pdo->prepare("INSERT INTO enderecos
-                                                VALUES(NULL,@id,?,?,?,?,?,?,1);");
-                    $stmt->bindParam(1, htmlspecialchars(ucwords(strtolower($tipo_endereco[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(2, htmlspecialchars(ucwords(strtolower($rua[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(3, htmlspecialchars(ucwords(strtolower($bairro[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(4, htmlspecialchars(ucwords(strtolower($cidade[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(5, htmlspecialchars(ucwords(strtolower($estado[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(6, htmlspecialchars(ucwords(strtolower($complemento[$i]))), PDO::PARAM_STR);
-                    $executa = $stmt->execute();
-                }
-            }
-
-
-
-            for ($i = 0; $i < sizeof($tipo_telefone); $i++) {
-                if (empty($tipo_telefone[$i]) && empty($telefone[$i])) {
-                    continue;
-                } else {
-                    $stmt = $pdo->prepare("INSERT INTO telefones
-                                                VALUES(NULL,@id,?,?,1);");
-                    $stmt->bindParam(1, htmlspecialchars(ucwords(strtolower($tipo_telefone[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(2, $telefone[$i], PDO::PARAM_STR);
-                    $executa = $stmt->execute();
-                }
-            }
-
-            for ($i = 0; $i < sizeof($email); $i++) {
-                if (empty($email[$i])) {
-                    continue;
-                } else {
-                    $stmt = $pdo->prepare("INSERT INTO emails
-                                                VALUES(NULL,@id,?,1);");
-                    $stmt->bindParam(1, htmlspecialchars($email[$i]), PDO::PARAM_STR);
-                    $executa = $stmt->execute();
-                }
-            }
-
-            $pdo->commit();
 
             if (!$executa) {
                 $_SESSION['erro'] = 1;
@@ -1701,16 +1601,6 @@ switch ($_POST['enviar']) {
 
     case 'atualizar_militar':
         $id_militar = $_POST['id_militar'];
-        $numero_militar = $_POST['numero_militar'];
-        $cp = $_POST['cp'];
-        $grupo = $_POST['grupo'];
-        $numero_militar = $_POST['grupo'];
-        $antiguidade = $_POST['antiguidade'];
-        if (empty($_POST['data_praca'])) {
-            $data_praca = NULL;
-        } else {
-            $data_praca = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_praca'])));
-        }
         $nome_completo = htmlspecialchars(ucwords(strtolower($_POST['nome_completo'])));
         $nome = htmlspecialchars(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
@@ -1722,172 +1612,32 @@ switch ($_POST['enviar']) {
         $estado_natal = htmlspecialchars(strtoupper($_POST['estado_natal']));
         $cidade_natal = htmlspecialchars(ucwords(strtolower($_POST['cidade_natal'])));
         $idt_militar = $_POST['idt_militar'];
-        $rg = $_POST['rg'];
-        $orgao_expedidor = htmlspecialchars(strtoupper($_POST['orgao_expedidor']));
         $cpf = $_POST['cpf'];
-        $pai = htmlspecialchars(ucwords(strtolower($_POST['pai'])));
-        $mae = htmlspecialchars(ucwords(strtolower($_POST['mae'])));
-        $conjuge = htmlspecialchars(ucwords(strtolower($_POST['conjuge'])));
-        if (empty($_POST['data_nascimento_conjuge'])) {
-            $data_nascimento_conjuge = NULL;
-        } else {
-            $data_nascimento_conjuge = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data_nascimento_conjuge'])));
-        }
-
-        $id_enderecos = $_POST['id_enderecos'];
-        $tipo_endereco = $_POST['tipo_endereco'];
-        $rua = $_POST['rua'];
-        $bairro = $_POST['bairro'];
-        $complemento = $_POST['complemento'];
-        $estado = $_POST['estado'];
-        $cidade = $_POST['cidade'];
-
-        $id_telefones = $_POST['id_telefones'];
-        $tipo_telefone = $_POST['tipo_telefone'];
-        $telefone = $_POST['telefone'];
-
-        $id_emails = $_POST['id_emails'];
-        $email = $_POST['email'];
-
-
-
-
-        if (isset($_POST['laranjeira'])) {
-            $laranjeira = "Sim";
-        } else {
-            $laranjeira = "Não";
-        }
-
 
         try {
 
             $stmt = $pdo->prepare("UPDATE  militares 
-                                                SET  numero_militar =  ?,
-                                                cp =  ?,
-                                                grupo =  ?,
-                                                antiguidade =  ?,
-                                                data_praca =  ?,
+                                                SET  
                                                 nome =  ?,
                                                 nome_completo =  ?,
                                                 data_nascimento =  ?,
                                                 id_cidade =  ?,
                                                 id_estado =  ?,
                                                 idt_militar =  ?,
-                                                rg =  ?,
-                                                orgao_expedidor =  ?,
                                                 cpf =  ?,
-                                                pai =  ?,
-                                                mae =  ?,
-                                                conjuge =  ?,
-                                                data_nascimento_conjuge =  ?,
-                                                laranjeira =  ?,
                                                 id_posto_grad =  ?
                                                 WHERE  id_militar = ?;");
-            $stmt->bindParam(1, $numero_militar, PDO::PARAM_INT);
-            $stmt->bindParam(2, $cp, PDO::PARAM_INT);
-            $stmt->bindParam(3, $grupo, PDO::PARAM_INT);
-            $stmt->bindParam(4, $antiguidade, PDO::PARAM_INT);
-            $stmt->bindParam(5, $data_praca, PDO::PARAM_STR);
-            $stmt->bindParam(6, $nome, PDO::PARAM_STR);
-            $stmt->bindParam(7, $nome_completo, PDO::PARAM_STR);
-            $stmt->bindParam(8, $data_nascimento, PDO::PARAM_STR);
-            $stmt->bindParam(9, $cidade_natal, PDO::PARAM_INT);
-            $stmt->bindParam(10, $estado_natal, PDO::PARAM_INT);
-            $stmt->bindParam(11, $idt_militar, PDO::PARAM_STR);
-            $stmt->bindParam(12, $rg, PDO::PARAM_STR);
-            $stmt->bindParam(13, $orgao_expedidor, PDO::PARAM_STR);
-            $stmt->bindParam(14, $cpf, PDO::PARAM_STR);
-            $stmt->bindParam(15, $pai, PDO::PARAM_STR);
-            $stmt->bindParam(16, $mae, PDO::PARAM_STR);
-            $stmt->bindParam(17, $conjuge, PDO::PARAM_STR);
-            $stmt->bindParam(18, $data_nascimento_conjuge, PDO::PARAM_STR);
-            $stmt->bindParam(19, $laranjeira, PDO::PARAM_STR);
-            $stmt->bindParam(20, $pg, PDO::PARAM_STR);
-            $stmt->bindParam(21, $id_militar, PDO::PARAM_INT);
+            
+            $stmt->bindParam(1, $nome, PDO::PARAM_STR);
+            $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
+            $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
+            $stmt->bindParam(4, $cidade_natal, PDO::PARAM_INT);
+            $stmt->bindParam(5, $estado_natal, PDO::PARAM_INT);
+            $stmt->bindParam(6, $idt_militar, PDO::PARAM_STR);
+            $stmt->bindParam(7, $cpf, PDO::PARAM_STR);
+            $stmt->bindParam(8, $pg, PDO::PARAM_STR);
+            $stmt->bindParam(9, $id_militar, PDO::PARAM_INT);
             $executa = $stmt->execute();
-
-            for ($i = 0; $i < sizeof($tipo_telefone); $i++) {
-                if (empty($id_telefones[$i])) {
-                    if (empty($tipo_telefone[$i]) && empty($telefone[$i])) {
-                        continue;
-                    } else {
-                        $stmt = $pdo->prepare("INSERT INTO telefones
-                                                VALUES(NULL,?,?,?,1);");
-                        $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
-                        $stmt->bindParam(2, htmlspecialchars(ucwords(strtolower($tipo_telefone[$i]))), PDO::PARAM_STR);
-                        $stmt->bindParam(3, $telefone[$i], PDO::PARAM_STR);
-                        $executa = $stmt->execute();
-                    }
-                } else {
-                    $stmt = $pdo->prepare("UPDATE telefones
-                                                        SET id_militar = ?,
-                                                        tipo = ?,
-                                                        numero = ?
-                                                        WHERE id_telefone = ?");
-                    $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
-                    $stmt->bindParam(2, htmlspecialchars(ucwords(strtolower($tipo_telefone[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(3, $telefone[$i], PDO::PARAM_STR);
-                    $stmt->bindParam(4, $id_telefones[$i], PDO::PARAM_INT);
-                    $executa = $stmt->execute();
-                }
-            }
-
-            for ($i = 0; $i < sizeof($tipo_endereco); $i++) {
-                if (empty($id_enderecos[$i])) {
-                    if (empty($tipo_endereco[$i]) && empty($rua[$i]) && empty($bairro[$i]) && empty($cidade[$i]) && empty($estado[$i]) && empty($complemento[$i])) {
-                        continue;
-                    } else {
-                        $stmt = $pdo->prepare("INSERT INTO enderecos
-                                                VALUES(NULL,?,?,?,?,?,?,?,1);");
-                        $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
-                        $stmt->bindParam(2, htmlspecialchars(ucwords(strtolower($tipo_endereco[$i]))), PDO::PARAM_STR);
-                        $stmt->bindParam(3, htmlspecialchars(ucwords(strtolower($rua[$i]))), PDO::PARAM_STR);
-                        $stmt->bindParam(4, htmlspecialchars(ucwords(strtolower($bairro[$i]))), PDO::PARAM_STR);
-                        $stmt->bindParam(5, htmlspecialchars(ucwords(strtolower($cidade[$i]))), PDO::PARAM_STR);
-                        $stmt->bindParam(6, htmlspecialchars(strtoupper($estado[$i])), PDO::PARAM_STR);
-                        $stmt->bindParam(7, htmlspecialchars(ucwords(strtolower($complemento[$i]))), PDO::PARAM_STR);
-                        $executa = $stmt->execute();
-                    }
-                } else {
-                    $stmt = $pdo->prepare("UPDATE enderecos
-                                                        SET tipo = ?,
-                                                        rua = ?,
-                                                        bairro = ?,
-                                                        cidade = ?,
-                                                        estado = ?,
-                                                        complemento = ?
-                                                        WHERE id_endereco = ?");
-                    $stmt->bindParam(1, htmlspecialchars(ucwords(strtolower($tipo_endereco[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(2, htmlspecialchars(ucwords(strtolower($rua[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(3, htmlspecialchars(ucwords(strtolower($bairro[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(4, htmlspecialchars(ucwords(strtolower($cidade[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(5, htmlspecialchars(strtoupper($estado[$i])), PDO::PARAM_STR);
-                    $stmt->bindParam(6, htmlspecialchars(ucwords(strtolower($complemento[$i]))), PDO::PARAM_STR);
-                    $stmt->bindParam(7, $id_enderecos[$i], PDO::PARAM_INT);
-                    $executa = $stmt->execute();
-                }
-            }
-
-            for ($i = 0; $i < sizeof($email); $i++) {
-                if (empty($id_emails[$i])) {
-                    if (empty($email[$i])) {
-                        continue;
-                    } else {
-                        $stmt = $pdo->prepare("INSERT INTO emails
-                                                VALUES(NULL,?,?,1);");
-                        $stmt->bindParam(1, $id_militar, PDO::PARAM_INT);
-                        $stmt->bindParam(2, htmlspecialchars($email[$i]), PDO::PARAM_STR);
-                        $executa = $stmt->execute();
-                    }
-                } else {
-                    $stmt = $pdo->prepare("UPDATE emails
-                                                        SET email = ?
-                                                        WHERE id_email= ?");
-                    $stmt->bindParam(1, htmlspecialchars($email[$i]), PDO::PARAM_STR);
-                    $stmt->bindParam(2, $id_emails[$i], PDO::PARAM_INT);
-                    $executa = $stmt->execute();
-                }
-            }
 
 
             if (!$executa) {
@@ -1952,96 +1702,6 @@ switch ($_POST['enviar']) {
         }
 
         header('Location: /militarescadastrados');
-
-        break;
-
-    case 'apagar_telefone':
-        $id = $_POST['id'];
-
-        try {
-            $stmt = $pdo->prepare("UPDATE telefones
-                                                SET id_status = 2
-                                                WHERE id_telefone = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        break;
-
-    case 'ativar_telefone':
-        $id = $_POST['id'];
-
-        try {
-            $stmt = $pdo->prepare("UPDATE telefones
-                                                SET id_status = 1
-                                                WHERE id_telefone = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        break;
-
-    case 'apagar_endereco':
-        $id = $_POST['id'];
-
-        try {
-            $stmt = $pdo->prepare("UPDATE enderecos
-                                                SET id_status = 2
-                                                WHERE id_endereco = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        break;
-
-    case 'ativar_endereco':
-        $id = $_POST['id'];
-
-        try {
-            $stmt = $pdo->prepare("UPDATE enderecos
-                                                SET id_status = 1
-                                                WHERE id_endereco = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        break;
-
-    case 'apagar_email':
-        $id = $_POST['id'];
-
-        try {
-            $stmt = $pdo->prepare("UPDATE emails
-                                                SET id_status = 2
-                                                WHERE id_email = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-
-        break;
-
-    case 'ativar_email':
-        $id = $_POST['id'];
-
-        try {
-            $stmt = $pdo->prepare("UPDATE emails
-                                                SET id_status = 1
-                                                WHERE id_email = ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
 
         break;
 
