@@ -3,15 +3,16 @@ const express = require('express');
 
 /* iniciar o objeto do express */
 const app = express();
+require('dotenv').config();
 
 const mysql = require('mysql');
 
 const pool  = mysql.createPool({
 	connectionLimit : 100,
-	host     : 'localhost',
-	user     : 'root',
-	password : 'apollo87',
-	database : 'controle'
+	host     : process.env.DB_HOST,
+	user     : process.env.DB_USERNAME,
+	password : process.env.DB_PASSWORD,
+	database : process.env.DB_DATABASE
 });
 
 /* parametrizar a porta de escuta */

@@ -66,3 +66,5 @@ E o config.inc.php:
 define("HOST", "http://" . $endereco);
 
 O Usuário e Senha padrão do sistema é admin
+
+Criar os arquivos .env e env.php conforme modelos

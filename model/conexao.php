@@ -1,6 +1,10 @@
 <?php
-
-$pdo = new PDO("mysql:host=localhost;dbname=controle", "root", "apollo87");
+include $_SERVER['DOCUMENT_ROOT'] . '/env.php';
+$host = $variables['DB_HOST'];
+$db = $variables['DB_DATABASE'];
+$user = $variables['DB_USERNAME'];
+$password = $variables['DB_PASSWORD'];
+$pdo = new PDO("mysql:host=$host;dbname=$db", "$user", "$password");
 if (!$pdo) {
     die("Erro ao criar a conexão");
 }
