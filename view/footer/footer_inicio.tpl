@@ -38,5 +38,39 @@
         });
     });
 </script>
+<script src="{$HOST}:3000/socket.io/socket.io.js"></script>
+    <script>
+        let id = [];
+        const socket = io('{$HOST}:3000'); 
+
+        socket.on('viaturasRodando', function(data){
+            let a = "";
+            if(typeof(data.dados) !== 'undefined'){
+                if(data.dados.length > 0){
+                    $(".teste").remove();
+                    for (i in data.dados){
+                        a += "<tr class='teste'><td>"+data.dados[i].marca+" - "+data.dados[i].modelo+" - "+data.dados[i].placa+"</td>";
+                        a +=  "<td>"+data.dados[i].apelido+"</td>";
+                        a += "<td>"+data.dados[i].nome_destino+"</td>";
+                        a += "<td>"+data.dados[i].odo_saida+"</td>";
+                        a += "<td>"+data.dados[i].acompanhante+"</td>";
+                        a += "<td>"+data.dados[i].data_saida+" - "+data.dados[i].hora_saida+"</td></tr>";
+                    }
+                } else {
+                    $(".teste").remove();
+                    a += "<tr class='teste'><td>"+data.dados.marca+" - "+data.dados.modelo+" - "+data.dados.placa+"</td>";
+                    a +=  "<td>"+data.dados.apelido+"</td>";
+                    a += "<td>"+data.dados.nome_destino+"</td>";
+                    a += "<td>"+data.dados.odo_saida+"</td>";
+                    a += "<td>"+data.dados.acompanhante+"</td>";
+                    a += "<td>"+data.dados.data_saida+" - "+data.dados.hora_saida+"</td></tr>";
+                }
+            } else {
+                $(".teste").remove();
+                a = "<tr class='teste'><td valign='top' colspan='6' class='dataTables_empty'>Nenhum registro encontrado</td></tr>";
+            }
+            $("#tabela").append(a);
+        });
+    </script>
 </body>
 </html>

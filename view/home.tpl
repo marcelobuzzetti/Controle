@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             {foreach $tabela_relacao_vtr as $vtr name='vtr'}
-                <tr>
+                <tr class="teste">
                     <td>{$vtr.marca} - {$vtr.modelo} - {$vtr.placa}</td>
                     <td>{$vtr.apelido}</td>
                     <td>{$vtr.nome_destino}</td>
