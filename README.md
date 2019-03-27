@@ -68,3 +68,5 @@ define("HOST", "http://" . $endereco);
 O Usuário e Senha padrão do sistema é admin
 
 Criar os arquivos .env e env.php conforme modelos
+
+Para que a tabela da página inicial seja atualizada via Socket deve-se permitir o BINLOG no banco de dados
