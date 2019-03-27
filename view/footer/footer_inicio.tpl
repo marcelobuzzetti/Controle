@@ -48,6 +48,7 @@
             if(typeof(data.dados) !== 'undefined'){
                 if(data.dados.length > 0){
                     $(".teste").remove();
+                    $("tbody tr").remove();
                     for (i in data.dados){
                         a += "<tr class='teste'><td>"+data.dados[i].marca+" - "+data.dados[i].modelo+" - "+data.dados[i].placa+"</td>";
                         a +=  "<td>"+data.dados[i].apelido+"</td>";
@@ -58,15 +59,19 @@
                     }
                 } else {
                     $(".teste").remove();
-                    a += "<tr class='teste'><td>"+data.dados.marca+" - "+data.dados.modelo+" - "+data.dados.placa+"</td>";
-                    a +=  "<td>"+data.dados.apelido+"</td>";
-                    a += "<td>"+data.dados.nome_destino+"</td>";
-                    a += "<td>"+data.dados.odo_saida+"</td>";
-                    a += "<td>"+data.dados.acompanhante+"</td>";
-                    a += "<td>"+data.dados.data_saida+" - "+data.dados.hora_saida+"</td></tr>";
+                    $("tbody tr").remove();
+                    if(typeof(data.dados.marca) !== 'undefined'){
+                        a += "<tr class='teste'><td>"+data.dados.marca+" - "+data.dados.modelo+" - "+data.dados.placa+"</td>";
+                        a +=  "<td>"+data.dados.apelido+"</td>";
+                        a += "<td>"+data.dados.nome_destino+"</td>";
+                        a += "<td>"+data.dados.odo_saida+"</td>";
+                        a += "<td>"+data.dados.acompanhante+"</td>";
+                        a += "<td>"+data.dados.data_saida+" - "+data.dados.hora_saida+"</td></tr>";
+                    }
                 }
             } else {
                 $(".teste").remove();
+                $("tbody tr").remove();
                 a = "<tr class='teste'><td valign='top' colspan='6' class='dataTables_empty'>Nenhum registro encontrado</td></tr>";
             }
             $("#tabela").append(a);
