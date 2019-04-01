@@ -8,19 +8,19 @@ Instale o Apache, o Node.js e o Mysql.
 
 Coloque os arquivos do sistema na pasta raiz do apache
 
-/var/www/html     (Local da pasta no Linux)
+        /var/www/html     (Local da pasta no Linux)
 
 No diretório raiz rode o "composer" e o "npm install"
 
 O arquivo do banco de dados esta na pasta sql, com o nome de controle.sql
 
-Site/sql/controle.sql
+        Site/sql/controle.sql
 
 Crie um banco de dados no MySql e importe o controle.sql
 
 Altere o arquivo do configuração do Apache
 
-/etc/apache2/apache2.conf    (Arquivo no Linux)
+        /etc/apache2/apache2.conf    (Arquivo no Linux)
 
 Dentro do arquivo apache2.conf procure por <Directory /var/www/> e altere conforme as linhas abaixo
 
@@ -36,26 +36,26 @@ No Linux é necessário dar permissão a pasta do projeto
 
 O .htaccess está configurado para redirecionar as requisições para HTTPS.
 
-#Redirecionar para https
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+        #Redirecionar para https
+        RewriteCond %{HTTPS} off
+        RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
 E o arquivo config.inc.php utiliza o Server_name do apache e define o protocolo https.
 
-$endereco = $_SERVER['SERVER_NAME'];
+        $endereco = $_SERVER['SERVER_NAME'];
 
-define("HOST", "https://" . $endereco);
+        define("HOST", "https://" . $endereco);
 
 Caso deseje utilizar somente o protocolo http, comente a as linhas do .htaccess e altere o para http no config.inc.php
 Ficando o .htaccess assim
 
-#Redirecionar para https
-#RewriteCond %{HTTPS} off
-#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+        #Redirecionar para https
+        #RewriteCond %{HTTPS} off
+        #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
 E o config.inc.php:
 
-define("HOST", "http://" . $endereco);
+        define("HOST", "http://" . $endereco);
 
 O Usuário e Senha padrão do sistema é admin
 
