@@ -18,14 +18,13 @@ O arquivo do banco de dados esta na pasta sql, com o nome de controle.sql
 
 Crie um banco de dados no MySql e importe o controle.sql
 
-Altere o arquivo do configuração do Apache
-
-        /etc/apache2/apache2.conf    (Arquivo no Linux)
-
 Habilitar o mod_rewrite
 
         a2enmod rewrite (comando linux)
 
+Altere o arquivo do configuração do Apache
+
+        /etc/apache2/apache2.conf    (Arquivo no Linux)
 
 Dentro do arquivo apache2.conf procure por <Directory /var/www/> e altere conforme as linhas abaixo
 
