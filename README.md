@@ -22,6 +22,11 @@ Altere o arquivo do configuração do Apache
 
         /etc/apache2/apache2.conf    (Arquivo no Linux)
 
+Habilitar o mod_rewrite
+
+        a2enmod rewrite (comando linux)
+
+
 Dentro do arquivo apache2.conf procure por <Directory /var/www/> e altere conforme as linhas abaixo
 
         Options Indexes FollowSymLinks
