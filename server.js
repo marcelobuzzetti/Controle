@@ -84,7 +84,7 @@ io.on('connection', function(socket){
 			ORDER BY id_percurso DESC`, function (error, results, fields) {
 				if (error) throw error;
 
-				socket.emit(
+				socket.broadcast.emit(
 					'viaturasRodando', 
 					{dados: results}
 					);
@@ -105,7 +105,7 @@ io.on('connection', function(socket){
 			ORDER BY id_percurso DESC`, function (error, results, fields) {
 				if (error) throw error;
 
-				socket.emit(
+				socket.broadcast.emit(
 					'viaturasRodando', 
 					{dados: results}
 					);
@@ -126,7 +126,7 @@ io.on('connection', function(socket){
 			ORDER BY id_percurso DESC`, function (error, results, fields) {
 				if (error) throw error;
 
-				socket.emit(
+				socket.broadcast.emit(
 					'viaturasRodando', 
 					{dados: results}
 					);
