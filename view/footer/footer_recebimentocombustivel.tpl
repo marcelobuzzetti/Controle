@@ -6,6 +6,7 @@
 <script src="{$HOST}/libs/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/dataTables.responsive.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+<script src="{$HOST}/libs/js/select2.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('#recebimento_combustivel').DataTable({

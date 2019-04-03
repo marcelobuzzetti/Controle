@@ -12,6 +12,7 @@
         <link href="{$HOST}/libs/css/estilo.min.css" rel="stylesheet" type="text/css"/>
         <link href="{$HOST}/libs/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="{$HOST}/libs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="{$HOST}/libs/css/select2.min.css" rel="stylesheet" type="text/css"/> 
         <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <![endif]-->

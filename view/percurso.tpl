@@ -69,7 +69,7 @@
     <form autocomplete="off" action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Viatura - Placa</label>
-            <select class="form-control" name="viatura" id="viatura" required="required" tabindex="1">
+            <select class="js-example-responsive custom-select form-control " name="viatura" id="viatura" required="required" tabindex="1">
                 <option value='' disabled selected>Selecione a Viatura</option>
                 {foreach $relacao_viaturas as $viatura}
                     <option value={$viatura.id_viatura}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="motorista">Motorista</label>
-            <select class="form-control" name="motorista" id="motorista" required="required" tabindex="2">
+            <select class="form-control js-example-responsive custom-select " name="motorista" id="motorista" required="required" tabindex="2">
                 <option value='' class="Selecione" disabled selected>Selecione a Viatura</option>
             </select>
         </div>
