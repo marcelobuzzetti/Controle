@@ -45,7 +45,7 @@
  <script src="{$HOST}:3000/socket.io/socket.io.js"></script>
     <script>
         let id = [];
-        const socket = io('{$HOST}:3000');
+        const socket = io('{$HOST}:3000',  { transports: ['websocket'] });
 
         $('#rfid').change( function(){
             if($('#rfid').val().length == 10) {

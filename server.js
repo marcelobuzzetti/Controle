@@ -36,6 +36,8 @@ const io = require('socket.io').listen(server);
 
 app.set('io', io);
 
+io.set('transports', ['websocket']);
+
 /* Criar a conexao por websocket */
 
 io.on('connection', function(socket){
