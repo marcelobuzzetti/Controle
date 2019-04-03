@@ -41,7 +41,7 @@ io.set('transports', ['websocket']);
 /* Criar a conexao por websocket */
 
 io.on('connection', function(socket){
-	/*console.log('Usuário conectou');
+/*	console.log('Usuário conectou');
 
 	socket.on('disconnect', function(){
 		console.log('Usuário desconectou');
@@ -84,11 +84,6 @@ io.on('connection', function(socket){
 			ORDER BY id_percurso DESC`, function (error, results, fields) {
 				if (error) throw error;
 
-				socket.emit(
-					'viaturasRodando', 
-					{dados: results}
-					);
-
 				socket.broadcast.emit(
 					'viaturasRodando', 
 					{dados: results}
@@ -109,11 +104,6 @@ io.on('connection', function(socket){
 			AND percursos.id_destino = destinos.id_destino
 			ORDER BY id_percurso DESC`, function (error, results, fields) {
 				if (error) throw error;
-
-				socket.emit(
-					'viaturasRodando', 
-					{dados: results}
-					);
 				
 				socket.broadcast.emit(
 					'viaturasRodando', 
@@ -135,11 +125,6 @@ io.on('connection', function(socket){
 			AND percursos.id_destino = destinos.id_destino
 			ORDER BY id_percurso DESC`, function (error, results, fields) {
 				if (error) throw error;
-
-				socket.emit(
-					'viaturasRodando', 
-					{dados: results}
-					);
 				
 				socket.broadcast.emit(
 					'viaturasRodando', 
