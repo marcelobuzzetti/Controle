@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include 'conexao.php';
 
 $combustivel = $_GET['combustivel'];
 $tp = $_GET['tp'];
