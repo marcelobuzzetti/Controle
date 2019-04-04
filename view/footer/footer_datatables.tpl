@@ -68,7 +68,7 @@
                                 if ($("#"+data.rfid+"").attr('id') == data.rfid) {
                                     $("#"+data.rfid+"").focus();
                                 } else {
-                                    alert('Viatura rodando ou Inexistente');
+                                    alert('Viatura Inexistente');
                                     window.location.reload();
                                 }
                             break;
