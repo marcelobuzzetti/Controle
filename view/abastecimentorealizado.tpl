@@ -79,7 +79,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                {if $perfil == 1}
+                {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
                 {/if}
@@ -97,7 +97,7 @@
                     <td>{$tbl.qnt}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.hora}</td>
-                    {if $perfil == 1}
+                    {if $perfil == 1 || $perfil == 4}
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_abastecimento}"><span class='glyphicon glyphicon-remove-sign'></button></td>
                     <td> <form action='abastecimento' method='post'>
                             <input type='hidden' id='{$tbl.id_abastecimento}' value='{$tbl.id_abastecimento}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst'/><span class='glyphicon glyphicon-refresh'/></form></td>
@@ -117,7 +117,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                {if $perfil == 1}
+                {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
                 {/if}
@@ -134,7 +134,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                {if $perfil == 1}
+                {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
                 {/if}
@@ -150,7 +150,7 @@
                     <td>{$tbl.qnt}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.hora}</td>
-                    {if $perfil == 1}
+                    {if $perfil == 1 || $perfil == 4}
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalespecial" data-whatever="{$tbl.id_abastecimento_especial}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td> <form action='abastecimentoespecial' method='post'>
                             <input type='hidden' id='{$tbl.id_abastecimento_especial}' value='{$tbl.id_abastecimento_especial}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_abst_espcial'/><span class='glyphicon glyphicon-refresh'/></form></td>
@@ -168,7 +168,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
-                {if $perfil == 1}
+                {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
                 {/if}
