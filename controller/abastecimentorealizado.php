@@ -17,7 +17,9 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
+    $perfil = $_SESSION['perfil'];
 
+    $smarty->assign('perfil', $perfil);
     $smarty->assign('titulo', 'Abastecimentos Realizados');
     $smarty->assign('tabela_relacao_abastecimentos', $tabela_relacao_abastecimentos);
     $smarty->assign('tabela_relacao_abastecimentos_especiais', $tabela_relacao_abastecimentos_especiais);
