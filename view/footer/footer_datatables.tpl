@@ -52,16 +52,37 @@
         });
 
         socket.on('msgParaCliente', function(data){
-            console.log(data);
-            $("#viatura_abastecimento").val(data.rfid).change();
-            if ($("#viatura_abastecimento").val() == data.rfid) {
-                $("#viatura_abastecimento").attr('readonly','readonly');
-                $("#nrvale").focus();
+            if(data.rfid === 0){ 
+                alert('Viatura não cadastrada');
+                $('#rfid').removeAttr('disabled').val('').focus(); 
+                $('#rfid').focus(); 
+            } else {
+                if($("#viatura option[value="+data.rfid+"]").length != 0){
+                    $("#viatura").val(data.rfid).change();
+                    $("#viatura").attr('readonly','readonly');
+                    $("#motorista").focus();
                 } else {
-                    alert('Viatura Inexistente');
-                    window.location.reload();
+                    $('#rfid').removeAttr('disabled').val('');  
+                    switch($(".tabela").css("display")){
+                            case "none":
+                                if ($("#"+data.rfid+"").attr('id') == data.rfid) {
+                                    $("#"+data.rfid+"").focus();
+                                } else {
+                                    alert('Viatura rodando ou Inexistente');
+                                    window.location.reload();
+                                }
+                            break;
+                            case "block":
+                                if ($("#"+data.rfid+"_").attr('id') == (data.rfid+"_")) {
+                                    $("#"+data.rfid+"_").focus();
+                                } else {
+                                    alert('Viatura rodando ou Inexistente');
+                                    window.location.reload();
+                                }
+                            break;
+                        }
                 }
-
+            }
         });
     </script>
 </body>
