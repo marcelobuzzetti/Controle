@@ -7,6 +7,18 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # e também não é um diretório (-d)
 RewriteCond %{REQUEST_FILENAME} !-d
 
+
+#Proibir o acesso ao .env
+<Files .env>
+order allow,deny
+Deny from all
+</Files>
+
+<Files *.json>
+order allow,deny
+Deny from all
+</Files>
+
 #Proibindo Acesso aos diretorios
 Options -Indexes
 
