@@ -14,7 +14,7 @@ class Abastecimento {
                                     AND viaturas.id_modelo = modelos.id_modelo
                                     AND viaturas.id_marca = marcas.id_marca
                                     AND abastecimentos.id_usuario = usuarios.id_usuario
-                                    ORDER BY data DESC, hora DESC;");
+                                    ORDER BY id_abastecimento DESC;");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -37,7 +37,7 @@ class Abastecimento {
                                     WHERE ae.id_combustivel = combustiveis.id_combustivel
                                     AND ae.id_tipo_combustivel = tipos_combustiveis.id_tipo_combustivel
                                     AND usuarios.id_usuario = ae.id_usuario
-                                    ORDER BY data DESC, hora DESC;");
+                                    ORDER BY id_abastecimento_especial DESC;");
             $executa = $stmt->execute();
 
             if ($executa) {
