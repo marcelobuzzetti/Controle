@@ -79,6 +79,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
+                <td>Usuário</td>
                 {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
@@ -97,6 +98,7 @@
                     <td>{$tbl.qnt}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.hora}</td>
+                    <td>{$tbl.nome}</td>
                     {if $perfil == 1 || $perfil == 4}
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_abastecimento}"><span class='glyphicon glyphicon-remove-sign'></button></td>
                     <td> <form action='abastecimento' method='post'>
@@ -117,6 +119,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
+                <td>Usuário</td>
                 {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
@@ -134,6 +137,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
+                <td>Usuário</td>
                 {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
@@ -150,6 +154,7 @@
                     <td>{$tbl.qnt}</td>
                     <td>{$tbl.data}</td>
                     <td>{$tbl.hora}</td>
+                    <td>{$tbl.nome}</td>
                     {if $perfil == 1 || $perfil == 4}
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalespecial" data-whatever="{$tbl.id_abastecimento_especial}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td> <form action='abastecimentoespecial' method='post'>
@@ -168,6 +173,7 @@
                 <td>Quantidade</td>
                 <td>Data</td>
                 <td>Hora</td>
+                <td>Usuário</td>
                 {if $perfil == 1 || $perfil == 4}
                 <td>Apagar</td>
                 <td>Atualizar</td>
