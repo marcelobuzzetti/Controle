@@ -9,6 +9,7 @@
 <script src="{$HOST}/libs/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
 <script src="{$HOST}/libs/js/select2.min.js" type="text/javascript"></script>
 <script>
+    $('.js-example-responsive').select2();
     $(document).ready(function () {
         $('.table').DataTable({
             fixedHeader: {
