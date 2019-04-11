@@ -28,6 +28,7 @@
             <label for="senha">Repete Senha Nova</label>
             <input class="form-control"  type="password" id="senha" name="senha" placeholder='Digite a Senha' required maxlength="20" tabindex="2"/>
         </div>
+        {if $perfil === 1}
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="perfil">Perfil</label>
             <select class="form-control" id="perfil" name="perfil" required tabindex="3" disabled>
@@ -37,6 +38,7 @@
                 {/foreach}
             </select>
         </div>
+        {/if}
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="apelido">Apelido</label>
             <input class="form-control" type="text" name="apelido" id="apelido" value='{$apelido}' required placeholder="Como quer ser chamado" maxlength="20" tabindex="4"/>
