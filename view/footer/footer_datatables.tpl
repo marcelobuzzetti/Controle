@@ -38,7 +38,7 @@
 <script src="{$HOST}:3000/socket.io/socket.io.js"></script>
     <script>
         let id = [];
-        const socket = io('{$HOST}:3000', { transports: ['websocket'] }); 
+        const socket = io('{$HOST}:3000',  { transports: ['websocket'] });
 
         $('#rfid').change( function(){
             if($('#rfid').val().length == 10) {
@@ -58,10 +58,9 @@
                 $('#rfid').removeAttr('disabled').val('').focus(); 
                 $('#rfid').focus(); 
             } else {
-                if($("#viatura option[value="+data.rfid+"]").length != 0){
-                    $("#viatura").val(data.rfid).change();
-                    $("#viatura").attr('readonly','readonly');
-                    $("#motorista").focus();
+                if($("#viatura_abastecimento option[value="+data.rfid+"]").length != 0){
+                    $("#viatura_abastecimento").val(data.rfid).change();
+                    $("#viatura_abastecimento").attr('readonly','readonly');
                 } else {
                     $('#rfid').removeAttr('disabled').val('');  
                     switch($(".tabela").css("display")){
@@ -69,7 +68,7 @@
                                 if ($("#"+data.rfid+"").attr('id') == data.rfid) {
                                     $("#"+data.rfid+"").focus();
                                 } else {
-                                    alert('Viatura Inexistente');
+                                    alert('Viatura rodando ou Inexistente');
                                     window.location.reload();
                                 }
                             break;
@@ -77,7 +76,7 @@
                                 if ($("#"+data.rfid+"_").attr('id') == (data.rfid+"_")) {
                                     $("#"+data.rfid+"_").focus();
                                 } else {
-                                    alert('Viatura Inexistente');
+                                    alert('Viatura rodando ou Inexistente');
                                     window.location.reload();
                                 }
                             break;
