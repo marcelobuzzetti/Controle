@@ -1,6 +1,6 @@
 <div class='container'>
     <div class="jumbotron">
-        <h1>{$titulo}</h1>
+        <h1>{$titulo} {$login}</h1>
     </div>
     <form autocomplete="off" action="executar" method="post">
         <div class=" form-group col-xs-12 col-sm-6 col-md-3" >
