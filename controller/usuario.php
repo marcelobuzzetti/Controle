@@ -35,7 +35,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1)) {
         $smarty->assign('relacao_militares', $relacao_militares);
         $smarty->assign('relacao_usuarios', $relacao_usuarios);
         $smarty->assign('relacao_perfis', $relacao_perfis);
-        $smarty->assign('login', $_SESSION['usuario']);
+        $smarty->assign('login', $_SESSION['login']);
         if (!empty($_SESSION['cadastrado'])) {
             $smarty->assign('cadastrado', $_SESSION['cadastrado']);
         } else {

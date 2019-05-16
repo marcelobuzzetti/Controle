@@ -355,7 +355,7 @@ ALTER TABLE  usuarios
   ADD CONSTRAINT FK_militar1 FOREIGN KEY (id_militar) REFERENCES militares (id_militar),
   ADD CONSTRAINT FK_status4 FOREIGN KEY (id_status) REFERENCES status (id_status),
   ADD CONSTRAINT FK_perfil FOREIGN KEY (id_perfil) REFERENCES perfis (id_perfil),
-  ADD CONSTRAINT FK_usuario10 FOREIGN KEY (usuario) REFERENCES status (id_status);
+  ADD CONSTRAINT FK_usuario10 FOREIGN KEY (usuario) REFERENCES usuarios (id_usuario);
 
 ALTER TABLE  marcas
   ADD CONSTRAINT FK_status5 FOREIGN KEY (id_status) REFERENCES status (id_status);

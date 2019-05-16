@@ -1,8 +1,8 @@
 <div class='container'>
     <div class="jumbotron">
-        <h1>{$titulo} {$login}</h1>
+        <h1>{$titulo}</h1>
     </div>
-    <form autocomplete="off" action="executar" method="post">
+    <form class="b" action="executar" method="post">
         <div class=" form-group col-xs-12 col-sm-6 col-md-3" >
             <label for="militar">Militar</label>
             <select class="form-control disabled" id="militar" name="militar" required tabindex="1" {$update}>
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="login">Login</label>
-            <input autofocus class="form-control login" type="text" id="login" name="login" {if $login1 != NULL} value='{$login1}' {/if} placeholder='Digite o Login' required maxlength="20" tabindex="1"/>  
+            <input autofocus class="form-control login" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>  
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="senha">Senha</label>
