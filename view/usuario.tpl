@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
-    <form class="b" action="executar" method="post">
+    <form autocomplete="off" action="executar" method="post">
         <div class=" form-group col-xs-12 col-sm-6 col-md-3" >
             <label for="militar">Militar</label>
             <select class="form-control disabled" id="militar" name="militar" required tabindex="1" {$update}>
