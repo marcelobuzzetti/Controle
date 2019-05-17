@@ -88,7 +88,7 @@ class Viatura {
                                                     AND id_viatura NOT IN (SELECT id_viatura 
                                                                                           FROM percursos 
                                                                                           WHERE data_retorno IS NULL)
-                                                    AND id_situacao != 2
+                                                    AND id_situacao = 1
                                                     AND viaturas.id_status != 2
                                                     ORDER BY marcas.descricao, modelos.descricao");
             $executa = $stmt->execute();
