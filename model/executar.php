@@ -145,7 +145,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO viaturas
-                                                    VALUES(NULL,?,?,?,?,?,?,?,?,?,1,?,?)");
+                                                    VALUES(NULL,?,?,?,?,?,?,?,?,1,?,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
