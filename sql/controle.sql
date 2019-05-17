@@ -417,7 +417,8 @@ INSERT INTO tipos_viaturas (id_tipo_viatura, descricao) VALUES
 
 INSERT INTO situacao (id_situacao, disponibilidade) VALUES
 (1, 'Disponível'),
-(2, 'Indisponível');
+(2, 'Indisponível'),
+(3, 'Cautelada');
 
 INSERT INTO habilitacoes (id_habilitacao, categoria, ordem) VALUES
 (1, 'A', 1),

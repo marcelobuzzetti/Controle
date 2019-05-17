@@ -88,7 +88,7 @@
             </thead>
             <tbody>
                 {foreach $relacao_viaturas as $tbl name='viaturas'}
-                    <tr {if {$tbl.disponibilidade} eq "Indisponível"} style="background: rgba(255, 0, 0, 0.3);" {/if}>
+                    <tr {if {$tbl.disponibilidade} eq "Indisponível"} style="background: rgba(255, 0, 0, 0.3);" {/if} {if {$tbl.disponibilidade} eq "Cautelada"} style="background: rgba(254, 241, 96, 1);" {/if}>
                         <td>{$tbl.marca}</td>
                         <td>{$tbl.modelo}</td>
                         <td>{$tbl.tipo_viatura}</td>
