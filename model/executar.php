@@ -145,7 +145,7 @@ switch ($_POST['enviar']) {
 
         try {
             $stmt = $pdo->prepare("INSERT INTO viaturas
-                                                    VALUES(NULL,?,?,?,?,?,?,?,?,$usuario,1,?,?)");
+                                                    VALUES(NULL,?,?,?,?,?,?,?,?,?,1,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
@@ -154,8 +154,9 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(6, $rfid, PDO::PARAM_INT);
             $stmt->bindParam(7, $tipo_viatura, PDO::PARAM_INT);
             $stmt->bindParam(8, $situacao, PDO::PARAM_INT);
-            $stmt->bindParam(9, $habilitacao, PDO::PARAM_INT);
-            $stmt->bindParam(10, $combustivel, PDO::PARAM_INT);
+            $stmt->bindParam(9, $usuario, PDO::PARAM_INT);
+            $stmt->bindParam(10, $habilitacao, PDO::PARAM_INT);
+            $stmt->bindParam(11, $combustivel, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
