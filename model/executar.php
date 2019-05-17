@@ -152,7 +152,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
             $stmt->bindParam(5, $ano, PDO::PARAM_INT);
             $stmt->bindParam(6, $tipo_viatura, PDO::PARAM_INT);
-            $stmt->bindParam(7, $rfid, PDO::PARAM_INT);            
+            $stmt->bindParam(7, $rfid, PDO::PARAM_STR);            
             $stmt->bindParam(8, $situacao, PDO::PARAM_INT);
             $stmt->bindParam(9, $usuario, PDO::PARAM_INT);
             $stmt->bindParam(10, $habilitacao, PDO::PARAM_INT);
