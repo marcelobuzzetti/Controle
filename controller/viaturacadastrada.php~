@@ -7,11 +7,11 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
     header('Location: ' . constant("HOST") . '/percurso');
 } else {
 
-    /*$marcas = new Marca();
+    $marcas = new Marca();
     $relacao_marcas = $marcas->listarMarcas();
 
     $situacao = new Situacao();
-    $relacao_situacao = $situacao->listarSituacao();*/
+    $relacao_situacao = $situacao->listarSituacao();
 
     $viaturas = new Viatura();
     $relacao_viaturas = $viaturas->listarViaturasCadastradas();
