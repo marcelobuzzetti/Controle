@@ -73,11 +73,11 @@
                 <td>Nº Vale</td>
                 <td>Motorista</td>
                 <td>Viatura</td>
-                <td>Odômetro</td>
+                <td>Data</td>
                 <td>Combustível</td>
                 <td>Tipo</td>
                 <td>Quantidade</td>
-                <td>Data</td>
+                <td>Odômetro</td>
                 <td>Hora</td>
                 <td>Usuário</td>
                 {if $perfil == 1 || $perfil == 4}
@@ -92,11 +92,11 @@
                     <td>{$tbl.nrvale}</td>
                     <td>{$tbl.apelido}</td>
                     <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
-                    <td>{$tbl.odometro}</td>
+                    <td>{$tbl.data}</td>
                     <td>{$tbl.combustivel}</td>
                     <td>{$tbl.tipo}</td>
                     <td>{$tbl.qnt}</td>
-                    <td>{$tbl.data}</td>
+                    <td>{$tbl.odometro}</td>
                     <td>{$tbl.hora}</td>
                     <td>{$tbl.nome}</td>
                     {if $perfil == 1 || $perfil == 4}
@@ -113,11 +113,11 @@
                 <td>Nº Vale</td>
                 <td>Motorista</td>
                 <td>Viatura</td>
-                <td>Odômetro</td>
+                <td>Data</td>
                 <td>Combustível</td>
                 <td>Tipo</td>
                 <td>Quantidade</td>
-                <td>Data</td>
+                <td>Odômetro</td>
                 <td>Hora</td>
                 <td>Usuário</td>
                 {if $perfil == 1 || $perfil == 4}
