@@ -67,6 +67,7 @@ RewriteRule ^viaturascadastradas/?$ controller/viaturacadastrada.php
 RewriteRule ^viaturasindisponiveis/?$ controller/relatoriodisponibilidadeviatura.php
 
 RewriteRule ^json/?$ model/listaMilitares.php
+RewriteRule ^apicombustivel/?$ model/listaCombustivel.php
 
 #Acesso ao Model
 RewriteRule ^conexao/?$ model/conexao.php
