@@ -62,10 +62,10 @@
     <div class="jumbotron">
         <h1>Controle de Saída de Viatura</h1>     
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+    <!--<div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="RFID">RFID</label>
             <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" autofocus tabindex="-1"/>            
-    </div>
+    </div>-->
     <form autocomplete="off" action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Viatura - Placa</label>
