@@ -26,7 +26,7 @@
     "mysql-events": "0.0.11",
     "node-telegram-bot-api": "^0.40.0",
     "nodemon": "^1.18.10",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "toastr": "^2.1.4"
   }
 }
