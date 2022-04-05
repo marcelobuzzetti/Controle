@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Status {
 
     public function listarStatus() {

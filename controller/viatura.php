@@ -2,9 +2,9 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $marcas = new Marca();
@@ -65,16 +65,18 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $update = 1;
 
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, v.id_marca, v.rfid, v.id_modelo, placa, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, v.id_habilitacao, v.id_tipo_viatura, v.id_combustivel, v.ano, v.id_situacao
-                                                FROM percursos p
-                                                RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura AND v.id_status != 2
-                                                INNER JOIN marcas m ON m.id_marca = v.id_marca
-                                                INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
-                                                INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
-                                                INNER JOIN situacao s ON s.id_situacao = v.id_situacao AND v.id_viatura = $id
-                                                GROUP BY v.id_viatura
-                                                ORDER BY v.id_viatura");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $stmt = $pdo->prepare("SELECT v.id_viatura, v.id_marca, v.rfid, v.id_modelo, placa, 
+            IFNULL( GREATEST( MAX( p.odo_retorno ) , 
+            MAX( p.odo_saida ) ) , v.odometro ) AS odometro, v.id_habilitacao, v.id_tipo_viatura, v.id_combustivel, 
+            v.ano, v.id_situacao
+            FROM percursos p
+            RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura
+            INNER JOIN marcas m ON m.id_marca = v.id_marca
+            INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
+            INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
+            INNER JOIN situacao s ON s.id_situacao = v.id_situacao AND v.id_viatura = $id
+            GROUP BY v.id_viatura
+            ORDER BY v.id_viatura");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -90,6 +92,10 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
                 $odometro = $dados_viaturas->odometro;
                 $ano = $dados_viaturas->ano;
                 $situacao = $dados_viaturas->id_situacao;
+                /*$motivo = $dados_viaturas->motivo;
+                $data = $dados_viaturas->data;
+                $odo_ind = $dados_viaturas->odo_ind;
+                $id_status = $dados_viaturas->id_status;*/
             } else {
                 print("<script language=JavaScript>
                        alert('Não foi possível criar tabela.');
@@ -114,6 +120,10 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $smarty->assign('placa', $placa);
         $smarty->assign('odometro', $odometro);
         $smarty->assign('rfid', $rfid);
+        /*$smarty->assign('motivo', $motivo);
+        $smarty->assign('data', $data);
+        $smarty->assign('odo_ind', $odo_ind);
+        $smarty->assign('id_status', $id_status);*/
         $smarty->assign('relacao_marcas', $relacao_marcas);
         $smarty->assign('relacao_modelos', $relacao_modelos);
         $smarty->assign('relacao_situacao', $relacao_situacao);

@@ -1,5 +1,7 @@
 <?php
 
+
+
 class CombustivelExistencia {
 
     public function listarCombustiveisExistentes() {
@@ -10,8 +12,7 @@ class CombustivelExistencia {
                                                     WHERE cr.combustivel = ca.combustivel
                                                     AND cr.tipo_combustivel = ca.tipo_combustivel
                                                     AND ce.combustivel = ca.combustivel
-                                                    AND ce.tipo_combustivel = ca.tipo_combustivel
-                                                    GROUP BY cr.combustivel, cr.tipo_combustivel");
+                                                    AND ce.tipo_combustivel = ca.tipo_combustivel");
             $executa = $stmt->execute();
 
             if ($executa) {

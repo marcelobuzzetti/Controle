@@ -1,5 +1,7 @@
 <?php
 
+
+
 class TipoCombustivel {
 
     public function listarTiposCombustiveis() {

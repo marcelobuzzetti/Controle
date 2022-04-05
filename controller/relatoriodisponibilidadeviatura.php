@@ -2,10 +2,10 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $menus = new Menu();
@@ -19,7 +19,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
     $c = '';
     foreach ($relacao_viaturas as $value) {
         $i = 0;
-        $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '"' . ',';
+        $a .= '"' . $value['marca'] . '-' . $value['modelo'] .  '-' .$value['placa']. '"' . ',';
         $b .= $value['qnt'] . ',';
         foreach ($relacao_viaturas1 as $value1) {
             if ($value['marca'] . " " . $value['modelo'] == $value1['marca'] . " " . $value1['modelo']) {

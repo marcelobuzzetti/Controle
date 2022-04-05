@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Marca {
 
     public function listarMarcas() {

@@ -1,6 +1,21 @@
 <?php
+//set cookie lifetime for 100 days (60sec * 60mins * 24hours * 100days)
+/* ini_set('session.cookie_lifetime', 60 * 60 * 24 * 100);
+ini_set('session.gc_maxlifetime', 60 * 60 * 24 * 100); */
+//maybe you want to precise the save path as well
+//ini_set('session.save_path', '');
 
-session_start();
+/* define o limitador de cache para 'private' */
+
+/* session_cache_limiter('private');
+$cache_limiter = session_cache_limiter(); */
+
+/* define o prazo do cache em 30 minutos */
+/* session_cache_expire(60 * 60 * 24 * 100);
+$cache_expire = session_cache_expire(); */
+
+//then start the session
+
 $_SESSION['login'] = '';
 $_SESSION['perfil'] = '';
 
@@ -9,19 +24,19 @@ class Login {
     function Acesso() {
         if (isset($_SESSION['login']) == TRUE) {
             if ($_SESSION['perfil'] == 1) {
-                header('Location: ' . constant("HOST") . '/percurso');
+                header('Location: /percurso');
             }
             if ($_SESSION['perfil'] == 2) {
-                header('Location: ' . constant("HOST") . '/percurso');
+                header('Location: /percurso');
             }
             if ($_SESSION['perfil'] == 3) {
-                header('Location: ' . constant("HOST") . '/viaturascadastradas');
+                header('Location: /viaturascadastradas');
             }
             if ($_SESSION['perfil'] == 4) {
-                header('Location: ' . constant("HOST") . '/relatorio');
+                header('Location: /relatorio');
             }
             if ($_SESSION['perfil'] == 5) {
-                header('Location: ' . constant("HOST") . '/militarescadastrados');
+                header('Location: /militarescadastrados');
             }
         } else {
             if ($_SESSION['erro'] === 1) {

@@ -2,9 +2,9 @@
 
 include '../include/config.inc.php';
 $id = $_POST['id'];
-session_start();
+
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5) || isset($id) == FALSE) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $motoristas = new Motorista();

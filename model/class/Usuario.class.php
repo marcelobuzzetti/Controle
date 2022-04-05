@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Usuario {
 
     public function listarUsuario($login) {

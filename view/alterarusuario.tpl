@@ -3,15 +3,6 @@
         <h1>{$titulo}</h1>
     </div>
     <form id="formulario" action="executar" method="post">
-        <div class=" form-group col-xs-12 col-sm-6 col-md-3" >
-            <label for="militar">Militar</label>
-            <select class="form-control a" id="militar" name="militar" required tabindex="1" disabled>
-                <option value='' disabled selected>Selecione o Militar</option>
-                {foreach $relacao_militares as $militares}
-                    <option value={$militares.id_militar} {if {$militares.id_militar} == {$militar}}selected{/if}>{$militares.sigla} {$militares.nome} </option>
-                {/foreach}
-            </select>
-        </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="login">Login</label>
             <input autofocus class="form-control login" type="text" id="login" name="login" value='{$login1}' placeholder='Digite o Login' required maxlength="20" tabindex="1"/>  

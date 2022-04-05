@@ -23,10 +23,10 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
-    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+    <!--<div class="form-group col-xs-12 col-sm-12 col-md-12">
             <label for="RFID">RFID</label>
             <input class="form-control" type="text" id="rfid" name="rfid" placeholder="RFID" autofocus/>            
-    </div>
+    </div>-->
     <form action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Viatura</label>
@@ -81,7 +81,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="qnt">Quantidade</label>
-            <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="1000" step="1" value="{$qnt}" tabindex="7"/>
+            <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" step="1" value="{$qnt}" tabindex="7"/>
         </div>
         <span name="alerta" id="alerta"></span>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">

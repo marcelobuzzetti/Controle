@@ -1,5 +1,7 @@
 <?php
 
+
+
 class EstadoCidade {
 
     public function listarEstado() {

@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 if (isset($_SESSION['login'])) {
     unset($_SESSION['login']);
@@ -8,5 +8,5 @@ if (isset($_SESSION['login'])) {
     unset($_SESSION['temposessao']);
 }
 session_unset();
-header('Location: ../');
+header('Location: /');
 ?>

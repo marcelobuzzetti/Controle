@@ -2,10 +2,10 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 4)) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $rcb_combustiveis = new RecebimentoCombustivel();

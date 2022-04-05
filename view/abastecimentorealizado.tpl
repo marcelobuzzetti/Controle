@@ -67,6 +67,7 @@
     <div class="jumbotron">
         <h1>{$titulo}</h1>
     </div>
+    <legend>Abastecimento de Vtr</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -127,6 +128,8 @@
             </tr>
         </tfoot>
     </table>
+    <hr>
+    <legend>Vales Especiais</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>

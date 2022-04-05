@@ -354,6 +354,19 @@ $(function () {
         prevText: 'Anterior'
     });
 
+    $('#data_ind').datepicker({
+        showButtonPanel: true,
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        currentText: 'Hoje',
+        nextText: 'Pr&oacute;ximo',
+        prevText: 'Anterior'
+    });
+
     /*Coloca datepicker nas datas*/
 
     /*Completa cidades*/
@@ -381,8 +394,8 @@ $(function () {
 
     /*Completa o motorista e o odometro em percurso*/
     $('#viatura').change(function () {
-        $('#motorista').load('../model/listaMotoristas.php?viatura=' + $('#viatura').val());
-        $('#odo_saida').load('../model/odometro.php?viatura=' + $('#viatura').val());
+        $('#motorista').load('../model/listaMotoristas.php?viatura=' + $('#viatura').val() + '&token=' + $('input#csrf').val());
+        $('#odo_saida').load('../model/odometro.php?viatura=' + $('#viatura').val() + '&token=' + $('input#csrf').val());
     });
     $('#viatura_abastecimento').change(function () {
         $('#odometro').load('../model/odometroAbastecimento.php?viatura=' + $('#viatura_abastecimento').val());
@@ -554,7 +567,7 @@ $(function () {
         var nome = button.data("nome")
         var viatura = button.data("vtr")
         var modal = $(this)
-        modal.find('.modal-footer input').val(recipient)
+        modal.find('.modal-footer input.1').val(recipient)
         modal.find('.nome input').val(nome)
         modal.find('.destino input').val(destino)
         modal.find('.vtr input').val(viatura)
@@ -568,6 +581,21 @@ $(function () {
         modal.find('.modal-footer input').val(recipient)
     });
     /*Modal dos abastecimentos*/
+
+    /*Mostra Painel Disponibilidade
+    $('#situacao').change(function () {
+        if($('#situacao').val() == 2){
+            $("#indisponibilidade").show();
+            $("#motivo").attr('required','required');
+            $("#data").attr('required','required');
+
+        } else {
+            $("#indisponibilidade").hide();
+            $("#motivo").removeAttr('required');
+            $("#data").removeAttr('required');
+        }
+    });
+    /*Mostra Painel Disponibilidade*/
 });
 
 

@@ -1,9 +1,32 @@
 <?php
+include '../include/config.inc.php';
+
+use Rakit\Validation\Validator;
+
+$validator = new Validator;
 
 include 'conexao.php';
 
-session_start();
-$usuario = $_SESSION['usuario'];
+if (!empty($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+} else {
+    header('Location: /');
+}
+
+if (empty($_POST)) {
+    $_POST = json_decode(file_get_contents("php://input"), true);
+}
+
+function setResponseCode($code, $reason = null)
+{
+    $code = intval($code);
+
+    if (version_compare(phpversion(), '5.4', '>') && is_null($reason))
+        http_response_code($code);
+    else
+        header(trim("HTTP/1.0 $code $reason"));
+}
+
 
 switch ($_POST['enviar']) {
 
@@ -11,44 +34,259 @@ switch ($_POST['enviar']) {
         $id = $_POST['id'];
         $odo_retorno = $_POST['odo_retorno'];
 
-        try {
-            $stmt = $pdo->prepare("UPDATE percursos 
-                                                SET odo_retorno= ?, data_retorno=NOW(), hora_retorno=NOW() 
-                                                WHERE id_percurso= ?");
-            $stmt->bindParam(1, $odo_retorno, PDO::PARAM_STR);
-            $stmt->bindParam(2, $id, PDO::PARAM_INT);
-            $executa = $stmt->execute();
+        $validation = $validator->make($_POST + $_FILES, [
+            'id'                  => 'required|integer',
+            'odo_retorno'      => 'required|numeric',
+        ]);
 
-            if (!$executa) {
-                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+        // then validate
+        $validation->validate();
+
+        if ($validation->fails()) {
+            setResponseCode(400, "Dados Inválidos");
+        } else {
+
+            try {
+                $stmt = $pdo->prepare("SELECT COUNT(*) AS total FROM percursos WHERE id_percurso = ? AND status IS NULL");
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                $stmt->execute();
+            } catch (PDOException $e) {
+                setResponseCode(400, $e);
+            }
+
+            $resultado = $stmt->fetch();
+
+            if ($resultado['total'] > 0) {
+
+                try {
+                    $stmt = $pdo->prepare("SELECT odo_saida FROM percursos WHERE id_percurso = ?");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $stmt->execute();
+                } catch (PDOException $e) {
+                    setResponseCode(400, $e);
+                    $_SESSION['POST'] = true;
+                }
+
+                $resultado = $stmt->fetch();
+
+                if ($resultado['odo_saida'] > $odo_retorno) {
+                    setResponseCode(400, "Dados Inválidos");
+                    $_SESSION['POST'] = true;
+                } else {
+
+                    try {
+                        $stmt = $pdo->prepare("UPDATE percursos 
+                                                SET odo_retorno= ?, data_retorno=NOW(), hora_retorno=NOW(),  id_usuario_retorno = ?, status = 1
+                                                WHERE id_percurso= ?");
+                        $stmt->bindParam(1, $odo_retorno, PDO::PARAM_STR);
+                        $stmt->bindParam(2, $usuario, PDO::PARAM_INT);
+                        $stmt->bindParam(3, $id, PDO::PARAM_INT);
+                        $executa = $stmt->execute();
+
+                        if (!$executa) {
+                            print("<div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
                          </div>");
+                        } else {
+                            $_SESSION['atualizado'] = 1;
+                        }
+                    } catch (PDOException $e) {
+                        echo $e->getMessage();
+                    }
+                }
             } else {
-                $_SESSION['atualizado'] = 1;
+                setResponseCode(400, $e);
             }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
 
         header('Location: /percurso');
 
         break;
 
-    case 'Apagar':
+    case 'percurso_retornou_guarda':
+
         $id = $_POST['id'];
+        $odo_retorno = $_POST['odo_retorno'];
+
+        $validation = $validator->make($_POST + $_FILES, [
+            'id'                  => 'required|integer',
+            'odo_retorno'      => 'required|numeric',
+            'usuario'                  => 'required',
+            'senha'                  => 'required',
+        ]);
+
+        // then validate
+        $validation->validate();
+
+        if ($validation->fails()) {
+            setResponseCode(400, "Dados Inválidos");
+            $_SESSION['POST'] = true;
+        } else {
+
+            $login = $_POST['usuario'];
+            $senha = md5($_POST['senha']);
+
+            try {
+                $stmt = $pdo->prepare('SELECT COUNT(*) AS total 
+                                                FROM usuarios 
+                                                WHERE login = ? 
+                                                AND senha = ?
+                                                AND id_status != 2');
+                $stmt->bindParam(1, $login, PDO::PARAM_STR);
+                $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+                $stmt->execute();
+
+                $resultado = $stmt->fetch();
+
+                $stmt = $pdo->prepare('SELECT id_perfil, nome, id_usuario
+                                                FROM usuarios 
+                                                WHERE login = ?');
+                $stmt->bindParam(1, $login, PDO::PARAM_STR);
+                $stmt->execute();
+            } catch (PDOException $e) {
+                setResponseCode(400, $e);
+                $_SESSION['POST'] = true;
+            }
+
+            $resultado1 = $stmt->fetch();
+
+            if ($resultado['total'] > 0) {
+
+                try {
+                    $stmt = $pdo->prepare("SELECT COUNT(*) AS total FROM percursos WHERE id_percurso = ? AND status IS NULL");
+                    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                    $stmt->execute();
+                } catch (PDOException $e) {
+                    setResponseCode(400, $e);
+                }
+
+                $resultado = $stmt->fetch();
+
+                if ($resultado['total'] > 0) {
+
+                    try {
+                        $stmt = $pdo->prepare("SELECT odo_saida FROM percursos WHERE id_percurso = ?");
+                        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                        $stmt->execute();
+                    } catch (PDOException $e) {
+                        setResponseCode(400, $e);
+                        $_SESSION['POST'] = true;
+                    }
+
+                    $resultado = $stmt->fetch();
+
+                    if ($resultado['odo_saida'] > $odo_retorno) {
+                        setResponseCode(400, "Dados Inválidos");
+                        $_SESSION['POST'] = true;
+                    } else {
+
+                        $stmt = $pdo->prepare("UPDATE percursos 
+                                                        SET odo_retorno= ?, data_retorno=NOW(), hora_retorno=NOW(),  id_usuario_retorno = ?, status = 1
+                                                        WHERE id_percurso= ?");
+                        $stmt->bindParam(1, $odo_retorno, PDO::PARAM_STR);
+                        $stmt->bindParam(2, $resultado1[2], PDO::PARAM_INT);
+                        $stmt->bindParam(3, $id, PDO::PARAM_INT);
+                        $executa = $stmt->execute();
+
+                        if (!$executa) {
+                            print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                    <strong>Não foi possível acessar a base de dados</strong>
+                                    </div>");
+                        } else {
+                            $_SESSION['atualizado'] = 1;
+                        }
+                    }
+                } else {
+                    $_SESSION['erro2'] = 1;
+                    header('Location: /');
+                }
+            } else {
+                $_SESSION['erro'] = 1;
+                header('Location: /');
+            }
+        }
+
+        header('Location: /percurso_guarda');
+
+        break;
+
+
+    case 'Apagar_guarda':
+
+        $login = $_POST['usuario'];
+        $senha = md5($_POST['senha']);
 
         try {
-            $stmt = $pdo->prepare("DELETE FROM percursos
-                                                WHERE id_percurso= ?");
-            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $stmt = $pdo->prepare('SELECT COUNT(*) AS total 
+                                            FROM usuarios 
+                                            WHERE login = ? 
+                                            AND senha = ?
+                                            AND id_status != 2');
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch();
+
+            $stmt = $pdo->prepare('SELECT id_perfil, nome, id_usuario
+                                            FROM usuarios 
+                                            WHERE login = ?');
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $resultado1 = $stmt->fetch();
+
+            if ($resultado['total'] > 0) {
+                $id = $_POST['id'];
+                $motivo = $_POST['motivo_apagado'];
+
+                $stmt = $pdo->prepare("UPDATE percursos
+                                        SET status = 2, motivo_apagado = ?, id_usuario_retorno = ?
+                                        WHERE id_percurso= ?");
+                $stmt->bindParam(1, $motivo, PDO::PARAM_STR);
+                $stmt->bindParam(2, $resultado1[2], PDO::PARAM_INT);
+                $stmt->bindParam(3, $id, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                if (!$executa) {
+                    print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                <strong>Não foi possível acessar a base de dados</strong>
+                            </div>");
+                } else {
+                    $_SESSION['apagado'] = 1;
+                }
+            } else {
+                $_SESSION['erro3'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /percurso_guarda');
+
+        break;
+
+    case 'Apagar':
+        $id = $_POST['id'];
+        $motivo = $_POST['motivo_apagado'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE percursos
+                                    SET status = 2, motivo_apagado = ?, id_usuario_retorno = ?
+                                    WHERE id_percurso= ?");
+            $stmt->bindParam(1, $motivo, PDO::PARAM_STR);
+            $stmt->bindParam(2, $usuario, PDO::PARAM_INT);
+            $stmt->bindParam(3, $id, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                             <strong>Não foi possível acessar a base de dados</strong>
-                         </div>");
+                            </div>");
             } else {
                 $_SESSION['apagado'] = 1;
             }
@@ -61,7 +299,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'percurso':
-    
+
         $viatura = $_POST["viatura"];
         $nome = $_POST["motorista"];
         $destino = ucwords(strtolower($_POST["destino"]));
@@ -106,7 +344,7 @@ switch ($_POST['enviar']) {
             }
 
             $stmt = $pdo->prepare("INSERT INTO percursos
-                                                VALUES(NULL,?,?,?,?,?,CURDATE(),CURRENT_TIME(),NULL,NULL,NULL,?)");
+                                                VALUES(NULL,?,?,?,?,?,CURDATE(),CURRENT_TIME(),NULL,NULL,NULL,?,NULL,NULL,NULL)");
             $stmt->bindParam(1, $viatura, PDO::PARAM_INT);
             $stmt->bindParam(2, $nome, PDO::PARAM_INT);
             $stmt->bindParam(3, $destino, PDO::PARAM_INT);
@@ -131,6 +369,138 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'percurso_guarda':
+
+        // make it
+        $validation = $validator->make($_POST + $_FILES, [
+            'viatura'                  => 'required|integer',
+            'motorista'                 => 'required|integer',
+            'destino'              => 'required',
+            'odo_saida'      => 'required',
+            'usuario'                => 'required',
+            'senha'                => 'required',
+        ]);
+
+        // then validate
+        $validation->validate();
+
+        if ($validation->fails()) {
+            $_SESSION['POST'] = serialize($_POST);
+            header('Location: /percurso_guarda');
+            // handling errors
+            /* $errors = $validation->errors();
+            echo "<pre>";
+            print_r($errors->firstOfAll());
+            echo "</pre>"; */
+            exit;
+        } else {
+            // validation passes
+            echo "Success!";
+        }
+
+        $login = $_POST['usuario'];
+        $senha = md5($_POST['senha']);
+
+        try {
+            $stmt = $pdo->prepare('SELECT COUNT(*) AS total 
+                                                FROM usuarios 
+                                                WHERE login = ? 
+                                                AND senha = ?
+                                                AND id_status != 2');
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->bindParam(2, $senha, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch();
+
+            $stmt = $pdo->prepare('SELECT id_perfil, nome, id_usuario
+                                                FROM usuarios 
+                                                WHERE login = ?');
+            $stmt->bindParam(1, $login, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $resultado1 = $stmt->fetch();
+
+            if ($resultado['total'] > 0) {
+
+                $viatura = $_POST["viatura"];
+                $nome = $_POST["motorista"];
+                $destino = ucwords(strtolower($_POST["destino"]));
+                $odometro = $_POST["odo_saida"];
+
+                if (empty($_POST["acompanhante"])) {
+                    $acompanhante = NULL;
+                } else {
+                    $acompanhante = ucwords(strtolower($_POST["acompanhante"]));
+                }
+                try {
+                    $stmt = $pdo->prepare("SELECT COUNT(nome_destino) AS existente
+                                                        FROM destinos
+                                                        WHERE nome_destino = ?");
+                    $stmt->bindParam(1, $destino, PDO::PARAM_STR);
+                    $executa = $stmt->execute();
+
+                    $reg = $stmt->fetch(PDO::FETCH_OBJ);
+                    if ($reg->existente < 1) {
+
+                        $stmt = $pdo->prepare("INSERT INTO destinos
+                                                           VALUES(NULL,?)");
+                        $stmt->bindParam(1, $destino, PDO::PARAM_STR);
+                        $executa = $stmt->execute();
+
+                        $stmt = $pdo->prepare("SELECT id_destino
+                                                            FROM destinos
+                                                            WHERE nome_destino = ?");
+                        $stmt->bindParam(1, $destino, PDO::PARAM_STR);
+                        $executa = $stmt->execute();
+                        $reg = $stmt->fetch(PDO::FETCH_OBJ);
+                        $destino = $reg->id_destino;
+                    } else {
+
+                        $stmt = $pdo->prepare("SELECT id_destino
+                                                                        FROM destinos
+                                                                        WHERE nome_destino = ?");
+                        $stmt->bindParam(1, $destino, PDO::PARAM_STR);
+                        $executa = $stmt->execute();
+                        $reg = $stmt->fetch(PDO::FETCH_OBJ);
+                        $destino = $reg->id_destino;
+                    }
+
+                    $stmt = $pdo->prepare("INSERT INTO percursos
+                                                        VALUES(NULL,?,?,?,?,?,CURDATE(),CURRENT_TIME(),NULL,NULL,NULL,?,NULL,NULL,NULL)");
+                    $stmt->bindParam(1, $viatura, PDO::PARAM_INT);
+                    $stmt->bindParam(2, $nome, PDO::PARAM_INT);
+                    $stmt->bindParam(3, $destino, PDO::PARAM_INT);
+                    $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+                    $stmt->bindParam(5, $acompanhante, PDO::PARAM_STR);
+                    $stmt->bindParam(6, $resultado1[2], PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+
+                    if (!$executa) {
+                        print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                    <strong>Não foi possível acessar a base de dados</strong>
+                                 </div>");
+                        http_response_code(400);
+                    } else {
+                        $_SESSION['cadastrado'] = 1;
+                        http_response_code(200);
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            } else {
+                $_SESSION['erro1'] = 1;
+                header('Location: /');
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /percurso_guarda');
+
+        break;
+
     case 'viatura':
         $marca = $_POST["marca"];
         $modelo = $_POST["modelo"];
@@ -144,8 +514,7 @@ switch ($_POST['enviar']) {
         $rfid = $_POST["rfid__"];
 
         try {
-            $stmt = $pdo->prepare("INSERT INTO viaturas
-                                                    VALUES(NULL,?,?,?,?,?,?,?,?,1,?,?,?)");
+            $stmt = $pdo->prepare("INSERT INTO viaturas (id_viatura, id_marca, id_modelo, placa, odometro, ano, id_tipo_viatura, id_situacao, id_usuario, id_status, id_habilitacao, id_combustivel, rfid) VALUES(NULL,?,?,?,?,?,?,?,?,?,1,?,?)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
@@ -156,7 +525,7 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(8, $usuario, PDO::PARAM_INT);
             $stmt->bindParam(9, $habilitacao, PDO::PARAM_INT);
             $stmt->bindParam(10, $combustivel, PDO::PARAM_INT);
-            $stmt->bindParam(11, $rfid, PDO::PARAM_STR);            
+            $stmt->bindParam(11, $rfid, PDO::PARAM_STR);
             $executa = $stmt->execute();
 
             if (!$executa) {
@@ -207,6 +576,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'atualizar_viatura':
+
         $id = $_POST['id'];
         $marca = $_POST["marca"];
         $modelo = $_POST["modelo"];
@@ -218,6 +588,8 @@ switch ($_POST['enviar']) {
         $habilitacao = $_POST["habilitacao"];
         $combustivel = $_POST["combustivel"];
         $rfid = $_POST["rfid__"];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+        $motivo = $_POST["motivo"];
 
 
 
@@ -247,6 +619,41 @@ switch ($_POST['enviar']) {
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
+        }
+
+        if ($situacao == 2) {
+            try {
+                $stmt = $pdo->prepare("INSERT INTO indisponibilidade VALUES (NULL, ?, ?, ?, ?, 1, $usuario)");
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                $stmt->bindParam(2, $motivo, PDO::PARAM_STR);
+                $stmt->bindParam(3, $data, PDO::PARAM_STR);
+                $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+                $executa = $stmt->execute();
+
+                if (!$executa) {
+                    $_SESSION['erro'] = 1;
+                } else {
+                    $_SESSION['atualizado'] = 1;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        if ($situacao == 1) {
+            try {
+                $stmt = $pdo->prepare("UPDATE indisponibilidade SET id_status = 2 WHERE id_viatura = ?");
+                $stmt->bindParam(1, $id, PDO::PARAM_INT);
+                $executa = $stmt->execute();
+
+                if (!$executa) {
+                    $_SESSION['erro'] = 1;
+                } else {
+                    $_SESSION['atualizado'] = 1;
+                }
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
 
         header('Location: /viaturascadastradas');
@@ -1230,6 +1637,9 @@ switch ($_POST['enviar']) {
                 if ($_SESSION['perfil'] == 5) {
                     header('Location: /militarescadastrados');
                 }
+                if ($_SESSION['perfil'] == 6) {
+                    header('Location: /percurso_guarda');
+                }
             } else {
                 session_start();
                 $_SESSION['erro'] = 1;
@@ -1421,6 +1831,109 @@ switch ($_POST['enviar']) {
 
         break;
 
+    case 'cadastrar_disponibilidade':
+        $id_viatura = $_POST['viatura'];
+        $odometro = $_POST['odometro'];
+        $alteracao = $_POST['alteracao'];
+        $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO indisponibilidade
+                                                    VALUES(NULL,?,?,?,?,1,$usuario,NULL)");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $stmt->bindParam(2, $alteracao, PDO::PARAM_STR);
+            $stmt->bindParam(3, $data, PDO::PARAM_STR);
+            $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                <strong>Não foi possível acessar a base de dados</strong>
+                             </div>");
+            } else {
+                $_SESSION['cadastrado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            $stmt = $pdo->prepare("UPDATE viaturas
+                                                SET id_situacao = 2
+                                                WHERE id_viatura = ?");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /disponibilidadevtrcadastrada');
+
+        break;
+
+    case 'apagar_disponibilidade':
+        $id = $_POST['id'];
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM indisponibilidade
+                    WHERE id_disponibilidade = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                    <strong>Não foi possível acessar a base de dados</strong>
+                                 </div>");
+            } else {
+                $_SESSION['apagado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /disponibilidadevtrcadastrada');
+
+        break;
+
+    case 'atualiza_disponibilidade':
+        $id = $_POST['id'];
+        $id_viatura = $_POST['id_viatura'];
+
+        try {
+            $stmt = $pdo->prepare("UPDATE indisponibilidade
+                        SET id_status = 2, data_fim = NOW()
+                        WHERE id_disponibilidade = ?");
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+
+            if (!$executa) {
+                print("<div class='alert alert-danger alert-dismissible' role='alert'>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                        <strong>Não foi possível acessar a base de dados</strong>
+                                     </div>");
+            } else {
+                $_SESSION['atualizado'] = 1;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        try {
+            $stmt = $pdo->prepare("UPDATE viaturas
+                                                        SET id_situacao = 1
+                                                        WHERE id_viatura = ?");
+            $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+            $executa = $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        header('Location: /disponibilidadevtrcadastrada');
+
+        break;
+
     case 'cadastrar_acidente':
         $id_viatura = $_POST['viatura_acidente'];
         $id_motorista = $_POST['motorista'];
@@ -1429,13 +1942,13 @@ switch ($_POST['enviar']) {
         $acidente = $_POST['acidente'];
         $avarias = $_POST['avarias'];
         $data = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
-       
+
         if (isset($_POST['disponibilidade'])) {
             $disponibilidade = 2;
         } else {
             $disponibilidade = 1;
         }
-        
+
         try {
             $stmt = $pdo->prepare("INSERT INTO acidentes_viaturas
                                                 VALUES(NULL,?,?,?,?,?,?,?,?,$usuario)");
@@ -1449,14 +1962,28 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(8, $disponibilidade, PDO::PARAM_INT);
             $executa = $stmt->execute();
 
-            if ($disponibilidade == 2) {
-                $stmt = $pdo->prepare("UPDATE viaturas
-                                                SET id_situacao = ?
-                                                WHERE id_viatura = ?");
-                $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
-                $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
-                $executa = $stmt->execute();
-            }
+            /*if ($disponibilidade == 2) {
+                try {
+                    $stmt = $pdo->prepare("UPDATE viaturas
+                                                    SET id_situacao = ?
+                                                    WHERE id_viatura = ?");
+                    $stmt->bindParam(1, $disponibilidade, PDO::PARAM_INT);
+                    $stmt->bindParam(2, $id_viatura, PDO::PARAM_INT);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                } 
+                try {
+                    $stmt = $pdo->prepare("INSERT INTO indisponibilidade VALUES (NULL, ?, ?, ?, ?, 1, $usuario)");
+                    $stmt->bindParam(1, $id_viatura, PDO::PARAM_INT);
+                    $stmt->bindParam(2, $acidente, PDO::PARAM_STR);
+                    $stmt->bindParam(3, $data, PDO::PARAM_STR);
+                    $stmt->bindParam(4, $odometro, PDO::PARAM_STR);
+                    $executa = $stmt->execute();
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            }*/
 
             if (!$executa) {
                 print("<div class='alert alert-danger alert-dismissible' role='alert'>
@@ -1556,7 +2083,7 @@ switch ($_POST['enviar']) {
         break;
 
     case 'cadastrar_militar':
-        
+
         $nome_completo = htmlspecialchars(ucwords(strtolower($_POST['nome_completo'])));
         $nome = htmlspecialchars(ucwords(strtolower($_POST['nome'])));
         $pg = $_POST['pg'];
@@ -1581,8 +2108,8 @@ switch ($_POST['enviar']) {
             $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
             $stmt->bindParam(4, $cidade_natal, PDO::PARAM_INT);
             $stmt->bindParam(5, $estado_natal, PDO::PARAM_INT);
-            $stmt->bindParam(6, $idt_militar, PDO::PARAM_STR);           
-            $stmt->bindParam(7, $cpf, PDO::PARAM_STR);            
+            $stmt->bindParam(6, $idt_militar, PDO::PARAM_STR);
+            $stmt->bindParam(7, $cpf, PDO::PARAM_STR);
             $stmt->bindParam(8, $pg, PDO::PARAM_STR);
 
             $executa = $stmt->execute();
@@ -1628,7 +2155,7 @@ switch ($_POST['enviar']) {
                                                 cpf =  ?,
                                                 id_posto_grad =  ?
                                                 WHERE  id_militar = ?;");
-            
+
             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
             $stmt->bindParam(2, $nome_completo, PDO::PARAM_STR);
             $stmt->bindParam(3, $data_nascimento, PDO::PARAM_STR);
@@ -1762,8 +2289,6 @@ switch ($_POST['enviar']) {
         break;
 
     default:
-//no action sent
+        //no action sent
 }
 unset($_POST, $_GET);
-?>
-     

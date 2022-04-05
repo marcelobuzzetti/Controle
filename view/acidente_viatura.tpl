@@ -5,7 +5,7 @@
     <form autocomplete="off" action="executar" method="post">
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="viatura">Viatura - Placa</label>
-            <select class="form-control" name="viatura_acidente" id="viatura_acidente" required="required" tabindex="1">
+            <select class="js-example-responsive custom-select form-control" name="viatura_acidente" id="viatura_acidente" required="required" tabindex="1">
                 <option value='' disabled selected>Selecione a Viatura</option>
                 {foreach $relacao_viaturas as $viatura}
                     <option value={$viatura.id_viatura} {if {$viatura.id_viatura} == {$id_viatura}}selected{/if}>{$viatura.marca} - {$viatura.modelo} - {$viatura.placa}</option>
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="motorista">Motorista</label>
-            <select class="form-control" id="motorista" name="motorista" required="required" tabindex="2">
+            <select class="js-example-responsive custom-select form-control" id="motorista" name="motorista" required="required" tabindex="2">
                 <option value='' disabled selected>Selecione o Motorista</option>
                 {foreach $relacao_motoristas as $motoristas}
                     <option value={$motoristas.id_motorista} {if {$motoristas.id_motorista} == {$id_motorista}}selected{/if}>{$motoristas.apelido}</option>
@@ -41,9 +41,9 @@
             <label for="avarias">Descrição das Avarias</label>
             <textarea class="form-control" rows="10" id="avarias" name="avarias" placeholder="Descrição das Avarias" required='required'  tabindex="7">{$avarias}</textarea>
         </div>
-        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+        <!--<div class="form-group col-xs-12 col-sm-6 col-md-4">
             <label class="checkbox-inline"><input type="checkbox" id="disponibilidade" name="disponibilidade" {$disponibilidade} tabindex="8"><label>Indisponibilizar Vtr</label></label>
-        </div>
+        </div>-->
         <div class="form-group col-xs-12 col-sm-12 col-md-12">
             <input type='hidden' value='{$id_acidente_viatura}' name='id'/>
             <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar" tabindex="9">{$botao}</button>

@@ -2,11 +2,11 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 2)) {
     session_unset();
-    header('Location: ' . constant("HOST"));
+    header('Location: /');
 } else {
 
     $viaturas = new Viatura();
@@ -23,7 +23,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION
     $menus = new Menu();
     $menu = $menus->SelecionarMenu($_SESSION['perfil']);
 
-    $smarty->assign('HOST', constant("HOST"));
+    /* $smarty->assign('HOST', constant("HOST")); */
     $smarty->assign('titulo', 'Controle de Saída de Viatura');
     if (!empty($contador)) {$smarty->assign('contador', $contador);}
     $smarty->assign('tabela_relacao_vtr', $tabela_relacao_viaturas);

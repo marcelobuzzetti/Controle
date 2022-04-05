@@ -2,10 +2,10 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION['perfil'] == 5)) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $verificador = 0;
@@ -24,7 +24,7 @@ if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] == 2 || $_SESSION
         $c = '';
         
         foreach ($relacao_relatorio as $value) {
-            $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '"' . ',';
+            $a .= '"' . $value['marca'] . '-' . $value['modelo'] . '-' . $value['placa'] . '"' . ',';
         }
         foreach ($relacao_relatorio as $value) {
             $b .= $value['qnt'] . ',';

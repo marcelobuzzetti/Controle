@@ -58,7 +58,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="qnt">Quantidade</label>
-            <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" max="1000" step="1" value="{$qnt}" tabindex="5"/>
+            <input class="form-control" type="number"  id="qnt" name="qnt" placeholder="Quantidade" required="required" min="1" step="1" value="{$qnt}" tabindex="5"/>
         </div>
         <span name="alerta" id="alerta"></span>
         <div class="form-group col-xs-12 col-sm-12 col-md-12">

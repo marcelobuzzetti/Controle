@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Militar {
 
     public function listarMilitar() {

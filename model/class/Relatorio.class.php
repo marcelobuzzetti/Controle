@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Relatorio {
 
     public function listarPercursos($inicio, $fim) {
@@ -10,14 +12,15 @@ class Relatorio {
                                                 destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, 
                                                 DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                 FROM percursos, viaturas, motoristas, marcas, modelos, destinos
-                                                WHERE data_saida BETWEEN ? AND ?
+                                                WHERE (data_saida BETWEEN ? AND ?
                                                 OR data_retorno BETWEEN ? AND ?
-                                                OR data_retorno IS NULL
+                                                OR data_retorno IS NULL)
                                                 AND percursos.id_motorista = motoristas.id_motorista
                                                 AND percursos.id_viatura = viaturas.id_viatura
                                                 AND viaturas.id_marca = marcas.id_marca
                                                 AND viaturas.id_modelo = modelos.id_modelo 
                                                 AND percursos.id_destino = destinos.id_destino
+                                                AND (percursos.status != 2 OR percursos.status IS NULL)
                                                 GROUP BY id_percurso");
             $stmt->bindParam(1, $inicio, PDO::PARAM_STR);
             $stmt->bindParam(2, $fim, PDO::PARAM_STR);
@@ -47,6 +50,7 @@ class Relatorio {
                                                 AND viaturas.id_marca = marcas.id_marca
                                                 AND viaturas.id_modelo = modelos.id_modelo 
                                                 AND percursos.id_destino = destinos.id_destino
+                                                AND (percursos.status != 2 OR percursos.status IS NULL)
                                                 ORDER BY data_saida, hora_saida");
             $executa = $stmt->execute();
 
@@ -91,12 +95,12 @@ class Relatorio {
     public function listarVtrUtilizacaoCompleto() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo
+            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
-                                                GROUP BY m.descricao, mo.descricao
+                                                GROUP BY m.descricao, mo.descricao, v.id_viatura
                                                 ORDER BY v.id_viatura");
             $executa = $stmt->execute();
 

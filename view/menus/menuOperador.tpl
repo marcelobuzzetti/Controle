@@ -13,10 +13,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{$HOST}/percurso" tabindex="1000">Viatura Saindo?</a></li>
-                <li><a href="{$HOST}/relatorio" >Relatório de Utilização Vtr por Data</a></li>
-                <li><a href="{$HOST}/alterarusuario" tabindex="1007">Olá {$login}</a></li>
-                <li><a href="{$HOST}/logout" tabindex="1008">Logout</a></li>
+                <li><a href="/percurso" tabindex="1000">Viatura Saindo?</a></li>
+                <li><a href="/relatorio" >Relatório de Utilização Vtr por Data</a></li>
+                <li><a href="/alterarusuario" tabindex="1007">Olá {$login}</a></li>
+                <li><a href="/logout" tabindex="1008">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->

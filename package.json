@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,12 +18,15 @@
   },
   "homepage": "https://github.com/marcelobuzzetti/Controle#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "mysql-events": "0.0.11",
+    "node-telegram-bot-api": "^0.40.0",
     "nodemon": "^1.18.10",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "toastr": "^2.1.4"
   }
 }

@@ -1,15 +1,17 @@
-<script src="{$HOST}/libs/js/jquery.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/script.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/jquery.mask.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/dataTables.responsive.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/bootstrap-tokenfield.min.js" type="text/javascript"></script>
-<script src="{$HOST}/libs/js/select2.min.js" type="text/javascript"></script>
+<script src="/libs/js/jquery.min.js" type="text/javascript"></script>
+<script src="/libs/js/script.js" type="text/javascript"></script>
+<script src="/libs/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/libs/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/libs/js/jquery.mask.js" type="text/javascript"></script>
+<script src="/libs/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="/libs/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script src="/libs/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<script src="/libs/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+<script src="/libs/js/bootstrap-tokenfield.min.js" type="text/javascript"></script>
+<script src="/libs/js/select2.min.js" type="text/javascript"></script>
 <script>
+    $('.js-example-responsive').select2();
+
     $(document).ready(function () {
         $('#tabela').DataTable({
             "sPaginationType": "full_numbers",

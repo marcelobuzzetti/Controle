@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <h1>Viaturas em Atividade no Momento</h1>
     </div>
-    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+    {* <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <td>Viatura</td>
@@ -25,6 +25,30 @@
                 </tr>
             {/foreach}     
         </tbody>
+        <tfoot>
+            <tr>
+                <td>Viatura</td>
+                <td>Motorista</td>
+                <td>Destino</td>
+                <td>Odômetro Saída</td>
+                <td>Acompanhante(s)</td>
+                <td>Data e Hora da Saída</td>
+            </tr>
+        </tfoot>
+    </table>
+    <hr> *}
+     <button class='btn btn-success' id="refresh"><span class='glyphicon glyphicon-refresh'/></button>
+     <table id="ajax" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <td>Viatura</td>
+                <td>Motorista</td>
+                <td>Destino</td>
+                <td>Odômetro Saída</td>
+                <td>Acompanhante(s)</td>
+                <td>Data e Hora da Saída</td>
+            </tr>
+        </thead>
         <tfoot>
             <tr>
                 <td>Viatura</td>

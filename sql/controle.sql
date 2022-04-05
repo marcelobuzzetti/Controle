@@ -197,6 +197,17 @@ CREATE TABLE viaturas (
   id_combustivel int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+
+CREATE TABLE indisponibilidade (
+  id_disponibilidade int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_viatura int(11)  NOT NULL, 
+  motivo varchar(500)  NOT NULL,
+  data date NOT NULL,
+  odometro float(10,1) NOT NULL, 
+  id_status int(11) NOT NULL,
+  id_usuario int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 CREATE TABLE manutencao_viaturas (
   id_manutencao_viatura int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_viatura int(11)  NOT NULL, 
@@ -379,6 +390,11 @@ ALTER TABLE abastecimentos_especiais
   ADD CONSTRAINT FK_combustive3 FOREIGN KEY (id_combustivel) REFERENCES combustiveis (id_combustivel),
   ADD CONSTRAINT FK_usuario12 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
 
+ALTER TABLE indisponibilidade
+  ADD CONSTRAINT FK_usuario13 FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
+  ADD CONSTRAINT FK_viaturas4 FOREIGN KEY (id_viatura) REFERENCES viaturas (id_viatura),
+  ADD CONSTRAINT FK_status6 FOREIGN KEY (id_status) REFERENCES status (id_status);
+
 CREATE VIEW combustivel_recebido AS SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( rc.qnt ),0) AS qnt
 FROM recibos_combustiveis rc
 RIGHT JOIN (combustiveis c, tipos_combustiveis tc) ON (rc.id_combustivel = c.id_combustivel AND rc.id_tipo_combustivel = tc.id_tipo_combustivel)
@@ -409,7 +425,12 @@ INSERT INTO posto_grad (id_posto_grad, descricao, sigla) VALUES
 (8, 'Segundo Tenente', '2º Ten'),
 (9, 'Primeiro Tenente', '1º Ten'),
 (10, 'Capitão', 'Cap'),
-(11, 'Major', 'Maj');
+(11, 'Major', 'Maj'),
+(12, 'Tenente-Coronel', 'Ten Cel'),
+(13, 'Coronel', 'Cel'),
+(14, 'General de Brigada', 'Gen Bda'),
+(15, 'General de Divisão', 'Gen Div'),
+(16, 'General de Exército', 'Gen Ex');
 
 INSERT INTO tipos_viaturas (id_tipo_viatura, descricao) VALUES
 (1, 'Operacional'),
@@ -436,7 +457,8 @@ INSERT INTO perfis (id_perfil, descricao, cod_perfil) VALUES
 (2, 'Operador', 2),
 (3, 'Mantenedor - Garagem', 3),
 (4, 'Mantenedor - S4', 4),
-(5, 'Mantenedor - RP', 5);
+(5, 'Mantenedor - RP', 5),
+(6, 'Soldado Anotador', 6);
 
 INSERT INTO usuarios (id_usuario, login, senha, id_perfil, nome,id_status) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ADMINISTRADOR',1);

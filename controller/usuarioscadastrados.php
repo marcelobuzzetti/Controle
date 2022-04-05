@@ -2,11 +2,11 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 $login = $_SESSION['usuario'];
 
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1)) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $militar = new Militar();

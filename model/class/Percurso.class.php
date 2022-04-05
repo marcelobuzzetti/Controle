@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Percurso {
 
     public function listarPercursosFechadas() {

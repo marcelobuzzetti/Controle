@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Viatura {
 
     public function listarViaturas() {
@@ -63,6 +65,7 @@ class Viatura {
                                                         AND viaturas.id_modelo = modelos.id_modelo
                                                         AND percursos.id_destino = destinos.id_destino
                                                         AND viaturas.id_status != 2
+                                                        AND (percursos.status != 2 OR percursos.status IS NULL)
                                                         ORDER BY id_percurso DESC");
             $executa = $stmt->execute();
 
@@ -86,8 +89,9 @@ class Viatura {
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo 
                                                     AND id_viatura NOT IN (SELECT id_viatura 
-                                                                                          FROM percursos 
-                                                                                          WHERE data_retorno IS NULL)
+                                                                            FROM percursos 
+                                                                            WHERE data_retorno IS NULL
+                                                                            AND percursos.status != 2 OR percursos.status IS NULL)
                                                     AND id_situacao = 1
                                                     AND viaturas.id_status != 2
                                                     ORDER BY marcas.descricao, modelos.descricao");
@@ -116,6 +120,7 @@ class Viatura {
                                                        AND viaturas.id_marca = marcas.id_marca
                                                        AND viaturas.id_modelo = modelos.id_modelo
                                                        AND percursos.id_destino = destinos.id_destino
+                                                       AND (percursos.status != 2 OR percursos.status IS NULL)
                                                        ORDER BY id_percurso DESC");
             $executa = $stmt->execute();
 
@@ -142,6 +147,7 @@ class Viatura {
                                                        AND viaturas.id_marca = marcas.id_marca
                                                        AND viaturas.id_modelo = modelos.id_modelo
                                                        AND percursos.id_destino = destinos.id_destino
+                                                       AND (percursos.status != 2 OR percursos.status IS NULL)
                                                        ORDER BY id_percurso DESC");
             $executa = $stmt->execute();
 
@@ -160,16 +166,18 @@ class Viatura {
     public function detalharViatura($id) {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, tp.descricao AS tipo_viatura, IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
-                                                FROM percursos p
-                                                INNER JOIN viaturas v ON p.id_viatura = v.id_viatura AND v.id_viatura = $id
-                                                AND p.data_saida
-                                                INNER JOIN marcas m ON m.id_marca = v.id_marca
-                                                INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
-                                                INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
-                                                INNER JOIN tipos_viaturas tp ON tp.id_tipo_viatura = v.id_tipo_viatura
-                                                INNER JOIN situacao s ON s.id_situacao = v.id_situacao
-                                                ORDER BY v.id_viatura");
+            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, tp.descricao AS tipo_viatura,v.rfid,  
+                                    IFNULL( GREATEST( MAX( p.odo_retorno ) , 
+                                    MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
+                                    FROM percursos p
+                                    RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura
+                                    INNER JOIN marcas m ON m.id_marca = v.id_marca
+                                    INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
+                                    INNER JOIN habilitacoes ha ON ha.id_habilitacao = v.id_habilitacao
+                                    INNER JOIN situacao s ON s.id_situacao = v.id_situacao AND v.id_viatura = $id
+                                    INNER JOIN tipos_viaturas tp ON tp.id_tipo_viatura = v.id_tipo_viatura
+                                    GROUP BY v.id_viatura
+                                    ORDER BY v.id_viatura");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -195,6 +203,7 @@ class Viatura {
                                                 AND viaturas.id_modelo = modelos.id_modelo 
                                                 AND percursos.id_destino = destinos.id_destino
                                                 AND percursos.id_viatura = $id
+                                                AND percursos.status != 2
                                                 ORDER BY data_saida DESC, hora_saida DESC");
             $executa = $stmt->execute();
 
@@ -218,6 +227,7 @@ class Viatura {
                                                 WHERE percursos.id_motorista = motoristas.id_motorista
                                                 AND percursos.id_destino = destinos.id_destino
                                                 AND percursos.id_viatura = $id
+                                                AND percursos.status != 2
                                                 ORDER BY data_saida DESC, hora_saida DESC");
             $executa = $stmt->execute();
 
@@ -336,11 +346,11 @@ class Viatura {
     public function quantidadeVtrMarcaModelo() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, m.descricao AS marca, mo.descricao AS modelo
+            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM viaturas v
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
-                                                GROUP BY marca, modelo
+                                                GROUP BY v.id_viatura
                                                 ORDER BY marca, modelo");
             $executa = $stmt->execute();
 
@@ -359,12 +369,12 @@ class Viatura {
     public function listarVtrIndisponiveis() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, COUNT(v.id_situacao) AS qnt_disponibilidade, s.disponibilidade AS descricao, m.descricao AS marca, mo.descricao AS modelo
+            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, COUNT(v.id_situacao) AS qnt_disponibilidade, s.disponibilidade AS descricao, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM viaturas v
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1 AND v.id_situacao = 2
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
                                                 INNER JOIN situacao s ON s.id_situacao = v.id_situacao
-                                                GROUP BY marca, modelo, v.id_situacao
+                                                GROUP BY v.id_viatura, v.id_situacao
                                                 ORDER BY marca, modelo");
             $executa = $stmt->execute();
 

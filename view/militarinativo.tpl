@@ -43,23 +43,10 @@
             <tr>
                 <td>Nome de Guerra</td>
                 <td>Posto/Grad</td>
-                <td>Número do Militar</td>
-                <td>CP</td>
-                <td>Grupo</td>
-                <td>Antiguidade</td>
-                <td>Data de Praça</td>            
                 <td>Nome Completo</td>
                 <td>DLN</td>
                 <td>Identidade Militar</td>
-                <td>RG</td>
-                <td>Órgão Expedidor</td>
                 <td>CPF</td>
-                <td>Endereços</td>
-                <td>Telefones</td>
-                <td>Emails</td>
-                <td>Pais</td>
-                <td>Conjuge e Data Nascimento</td>
-                <td>Laranjeira</td>
                 <td>Ativar</td>
             </tr>
         </thead>
@@ -67,48 +54,22 @@
             {foreach $militares_cadastrados as $tbl}
             <td>{$tbl.nome}</td>
             <td>{$tbl.sigla}</td>
-            <td>{$tbl.numero_militar}</td>
-            <td>{$tbl.cp}</td>
-            <td>{$tbl.grupo}</td>
-            <td>{$tbl.antiguidade}</td>
-            <td>{$tbl.data_praca}</td>
             <td>{$tbl.nome_completo}</td>
             <td>{$tbl.cidade_nascimento} {$tbl.estado_nascimento} {$tbl.data_nascimento}</td>
             <td>{$tbl.idt_militar}</td>
-            <td>{$tbl.rg}</td>
-            <td>{$tbl.orgao_expedidor}</td>
             <td>{$tbl.cpf}</td>
-            <td>{$tbl.enderecos}</td>
-            <td>{$tbl.telefones}</td>
-            <td>{$tbl.emails}</td>
-            <td>{$tbl.pai} {$tbl.mae}</td>
-            <td>{$tbl.conjuge} {$tbl.data_nascimento_conjuge}</td>
-            <td>{$tbl.laranjeira}</td>
             <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_militar}" data-sigla="{$tbl.sigla}" data-nome="{$tbl.nome}"><span class='glyphicon glyphicon-refresh'/></button></td>
             </tr> 
         {/foreach}
         </tbody>
         <tfoot>
             <tr>
-                <td>Nome de Guerra</td>
+                 <td>Nome de Guerra</td>
                 <td>Posto/Grad</td>
-                <td>Número do Militar</td>
-                <td>CP</td>
-                <td>Grupo</td>
-                <td>Antiguidade</td>
-                <td>Data de Praça</td>            
                 <td>Nome Completo</td>
                 <td>DLN</td>
                 <td>Identidade Militar</td>
-                <td>RG</td>
-                <td>Órgão Expedidor</td>
                 <td>CPF</td>
-                <td>Endereços</td>
-                <td>Telefones</td>
-                <td>Emails</td>
-                <td>Pais</td>
-                <td>Conjuge e Data Nascimento</td>
-                <td>Laranjeira</td>
                 <td>Ativar</td>
             </tr>
         </tfoot>

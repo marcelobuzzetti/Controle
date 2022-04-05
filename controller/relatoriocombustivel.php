@@ -2,10 +2,10 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 
 if (isset($_SESSION['login']) == FALSE) {
-    header('Location: ' . constant("HOST") . '/percurso');
+    header('Location: /percurso');
 } else {
 
     $verificador = 0;

@@ -54,7 +54,7 @@
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
-                <td>Disponibilidade</td>
+                <!--<td>Disponibilidade</td>-->
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>
@@ -69,7 +69,7 @@
                     <td>{$tbl.data}</td>
                     <td>{$tbl.descricao}</td>
                     <td>{$tbl.avarias}</td>
-                    <td>{$tbl.disponibilidade}</td>
+                    <!--<td>{$tbl.disponibilidade}</td>-->
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_acidente_viatura}"><span class='glyphicon glyphicon-remove-sign'</button></td>
                     <td> <form action='acidentevtr' method='post'>
                             <input type='hidden' id='{$tbl.id_acidente_viatura}' value='{$tbl.id_acidente_viatura}' name='id'/><button class='btn btn-success' type='submit' id='apagar' name='enviar' value='atualiza_acidente'/><span class='glyphicon glyphicon-refresh'/></form></td>
@@ -86,7 +86,7 @@
                 <td>Data</td>
                 <td>Descrição do Acidente</td>
                 <td>Avarias</td>
-                <td>Disponibilidade</td>
+                <!--<td>Disponibilidade</td>-->
                 <td>Apagar</td>
                 <td>Atualizar</td>
             </tr>

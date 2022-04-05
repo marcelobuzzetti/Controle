@@ -95,7 +95,7 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-3">
             <label for="situacao">Situação</label>
-            <select class="form-control" name="situacao" tabindex="10">
+            <select class="form-control" id="situacao" name="situacao" tabindex="10">
                 <option value='' disabled selected>Selecione a Situação</option>
                 {foreach $relacao_situacao as $situacoes}
                     <option value={$situacoes.id_situacao} {if {$situacoes.id_situacao} == {$situacao}}selected{/if}>{$situacoes.disponibilidade}</option>

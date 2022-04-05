@@ -33,11 +33,14 @@ RewriteRule ^abastecimentoespecial/?$ controller/abastecimento_especial.php
 RewriteRule ^abastecimentorealizado/?$ controller/abastecimentorealizado.php
 RewriteRule ^acidentevtr/?$ controller/acidente_viatura.php
 RewriteRule ^acidentevtrcadastrado/?$ controller/acidente_viatura_cadastrado.php
+RewriteRule ^cautelavtr/?$ controller/cautela_viatura.php
 RewriteRule ^combustiveldisponivel/?$ controller/combustiveldisponivel.php
 RewriteRule ^combustivel/?$ controller/combustivel.php
 RewriteRule ^combustiveiscadastrados/?$ controller/combustivelcadastrado.php
 RewriteRule ^detalhemotorista/?$ controller/detalhemotorista.php
 RewriteRule ^detalheviatura/?$ controller/detalheviatura.php
+RewriteRule ^disponibilidadevtr/?$ controller/disponibilidade_viatura.php
+RewriteRule ^disponibilidadevtrcadastrada/?$ controller/disponibilidade_viatura_cadastrada.php
 RewriteRule ^manutencaovtr/?$ controller/manutencao_viatura.php
 RewriteRule ^manutencaovtrcadastrada/?$ controller/manutencao_viatura_cadastrada.php
 RewriteRule ^marca/?$ controller/marca.php
@@ -51,6 +54,7 @@ RewriteRule ^motorista/?$ controller/motorista.php
 RewriteRule ^motoristascadastrados/?$ controller/motoristacadastrado.php
 RewriteRule ^motoristasinativos/?$ controller/motoristasinativos.php
 RewriteRule ^percurso/?$ controller/percurso.php
+RewriteRule ^percurso_guarda/?$ controller/percurso_guarda.php
 RewriteRule ^recebimentocombustivel/?$ controller/recebimentocombustivel.php
 RewriteRule ^recebimentocombustivelcadastrado/?$ controller/recebimentocombustivelcadastrado.php
 RewriteRule ^relatorio/?$ controller/relatorio.php
@@ -68,11 +72,23 @@ RewriteRule ^viaturasindisponiveis/?$ controller/relatoriodisponibilidadeviatura
 
 RewriteRule ^json/?$ model/listaMilitares.php
 RewriteRule ^apicombustivel/?$ model/listaCombustivel.php
+RewriteRule ^apisiscofis/?$ model/siscofis.php
+RewriteRule ^apiviatura/?$ model/listaViaturas.php
 
 #Acesso ao Model
 RewriteRule ^conexao/?$ model/conexao.php
 RewriteRule ^executar/?$ model/executar.php
 RewriteRule ^logout/?$ model/logout.php
+
+#Acesso ao Node Modules
+RewriteRule ^toastrcss/?$ node_modules/toastr/build/toastr.css
+RewriteRule ^toastrjs/?$ node_modules/toastr/toastr.js
+RewriteRule ^axios/?$ node_modules/axios/dist/axios.min.js
+
+#API
+RewriteRule ^testeuser/?$ api/test.php
+RewriteRule ^validation/?$ api/validation.php
+RewriteRule ^viaturasrodando/?$ api/viaturasrodando.php
 
 #Erros
 ErrorDocument 404 /controller/404.php

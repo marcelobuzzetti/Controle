@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+
+
+
 
 class Sessao {
 
@@ -8,7 +10,7 @@ class Sessao {
         if ($_SESSION['temposessao']) {
             if ($_SESSION['temposessao'] < time()) {
                 $_SESSION['timeout'] = 1;
-                header('Location: ' . constant("HOST"));
+                header('Location: /');
             } else {
                 $_SESSION["temposessao"] = time() + 120;
             }

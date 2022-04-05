@@ -14,7 +14,7 @@ $stmt = $pdo->prepare("SELECT cr.combustivel AS combustivel, cr.tipo_combustivel
                                     AND tc.descricao = ca.tipo_combustivel
                                     AND c.id_combustivel = ?
                                     and tc.id_tipo_combustivel = ?
-                                    GROUP BY cr.combustivel, cr.tipo_combustivel");
+                                    ");
 $stmt->bindParam(1, $qnt, PDO::PARAM_INT);
 $stmt->bindParam(2, $combustivel, PDO::PARAM_INT);
 $stmt->bindParam(3, $tp, PDO::PARAM_INT);

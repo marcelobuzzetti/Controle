@@ -1,6 +1,35 @@
+<!--Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Excluir</h4>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir esta Alteração?
+            </div>
+            <div class="modal-footer">
+                <form action='executar' method='post'>
+                    <input type="hidden" class="form-control" id="recipient-name"  name='id'/>
+                    <button type="submit" class="btn btn-danger" name='enviar' value="apagar_disponibilidade">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal-->
 <div class='container'>
     <div class="jumbotron">
         <h1>{$titulo}</h1>
+        <a href="{$data}" download="{$nome_imagem}">
+              <img class="img-responsive center-block" src="{$data}" />
+          </a>
+          <p class="text-center">
+            <a class="btn btn-primary" href="{$data}" download="{$nome_imagem}">Download</a>
+            <button class="btn btn-info" onclick="printImg('{$data}')">Imprimir</button>
+          </p>
     </div>
     <table id="detalhes" class="table table-striped table-hover table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
@@ -41,6 +70,7 @@
             {/foreach}  
         </tbody>
     </table>
+    <hr>
     <legend>Percursos Realizados</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
@@ -85,6 +115,54 @@
             </tr>
         </tfoot>
     </table>
+    <hr>
+    <legend>Indisponibilidades</legend>
+    <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <td>Viatura</td>
+                <td>Odômetro</td>
+                <td>Descrição</td>
+                <td>Data Início</td>
+                <td>Apagar/Resolver</td>
+                <td>Data Fim</td>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $relacao_disponibilidade as $tbl}
+                <tr>
+                    <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
+                    <td>{$tbl.odometro}</td>
+                    <td>{$tbl.descricao}</td>
+                    <td>{$tbl.data}</td>
+                    {if $tbl.id_status == 1}
+                     <td><form action='executar' method='post'><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="{$tbl.id_disponibilidade}"><span class='glyphicon glyphicon-remove-sign' title='Apagar'></button>
+                            <input type='hidden' id='{$tbl.id_disponibilidade}' value='{$tbl.id_disponibilidade}' name='id'/>
+                            <input type='hidden' value='{$tbl.id_viatura}' name='id_viatura'/>
+                            <button class='btn btn-success' type='submit' id='resolver' name='enviar' value='atualiza_disponibilidade' title='Resolver'>
+                                <span class='glyphicon glyphicon-refresh'></span>
+                            </button>
+                        </form></td>
+                    {else}
+                    <td>Resolvido</td>
+                    {/if}
+                    <td>{$tbl.data_fim}</td>
+                    </form></tr>
+                </tr>
+            {/foreach}    
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Viatura</td>
+                <td>Odômetro</td>
+                <td>Descrição</td>
+                <td>Data Início</td>
+                <td>Apagar/Resolver</td>
+                <td>Data Fim</td>
+            </tr>
+        </tfoot>
+    </table>
+    <hr>
     <legend>Motoristas que utilizaram a Vtr</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
@@ -129,6 +207,7 @@
             </tr>
         </tfoot>
     </table>
+    <hr>
     <legend>Alterações</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
@@ -156,6 +235,7 @@
             </tr>
         </tfoot>
     </table>
+    <hr>
     <legend>Manutenções Realizadas</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
@@ -183,6 +263,7 @@
             </tr>
         </tfoot>
     </table>
+    <hr>
     <legend>Acidentes</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
@@ -222,6 +303,7 @@
             </tr>
         </tfoot>
     </table>
+    <hr>
     <legend>Abastecimentos</legend>
     <table id="tabela" class="table table-striped table-hover table-bordered dt-responsive nowrap detalhes" cellspacing="0" width="100%">
         <thead>
@@ -264,3 +346,10 @@
         </tfoot>
     </table>
 </div>
+<script>
+ function printImg(url) {
+          var win = window.open('');
+          win.document.write('<img src="' + url + '" onload="window.print();window.close()" />');
+          win.focus();
+        }
+</script>

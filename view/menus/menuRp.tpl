@@ -17,20 +17,20 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1002">Militares<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/militar">Cadastrar Militar</a></li>
-                        <li><a href="{$HOST}/militarescadastrados">Militares Cadastrados</a></li>
-                        <li><a href="{$HOST}/militaresinativos">Militares Inativos</a></li>
-                        <li><a href="{$HOST}/motoristascadastrados">Motoristas Cadastrados</a></li>
+                        <li><a href="/militar">Cadastrar Militar</a></li>
+                        <li><a href="/militarescadastrados">Militares Cadastrados</a></li>
+                        <li><a href="/militaresinativos">Militares Inativos</a></li>
+                        <li><a href="/motoristascadastrados">Motoristas Cadastrados</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" tabindex="1006">Relatórios<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{$HOST}/relatorio" >Relatório de Utilização Vtr por Data</a></li>
+                        <li><a href="/relatorio" >Relatório de Utilização Vtr por Data</a></li>
                     </ul>
                 </li>
-                <li><a href="{$HOST}/alterarusuario" tabindex="1007">Olá {$login}</a></li>
-                <li><a href="{$HOST}/logout" tabindex="1008">Logout</a></li>
+                <li><a href="/alterarusuario" tabindex="1007">Olá {$login}</a></li>
+                <li><a href="/logout" tabindex="1008">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->

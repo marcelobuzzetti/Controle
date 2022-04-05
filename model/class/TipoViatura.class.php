@@ -1,5 +1,7 @@
 <?php
 
+
+
 class TipoViatura {
 
     public function listarTiposViaturas() {

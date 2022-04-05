@@ -2,11 +2,11 @@
 
 include '../include/config.inc.php';
 
-session_start();
+
 
 if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3 && $_SESSION['perfil'] != 4)) {
     session_unset();
-    header('Location: ' . constant("HOST"));
+    header('Location: /');
 } else {
 
     $viaturas = new Viatura();
@@ -129,9 +129,6 @@ if (isset($_SESSION['login']) == FALSE && ($_SESSION['perfil'] != 1 && $_SESSION
         $smarty->assign('relacao_viaturas', $relacao_viaturas);
         $smarty->assign('relacao_motoristas', $relacao_motoristas);
         $smarty->assign('relacao_acidentes', $relacao_acidentes);
-        $smarty->assign('cadastrado', $_SESSION['cadastrado']);
-        $smarty->assign('atualizado', $_SESSION['atualizado']);
-        $smarty->assign('apagado', $_SESSION['apagado']);
         $smarty->assign('login', $_SESSION['login']);
         $smarty->display('./headers/header_datatables.tpl');
         $smarty->display($menu);

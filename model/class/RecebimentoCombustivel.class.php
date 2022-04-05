@@ -1,5 +1,7 @@
 <?php
 
+
+
 class RecebimentoCombustivel {
 
     public function listarRecebimentoCombustiveis() {

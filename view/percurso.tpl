@@ -28,8 +28,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form action='executar' method='post'>
-                    <input type="hidden" class="form-control" id="recipient-name" name='id'/>
+                <form action='executar' method='post' autocomplete="off">
+                    <input type="hidden" class="form-control 1" id="recipient-name" name='id'/>
+                    <input type="text" class="form-control" id="motivo_apagado" name='motivo_apagado' required placeholder="Digite o motivo para apagar" value="" autofocus/>
                     <button type="submit" class="btn btn-danger" name='enviar' value="Apagar">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Nao</button>
                 </form>
@@ -40,22 +41,25 @@
 <!--Modal-->
 <div class='container'>
     {if ($cadastrado)}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+    <script>toastr.success('O percurso foi adicionado com sucesso!')</script>
+        <!-- <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O percurso foi adicionado com sucesso!
-        </div>              
+        </div>               -->
     {/if}
     {if ($atualizado)}
-        <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
+    <script>toastr.success('A viatura foi fechada com sucesso!')</script>
+        <!-- <div class="alert alert-success alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             A viatura foi fechada com sucesso!
-        </div>              
+        </div>               -->
     {/if}
     {if $apagado != NULL}
-        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
+    <script>toastr.error('O percurso foi apagado com sucesso!')</script>
+        <!-- <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12">
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
             O percurso foi apagado com sucesso!
-        </div>              
+        </div>               -->
     {/if}
 </div>
 <div class='container'>
@@ -114,8 +118,8 @@
             <td colspan="2">Ações</td> 
         </tr>
         {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
-            <tr><form action='executar' method='post' id="{$contador}">
-                <input type='hidden' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
+            <tr><form action='executar' method='post'>
+                <input type='hidden' readonly='readonly' name='id' value="{$tbl.id_percurso}"/>
                 <td>{$smarty.foreach.relacao_vtr.iteration}</td>
                 <td>{$tbl.marca} - {$tbl.modelo} - {$tbl.placa}</td>
                 <td>{$tbl.apelido}</td>
@@ -135,7 +139,7 @@
     <legend>Viaturas Rodando</legend>
     <table class='table table-striped table-hover' text-align='center'>
         {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
-            <tr><form action='executar' method='post' id="{$contador}">
+            <tr><form action='executar' method='post'>
                 <input type='hidden' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
                 <td>Ordem {$smarty.foreach.relacao_vtr.iteration}</td>
                 </tr>
@@ -158,7 +162,7 @@
                     <td>Data e Hora da Saída {$tbl.data_saida} {$tbl.hora_saida}</td>
                 </tr>
                 <tr>
-                    <td>Odômetro Chegada <input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='{$tbl.id_viatura}_' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
+                    <td>Odômetro Chegada <input class='form-control' type='number' placeholder='Odomêtro' name='odo_retorno'  id='{$tbl.id_viatura}' required='required'  step="0.1" min="{$tbl.odo_saida}"/></td>
                 </tr>
                 <tr>
                     <td>Ações</td> 
