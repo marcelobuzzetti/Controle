@@ -21,7 +21,7 @@
     "axios": "^0.24.0",
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "mysql": "^2.16.0",
     "mysql-events": "0.0.11",
     "node-telegram-bot-api": "^0.40.0",
