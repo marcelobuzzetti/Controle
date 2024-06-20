@@ -101,10 +101,6 @@ jobs:  # Definição dos trabalhos a serem executados
       with:
         compose-file: "./docker-compose.yml"
 
-    - name: Execute tests in the running services
-      run: |
-        docker-compose -p controle up
-
     - name: Wait for Container to be ready # Espera o container estar pronto
       run: sleep 10 # Espera 10 segundos
 
