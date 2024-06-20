@@ -93,10 +93,13 @@ jobs:  # Definição dos trabalhos a serem executados
 
     steps: # Passos a serem executados no trabalho
 
+    - name: Check out the repo  # Faz o checkout do repositório
+      uses: actions/checkout@v4 # Usa a ação de checkout do repositório
+
     - name: Run docker-compose
       uses: hoverkraft-tech/compose-action@v2.0.1
       with:
-        compose-file: "docker-compose.yml"
+        compose-file: "./docker-compose.yml"
 
     - name: Execute tests in the running services
       run: |
@@ -106,7 +109,7 @@ jobs:  # Definição dos trabalhos a serem executados
       run: sleep 10 # Espera 10 segundos
 
     - name: Check if container is running # Verifica se o container está rodando
-      run: docker ps -f 'name=controle' # Checa se o container está rodando
+      run: docker ps -f 'name=[c2_web;c2_db]' # Checa se o container está rodando
 
     - name: Access Container
       run: curl -s http://localhost
