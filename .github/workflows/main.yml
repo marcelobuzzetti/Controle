@@ -56,11 +56,11 @@ jobs:  # Definição dos trabalhos a serem executados
         uses: actions/attest-build-provenance@v1 # Usa a ação de atestação de proveniência de build
         with: # Define os parâmetros da ação
           subject-name: ${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_PHP }}  # Define o nome do assunto da atestação
-          subject-digest: ${{ steps.push.outputs.digest }}  # Define o digest do assunto da atestação
+          subject-digest: ${{ steps.push_php.outputs.digest }}  # Define o digest do assunto da atestação
           push-to-registry: true  # Define se a atestação deve ser enviada para o registro      
 
       - name: Build and push Docker MySQL image  # Constrói e envia a imagem Docker para o Docker Hub
-        id: push_musql # Define um ID para o passo
+        id: push_mysql # Define um ID para o passo
         uses: docker/build-push-action@v5 # Usa a ação de construção e envio de imagem do Docker
         with: # Define os parâmetros da ação
           context: .  # Define o contexto do build, neste caso, o diretório atual
@@ -73,7 +73,7 @@ jobs:  # Definição dos trabalhos a serem executados
         uses: actions/attest-build-provenance@v1 # Usa a ação de atestação de proveniência de build
         with: # Define os parâmetros da ação
           subject-name: ${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_MYSQL }}  # Define o nome do assunto da atestação
-          subject-digest: ${{ steps.push.outputs.digest }}  # Define o digest do assunto da atestação
+          subject-digest: ${{ steps.push_mysql.outputs.digest }}  # Define o digest do assunto da atestação
           push-to-registry: true  # Define se a atestação deve ser enviada para o registro     
 
   # docker_test: # Nome do trabalho
