@@ -33,7 +33,7 @@ jobs:  # Definição dos trabalhos a serem executados
           password: ${{ secrets.DOCKER_PASSWORD }} # Usa as credenciais do Docker Hub armazenadas como secretos no repositório para password
 
       - name: Extract metadata (tags, labels) for Docker  # Extrai metadados (tags, labels) para o Docker
-        id: meta # Define um ID para o passo
+        id: meta_php # Define um ID para o passo
         uses: docker/metadata-action@v5 # Usa a ação de metadados do Docker
         with: # Define os parâmetros da ação
           images: "${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_PHP }}"  # Define as imagens Docker a serem processadas
@@ -49,8 +49,8 @@ jobs:  # Definição dos trabalhos a serem executados
           context: .  # Define o contexto do build, neste caso, o diretório atual
           file: ./DockerfilePHP  # Especifica o arquivo Dockerfile a ser usado
           push: true  # Define se a imagem deve ser enviada para o Docker Hub
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}  # Define as labels da imagem com base nos metadados extraídos
+          tags: ${{ steps.meta_php.outputs.tags }}
+          labels: ${{ steps.meta_php.outputs.labels }}  # Define as labels da imagem com base nos metadados extraídos
 
       - name: Generate artifact attestation  # Gera uma atestação de artefato
         uses: actions/attest-build-provenance@v1 # Usa a ação de atestação de proveniência de build
@@ -58,6 +58,16 @@ jobs:  # Definição dos trabalhos a serem executados
           subject-name: ${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_PHP }}  # Define o nome do assunto da atestação
           subject-digest: ${{ steps.push_php.outputs.digest }}  # Define o digest do assunto da atestação
           push-to-registry: true  # Define se a atestação deve ser enviada para o registro      
+  
+      - name: Extract metadata (tags, labels) for Docker  # Extrai metadados (tags, labels) para o Docker
+        id: meta_mysql # Define um ID para o passo
+        uses: docker/metadata-action@v5 # Usa a ação de metadados do Docker
+        with: # Define os parâmetros da ação
+          images: "${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_PHP }}"  # Define as imagens Docker a serem processadas
+          tags: | 
+            type=raw,value=latest
+            type=raw,value=${{ github.run_number }}
+            type=ref,event=tag
 
       - name: Build and push Docker MySQL image  # Constrói e envia a imagem Docker para o Docker Hub
         id: push_mysql # Define um ID para o passo
@@ -66,8 +76,8 @@ jobs:  # Definição dos trabalhos a serem executados
           context: .  # Define o contexto do build, neste caso, o diretório atual
           file: ./DockerfileMySQL  # Especifica o arquivo Dockerfile a ser usado
           push: true  # Define se a imagem deve ser enviada para o Docker Hub
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}  # Define as labels da imagem com base nos metadados extraídos
+          tags: ${{ steps.meta_mysql.outputs.tags }}
+          labels: ${{ steps.meta_mysql.outputs.labels }}  # Define as labels da imagem com base nos metadados extraídos
 
       - name: Generate artifact attestation  # Gera uma atestação de artefato
         uses: actions/attest-build-provenance@v1 # Usa a ação de atestação de proveniência de build
