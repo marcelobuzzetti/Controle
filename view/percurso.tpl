@@ -140,7 +140,7 @@
     <table class='table table-striped table-hover' text-align='center'>
         {foreach $tabela_relacao_vtr as $tbl name=relacao_vtr}
             <tr><form action='executar' method='post'>
-                <input type='hidden' readonly='readonly' name='id' id="{$contador}" value="{$tbl.id_percurso}"/>
+                <input type='hidden' readonly='readonly' name='id' value="{$tbl.id_percurso}"/>
                 <td>Ordem {$smarty.foreach.relacao_vtr.iteration}</td>
                 </tr>
                 <tr>

@@ -29,7 +29,7 @@ include '../include/config.inc.php';
             foreach($teste as $t){
                 $id = $t['id_motorista'];
                 $apelido = $t['apelido'];
-                echo "<option value=$id_motorista>$apelido</option>";
+                echo "<option value='$id'>$apelido</option>";
             }
             echo "</select>";
         } else {

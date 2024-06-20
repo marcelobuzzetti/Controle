@@ -514,7 +514,10 @@ switch ($_POST['enviar']) {
         $rfid = $_POST["rfid__"];
 
         try {
-            $stmt = $pdo->prepare("INSERT INTO viaturas (id_viatura, id_marca, id_modelo, placa, odometro, ano, id_tipo_viatura, id_situacao, id_usuario, id_status, id_habilitacao, id_combustivel, rfid) VALUES(NULL,?,?,?,?,?,?,?,?,?,1,?,?)");
+            $stmt = $pdo->prepare("INSERT INTO viaturas (id_viatura, id_marca, id_modelo, placa, odometro, ano, 
+            id_tipo_viatura, id_situacao, id_usuario,
+             id_habilitacao, id_combustivel, rfid, id_status) 
+            VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,1)");
             $stmt->bindParam(1, $marca, PDO::PARAM_INT);
             $stmt->bindParam(2, $modelo, PDO::PARAM_INT);
             $stmt->bindParam(3, $placa, PDO::PARAM_STR);
@@ -621,7 +624,7 @@ switch ($_POST['enviar']) {
             echo $e->getMessage();
         }
 
-        if ($situacao == 2) {
+        /* if ($situacao == 2) {
             try {
                 $stmt = $pdo->prepare("INSERT INTO indisponibilidade VALUES (NULL, ?, ?, ?, ?, 1, $usuario)");
                 $stmt->bindParam(1, $id, PDO::PARAM_INT);
@@ -654,7 +657,7 @@ switch ($_POST['enviar']) {
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        }
+        } */
 
         header('Location: /viaturascadastradas');
 

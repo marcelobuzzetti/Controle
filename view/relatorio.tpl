@@ -13,9 +13,11 @@
                     <td>Acompanhante(s)</td>
                     <td>Data Saída</td>
                     <td>Hora Saída</td>
+                    <td>Usuário que Anotou Saída</td>
                     <td>Odômetro Retorno</td>
                     <td>Data Chegada</td>
                     <td>Hora Chegada</td>
+                    <td>Usuário que Anotou Chegada</td>
                 </tr>
             </thead>
             <tbody>
@@ -28,9 +30,11 @@
                         <td>{$tbl.acompanhante}</td>
                         <td>{$tbl.data_saida}</td>
                         <td>{$tbl.hora_saida}</td>
+                        <td>{$tbl.usuario_saida}</td>
                         <td>{$tbl.odo_retorno}</td>
                         <td>{$tbl.data_retorno}</td>
                         <td>{$tbl.hora_retorno}</td>
+                        <td>{$tbl.usuario_retorno}</td>
                     </tr>
                 {/foreach}
             </tbody>
@@ -43,9 +47,11 @@
                     <td>Acompanhante(s)</td>
                     <td>Data Saída</td>
                     <td>Hora Saída</td>
+                    <td>Usuário que Anotou Saída</td>
                     <td>Odômetro Retorno</td>
                     <td>Data Chegada</td>
                     <td>Hora Chegada</td>
+                    <td>Usuário que Anotou Chegada</td>
                 </tr>
             </tfoot>
         </table>
@@ -59,6 +65,7 @@
                     <td>Odômetro Saída</td>
                     <td>Acompanhante(s)</td>
                     <td>Data e Hora da Saída</td>
+                    <td>Usuário que Anotou Saída</td>
                 </tr>
             </thead>
             <tbody>
@@ -70,6 +77,7 @@
                         <td>{$vtr.odo_saida}</td>
                         <td>{$vtr.acompanhante}</td>
                         <td>{$vtr.data_saida} {$vtr.hora_saida}</td>
+                        <td>{$vtr.usuario_saida}</td>
                     </tr>
                 {/foreach}     
             </tbody>
@@ -81,6 +89,7 @@
                     <td>Odômetro Saída</td>
                     <td>Acompanhante(s)</td>
                     <td>Data e Hora da Saída</td>
+                    <td>Usuário que Anotou Saída</td>
                 </tr>
             </tfoot>
         </table>

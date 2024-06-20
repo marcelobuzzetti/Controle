@@ -139,9 +139,10 @@ class Viatura {
     public function ViaturasRodandoRelatorio() {
         include '../model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante,  DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno,  DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
-                                                       FROM percursos, viaturas, motoristas, marcas, modelos, destinos
+            $stmt = $pdo->prepare("SELECT distinct id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante,  DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno,  DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, usuarios.nome AS usuario_saida
+                                                       FROM percursos, viaturas, motoristas, marcas, modelos, destinos, usuarios, usuarios AS u1
                                                        WHERE data_retorno IS NULL 
+                                                       AND usuarios.id_usuario = percursos.id_usuario
                                                        AND percursos.id_motorista = motoristas.id_motorista
                                                        AND percursos.id_viatura = viaturas.id_viatura
                                                        AND viaturas.id_marca = marcas.id_marca

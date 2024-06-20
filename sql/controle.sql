@@ -127,7 +127,10 @@ CREATE TABLE percursos (
   odo_retorno float(10,1) DEFAULT NULL,
   data_retorno date DEFAULT NULL,
   hora_retorno time DEFAULT NULL,
-  id_usuario int(11) NOT NULL
+  id_usuario int(11) NOT NULL,
+  status int(11) DEFAULT NULL,
+  id_usuario_retorno int(11) DEFAULT NULL,
+  motivo_apagado varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE perfis ( 
@@ -205,7 +208,8 @@ CREATE TABLE indisponibilidade (
   data date NOT NULL,
   odometro float(10,1) NOT NULL, 
   id_status int(11) NOT NULL,
-  id_usuario int(11) NOT NULL
+  id_usuario int(11) NOT NULL,
+  data_fim date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE manutencao_viaturas (

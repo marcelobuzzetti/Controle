@@ -4,7 +4,5 @@
 /vendor/
 sonar-project.properties
 /node_modules
-.env
-env.php
 /cache/
 /libs/imagens/brasao.png
