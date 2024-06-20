@@ -10,21 +10,28 @@ Desenvolvido para centralizar o controle e gerenciamento dos veículos oficiais 
 - [Docker](https://docs.docker.com/get-docker/).
 - [Docker Compose](https://docs.docker.com/compose/install/).
 
-3. Abra o terminal ou prompt de comando e navegue até um diretório de sua prefrência. Substitua `suapasta` pelo nome do seu diretório:
+3. Instale o `Composer`. Site oficial [Composer](https://getcomposer.org/doc/00-intro.md)
+
+4. Abra o terminal ou prompt de comando e navegue até um diretório de sua prefrência. Substitua `suapasta` pelo nome do seu diretório:
    ```bash
    cd suapasta
    ```
 
-4.Clone este repositório para sua máquina local através do comando abaixo:
+5.Clone este repositório para sua máquina local através do comando abaixo:
 ```bash
 git clone https://github.com/marcelobuzzetti/Controle.git
 ```
 
-5. Navegue até o diretório que você acabou de clonar.
+6. Navegue até o diretório que você acabou de clonar.
 
    ```bash
     cd Controle
    ```
+
+7. Instale os pacotes:
+    ```bash
+    composer install --ignore-platform-reqs
+    ```
 
 6. Execute o Docker Compose:
     ```bash
