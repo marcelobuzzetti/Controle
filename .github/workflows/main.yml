@@ -23,6 +23,9 @@ jobs:  # Definição dos trabalhos a serem executados
       - name: Check out the repo  # Faz o checkout do repositório
         uses: actions/checkout@v4 # Usa a ação de checkout do repositório
 
+      - name: Install Composer dependencies  # Instala as dependências do Composer
+        run: composer install --ignore-platform-reqs # Usa o Composer para instalar as dependências
+
       - name: Log in to Docker Hub  # Faz login no Docker Hub
         uses: docker/login-action@v3 # Usa a ação de login no Docker Hub
         with: # Define os parâmetros da ação
