@@ -63,7 +63,7 @@ jobs:  # Definição dos trabalhos a serem executados
         id: meta_mysql # Define um ID para o passo
         uses: docker/metadata-action@v5 # Usa a ação de metadados do Docker
         with: # Define os parâmetros da ação
-          images: "${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_PHP }}"  # Define as imagens Docker a serem processadas
+          images: "${{ vars.DOCKER_NAMESPACE }}/${{ vars.DOCKER_REPOSITORY_MYSQL }}"  # Define as imagens Docker a serem processadas
           tags: | 
             type=raw,value=latest
             type=raw,value=${{ github.run_number }}
