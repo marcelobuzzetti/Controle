@@ -33,23 +33,23 @@ git clone https://github.com/marcelobuzzetti/Controle.git
     composer install --ignore-platform-reqs
     ```
 
-6. Execute o Docker Compose:
+8. Execute o Docker Compose:
     ```bash
     docker-compose -p controle up -d
     ```
 
-7. Abra seu navegador e visite `http://localhost`.
+9. Abra seu navegador e visite `http://localhost`.
 
-8. O Usuário e Senha padrões do sistema são `admin`.
+10. O Usuário e Senha padrões do sistema são `admin`.
 
-9. Para colocar uma imagem dentro do QRCode, deve-se salvar uma imagem, no formato PNG, com o nome brasao.png, na pasta libs/imagens
+11. Para colocar uma imagem dentro do QRCode, deve-se salvar uma imagem, no formato PNG, com o nome brasao.png, na pasta libs/imagens
 
-10. Para parar o sistema:
+12. Para parar o sistema:
     ```bash
     docker-compose -p controle stop
     ```
     
-11. Parar e remover os container :
+13. Parar e remover os container :
     ```bash
     docker-compose -p controle down
     ```
