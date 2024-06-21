@@ -4,6 +4,10 @@ on:
   push:  # Evento que aciona o fluxo de trabalho (no caso, um push)
     branches:
         - master
+    paths-ignore: 
+        - README.md
+        - .gitignore
+        
   workflow_dispatch: # Evento que aciona o fluxo de trabalho manualmente
     inputs: # Define os inputs do fluxo de trabalho
       name: # Define o input "name"
