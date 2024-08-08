@@ -30,7 +30,7 @@ git clone https://github.com/marcelobuzzetti/Controle.git
 
 7. Instale os pacotes:
     ```bash
-    composer install --ignore-platform-reqs
+    composer install
     ```
 
 8. Execute o Docker Compose:

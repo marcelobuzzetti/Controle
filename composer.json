@@ -1,5 +1,6 @@
 {
   "require": {
+    "php": ">=8.0",
     "smarty/smarty": "~3.1",
     "vlucas/phpdotenv": "~3.3",
     "sendgrid/sendgrid": "^7.3",

@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1a82e03d77f184e40ec79d0e0ca4f97",
+    "content-hash": "208e94189c261243681e27f153c793cf",
     "packages": [
         {
             "name": "cakephp/core",
-            "version": "4.5.5",
+            "version": "4.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -68,7 +68,7 @@
         },
         {
             "name": "cakephp/database",
-            "version": "4.5.5",
+            "version": "4.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
@@ -124,7 +124,7 @@
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.5.5",
+            "version": "4.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -182,16 +182,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "4.5.5",
+            "version": "4.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "24bd34c596cd88a69a7d5a338296ffe3c4fd393a"
+                "reference": "708929115e5b400e1b5b76d8120ca2e51e2de199"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/24bd34c596cd88a69a7d5a338296ffe3c4fd393a",
-                "reference": "24bd34c596cd88a69a7d5a338296ffe3c4fd393a",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/708929115e5b400e1b5b76d8120ca2e51e2de199",
+                "reference": "708929115e5b400e1b5b76d8120ca2e51e2de199",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/utility"
             },
-            "time": "2024-02-27T16:19:58+00:00"
+            "time": "2024-06-23T00:11:14+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -2379,20 +2379,20 @@
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.48",
+            "version": "v3.1.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "2fc443806cdcaee4441be4d0bb09f8fa56a17f2c"
+                "reference": "b3ade90dece67812410954528e0039fb5b73bcf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/2fc443806cdcaee4441be4d0bb09f8fa56a17f2c",
-                "reference": "2fc443806cdcaee4441be4d0bb09f8fa56a17f2c",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/b3ade90dece67812410954528e0039fb5b73bcf7",
+                "reference": "b3ade90dece67812410954528e0039fb5b73bcf7",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.2 || ^7.0"
+                "php": ">=5.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.5 || ^6.5 || ^5.7 || ^4.8",
@@ -2436,9 +2436,9 @@
                 "forum": "http://www.smarty.net/forums/",
                 "irc": "irc://irc.freenode.org/smarty",
                 "issues": "https://github.com/smarty-php/smarty/issues",
-                "source": "https://github.com/smarty-php/smarty/tree/v3.1.48"
+                "source": "https://github.com/smarty-php/smarty/tree/v3.1.46"
             },
-            "time": "2023-03-28T19:45:54+00:00"
+            "time": "2022-08-01T21:58:13+00:00"
         },
         {
             "name": "starkbank/ecdsa",
@@ -3975,7 +3975,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=8.0"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
