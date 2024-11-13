@@ -11,9 +11,7 @@ services:
         - ./:/var/www/html/
 
   php:
-    build: 
-      context: . #indica o dir da Dockerfile
-      dockerfile: DockerfilePHP
+    build: ./php-fpm/
     expose:
       - 9000
     image: php_fpm_c2
@@ -22,9 +20,7 @@ services:
       - ./:/var/www/html/
 
   db:
-    build:
-      context: . #indica o dir da Dockerfile
-      dockerfile: DockerfileMySQL
+    build: ./mysql/
     image: mysql_c2
     container_name: c2_db
     command: --explicit_defaults_for_timestamp=1
@@ -38,15 +34,6 @@ services:
       - MYSQL_PASSWORD=password
     ports:
       - "3306:3306"
-    
-
-  # node:
-  #   image: node:14
-  #   container_name: c2_node
-  #   volumes:
-  #     - .:/var/www/html
-  #   working_dir: /var/www/html
-  #   command: bash -c "npm install --ignore-platform-reqs && npm run start"
 
 volumes:
   db_data:
