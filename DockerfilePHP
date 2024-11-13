@@ -1,11 +1,3 @@
-FROM php:8.2.20-apache
-
-RUN a2enmod rewrite
-RUN apt-get update && apt-get upgrade -y && apt-get install git zip libpng-dev -y \
-    && docker-php-ext-install gd
-RUN docker-php-ext-install pdo pdo_mysql
-RUN mkdir -p /etc/apache2/ssl
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY ./apache/apache-config.conf /etc/apache2/sites-available/000-default.conf
-
-EXPOSE 80
+FROM php:8.2-fpm
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-enable mysqli
