@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
 
 /* $_SESSION['key'] = md5(uniqid(rand(), TRUE)); */
 $erro = null;
