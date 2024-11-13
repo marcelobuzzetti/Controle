@@ -1,5 +1,5 @@
 <?php
-include '../include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
 
 $existencia_combustivel = new CombustivelExistencia();
 $tabela_existencia = $existencia_combustivel->listarCombustiveisExistentes();

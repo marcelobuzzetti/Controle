@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $id_viatura = $_GET['viatura'];
 $stmt = $pdo->prepare("SELECT MAX(odo_retorno) AS qnt FROM percursos WHERE id_viatura = ?");

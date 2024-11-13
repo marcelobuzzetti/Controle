@@ -5,7 +5,7 @@
 class Situacao {
 
     public function listarSituacao() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM situacao");
             $executa = $stmt->execute();

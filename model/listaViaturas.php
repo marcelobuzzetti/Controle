@@ -1,5 +1,5 @@
 <?php
-include '../include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
 
 $viaturas = new Viatura();
 $tabela_existencia = $viaturas->listarViaturas();

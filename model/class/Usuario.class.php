@@ -5,7 +5,7 @@
 class Usuario {
 
     public function listarUsuario($login) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT usuarios.id_usuario AS id_usuario,sigla, militares.nome AS nome_guerra, login,perfis.descricao,usuarios.nome
                                                 FROM usuarios, perfis, militares, posto_grad
@@ -30,7 +30,7 @@ class Usuario {
     }
 
     public function listarUsuarioAtualizar($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             if ($id != 1) {
                 $stmt = $pdo->prepare("SELECT id_usuario,login,descricao,nome, id_militar, usuarios.id_perfil AS id_perfil, nome
@@ -62,7 +62,7 @@ class Usuario {
     }
 
     public function listarUsuarioInativos() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT usuarios.id_usuario AS id_usuario,sigla, militares.nome AS nome_guerra, login,perfis.descricao,usuarios.nome
                                                 FROM usuarios, perfis, militares, posto_grad

@@ -5,7 +5,7 @@
 class Modelo {
 
     public function listarModelos() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp
                                                FROM modelos, marcas
@@ -26,7 +26,7 @@ class Modelo {
     }
 
     public function listarModelosCadastrados() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM  modelos");
             $executa = $stmt->execute();

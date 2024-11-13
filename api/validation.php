@@ -1,5 +1,5 @@
 <?php
-include '../include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
 use Rakit\Validation\Validator;
 $validator = new Validator;
 

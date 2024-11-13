@@ -1,7 +1,7 @@
 <?php
 
-include '../include/config.inc.php';
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $_POST = json_decode(file_get_contents("php://input"),true);
 

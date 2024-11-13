@@ -5,7 +5,7 @@
 class PostoGrad {
 
     public function listarPostoGrad() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM posto_grad");
             $executa = $stmt->execute();
