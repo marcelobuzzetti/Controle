@@ -5,7 +5,7 @@
 class Relatorio {
 
     public function listarPercursos($inicio, $fim) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, 
                                                 modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, 
@@ -43,7 +43,7 @@ class Relatorio {
     }
 
     public function listarPercursosCompleto() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido,             destinos.nome_destino AS destino, odo_saida, 
             IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, 
@@ -74,7 +74,7 @@ class Relatorio {
     }
 
     public function listarVtrUtilizacao($inicio, $fim) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM percursos p
@@ -100,7 +100,7 @@ class Relatorio {
     }
 
     public function listarVtrUtilizacaoCompleto() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM percursos p
@@ -124,7 +124,7 @@ class Relatorio {
     }
 
     public function listarMotoristaUtilizacao($inicio, $fim) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
                                                 FROM percursos p
@@ -150,7 +150,7 @@ class Relatorio {
     }
 
     public function listarMotoristaCompleto() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
                                                 FROM percursos p
@@ -173,7 +173,7 @@ class Relatorio {
     }
 
     public function listarAbastecimento($inicio, $fim) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
                                                 FROM(
@@ -208,7 +208,7 @@ class Relatorio {
     }
 
     public function listarAbastecimentoCompleto() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
                                                 FROM(

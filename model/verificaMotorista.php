@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $nome = htmlspecialchars($_GET['nome']);
 $pg = $_GET['pg'];

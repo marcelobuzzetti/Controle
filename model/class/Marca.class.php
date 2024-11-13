@@ -5,7 +5,7 @@
 class Marca {
 
     public function listarMarcas() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM marcas WHERE id_status != 2");
             $executa = $stmt->execute();

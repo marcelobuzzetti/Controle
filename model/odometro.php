@@ -1,7 +1,7 @@
 <?php
 
-include '../model/conexao.php';
-include '../include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
 
 
     $id_viatura = $_GET['viatura'];

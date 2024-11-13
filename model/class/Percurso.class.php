@@ -5,7 +5,7 @@
 class Percurso {
 
     public function listarPercursosFechadas() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') as data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                     FROM percursos, viaturas, motoristas, marcas, modelos, destinos

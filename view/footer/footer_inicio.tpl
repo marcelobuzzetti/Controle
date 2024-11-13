@@ -41,7 +41,13 @@
        var table = $('#ajax').DataTable( {
            ajax: {
                url: '/viaturasrodando',
-               dataSrc: ''
+               dataSrc: '',
+                error: function (xhr, error, code)
+                {
+                    console.log(xhr);
+                    console.log(error);
+                    console.log(code);
+                }  
                },
             columns: [ 
                 { data: 'viatura' },

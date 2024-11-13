@@ -5,7 +5,7 @@
 class Perfil {
 
     public function listarPerfil() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM perfis");
             $executa = $stmt->execute();

@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $id_marca = $_GET['marca'];
 $id_modelo = $_GET['modelo'];

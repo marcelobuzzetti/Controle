@@ -5,7 +5,7 @@
 class TipoViatura {
 
     public function listarTiposViaturas() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM tipos_viaturas");
             $executa = $stmt->execute();

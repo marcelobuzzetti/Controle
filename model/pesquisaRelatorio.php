@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $texto = "%" . $_GET['pesquisa_relatorio'] . "%";
 

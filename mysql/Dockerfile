@@ -8,9 +8,9 @@ ENV MYSQL_USER=user
 ENV MYSQL_PASSWORD=password
 
 # Copy the SQL script to initialize the database
-COPY ./sql/controle.sql /docker-entrypoint-initdb.d/
+COPY controle.sql /docker-entrypoint-initdb.d/
 
-ADD ./sql/charset.cnf /etc/mysql/conf.d/
+ADD charset.cnf /etc/mysql/conf.d/
 RUN chmod 644 /etc/mysql/conf.d/charset.cnf
 
 # Expose the default MySQL port

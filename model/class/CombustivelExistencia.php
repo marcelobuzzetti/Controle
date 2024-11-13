@@ -5,7 +5,7 @@
 class CombustivelExistencia {
 
     public function listarCombustiveisExistentes() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT cr.combustivel AS combustivel, cr.tipo_combustivel AS tipo_combustivel, cr.qnt - (ca.qnt + ce.qnt) AS qnt
                                                     FROM combustivel_abastecido ca, combustivel_recebido cr, combustivel_especial ce

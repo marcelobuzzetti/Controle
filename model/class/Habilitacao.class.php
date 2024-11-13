@@ -5,7 +5,7 @@
 class Habilitacao {
 
     public function listarHabilitacoes() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM habilitacoes");
             $executa = $stmt->execute();

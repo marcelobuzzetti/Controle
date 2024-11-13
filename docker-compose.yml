@@ -1,25 +1,26 @@
 services:
-  web:
-    build:
-      context: . #indica o dir da Dockerfile
-      dockerfile: DockerfilePHP
-    image: apache_c2
-    container_name: c2_web
+  nginx:
+    build: ./nginx/
     ports:
-      - "80:80"
-    volumes:
-      - ./:/var/www/html
-      - ./apache/apache-config.conf:/etc/apache2/sites-available/000-default.conf
+      - 80:80
+    image: nginx_c2
+    container_name: c2_web
     depends_on:
-      - db
-    environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html
-    # command: bash -c "composer install --ignore-platform-reqs"
+      - php
+    volumes:
+        - ./:/var/www/html/
+
+  php:
+    build: ./php-fpm/
+    expose:
+      - 9000
+    image: php_fpm_c2
+    container_name: c2_php_fpm
+    volumes:
+      - ./:/var/www/html/
 
   db:
-    build:
-      context: . #indica o dir da Dockerfile
-      dockerfile: DockerfileMySQL
+    build: ./mysql/
     image: mysql_c2
     container_name: c2_db
     command: --explicit_defaults_for_timestamp=1
@@ -33,15 +34,6 @@ services:
       - MYSQL_PASSWORD=password
     ports:
       - "3306:3306"
-    
-
-  # node:
-  #   image: node:14
-  #   container_name: c2_node
-  #   volumes:
-  #     - .:/var/www/html
-  #   working_dir: /var/www/html
-  #   command: bash -c "npm install --ignore-platform-reqs && npm run start"
 
 volumes:
   db_data:

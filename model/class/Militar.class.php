@@ -5,7 +5,7 @@
 class Militar {
 
     public function listarMilitar() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
             sigla, militares.nome AS nome, nome_completo, status,
@@ -32,7 +32,7 @@ class Militar {
     }
 
     public function listarMilitarInativo() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
             sigla, militares.nome AS nome, nome_completo, status,
@@ -59,7 +59,7 @@ class Militar {
     }
 
     public function listarMilitarUsuario() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,sigla, nome, nome_completo, 
                                                 status
@@ -84,7 +84,7 @@ class Militar {
     }
 
     public function listarMilitarMotorista() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_militar, sigla, nome
                                                 FROM militares, posto_grad
@@ -107,7 +107,7 @@ class Militar {
     }
 
     public function listarMilitarAtualizar($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
                                                 militares.id_posto_grad AS id_posto_grad,sigla, nome, nome_completo, 
@@ -135,7 +135,7 @@ class Militar {
     }
 
     public function listarTelefoneMilitarAtualizar($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero, telefones.id_status AS id_status
                                                 FROM militares, telefones
@@ -156,7 +156,7 @@ class Militar {
     }
 
     public function listarEnderecoMilitarAtualizar($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT enderecos.*
                                                 FROM militares, enderecos
@@ -177,7 +177,7 @@ class Militar {
     }
 
     public function listarEmailMilitarAtualizar($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT emails.*
                                                 FROM militares, emails

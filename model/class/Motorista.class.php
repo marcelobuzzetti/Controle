@@ -5,7 +5,7 @@
 class Motorista {
 
     public function listarMotoristas() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_status != 2 AND 
                                                                                             id_motorista NOT IN (SELECT id_motorista
@@ -26,7 +26,7 @@ class Motorista {
     }
 
     public function listarMotoristasCadastrados() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao, apelido, cnh
                                                 FROM militares, posto_grad, 
@@ -51,7 +51,7 @@ class Motorista {
     }
 
     public function listarMotoristasInativos() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao
                                                 FROM militares, posto_grad, 
@@ -76,7 +76,7 @@ class Motorista {
     }
 
     public function listarMotoristasAtualizar($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar, sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao
                                                 FROM militares, posto_grad, 
@@ -101,7 +101,7 @@ class Motorista {
     }
 
     public function listarMotoristasCompleto() {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM motoristas");
             $executa = $stmt->execute();
@@ -119,7 +119,7 @@ class Motorista {
     }
 
     public function listarMotorista($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao, apelido, cnh
                                                 FROM militares, posto_grad, 
@@ -144,7 +144,7 @@ class Motorista {
     }
 
     public function listarPercursos($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                 FROM percursos, viaturas, motoristas, marcas, modelos, destinos
@@ -170,7 +170,7 @@ class Motorista {
     }
 
     public function listarViatura($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT CONCAT(marcas.descricao,'-',modelos.descricao,'-',placa) AS viatura, odo_saida, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, IFNULL(odo_retorno - odo_saida,0) AS KM, nome_destino
                                                 FROM percursos, motoristas, destinos, marcas, modelos, viaturas
@@ -196,7 +196,7 @@ class Motorista {
     }
 
     public function listarAcidente($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, disponibilidade
                                                 FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas, situacao
@@ -222,7 +222,7 @@ class Motorista {
     }
 
     public function listarAbastecimentos($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT id_abastecimento, nrvale,  motoristas.apelido AS apelido, marcas.descricao AS marca, modelos.descricao AS modelo, viaturas.placa AS placa, abastecimentos.odometro AS odometro, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM abastecimentos, marcas, modelos, viaturas, motoristas, combustiveis, tipos_combustiveis
@@ -249,7 +249,7 @@ class Motorista {
     }
 
     public function listarKm($id) {
-        include '../model/conexao.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT SUM(odo_retorno - odo_saida) as KM "
                     . "                         FROM percursos"

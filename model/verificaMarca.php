@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $marca = htmlspecialchars($_GET['marca']);
 

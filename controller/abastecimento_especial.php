@@ -1,6 +1,6 @@
 <?php
 
-include '../include/config.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
 
 
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 3 && $_SESSION['perfil'] != 4)) {

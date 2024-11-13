@@ -1,6 +1,6 @@
 <?php
 
-include '../model/conexao.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
 
 $combustivel = $_GET['combustivel'];
 $stmt = $pdo->prepare("SELECT tc.id_tipo_combustivel AS id_tipo_combustivel, tc.descricao AS descricao
