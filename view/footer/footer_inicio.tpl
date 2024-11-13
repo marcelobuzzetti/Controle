@@ -40,7 +40,7 @@
 
        var table = $('#ajax').DataTable( {
            ajax: {
-               url: '/api/viaturasrodando.php',
+               url: '/viaturasrodando',
                dataSrc: '',
                 error: function (xhr, error, code)
                 {

@@ -181,7 +181,7 @@ switch ($request) {
     case '/validation' :
         require __DIR__ . '/api/validation.php';
         break;
-    case '/viaturasrodando' :
+    case (strpos($request, '/viaturasrodando') !== false) :
         require __DIR__ . '/api/viaturasrodando.php';
         break;
     default:
