@@ -30,9 +30,9 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link href="/toastrcss" rel="stylesheet" />
-    <script src="/toastrjs"></script>
-    <script src="/axios"></script>
+    <link href="/libs/css/toastr.min.css" rel="stylesheet" />
+    <script src="/libs/js/toastr.js"></script>
+    <script src="/libs/js/axios.min.js"></script>
     <script>
       toastr.options = {
         closeButton: false,
