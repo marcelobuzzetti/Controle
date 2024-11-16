@@ -4,9 +4,7 @@ ob_start();
 
 include_once __DIR__ . '/include/config.inc.php';
 
-$request = $_SERVER['REQUEST_URI'];
-
-switch ($request) {
+switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/' :
         require __DIR__ . '/controller/home.php';
         break;
@@ -181,8 +179,14 @@ switch ($request) {
     case '/validation' :
         require __DIR__ . '/api/validation.php';
         break;
-    case (strpos($request, '/viaturasrodando') !== false) :
+    case '/viaturasrodando' :
         require __DIR__ . '/api/viaturasrodando.php';
+        break;
+    case '/buscadormilitar' :
+        require __DIR__ . '/model/buscador_militar.php';
+        break;
+    case '/buscacidades' :
+        require __DIR__ . '/model/listaCidades.php';
         break;
     default:
         http_response_code(404);

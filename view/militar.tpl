@@ -69,3 +69,24 @@
     <button type="submit" class="btn btn-primary col-xs-12 col-sm-12 col-md-12" id="enviar" value="{$evento}" name="enviar">{$botao}</button>
 </div>
 </form>
+{* <script>
+    $(document).ready(function () {
+        $('#estado_natal').change(function () {
+            console.log('teste');
+            console.log($('#estado_natal').val());
+            var id_estado = $('#estado_natal').val();
+            $.ajax({
+                url: '/buscadorcidades',
+                type: 'POST',
+                data: {estado: id_estado},
+                success: function (data) {
+                    $('#cidade_natal').html(data);
+                    $('#cidade_natal').select2();
+                }
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+    });
+</script> *}

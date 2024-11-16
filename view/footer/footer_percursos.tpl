@@ -35,7 +35,7 @@
         });
         $('#acompanhante').tokenfield({
             autocomplete: {
-                source: "../model/buscador_militar.php",
+                source: "/buscadormilitar",
                 minLength: 3
             },
             showAutocompleteOnFocus: true

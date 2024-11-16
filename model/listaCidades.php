@@ -7,12 +7,12 @@ $estado = $_GET['estado'];
 $stmt = $pdo->prepare("SELECT * FROM cidades WHERE id_estado = $estado");
             $executa = $stmt->execute();
             $teste = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo "<select class='form-control' name='cidade_natal' id='cidade_natal' required='required'>";
+            // echo "<select class='form-control' name='cidade_natal' id='cidade_natal' required='required'>";
     		echo "<option value='' disabled selected>Selecione a Cidade</option>";
             foreach($teste as $t){
             	echo "<option value=".$t['id_cidade'].">".$t['nome']."</option>";
             }
-            echo "</select>";
+            // echo "</select>";
 
 
 /*$rs = mysql_query("SELECT * FROM  cidades WHERE id_estado = $estado");

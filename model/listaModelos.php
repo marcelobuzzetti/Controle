@@ -9,17 +9,17 @@ $executa = $stmt->execute();
 $teste = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($teste) {
-    echo "<select class='form-control' name='modelo' id='modeo' required='required'>";
+    // echo "<select class='form-control' name='modelo' id='modeo' required='required'>";
     echo "<option value='' disabled selected>Selecione o Modelo</option>";
       foreach($teste as $t){
           $numero = $t["id_modelo"];
           $descricao = $t["descricao"];
             	echo "<option value=$numero>$descricao</option>";
             }
-    echo "</select>";
+    // echo "</select>";
 } else {
-    echo "<select class='form-control' name='modelo' id='modelo' required='required'>";
+    // echo "<select class='form-control' name='modelo' id='modelo' required='required'>";
     echo "<option value='' disabled selected>Sem Modelos</option>";
-    echo "</select>";
+    // echo "</select>";
 }
 ?>

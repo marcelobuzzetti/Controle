@@ -371,10 +371,10 @@ $(function () {
 
     /*Completa cidades*/
     $('#estado_natal').change(function () {
-        $('#cidade_natal').load('../model/listaCidades.php?estado=' + $('#estado_natal').val());
+        $('#cidade_natal').load('/buscacidades?estado=' + $('#estado_natal').val());
     });
     $('.estado1').change(function () {
-        $('.cidade1').load('../model/listaCidades.php?estado=' + $('.estado1').val());
+        $('.cidade1').load('/buscacidades?estado=' + $('.estado1').val());
     });
     /*Completa cidades*/
 

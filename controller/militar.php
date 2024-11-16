@@ -1,8 +1,5 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
-
-
 if (isset($_SESSION['login']) == FALSE || ($_SESSION['perfil'] != 1 && $_SESSION['perfil'] != 5)) {
     header('Location: /percurso');
 } else {
