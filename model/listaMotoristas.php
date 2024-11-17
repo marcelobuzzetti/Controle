@@ -24,18 +24,18 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
         $executa = $stmt->execute();
         $teste = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (count($teste) > 0) {
-            echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
+            // echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
             echo "<option value='' disabled selected>Selecione o Motoristas</option>";
             foreach($teste as $t){
                 $id = $t['id_motorista'];
                 $apelido = $t['apelido'];
                 echo "<option value='$id'>$apelido</option>";
             }
-            echo "</select>";
+            // echo "</select>";
         } else {
-            echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
+            // echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
             echo "<option value='' disabled selected>Sem motoristas habilitados</option>";
-            echo "</select>";
+            // echo "</select>";
         }
     } else {
         $stmt = $pdo->prepare("SELECT id_motorista, apelido FROM motoristas, habilitacoes
@@ -47,17 +47,17 @@ include $_SERVER['DOCUMENT_ROOT'] . '/include/config.inc.php';
         $teste = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (count($teste) > 0) {
-            echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
+            // echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
             echo "<option value='' disabled selected>Selecione o Motoristas</option>";
             foreach($teste as $t){
                 $id = $t['id_motorista'];
                 $apelido = $t['apelido'];
                 echo "<option value='$id'>$apelido</option>";
             }
-            echo "</select>";
+            // echo "</select>";
         } else {
-            echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
+            // echo "<select class='form-control' name='motorista' id='motorista' required='required'>";
             echo "<option value='' disabled selected>Sem motoristas habilitados</option>";
-            echo "</select>";
+            // echo "</select>";
         }
     }

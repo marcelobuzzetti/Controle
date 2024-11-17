@@ -2,12 +2,11 @@
 
 
 
-class Motorista {
+class Motorista extends Model {
 
     public function listarMotoristas() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM motoristas WHERE id_status != 2 AND 
+            $stmt = $this->pdo->prepare("SELECT * FROM motoristas WHERE id_status != 2 AND 
                                                                                             id_motorista NOT IN (SELECT id_motorista
                                                                                                                              FROM percursos 
                                                                                                                              WHERE data_retorno IS NULL)");
@@ -26,9 +25,8 @@ class Motorista {
     }
 
     public function listarMotoristasCadastrados() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao, apelido, cnh
+            $stmt = $this->pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao, apelido, cnh
                                                 FROM militares, posto_grad, 
                                                 status , motoristas, habilitacoes
                                                 WHERE militares.id_status = status.id_status
@@ -51,9 +49,8 @@ class Motorista {
     }
 
     public function listarMotoristasInativos() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao
+            $stmt = $this->pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao
                                                 FROM militares, posto_grad, 
                                                 status , motoristas, habilitacoes
                                                 WHERE militares.id_status = status.id_status
@@ -76,9 +73,8 @@ class Motorista {
     }
 
     public function listarMotoristasAtualizar($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar, sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao
+            $stmt = $this->pdo->prepare("SELECT motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar, sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao
                                                 FROM militares, posto_grad, 
                                                 status , motoristas, habilitacoes
                                                 WHERE militares.id_status = status.id_status
@@ -101,9 +97,8 @@ class Motorista {
     }
 
     public function listarMotoristasCompleto() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM motoristas");
+            $stmt = $this->pdo->prepare("SELECT * FROM motoristas");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -119,9 +114,8 @@ class Motorista {
     }
 
     public function listarMotorista($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao, apelido, cnh
+            $stmt = $this->pdo->prepare("SELECT  motoristas.id_motorista AS id_motorista, motoristas.id_militar AS id_militar,sigla, nome, nome_completo, cnh, DATE_FORMAT( validade,  '%d/%m/%Y' ) AS validade, categoria, status, motoristas.id_habilitacao AS id_habilitacao, apelido, cnh
                                                 FROM militares, posto_grad, 
                                                 status , motoristas, habilitacoes
                                                 WHERE militares.id_status = status.id_status
@@ -144,9 +138,8 @@ class Motorista {
     }
 
     public function listarPercursos($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
+            $stmt = $this->pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                 FROM percursos, viaturas, motoristas, marcas, modelos, destinos
                                                 WHERE percursos.id_motorista = motoristas.id_motorista
                                                 AND percursos.id_viatura = viaturas.id_viatura
@@ -170,9 +163,8 @@ class Motorista {
     }
 
     public function listarViatura($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT CONCAT(marcas.descricao,'-',modelos.descricao,'-',placa) AS viatura, odo_saida, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, IFNULL(odo_retorno - odo_saida,0) AS KM, nome_destino
+            $stmt = $this->pdo->prepare("SELECT CONCAT(marcas.descricao,'-',modelos.descricao,'-',placa) AS viatura, odo_saida, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, IFNULL(odo_retorno - odo_saida,0) AS KM, nome_destino
                                                 FROM percursos, motoristas, destinos, marcas, modelos, viaturas
                                                 WHERE percursos.id_viatura = viaturas.id_viatura
                                                 AND percursos.id_destino = destinos.id_destino
@@ -196,9 +188,8 @@ class Motorista {
     }
 
     public function listarAcidente($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, disponibilidade
+            $stmt = $this->pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, disponibilidade
                                                 FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas, situacao
                                                 WHERE viaturas.id_marca = marcas.id_marca 
                                                 AND viaturas.id_modelo = modelos.id_modelo
@@ -222,9 +213,8 @@ class Motorista {
     }
 
     public function listarAbastecimentos($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_abastecimento, nrvale,  motoristas.apelido AS apelido, marcas.descricao AS marca, modelos.descricao AS modelo, viaturas.placa AS placa, abastecimentos.odometro AS odometro, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
+            $stmt = $this->pdo->prepare("SELECT id_abastecimento, nrvale,  motoristas.apelido AS apelido, marcas.descricao AS marca, modelos.descricao AS modelo, viaturas.placa AS placa, abastecimentos.odometro AS odometro, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM abastecimentos, marcas, modelos, viaturas, motoristas, combustiveis, tipos_combustiveis
                                                     WHERE abastecimentos.id_motorista = motoristas.id_motorista
                                                     AND abastecimentos.id_viatura = viaturas.id_viatura
@@ -249,9 +239,8 @@ class Motorista {
     }
 
     public function listarKm($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT SUM(odo_retorno - odo_saida) as KM "
+            $stmt = $this->pdo->prepare("SELECT SUM(odo_retorno - odo_saida) as KM "
                     . "                         FROM percursos"
                     . "                         WHERE id_motorista = $id");
             $executa = $stmt->execute();
