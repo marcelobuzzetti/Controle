@@ -2,12 +2,11 @@
 
 
 
-class Viatura {
+class Viatura extends Model {
 
     public function listarViaturas() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
+            $stmt = $this->pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
                                                     FROM viaturas, marcas, modelos
                                                     WHERE viaturas.id_marca = marcas.id_marca AND
                                                     viaturas.id_modelo = modelos.id_modelo
@@ -16,20 +15,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                         alert('Não foi possível criar tabela viaturas.');
-                         </script>");
             }
+
+            print("<script language=JavaScript>
+                        alert('Não foi possível criar tabela viaturas.');
+                        </script>");
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarViaturasCadastradas() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, v.rfid, tp.descricao AS tipo_viatura , IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
+            $stmt = $this->pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, v.rfid, tp.descricao AS tipo_viatura , IFNULL( GREATEST( MAX( p.odo_retorno ) , MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura                                                
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1
@@ -43,20 +41,20 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                         alert('Não foi possível criar tabela de viaturas cadastradas.');
-                         </script>");
-            }
+            } 
+
+            print("<script language=JavaScript>
+                        alert('Não foi possível criar tabela de viaturas cadastradas.');
+                        </script>");
+        
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarViaturasPercursos() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, viaturas.id_viatura, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, IFNULL(acompanhante,'Sem Acomapnhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
+            $stmt = $this->pdo->prepare("SELECT id_percurso, viaturas.id_viatura, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido, nome_destino, odo_saida, IFNULL(acompanhante,'Sem Acomapnhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                         FROM percursos, viaturas, motoristas, marcas, modelos, destinos
                                                         WHERE data_retorno IS NULL 
                                                         AND percursos.id_motorista = motoristas.id_motorista
@@ -71,20 +69,20 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
-                           alert('Não foi possível criar tabela.');
-                           </script>");
-            }
+            } 
+            
+            print("<script language=JavaScript>
+            alert('Não foi possível criar tabela.');
+            </script>");
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarViaturasPercursosDisponiveis() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
+            $stmt = $this->pdo->prepare("SELECT id_viatura ,marcas.descricao AS marca,modelos.descricao AS  modelo,placa
                                                     FROM viaturas, marcas, modelos
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo 
@@ -99,20 +97,18 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                print("<script language=JavaScript>
+            }
+            print("<script language=JavaScript>
                            alert('Não foi possível criar tabela.');
                            </script>");
-            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function ViaturasRodando() {
-        include './model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante,  DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno,  DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
+            $stmt = $this->pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante,  DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno,  DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                        FROM percursos, viaturas, motoristas, marcas, modelos, destinos
                                                        WHERE data_retorno IS NULL 
                                                        AND percursos.id_motorista = motoristas.id_motorista
@@ -126,20 +122,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            }
                 print("<script language=JavaScript>
                               alert('Não foi possível criar tabela de Viaturas Rodando.');
                               </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function ViaturasRodandoRelatorio() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT distinct id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante,  DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno,  DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, usuarios.nome AS usuario_saida
+            $stmt = $this->pdo->prepare("SELECT distinct id_percurso, marcas.descricao AS marca, modelos.descricao AS  modelo, placa, motoristas.apelido AS apelido, nome_destino, odo_saida, acompanhante,  DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno,  DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, usuarios.nome AS usuario_saida
                                                        FROM percursos, viaturas, motoristas, marcas, modelos, destinos, usuarios, usuarios AS u1
                                                        WHERE data_retorno IS NULL 
                                                        AND usuarios.id_usuario = percursos.id_usuario
@@ -154,20 +149,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                               alert('Não foi possível criar tabela de Viaturas Rodando.');
                               </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function detalharViatura($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, tp.descricao AS tipo_viatura,v.rfid,  
+            $stmt = $this->pdo->prepare("SELECT v.id_viatura, m.descricao AS marca, mo.descricao AS modelo, placa, tp.descricao AS tipo_viatura,v.rfid,  
                                     IFNULL( GREATEST( MAX( p.odo_retorno ) , 
                                     MAX( p.odo_saida ) ) , v.odometro ) AS odometro, mo.cap_tanque, mo.consumo_padrao, mo.cap_transp, ha.categoria, s.disponibilidade, v.ano
                                     FROM percursos p
@@ -183,20 +177,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela de viaturas cadastradas.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarPercursos($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
+            $stmt = $this->pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno
                                                 FROM percursos, viaturas, motoristas, marcas, modelos, destinos
                                                 WHERE percursos.id_motorista = motoristas.id_motorista
                                                 AND percursos.id_viatura = viaturas.id_viatura
@@ -210,20 +203,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                            alert('Não foi possível criar tabela.');
                            </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarMotorista($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT motoristas.apelido AS apelido, odo_saida, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, IFNULL(odo_retorno - odo_saida,0) AS KM, nome_destino
+            $stmt = $this->pdo->prepare("SELECT motoristas.apelido AS apelido, odo_saida, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, IFNULL(odo_retorno - odo_saida,0) AS KM, nome_destino
                                                 FROM percursos, motoristas, destinos
                                                 WHERE percursos.id_motorista = motoristas.id_motorista
                                                 AND percursos.id_destino = destinos.id_destino
@@ -234,20 +226,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                            alert('Não foi possível criar tabela.');
                            </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarAcidente($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, disponibilidade
+            $stmt = $this->pdo->prepare("SELECT id_acidente_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa, IFNULL(acompanhante,'Sem Acompanhante') AS acompanhante, motoristas.apelido AS motorista, acidentes_viaturas.odometro AS odometro, acidentes_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, avarias, disponibilidade
                                                 FROM viaturas, marcas, modelos, acidentes_viaturas, motoristas, situacao
                                                 WHERE viaturas.id_marca = marcas.id_marca 
                                                 AND viaturas.id_modelo = modelos.id_modelo
@@ -260,20 +251,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela viaturas.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarMnt($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_manutencao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,manutencao_viaturas.odometro, manutencao_viaturas.descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
+            $stmt = $this->pdo->prepare("SELECT id_manutencao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,manutencao_viaturas.odometro, manutencao_viaturas.descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM viaturas, marcas, modelos, manutencao_viaturas
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo
@@ -284,20 +274,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela viaturas.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarAbastecimentos($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_abastecimento, nrvale,  motoristas.apelido AS apelido, marcas.descricao AS marca, modelos.descricao AS modelo, viaturas.placa AS placa, abastecimentos.odometro AS odometro, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
+            $stmt = $this->pdo->prepare("SELECT id_abastecimento, nrvale,  motoristas.apelido AS apelido, marcas.descricao AS marca, modelos.descricao AS modelo, viaturas.placa AS placa, abastecimentos.odometro AS odometro, combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo, qnt, hora, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM abastecimentos, marcas, modelos, viaturas, motoristas, combustiveis, tipos_combustiveis
                                                     WHERE abastecimentos.id_motorista = motoristas.id_motorista
                                                     AND abastecimentos.id_viatura = viaturas.id_viatura
@@ -311,20 +300,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarAlteracaoVtr($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_alteracao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,alteracao_viaturas.odometro AS odometro, alteracao_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
+            $stmt = $this->pdo->prepare("SELECT id_alteracao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,alteracao_viaturas.odometro AS odometro, alteracao_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM viaturas, marcas, modelos, alteracao_viaturas
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo
@@ -334,20 +322,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela viaturas.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function quantidadeVtrMarcaModelo() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, m.descricao AS marca, mo.descricao AS modelo, placa
+            $stmt = $this->pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM viaturas v
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
@@ -357,20 +344,19 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela viaturas.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
     public function listarVtrIndisponiveis() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, COUNT(v.id_situacao) AS qnt_disponibilidade, s.disponibilidade AS descricao, m.descricao AS marca, mo.descricao AS modelo, placa
+            $stmt = $this->pdo->prepare("SELECT v.id_viatura, COUNT(v.id_viatura) AS qnt, COUNT(v.id_situacao) AS qnt_disponibilidade, s.disponibilidade AS descricao, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM viaturas v
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca AND v.id_status = 1 AND v.id_situacao = 2
                                                 INNER JOIN modelos mo ON mo.id_modelo = v.id_modelo
@@ -381,11 +367,11 @@ class Viatura {
 
             if ($executa) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
+            } 
                 print("<script language=JavaScript>
                          alert('Não foi possível criar tabela viaturas.');
                          </script>");
-            }
+            
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
