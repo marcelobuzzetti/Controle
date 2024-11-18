@@ -53,7 +53,3 @@ git clone https://github.com/marcelobuzzetti/Controle.git
     ```bash
     docker-compose -p controle down
     ```
-
-## Action Status
-
-[![Push Images to Docker Hub](https://github.com/marcelobuzzetti/Controle/actions/workflows/main.yml/badge.svg)](https://github.com/marcelobuzzetti/Controle/actions/workflows/main.yml)
