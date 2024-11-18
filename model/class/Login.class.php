@@ -19,7 +19,7 @@ $cache_expire = session_cache_expire(); */
 $_SESSION['login'] = '';
 $_SESSION['perfil'] = '';
 
-class Login {
+class Login extends Model {
     
     function Acesso() {
         if (isset($_SESSION['login']) == TRUE) {

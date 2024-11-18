@@ -2,12 +2,11 @@
 
 
 
-class Status {
+class Status extends Model {
 
     public function listarStatus() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM status");
+            $stmt = $this->pdo->prepare("SELECT * FROM status");
             $executa = $stmt->execute();
 
             if ($executa) {

@@ -2,12 +2,11 @@
 
 
 
-class Situacao {
+class Situacao extends Model {
 
     public function listarSituacao() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM situacao");
+            $stmt = $this->pdo->prepare("SELECT * FROM situacao");
             $executa = $stmt->execute();
 
             if ($executa) {

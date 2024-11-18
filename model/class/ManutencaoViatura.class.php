@@ -2,12 +2,11 @@
 
 
 
-class ManutencaoViatura {
+class ManutencaoViatura extends Model {
 
     public function listarMntVtr() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_manutencao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,manutencao_viaturas.odometro, manutencao_viaturas.descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
+            $stmt = $this->pdo->prepare("SELECT id_manutencao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,manutencao_viaturas.odometro, manutencao_viaturas.descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM viaturas, marcas, modelos, manutencao_viaturas
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo

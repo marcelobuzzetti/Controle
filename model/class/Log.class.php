@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create($_SERVER['DOCUMENT_ROOT']);
 $dotenv->load();
 
-class Log {
+class Log extends Model {
 
     function gerarLog($erro,$local){
 

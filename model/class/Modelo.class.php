@@ -2,12 +2,11 @@
 
 
 
-class Modelo {
+class Modelo extends Model {
 
     public function listarModelos() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp
+            $stmt = $this->pdo->prepare("SELECT id_modelo, marcas.descricao AS marca, modelos.descricao AS descricao, cap_tanque, consumo_padrao, cap_transp
                                                FROM modelos, marcas
                                                WHERE modelos.id_marca = marcas.id_marca
                                                AND modelos.id_status != 2");
@@ -26,7 +25,6 @@ class Modelo {
     }
 
     public function listarModelosCadastrados() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
             $stmt = $pdo->prepare("SELECT * FROM  modelos");
             $executa = $stmt->execute();

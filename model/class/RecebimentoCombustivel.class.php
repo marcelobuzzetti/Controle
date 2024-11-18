@@ -2,12 +2,11 @@
 
 
 
-class RecebimentoCombustivel {
+class RecebimentoCombustivel extends Model {
 
     public function listarRecebimentoCombustiveis() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_recibo_combustivel,combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo,qnt, motivo, DATE_FORMAT(data,'%d/%m/%Y') AS data, hora
+            $stmt = $this->pdo->prepare("SELECT id_recibo_combustivel,combustiveis.descricao AS combustivel, tipos_combustiveis.descricao AS tipo,qnt, motivo, DATE_FORMAT(data,'%d/%m/%Y') AS data, hora
                                                     FROM tipos_combustiveis,combustiveis,recibos_combustiveis
                                                     WHERE recibos_combustiveis.id_combustivel =combustiveis.id_combustivel
                                                     AND recibos_combustiveis.id_tipo_combustivel =tipos_combustiveis.id_tipo_combustivel; ");

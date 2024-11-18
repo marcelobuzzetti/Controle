@@ -2,7 +2,7 @@
 
 
 
-class Menu {
+class Menu extends Model {
 
     public function SelecionarMenu($perfil) {
         switch ($perfil) {

@@ -2,12 +2,11 @@
 
 
 
-class EstadoCidade {
+class EstadoCidade extends Model {
 
     public function listarEstado() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT *
+            $stmt = $this->pdo->prepare("SELECT *
                                                     FROM estados");
             $executa = $stmt->execute();
 
@@ -24,9 +23,8 @@ class EstadoCidade {
     }
 
     public function listarCidades() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT *
+            $stmt = $this->pdo->prepare("SELECT *
                                                     FROM cidades");
             $executa = $stmt->execute();
 

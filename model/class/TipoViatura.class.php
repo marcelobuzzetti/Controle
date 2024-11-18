@@ -2,12 +2,11 @@
 
 
 
-class TipoViatura {
+class TipoViatura extends Model {
 
     public function listarTiposViaturas() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM tipos_viaturas");
+            $stmt = $this->pdo->prepare("SELECT * FROM tipos_viaturas");
             $executa = $stmt->execute();
 
             if ($executa) {

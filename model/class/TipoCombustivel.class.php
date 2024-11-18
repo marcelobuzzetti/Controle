@@ -2,12 +2,11 @@
 
 
 
-class TipoCombustivel {
+class TipoCombustivel extends Model {
 
     public function listarTiposCombustiveis() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM tipos_combustiveis");
+            $stmt = $this->pdo->prepare("SELECT * FROM tipos_combustiveis");
             $executa = $stmt->execute();
 
             if ($executa) {
@@ -23,9 +22,8 @@ class TipoCombustivel {
     }
 
     public function listarTiposCombustiveisAbastecimento() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT tipos_combustiveis.id_tipo_combustivel AS id_tipo_combustivel, descricao 
+            $stmt = $this->pdo->prepare("SELECT tipos_combustiveis.id_tipo_combustivel AS id_tipo_combustivel, descricao 
                                                     FROM tipos_combustiveis, recibos_combustiveis
                                                     WHERE tipos_combustiveis.id_tipo_combustivel IN (SELECT recibos_combustiveis.id_tipo_combustivel            
                                                                                                                                   FROM recibos_combustiveis)");

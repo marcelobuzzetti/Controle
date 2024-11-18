@@ -2,12 +2,11 @@
 
 
 
-class Habilitacao {
+class Habilitacao extends Model {
 
     public function listarHabilitacoes() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM habilitacoes");
+            $stmt = $this->pdo->prepare("SELECT * FROM habilitacoes");
             $executa = $stmt->execute();
 
             if ($executa) {

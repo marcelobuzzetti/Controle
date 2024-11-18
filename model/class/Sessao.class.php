@@ -4,7 +4,7 @@
 
 
 
-class Sessao {
+class Sessao extends Model {
 
     function tempo() {
         if ($_SESSION['temposessao']) {

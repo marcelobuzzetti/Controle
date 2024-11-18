@@ -2,12 +2,11 @@
 
 
 
-class Marca {
+class Marca extends Model {
 
     public function listarMarcas() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM marcas WHERE id_status != 2");
+            $stmt = $this->pdo->prepare("SELECT * FROM marcas WHERE id_status != 2");
             $executa = $stmt->execute();
 
             if ($executa) {

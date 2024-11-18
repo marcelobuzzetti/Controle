@@ -2,12 +2,11 @@
 
 
 
-class Militar {
+class Militar extends Model {
 
     public function listarMilitar() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
+            $stmt = $this->pdo->prepare("SELECT militares.id_militar AS id_militar, 
             sigla, militares.nome AS nome, nome_completo, status,
             DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
             IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
@@ -32,9 +31,8 @@ class Militar {
     }
 
     public function listarMilitarInativo() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
+            $stmt = $this->pdo->prepare("SELECT militares.id_militar AS id_militar, 
             sigla, militares.nome AS nome, nome_completo, status,
             DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
             IFNULL((SELECT cidades.nome FROM cidades where militares.id_cidade = cidades.id_cidade),'-') AS cidade_nascimento, 
@@ -59,9 +57,8 @@ class Militar {
     }
 
     public function listarMilitarUsuario() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,sigla, nome, nome_completo, 
+            $stmt = $this->pdo->prepare("SELECT militares.id_militar AS id_militar,sigla, nome, nome_completo, 
                                                 status
                                                 FROM militares, posto_grad, status 
                                                 WHERE militares.id_status = status.id_status
@@ -84,9 +81,8 @@ class Militar {
     }
 
     public function listarMilitarMotorista() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_militar, sigla, nome
+            $stmt = $this->pdo->prepare("SELECT id_militar, sigla, nome
                                                 FROM militares, posto_grad
                                                 WHERE militares.id_posto_grad = posto_grad.id_posto_grad                                                
                                                 AND militares.id_status !=2
@@ -107,9 +103,8 @@ class Militar {
     }
 
     public function listarMilitarAtualizar($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar, 
+            $stmt = $this->pdo->prepare("SELECT militares.id_militar AS id_militar, 
                                                 militares.id_posto_grad AS id_posto_grad,sigla, nome, nome_completo, 
                                                 DATE_FORMAT( data_nascimento,  '%d/%m/%Y' ) AS data_nascimento, 
                                                 id_cidade, id_estado, idt_militar,cpf, status
@@ -135,9 +130,8 @@ class Militar {
     }
 
     public function listarTelefoneMilitarAtualizar($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero, telefones.id_status AS id_status
+            $stmt = $this->pdo->prepare("SELECT militares.id_militar AS id_militar,  id_telefone, tipo, numero, telefones.id_status AS id_status
                                                 FROM militares, telefones
                                                 WHERE militares.id_militar = $id
                                                 AND militares.id_militar = telefones.id_militar");
@@ -156,9 +150,8 @@ class Militar {
     }
 
     public function listarEnderecoMilitarAtualizar($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT enderecos.*
+            $stmt = $this->pdo->prepare("SELECT enderecos.*
                                                 FROM militares, enderecos
                                                 WHERE militares.id_militar = $id
                                                 AND militares.id_militar = enderecos.id_militar");
@@ -177,9 +170,8 @@ class Militar {
     }
 
     public function listarEmailMilitarAtualizar($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT emails.*
+            $stmt = $this->pdo->prepare("SELECT emails.*
                                                 FROM militares, emails
                                                 WHERE militares.id_militar = $id
                                                 AND militares.id_militar = emails.id_militar");

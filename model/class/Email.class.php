@@ -5,7 +5,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create($_SERVER['DOCUMENT_ROOT']);
 $dotenv->load();
-class Email {
+class Email extends Model {
 
     function enviaEmail($fileName, $dtime){        
         $log = new Log();        

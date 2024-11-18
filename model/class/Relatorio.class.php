@@ -2,12 +2,11 @@
 
 
 
-class Relatorio {
+class Relatorio extends Model {
 
     public function listarPercursos($inicio, $fim) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, 
+            $stmt = $this->pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, 
                                                 modelos.descricao AS modelo, placa, motoristas.apelido AS apelido, 
                                                 destinos.nome_destino AS destino, odo_saida, IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, 
                                                 DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, usuarios.nome AS usuario_saida, IFNULL(u1.nome, 'Não retornou') AS usuario_retorno
@@ -43,9 +42,8 @@ class Relatorio {
     }
 
     public function listarPercursosCompleto() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido,             destinos.nome_destino AS destino, odo_saida, 
+            $stmt = $this->pdo->prepare("SELECT id_percurso, marcas.descricao AS marca, modelos.descricao AS modelo, placa, motoristas.apelido AS apelido,             destinos.nome_destino AS destino, odo_saida, 
             IFNULL(acompanhante,'Sem Acompanhantes') AS acompanhante, DATE_FORMAT(data_saida,'%d/%m/%Y') AS data_saida, 
             hora_saida, odo_retorno, DATE_FORMAT(data_retorno,'%d/%m/%Y') AS data_retorno, hora_retorno, usuarios.nome AS usuario_saida, 
             IFNULL(u1.nome, 'Não retornou') AS usuario_retorno
@@ -74,9 +72,8 @@ class Relatorio {
     }
 
     public function listarVtrUtilizacao($inicio, $fim) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
+            $stmt = $this->pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura AND p.data_saida BETWEEN ? AND ?
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
@@ -100,9 +97,8 @@ class Relatorio {
     }
 
     public function listarVtrUtilizacaoCompleto() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
+            $stmt = $this->pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((MAX(p.odo_retorno) - MIN(p.odo_saida)),0) AS KM, m.descricao AS marca, mo.descricao AS modelo, placa
                                                 FROM percursos p
                                                 RIGHT JOIN viaturas v ON p.id_viatura = v.id_viatura
                                                 INNER JOIN marcas m ON m.id_marca = v.id_marca
@@ -124,9 +120,8 @@ class Relatorio {
     }
 
     public function listarMotoristaUtilizacao($inicio, $fim) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
+            $stmt = $this->pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
                                                 FROM percursos p
                                                 RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista  
                                                 AND p.data_saida BETWEEN ? AND ?                                             
@@ -150,9 +145,8 @@ class Relatorio {
     }
 
     public function listarMotoristaCompleto() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
+            $stmt = $this->pdo->prepare("SELECT count(id_percurso) AS qnt, IFNULL((SUM(p.odo_retorno) - SUM(p.odo_saida)),0) AS KM, apelido
                                                 FROM percursos p
                                                 RIGHT JOIN motoristas m ON p.id_motorista = m.id_motorista   
                                                 WHERE p.odo_retorno > 0
@@ -173,9 +167,8 @@ class Relatorio {
     }
 
     public function listarAbastecimento($inicio, $fim) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
+            $stmt = $this->pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
                                                 FROM(
                                                 SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
                                                 FROM abastecimentos_especiais a
@@ -208,9 +201,8 @@ class Relatorio {
     }
 
     public function listarAbastecimentoCompleto() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
+            $stmt = $this->pdo->prepare("SELECT sum(t.qnt) AS qnt, t.combustivel AS combustivel, t.tipo_combustivel AS tipo
                                                 FROM(
                                                 SELECT c.descricao AS combustivel, tc.descricao AS tipo_combustivel, IFNULL(SUM( a.qnt ),0) AS qnt
                                                 FROM abastecimentos_especiais a
