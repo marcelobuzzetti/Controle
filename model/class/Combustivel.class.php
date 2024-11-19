@@ -2,12 +2,11 @@
 
 
 
-class Combustivel {
+class Combustivel extends Model {
 
     public function listarCombustiveisAbastecimento() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT combustiveis.id_combustivel AS id_combustivel, descricao
+            $stmt = $this->pdo->prepare("SELECT combustiveis.id_combustivel AS id_combustivel, descricao
                                                     FROM combustiveis, recibos_combustiveis
                                                     WHERE combustiveis.id_combustivel IN (SELECT recibos_combustiveis.id_combustivel
                                                                                                                   FROM recibos_combustiveis)
@@ -27,9 +26,8 @@ class Combustivel {
     }
 
     public function listarCombustiveis() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT * FROM combustiveis;");
+            $stmt = $this->pdo->prepare("SELECT * FROM combustiveis;");
             $executa = $stmt->execute();
 
             if ($executa) {

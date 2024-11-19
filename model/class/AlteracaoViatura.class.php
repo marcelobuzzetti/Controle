@@ -1,11 +1,10 @@
 <?php
 
-class AlteracaoViatura {
+class AlteracaoViatura extends Model {
 
     public function listarAlteracaoVtr() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_alteracao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,alteracao_viaturas.odometro AS odometro, alteracao_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
+            $stmt = $this->pdo->prepare("SELECT id_alteracao_viatura, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,alteracao_viaturas.odometro AS odometro, alteracao_viaturas.descricao AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data
                                                     FROM viaturas, marcas, modelos, alteracao_viaturas
                                                     WHERE viaturas.id_marca = marcas.id_marca 
                                                     AND viaturas.id_modelo = modelos.id_modelo
@@ -25,9 +24,8 @@ class AlteracaoViatura {
     }
 
     public function listarDisponibilidadeVtr() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_disponibilidade, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,
+            $stmt = $this->pdo->prepare("SELECT id_disponibilidade, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,
             indisponibilidade.odometro AS odometro, indisponibilidade.motivo AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, DATE_FORMAT(data_fim,'%d/%m/%Y') AS data_fim,
             status.status, indisponibilidade.id_status, indisponibilidade.id_viatura
             FROM viaturas, marcas, modelos, indisponibilidade, status
@@ -50,9 +48,8 @@ class AlteracaoViatura {
     }
 
     public function listarDisponibilidade($id) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT id_disponibilidade, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,
+            $stmt = $this->pdo->prepare("SELECT id_disponibilidade, marcas.descricao AS marca,modelos.descricao AS  modelo,placa,
             indisponibilidade.odometro AS odometro, indisponibilidade.motivo AS descricao, DATE_FORMAT(data,'%d/%m/%Y') AS data, DATE_FORMAT(data_fim,'%d/%m/%Y') AS data_fim,
             status.status, indisponibilidade.id_status, indisponibilidade.id_viatura
             FROM viaturas, marcas, modelos, indisponibilidade, status

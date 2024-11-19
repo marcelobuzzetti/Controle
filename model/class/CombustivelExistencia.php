@@ -2,12 +2,11 @@
 
 
 
-class CombustivelExistencia {
+class CombustivelExistencia extends Model {
 
     public function listarCombustiveisExistentes() {
-        include $_SERVER['DOCUMENT_ROOT'] . '/model/conexao.php';
         try {
-            $stmt = $pdo->prepare("SELECT cr.combustivel AS combustivel, cr.tipo_combustivel AS tipo_combustivel, cr.qnt - (ca.qnt + ce.qnt) AS qnt
+            $stmt = $this->pdo->prepare("SELECT cr.combustivel AS combustivel, cr.tipo_combustivel AS tipo_combustivel, cr.qnt - (ca.qnt + ce.qnt) AS qnt
                                                     FROM combustivel_abastecido ca, combustivel_recebido cr, combustivel_especial ce
                                                     WHERE cr.combustivel = ca.combustivel
                                                     AND cr.tipo_combustivel = ca.tipo_combustivel
