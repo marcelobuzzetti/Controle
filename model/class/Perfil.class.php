@@ -2,7 +2,7 @@
 
 
 
-class Perfil {
+class Perfil extends Model {
 
     public function listarPerfil() {
         try {

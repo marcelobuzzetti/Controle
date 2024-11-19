@@ -2,7 +2,7 @@
 
 
 
-class PostoGrad {
+class PostoGrad extends Model {
 
     public function listarPostoGrad() {
         try {
