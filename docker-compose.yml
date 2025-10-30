@@ -7,6 +7,7 @@ services:
     container_name: c2_web
     depends_on:
       - php
+      - dependencies
     volumes:
         - ./:/var/www/html/
 
@@ -18,6 +19,17 @@ services:
     container_name: c2_php_fpm
     volumes:
       - ./:/var/www/html/
+
+  dependencies:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: dependencies_c2
+    container_name: c2_dependencies
+    volumes:
+      - ./:/var/www/html/
+      - /var/www/html/node_modules
+      - /var/www/html/vendor
 
   db:
     build: ./mysql/

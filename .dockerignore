@@ -1,0 +1,12 @@
+vendor
+node_modules
+.git
+.gitignore
+README.md
+.env
+.DS_Store
+.github
+nginx
+php-fpm
+mysql
+sql
