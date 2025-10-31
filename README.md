@@ -10,46 +10,65 @@ Desenvolvido para centralizar o controle e gerenciamento dos veículos oficiais 
 - [Docker](https://docs.docker.com/get-docker/).
 - [Docker Compose](https://docs.docker.com/compose/install/).
 
-3. Instale o `Composer`. Site oficial [Composer](https://getcomposer.org/doc/00-intro.md)
-
-4. Abra o terminal ou prompt de comando e navegue até um diretório de sua prefrência. Substitua `suapasta` pelo nome do seu diretório:
+3. Abra o terminal ou prompt de comando e navegue até um diretório de sua prefrência. Substitua `suapasta` pelo nome do seu diretório:
    ```bash
    cd suapasta
    ```
 
-5.Clone este repositório para sua máquina local através do comando abaixo:
+4. Clone este repositório para sua máquina local através do comando abaixo:
 ```bash
 git clone https://github.com/marcelobuzzetti/Controle.git
 ```
 
-6. Navegue até o diretório que você acabou de clonar.
+5. Navegue até o diretório que você acabou de clonar.
 
    ```bash
     cd Controle
    ```
 
-7. Instale os pacotes:
-    ```bash
-    composer install --ignore-platform-reqs
-    ```
+6. Certifique-se de ter o Composer e Node.js instalados em sua máquina:
+   - [Composer](https://getcomposer.org/download/)
+   - [Node.js](https://nodejs.org/)
 
-8. Execute o Docker Compose:
+7. Instale as dependências do PHP com Composer:
+   ```bash
+   composer install --ignore-platform-reqs
+   composer dump-autoload -o
+   ```
+
+8. Instale as dependências do Node.js com npm:
+   ```bash
+   npm install
+   ```
+
+9. Execute o Docker Compose para construir e iniciar todos os serviços (Nginx, PHP-FPM e MySQL):
     ```bash
     docker-compose -p controle up -d
     ```
 
-9. Abra seu navegador e visite `http://localhost`.
+10. Abra seu navegador e visite `http://localhost`.
 
-10. O Usuário e Senha padrões do sistema são `admin`.
+11. O Usuário e Senha padrões do sistema são `admin`.
 
-11. Para colocar uma imagem dentro do QRCode, deve-se salvar uma imagem, no formato PNG, com o nome brasao.png, na pasta libs/imagens
+12. Para colocar uma imagem dentro do QRCode, deve-se salvar uma imagem, no formato PNG, com o nome brasao.png, na pasta libs/imagens
 
-12. Para parar o sistema:
+13. Para parar o sistema:
     ```bash
     docker-compose -p controle stop
     ```
     
-13. Parar e remover os container :
+14. Parar e remover os container :
     ```bash
     docker-compose -p controle down
     ```
+
+## Serviços e Portas
+
+O sistema utiliza 4 containers Docker:
+
+- **Nginx** (c2_web): Servidor web na porta 80
+- **PHP-FPM** (c2_php_fpm): Processador PHP na porta 9000
+- **Dependencies** (c2_dependencies): Instala dependências Node.js e Composer automaticamente
+- **MySQL** (c2_db): Banco de dados na porta 3306
+
+As dependências PHP (Composer) e Node.js (npm) são instaladas automaticamente durante o build do container de dependências.

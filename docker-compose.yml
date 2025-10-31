@@ -1,17 +1,18 @@
 services:
+
   nginx:
     build: ./nginx/
     ports:
       - 80:80
     image: nginx_c2
     container_name: c2_web
-    depends_on:
-      - php
     volumes:
         - ./:/var/www/html/
 
   php:
-    build: ./php-fpm/
+    build: 
+      context: ./
+      dockerfile: ./php-fpm/Dockerfile
     expose:
       - 9000
     image: php_fpm_c2
