@@ -1,3 +1,14 @@
+## 1.3.0 (2025-10-31)
+
+### Feat
+
+- atualizar ações do Docker para usar a versão mais recente e adicionar suporte a cache de construção
+
+### Refactor
+
+- atualizar nome da imagem para incluir o proprietário do repositório e simplificar o uso de variáveis
+- remover etapas de atestação e simplificar o fluxo de construção das imagens Docker
+
 ## 1.2.0 (2025-10-31)
 
 ### Feat
