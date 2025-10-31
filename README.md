@@ -26,23 +26,38 @@ git clone https://github.com/marcelobuzzetti/Controle.git
     cd Controle
    ```
 
-6. Execute o Docker Compose para construir e iniciar todos os serviços (Nginx, PHP-FPM, Dependencies e MySQL):
+6. Certifique-se de ter o Composer e Node.js instalados em sua máquina:
+   - [Composer](https://getcomposer.org/download/)
+   - [Node.js](https://nodejs.org/)
+
+7. Instale as dependências do PHP com Composer:
+   ```bash
+   composer install --ignore-platform-reqs
+   composer dump-autoload -o
+   ```
+
+8. Instale as dependências do Node.js com npm:
+   ```bash
+   npm install
+   ```
+
+9. Execute o Docker Compose para construir e iniciar todos os serviços (Nginx, PHP-FPM e MySQL):
     ```bash
     docker-compose -p controle up -d
     ```
 
-7. Abra seu navegador e visite `http://localhost`.
+10. Abra seu navegador e visite `http://localhost`.
 
-8. O Usuário e Senha padrões do sistema são `admin`.
+11. O Usuário e Senha padrões do sistema são `admin`.
 
-9. Para colocar uma imagem dentro do QRCode, deve-se salvar uma imagem, no formato PNG, com o nome brasao.png, na pasta libs/imagens
+12. Para colocar uma imagem dentro do QRCode, deve-se salvar uma imagem, no formato PNG, com o nome brasao.png, na pasta libs/imagens
 
-10. Para parar o sistema:
+13. Para parar o sistema:
     ```bash
     docker-compose -p controle stop
     ```
     
-11. Parar e remover os container :
+14. Parar e remover os container :
     ```bash
     docker-compose -p controle down
     ```
