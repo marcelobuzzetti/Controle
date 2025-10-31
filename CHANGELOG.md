@@ -1,3 +1,9 @@
+## 1.3.1 (2025-10-31)
+
+### Refactor
+
+- melhorar a clareza do Dockerfile com ajustes nas variáveis de ambiente e permissões
+
 ## 1.3.0 (2025-10-31)
 
 ### Feat
